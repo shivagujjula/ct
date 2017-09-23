@@ -191,6 +191,11 @@ th:nth-child(3) {
 	position: relative;
 }
 
+.popover-btn-css {
+	text-align: right;
+	padding: 0;
+}
+
 </style>
 
 </head>

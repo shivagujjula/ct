@@ -22,11 +22,7 @@ function introGuide() {
 		exitOnEsc : false,
 		keyboardNavigation : false,
 		tooltip : false,
-		steps :[/*{
-			element : '#infoDiv',
-			intro : "",
-			tooltipClass : 'hide'
-		},*/ {
+		steps :[{
 			element : '#divTable',
 			intro : '',
 			animateStep : 'codeReveledAction'
@@ -89,7 +85,8 @@ function introGuide() {
 						var text = "<span class='step-color-css'>step-1 :</span> This is the function header and no operation is involved so "+
 						"the <span class='ct-code-teal'>unit of time</span> count is <span class='ct-code-b-yellow'>0</span>.";
 						typing("#popover1", text, function() {
-							$('#popover1').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="secondStepAnimation()">Next &#8594;</span></div>');
+							$('#popover1').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+									'<span class="introjs-button user-btn" onclick="secondStepAnimation()">Next &#8594;</span></div>');
 						});
 					}});
 				});
@@ -171,7 +168,8 @@ function secondStepAnimation() {
 				"<span class='ct-code-b-yellow'>=</span> is used in this statement, it takes "+
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.";
 				typing("#popover2", text, function() {
-					$('#popover2').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="thirdStepAnimation()">Next &#8594;</span></div>');
+					$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+							'<span class="introjs-button user-btn" onclick="thirdStepAnimation()">Next &#8594;</span></div>');
 				});
 			});
 		}});
@@ -194,7 +192,8 @@ function thirdStepAnimation() {
 			"<span class='ct-code-b-yellow'>initialization</span>, "+
 			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>"
 			typing("#popover3", text, function() {
-				$('#popover3').append('<div class="popover-height"><span class="introjs-button user-btn" >Next &#8594;</span></div>');
+				$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
 				$(".user-btn").click(function() {
 					$(".user-btn").remove();
 					thirdStepAnimationSecondStep();
@@ -213,7 +212,8 @@ function thirdStepAnimationSecondStep() {
 		$("#forInit").effect('highlight',{color:'#da5805'}, 1000, function() {
 			transferEffectFunction("#forInit", "#initUnitNo", function() {
 				$("#initUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
-					$('#popover3').append('<div class="popover-height"><span class="introjs-button user-btn" >Next &#8594;</span></div>');
+					$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+							'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
 					$(".user-btn").click(function() {
 						$(".user-btn").remove();
 						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i <= n</span><br>In the "+
@@ -227,7 +227,8 @@ function thirdStepAnimationSecondStep() {
 							$("#forCondition").effect('highlight',{color:'#da5805'}, 1000, function() {
 								transferEffectFunction("#forCondition", "#conditionUnitNo", function() {
 									$("#conditionUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
-										$('#popover3').append('<div class="popover-height"><span class="introjs-button user-btn" >Next &#8594;</span></div>');
+										$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+												'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
 										$(".user-btn").click(function() {
 											$(".user-btn").remove();
 											$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i++</span><br>In the "+
@@ -240,7 +241,8 @@ function thirdStepAnimationSecondStep() {
 												$("#forIncrement").effect('highlight',{color:'#da5805'}, 1000, function() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo", function() {
 														$("#incrementUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
-															$('#popover3').append('<div class="popover-height"><span class="introjs-button user-btn" '+
+															$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+																	'<span class="introjs-button user-btn" '+
 																	'onclick="fourthStepAnimation()">Next &#8594;</span></div>');
 														});
 													});
@@ -279,7 +281,8 @@ function fourthStepAnimation() {
 				"number of times.</li><li>So it takes <span class='ct-code-b-yellow'>2 * n = 2n</span> "+
 				"number of <span class='ct-code-teal'>units of time</span>.</li></ul>";
 				typing("#popover4", text, function() {
-					$('#popover4').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="fifthStepAnimation()">Next &#8594;</span></div>');
+					$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+							'<span class="introjs-button user-btn" onclick="fifthStepAnimation()">Next &#8594;</span></div>');
 				});
 			});
 		}});
@@ -302,7 +305,8 @@ function fifthStepAnimation() {
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";	
 			"<span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover5", text, function() {
-				$('#popover5').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</span></div>');
+				$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</span></div>');
 			});
 		}});
 	});
@@ -325,7 +329,8 @@ function sixthStepAnimation() {
 				var text = "<span class='step-color-css'>step-6 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
 					"<span class='ct-code-b-yellow'>1</span> unit of time.";
 				typing("#popover6", text, function() {
-					$('#popover6').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="seventhStepAnimation()">Next &#8594;</span></div>');
+					$('#popover6').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+							'<span class="introjs-button user-btn" onclick="seventhStepAnimation()">Next &#8594;</span></div>');
 				});
 			});
 		}});
@@ -347,7 +352,8 @@ function seventhStepAnimation() {
 			var text = "<span class='step-color-css'>step-7 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover7", text, function() {
-				$('#popover7').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="eigthStepAnimation()">Next &#8594;</span></div>');
+				$('#popover7').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" onclick="eigthStepAnimation()">Next &#8594;</span></div>');
 			});
 		}});
 	});
@@ -364,13 +370,14 @@ function eigthStepAnimation() {
 		}).popover('show');
 		$(".popover").css({"top" : "0px;"});
 		var text = "The total unit count is <span class='ct-code-b-yellow'>4n + 4</span>.";
-	typing("#popover8", text, function() {
-		$('#popover8').append('<div class="popover-height"><span class="introjs-button user-btn">Next &#8594;</span></div>');
-		$(".user-btn").click(function() {
-			$("#unitLineText8").popover('hide');
-			introjs.nextStep();
-		})
-	});
+		typing("#popover8", text, function() {
+			$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+					'<span class="introjs-button user-btn">Next &#8594;</span></div>');
+			$(".user-btn").click(function() {
+				$("#unitLineText8").popover('hide');
+				introjs.nextStep();
+			})
+		});
 	}});
 }
 
