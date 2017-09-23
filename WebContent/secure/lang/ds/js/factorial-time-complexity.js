@@ -436,12 +436,14 @@ function svgMarkerAppend(svgId, svgMarkerId, curve) {
 	marker.setAttribute('refY', '2.5');
 	marker.setAttribute('markerWidth', '5');
 	marker.setAttribute('markerHeight', '5');
-	marker.setAttribute('orient', 'auto');
+	marker.setAttribute('orient', 'auto');   
 	marker.style.fill = 'gray';
 	$(svgId).append(marker);
 	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
 	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
 	$('#' + svgMarkerId).append(path);
+	
+	//svg functions marker append
 }
 
 function svgLineAppend(svgId, svgLineId, markerId, x1, y1, x2, y2) {
