@@ -1,0 +1,37 @@
+#include <ESP8266.h>
+#include <SoftwareSerial.h>
+
+SoftwareSerial mySerial(10, 11);
+ESP8266 wifi(mySerial);
+
+int digitalPin = 9;
+int analogPin = A0;
+
+void setup() {
+  Serial.begin(9600);
+  mySerial.begin(115200);
+  Serial.println("setup begin");
+  pinMode(digitalPin, INPUT);
+  pinMode(analogPin, INPUT);
+  while(wifi.joinAP("kkp", "Ana123Mar#@!")) {
+     Serial.println("connected to your wifi");
+     break;
+    } 
+}
+
+void loop() {
+  Serial.println("Sensor taking again new values and prints here..........");
+  int soilStatus = digitalRead(digitalPin);
+  int soilAnalogStatus = analogRead(analogPin);
+  Serial.println( soilStatus);
+  Serial.println(soilAnalogStatus);
+  if (wifi.createTCP("184.106.153.149", 80)) {
+    Serial.println("connected to thingspeak");
+  } else { 
+    Serial.println("Unable to connect");
+  }
+  if(wifi.send_two_parameters("G5TYKPNBJCG6POQJ", soilStatus, soilAnalogStatus)) {
+    Serial.println("values moving on");
+  }
+  delay(1000);
+}

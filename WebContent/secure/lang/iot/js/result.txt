@@ -1,0 +1,141 @@
+
+"aoi": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/aoi.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/architecture-of-iot.js'],
+	}
+},
+"aag": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/aag.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/arduino-avr-gcc.js'],
+	}
+},
+"aub": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/aub.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/arduino-uno-board.js'],
+	}
+},
+"bc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/bc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/breadboard-circuit.js'],
+	}
+},
+"c": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/c.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/capacitor.js'],
+	}
+},
+"d": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/d.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/diode.js'],
+	}
+},
+"fo": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/fo.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/flowchart-oddOrEven.js'],
+	}
+},
+"ha": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/ha.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/hardware-architecture.js'],
+	}
+},
+"i": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/i.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/inductor.js'],
+	}
+},
+"Ic": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/Ic.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/IoT-characteristics.js'],
+	}
+},
+"lcc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/lcc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/level-converter-circuit.js'],
+	}
+},
+"ma": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/ma.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/microcontroller-architecture.js'],
+	}
+},
+"pscc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/pscc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/pir-sensor-circuit-connection.js'],
+	}
+},
+"rc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/rc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/resistor-connections.js'],
+	}
+},
+"r": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/r.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/result.txt'],
+	}
+},
+"s": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/s.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/script.sh'],
+	}
+},
+"spr": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/spr.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/series-parallel-resistor.js'],
+	}
+},
+"scp": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/scp.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/smart-city-program.js'],
+	}
+},
+"sip": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/sip.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/smart-industry-program.js'],
+	}
+},
+"sslp": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/sslp.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/smart-street-light-program.js'],
+	}
+},
+"sscc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/sscc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/soil-sensor-circuit-connection.js'],
+	}
+},
+"ssic": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/ssic.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/soil-sensor-image-circuit.js'],
+	}
+},
+"ss": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/ss.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/soil-sensor.js'],
+	}
+},
+"slcc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/slcc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/street-light-circuit-connection.js'],
+	}
+},
+"tah": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/tah.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/temp-and-humidity.js'],
+	}
+},
+"tscc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/tscc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/temperature-sensor-circuit-connection.js'],
+	}
+},
+"ucc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/ucc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/ultrasonic-circuit-connection.js'],
+	}
+},
+"wmc": {
+	files: {
+		'/home/ramana/work/ct/WebContent/secure/lang/iot/js-min/wmc.min.js' : ['/home/ramana/work/ct/WebContent/secure/lang/iot/js/wifi-module-circuit.js'],
+	}
+},
