@@ -442,8 +442,6 @@ function svgMarkerAppend(svgId, svgMarkerId, curve) {
 	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
 	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
 	$('#' + svgMarkerId).append(path);
-	
-	//svg functions marker append
 }
 
 function svgLineAppend(svgId, svgLineId, markerId, x1, y1, x2, y2) {
