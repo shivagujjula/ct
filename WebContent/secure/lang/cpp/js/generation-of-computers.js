@@ -1,25 +1,47 @@
 var tooltipMap = {
-	"#simulaGroup1" :"<ul><li>The first generation computers used <b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Vacuum_tube' target='_blank'><u>vacuum tubes</u></a></b> for <b class='ct-code-b-green'>circuitary</b> " +
-			"and <b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Drum_memory' target='_blank'><u>magnet drums</u></a></b> for <b class='ct-code-b-green'>memory</b>.</li>" +
-			"<li>These computers used the <b class='ct-code-b-green'>lowest-level programming</b> language known as <b class='ct-code-b-green'>Machine Language(0, 1)</b>.</li><li>This language was understood only by the computers and could perform a single task at any point of time.</li>" 
-		+ "<li>The input to this computers was <b class='ct-code-b-green'>punch cards</b> and <b class='ct-code-b-green'>tapes</b> and output was on <b class='ct-code-b-green'>printouts</b>.</li>" +
-		" </ul>",
-	"#simulaGroup2" :"<ul><li><b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Transistor_computer' target='_blank'><u>Transistors</u></a></b> were used in place of <b class='ct-code-b-green'>vacuum tubes</b> that were invented by <b class='ct-code-b-green'>Bell Labs</b>.</li>" +
-					"<li>The use of these <b class='ct-code-b-green'>transistors</b> made the computers small, fast and efficient.</li>" + 	
-	"<li><b class='ct-code-b-green'>Assembly language</b> was used by programmers, which were a set of instructions that were understood by the computer.</li>" +
-			
-			"<li>These computers could store the instructions in their memory that used the <b class='ct-code-b-green'>magnetic core technology</b>.</li></ul>",
+	"#simulaGroup1" :"<ul><li>The first generation computers used <b class='ct-code-b-green'>" + 
+					"<a href='https://en.wikipedia.org/wiki/Vacuum_tube' target='_blank'><u>vacuum tubes</u></a></b>" +
+					" for <b>circuitary</b> " +
+					"and <b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Drum_memory' target='_blank'>" + 
+					"<u>magnet drums</u></a></b> for <b>memory</b>.</li>" +
+					"<li>These computers used the <b>lowest level programming</b>" + 
+					" language known as <b>Machine Language (0, 1)</b>.</li>" + 
+					"<li>This language was understood only by the computers and could perform a single task at any point of time.</li>" +
+					"<li>The inputs to these computers were <b>punch cards</b> and <b>magnetic tapes</b>." + 
+					" And the output was a <b>printout</b>.</li> </ul>",
+	"#simulaGroup2" :"<ul><li><b><a href='https://en.wikipedia.org/wiki/Transistor_computer' target='_blank'>" + 
+					"<u>Transistors</u></a></b> were used in place of <b>vacuum tubes</b> that were invented" + 
+					" by <b>Bell Labs</b>.</li>" +
+					"<li>The use of these <b>transistors</b> made the computers small, fast and efficient.</li>" + 	
+					"<li><b>Assembly language</b> was used by programmers, which were a set of instructions" + 
+					" that were understood by the computer.</li> " +
+					"<li>These computers could store the instructions in their memory which was based "+
+					"on <b>magnetic core technology</b>.</li></ul>",
 				
-	"#simulaGroup3" :"<ul><li><b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Integrated_circuit' target='_blank'><u>Integrated Circuits</u></a></b> were used in this generations.</li><li>The ICs were a combination of <b class='ct-code-b-green'>transistors</b>, <b class='ct-code-b-green'>resistors</b> and other circuits that were miniaturized and placed on silicon chips.</li>" +
-			"<li>These computers used <b class='ct-code-b-green'>keyboards</b> and <b class='ct-code-b-green'>monitors</b> that were interfaced with an <b class='ct-code-b-green'>operating system</b> at once.</li>" + 
-			"<li><b class='ct-code-b-green'>Operating systems</b> allowed the machines to run many applications.</li>" +
+	"#simulaGroup3" :"<ul><li><b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Integrated_circuit' target='_blank'>" +
+					"<u>Integrated Circuits</u></a></b> were used in these.</li><li>" +
+					"The ICs were a combination of <b>transistors</b>, " +
+					"<b>resistors</b> and other circuits that were " +
+					"miniaturized and placed on silicon chips.</li>" +
+					"<li>These computers used <b>keyboards</b> and " +
+					"<b>monitors</b> that were interfaced with an " +
+					"<b>operating system</b>.</li>" + 
+					"<li><b>Operating systems</b> allowed the " +
+					"machines to run many applications.</li>" +
 			"</ul>",
-	"#simulaGroup4" :"<ul><li>A single silicon chip known as <b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Microprocessor' target='_blank'><u>Microprocessors</u></a></b> were used in this generation.</li><li>The <b class='ct-code-b-green'>Microprocessor</b> had thousands of <b class='ct-code-b-green'>Integrated circuits(ICs)</b> built-in.</li>" + "<li><b class='ct-code-b-green'>IBM</b> introduced first computer for home user.</li>" +
-			"<li>As desktops were introduced, the network of these computers could be linked to form networks, that led to the development of <b class='ct-code-b-green'>Internet</b>.</li></ul>",
-	"#simulaGroup5" :"<ul><li>These computing devices use many <b class='ct-code-b-green'>CPUs</b> for <b class='ct-code-b-green'>parallel-processing</b> and <b class='ct-code-b-green'>super conductors</b> for <b class='ct-code-b-green'>Artificial Intelligence</b>.</li>" +
-			"<li><b class='ct-code-b-green'>Voice recognition</b> is a special feature now.</li>" +
-			"<li><b class='ct-code-b-green'>Quantum Computation</b>  and <b class='ct-code-b-green'>nano technology</b> will be the future face of computers.</li>"+
-			"<li>This generation aims to develop the computing devices that understand the natural language and are self learning.</li></ul>."
+	"#simulaGroup4" :"<ul><li>A single silicon chip known as " +
+					"<b class='ct-code-b-green'><a href='https://en.wikipedia.org/wiki/Microprocessor' " +
+					"target='_blank'><u>Microprocessor</u></a></b> was used in this generation.</li><li>" +
+					"The <b>Microprocessor</b> had thousands of " +
+					"<b>Integrated circuits(ICs)</b> built-in.</li>" + 
+					"<li><b>IBM</b> introduced the first computer for home user.</li>" +
+					"<li>As desktops become more popular, their need for inter-networking eventually led to the " +
+					"creation of <b>Internet</b>.</li></ul>",
+	"#simulaGroup5" :"<ul><li>These computing devices use many <b>CPUs</b> " +
+					"for <b>parallel-processing</b>.</li>" +
+					"<li>Features like <b>Voice recognition</b>, " +
+					"<b>Artificial Intelligence</b>, <b>Self-learning</b> " +
+					"are common features with this generation of computers.</li></ul>."
 };
 
 

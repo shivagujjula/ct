@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
- <script src="/secure/lang/cpp/js-min/aoo.min.js"></script>
+<script src="/secure/lang/cpp/js/array-of-objects.js"></script>
+ <!-- <script src="/secure/lang/cpp/js-min/aoo.min.js"></script> -->
 <title>Array of objects</title>
 <style type="text/css">
 #informationDiv {
@@ -163,7 +164,7 @@ y {
 }
 
 r {
-	color: red;
+	color: #af0a0a;
 }
 g {
 	color : green;
@@ -191,7 +192,7 @@ g {
 	font-family: monospace;
 	text-align: center;
 }
-.manager-border1 ,.manager-border2 {
+.manager-border1 ,.manager-border2,.manager-border {
 	border : 1px solid darkseagreen;
 	padding-bottom: 10px;
 }
@@ -259,9 +260,9 @@ g {
 		</div>
 		<div class="col-xs-7">
 			<div class="col-xs-12 box-border opacity00" id="animationBox">
-				<div class="col-xs-12">
+				<div class="col-xs-12" id="manager1Details">
 					<div id="managerName" class="managerBox opacity00">manager[0]</div>
-					<div class="col-xs-12" id="border">
+					<div class="col-xs-12 manager-border opacity00" id="border">
 						<div class="col-xs-10">
 							<table class='text-center margin-top opacity00' style='table-layout:fixed' id="table">
 								<tr>
@@ -282,81 +283,78 @@ g {
 								</tr>
 							</table>
 						</div>
-					
-					<div class="col-xs-2">
-					<div class="col-xs-12">
-							<div id="age2" class="text-center opacity00" style=" margin-top:15px;"><b style="color: maroon; margin-top:15px;">age</b>
-								<div id="borderBox1" class="text-center box-border1 opacity00"><span id="box2" class=" text-center  "></span>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-xs-12 opacity00" id="manager1Details">
-					<div id="managerName1" class="managerBox">manager[1]</div>
-					<div class="col-xs-12 manager-border1 ">
-					<div class="col-xs-10">
-						<table class='  text-center margin-top ' style='table-layout:fixed' id="table2">
-							<tr>
-								<%for (int i = 0; i <= 10; i++ ) { %>
-									<%if (i == 0) { %>
-										<td></td>
-									<%} else {%>
-										<td><%=i - 1%></td>
-									<%} %>
-								<%}%>
-							</tr>
-							<tr>
-								<td> <span class="darkgreen"><b>name</b></span> :</td>
-									<%for (int i = 0; i <= 9; i++ ) { %>
-										<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table3"><span class='td-css1 position'></span></td>
-									<%}%>
-							</tr>
-						</table>
-					</div>
-					<div class="col-xs-2">
-						<div class="col-xs-12">
-							<div id="age3" class="text-center " style=" margin-top:15px;"><b style="color: maroon; margin-top:15px;">age</b>
-								<div id="borderBox2" class="text-center box-border1 "><span id="box3" class=" text-center  "></span>
+						<div class="col-xs-2">
+							<div class="col-xs-12">
+								<div id="age2" class="text-center opacity00" style=" margin-top:15px;"><b style="color: maroon; margin-top:15px;">age</b>
+									<div id="borderBox1" class="text-center box-border1 opacity00" style="font-weight: bold;"><span id="box2" class=" text-center" ></span></div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 				</div>
 				<div class="col-xs-12 opacity00" id="manager2Details">
-					<div id="managerName2" class="managerBox ">manager[2]</div>
-					<div class="col-xs-12 manager-border2 ">
-					<div class="col-xs-10">
-						<table class='  text-center margin-top  ' style='table-layout:fixed' id="table4">
-							<tr>
-								<%for (int i = 0; i <= 10; i++ ) { %>
-									<%if (i == 0) { %>
-										<td></td>
-									<%} else {%>
-										<td><%=i - 1%></td>
-									<%} %>
-								<%}%>
-							</tr>
-							<tr>
-								<td> <span class="darkgreen"><b>name</b></span> :</td>
-									<%for (int i = 0; i <= 9; i++ ) { %>
-										<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table5"><span class='td-css2 position'></span></td>
+					<div id="managerName1" class="managerBox">manager[1]</div>
+					<div class="col-xs-12 manager-border1 ">
+						<div class="col-xs-10">
+							<table class='  text-center margin-top ' style='table-layout:fixed' id="table2">
+								<tr>
+									<%for (int i = 0; i <= 10; i++ ) { %>
+										<%if (i == 0) { %>
+											<td></td>
+										<%} else {%>
+											<td><%=i - 1%></td>
+										<%} %>
 									<%}%>
-							</tr>
-						</table>
-					</div>
-					<div class="col-xs-2">
-						<div class="col-xs-12">
-							<div id="age4" class="text-center " style=" margin-top:15px;"><b style="color: maroon; margin-top:15px;">age</b>
-								<div id="borderBox3" class="text-center box-border1 "><span id="box4" class=" text-center  "></span>
+								</tr>
+								<tr>
+									<td> <span class="darkgreen"><b>name</b></span> :</td>
+										<%for (int i = 0; i <= 9; i++ ) { %>
+											<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table3"><span class='td-css1 position'></span></td>
+										<%}%>
+								</tr>
+							</table>
+						</div>
+						<div class="col-xs-2">
+							<div class="col-xs-12">
+								<div id="age3" class="text-center " style=" margin-top:15px;"><b style="color: maroon; margin-top:15px;">age</b>
+									<div id="borderBox2" class="text-center box-border1 " style="font-weight: bold;"><span id="box3" class=" text-center  "></span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="col-xs-12 opacity00" id="manager3Details">
+					<div id="managerName2" class="managerBox ">manager[2]</div>
+					<div class="col-xs-12 manager-border2 ">
+						<div class="col-xs-10">
+							<table class='  text-center margin-top  ' style='table-layout:fixed' id="table4">
+								<tr>
+									<%for (int i = 0; i <= 10; i++ ) { %>
+										<%if (i == 0) { %>
+											<td></td>
+										<%} else {%>
+											<td><%=i - 1%></td>
+										<%} %>
+									<%}%>
+								</tr>
+								<tr>
+									<td> <span class="darkgreen"><b>name</b></span> :</td>
+										<%for (int i = 0; i <= 9; i++ ) { %>
+											<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table5"><span class='td-css2 position'></span></td>
+										<%}%>
+								</tr>
+							</table>
+						</div>
+						<div class="col-xs-2">
+							<div class="col-xs-12">
+								<div id="age4" class="text-center " style=" margin-top:15px;"><b style="color: maroon; margin-top:15px;">age</b>
+									<div id="borderBox3" class="text-center box-border1" style="font-weight: bold;"><span id="box4" class=" text-center  "></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="col-xs-12">
 					<div class="col-xs-6 text-center ">

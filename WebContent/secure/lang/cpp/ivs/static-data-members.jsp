@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js-min/sdm.min.js"></script>
+<script src="/secure/lang/cpp/js/static-data-members.js"></script>
+<!-- <script src="/secure/lang/cpp/js-min/sdm.min.js"></script> -->
 <title>Static-Data-Members</title>
 <style>
 #informationDiv {
@@ -55,17 +56,17 @@
 	border-radius: 8px;
 	min-height : 230px;
 }
-.box-border1 {
+/* .box-border1 {
 	border: 1px solid #98ea8a;
 	padding : 8px;
 	min-height : 30px;
 	border-top: 0px;
-}
+} */
 
 .box-border2 {
 	border: 1px solid #836e8a;
 	border-radius: 8px;
-	min-height : 140px;
+	min-height : 170px;
 	margin-left: 10px;
 }
 .cupvalue {
@@ -172,17 +173,6 @@
 .padding {
 	padding : 0px;
 }
-.panel-primary>.panel-heading {
-	 color: #fff;
-	 background-color: #845e90;
-	 border: 0px;
-	 font-weight: bold;
- }
- .panel-body {
- 	padding: 30px;
- 	margin-bottom: 20px;
-	padding-top: 8px;
- }
  y {
  	color : yellow;
  	font-weight: bold;
@@ -210,6 +200,33 @@
 .input-char {
 	color: #2dfb47;
 }
+ .panel-body1 {
+ 	padding: 10px;
+ 	min-height: 35px;
+ } 
+ .panel-primary {
+ 	border-color: #606675;
+}
+.panel-primary>.panel-heading {
+	 color: #fff;
+	 background-color: #606675;
+	 border: 0px;
+	 font-weight: bold;
+ }
+ .panel-primary>.panel-heading1 {
+	 color: #fff;
+	 background-color: #606675;
+	 border: 0px;
+	 font-weight: bold;
+ }
+ .panel-body {
+ 	padding: 30px;
+ 	margin-bottom: 20px;
+	padding-top: 8px;
+ }
+ .cupvalue {
+ 	color: #0a0501;
+ }
 </style>
 </head>
 <body>
@@ -263,40 +280,56 @@
 		<div class= "col-xs-7 margin-top">
 			<div class="col-xs-12 margin-top box-border opacity00" id="animationBox">
 				<div class="col-xs-12">
-					<div class="col-xs-5  box-border2 panel panel-primary  padding margin-top opacity00" id="borderBox">
+				<div class="col-xs-5 padding">
+					<div class="box-border2 panel panel-primary  padding margin-top opacity00" id="borderBox">
 						<div class="panel-heading text-center" id="s1">S1</div>
 						<div class="col-xs-12 panel-body">
-							<div class="col-xs-6 " id="total1">
-								<div id="one" class="text-center opacity00 margin-top3">
-									<div class ="managerBox"style="color : #565454;">maths</div>
-									<div class="box-border1 text-center opacity00" id="boxParent"><span class="arrayValue text-center position" id="box"></span></div>
+							<div id="one" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+								<div class="panel panel-primary padding margin-top">
+									<div class="panel-heading1 text-center">maths</div>
+									<div class="panel-body1 text-center" id="boxParent">
+										<span class="arrayValue text-center position" id="box"></span>
+									</div>
 								</div>
 							</div>
-							<div class="col-xs-6" >
-								<div id="two" class="text-center opacity00 margin-top3">
-									<div class="managerBox" style="color: #565454;">physics</div>
-									<div class="box-border1 text-center opacity00" id="boxParent1"><span class="arrayValue text-center position" id="box1"></span></div>
+							<div id="two" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+								<div class="panel panel-primary padding margin-top">
+									<div class="panel-heading1 text-center">physics</div>
+									<div class="panel-body1 text-center" id="boxParent1">
+										<span class="arrayValue text-center position" id="box1"></span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-5 box-border2 padding panel panel-primary opacity00 margin-top" id="borderBox1">
+					</div>
+					<div class="col-xs-5 padding">
+					<div class="col-xs-0 box-border2 padding panel panel-primary opacity00 margin-top" id="borderBox1">
 						<div class="panel-heading text-center" id="s2">S2</div>
 						<div class="col-xs-12 panel-body">
-							<div class="col-xs-6 " id="total2">
-								<div id="three" class="text-center opacity00 margin-top3"><div class ="managerBox"style="color : #565454;">maths</div>
-								<div id="boxParent2" class="text-center box-border1 opacity00"><span id="box2" class="arrayValue1 text-center position "></span></div></div>
+							<div id="three" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+								<div class="panel panel-primary padding margin-top">
+									<div class="panel-heading1 text-center">maths</div>
+									<div class="panel-body1 text-center" id="boxParent2">
+										<span class="arrayValue1 text-center position" id="box2"></span>
+									</div>
+								</div>
 							</div>
-							<div class="col-xs-6">
-								<div id="four" class="text-center opacity00 margin-top3"><div class="managerBox" style="color: #565454;">physics</div>
-								<div id="boxParent3" class="text-center box-border1 opacity00"><span id="box3" class="arrayValue1 text-center position"></span></div></div>
+							<div id="four" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+								<div class="panel panel-primary padding margin-top">
+									<div class="panel-heading1 text-center">physics</div>
+									<div class="panel-body1 text-center" id="boxParent3">
+										<span class="arrayValue1 text-center position" id="box3"></span>
+									</div>
+								</div>
 							</div>
 						</div>
+					</div>
 					</div>
 					<div class="col-xs-1 text-center " id="totalCup">
 						<div class="col-x-12 padding00 opacity00" id="countBox" style=" margin-top: 40px;">
 							<span id="countCupValue" class="cupvalue"></span>
-							<i class="fa fa-coffee fa-3x count-cup" style="color: #86d878;"></i><br>
+							<i class="fa fa-coffee fa-3x count-cup" style="color: #af6fa9;"></i><br>
 							<span id="countCupVariable" class = "ct-code-b-black">count</span>
 						</div>
 					</div>

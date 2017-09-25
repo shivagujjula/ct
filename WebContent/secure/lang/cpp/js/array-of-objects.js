@@ -28,29 +28,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#class',
 			intro : '',
-		
-		}, {
-			element : '#char',
-			intro : '',
-		}, {
-			element : '#animationBox',
-			intro : '',
-			animateStep : 'memory'
-		}, {
-			element : '#int',
-			intro : '',
-		}, {
-			element : '#animationBox',
-			intro : '',
-			animateStep : 'memory1'
-		}, {
-			element : '#method',
-			intro : '',
-			animateStep : 'public'
-		}, {
-			element : '#method1',
-			intro : '',
-			animateStep : 'static'
 		}, {
 			element : '#main',
 			intro : '',
@@ -64,6 +41,30 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#int1',
 			intro : '',
+		/*}, {
+			element : '#animationBox',
+			intro : '',
+			animateStep : 'memory1'
+		}, {
+			element : '#method',
+			intro : '',
+			animateStep : 'public'
+		}, {
+			element : '#method1',
+			intro : '',
+			animateStep : 'static'
+		
+		}, {
+			element : '#manager',
+			intro : '',
+		}, {
+			element : '#char',
+			intro : '',
+		}, {
+			element : '#animationBox',
+			intro : '',
+			animateStep : 'memory2'*/
+		
 		}, {
 			element : '#condition',
 			intro : '',
@@ -550,10 +551,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case 'char' :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend',function() {
-				typing('.introjs-tooltiptext',"Here <y>char </y>field is set" +
-						" as <y>10</y>.", 10, "",function() {
-					$('.introjs-nextbutton').show();
-				});
+				setTimeout(function() {
+					intro.nextStep();
+				},500);
 			});
 		break;
 		case 'manager' :
@@ -641,12 +641,11 @@ var readPrintStringUsingGetsPutsReady = function() {
 			$('.introjs-nextbutton').hide();
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
-			case 'memory' :
+			/*case 'memory' :
 				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#animationBox").removeClass("opacity00");
-					transferEffect("#createMemory","#table", function() {
-						$("#table").fadeTo(100, 1, function() {
+					
 							$(".introjs-tooltip").removeClass("hide");
 							typing(".introjs-tooltiptext","In the output <span class='ct-code-b-yellow'>10</span>" +
 									" digits space is occupied by "+
@@ -661,9 +660,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#animationBox").removeClass("opacity00");
-					transferEffect("#age","#age2", function() {
-						$("#age2").fadeTo(100, 1, function() {
-							$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+					
 								$(".introjs-tooltip").removeClass("hide");
 								typing(".introjs-tooltiptext","",10,"",function() {
 									$('.introjs-nextbutton').show();
@@ -672,7 +669,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						});
 					});
 				});
-				break;
+				break;*/
 			case "countIncrease":
 				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one('transitionend', function() {
@@ -803,18 +800,29 @@ var readPrintStringUsingGetsPutsReady = function() {
 				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#animationBox").removeClass("opacity00");
-					$("#managerName").fadeTo(500, 1, function() {
-						$("#border").css({"border" : "1px solid darkseagreen","padding-bottom" : "10px", "border-top" : "0px"});
-						$("#manager1Details").fadeTo(1000, 1, function() {
-							$("#manager2Details").fadeTo(1000, 1, function() {
-								$(".introjs-tooltip").removeClass("hide");
-								typing(".introjs-tooltiptext","<y>3</y> memories are alloacted to the <y>3</y> diffrent employees.",10,"", function() {
-									$('.introjs-nextbutton').show();
+						$("#managerName").fadeTo(1000, 1, function() {
+							$("#border").fadeTo(10, 1, function() {
+								transferEffect("#createMemory","#table", function() {
+									$("#table").fadeTo(100, 1, function() {
+										transferEffect("#age","#age2", function() {
+											$("#age2").fadeTo(100, 1, function() {
+												$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+													$("#manager2Details").fadeTo(1000, 1, function() {
+														$("#manager3Details").fadeTo(1000, 1, function() {
+															$(".introjs-tooltip").removeClass("hide");
+															typing(".introjs-tooltiptext","<y>3</y> memories are alloacted to the <y>3</y> diffrent employees.",10,"", function() {
+																$('.introjs-nextbutton').show();
+															});
+														});
+													});
+												});
+											});
+										});
+									});
 								});
 							});
 						});
 					});
-				});
 				break;
 			}
 			break;
@@ -1388,7 +1396,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 							"left" : l1.left
 						});
 					});
-					TweenMax.to($(".td-css"), 1, {top: 0, left : 0});
+					TweenMax.to($(".td-css"), 2, {top: 0, left : 0});
 						typing(".introjs-tooltiptext", "The given <y>string</y> is stored in the <y>array</y>.", "",  10, function() {
 							$('.introjs-nextbutton').show();
 						});

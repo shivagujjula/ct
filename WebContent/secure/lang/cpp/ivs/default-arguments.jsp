@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,6 +17,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/secure/lang/cpp/js-min/da.min.js"></script>
+
 
 <style type="text/css">
 .margin-top-20 {
@@ -126,50 +127,38 @@
 </style>
 </head>
 <body>
-
 	<div class='text-center margin-top-20'>
-		<h4 class='label ct-demo-heading' id='demoTitle'>Default Argument
-			Functions</h4>
+		<h4 class='label ct-demo-heading' id='demoTitle'>Default Argument Functions</h4>
 	</div>
 	<div class="col-xs-12 margin-top-50">
 		<div class="col-xs-8 col-xs-offset-2 opacity00" id="informationDiv">
 			<div class="col-xs-12">
-				<span id="infoText">
+				<div id="infoText">
 					<ul>
-						<li class="opacity00" id="li1"><b class="ct-green-color">Default
-									Arguments</b> are the values provided during function declaration which
-							is automatically assigned to the respective formal parameter by
-							the compiler, when arguments are not provided during function call.
-						</li>		<br>				
-						<li class="opacity00" id="li2">If a function is called without passing
-							arguments, then those <b class='ct-green-color'>default
-								arguments</b> are used by the function. 
-						</li><br>
-						<li class="opacity00" id="li3">Once a default value is used for an argument
-							then all subsequent arguments must have default values up to the end.  
-						</li> 
-					</ul> <span><a class="introjs-button user-button opacity00"
-							id="nextButton">Next&#8594;</a><br></span>
-				</span>
+						<li class="opacity00" id="li1"><b class="ct-green-color">Default Arguments</b> are the values
+						 provided during function declaration which is is automatically assigned to the respective   
+						 formal parameter by	the compiler, when arguments are not provided during function call.</li><br>				
+					<li class="opacity00" id="li2">If a function is called without passing arguments, then those 
+						<b class='ct-green-color'>default arguments</b> are used by the function.</li><br>
+					<li class="opacity00" id="li3">Once a default value is used for an argument
+						then all subsequent arguments must have default values up to the end.</li> 
+					</ul><a class="introjs-button user-button opacity00"id="nextButton">Next&#8594;</a>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-50">
 		<div class="col-xs-offset-2 col-xs-5 margin-top-20">
 			<div id="leftDiv" class="opacity00">
-				<pre class="creampretab" id="code">#include &lt;<b
-						class='ct-blue-color'>iostream</b>&gt;
-<b class='ct-red-color'>using </b><b class='ct-green-color'>namespace</b> std;
-<span id="funDef"><b class='ct-blue-color'>int</b> sum(<b
-						class='ct-blue-color'>int</b> x, <b class='ct-blue-color'>int</b> y, <span
-						id="default"><b class='ct-blue-color'>int</b> z = <span
-							class='display-inline-block' id='cVal' contenteditable='true'>3</span>, <b
-							class='ct-blue-color'>int</b> w = <span
-							class='display-inline-block' contenteditable='true' id='dVal'>0</span></span>) {
+				<pre class="creampretab" id="code">#include &lt;iostream&gt;
+using namespace std;
+<span id="funDef">int sum(int x, int y, <span
+						id="default">int z = <span 
+						class='display-inline-block' id='cVal' contenteditable='true'>3</span>,	int w = <span class='display-inline-block' contenteditable='true' id='dVal'>0</span></span>) {
 	<span id="return">return x + y + z + w;</span>
 }
 </span>
-<span id="main"><b class='ct-blue-color'>int</b> main() {
+<span id="main">int main() {
 	 <span id="printf1">cout << <span id="callingFunSum1">sum(<span
 								class='display-inline-block' contenteditable='true' id='aVal'>10</span>, <span
 								class='display-inline-block' contenteditable='true' id='bVal'>15</span>)</span> << endl;</span>
@@ -191,18 +180,14 @@
 				<div class="output-console-title-bar">
 					<span class="title">Output</span>
 				</div>
-				<div class="output-console-body" class="col-xs-offset-3 col-xs-3"
-					id="outputBody1">
-					<span id="output1" class="opacity00"
-						style="color: green; padding: 4px;"><b>28</b></span><br> <span
-						id="output2" class="opacity00" style="color: green; padding: 4px;"><b>50</b></span><br>
-					<span id="output3" class="opacity00"
-						style="color: green; padding: 4px;"><b>80</b></span>
+				<div class="output-console-body" class="col-xs-offset-3 col-xs-3"id="outputBody1">
+					<span id="output1" class="opacity00" style="color: green; padding: 4px;"><b>28</b></span><br>
+					<span id="output2" class="opacity00" style="color: green; padding: 4px;"><b>50</b></span><br>
+					<span id="output3" class="opacity00" style="color: green; padding: 4px;"><b>80</b></span>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<div class="col-xs-12 text-center" style="margin-top:75px;">
 		<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
 	</div>

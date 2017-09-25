@@ -301,9 +301,9 @@ y {
 	<span id='line9'>cout.width(<span id="symbl">15</span>);</span>
 	<span id='line10'>cout &lt;&lt; <span id="code">"<span id="value1">-</span><span id="value2">8</span><span id="value3">9</span><span id="value4">.</span><span id="value5">1</span><span id="value6">2</span><span id="value7">3</span><span id="value8">4</span><span id="value9">5</span>";</span></span>
 	<span id='line11'>cout.width(<span id="symbl">2</span>);</span>
-	<span id='line12'>cout << <span id="number" class="pink"><span id="val1">1</span><span id="val2">0</span></span> << "\n"</span>
+	<span id='line12'>cout << <span id="number" class="pink"><span id="val1">1</span><span id="val2">0</span></span> << "\n";</span>
 	<span id='line13'>cout.setf<span id="ios">(ios::oct, ios::basefield)</span>;</span>
-	<span id='line14'>cout << <span id="numbr" class="pink">10</span> << "\n"</span>
+	<span id='line14'>cout << <span id="numbr" class="pink">10</span> << "\n";</span>
 <span id='line15'>}</span>
 	</pre>
 	</div>

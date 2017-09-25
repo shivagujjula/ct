@@ -26,10 +26,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#class',
 			intro : '',
-		}, {
+		/*}, {
 			element : '#variables',
 			intro : '',
-			animateStep : 'first'
+			animateStep : 'first'*/
 		
 		}, {
 			element : '#count',
@@ -38,14 +38,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#animationBox',
 			intro : '',
 			animateStep : 'memory'
-		},{
-			element : '#method',
-			intro : '',
-			animateStep : 'public'
-		}, {
-			element : '#method1',
-			intro : '',
-			animateStep : 'default'
 		}, {
 			element : '#int',
 			intro : '',
@@ -65,14 +57,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#animationBox',
 			intro : '',
 			animateStep : 'memory1'
-		}, {
-			element : '#variables',
-			intro : '',
-			animateStep : 'first'
-		}, {
-			element : '#animationBox',
-			intro : '',
-			animateStep : 'memory2'
 		}, {
 			element : '#data',
 			intro : '',	
@@ -198,7 +182,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterData5'
+			animateStep : 'enterData5',
+			tooltipClass:'hide'	
 		}, {
 			element : '#count4',
 			intro : '',
@@ -309,10 +294,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 				switch(animateStep) {
 				case "first":
 					$('.introjs-helperLayer').one('transitionend',function() {
-						typing('.introjs-tooltiptext',"The varibles access specifier is <span class='ct-code-b-yellow'>"+
-								"private</span>", 10,"", function(){
-							$('.introjs-nextbutton').show();
-						});
+						setTimeout(function() {
+							intro.nextStep();
+						},500);
 					});
 					break;
 				case "last":
@@ -330,7 +314,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
-				case 'public' :
+				case 'public1' :
 					$('.introjs-helperLayer').one('transitionend',function() {
 						typing('.introjs-tooltiptext',"The method access specifier is <span class='ct-code-b-yellow'>"+
 								"public</span>.", 10, "", function() {
@@ -338,8 +322,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 						});
 					});
 					break;
-				case "public1":
 				case "public2":
+				case "public3":
 					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend',function() {
 						setTimeout(function() {
@@ -435,43 +419,31 @@ var readPrintStringUsingGetsPutsReady = function() {
 						transferEffect("#paraMeter1","#s1", function() {
 							$('#s1').fadeTo(500,1, function() {
 								$('#borderBox').fadeTo(500,1, function() {
-									transferEffect("#paraMeter2","#s2", function() {
-										$('#s2').fadeTo(500, 1, function() {
-											$('#borderBox1').fadeTo(500,1, function() {
-												$(".introjs-tooltip").removeClass("hide");
-												typing('.introjs-tooltiptext',"Memories are allocated to <span class='ct-code-b-yellow'>s1</span>," +
-														"<span class='ct-code-b-yellow'>s2</span>.", 10,"",function() {
-													$('.introjs-nextbutton').show();
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-					break;
-				case 'memory2' :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
-					$('.introjs-helperLayer').one('transitionend', function() {
-						$('#animationBox').removeClass('opacity00');
-						$("#object").addClass('z-index1000000');
-						$("#boxParent").fadeTo(500,1, function() {
-							transferEffect("#first","#boxParent", function() {
-								$("#one").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-									$("#boxParent1").fadeTo(500,1, function() {
-										transferEffect("#second", "#boxParent1", function() {
-											$("#two").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-												$("#boxParent2").fadeTo(500,1, function() {
-												transferEffect("#first", "#boxParent2", function() {
-														$("#three").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-															$("#boxParent3").fadeTo(500,1, function() {
-															transferEffect("#second", "#boxParent3", function() {
-																	$("#four").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-																		$(".introjs-tooltip").removeClass("hide");
-																		$("#object").removeClass('z-index1000000');
-																		typing('.introjs-tooltiptext',"",10, "", function() {
-																			$('.introjs-nextbutton').show();
+									$("#boxParent").fadeTo(500,1, function() {
+										transferEffect("#first","#boxParent", function() {
+											$("#one").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+												$("#boxParent1").fadeTo(500,1, function() {
+													transferEffect("#second", "#boxParent1", function() {
+														$("#two").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+															transferEffect("#paraMeter2","#s2", function() {
+																$('#s2').fadeTo(500, 1, function() {
+																	$('#borderBox1').fadeTo(500,1, function() {
+																		$("#boxParent2").fadeTo(500,1, function() {
+																		transferEffect("#first", "#boxParent2", function() {
+																				$("#three").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+																					$("#boxParent3").fadeTo(500,1, function() {
+																					transferEffect("#second", "#boxParent3", function() {
+																							$("#four").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+																								$(".introjs-tooltip").removeClass("hide");
+																								$("#object").removeClass('z-index1000000');
+																								typing('.introjs-tooltiptext',"<y>S1</y> ,<y>S2</y> memories are allocated to the <y>2bytes</y> of memory.",10, "", function() {
+																									$('.introjs-nextbutton').show();
+																								});
+																							});
+																						});
+																					});
+																				});
+																			});
 																		});
 																	});
 																});
@@ -486,7 +458,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 							});
 						});
 					});
-					break;
+				break;
 				case "increment1":
 					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend',function() {

@@ -147,7 +147,7 @@ span {
 .output-console {
 	
 	margin-left : 400px;
-	/* background-color: ; */
+	
 }
 .output-console-body {
 	/* background-color: black; */
@@ -173,8 +173,7 @@ span {
     word-break: break-all;
     word-wrap: break-word;
     background-color: ffffff;
-    /* border: 1px solid #ccc; */
-    /* border-radius: 4px; */
+    
 }
 .note-color {
 color : cyan;
@@ -239,8 +238,6 @@ color : cyan;
 }
 #outputBody {
 	width : 430px;
-/* 	height : 234px; */
-
 }
 .border {
 	border: 1px solid white;
@@ -258,20 +255,30 @@ color : cyan;
 	<div class="margin-top-20" >
 		<div class="col-xs-8 col-xs-offset-2 opacity00" id="informationDiv" style="border: 1px solid gray;">
 			<div class="col-xs-12 margin-top-20">
-			<ul>
-			<span id="li" class="opacity00"><li>In C++, there are three <span class="ct-code-b-green"> access specifiers</span> available for accessing data members and member functions of a 
-				class. They are<br></li></span>
 				<ul>
-		<li id="ul1" class="ct-code-b-green opacity00">private</li>
-		<li id="ul2" class="ct-code-b-green opacity00">public</li>
-		<li id="ul3" class="ct-code-b-green opacity00">protected</li>
-		</ul><a class="introjs-button user-button opacity00" id="nextButton1">Next&rarr;</a>
-		<span><li id="li2" class="opacity00">The default (if any access specifier is not specified) access specifier for data members and member functions in a class is <span class="ct-code-b-green">private</span>.</li></span><a class="introjs-button user-button opacity00" id="nextButton2">Next&rarr;</a>
-		<span><li id="li3" class="opacity00">The keyword <span class="ct-code-b-green">private</span> hides the accessing of data members and member functions from the outside world. <span class="ct-code-b-green">i.e</span>, it implements of one of the OOPs concept called <span class="ct-code-b-green">data hiding</span>.</li></span><a class="introjs-button user-button opacity00" id="nextButton3">Next&rarr;</a>
-		<span><li id="li4" class="opacity00">The keyword <span class="ct-code-b-green">public</span> access specifier is used for accessing  of member functions and data members directly through object from outside of that class.</li></span><a class="introjs-button opacity00 user-button" id="nextButton4">Next&rarr;</a>
-		<span><li id="li5" class="opacity00">The keyword <span class="ct-code-b-green">protected</span> access specifier is used for the accessing  of member functions and data members of a class in its derived child class.</li></span>
-			
-		</ul></div>
+					<li id="li" class="opacity00"><span>In C++, there are three <span class="ct-code-b-green">access specifiers</span> 
+							available for accessing data members and member functions of a class. They are<br></span>
+						<ul>
+							<li id="ul1" class="ct-code-b-green opacity00">private</li>
+							<li id="ul2" class="ct-code-b-green opacity00">public</li>
+							<li id="ul3" class="ct-code-b-green opacity00">protected</li>
+						</ul><a class="introjs-button user-button opacity00" id="nextButton1">Next&rarr;</a></li>
+					<li id="li2" class="opacity00">The default (if any access specifier is not specified) access 
+						specifier for data members and member functions in a class is <span class="ct-code-b-green">private</span>.</li>
+						<a class="introjs-button user-button opacity00" id="nextButton2">Next&rarr;</a>
+					<li id="li3" class="opacity00">The keyword <span class="ct-code-b-green">private</span> hides the 
+						accessing of data members and member functions from the outside world. <span class="ct-code-b-green">i.e</span>, 
+						it implements one of the OOPs concept called <span class="ct-code-b-green">data hiding</span>.</li>
+						<a class="introjs-button user-button opacity00" id="nextButton3">Next&rarr;</a>
+					<li id="li4" class="opacity00">The keyword <span class="ct-code-b-green">public</span> 
+						access specifier is used for accessing  of member functions and data members directly 
+						through object from outside of that class.</li>
+						<a class="introjs-button opacity00 user-button" id="nextButton4">Next&rarr;</a>
+					<li id="li5" class="opacity00">The keyword <span class="ct-code-b-green">protected</span> 
+						access specifier is used for the accessing  of member functions and 
+						data members of a class in its derived child class.</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-20">
@@ -287,7 +294,7 @@ using namespace std;
 	}</span></span>
 };</span>
 
-<span id="main">int <b class="ct-blue-color">main()</b> {
+<span id="main">int main() {
 	<span id="object1"><b class="ct-blue-color">Area</b> <b class ='warning-color'>obj1</b>;</span>
 	<span id="funcCall"><b class ='warning-color'>obj1</b>.sqr(20);</span>
 	return 0;
@@ -321,34 +328,36 @@ using namespace std;
 	return 0;
 }</span>	
 </pre>
-</div>
-</div>
-			<div class="col-xs-6 margin-top-20" >
-				<div class="col-xs-8 col-xs-offset-2  box-border opacity00" id="animationBox" >
-					<div class="col-xs-12 margin-top-20">
-						<div id="s1" class="col-xs-4 col-xs-offset-4 opacity00"><b style="color : maroon;  margin-left:25%;"">obj1</b>
-						</div>
-	   				</div>
-					<div class="col-xs-12 margin-top-20">
-						<div class="col-xs-6 col-xs-offset-3 box-border2 opacity00" id="borderBox">
-							<div id="total1" class="col-xs-6">
-								<div id="one" class="text-center opacity00"><b style="color : maroon;  margin-left: 30px; ">len</b>
-									<div class="box-border1 text-center opacity00" id="boxParent">
-										<span id="box" class="arrayValue position text-center">
-										</span>
-									</div>
+			</div>
+		</div>
+		<div class="col-xs-6 margin-top-20" >
+			<div class="col-xs-8 col-xs-offset-2  box-border opacity00" id="animationBox" >
+				<div class="col-xs-12 margin-top-20">
+					<div id="s1" class="col-xs-4 col-xs-offset-4 opacity00">
+						<b style="color : maroon;  margin-left:25%;"">obj1</b>
+					</div>
+	   			</div>
+				<div class="col-xs-12 margin-top-20">
+					<div class="col-xs-6 col-xs-offset-3 box-border2 opacity00" id="borderBox">
+						<div id="total1" class="col-xs-6">
+							<div id="one" class="text-center opacity00">
+								<b style="color : maroon;  margin-left: 30px; ">len</b>
+								<div class="box-border1 text-center opacity00" id="boxParent">
+									<span id="box" class="arrayValue position text-center">
+									</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>	
-			<div class="col-xs-6 margin-top-20">
-				<div class="col-xs-8 col-xs-offset-2 hide box-border"  id="animationBox2">
-					<div id="s2" class="col-xs-4 col-xs-offset-4 margin-top-20 opacity00" style="margin-left:120px;"><b style="color : maroon;">obj</b>
-					</div>
-				
-					<div class="col-xs-12 margin-top-20">
+			</div>
+		</div>	
+		<div class="col-xs-6 margin-top-20">
+			<div class="col-xs-8 col-xs-offset-2 hide box-border"  id="animationBox2">
+				<div id="s2" class="col-xs-4 col-xs-offset-4 margin-top-20 opacity00" style="margin-left:120px;">
+					<b style="color : maroon;">obj</b>
+				</div>
+				<div class="col-xs-12 margin-top-20">
 					<div class="col-xs-8 box-border2 col-xs-offset-2 opacity00" id="borderBox1">
 						<div class="col-xs-6 margin-top">
 							<div id="three" class="text-center opacity00"><b style="color : maroon">len</b>
@@ -360,35 +369,32 @@ using namespace std;
 						<div class="col-xs-6 margin-top">
 							<div id="four" class="text-center opacity00"><b style="color : maroon">bred</b>
 								<div class="box-border1 text-center opacity00" id="boxParent3">
-								<span id="box3" class="arrayValue1 text-center position"></span>
+									<span id="box3" class="arrayValue1 text-center position">
+									</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-					
-						<div class="col-xs-12 margin-top-20">
-							<div id="five" class="text-center opacity00"><b style="color : maroon">area</b>
-								<div class="box-border1 text-center opacity00" style="margin-left : 125px;" id="boxParent4">
-									<span id="box4" class="text-center position arrayValue2"></span>
-								</div>
-							</div>
+				<div class="col-xs-12 margin-top-20">
+					<div id="five" class="text-center opacity00"><b style="color : maroon">area</b>
+						<div class="box-border1 text-center opacity00" style="margin-left : 125px;" id="boxParent4">
+							<span id="box4" class="text-center position arrayValue2"></span>
 						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-</div>
-	
-
-		<div class="output-console col-xs-offset-3 col-xs-6 margin-top-20" id='outputBox'>
+	</div>
+	<div class="output-console col-xs-offset-3 col-xs-6 margin-top-20" id='outputBox'>
 		<div class=" opacity00" id="outputBody" >
-					<div class="output-console-title-bar">
-						<span>Output</span>
-					</div>
-					<div class="output-console-body " id="outDiv" >
-					</div>
-					</div>
-				</div>
+			<div class="output-console-title-bar">
+				<span>Output</span>
+			</div>
+			<div class="output-console-body " id="outDiv" >
+			</div>
+		</div>
+	</div>
 	<div class="col-xs-12 text-center margin-top-20">
 		<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
 	</div> 
@@ -396,6 +402,5 @@ using namespace std;
 	$(document).ready(function() {
 		accessSpecifier();
 	});
-
 </script>
 </body>

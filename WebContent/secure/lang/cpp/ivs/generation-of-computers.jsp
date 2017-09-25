@@ -10,9 +10,10 @@
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+<script src="/secure/lang/cpp/js/generation-of-computers.js" type="text/javascript"></script>
 <script src="/js/jquery.scrollTo.js" type="text/javascript"></script>
-
 <script src="/secure/lang/cpp/js-min/goc.min.js" type="text/javascript"></script>
+
 <style>
 .margin-top-20 {
 	margin-top : 20px;
@@ -26,8 +27,8 @@
     padding-bottom: 5px;
 }
 .rect-css {
-	stroke-width: 2;
-	stroke: blue;
+	stroke-width: 1;
+	stroke: black;
 }
 .circle-css {
 	stroke-width: 8;
@@ -117,10 +118,23 @@ $(document).ready(function() {
 	<div class="col-xs-8 col-xs-offset-2" id="informationDiv" style= "border: 1px solid gray;" >
 		<div class="col-xs-12 margin-top-2">
 		<ul>
-			<li style= 'margin-top:7px;'><span>A <b class="ct-code-b-green">Computer</b> is an <b class="ct-code-b-green">electronic device</b> that follows a <b class="ct-code-b-green">set of instructions</b> to complete a specific task.</span></li>
-			<li style= 'margin-top:7px;'><span>The first computer was designed by the british mathematician <b class="ct-code-b-green">Charles Babbage</b> in the year <b class="ct-code-b-green">1822</b></span>.</li>
-			<li style= 'margin-top:7px;'><span><b class="ct-code-b-green">COMPUTER</b> stands for <b class="ct-code-b-green">C</b>ommon <b class="ct-code-b-green">O</b>riented <b class="ct-code-b-green">M</b>achine <b class="ct-code-b-green">P</b>articularly or <b class="ct-code-b-green">P</b>urely <b class="ct-code-b-green">U</b>sed under <b class="ct-code-b-green">T</b>echincal and <b class="ct-code-b-green">E</b>ducational <b class="ct-code-b-green">R</b>esearch.</span></li>
-			<li style= 'margin-top:7px;'>Based on the <b class="ct-code-b-green">technology development</b>, generations of computers are divided into <b class="ct-code-b-green">five</b> stages. They are :</li>
+			<li style= 'margin-top:7px;'><span>A <b class="ct-code-b-green">
+				<a href='https://en.wikipedia.org/wiki/Computer' target='_blank'>computer</a></b> is an 
+				<b>electronic device</b> that follows a 
+				<b>set of instructions</b> to complete a specific task.</span></li>
+			<li style= 'margin-top:7px;'><span>The first computer was designed by the British mathematician 
+				<b class="ct-code-b-green"><a href='https://en.wikipedia.org/wiki/Charles_Babbage' target='_blank'>
+					Charles Babbage</a></b> in the year <b>1822</b></span>.</li>
+			<li style= 'margin-top:7px;'><span>One can also expand the acronym 
+				<b class="ct-code-b-green">COMPUTER</b> as :  
+				<b class="ct-code-b-green">C</b>ommon <b class="ct-code-b-green">O</b>perating 
+				<b class="ct-code-b-green">M</b>achine <b class="ct-code-b-green">P</b>articularly  
+				<b class="ct-code-b-green">U</b>sed for 
+				<b class="ct-code-b-green">T</b>rade, <b class="ct-code-b-green">E</b>ducation and  
+				<b class="ct-code-b-green">R</b>esearch.</span></li>
+			<li style= 'margin-top:7px;'>Based on the <b>technology development</b>
+				, generations of computers are divided into <b>five</b> stages.
+				 They are :</li>
 			<ul>
 				<li>First Generation</li>
 				<li>Second Generation</li>
@@ -144,7 +158,7 @@ $(document).ready(function() {
 	<text text-anchor="middle" id="text1" class="text-css " y="58%" x="10%">First Generation</text>
 	<text text-anchor="middle" class="text-css " x="10%" y="41%" id="year1">1940-1956</text>
 	<text text-anchor="middle" class="text-css " x="10%" y="37%" id="gen1">Vacuum Tubes</text>
-	<image width='15%' height='32%' x='3%' y='3%' id='img1' xlink:href='../images/firstgeneration.jpg'></image> 
+	<image width='15%' height='27%' x='3%' y='7%' id='img1' xlink:href='../images/firstgeneration.jpg'></image> 
 </g>
 <g>
 	<circle class="circle-css " id="circle2" fill="white" r="1%"  cx="30%" cy="50%"></circle>
@@ -155,7 +169,7 @@ $(document).ready(function() {
 	<text text-anchor="middle" id="text2" class="text-css " y="58%" x="30%">Second Generation</text>
 	<text  text-anchor="middle" class="text-css " x="30%" y="41%" id="year2">1956-1963</text>
 	<text  text-anchor="middle" class="text-css " x="30%" y="37%" id="gen2">Transistors</text>
-	<image  width='15%' height='28%' x='23.5%' y='6%' id='img2' xlink:href='../images/secondgeneration.jpg'></image>
+	<image  width='15%' height='28%' x='22.5%' y='6%' id='img2' xlink:href='../images/secondgeneration.jpg'></image>
 </g>
 <g>
 <circle class="circle-css" id="circle3" fill="white" r="1%" cx = "50%" cy="50%">
@@ -180,7 +194,7 @@ $(document).ready(function() {
 	<text text-anchor="middle"id="text4" class="text-css " y="58%" x="70%">Fourth Generation</text>
 	<text text-anchor="middle"  class="text-css " x="70%" y="41%" id="year4">1971-1980</text>
 	<text text-anchor="middle" class="text-css " x="70%" y="37%" id="gen4">Microprocessors</text>
-	<image  width='15%' height='28%' x='62.7%' y='6%' id='img4' xlink:href='../images/fourthgeneration.jpg'></image>
+	<image  width='15%' height='29%' x='62.7%' y='5%' id='img4' xlink:href='../images/fourthgeneration.jpg'></image>
 </g>
 <g>
 <circle class="circle-css" id="circle5" fill="white" r="1%" cx = "90%" cy="50%">
@@ -192,7 +206,7 @@ $(document).ready(function() {
 	<text text-anchor="middle" id="text5" class="text-css " y="58%" x="90%">Fifth Generation</text>
 	<text text-anchor="middle" class="text-css " x="90%" y="41%" id="year5">1980 till now</text>
 	<text text-anchor="middle" class="text-css " x="90%" y="37%" id="gen5">Artificial Intelligence</text>
-	<image  width='15%' height='29%' x='82.6%' y='5.5%' id='img5' xlink:href='../images/fifthgeneration.jpg'></image>
+	<image  width='15%' height='29%' x='82.6%' y='5%' id='img5' xlink:href='../images/fifthgeneration.jpg'></image>
 </g>
 
 <line id="line6" class="line-css" x1="10.5%" x2="29.5%" y1="50%" y2="50%"></line>

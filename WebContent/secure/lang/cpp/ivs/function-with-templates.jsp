@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js-min/fwt.min.js"></script>
+<script src="/secure/lang/cpp/js/function-with-templates.js"></script>
+<!-- <script src="/secure/lang/cpp/js-min/fwt.min.js"></script> -->
 <title>Function With Templates</title>
 <style type="text/css">
 #informationDiv {
@@ -83,7 +84,7 @@ k {
 	color : green;
 }
 .red {
-	color : red;
+	color : #af0a0a;
 }
 .pink {
 	color : deeppink;
@@ -109,7 +110,7 @@ k {
 	border-top: 0px;
 }
 .box-border2 {
-	border: 1px solid #cbf57c;
+	border: 1px solid #d2d189;
 	padding : 10px;
 	height : 40px;
 	border-top: 0px;
@@ -163,7 +164,7 @@ k {
 	text-align: center;
 }
 .managerBox1 {
-	background: #cbdc8d none repeat scroll 0 0;
+	background: #d2d189 none repeat scroll 0 0;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 	font-family: monospace;
@@ -189,9 +190,7 @@ k {
 <body>
 <div class="col-xs-12">
 	<div class="col-xs-12 text-center padding">
-		<div class="col-xs-6 col-xs-offset-3" >
-			<h3 id="title"><span class='ct-demo-heading label'>Function with Templates</span></h3>
-		</div>
+		<h3 id="title"><span class='ct-demo-heading label'>Function with Templates</span></h3>
 	</div>
 	<div class="col-xs-12 ">
 		<div class="col-xs-10 col-xs-offset-1" id="informationDiv" style=' margin-top: 5px;'>
@@ -210,7 +209,7 @@ k {
 	</div>
 	<div class="col-xs-12 " style='margin-top: 10px;'>
 		<div class="col-xs-5">
-		<pre class="creamPreTab4 opacity00" id="preBody">
+			<pre class="creamPreTab4 opacity00" id="preBody">
 <span id="declaration"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
 <span class="red">using namespace</span> std;
    <div id="method1" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display">int</div> num1) {</div>
@@ -231,8 +230,8 @@ k {
    <div id="show3" class="display">show(ch);</div>
    <div id="return" class="display"><div class="red display">return</div> <span class="pink">0</span>;</div>
 <span id="mainClose1">}</span></div>
-		</pre>
-		<pre class="creamPreTab4 opacity00" id="preBody1">
+			</pre>
+			<pre class="creamPreTab4 opacity00" id="preBody1">
 <span id="declaration1"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
 <span class="red">using namespace</span> std;
    <div class="display" id="template"><span class="red">template</span> <div class="display" id="tempVal">&lt;<span class="red">class</span> T&gt;</div></div>
@@ -248,43 +247,50 @@ k {
    <div id="show6" type="char" param="c" class="display">show(ch);</div>
    <div id="return1" class="display"><div class="red display">return</div> <span class="pink">0</span>;</div>
 <span id="mainClose2">}</span></div>
-		</pre>
+			</pre>
 		</div>
 		<div class="col-xs-6">
 			<div class="col-xs-12 margin-topp box-border opacity00" id="animationBox">
 				<div class="col-xs-12">
-					<div class="col-xs-3 margin-top text-center opacity00" id="aValue1"><div id="" class="text-center managerBox " style = "color : #4a4649; font-weight:bold;">num1</div>
+					<div class="col-xs-3 margin-top text-center opacity00" id="aValue1">
+						<div id="" class="text-center managerBox " style = "color : #4a4649; font-weight:bold;">num1</div>
 						<div class="padding box-border1 " id="borderBox1"><span class="text-center" id="boxValue1"><k>10</k></span></div>
 					</div>
-					<div class="col-xs-3 col-xs-offset-1 margin-top text-center  opacity00" id="bValue1"><div class="text-center managerBox" style = "color : #4a4649; font-weight:bold;">num2</div>
+					<div class="col-xs-3 col-xs-offset-1 margin-top text-center  opacity00" id="bValue1">
+						<div class="text-center managerBox" style = "color : #4a4649; font-weight:bold;">num2</div>
 						<div class="padding box-border1 " id="borderBox2"><span class="text-center" id="boxValue2"><k>10.5</k></span></div>
 					</div>
-					<div class="col-xs-3 col-xs-offset-1 margin-top text-center opacity00" id="cValue1" ><div class="text-center managerBox" style = "color : #4a4649; font-weight:bold;">ch</div>
+					<div class="col-xs-3 col-xs-offset-1 margin-top text-center opacity00" id="cValue1" >
+						<div class="text-center managerBox" style = "color : #4a4649; font-weight:bold;">ch</div>
 						<div class="padding box-border1 " id="borderBox3"><span class="text-center" id="boxValue3"><k>R</k></span></div>
 					</div>
 				</div>
 				<div class="col-xs-12">
-					<div class="col-xs-3  margin-top1 text-center opacity00" id="aValue2"><div  class="text-center managerBox1" style = "color : #58a905; font-weight:bold;">num1</div>
+					<div class="col-xs-3  margin-top1 text-center opacity00" id="aValue2">
+						<div class="text-center managerBox1" style = "color : #58a905; font-weight:bold;">num1</div>
 						<div class="padding box-border2 position" id="borderBox4"><span class="text-center" id="boxValue4"><o>6</o></span></div>
 					</div>
-					<div class="col-xs-3 col-xs-offset-1 margin-top1 text-center opacity00" id="bValue2"><div " class="text-center managerBox1" style = "color: #58a905; font-weight:bold;">num2</div>
+					<div class="col-xs-3 col-xs-offset-1 margin-top1 text-center opacity00" id="bValue2">
+						<div class="text-center managerBox1" style = "color: #58a905; font-weight:bold;">num2</div>
 						<div class="padding box-border2" id="borderBox5"><span class="text-center" id="boxValue5"><o>7.9</o></span></div>
 					</div>
-					<div class="col-xs-3 col-xs-offset-1 margin-top1 text-center opacity00" id="cValue2"><div  class="text-center managerBox1" style = "color: #58a905; font-weight:bold;">ch</div>
+					<div class="col-xs-3 col-xs-offset-1 margin-top1 text-center opacity00" id="cValue2">
+						<div class="text-center managerBox1" style = "color: #58a905; font-weight:bold;">ch</div>
 						<div class="padding box-border2" id="borderBox6"><span class="text-center" id="boxValue6"><o>S</o></span></div>
 					</div>
 				</div>
 			</div>
 			<div class="output-console col-xs-12 margin-top padding00 opacity00" id="outputBox">
-			<div class="output-console-title-bar  text-center">
-				<span>output</span>
-			</div>
-			<div class="output-console-body" id="outputBody">
+				<div class="output-console-title-bar  text-center">
+					<span>output</span>
+				</div>
+				<div class="output-console-body" id="outputBody"></div>
 			</div>
 		</div>
 	</div>
-</div>
-<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top : 15px;">Restrat</button></div>
+	<div class="button col-xs-12 text-center " id="button">
+		<span class="btn btn-success glyphicon glyphicon-refresh opacity00" id='restartBtn' style='margin-top: 4px'>Restart</span>
+	</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

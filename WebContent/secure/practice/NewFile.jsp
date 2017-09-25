@@ -58,13 +58,38 @@ function actionFunction() {
 			$('#trId' + i).append('<td id="tdId'+ j +'"><input id="tdInputId'+ j +'" class="tdInput text-center"></td>');
 		}
 	}
-	$("#tdInputId1").keydown(function(e) {
+	
+	/* $("#tdInputId1").keydown(function(e) {
 		if ($("#tdInputId1").val().length <= 1) {
 			return true;
 		} else {
 			e.preventDefault();
 		}
+	}); */
+	
+	$(".tdInput").keydown(function(e) {
+		console.log("pressed");
+		if ((e.which >= 49 && e.which <= 57) || e.which == 9 || e.which == 8 || e.which == 127 || e.which == 0) {
+			return true;
+		} else {
+			e.preventDefault();
+		}
 	});
+	
+		
+    /* var tdInput = [];
+	$('tr td').each(function () {
+		$('input', this).keyup(function(e) {
+			tdInput.push($('input', this).val());
+	}); */
+}
+	
+function arrayFunction() {
+	var values = [];
+	$('tr td').each(function () {
+ 		values.push($('input', this).val());
+    });
+    console.log(values);
 }
 
 </script>

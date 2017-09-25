@@ -52,11 +52,11 @@
 	<div class='container'>
 
 		<div class='well text-center' style='margin-top: 40px;'>
-			<h1>cpp Language Interactive Video's</h1>
+			<h1>C++ Language Interactive Video's</h1>
 		</div>
 		<div class='row'>
 			<div class='text-center'>
-				<h3>UNIT-1</h3>
+				<h3>UNIT-1: Introduction</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -625,7 +625,7 @@
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-2</h3>
+				<h3>UNIT-2: Basic Concepts of C++</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1497,7 +1497,7 @@
 				</tbody>
 			</table>
 			<div class='text-center'>
-				<h3>UNIT-3</h3>
+				<h3>UNIT-3: Classes and Objects</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1603,7 +1603,7 @@
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-4</h3>
+				<h3>UNIT-4: Constructors and Destructors</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1703,7 +1703,7 @@
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-5</h3>
+				<h3>UNIT-5: Operator Overloading and Type Conversions</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1771,7 +1771,7 @@
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-6</h3>
+				<h3>UNIT-6: Inheritance</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1796,8 +1796,85 @@
 						<td></td>
 					</tr>
 					
+				</tbody>
+			</table>
+			
+			<div class='text-center'>
+				<h3>UNIT-7: Binding, Polymorphism and Virtual Functions</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-4">Details</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-2">Status</th>
+					<th class="col-xs-1">Assign Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					
 					<tr>
-						<td>2</td>
+						<td>1</td>
+						<td></td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('', '', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class='text-center'>
+				<h3>UNIT-8: Applications with Files</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-4">Details</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-2">Status</th>
+					<th class="col-xs-1">Assign Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					
+					<tr>
+						<td>1</td>
+						<td></td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('', '', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<div class='text-center'>
+				<h3>UNIT-9: Generic Programming with Templates</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-4">Details</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-2">Status</th>
+					<th class="col-xs-1">Assign Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					
+					<tr>
+						<td>1</td>
 						<td>Function with templates</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function with templates', 'function-with-templates.jsp', 1, 1)"><i
@@ -1810,7 +1887,63 @@
 				</tbody>
 			</table>
 			
+			<div class='text-center'>
+				<h3>UNIT-10: Exception Handling</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-4">Details</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-2">Status</th>
+					<th class="col-xs-1">Assign Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					
+					<tr>
+						<td>1</td>
+						<td></td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('', '', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
 			
+			<div class='text-center'>
+				<h3>UNIT-11: Overview of Standard Template Library</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-4">Details</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-2">Status</th>
+					<th class="col-xs-1">Assign Date</th>
+				</tr>
+				<tbody class='table-striped'>
+					
+					<tr>
+						<td>1</td>
+						<td></td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('', '', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
 
 		</div>
 	</div>

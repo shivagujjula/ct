@@ -23,7 +23,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#preBody',
 			intro :"",
-		}, {
+		/*}, {
 			element : '#method1',
 			intro :"",
 			animateStep : 'method11'
@@ -34,7 +34,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#method3',
 			intro :"",
-			animateStep : 'method31'
+			animateStep : 'method31'*/
 		}, {
 			element : '#main',
 			intro :"",
@@ -65,7 +65,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#method1',
 			intro :"",
-			animateStep : 'method12'
+			animateStep : 'method11'
 		}, {
 			element : '#cout1',
 			intro :"",	
@@ -86,7 +86,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#method2',
 			intro :"",
-			animateStep : 'method22'
+			animateStep : 'method21'
 		}, {
 			element : '#cout2',
 			intro :"",
@@ -107,7 +107,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#method3',
 			intro :"",
-			animateStep : 'method32'
+			animateStep : 'method31'
 		}, {
 			element : '#cout3',
 			intro :"",
@@ -169,7 +169,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#method4',
 			intro :"",
 			animateStep : 'method42',
-			position : 'right'
+			position : 'top'
 		}, {
 			element : '#cout4',
 			intro :"",
@@ -192,7 +192,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#method4',
 			intro :"",
 			animateStep : 'method43',
-			position : 'right'
+			position : 'top'
 		}, {
 			element : '#cout4',
 			intro :"",
@@ -214,8 +214,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#method4',
 			intro :"",
-			animateStep : 'method44',
-			position : 'right'
+			position : 'top'
 		}, {
 			element : '#cout4',
 			intro :"",
@@ -237,6 +236,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#mainClose2',
 			intro :"",
+		}, {
+			element : "#restartBtn",
+			intro : "",
+			position : "left"
 		}]
 	});
 	intro.onafterchange(function(targetElement){
@@ -273,6 +276,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			});
 		break;
 		case "main1" :
+			$("#tempVal").removeClass("blinking-orange");
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one("transitionend",function() {
@@ -573,23 +577,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},1000);
 				});
 				break;
-			}
-			break;
-		case 'void':
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			var animateStep = intro._introItems[intro._currentStep].animateStep;
-			switch(animateStep) {
-			case 'void11':
-				$('.introjs-helperLayer').one("transitionend", function() {
-					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-button" onclick="flipEffect()">Next&rarr;</a>');
-				});
-			break;
-			case 'void12':
-				$('.introjs-helperLayer').one("transitionend", function() {
-					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-button" onclick="flipEffect()">Next&rarr;</a>');
-				});
-			break;
 			}
 			break;
 		case 'method4':
@@ -896,17 +883,17 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 		case 'enterData6':
 			intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
-		$('.introjs-helperLayer ').one('transitionend', function() {
-			$("#outputBody").append('<br><br><span id="inputNumber6" class="opacity00">The val is : <span class="border opacity00 position" id="value6">'
-					+ $('#boxValue6').text()+'');
-			transferEffect("#enterText4", "#inputNumber6", function() {
-				$("#inputNumber6").removeClass("opacity00");
-				$(".introjs-tooltip").removeClass("hide");
-				typing('.introjs-tooltiptext',"", function() {
-					$('.introjs-nextbutton').show();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#outputBody").append('<br><br><span id="inputNumber6" class="opacity00">The val is : <span class="border opacity00 position" id="value6">'
+						+ $('#boxValue6').text()+'');
+				transferEffect("#enterText4", "#inputNumber6", function() {
+					$("#inputNumber6").removeClass("opacity00");
+					$(".introjs-tooltip").removeClass("hide");
+					typing('.introjs-tooltiptext',"", function() {
+						$('.introjs-nextbutton').show();
+					});
 				});
 			});
-		});
 		break;
 	case 'dataEntry6':
 		intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
@@ -953,14 +940,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 			}
 		});
-}
+	}
 function flipEffect(value, type, typeVal) {
-	console.log("flipEffect");
 	$('.user-button').remove();
-	$('.introjs-tooltiptext').append("<div class='position opacity00' style='display:inline-block;' id='voidMethod'><y1>void show " +
-	"(<div class='display' id='t'>T</div> <span id='x' class='display'>x</span>) {</y1>" +
-	"<div class='' id= 'cOutput'><y1>&nbsp;&nbsp;cout << 'The val is : ' << <div class='display position' id='xValue'>x</div> << endl;</div>" +
-	"<y1>}</y1></div><div id='one'></div>");
+	$('.introjs-tooltiptext').append("<div class='position opacity00' style='display:inline-block;' id='voidMethod'>&nbsp;&nbsp;<y>void show " +
+	"(<div class='display' id='t'>T</div> <span id='x' class='display'>x</span>) {</y>" +
+	"<div class='' id= 'cOutput'><y>&nbsp;&nbsp;&nbsp;&nbsp;cout << 'The val is : ' << <div class='display position' id='xValue'>x</div> << endl;</div>" +
+	"<y>}</y></div><div id='one'></div>");
 	$("#voidMethod").removeClass("opacity00");
 	fromEffectWithTweenMax("#method4", "#voidMethod", function() {
 		$('.introjs-tooltipbuttons').append('<a class="introjs-button user-button" onclick="methodFlipEffect('+value+',\''+ type+'\',\''+typeVal+'\')">Next&rarr;</a>');
@@ -968,7 +954,6 @@ function flipEffect(value, type, typeVal) {
 }
 function methodFlipEffect(value, type, typeVal) {
 	$('.user-button').remove();
-	console.log("rahasasdh");
 	transferEffect("#show" + value, "#"+ type +"2", function() {
 		transferEffect("#" + type, "#t", function() {
 			flipEffectWithTweenMax("#t", $("#" + type).text(), function() {
