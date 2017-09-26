@@ -77,19 +77,22 @@ function actionFunction() {
 	});
 	
 		
-    /* var tdInput = [];
+    /*  var tdInput = [];
 	$('tr td').each(function () {
 		$('input', this).keyup(function(e) {
 			tdInput.push($('input', this).val());
-	}); */
+		});
+	}); */ 
 }
 	
 function arrayFunction() {
 	var values = [];
-	$('tr td').each(function () {
- 		values.push($('input', this).val());
-    });
-    console.log(values);
+	for (i = 1; i <= n; i++) {
+		$('#trId'+ i +' td').each(function () {
+	 		values.push($('input', this).val());
+	    });
+	    console.log(values);
+	}
 }
 
 </script>

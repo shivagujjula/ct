@@ -59,13 +59,13 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    max-width: 800px;
+    /* max-width: 800px; */
 }
 
 td, th {
    /*  border: 1px solid #dddddd; */
     /* text-align: left; */
-    padding: 2px 8px;
+	padding: 2px 8px;
 }
 
 .td-code-text {
@@ -78,24 +78,24 @@ th, td:nth-child(1), td:nth-child(3) {
 	text-align: center;
 }
 
-th:nth-child(3) {
+/* th:nth-child(3) {
 	width: 30%;
-}
+} */
 
-td:nth-child(4) {
+td:nth-child(4), td:nth-child(5) {
 	text-align: center;
 }
 
 .popover {
 	z-index: 9999999;
-	width: 400px;
+	width: 260px;
 }
 
 .popover-content {
-    background-color: #003399;
-    color: white;
-    min-height: 30px;
-    letter-spacing: 1px;
+	background-color: #003399;
+	color: white;
+	min-height: 30px;
+	letter-spacing: 1px;
 }
 
 .arrow {
@@ -157,6 +157,7 @@ td:nth-child(4) {
 .code-heading-css {
 	text-decoration: underline;
 	color: #026302;
+	width: 50%;
 }
 
 .units-heading-css {
@@ -252,20 +253,21 @@ span {
 		</h3>
 	</div>
 	<div class="col-xs-12 margin-top-3">
-		<div class="col-xs-8 col-xs-offset-2 opacity00" id="divTable" style="background: antiquewhite;">
+		<div class="col-xs-9 col-xs-offset-1 opacity00" id="divTable" style="background: antiquewhite;">
 			<table align="center">
 				<tbody>
 					<tr>
 						<th class="steps-heading-css">Steps</th>
 						<th class="code-heading-css">Code</th>
-						<th class="units-heading-css" style="text-align: end;">Units</th>
+						<th></th>
+						<th class="units-heading-css" style="text-align: start;">Units</th>
 					</tr>
 					<tr>
 						<th class="steps-heading-css"></th>
 						<th class="code-heading-css"></th>
-						<th><span class="opacity00" id="unitsForLessThanOne">Key element is first element itself</span></th>
-						<th><span class="opacity00" id="unitsForGreaterThanOne">Element is at middle position</span></th>
-						<th><span class="opacity00" id="unitsForGreaterThanOne">Element is not found</span></th>
+						<th><span class="opacity00" id="unitsForLeast">Key element is first element itself</span></th>
+						<th><span class="opacity00" id="unitsForMiddle">Element is at middle position</span></th>
+						<th><span class="opacity00" id="unitsForHigher">Element is not found</span></th>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
@@ -278,24 +280,14 @@ span {
 						<td class="opacity00" id="unitSecondLineTd1">
 							<span id="unitSecondLineText1" style="padding: 2px 42px;">-</span>
 						</td>
-					</tr>
-					<tr>
-						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text" id="tdCodeLine1">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1">int int i, pos = -1;</span>
-						</td>
-						<td class="opacity00" id="unitFirstLineTd1">
-							<span id="unitFirstLineText1" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd1">
-							<span id="unitSecondLineText1" style="padding: 2px 42px;">-</span>
+						<td class="opacity00" id="unitThirdLineTd1">
+							<span id="unitThirdLineText1" style="padding: 2px 42px;">-</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine2">
-							for (i = 0; i < n; i++) {</span>
+						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine2">int i, pos <span id="operator1">=</span> -1;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd2">
 							<span id="unitFirstLineText2" style="padding: 2px 42px;">1</span>
@@ -303,80 +295,132 @@ span {
 						<td class="opacity00" id="unitSecondLineTd2">
 							<span id="unitSecondLineText2" style="padding: 2px 42px;">1</span>
 						</td>
+						<td class="opacity00" id="unitThirdLineTd2">
+							<span id="unitThirdLineText2" style="padding: 2px 42px;">1</span>
+						</td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo3">3.</td>
 						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine3">if (key == a[i]) {</span> 
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine3">
+							for (i = 0; i < n; i++) {</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd3">
-							<span id="unitFirstLineText3" style="padding: 2px 42px;">1</span>
+							<span id="unitFirstLineText3" style="padding: 2px 42px;">1 + 1</span>
 						</td>
 						<td class="opacity00" id="unitSecondLineTd3">
-							<span id="unitSecondLineText3" style="padding: 2px 42px;">-</span>
+							<span id="unitSecondLineText3">1 + (n / 2) + (n / 2)</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd3">
+							<span id="unitThirdLineText3">1 + n + 1 + n</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo4">4.</td>
 						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine4">pos = i;</span> 
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine4">if (key == a[i]) {</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd4">
-							<span id="unitFirstLineText4" style="padding: 2px 42px;">-</span>
+							<span id="unitFirstLineText4" style="padding: 2px 42px;">1</span>
 						</td>
 						<td class="opacity00" id="unitSecondLineTd4">
-							<span id="unitSecondLineText4" style="padding: 2px 42px;">-</span>
+							<span id="unitSecondLineText4">(n / 2)</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd4">
+							<span id="unitThirdLineText4" style="padding: 2px 42px;">n</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo5">5.</td>
 						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine5">break;</span>);</span> 
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine5">pos = i;</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd5">
 							<span id="unitFirstLineText5" style="padding: 2px 42px;">-</span>
 						</td>
 						<td class="opacity00" id="unitSecondLineTd5">
-							<span id="unitSecondLineText5" style="padding: 2px 42px;">
-							<span id="unitSecondLineTdText1">1</span> + <span id="unitSecondLineTdText2">sum(n-1)</span></span>
+							<span id="unitSecondLineText5">(n / 2)</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd5">
+							<span id="unitThirdLineText5" style="padding: 2px 42px;">n</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo6">6.</td>
 						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine6">}</span>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine6">break;</span></span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd6">
 							<span id="unitFirstLineText6" style="padding: 2px 42px;">-</span>
 						</td>
 						<td class="opacity00" id="unitSecondLineTd6">
-							<span id="unitSecondLineText6" style="padding: 2px 2px;">-</span></td>
+							<span id="unitSecondLineText6" style="padding: 2px 42px;">-</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd6">
+							<span id="unitThirdLineText6" style="padding: 2px 42px;">-</span>
+						</td>
 					</tr>
-					
 					<tr>
 						<td class="opacity00" id="stepNo7">7.</td>
 						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine7">}</span>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine7">}</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd7">
-							<span id="unitFirstLineText7" style="padding: 2px 42px;">-</span></td>
+							<span id="unitFirstLineText7" style="padding: 2px 42px;">-</span>
+						</td>
 						<td class="opacity00" id="unitSecondLineTd7">
-							<span id="unitSecondLineText7" style="padding: 2px 42px;">-</span></td>
+							<span id="unitSecondLineText7" style="padding: 2px 2px;">-</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd7">
+							<span id="unitThirdLineText7" style="padding: 2px 2px;">-</span>
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="opacity00" id="stepNo8">8.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine8">}</span>
+						</td>
+						<td class="opacity00" id="unitFirstLineTd8">
+							<span id="unitFirstLineText8" style="padding: 2px 42px;">-</span></td>
+						<td class="opacity00" id="unitSecondLineTd8">
+							<span id="unitSecondLineText8" style="padding: 2px 42px;">-</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd8">
+							<span id="unitThirdLineText8" style="padding: 2px 42px;">-</span>
+						</td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo8"></td>
+						<td class="opacity00" id="stepNo9">9.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine9">}</span>
+						</td>
+						<td class="opacity00" id="unitFirstLineTd9">
+							<span id="unitFirstLineText9" style="padding: 2px 42px;">-</span></td>
+						<td class="opacity00" id="unitSecondLineTd9">
+							<span id="unitSecondLineText9" style="padding: 2px 42px;">-</span>
+						</td>
+						<td class="opacity00" id="unitThirdLineTd9">
+							<span id="unitThirdLineText9" style="padding: 2px 42px;">-</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="opacity00" id="stepNo10"></td>
 						<td class="td-code-text">
 							<span class="opacity00" id="codeLine8" style="float: right;">Total = </span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd8">
-							<span id="unitFirstLineText8" style="padding: 2px 42px; background: aquamarine">2</span></td>
-						<td class="opacity00" id="unitSecondLineTd8">
-							<span id="unitSecondLineText8" style="padding: 2px 42px; background: aquamarine">
-							2 + sum(n-1)</span></td>
+						<td class="opacity00" id="unitFirstLineTd10">
+							<span id="unitFirstLineText10" style="padding: 2px 42px; background: aquamarine">4</span></td>
+						<td class="opacity00" id="unitSecondLineTd10">
+							<span id="unitSecondLineText10" style="/* padding: 2px 42px; */ background: aquamarine">
+							2n + 2</span></td>
+						<td class="opacity00" id="unitThirdLineTd10">
+							<span id="unitThirdLineText10" style="/* padding: 2px 42px; */ background: aquamarine">
+							4n + 3</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -432,7 +476,7 @@ span {
 </body>
 <script>
 $(document).ready(function() {
-	$(".opacity00").removeClass("opacity00");
+//	$(".opacity00").removeClass("opacity00");
 	introGuide();
 });
 
@@ -588,202 +632,6 @@ function popoverLeftSideAppendFunction(selector, divIdNum) {
 	$(".popover").css({"top" : "0px;"});
 }
 
-function line2CalculationAnimation() {
-	$("#line1").popover('hide');
-	tweenmaxAnimation("#greaterThanResultSpan", "#line1", function() {
-		$("#line2").removeClass("opacity00");
-		tweenmaxAnimation("#line1Span", "#line2Span", function() {
-			popoverLeftSideAppendFunction("#line2", 2);
-			var text = "<ul><li id='Line2FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>sum(n-1)</span>.</li></ul>";
-			typing("#popover2", text, function() {
-				$("#line2SpanSum").effect('highlight',{color:'#da5805'}, 1500, function() {
-					buttonAppendFunction("#popover2", function() {
-						$("#Line2FirstLi").after("<li id='Line2SecondLi'>Consider <span class='ct-code-b-yellow'>sum(n)</span> value<br>"+
-							"<span class='ct-code-b-yellow opacity00' id='Line2SecondLiSpan'>sum(n) = 2 + sum(n-1)</span></li>");
-						$("#greaterThanResultSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-						transferEffectFunction("#greaterThanResultSpan", "#Line2SecondLiSpan", function() {
-							buttonAppendFunction("#popover2", function() {
-								$("#Line2SecondLi").after("<li id='Line2ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
-								"<span class='ct-code-b-yellow'>n-1</span>.<br>"+
-								"<span class='ct-code-b-yellow opacity00' id='Line2ThirdLiSpan'>sum(<span id='numericalId2' class='display'>n</span>) = "+
-								"<span id='value2ParentSpan' class='display'>2 + sum(<span id='value2Sum' class='display'>"+
-									"<span id='value2' class='display'>n</span>-1</span>)</span></span></li>");
-								tweenmaxAnimation("#Line2SecondLiSpan", "#Line2ThirdLiSpan", function() {
-									$("#numericalId2").effect( "highlight", {color:"#FFD700"}, 2000);
-									flipEffect("#numericalId2", "n-1", function() {
-										$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
-										flipEffect("#value2", "n-1", function() {
-											buttonAppendFunction("#popover2", function() {
-												$("#value2Sum").effect( "highlight", {color:"#FFD700"}, 2000);
-												flipEffect("#value2Sum", "n-2", function() {
-													$("#value2ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-													transferEffectFunction("#value2ParentSpan", "#line2SpanSum", function() {
-														flipEffect("#line2SpanSum", $("#value2ParentSpan").text(), function() {
-															$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-															'<span class="introjs-button user-btn" onclick="line3CalculationAnimation()">'+
-															'Next &#8594;</span></div>');
-														});
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function line3CalculationAnimation() {
-	$("#line2").popover('hide');
-	$("#line3").removeClass("opacity00");
-	tweenmaxAnimation("#line2Span", "#line3Span", function() {
-		popoverLeftSideAppendFunction("#line3", 3);
-		var text = "<ul><li id='Line3FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>sum(n-2)</span>.</li></ul>";
-		typing("#popover3", text, function() {
-			$("#line3SpanSum").effect('highlight',{color:'#da5805'}, 1500, function() {
-				buttonAppendFunction("#popover3", function() {
-					$("#Line3FirstLi").after("<li id='Line3SecondLi'>Consider <span class='ct-code-b-yellow'>sum(n)</span> value<br>"+
-						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>sum(n) = 2 + sum(n-1)</span></li>");
-					$("#greaterThanResultSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-					transferEffectFunction("#greaterThanResultSpan", "#Line3SecondLiSpan", function() {
-						buttonAppendFunction("#popover3", function() {
-							$("#Line3SecondLi").after("<li id='Line3ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
-							"<span class='ct-code-b-yellow'>n-2</span>.<br>"+
-							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>sum(<span id='numericalId3' class='display'>n</span>) = "+
-							"<span id='value3ParentSpan' class='display'>2 + sum(<span id='value3Sum' class='display'>"+
-								"<span id='value3' class='display'>n</span>-1</span>)</span></span></li>");
-							tweenmaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
-								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
-								flipEffect("#numericalId3", "n-2", function() {
-									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
-									flipEffect("#value3", "n-2", function() {
-										buttonAppendFunction("#popover3", function() {
-											$("#value3Sum").effect( "highlight", {color:"#FFD700"}, 2000);
-											flipEffect("#value3Sum", "n-3", function() {
-												$("#value3ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-												transferEffectFunction("#value3ParentSpan", "#line3SpanSum", function() {
-													flipEffect("#line3SpanSum", $("#value3ParentSpan").text(), function() {
-														$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-														'<span class="introjs-button user-btn" onclick="line4CalculationAnimation()">'+
-														'Next &#8594;</span></div>');
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function line4CalculationAnimation() {
-	$("#line3").popover('hide');	
-	$("#line4").removeClass("opacity00");
-	tweenmaxAnimation("#line3Span", "#line4Span", function() {
-	popoverLeftSideAppendFunction("#line4", 4);
-	var text = "<span class='ct-code-b-yellow'>sum(n-3)</span> can be written as "+
-	"<span id='value4ParentSpan' class='ct-code-b-yellow'>2 + sum(n-4)</span>.";
-		typing("#popover4", text, function() {
-			buttonAppendFunction("#popover4", function() {
-				transferEffectFunction("#value4ParentSpan", "#line4SpanSum", function() {
-					flipEffect("#line4SpanSum", $("#value4ParentSpan").text(), function() {
-						$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" onclick="line10CalculationAnimation()">'+
-						'Next &#8594;</span></div>');
-					});
-				});
-			});
-		});
-	});
-}
-
-function line10CalculationAnimation() {
-	$("#line4").popover('hide');
-	TweenMax.to($("#line5, #line5Span"), 1, {opacity: 1, onComplete: function() {
-		TweenMax.to($("#line6"), 1, {opacity: 1, onComplete: function() {
-		$("#line6").effect( "highlight", {color:"#FFD700"}, 1000);
-			TweenMax.to($("#line7"), 1, {opacity: 1, onComplete: function() {
-			$("#line7").effect( "highlight", {color:"#FFD700"}, 1000);
-				TweenMax.to($("#line8"), 1, {opacity: 1, onComplete: function() {
-				$("#line8").effect( "highlight", {color:"#FFD700"}, 1000);
-					TweenMax.to($("#line9"), 1, {opacity: 1, onComplete: function() {
-						$("#line9").effect( "highlight", {color:"#FFD700"}, 1000);
-						popoverLeftSideAppendFunction("#line10", 10);
-						var text = "<span id='popoverTextSpan10'>Similarly for <span class='ct-code-b-yellow'>n<sup>th</sup></span> number the "+
-						"<span class='ct-code-b-yellow'>sum(n)</span> is<br></span>";
-						typing("#popover10", text, function() {
-							TweenMax.to($("#line10, #line10Span"), 1, {opacity: 1, onComplete: function() {
-								buttonAppendFunction("#popover10", function() {	
-									$("#popoverTextSpan10").after("<ul><li id='Line10FirstLi'><span class='ct-code-b-yellow opacity00' id='Line10FirstLiSpan'>"+
-										"n(2) + sum(n - n)</span></li></ul>");
-									tweenmaxAnimation("#line10", "#Line10FirstLiSpan", function() {
-										$("#Line10FirstLi").after("<li><span class='ct-code-b-yellow opacity00' id='Line10SecondLiSpan'>"+
-										"<span id='numericalId10' class='display'>n(2)</span> + sum(<span id='value10' class='display'>n - n</span>)"+
-										"</span></li>");
-										secondAnimation("#Line10FirstLiSpan", "#Line10SecondLiSpan", "#numericalId10", "2n", 
-												"#value10", "0", "#line11", "#line11Span", function() {
-											$('#popover10').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-											'<span class="introjs-button user-btn" onclick="line11CalculationAnimation()">Next &#8594;</span></div>');
-										});
-									});
-								});
-							}});
-						});
-					}});
-				}});
-			}});
-		}});
-	}});
-}
-
-function line11CalculationAnimation() {
-	$("#line10").popover('hide');
-	popoverLeftSideAppendFunction("#line11", 11);
-	var text = "<span id='popoverTextSpan11'><ul><li id='Line11FirstLi'>Now calculate the value of <span class='ct-code-b-yellow'>"+
-	"sum(0)</span></li></ul></span>";
-	typing("#popover11", text, function() {
-		buttonAppendFunction("#popover11", function() {
-			$("#Line11FirstLi").after("<li id='Line11SecondLi'>If <span class='ct-code-b-yellow'>n <= 0</span> then "+
-					"<span class='ct-code-b-yellow'>sum(n) = 2</span> as per the units count.</li>");
-			typing("#Line11SecondLi", $("#Line11SecondLi").html(), function() {
-				$("#lessThanResult").effect( "highlight", {color:"#FFD700"}, 1500, function() {
-					buttonAppendFunction("#popover11", function() {
-						$("#line12").removeClass("opacity00");
-						tweenmaxAnimation("#line11Span", "#line12Span", function() {
-							flipEffect("#line12SpanSum", "2", function() {
-								$('#popover11').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-								'<span class="introjs-button user-btn" onclick="finalCalculationAnimation()">Next &#8594;</span></div>');
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function finalCalculationAnimation() {
-	$("#line11").popover('hide');
-	TweenMax.to($("#finalLine"), 1.5, {opacity: 1, onComplete: function() {
-		$("#line12Span").effect('highlight',{color:'#da5805'}, 1500, function() {
-			$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
-				tweenmaxAnimation("#alphabetN1", "#alphabetN2", function() {
-					setTimeoutFunction();
-				});
-			});
-		});
-	}});
-}
 
 function codeLinesReveledFunction(i) {
 	$("#stepNo" + i).fadeTo("0.1", 1);
@@ -792,24 +640,36 @@ function codeLinesReveledFunction(i) {
 			codeLinesReveledFunction(++i);
 		} else {
 			$(".introjs-tooltip").show();
-			var text = "This is the recursive code to find the sum of a given number using recursion.<b/>" + 
+			var text = "This is the code  to search the given element from a list of elements with <span class='ct-code-b-yellow'>linear search"+
+			"</span>.<b/>" + 
 			"<ul><li>Now find the <span class='ct-code-b-yellow'>time complexity</span> of this function.</li>"+
 			"<li>The total number of units is measured depending upon the number of <span class='ct-code-b-yellow'>operations</span> "+
-			"done in the code.</li><li>Here the code contains <span class='ct-code-b-yellow'>if-else</span> statement. So we have to calculate "+
-			"<span class='ct-code-b-yellow'>time complexity</span> for two conditions.</li></ul>";
+			"done in the code.</li><li>Here we have three different types of cases.</li></ul>";
 			typing(".introjs-tooltiptext", text, function() {
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn">Next &#8594;</a>');
 				$(".user-btn").click(function() {
 					$(".user-btn").remove();
-					$("#ifCondition").effect('highlight', {color: '#da5805'}, 1000);
-					transferEffectFunction("#ifCondition", "#unitsForLessThanOne", function() {
+				//	$("#unitsForLeast").effect('highlight', {color: '#da5805'}, 1000);
+					TweenMax.to($("#unitsForLeast"), 1, {opacity: 1, onComplete: function() {
+						$("#unitsForLeast").effect('highlight', {color: '#da5805'}, 500);
+						//		$("#unitsForMiddle").effect('highlight', {color: '#da5805'}, 1000);
+						TweenMax.to($("#unitsForMiddle"), 1, {opacity: 1, onComplete: function() {
+				//			$("#unitsForHigher").effect('highlight', {color: '#da5805'}, 1000);
+							$("#unitsForMiddle").effect('highlight', {color: '#da5805'}, 500);
+							TweenMax.to($("#unitsForHigher"), 1, {opacity: 1, onComplete: function() {
+								$("#unitsForHigher").effect('highlight', {color: '#da5805'}, 500);
+								$('.introjs-nextbutton').show();
+							}});
+						}});
+					}});
+					/* transferEffectFunction("#ifCondition", "#unitsForLessThanOne", function() {
 						$("#unitsForLessThanOne").removeClass("opacity00");
 						$("#elseCondition").effect('highlight', {color: '#da5805'}, 1000);
 						transferEffectFunction("#elseCondition", "#unitsForGreaterThanOne", function() {
 							$("#unitsForGreaterThanOne").removeClass("opacity00");
 							$('.introjs-nextbutton').show();
 						});
-					});
+					}); */
 				});
 			});
 		}
@@ -854,8 +714,8 @@ function firstStepAnimation() {
 	svgAppend($('#divTable'), 'svg');
 	svgMarkerAppend($('#svg'), 'marker');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitFirstLineText1', '#svg', 'svgLine1', 'marker', function() {
-		TweenMax.to($("#unitFirstLineTd1, #unitSecondLineTd1"), 1, {opacity: 1, onComplete: function() {
-			$("#unitSecondLineText1").popover({
+		TweenMax.to($("#unitFirstLineTd1, #unitSecondLineTd1, #unitThirdLineTd1"), 1, {opacity: 1, onComplete: function() {
+			$("#unitThirdLineText1").popover({
 				placement: 'right',
 				html: true,
 				trigger: 'focus',
@@ -874,36 +734,36 @@ function firstStepAnimation() {
 
 function secondStepAnimation() {
 	$("#codeLine2").css("background", "#c0e1fb");
-	$("#unitSecondLineText1").popover('hide');
-	$("#unitSecondLineText3").popover('hide');
+	$("#unitThirdLineText1").popover('hide');
+//	$("#unitSecondLineText3").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitFirstLineText2', '#svg', 'svgLine2', 'marker', function() {	
 		$("#operator1").addClass("blinking").one('animationend', function() {
 			$("#operator1").removeClass("blinking").off();
-			TweenMax.to($("#unitFirstLineTd2, #unitSecondLineTd2"), 1, {opacity: 1, onComplete: function() {
-				$("#unitSecondLineText2").popover({
+			TweenMax.to($("#unitFirstLineTd2, #unitSecondLineTd2, #unitThirdLineTd2"), 1, {opacity: 1, onComplete: function() {
+				$("#unitThirdLineText2").popover({
 					placement: 'right',
 					html: true,
 					trigger: 'focus',
 					content: '<div id="popover2"></div>',
 				}).popover('show');
 				$(".popover").css({"top" : "0px;"});
-				var text = "<span id='textTooptipForIf'><span class='step-color-css'>step-2 :</span> Only one operator "+
-				"<span class='ct-code-b-yellow'><=</span> is used in this statement, it takes "+
+				var text = "<span id='textTooltipForIf'><span class='step-color-css'>step-2 :</span> Only one operator "+
+				"<span class='ct-code-b-yellow'>=</span> is used in this statement, it takes "+
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.</span>";
 				typing("#popover2", text, function() {
-					$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+					/* $('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 							'<a class="introjs-button user-btn">Next &#8594;</a>');
 					$(".user-btn").click(function() {
 						$(".user-btn").remove();
-						$("#textTooptipForIf").after("<br><span id='textForNote'>Note: If <span class='ct-code-b-yellow'>if</span> condition "+
+						$("#textTooltipForIf").after("<br><span id='textForNote'>Note: If <span class='ct-code-b-yellow'>if</span> condition "+
 							"evaluates <span class='ct-code-teal'>true</span> then control enters into <span class='ct-code-b-yellow'>if</span> "+
 							"statement otherwise enters into <span class='ct-code-b-yellow'>else</span> statement.");
-						typing("#textForNote", $("#textForNote").html(), function() {
+						typing("#textForNote", $("#textForNote").html(), function() { */
 							$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-									'<a class="introjs-button user-back-btn" tabindex="-1" onclick="firstStepAnimation()">&#8592; Back</a>'+
+									/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="firstStepAnimation()">&#8592; Back</a>'+ */
 									'<span class="introjs-button user-btn" onclick="thirdStepAnimation()">Next &#8594;</span></div>');
-						});
-					});
+						/* });
+					}); */
 				});
 			}});
 		});
@@ -912,8 +772,8 @@ function secondStepAnimation() {
 
 function thirdStepAnimation() {
 	$("#codeLine3").css("background", "#c0e1fb");
-	$("#unitSecondLineText2").popover('hide');
-	$("#unitSecondLineText4").popover('hide');
+	$("#unitThirdLineText2").popover('hide');
+//	$("#unitSecondLineText4").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitFirstLineText3', '#svg', 'svgLine3', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd3, #unitSecondLineTd3"), 0.5, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText3", 3);
@@ -1158,6 +1018,203 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
+	}});
+}
+
+function line2CalculationAnimation() {
+	$("#line1").popover('hide');
+	tweenmaxAnimation("#greaterThanResultSpan", "#line1", function() {
+		$("#line2").removeClass("opacity00");
+		tweenmaxAnimation("#line1Span", "#line2Span", function() {
+			popoverLeftSideAppendFunction("#line2", 2);
+			var text = "<ul><li id='Line2FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>sum(n-1)</span>.</li></ul>";
+			typing("#popover2", text, function() {
+				$("#line2SpanSum").effect('highlight',{color:'#da5805'}, 1500, function() {
+					buttonAppendFunction("#popover2", function() {
+						$("#Line2FirstLi").after("<li id='Line2SecondLi'>Consider <span class='ct-code-b-yellow'>sum(n)</span> value<br>"+
+							"<span class='ct-code-b-yellow opacity00' id='Line2SecondLiSpan'>sum(n) = 2 + sum(n-1)</span></li>");
+						$("#greaterThanResultSpan").effect( "highlight", {color:"#FFD700"}, 2000);
+						transferEffectFunction("#greaterThanResultSpan", "#Line2SecondLiSpan", function() {
+							buttonAppendFunction("#popover2", function() {
+								$("#Line2SecondLi").after("<li id='Line2ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
+								"<span class='ct-code-b-yellow'>n-1</span>.<br>"+
+								"<span class='ct-code-b-yellow opacity00' id='Line2ThirdLiSpan'>sum(<span id='numericalId2' class='display'>n</span>) = "+
+								"<span id='value2ParentSpan' class='display'>2 + sum(<span id='value2Sum' class='display'>"+
+									"<span id='value2' class='display'>n</span>-1</span>)</span></span></li>");
+								tweenmaxAnimation("#Line2SecondLiSpan", "#Line2ThirdLiSpan", function() {
+									$("#numericalId2").effect( "highlight", {color:"#FFD700"}, 2000);
+									flipEffect("#numericalId2", "n-1", function() {
+										$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
+										flipEffect("#value2", "n-1", function() {
+											buttonAppendFunction("#popover2", function() {
+												$("#value2Sum").effect( "highlight", {color:"#FFD700"}, 2000);
+												flipEffect("#value2Sum", "n-2", function() {
+													$("#value2ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
+													transferEffectFunction("#value2ParentSpan", "#line2SpanSum", function() {
+														flipEffect("#line2SpanSum", $("#value2ParentSpan").text(), function() {
+															$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+															'<span class="introjs-button user-btn" onclick="line3CalculationAnimation()">'+
+															'Next &#8594;</span></div>');
+														});
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function line3CalculationAnimation() {
+	$("#line2").popover('hide');
+	$("#line3").removeClass("opacity00");
+	tweenmaxAnimation("#line2Span", "#line3Span", function() {
+		popoverLeftSideAppendFunction("#line3", 3);
+		var text = "<ul><li id='Line3FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>sum(n-2)</span>.</li></ul>";
+		typing("#popover3", text, function() {
+			$("#line3SpanSum").effect('highlight',{color:'#da5805'}, 1500, function() {
+				buttonAppendFunction("#popover3", function() {
+					$("#Line3FirstLi").after("<li id='Line3SecondLi'>Consider <span class='ct-code-b-yellow'>sum(n)</span> value<br>"+
+						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>sum(n) = 2 + sum(n-1)</span></li>");
+					$("#greaterThanResultSpan").effect( "highlight", {color:"#FFD700"}, 2000);
+					transferEffectFunction("#greaterThanResultSpan", "#Line3SecondLiSpan", function() {
+						buttonAppendFunction("#popover3", function() {
+							$("#Line3SecondLi").after("<li id='Line3ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
+							"<span class='ct-code-b-yellow'>n-2</span>.<br>"+
+							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>sum(<span id='numericalId3' class='display'>n</span>) = "+
+							"<span id='value3ParentSpan' class='display'>2 + sum(<span id='value3Sum' class='display'>"+
+								"<span id='value3' class='display'>n</span>-1</span>)</span></span></li>");
+							tweenmaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
+								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
+								flipEffect("#numericalId3", "n-2", function() {
+									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
+									flipEffect("#value3", "n-2", function() {
+										buttonAppendFunction("#popover3", function() {
+											$("#value3Sum").effect( "highlight", {color:"#FFD700"}, 2000);
+											flipEffect("#value3Sum", "n-3", function() {
+												$("#value3ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
+												transferEffectFunction("#value3ParentSpan", "#line3SpanSum", function() {
+													flipEffect("#line3SpanSum", $("#value3ParentSpan").text(), function() {
+														$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+														'<span class="introjs-button user-btn" onclick="line4CalculationAnimation()">'+
+														'Next &#8594;</span></div>');
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function line4CalculationAnimation() {
+	$("#line3").popover('hide');	
+	$("#line4").removeClass("opacity00");
+	tweenmaxAnimation("#line3Span", "#line4Span", function() {
+	popoverLeftSideAppendFunction("#line4", 4);
+	var text = "<span class='ct-code-b-yellow'>sum(n-3)</span> can be written as "+
+	"<span id='value4ParentSpan' class='ct-code-b-yellow'>2 + sum(n-4)</span>.";
+		typing("#popover4", text, function() {
+			buttonAppendFunction("#popover4", function() {
+				transferEffectFunction("#value4ParentSpan", "#line4SpanSum", function() {
+					flipEffect("#line4SpanSum", $("#value4ParentSpan").text(), function() {
+						$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" onclick="line10CalculationAnimation()">'+
+						'Next &#8594;</span></div>');
+					});
+				});
+			});
+		});
+	});
+}
+
+function line10CalculationAnimation() {
+	$("#line4").popover('hide');
+	TweenMax.to($("#line5, #line5Span"), 1, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#line6"), 1, {opacity: 1, onComplete: function() {
+		$("#line6").effect( "highlight", {color:"#FFD700"}, 1000);
+			TweenMax.to($("#line7"), 1, {opacity: 1, onComplete: function() {
+			$("#line7").effect( "highlight", {color:"#FFD700"}, 1000);
+				TweenMax.to($("#line8"), 1, {opacity: 1, onComplete: function() {
+				$("#line8").effect( "highlight", {color:"#FFD700"}, 1000);
+					TweenMax.to($("#line9"), 1, {opacity: 1, onComplete: function() {
+						$("#line9").effect( "highlight", {color:"#FFD700"}, 1000);
+						popoverLeftSideAppendFunction("#line10", 10);
+						var text = "<span id='popoverTextSpan10'>Similarly for <span class='ct-code-b-yellow'>n<sup>th</sup></span> number the "+
+						"<span class='ct-code-b-yellow'>sum(n)</span> is<br></span>";
+						typing("#popover10", text, function() {
+							TweenMax.to($("#line10, #line10Span"), 1, {opacity: 1, onComplete: function() {
+								buttonAppendFunction("#popover10", function() {	
+									$("#popoverTextSpan10").after("<ul><li id='Line10FirstLi'><span class='ct-code-b-yellow opacity00' id='Line10FirstLiSpan'>"+
+										"n(2) + sum(n - n)</span></li></ul>");
+									tweenmaxAnimation("#line10", "#Line10FirstLiSpan", function() {
+										$("#Line10FirstLi").after("<li><span class='ct-code-b-yellow opacity00' id='Line10SecondLiSpan'>"+
+										"<span id='numericalId10' class='display'>n(2)</span> + sum(<span id='value10' class='display'>n - n</span>)"+
+										"</span></li>");
+										secondAnimation("#Line10FirstLiSpan", "#Line10SecondLiSpan", "#numericalId10", "2n", 
+												"#value10", "0", "#line11", "#line11Span", function() {
+											$('#popover10').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+											'<span class="introjs-button user-btn" onclick="line11CalculationAnimation()">Next &#8594;</span></div>');
+										});
+									});
+								});
+							}});
+						});
+					}});
+				}});
+			}});
+		}});
+	}});
+}
+
+function line11CalculationAnimation() {
+	$("#line10").popover('hide');
+	popoverLeftSideAppendFunction("#line11", 11);
+	var text = "<span id='popoverTextSpan11'><ul><li id='Line11FirstLi'>Now calculate the value of <span class='ct-code-b-yellow'>"+
+	"sum(0)</span></li></ul></span>";
+	typing("#popover11", text, function() {
+		buttonAppendFunction("#popover11", function() {
+			$("#Line11FirstLi").after("<li id='Line11SecondLi'>If <span class='ct-code-b-yellow'>n <= 0</span> then "+
+					"<span class='ct-code-b-yellow'>sum(n) = 2</span> as per the units count.</li>");
+			typing("#Line11SecondLi", $("#Line11SecondLi").html(), function() {
+				$("#lessThanResult").effect( "highlight", {color:"#FFD700"}, 1500, function() {
+					buttonAppendFunction("#popover11", function() {
+						$("#line12").removeClass("opacity00");
+						tweenmaxAnimation("#line11Span", "#line12Span", function() {
+							flipEffect("#line12SpanSum", "2", function() {
+								$('#popover11').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+								'<span class="introjs-button user-btn" onclick="finalCalculationAnimation()">Next &#8594;</span></div>');
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function finalCalculationAnimation() {
+	$("#line11").popover('hide');
+	TweenMax.to($("#finalLine"), 1.5, {opacity: 1, onComplete: function() {
+		$("#line12Span").effect('highlight',{color:'#da5805'}, 1500, function() {
+			$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
+				tweenmaxAnimation("#alphabetN1", "#alphabetN2", function() {
+					setTimeoutFunction();
+				});
+			});
+		});
 	}});
 }
 </script>

@@ -35,7 +35,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#method3',
 			intro :"",
 			animateStep : 'method31'*/
-		}, {
+		/*}, {
 			element : '#main',
 			intro :"",
 		}, {
@@ -127,7 +127,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			intro :"",	
 		}, {
 			element : '#mainClose1',
-			intro :"",
+			intro :"",*/
 		}, {
 			element : '#preBody1',
 			intro :"",	
@@ -212,8 +212,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#show6',
 			intro :"",
 		}, {
-			element : '#method4',
+			element : '#method41',
 			intro :"",
+			animateStep : 'method44',
 			position : 'top'
 		}, {
 			element : '#cout4',
