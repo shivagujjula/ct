@@ -736,7 +736,6 @@ function firstStepAnimation() {
 function secondStepAnimation() {
 	$("#codeLine2").css("background", "#c0e1fb");
 	$("#unitThirdLineText1").popover('hide');
-//	$("#unitSecondLineText3").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitFirstLineText2', '#svg', 'svgLine2', 'marker', function() {	
 		$("#operator1").addClass("blinking").one('animationend', function() {
 			$("#operator1").removeClass("blinking").off();
@@ -762,7 +761,7 @@ function secondStepAnimation() {
 						typing("#textForNote", $("#textForNote").html(), function() { */
 							$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 									/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="firstStepAnimation()">&#8592; Back</a>'+ */
-									'<span class="introjs-button user-btn" onclick="thirdStepAnimation()">Next &#8594;</span></div>');
+									'<span class="introjs-button user-btn" onclick="thirdStepFirstCaseAnimation()">Next &#8594;</span></div>');
 						/* });
 					}); */
 				});
@@ -773,7 +772,7 @@ function secondStepAnimation() {
 
 
 
-function thirdStepAnimation() {
+function thirdStepFirstCaseAnimation() {
 	$("#codeLine3").css("background", "#c0e1fb");
 	$("#unitThirdLineText2").popover('hide');
 //	$("#unitSecondLineText4").popover('hide');
@@ -786,13 +785,13 @@ function thirdStepAnimation() {
 			typing("#popover3", text, function() {
 				$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 						/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+ */
-						'<span class="introjs-button user-btn" onclick="thirdStepAnimationSecondStep()">Next &#8594;</span></div>');
+						'<span class="introjs-button user-btn" onclick="thirdStepFirstCaseSecondAnimation()">Next &#8594;</span></div>');
 			});
 		}});
 	});
 }
 
-function thirdStepAnimationSecondStep() {
+function thirdStepFirstCaseSecondAnimation() {
 	$(".user-btn").remove();
 	$("#popover3Text1").after("<span><ul><li id='initLine'><span class='for-loop-li-css'>i = 0</span><br/>In the "+
 			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
@@ -806,7 +805,7 @@ function thirdStepAnimationSecondStep() {
 							'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
 					$(".user-btn").click(function() {
 						$(".user-btn").remove();
-						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i <= n</span><br>In the "+
+						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i < n</span><br>In the "+
 								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 								"executes <span class='ct-code-teal'>1</span> "+
@@ -822,7 +821,7 @@ function thirdStepAnimationSecondStep() {
 										$(".user-btn").click(function() {
 											$(".user-btn").remove();
 											$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i++</span><br>The "+
-													"<span class='ct-code-b-yellow'>increment</span> part not executed because the key element "+
+													"<span class='ct-code-b-yellow'>increment</span> part doesn't not executed because the key element "+
 													"is found at first element then the <span class='ct-code-b-yellow'>break</span> statement "+
 													"terminate the for loop. So it takes <span class='ct-code-b-yellow'>0</span> "+
 													"<span class='ct-code-teal'>unit of time</span>.</li>");
@@ -832,7 +831,78 @@ function thirdStepAnimationSecondStep() {
 														$("#incrementUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
 															$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 																	'<span class="introjs-button user-btn" '+
-																	'onclick="seventhStepAnimation()">Next &#8594;</span></div>');
+																	'onclick="thirdStepSecondCaseAnimation()">Next &#8594;</span></div>');
+														});
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function thirdStepSecondCaseAnimation() {
+	$("#unitFirstLineText3").popover('hide');
+	
+		popoverAppendFunction("#unitSecondLineText3", 32);
+		var text = "<span id='popover3Text2'><span class='step-color-css'>step-3 :</span><br/>If element is at the middile position then.</span>"
+		typing("#popover32", text, function() {
+			TweenMax.to($("#unitSecondLineTd3"), 0.5, {opacity: 1, onComplete: function() {
+			$('#popover32').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+					/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+ */
+					'<span class="introjs-button user-btn" onclick="thirdStepFirstCaseSecondAnimation()">Next &#8594;</span></div>');
+		}});
+	});
+}
+
+function thirdStepFirstCaseSecondAnimation() {
+	$(".user-btn").remove();
+	$("#popover3Text1").after("<span><ul><li id='initLine'><span class='for-loop-li-css'>i = 0</span><br/>In the "+
+			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
+			" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
+			"<span class='ct-code-teal'>unit of time</span>.</li></ul></span>");
+	typing("#initLine", $("#initLine").html(), function() {
+		$("#forInit").effect('highlight',{color:'#da5805'}, 1000, function() {
+			transferEffectFunction("#forInit", "#initUnitNo", function() {
+				$("#initUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
+					$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+							'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
+					$(".user-btn").click(function() {
+						$(".user-btn").remove();
+						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i < n</span><br>In the "+
+								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
+								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
+								"executes <span class='ct-code-teal'>1</span> "+
+								"time as <span class='ct-color-boolean'>true</span> because the key element is first element itself. "+
+								"So it takes <span class='ct-code-b-yellow'>1</span> "+
+								"<span class='ct-code-teal'>unit of time</span>.</li>");
+						typing("#conditionLine", $("#conditionLine").html(), function() {
+							$("#forCondition").effect('highlight',{color:'#da5805'}, 1000, function() {
+								transferEffectFunction("#forCondition", "#conditionUnitNo", function() {
+									$("#conditionUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
+										$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+												'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
+										$(".user-btn").click(function() {
+											$(".user-btn").remove();
+											$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i++</span><br>The "+
+													"<span class='ct-code-b-yellow'>increment</span> part doesn't not executed because the key element "+
+													"is found at first element then the <span class='ct-code-b-yellow'>break</span> statement "+
+													"terminate the for loop. So it takes <span class='ct-code-b-yellow'>0</span> "+
+													"<span class='ct-code-teal'>unit of time</span>.</li>");
+											typing("#incrementLine", $("#incrementLine").html(), function() {
+												$("#forIncrement").effect('highlight',{color:'#da5805'}, 1000, function() {
+													transferEffectFunction("#forIncrement", "#incrementUnitNo", function() {
+														$("#incrementUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
+															$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+																	'<span class="introjs-button user-btn" '+
+																	'onclick="()">Next &#8594;</span></div>');
 														});
 													});
 												});
@@ -867,7 +937,7 @@ function thirdStepAnimationSecondStep() {
 	});
 } */
 
-function fourthStepAnimation() {
+/* function fourthStepAnimation() {
 	$("#codeLine4").css("background", "#c0e1fb");
 	$("#unitSecondLineText3").popover('hide');
 	$("#unitSecondLineText5").popover('hide');
@@ -987,7 +1057,7 @@ function eighthStepAnimation() {
 		});
 	}});
 }
-
+ */
 function typing(selector, text, callBackFunction) {
 //	if (var typingEffect == false) {
 	var typingSpeed = 0.05;
@@ -1100,201 +1170,5 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 	}});
 }
 
-function line2CalculationAnimation() {
-	$("#line1").popover('hide');
-	tweenmaxAnimation("#greaterThanResultSpan", "#line1", function() {
-		$("#line2").removeClass("opacity00");
-		tweenmaxAnimation("#line1Span", "#line2Span", function() {
-			popoverLeftSideAppendFunction("#line2", 2);
-			var text = "<ul><li id='Line2FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>sum(n-1)</span>.</li></ul>";
-			typing("#popover2", text, function() {
-				$("#line2SpanSum").effect('highlight',{color:'#da5805'}, 1500, function() {
-					buttonAppendFunction("#popover2", function() {
-						$("#Line2FirstLi").after("<li id='Line2SecondLi'>Consider <span class='ct-code-b-yellow'>sum(n)</span> value<br>"+
-							"<span class='ct-code-b-yellow opacity00' id='Line2SecondLiSpan'>sum(n) = 2 + sum(n-1)</span></li>");
-						$("#greaterThanResultSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-						transferEffectFunction("#greaterThanResultSpan", "#Line2SecondLiSpan", function() {
-							buttonAppendFunction("#popover2", function() {
-								$("#Line2SecondLi").after("<li id='Line2ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
-								"<span class='ct-code-b-yellow'>n-1</span>.<br>"+
-								"<span class='ct-code-b-yellow opacity00' id='Line2ThirdLiSpan'>sum(<span id='numericalId2' class='display'>n</span>) = "+
-								"<span id='value2ParentSpan' class='display'>2 + sum(<span id='value2Sum' class='display'>"+
-									"<span id='value2' class='display'>n</span>-1</span>)</span></span></li>");
-								tweenmaxAnimation("#Line2SecondLiSpan", "#Line2ThirdLiSpan", function() {
-									$("#numericalId2").effect( "highlight", {color:"#FFD700"}, 2000);
-									flipEffect("#numericalId2", "n-1", function() {
-										$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
-										flipEffect("#value2", "n-1", function() {
-											buttonAppendFunction("#popover2", function() {
-												$("#value2Sum").effect( "highlight", {color:"#FFD700"}, 2000);
-												flipEffect("#value2Sum", "n-2", function() {
-													$("#value2ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-													transferEffectFunction("#value2ParentSpan", "#line2SpanSum", function() {
-														flipEffect("#line2SpanSum", $("#value2ParentSpan").text(), function() {
-															$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-															'<span class="introjs-button user-btn" onclick="line3CalculationAnimation()">'+
-															'Next &#8594;</span></div>');
-														});
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function line3CalculationAnimation() {
-	$("#line2").popover('hide');
-	$("#line3").removeClass("opacity00");
-	tweenmaxAnimation("#line2Span", "#line3Span", function() {
-		popoverLeftSideAppendFunction("#line3", 3);
-		var text = "<ul><li id='Line3FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>sum(n-2)</span>.</li></ul>";
-		typing("#popover3", text, function() {
-			$("#line3SpanSum").effect('highlight',{color:'#da5805'}, 1500, function() {
-				buttonAppendFunction("#popover3", function() {
-					$("#Line3FirstLi").after("<li id='Line3SecondLi'>Consider <span class='ct-code-b-yellow'>sum(n)</span> value<br>"+
-						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>sum(n) = 2 + sum(n-1)</span></li>");
-					$("#greaterThanResultSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-					transferEffectFunction("#greaterThanResultSpan", "#Line3SecondLiSpan", function() {
-						buttonAppendFunction("#popover3", function() {
-							$("#Line3SecondLi").after("<li id='Line3ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
-							"<span class='ct-code-b-yellow'>n-2</span>.<br>"+
-							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>sum(<span id='numericalId3' class='display'>n</span>) = "+
-							"<span id='value3ParentSpan' class='display'>2 + sum(<span id='value3Sum' class='display'>"+
-								"<span id='value3' class='display'>n</span>-1</span>)</span></span></li>");
-							tweenmaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
-								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
-								flipEffect("#numericalId3", "n-2", function() {
-									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
-									flipEffect("#value3", "n-2", function() {
-										buttonAppendFunction("#popover3", function() {
-											$("#value3Sum").effect( "highlight", {color:"#FFD700"}, 2000);
-											flipEffect("#value3Sum", "n-3", function() {
-												$("#value3ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-												transferEffectFunction("#value3ParentSpan", "#line3SpanSum", function() {
-													flipEffect("#line3SpanSum", $("#value3ParentSpan").text(), function() {
-														$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-														'<span class="introjs-button user-btn" onclick="line4CalculationAnimation()">'+
-														'Next &#8594;</span></div>');
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function line4CalculationAnimation() {
-	$("#line3").popover('hide');	
-	$("#line4").removeClass("opacity00");
-	tweenmaxAnimation("#line3Span", "#line4Span", function() {
-	popoverLeftSideAppendFunction("#line4", 4);
-	var text = "<span class='ct-code-b-yellow'>sum(n-3)</span> can be written as "+
-	"<span id='value4ParentSpan' class='ct-code-b-yellow'>2 + sum(n-4)</span>.";
-		typing("#popover4", text, function() {
-			buttonAppendFunction("#popover4", function() {
-				transferEffectFunction("#value4ParentSpan", "#line4SpanSum", function() {
-					flipEffect("#line4SpanSum", $("#value4ParentSpan").text(), function() {
-						$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" onclick="line10CalculationAnimation()">'+
-						'Next &#8594;</span></div>');
-					});
-				});
-			});
-		});
-	});
-}
-
-function line10CalculationAnimation() {
-	$("#line4").popover('hide');
-	TweenMax.to($("#line5, #line5Span"), 1, {opacity: 1, onComplete: function() {
-		TweenMax.to($("#line6"), 1, {opacity: 1, onComplete: function() {
-		$("#line6").effect( "highlight", {color:"#FFD700"}, 1000);
-			TweenMax.to($("#line7"), 1, {opacity: 1, onComplete: function() {
-			$("#line7").effect( "highlight", {color:"#FFD700"}, 1000);
-				TweenMax.to($("#line8"), 1, {opacity: 1, onComplete: function() {
-				$("#line8").effect( "highlight", {color:"#FFD700"}, 1000);
-					TweenMax.to($("#line9"), 1, {opacity: 1, onComplete: function() {
-						$("#line9").effect( "highlight", {color:"#FFD700"}, 1000);
-						popoverLeftSideAppendFunction("#line10", 10);
-						var text = "<span id='popoverTextSpan10'>Similarly for <span class='ct-code-b-yellow'>n<sup>th</sup></span> number the "+
-						"<span class='ct-code-b-yellow'>sum(n)</span> is<br></span>";
-						typing("#popover10", text, function() {
-							TweenMax.to($("#line10, #line10Span"), 1, {opacity: 1, onComplete: function() {
-								buttonAppendFunction("#popover10", function() {	
-									$("#popoverTextSpan10").after("<ul><li id='Line10FirstLi'><span class='ct-code-b-yellow opacity00' id='Line10FirstLiSpan'>"+
-										"n(2) + sum(n - n)</span></li></ul>");
-									tweenmaxAnimation("#line10", "#Line10FirstLiSpan", function() {
-										$("#Line10FirstLi").after("<li><span class='ct-code-b-yellow opacity00' id='Line10SecondLiSpan'>"+
-										"<span id='numericalId10' class='display'>n(2)</span> + sum(<span id='value10' class='display'>n - n</span>)"+
-										"</span></li>");
-										secondAnimation("#Line10FirstLiSpan", "#Line10SecondLiSpan", "#numericalId10", "2n", 
-												"#value10", "0", "#line11", "#line11Span", function() {
-											$('#popover10').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-											'<span class="introjs-button user-btn" onclick="line11CalculationAnimation()">Next &#8594;</span></div>');
-										});
-									});
-								});
-							}});
-						});
-					}});
-				}});
-			}});
-		}});
-	}});
-}
-
-function line11CalculationAnimation() {
-	$("#line10").popover('hide');
-	popoverLeftSideAppendFunction("#line11", 11);
-	var text = "<span id='popoverTextSpan11'><ul><li id='Line11FirstLi'>Now calculate the value of <span class='ct-code-b-yellow'>"+
-	"sum(0)</span></li></ul></span>";
-	typing("#popover11", text, function() {
-		buttonAppendFunction("#popover11", function() {
-			$("#Line11FirstLi").after("<li id='Line11SecondLi'>If <span class='ct-code-b-yellow'>n <= 0</span> then "+
-					"<span class='ct-code-b-yellow'>sum(n) = 2</span> as per the units count.</li>");
-			typing("#Line11SecondLi", $("#Line11SecondLi").html(), function() {
-				$("#lessThanResult").effect( "highlight", {color:"#FFD700"}, 1500, function() {
-					buttonAppendFunction("#popover11", function() {
-						$("#line12").removeClass("opacity00");
-						tweenmaxAnimation("#line11Span", "#line12Span", function() {
-							flipEffect("#line12SpanSum", "2", function() {
-								$('#popover11').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-								'<span class="introjs-button user-btn" onclick="finalCalculationAnimation()">Next &#8594;</span></div>');
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function finalCalculationAnimation() {
-	$("#line11").popover('hide');
-	TweenMax.to($("#finalLine"), 1.5, {opacity: 1, onComplete: function() {
-		$("#line12Span").effect('highlight',{color:'#da5805'}, 1500, function() {
-			$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
-				tweenmaxAnimation("#alphabetN1", "#alphabetN2", function() {
-					setTimeoutFunction();
-				});
-			});
-		});
-	}});
-}
 </script>
 </html>
