@@ -340,10 +340,10 @@ span {
 						<td class="opacity00" id="stepNo5">5.</td>
 						<td class="td-code-text">
 							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine5">pos = i;</span> 
+							<span class="opacity00" id="codeLine5">pos <span id="equalOperator">=</span> i;</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd5">
-							<span id="unitFirstLineText5" style="padding: 2px 42px;">-</span>
+							<span id="unitFirstLineText5" style="padding: 2px 42px;">1</span>
 						</td>
 						<td class="opacity00" id="unitSecondLineTd5">
 							<span id="unitSecondLineText5">(n / 2)</span>
@@ -416,10 +416,10 @@ span {
 					<tr>
 						<td class="opacity00" id="stepNo10"></td>
 						<td class="td-code-text">
-							<span class="opacity00" id="codeLine8" style="float: right;">Total = </span>
+							<span class="opacity00" id="codeLine10" style="float: right;">Total = </span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd10">
-							<span id="unitFirstLineText10" style="padding: 2px 42px; background: aquamarine">4</span></td>
+							<span id="unitFirstLineText10" style="padding: 2px 42px; background: aquamarine">5</span></td>
 						<td class="opacity00" id="unitSecondLineTd10">
 							<span id="unitSecondLineText10" style="/* padding: 2px 42px; */ background: aquamarine">
 							2n + 2</span></td>
@@ -433,50 +433,31 @@ span {
 	</div>
 	<div class="col-xs-12 margin-top-3">
 		<div class="col-xs-6 col-xs-offset-3 explanation-div opacity00" id="explanationDiv">
-			<div class="col-xs-offset-3">
-				<span id="lessThanResult" class="color-darkgreen">
-					<span id="lessThanResultSpan">sum(n) = 2</span>, if n <= 0
-				</span><br>
-				<span id="greaterThanResult" class="color-darkgreen">
-					<span id="greaterThanResultSpan">sum(n) = <span id="mainResult" class="position">2 + sum(n-1)</span></span>, if n > 0
-				</span><br>
-				<span class="heading-css">Simplification :</span><br>
-				<span id="line1" class="opacity00" style="padding-right: 68px;">
-					sum(n) = <span id="line1Span">2 + sum(n-1)</span>
-				</span><br>
-				<span id="line2" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line2Span" class="opacity00">2 + <span id="line2SpanSum">sum(n-1)</span></span>
-				</span><br>
-				<span id="line3" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line3Span" class="opacity00"><span id="line3SpanNum">2 + 2</span> + <span id="line3SpanSum">sum(n-2)</span></span>
-				</span><br>
-				<span id="line4" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line4Span" class="opacity00">2 + 2 + 2 + <span id="line4SpanSum">sum(n-3)</span></span>
-				</span><br>
-				<span id="line5" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line5Span" class="opacity00">2 + 2 + 2 + 2 + 2 + <span id="line4SpanSum">sum(n-5)</span></span>
-				</span><br>i++
-				<span id="line6" class="opacity00 margin-left82">...</span><br>
-				<span id="line7" class="opacity00 margin-left82">...</span><br>
-				<span id="line8" class="opacity00 margin-left82">...</span><br>
-				<span id="line9" class="opacity00 margin-left82">...</span><br>
-				<span id="line10" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line10Span" class="opacity00">n(2) + sum(n-n)</span>
-				</span><br>
-				<span id="line11" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line11Span" class="opacity00">2n + sum(0)</span>
-				</span><br>
-				<span id="line12" class="opacity00"><span class="opacity00">sum(n)</span> = 
-					<span id="line12Span" class="opacity00">2<span id="alphabetN1">n</span> + <span id="line12SpanSum">sum(0)</span></span>
-				</span><br>
-				<span id="finalLine" class="opacity00">The time complexity of sum() = <span style="font-family: monospace; color: #0849a0;">
-				big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
+			<div class="col-xs-offset-">
+				<span>We have  three cases to analyze an algorithm:</span>
+				<ul>
+					<li id="line1" class="opacity00">
+						Best Case : <span id="firstCase" class="opacity00">5</span>
+						<span id="firstCaseComplexity" class="opacity00"> - Time complexity is <b>big O(<span id="result1" class="opacity00">1</span>)</b></span>
+					</li>
+					<li id="line2" class="opacity00">
+						Average Case : <span id="secondCase" class="opacity00">2<span id="valueN1">n</span> + 2</span>
+						<span id="secondCaseComplexity" class="opacity00"> - Time complexity is <b>big O(<span id="result2" class="opacity00">n</span>)</b></span>
+					</li>
+					<li id="line3" class="opacity00">
+						Worst Case : <span id="thirdCase" class="opacity00">4<span id="valueN2">n</span> + 3</span>
+						<span id="thirdCaseComplexity" class="opacity00"> - Time complexity is <b>big O(<span id="result3" class="opacity00">n</span>)</b></span>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
 		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>
 	</div>
+	<!-- <span id=""> - Time complexity is big O(1)</span>
+	 - Time complexity is big O(n)
+	  - Time complexity is big O(n) -->
 </div>
 </body>
 <script>
@@ -507,12 +488,12 @@ function introGuide() {
 			element : '#divTable',
 			intro : '',
 			animateStep : 'codeReveledAction'
-		},  {
+		}, {
 			element : '#divTable',
 			intro : '',
 			animateStep : 'explanationOfUnits',
 			tooltipClass : 'hide'
-		},  {
+		}, {
 			element : '#explanationDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -558,13 +539,25 @@ function introGuide() {
 			$("#unitSecondLineText8").popover('hide');
 			$(".introjs-helperLayer").one('transitionend', function() {
 				$("#explanationDiv").removeClass("opacity00");
-				TweenMax.to($("#lessThanResult"), 1.5, {opacity: 1, onComplete: function() {
-					TweenMax.to($("#greaterThanResult"), 1.5, {opacity: 1, onComplete: function() {
-						TweenMax.to($(".heading-css"), 1.5, {opacity: 1, onComplete: function() {
-							line2CalculationAnimation();
-						}});
-					}});
-				}});
+				$("#line1").fadeTo(1000, 1, function() {
+					tweenmaxAnimation("#unitFirstLineText10", "#firstCase", function() {
+						$("#line2").fadeTo(1000, 1, function() {
+							tweenmaxAnimation("#unitSecondLineText10", "#secondCase", function() {
+								$("#line3").fadeTo(1000, 1, function() {
+									tweenmaxAnimation("#unitThirdLineText10", "#thirdCase", function() {
+										fadeToAndTransferAction("#firstCaseComplexity", "#firstCase", "#result1", function() {
+											fadeToAndTransferAction("#secondCaseComplexity", "#valueN1", "#result2", function() {
+												fadeToAndTransferAction("#thirdCaseComplexity", "#valueN2", "#result3", function() {
+													setTimeoutFunction();
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
 			});
 			break;
 		case 'finalDiv':
@@ -637,6 +630,16 @@ function popoverLeftSideAppendFunction(selector, divIdNum) {
 	$(".popover").css({"top" : "0px;"});
 }
 
+function fadeToAndTransferAction(selector1, selector2, selector3, callBackFunction) {
+	$(selector1).fadeTo(1000, 1, function() {
+		transferEffectFunction(selector2, selector3, function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		});
+	});
+}
+
 
 function codeLinesReveledFunction(i) {
 	$("#stepNo" + i).fadeTo("0.1", 1);
@@ -667,14 +670,6 @@ function codeLinesReveledFunction(i) {
 							}});
 						}});
 					}});
-					/* transferEffectFunction("#ifCondition", "#unitsForLessThanOne", function() {
-						$("#unitsForLessThanOne").removeClass("opacity00");
-						$("#elseCondition").effect('highlight', {color: '#da5805'}, 1000);
-						transferEffectFunction("#elseCondition", "#unitsForGreaterThanOne", function() {
-							$("#unitsForGreaterThanOne").removeClass("opacity00");
-							$('.introjs-nextbutton').show();
-						});
-					}); */
 				});
 			});
 		}
@@ -785,7 +780,7 @@ function thirdStepFirstCaseSecondAnimation() {
 				$("#initUnitNo1").effect('highlight',{color:'#da5805'}, 1000, function() {
 					buttonAppendFunction("#popover3", function() {
 						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i < n</span><br>In the "+
-								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
+								"<span class='ct-code-b-yellow'>condition</span> part only one operator "+
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 								"executes <span class='ct-code-teal'>1</span> "+
 								"time as <span class='ct-color-boolean'>true</span> because the key element is first element itself. "+
@@ -849,22 +844,24 @@ function thirdStepSecondCaseSecondAnimation() {
 				$("#initUnitNo2").effect('highlight',{color:'#da5805'}, 1000, function() {
 					buttonAppendFunction("#popover32", function() {
 						$("#initLine2").after("<li id='conditionLine2'><span class='for-loop-li-css'>i < n</span><br>In the "+
-								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
+								"<span class='ct-code-b-yellow'>condition</span> part only one operator "+
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
-								"executes <span class='ct-code-teal'>1</span> "+
-								"time as <span class='ct-color-boolean'>true</span> because the key element is first element itself. "+
-								"So it takes <span class='ct-code-b-yellow'>1</span> "+
-								"<span class='ct-code-teal'>unit of time</span>.</li>");
+								"executes <span class='ct-code-teal'>n/2</span> "+
+								"times as <span class='ct-color-boolean'>true</span> because the key element is at the middle position. "+
+								"So it takes <span class='ct-code-b-yellow'>n/2</span> "+
+								"<span class='ct-code-teal'>units of time</span>.</li>");
 						typing("#conditionLine2", $("#conditionLine2").html(), function() {
 							$("#forCondition").effect('highlight',{color:'#da5805'}, 1000, function() {
 								transferEffectFunction("#forCondition", "#conditionUnitNo2", function() {
 									$("#conditionUnitNo2").effect('highlight',{color:'#da5805'}, 1000, function() {
 										buttonAppendFunction("#popover32", function() {	
 											$("#conditionLine2").after("<li id='incrementLine2'><span class='for-loop-li-css'>i++</span><br>The "+
-													"<span class='ct-code-b-yellow'>increment</span> part doesn't not executed because the key element "+
-													"is found at first element then the <span class='ct-code-b-yellow'>break</span> statement "+
-													"terminate the for loop. So it takes <span class='ct-code-b-yellow'>0</span> "+
-													"<span class='ct-code-teal'>unit of time</span>.</li>");
+												"<span class='ct-code-b-yellow'>increment</span> part also only one operator "+
+												"<span class='ct-code-b-yellow'>++</span> is used and the <span class='ct-code-b-yellow'>"+
+												"increment</span> part executes <span class='ct-code-teal'>n/2</span> "+
+												"times as <span class='ct-color-boolean'>true</span> because the key element is at the middle position. "+
+												"So it takes <span class='ct-code-b-yellow'>n/2</span> "+
+												"<span class='ct-code-teal'>units of time</span>.</li>");
 											typing("#incrementLine2", $("#incrementLine2").html(), function() {
 												$("#forIncrement").effect('highlight',{color:'#da5805'}, 1000, function() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo2", function() {
@@ -914,22 +911,24 @@ function thirdStepThirdCaseSecondAnimation() {
 				$("#initUnitNo3").effect('highlight',{color:'#da5805'}, 1000, function() {
 					buttonAppendFunction("#popover33", function() {
 						$("#initLine3").after("<li id='conditionLine3'><span class='for-loop-li-css'>i < n</span><br>In the "+
-								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
+								"<span class='ct-code-b-yellow'>condition</span> part only one operator "+
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
-								"executes <span class='ct-code-teal'>1</span> "+
-								"time as <span class='ct-color-boolean'>true</span> because the key element is first element itself. "+
-								"So it takes <span class='ct-code-b-yellow'>1</span> "+
-								"<span class='ct-code-teal'>unit of time</span>.</li>");
+								"executes <span class='ct-code-teal'>n</span> times as <span class='ct-color-boolean'>true</span> and "+
+								"<span class='ct-code-teal'>1</span> time as <span class='ct-color-boolean'>false</span>. "+
+								"So it takes <span class='ct-code-b-yellow'>n+1</span> "+
+								"<span class='ct-code-teal'>units of time</span>.</li>");
 						typing("#conditionLine3", $("#conditionLine3").html(), function() {
 							$("#forCondition").effect('highlight',{color:'#da5805'}, 1000, function() {
 								transferEffectFunction("#forCondition", "#conditionUnitNo3", function() {
 									$("#conditionUnitNo3").effect('highlight',{color:'#da5805'}, 1000, function() {
 										buttonAppendFunction("#popover33", function() {
 											$("#conditionLine3").after("<li id='incrementLine3'><span class='for-loop-li-css'>i++</span><br>The "+
-													"<span class='ct-code-b-yellow'>increment</span> part doesn't not executed because the key element "+
-													"is found at first element then the <span class='ct-code-b-yellow'>break</span> statement "+
-													"terminate the for loop. So it takes <span class='ct-code-b-yellow'>0</span> "+
-													"<span class='ct-code-teal'>unit of time</span>.</li>");
+													"<span class='ct-code-b-yellow'>increment</span> part also only one operator "+
+													"<span class='ct-code-b-yellow'>++</span> is used and the <span class='ct-code-b-yellow'>"+
+													"increment</span> part executes <span class='ct-code-teal'>n</span> "+
+													"times as <span class='ct-color-boolean'>true</span>. "+
+													"So it takes <span class='ct-code-b-yellow'>n</span> "+
+													"<span class='ct-code-teal'>units of time</span>.</li>");
 											typing("#incrementLine3", $("#incrementLine3").html(), function() {
 												$("#forIncrement").effect('highlight',{color:'#da5805'}, 1000, function() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo3", function() {
@@ -955,10 +954,12 @@ function thirdStepThirdCaseSecondAnimation() {
 
 function fourthStepFirstCaseAnimation() {
 	$("#unitThirdLineText3").popover('hide');
+	$("#codeLine4").css("background", "#c0e1fb");
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitFirstLineText4', '#svg', 'svgLine4', 'marker', function() {
 		TweenMax.to($("#unitFirstLineTd4"), 0.5, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitFirstLineText4", 4);
-			var text = "";
+			var text = "If key element is first element itself then the <span class='ct-code-b-yellow'>==</span> operator executes only "+
+			"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.";
 			typing("#popover4", text, function() {
 				$("#doubleEqualOperator").effect('highlight',{color:'#da5805'}, 1000, function() {
 					transferEffectFunction("#doubleEqualOperator", "#unitFirstLineText4", function() {
@@ -978,7 +979,8 @@ function fourthStepSecondCaseAnimation() {
 	$("#unitFirstLineText4").popover('hide');
 	TweenMax.to($("#unitSecondLineTd4"), 0.5, {opacity: 1, onComplete: function() {
 		popoverAppendFunction("#unitSecondLineText4", 4);
-		var text = "";
+		var text = "If key element is at middle position then the <span class='ct-code-b-yellow'>==</span> operator executes "+
+		"<span class='ct-code-b-yellow'>n/2</span> <span class='ct-code-teal'>units of time</span>.";
 		typing("#popover4", text, function() {
 			$("#doubleEqualOperator").effect('highlight',{color:'#da5805'}, 1000, function() {
 				transferEffectFunction("#doubleEqualOperator", "#unitSecondLineText4", function() {
@@ -990,7 +992,6 @@ function fourthStepSecondCaseAnimation() {
 				});
 			});
 		});
-		
 	}});
 }
 
@@ -998,101 +999,37 @@ function fourthStepThirdCaseAnimation() {
 	$("#unitSecondLineText4").popover('hide');
 	TweenMax.to($("#unitThirdLineTd4"), 0.5, {opacity: 1, onComplete: function() {
 		popoverAppendFunction("#unitThirdLineText4", 4);
-		var text = "";
+		var text = "If element is not found then the <span class='ct-code-b-yellow'>==</span> operator executes "+
+		"<span class='ct-code-b-yellow'>n</span> <span class='ct-code-teal'>units of time</span>.";
 		typing("#popover4", text, function() {
 			$("#doubleEqualOperator").effect('highlight',{color:'#da5805'}, 1000, function() {
 				transferEffectFunction("#doubleEqualOperator", "#unitThirdLineText4", function() {
 					$("#unitThirdLineText4").effect('highlight',{color:'#da5805'}, 1000, function() {
 						$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 						'<span class="introjs-button user-btn" '+
-						'onclick="()">Next &#8594;</span></div>');
+						'onclick="fifthStepFirstCaseAnimation()">Next &#8594;</span></div>');
 					});
 				});
 			});
 		});
-		
 	}});
 }
 
-/* function thirdStepAnimation() {
-	$("#codeLine3").css("background", "#c0e1fb");
-	$("#unitThirdLineText2").popover('hide');
-//	$("#unitSecondLineText4").popover('hide');
-	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitFirstLineText3', '#svg', 'svgLine3', 'marker', function() {	
-		TweenMax.to($("#unitFirstLineTd3, #unitSecondLineTd3"), 0.5, {opacity: 1, onComplete: function() {
-			popoverAppendFunction("#unitSecondLineText3", 3);
-			var text = "<span class='step-color-css'>step-3 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
-			"<span class='ct-code-b-yellow'>1</span> unit of time.";
-			typing("#popover3", text, function() {
-				$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+
-						'<span class="introjs-button user-btn" onclick="fourthStepAnimation()">Next &#8594;</span></div>');
-			});
-		}});
-	});
-} */
-
-/* function fourthStepAnimation() {
-	$("#codeLine4").css("background", "#c0e1fb");
-	$("#unitSecondLineText3").popover('hide');
-	$("#unitSecondLineText5").popover('hide');
-	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitFirstLineText4', '#svg', 'svgLine4', 'marker', function() {	
-		TweenMax.to($("#unitFirstLineTd4, #unitSecondLineTd4"), 0.5, {opacity: 1, onComplete: function() {
-			popoverAppendFunction("#unitSecondLineText4", 4);
-			var text = "<span class='step-color-css'>step-4 :</span> No operation is involved in this statement. So "+
-			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
-			typing("#popover4", text, function() {
-				$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<a class="introjs-button user-back-btn" tabindex="-1" onclick="thirdStepAnimation()">&#8592; Back</a>'+
-						'<span class="introjs-button user-btn" onclick="fifthStepAnimation()">Next &#8594;</span></div>');
-			});
-		}});
-	});
-}
-
-function fifthStepAnimation() {
+function fifthStepFirstCaseAnimation() {
+	$("#unitThirdLineText4").popover('hide');
 	$("#codeLine5").css("background", "#c0e1fb");
-	$("#unitSecondLineText4").popover('hide');
-	$("#unitSecondLineText6").popover('hide');
-	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitFirstLineText5', '#svg', 'svgLine5', 'marker', function() {	
-		TweenMax.to($("#unitFirstLineTd5, #unitSecondLineTd5"), 0.5, {opacity: 1, onComplete: function() {
-			popoverAppendFunction("#unitSecondLineText5", 5);
-			var text = "<span class='step-color-css'>step-4 :</span><br><ul><li id='popover5Text1'>The <span class='ct-code-b-yellow'>+</span> "+
-			"operator takes <span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span></li></ul>";
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitFirstLineText5', '#svg', 'svgLine5', 'marker', function() {
+		TweenMax.to($("#unitFirstLineTd5"), 0.5, {opacity: 1, onComplete: function() {
+			popoverAppendFunction("#unitFirstLineText5", 5);
+			var text = "If key element is first element itself then the <span class='ct-code-b-yellow'>=</span> operator executes only "+
+			"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.";
 			typing("#popover5", text, function() {
-				$("#asteriskOperator").addClass("blinking").one('animationend', function() {
-					$("#asteriskOperator").removeClass("blinking").off();
-					transferEffectFunction("#asteriskOperator", "#unitSecondLineTdText1", function() {
-						$("#unitSecondLineTdText1").effect('highlight',{color:'#da5805'}, 1000, function() {
+				$("#equalOperator").effect('highlight',{color:'#da5805'}, 1000, function() {
+					transferEffectFunction("#equalOperator", "#unitFirstLineText5", function() {
+						$("#unitFirstLineText5").effect('highlight',{color:'#da5805'}, 1000, function() {
 							$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-									'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
-							$(".user-btn").click(function() {
-								$(".user-btn").remove();
-								$("#popover5Text1").after("<li id='popover5Text2'>We could not define the <span class='ct-code-b-yellow'>sum(a, n-1)</span> of unit count."+
-									" So the <span class='ct-code-teal'>units count</span> return as <span class='ct-code-b-yellow'>sum(n-1)</span>.</li>");
-								typing("#popover5Text2", $("#popover5Text2").html(), function() {
-									$("#sumOperator").addClass("blinking").one('animationend', function() {
-										$("#sumOperator").removeClass("blinking").off();
-										transferEffectFunction("#sumOperator", "#unitSecondLineTdText2", function() {
-											$("#unitSecondLineTdText2").effect('highlight',{color:'#da5805'}, 1000, function() {
-												$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-														'<span class="introjs-button user-btn" >Next &#8594;</span></div>');
-												$(".user-btn").click(function() {
-													$(".user-btn").remove();
-													$("#popover5Text2").after("<li id='popover5Text3'>The <span class='ct-code-b-yellow'>return</span> statement "+
-														"is not defined without knowing the <span class='ct-code-teal'>units count</span> of "+
-														"<span class='ct-code-b-yellow'>sum(n-1)</span>.</li>");
-													typing("#popover5Text3", $("#popover5Text3").html(), function() {
-														$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-														'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fourthStepAnimation()">&#8592; Back</a>'+
-														'<span class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</span></div>');
-													});
-												});
-											});
-										});
-									});
-								});
-							});
+							'<span class="introjs-button user-btn" '+
+							'onclick="fifthStepSecondCaseAnimation()">Next &#8594;</span></div>');
 						});
 					});
 				});
@@ -1101,60 +1038,92 @@ function fifthStepAnimation() {
 	});
 }
 
-function sixthStepAnimation() {
-	$("#codeLine6").css("background", "#c0e1fb");
+function fifthStepSecondCaseAnimation() {
+	$("#unitFirstLineText5").popover('hide');
+	TweenMax.to($("#unitSecondLineTd5"), 0.5, {opacity: 1, onComplete: function() {
+		popoverAppendFunction("#unitSecondLineText5", 5);
+		var text = "If key element is at middle position then the <span class='ct-code-b-yellow'>=</span> operator executes "+
+		"<span class='ct-code-b-yellow'>n/2</span> <span class='ct-code-teal'>units of time</span>.";
+		typing("#popover5", text, function() {
+			$("#equalOperator").effect('highlight',{color:'#da5805'}, 1000, function() {
+				transferEffectFunction("#equalOperator", "#unitSecondLineText5", function() {
+					$("#unitSecondLineText5").effect('highlight',{color:'#da5805'}, 1000, function() {
+						$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" '+
+						'onclick="fifthStepThirdCaseAnimation()">Next &#8594;</span></div>');
+					});
+				});
+			});
+		});
+	}});
+}
+
+function fifthStepThirdCaseAnimation() {
 	$("#unitSecondLineText5").popover('hide');
-	$("#unitSecondLineText7").popover('hide');
-	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitFirstLineText6', '#svg', 'svgLine6', 'marker', function() {	
-		TweenMax.to($("#unitFirstLineTd6, #unitSecondLineTd6"), 0.5, {opacity: 1, onComplete: function() {
-			popoverAppendFunction("#unitSecondLineText6", 6);
-			$("#popover6").append("<span id='popover6Text1'><span class='step-color-css'>step-6 :</span> No operation is involved in closed brace."+
-				"So the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.");
-			$('#popover6').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-					'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fifthStepAnimation()">&#8592; Back</a>'+
-					'<span class="introjs-button user-btn"  onclick="seventhStepAnimation()">Next &#8594;</span></div>');
+	TweenMax.to($("#unitThirdLineTd5"), 0.5, {opacity: 1, onComplete: function() {
+		popoverAppendFunction("#unitThirdLineText5", 5);
+		var text = "If element is not found then the <span class='ct-code-b-yellow'>=</span> operator executes "+
+		"<span class='ct-code-b-yellow'>n</span> <span class='ct-code-teal'>units of time</span>.";
+		typing("#popover5", text, function() {
+			$("#equalOperator").effect('highlight',{color:'#da5805'}, 1000, function() {
+				transferEffectFunction("#equalOperator", "#unitThirdLineText5", function() {
+					$("#unitThirdLineText5").effect('highlight',{color:'#da5805'}, 1000, function() {
+						$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" '+
+						'onclick="sixthStepAnimation()">Next &#8594;</span></div>');
+					});
+				});
+			});
+		});
+	}});
+}
+
+function sixthStepAnimation() {
+	$("#unitThirdLineText5").popover('hide');
+	$("#codeLine6").css("background", "#c0e1fb");
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitFirstLineText6', '#svg', 'svgLine6', 'marker', function() {
+		TweenMax.to($("#unitFirstLineTd6, #unitSecondLineTd6, #unitThirdLineTd6"), 0.5, {opacity: 1, onComplete: function() {
+			popoverAppendFunction("#unitThirdLineText6", 6);
+			$('#popover6').append("The <span class='ct-code-b-yellow'>break</span> statement didn't take any "+
+					"<span class='ct-code-teal'>unit of time</span>.");
+			$('#popover6').append('<div class="introjs-tooltipbuttons popover-btn-css"><span class="introjs-button user-btn" '+
+			'onclick="seventhStepAnimation()">Next &#8594;</span></div>');
 		}});
 	});
 }
 
 function seventhStepAnimation() {
-	$("#codeLine7").css("background", "#c0e1fb");
-	$("#unitSecondLineText6").popover('hide');
-	$("#unitSecondLineText8").popover('hide');
-	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine7', '#unitFirstLineText7', '#svg', 'svgLine7', 'marker', function() {	
-			TweenMax.to($("#unitFirstLineTd7, #unitSecondLineTd7"), 0.5, {opacity: 1, onComplete: function() {
-				$("#equalOperator, #plusOperator").removeClass("blinking").off();
-				popoverAppendFunction("#unitSecondLineText7", 7);
-				$("#popover7").append("<span id='popover6Text1'><span class='step-color-css'>step-6 :</span> No operation is involved in closed brace."+
-				"So the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.");
-				$('#popover7').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<a class="introjs-button user-back-btn" tabindex="-1" onclick="sixthStepAnimation()">&#8592; Back</a>'+
-						'<span class="introjs-button user-btn" onclick="eighthStepAnimation()">Next &#8594;</span></div>');
-			}});
+	$("#unitThirdLineText6").popover('hide');
+	$("#codeLine7, #codeLine8, #codeLine9").css("background", "#c0e1fb");
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine7', '#unitFirstLineText7', '#svg', 'svgLine7', 'marker');
+	TweenMax.to($("#unitFirstLineTd7, #unitSecondLineTd7, #unitThirdLineTd7"), 0.5, {opacity: 1});
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine8', '#unitFirstLineText8', '#svg', 'svgLine8', 'marker');
+	TweenMax.to($("#unitFirstLineTd8, #unitSecondLineTd8, #unitThirdLineTd8"), 0.5, {opacity: 1});
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine9', '#unitFirstLineText9', '#svg', 'svgLine9', 'marker', function() {
+		TweenMax.to($("#unitFirstLineTd9, #unitSecondLineTd9, #unitThirdLineTd9"), 0.5, {opacity: 1, onComplete:function() {
+		popoverAppendFunction("#unitThirdLineText8", 8);
+			$('#popover8').append("No operation is involved in closed braces. So "+
+					"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.");
+			$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css"><span class="introjs-button user-btn" '+
+			'onclick="eighthStepAnimation()">Next &#8594;</span></div>');
+		}});
 	});
 }
 
 function eighthStepAnimation() {
-	$("#unitSecondLineText7").popover('hide');
-	TweenMax.to($("#unitFirstLineTd8, #unitSecondLineTd8"), 0.5, {opacity: 1, onComplete: function() {
-		popoverAppendFunction("#unitSecondLineText8", 8);
-		var text = "The total unit count for <span class='ct-code-b-yellow'>sum(n)</span> : "+
-		"<ul><li><span class='ct-code-teal'>n <= 0</span> is <span class='ct-code-b-yellow'>2</span>.</li>"+
-		"<li><span class='ct-code-teal'>n > 0</span> is <span class='ct-code-b-yellow'>2 + sum(n-1)</span>.</li></ul>";
-		typing("#popover8", text, function() {
-			$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-					'<a class="introjs-button user-back-btn" tabindex="-1" onclick="seventhStepAnimation()">&#8592; Back</a>'+
-					'<span class="introjs-button user-btn">Next &#8594;</span></div>');
-			$(".user-btn").click(function() {
-				$("#unitLineText8").popover('hide');
-				introjs.nextStep();
-			});
-		});
+	$("#unitThirdLineText8").popover('hide');
+	TweenMax.to($("#codeLine10"), 0.5, {opacity: 1, onComplete:function() {
+		TweenMax.to($("#unitFirstLineTd10"), 0.5, {opacity: 1, onComplete:function() {
+			TweenMax.to($("#unitSecondLineTd10"), 0.5, {opacity: 1, onComplete:function() {
+				TweenMax.to($("#unitThirdLineTd10"), 0.5, {opacity: 1, onComplete:function() {
+					setTimeoutFunction();
+				}});
+			}});
+		}});
 	}});
 }
- */
+
 function typing(selector, text, callBackFunction) {
-//	if (var typingEffect == false) {
 	var typingSpeed = 0.01;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
@@ -1183,7 +1152,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	var topLength = l3.top - l4.top;
 	var leftLength = l3.left - l4.left;
 	$(selector2).removeClass("opacity00");
-	TweenMax.from(selector2, 0.3, {top: topLength, left: leftLength, onComplete: function() {	//	1
+	TweenMax.from(selector2, 0.8, {top: topLength, left: leftLength, onComplete: function() {	//	1
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
@@ -1258,7 +1227,7 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 	var x2 = $(selector2).offset().left - parentOffset.left;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
 	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(),0.1, {attr: {x2: x2, y2: y2}, onComplete: function() {	//	0.5
+	TweenMax.to($('#' + svgLineId).show(),0.6, {attr: {x2: x2, y2: y2}, onComplete: function() {	//	0.5
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
