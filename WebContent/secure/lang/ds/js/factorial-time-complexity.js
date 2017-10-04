@@ -52,8 +52,8 @@ function introGuide() {
 		switch(elementId) {
 		case 'infoDiv':
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
-				$("#line1").fadeTo(1000, 1, function() {
-					$("#line2").fadeTo(1000, 1, function() {
+				$("#line1").fadeTo(500, 1, function() {
+					$("#line2").fadeTo(500, 1, function() {
 						$("#infoDiv").addClass('z-index9999999');
 						$('#nextButton').removeClass("opacity00");
 						$('.user-btn').click(function() {
@@ -75,27 +75,7 @@ function introGuide() {
 				});
 				break;
 			case 'explanationOfUnits':
-				$("#codeLine1").css("background", "#c0e1fb");
-				svgAppend($('#divTable'), 'svg');
-				svgMarkerAppend($('#svg'), 'marker');
-				svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitLineText1', '#svg', 'svgLine1', 'marker', function() {	
-					TweenMax.to($("#unitLine1"), 1.5, {opacity: 1, onComplete: function() {
-						$("#unitLineText1").popover({
-							placement: 'right',
-							html: true,
-							trigger: 'focus',
-							content: '<div id="popover1"></div>',
-						}).popover('show');
-						$(".popover").css({"top" : "0px;"});
-						var text = "<span class='step-color-css'>step-1 :</span> This is the function header and no operation is involved so "+
-						"the <span class='ct-code-teal'>unit of time</span> count is <span class='ct-code-b-yellow'>0</span>.";
-						typing("#popover1", text, function() {
-							$('#popover1').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-									'<span class="introjs-button user-btn" onclick="secondStepAnimation()">Next &#8594;</span></div>');
-						});
-					}});
-				});
-				
+				firstStepAnimation();
 				break;
 			}
 			break;
@@ -137,14 +117,23 @@ function setTimeoutFunction() {
 	}, 2000);
 }
 
+function popoverAppendFunction(selector, divIdNum) {
+	$(selector).popover({
+		placement: 'right',
+		html: true,
+		trigger: 'focus',
+		content: '<div id="popover' + divIdNum +'"></div>',
+	}).popover('show');
+	$(".popover").css({"top" : "0px;"});
+}
+
 function codeLinesReveledFunction(i) {
-	$("#stepNo" + i).fadeTo("slow", 1);
-	$("#codeLine" + i).fadeTo("slow", 1, function() {
+	$("#stepNo" + i).fadeTo(200, 1);
+	$("#codeLine" + i).fadeTo(200, 1, function() {
 		if (i < ($("tr td:nth-child(2)").length - 1)) {
 			codeLinesReveledFunction(++i);
 		} else {
 			$(".introjs-tooltip").show();
-			/* $(".introjs-tooltiptext").append("<span><a class='introjs-button user-btn'>Next &#8594;</a></span>") */
 			var text = "This is the iterative code to find the factorial of a given number.<b/>" + 
 			"<ul><li>Now find the <span class='ct-code-b-yellow'>time complexity</span> of this function.</li>"+
 			"<li>The total number of units is measured depending upon the number of <span class='ct-code-b-yellow'>operations</span> "+
@@ -156,26 +145,46 @@ function codeLinesReveledFunction(i) {
 	});
 }
 
+function firstStepAnimation() {
+	$("#unitLineText2").popover('hide');
+	$("#codeLine1").css("background", "#c0e1fb");
+	svgAppend($('#divTable'), 'svg');
+	svgMarkerAppend($('#svg'), 'marker');
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitLineText1', '#svg', 'svgLine1', 'marker', function() {	
+		TweenMax.to($("#unitLine1"), 1.5, {opacity: 1, onComplete: function() {
+			popoverAppendFunction("#unitLineText1", 1);
+			/*.popover({
+				placement: 'right',
+				html: true,
+				trigger: 'focus',
+				content: '<div id="popover1"></div>',
+			}).popover('show');
+			$(".popover").css({"top" : "0px;"});*/
+			var text = "<span class='step-color-css'>step-1 :</span> This is the function header and no operation is involved so "+
+			"the <span class='ct-code-teal'>unit of time</span> count is <span class='ct-code-b-yellow'>0</span>.";
+			typing("#popover1", text, function() {
+				$('#popover1').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<span class="introjs-button user-btn" onclick="secondStepAnimation()">Next &#8594;</span></div>');
+			});
+		}});
+	});
+}
+
 function secondStepAnimation() {
 	$("#codeLine2").css("background", "#c0e1fb");
-	$("#unitLineText1").popover('hide');
+	$("#unitLineText1, #unitLineText3").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {	
 		TweenMax.to($("#unitLine2"), 1.5, {opacity: 1, onComplete: function() {
 			$("#operator1").addClass("blinking").one('animationend', function() {
 				$("#operator1").removeClass("blinking");
-				$("#unitLineText2").popover({
-					placement: 'right',
-					html: true,
-					trigger: 'focus',
-					content: '<div id="popover2"></div>',
-				}).popover('show');
-				$(".popover").css({"top" : "0px;"});
+				popoverAppendFunction("#unitLineText2", 2);
 			//	$("#operator1").effect('highlight',{color:'#da5805'}, 2000, function() {
 				var text = "<span class='step-color-css'>step-2 :</span> Only one operator "+
 				"<span class='ct-code-b-yellow'>=</span> is used in this statement, it takes "+
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.";
 				typing("#popover2", text, function() {
 					$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+							'<a class="introjs-button user-back-btn" tabindex="-1" onclick="firstStepAnimation()">&#8592; Back</a>'+
 							'<span class="introjs-button user-btn" onclick="thirdStepAnimation()">Next &#8594;</span></div>');
 				});
 			});
@@ -185,16 +194,10 @@ function secondStepAnimation() {
 
 function thirdStepAnimation() {
 	$("#codeLine3").css("background", "#c0e1fb");
-	$("#unitLineText2").popover('hide');
+	$("#unitLineText2, #unitLineText4").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitLineText3', '#svg', 'svgLine3', 'marker', function() {	
 		TweenMax.to($("#unitLine3"), 1.5, {opacity: 1, onComplete: function() {
-			$("#unitLineText3").popover({
-				placement: 'right',
-				html: true,
-				trigger: 'focus',
-				content: '<div id="popover3"></div>',
-			}).popover('show');
-			$(".popover").css({"top" : "0px;"});
+			popoverAppendFunction("#unitLineText3", 3);
 			var text = "<span id='popover3Text1'><span class='step-color-css'>step-3 :</span><br/>This for loop involves three instructions which are "+
 			"<span class='ct-code-b-yellow'>initialization</span>, "+
 			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>"
@@ -228,7 +231,7 @@ function thirdStepAnimationSecondStep() {
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 								"executes <span class='ct-code-teal'>n</span> "+
 								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
-								"So takes <span class='ct-code-b-yellow'>n + 1</span> "+
+								"So takes <span class='ct-code-b-yellow'>n+1</span> "+
 								"<span class='ct-code-teal'>units of time</span>.</li>");
 						typing("#conditionLine", $("#conditionLine").html(), function() {
 							$("#forCondition").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -249,8 +252,8 @@ function thirdStepAnimationSecondStep() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo", function() {
 														$("#incrementUnitNo").effect('highlight',{color:'#da5805'}, 1000, function() {
 															$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-																	'<span class="introjs-button user-btn" '+
-																	'onclick="fourthStepAnimation()">Next &#8594;</span></div>');
+															'<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+
+															'<a class="introjs-button user-btn" onclick="fourthStepAnimation()">Next &#8594;</a></div>');
 														});
 													});
 												});
@@ -270,18 +273,12 @@ function thirdStepAnimationSecondStep() {
 function fourthStepAnimation() {
 	//$(".user-btn").remove();
 	$("#codeLine4").css("background", "#c0e1fb");
-	$("#unitLineText3").popover('hide');
+	$("#unitLineText3, #unitLineText5").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitLineText4', '#svg', 'svgLine4', 'marker', function() {	
 		TweenMax.to($("#unitLine4"), 1.5, {opacity: 1, onComplete: function() {
 			$("#equalOperator, #mulOperator").addClass("blinking").one('animationend', function() {
 				$("#equalOperator, #mulOperator").removeClass("blinking").off();
-				$("#unitLineText4").popover({
-					placement: 'right',
-					html: true,
-					trigger: 'focus',
-					content: '<div id="popover4"></div>',
-				}).popover('show');
-				$(".popover").css({"top" : "0px;"});
+				popoverAppendFunction("#unitLineText4", 4);
 				var text = "<span class='step-color-css'>step-4 :</span><br/><ul><li> Only one statement is involved in the for loop which contains" +
 						" two operators <span class='ct-code-b-yellow'>=</span> and <span class='ct-code-b-yellow'>*</span>.</li>"+
 				"<li>This statement is executed <span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n</span>) "+
@@ -289,7 +286,8 @@ function fourthStepAnimation() {
 				"number of <span class='ct-code-teal'>units of time</span>.</li></ul>";
 				typing("#popover4", text, function() {
 					$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-							'<span class="introjs-button user-btn" onclick="fifthStepAnimation()">Next &#8594;</span></div>');
+						'<a class="introjs-button user-back-btn" tabindex="-1" onclick="thirdStepAnimation()">&#8592; Back</a>'+
+						'<span class="introjs-button user-btn" onclick="fifthStepAnimation()">Next &#8594;</span></div>');
 				});
 			});
 		}});
@@ -298,22 +296,17 @@ function fourthStepAnimation() {
 
 function fifthStepAnimation() {
 	$("#codeLine5").css("background", "#c0e1fb");
-	$("#unitLineText4").popover('hide');
+	$("#unitLineText4, #unitLineText6").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitLineText5', '#svg', 'svgLine5', 'marker', function() {	
 		TweenMax.to($("#unitLine5"), 1.5, {opacity: 1, onComplete: function() {
-			$("#unitLineText5").popover({
-				placement: 'right',
-				html: true,
-				trigger: 'focus',
-				content: '<div id="popover5"></div>',
-			}).popover('show');
-			$(".popover").css({"top" : "0px;"});
+			popoverAppendFunction("#unitLineText5", 5);
 			var text = "<span class='step-color-css'>step-5 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";	
 			"<span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover5", text, function() {
 				$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</span></div>');
+					'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fourthStepAnimation()">&#8592; Back</a>'+		
+					'<span class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</span></div>');
 			});
 		}});
 	});
@@ -321,23 +314,18 @@ function fifthStepAnimation() {
 
 function sixthStepAnimation() {
 	$("#codeLine6").css("background", "#c0e1fb");
-	$("#unitLineText5").popover('hide');
+	$("#unitLineText5, #unitLineText7").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitLineText6', '#svg', 'svgLine6', 'marker', function() {	
 		TweenMax.to($("#unitLine6"), 1.5, {opacity: 1, onComplete: function() {
 			$("#returnOperator").addClass("blinking").one('animationend', function() {
 				$("#returnOperator").removeClass("blinking");
-				$("#unitLineText6").popover({
-					placement: 'right',
-					html: true,
-					trigger: 'focus',
-					content: '<div id="popover6"></div>',
-				}).popover('show');
-				$(".popover").css({"top" : "0px;"});
+				popoverAppendFunction("#unitLineText6", 6);
 				var text = "<span class='step-color-css'>step-6 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
 					"<span class='ct-code-b-yellow'>1</span> unit of time.";
 				typing("#popover6", text, function() {
 					$('#popover6').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-							'<span class="introjs-button user-btn" onclick="seventhStepAnimation()">Next &#8594;</span></div>');
+						'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fifthStepAnimation()">&#8592; Back</a>'+
+						'<span class="introjs-button user-btn" onclick="seventhStepAnimation()">Next &#8594;</span></div>');
 				});
 			});
 		}});
@@ -349,18 +337,13 @@ function seventhStepAnimation() {
 	$("#unitLineText6").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine7', '#unitLineText7', '#svg', 'svgLine7', 'marker', function() {	
 		TweenMax.to($("#unitLine7"), 1.5, {opacity: 1, onComplete: function() {
-			$("#unitLineText7").popover({
-				placement: 'right',
-				html: true,
-				trigger: 'focus',
-				content: '<div id="popover7"></div>',
-			}).popover('show');
-			$(".popover").css({"top" : "0px;"});
+			popoverAppendFunction("#unitLineText7", 7);
 			var text = "<span class='step-color-css'>step-7 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover7", text, function() {
 				$('#popover7').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" onclick="eigthStepAnimation()">Next &#8594;</span></div>');
+					'<a class="introjs-button user-back-btn" tabindex="-1" onclick="sixthStepAnimation()">&#8592; Back</a>'+
+					'<span class="introjs-button user-btn" onclick="eigthStepAnimation()">Next &#8594;</span></div>');
 			});
 		}});
 	});
@@ -369,13 +352,7 @@ function seventhStepAnimation() {
 function eigthStepAnimation() {
 	$("#unitLineText7").popover('hide');
 	TweenMax.to($("#unitLine8, #codeLine8"), 1.5, {opacity: 1, onComplete: function() {
-		$("#unitLineText8").popover({
-			placement: 'right',
-			html: true,
-			trigger: 'focus',
-			content: '<div id="popover8"></div>',
-		}).popover('show');
-		$(".popover").css({"top" : "0px;"});
+		popoverAppendFunction("#unitLineText8", 8);
 		var text = "The total unit count is <span class='ct-code-b-yellow'>4n + 4</span>.";
 		typing("#popover8", text, function() {
 			$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -389,7 +366,7 @@ function eigthStepAnimation() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 0.5;
+	var typingSpeed = 0.01;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -463,7 +440,7 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 	var x2 = $(selector2).offset().left - parentOffset.left;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
 	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(),1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+	TweenMax.to($('#' + svgLineId).show(),0.6, {attr: {x2: x2, y2: y2}, onComplete: function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}

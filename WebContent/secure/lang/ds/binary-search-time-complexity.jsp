@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<title>linear search time complexity</title>
+<title>binary search time complexity</title>
 
 <style type="text/css">
 #infoDiv {
@@ -125,7 +125,7 @@ td:nth-child(4), td:nth-child(5) {
 
 .blinking {
 	animation-name: blink;
-	animation-duration: 0.8s;
+	animation-duration: 0.4s;
 	animation-iteration-count: 3;
 }
 
@@ -237,7 +237,7 @@ span {
 }
 
 .user-back-btn {
-	background: #5bc0de !important
+	background: #5bc0de !important;
 }
 
 </style>
@@ -249,7 +249,7 @@ span {
 <div class="col-xs-12">
 	<div class="text-center margin-top-1">
 		<h3 class='label ct-demo-heading' id="heading">
-			<span>Time Complexity of Linear Search</span>
+			<span>Time Complexity of Binary Search</span>
 		</h3>
 	</div>
 	<div class="col-xs-12 margin-top-3">
@@ -270,149 +270,142 @@ span {
 						<th><span class="opacity00" id="unitsForHigher">Element is not found</span></th>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo1">1.</td>
-						<td class="td-code-text" id="tdCodeLine1">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1">int linear_search(int a[], int key, int n) {</span>
+						<td>1.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>int binary_search(int a[], int key, int n) {</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd1">
-							<span id="unitFirstLineText1" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd1">
-							<span id="unitSecondLineText1" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd1">
-							<span id="unitThirdLineText1" style="padding: 2px 42px;">-</span>
-						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine2">int i, pos <span id="operator1">=</span> -1;</span>
+						<td>2.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>int low, high, mid, flag = -1;</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd2">
-							<span id="unitFirstLineText2" style="padding: 2px 42px;">1</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd2">
-							<span id="unitSecondLineText2" style="padding: 2px 42px;">1</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd2">
-							<span id="unitThirdLineText2" style="padding: 2px 42px;">1</span>
-						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo3">3.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine3">
-							for (<span id="forInit">i = 0</span>; <span id="forCondition">i < n;</span> <span id="forIncrement">i++</span>) {</span> 
+						<td>3.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>low = 0;</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd3">
-							<span id="unitFirstLineText3" style="padding: 2px 17px;">
-								<span id="initUnitNo1">1</span> + <span id="conditionUnitNo1">1</span> + <span id="incrementUnitNo1">0</span></span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd3">
-							<span id="unitSecondLineText3">
-								<span id="initUnitNo2">1</span> + <span id="conditionUnitNo2">(n / 2)</span> + <span id="incrementUnitNo2">(n / 2)</span>
-							</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd3">
-							<span id="unitThirdLineText3">
-								<span id="initUnitNo3">1</span> + <span id="conditionUnitNo3">n + 1</span> + <span id="incrementUnitNo3">n</span>
-							</span>
-						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo4">4.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine4">if (key <span id="doubleEqualOperator">==</span> a[i]) {</span> 
+						<td>4.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>high = n - 1;</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd4">
-							<span id="unitFirstLineText4" style="padding: 2px 42px;">1</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd4">
-							<span id="unitSecondLineText4">(n / 2)</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd4">
-							<span id="unitThirdLineText4" style="padding: 2px 42px;">n</span>
-						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo5">5.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine5">pos <span id="equalOperator">=</span> i;</span> 
+						<td>5.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>while(flag == -1 && low <= high) {</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd5">
-							<span id="unitFirstLineText5" style="padding: 2px 42px;">1</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd5">
-							<span id="unitSecondLineText5">(n / 2)</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd5">
-							<span id="unitThirdLineText5" style="padding: 2px 42px;">n</span>
-						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine6">break;</span></span> 
+						<td>6.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>mid = (low + high) / 2;</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd6">
-							<span id="unitFirstLineText6" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd6">
-							<span id="unitSecondLineText6" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd6">
-							<span id="unitThirdLineText6" style="padding: 2px 42px;">-</span>
-						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
-						<td class="opacity00" id="stepNo7">7.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine7">}</span>
+						<td>7.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>if (a[mid] == key) {</span>
 						</td>
-						<td class="opacity00" id="unitFirstLineTd7">
-							<span id="unitFirstLineText7" style="padding: 2px 42px;">-</span>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>8.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>flag = mid;</span>
 						</td>
-						<td class="opacity00" id="unitSecondLineTd7">
-							<span id="unitSecondLineText7" style="padding: 2px 2px;">-</span>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>9.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>break;</span>
 						</td>
-						<td class="opacity00" id="unitThirdLineTd7">
-							<span id="unitThirdLineText7" style="padding: 2px 2px;">-</span>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>10.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>} else if (a[mid] < key) {</span>
 						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>11.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>low = mid + 1;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>12.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>} else if (a[mid] > key) {</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>13.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>high = mid - 1;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>14.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>}</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>15.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>}</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>16.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>return flag;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>17.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>}</span>
+						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					
-					<tr>
-						<td class="opacity00" id="stepNo8">8.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine8">}</span>
-						</td>
-						<td class="opacity00" id="unitFirstLineTd8">
-							<span id="unitFirstLineText8" style="padding: 2px 42px;">-</span></td>
-						<td class="opacity00" id="unitSecondLineTd8">
-							<span id="unitSecondLineText8" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd8">
-							<span id="unitThirdLineText8" style="padding: 2px 42px;">-</span>
-						</td>
-					</tr>
-					<tr>
-						<td class="opacity00" id="stepNo9">9.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine9">}</span>
-						</td>
-						<td class="opacity00" id="unitFirstLineTd9">
-							<span id="unitFirstLineText9" style="padding: 2px 42px;">-</span></td>
-						<td class="opacity00" id="unitSecondLineTd9">
-							<span id="unitSecondLineText9" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitThirdLineTd9">
-							<span id="unitThirdLineText9" style="padding: 2px 42px;">-</span>
-						</td>
-					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo10"></td>
 						<td class="td-code-text">
@@ -455,14 +448,11 @@ span {
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
 		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>
 	</div>
-	<!-- <span id=""> - Time complexity is big O(1)</span>
-	 - Time complexity is big O(n)
-	  - Time complexity is big O(n) -->
 </div>
 </body>
 <script>
 $(document).ready(function() {
-//	$(".opacity00").removeClass("opacity00");
+	$(".opacity00").removeClass("opacity00");
 	introGuide();
 });
 
@@ -540,11 +530,11 @@ function introGuide() {
 			$(".introjs-helperLayer").one('transitionend', function() {
 				$("#explanationDiv").removeClass("opacity00");
 				$("#line1").fadeTo(1000, 1, function() {
-					tweenmaxAnimation("#unitFirstLineText10", "#firstCase", function() {
+					tweenMaxAnimation("#unitFirstLineText10", "#firstCase", function() {
 						$("#line2").fadeTo(1000, 1, function() {
-							tweenmaxAnimation("#unitSecondLineText10", "#secondCase", function() {
+							tweenMaxAnimation("#unitSecondLineText10", "#secondCase", function() {
 								$("#line3").fadeTo(1000, 1, function() {
-									tweenmaxAnimation("#unitThirdLineText10", "#thirdCase", function() {
+									tweenMaxAnimation("#unitThirdLineText10", "#thirdCase", function() {
 										fadeToAndTransferAction("#firstCaseComplexity", "#firstCase", "#result1", function() {
 											fadeToAndTransferAction("#secondCaseComplexity", "#valueN1", "#result2", function() {
 												fadeToAndTransferAction("#thirdCaseComplexity", "#valueN2", "#result3", function() {
@@ -568,7 +558,7 @@ function introGuide() {
 					TweenMax.to($("#finalLine1"), 1.5, {opacity: 1, onComplete: function() {
 						$("#unitSecondLineText15").effect('highlight',{color:'#da5805'}, 1500, function() {
 							$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
-								tweenmaxAnimation("#alphabetN1", "#alphabetN2", function() {
+								tweenMaxAnimation("#alphabetN1", "#alphabetN2", function() {
 									setTimeoutFunction();
 								});
 							});
@@ -632,10 +622,12 @@ function popoverLeftSideAppendFunction(selector, divIdNum) {
 
 function fadeToAndTransferAction(selector1, selector2, selector3, callBackFunction) {
 	$(selector1).fadeTo(1000, 1, function() {
-		transferEffectFunction(selector2, selector3, function() {
-			if (typeof callBackFunction === "function") {
-				callBackFunction();
-			}
+		$(selector2).effect('highlight',{color:'#da5805'}, 800, function() {
+			transferEffectFunction(selector2, selector3, function() {
+				if (typeof callBackFunction === "function") {
+					callBackFunction();
+				}
+			});
 		});
 	});
 }
@@ -676,9 +668,9 @@ function codeLinesReveledFunction(i) {
 	});
 }
 
-function firstAnimation(selector1, selector2, selector3, selector4, value, callBackFunction) {
+/* function firstAnimation(selector1, selector2, selector3, selector4, value, callBackFunction) {
 	$(selector1).effect('highlight',{color:'#da5805'}, 1500, function() {
-		tweenmaxAnimation(selector1, selector2, function() {
+		tweenMaxAnimation(selector1, selector2, function() {
 			transferEffectFunction(selector3, selector4, function() {
 				$(selector4).effect( "highlight", {color:"#FFD700"}, 2000);
 				flipEffect(selector4, value, function() {
@@ -692,7 +684,7 @@ function firstAnimation(selector1, selector2, selector3, selector4, value, callB
 }
 
 function secondAnimation(id1, id2, id3, value1, id4, value2, id5, id6, callBackFunction) {
-	tweenmaxAnimation(id1, id2, function() {
+	tweenMaxAnimation(id1, id2, function() {
 		$(id3).effect( "highlight", {color:"#FFD700"}, 2000);
 			flipEffect(id3, value1, function() {
 			$(id4).effect( "highlight", {color:"#FFD700"}, 2000);
@@ -706,11 +698,11 @@ function secondAnimation(id1, id2, id3, value1, id4, value2, id5, id6, callBackF
 			});
 		});
 	});
-}
+} */
 
 function firstStepAnimation() {
 	$("#codeLine1").css("background", "#c0e1fb");
-	$("#unitSecondLineText2").popover('hide');
+	$("#unitThirdLineText2").popover('hide');
 	svgAppend($('#divTable'), 'svg');
 	svgMarkerAppend($('#svg'), 'marker');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitFirstLineText1', '#svg', 'svgLine1', 'marker', function() {
@@ -728,7 +720,7 @@ function firstStepAnimation() {
 
 function secondStepAnimation() {
 	$("#codeLine2").css("background", "#c0e1fb");
-	$("#unitThirdLineText1").popover('hide');
+	$("#unitThirdLineText1, #unitFirstLineText3").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitFirstLineText2', '#svg', 'svgLine2', 'marker', function() {	
 		$("#operator1").addClass("blinking").one('animationend', function() {
 			$("#operator1").removeClass("blinking").off();
@@ -739,8 +731,8 @@ function secondStepAnimation() {
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.</span>";
 				typing("#popover2", text, function() {
 					$('#popover2').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="firstStepAnimation()">&#8592; Back</a>'+ */
-						'<span class="introjs-button user-btn" onclick="thirdStepFirstCaseAnimation()">Next &#8594;</span></div>');
+						'<a class="introjs-button user-back-btn" tabindex="-1" onclick="firstStepAnimation()">&#8592; Back</a>'+
+						'<a class="introjs-button user-btn" onclick="thirdStepFirstCaseAnimation()">Next &#8594;</a></div>');
 				});
 			}});
 		});
@@ -751,7 +743,7 @@ function secondStepAnimation() {
 
 function thirdStepFirstCaseAnimation() {
 	$("#codeLine3").css("background", "#c0e1fb");
-	$("#unitThirdLineText2").popover('hide');
+	$("#unitThirdLineText2, #unitSecondLineText3").popover('hide');
 //	$("#unitSecondLineText4").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitFirstLineText3', '#svg', 'svgLine3', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd3"), 0.5, {opacity: 1, onComplete: function() {
@@ -762,7 +754,7 @@ function thirdStepFirstCaseAnimation() {
 			typing("#popover3", text, function() {
 				$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 						/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+ */
-						'<span class="introjs-button user-btn" onclick="thirdStepFirstCaseSecondAnimation()">Next &#8594;</span></div>');
+						'<a class="introjs-button user-btn" onclick="thirdStepFirstCaseSecondAnimation()">Next &#8594;</a></div>');
 			});
 		}});
 	});
@@ -792,7 +784,7 @@ function thirdStepFirstCaseSecondAnimation() {
 									$("#conditionUnitNo1").effect('highlight',{color:'#da5805'}, 1000, function() {
 										buttonAppendFunction("#popover3", function() {
 											$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i++</span><br>The "+
-													"<span class='ct-code-b-yellow'>increment</span> part doesn't not executed because the key element "+
+													"<span class='ct-code-b-yellow'>increment</span> part doesn't executed because the key element "+
 													"is found at first element then the <span class='ct-code-b-yellow'>break</span> statement "+
 													"terminate the for loop. So it takes <span class='ct-code-b-yellow'>0</span> "+
 													"<span class='ct-code-teal'>unit of time</span>.</li>");
@@ -801,8 +793,8 @@ function thirdStepFirstCaseSecondAnimation() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo1", function() {
 														$("#incrementUnitNo1").effect('highlight',{color:'#da5805'}, 1000, function() {
 															$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-																'<span class="introjs-button user-btn" '+
-																'onclick="thirdStepSecondCaseAnimation()">Next &#8594;</span></div>');
+															'<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+
+															'<a class="introjs-button user-btn" onclick="thirdStepSecondCaseAnimation()">Next &#8594;</a></div>');
 														});
 													});
 												});
@@ -820,14 +812,13 @@ function thirdStepFirstCaseSecondAnimation() {
 }
 
 function thirdStepSecondCaseAnimation() {
-	$("#unitFirstLineText3").popover('hide');
+	$("#unitFirstLineText3, #unitThirdLineText3").popover('hide');
 	popoverAppendFunction("#unitSecondLineText3", 32);
 	var text = "<span id='popover3Text2'><span class='step-color-css'>step-3 :</span><br/>If element is at the middile position then.</span>"
 		typing("#popover32", text, function() {
 			TweenMax.to($("#unitSecondLineTd3"), 0.5, {opacity: 1, onComplete: function() {
 			$('#popover32').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-				/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+ */
-				'<span class="introjs-button user-btn" onclick="thirdStepSecondCaseSecondAnimation()">Next &#8594;</span></div>');
+				'<a class="introjs-button user-btn" onclick="thirdStepSecondCaseSecondAnimation()">Next &#8594;</a></div>');
 		}});
 	});
 }
@@ -867,8 +858,8 @@ function thirdStepSecondCaseSecondAnimation() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo2", function() {
 														$("#incrementUnitNo2").effect('highlight',{color:'#da5805'}, 1000, function() {
 															$('#popover32').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-																	'<span class="introjs-button user-btn" '+
-																	'onclick="thirdStepThirdCaseAnimation()">Next &#8594;</span></div>');
+															'<a class="introjs-button user-back-btn" tabindex="-1" onclick="thirdStepFirstCaseAnimation()">&#8592; Back</a>'+
+															'<a class="introjs-button user-btn" onclick="thirdStepThirdCaseAnimation()">Next &#8594;</a></div>');
 														});
 													});
 												});
@@ -887,13 +878,12 @@ function thirdStepSecondCaseSecondAnimation() {
 
 
 function thirdStepThirdCaseAnimation() {
-	$("#unitSecondLineText3").popover('hide');
+	$("#unitSecondLineText3, #unitFirstLineText4").popover('hide');
 	popoverAppendFunction("#unitThirdLineText3", 33);
 	var text = "<span id='popover3Text3'><span class='step-color-css'>step-3 :</span><br/>If element is not found.</span>"
 		typing("#popover33", text, function() {
 			TweenMax.to($("#unitThirdLineTd3"), 0.5, {opacity: 1, onComplete: function() {
 			$('#popover33').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-				/* '<a class="introjs-button user-back-btn" tabindex="-1" onclick="secondStepAnimation()">&#8592; Back</a>'+ */
 				'<span class="introjs-button user-btn" onclick="thirdStepThirdCaseSecondAnimation()">Next &#8594;</span></div>');
 		}});
 	});
@@ -934,8 +924,8 @@ function thirdStepThirdCaseSecondAnimation() {
 													transferEffectFunction("#forIncrement", "#incrementUnitNo3", function() {
 														$("#incrementUnitNo3").effect('highlight',{color:'#da5805'}, 1000, function() {
 															$('#popover33').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-																	'<span class="introjs-button user-btn" '+
-																	'onclick="fourthStepFirstCaseAnimation()">Next &#8594;</span></div>');
+															'<a class="introjs-button user-back-btn" tabindex="-1" onclick="thirdStepSecondCaseAnimation()">&#8592; Back</a>'+
+															'<a class="introjs-button user-btn" onclick="fourthStepFirstCaseAnimation()">Next &#8594;</a></div>');
 														});
 													});
 												});
@@ -953,7 +943,7 @@ function thirdStepThirdCaseSecondAnimation() {
 }
 
 function fourthStepFirstCaseAnimation() {
-	$("#unitThirdLineText3").popover('hide');
+	$("#unitThirdLineText3, #unitSecondLineText4").popover('hide');
 	$("#codeLine4").css("background", "#c0e1fb");
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitFirstLineText4', '#svg', 'svgLine4', 'marker', function() {
 		TweenMax.to($("#unitFirstLineTd4"), 0.5, {opacity: 1, onComplete: function() {
@@ -965,8 +955,8 @@ function fourthStepFirstCaseAnimation() {
 					transferEffectFunction("#doubleEqualOperator", "#unitFirstLineText4", function() {
 						$("#unitFirstLineText4").effect('highlight',{color:'#da5805'}, 1000, function() {
 							$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-							'<span class="introjs-button user-btn" '+
-							'onclick="fourthStepSecondCaseAnimation()">Next &#8594;</span></div>');
+								'<a class="introjs-button user-back-btn" tabindex="-1" onclick="thirdStepThirdCaseAnimation()">&#8592; Back</a>'+
+								'<a class="introjs-button user-btn" onclick="fourthStepSecondCaseAnimation()">Next &#8594;</a></div>');
 						});
 					});
 				});
@@ -976,7 +966,7 @@ function fourthStepFirstCaseAnimation() {
 }
 
 function fourthStepSecondCaseAnimation() {
-	$("#unitFirstLineText4").popover('hide');
+	$("#unitFirstLineText4, #unitThirdLineText4").popover('hide');
 	TweenMax.to($("#unitSecondLineTd4"), 0.5, {opacity: 1, onComplete: function() {
 		popoverAppendFunction("#unitSecondLineText4", 4);
 		var text = "If key element is at middle position then the <span class='ct-code-b-yellow'>==</span> operator executes "+
@@ -986,8 +976,8 @@ function fourthStepSecondCaseAnimation() {
 				transferEffectFunction("#doubleEqualOperator", "#unitSecondLineText4", function() {
 					$("#unitSecondLineText4").effect('highlight',{color:'#da5805'}, 1000, function() {
 						$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" '+
-						'onclick="fourthStepThirdCaseAnimation()">Next &#8594;</span></div>');
+							'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fourthStepFirstCaseAnimation()">&#8592; Back</a>'+
+							'<a class="introjs-button user-btn" onclick="fourthStepThirdCaseAnimation()">Next &#8594;</a></div>');
 					});
 				});
 			});
@@ -996,7 +986,7 @@ function fourthStepSecondCaseAnimation() {
 }
 
 function fourthStepThirdCaseAnimation() {
-	$("#unitSecondLineText4").popover('hide');
+	$("#unitSecondLineText4, #unitFirstLineText5").popover('hide');
 	TweenMax.to($("#unitThirdLineTd4"), 0.5, {opacity: 1, onComplete: function() {
 		popoverAppendFunction("#unitThirdLineText4", 4);
 		var text = "If element is not found then the <span class='ct-code-b-yellow'>==</span> operator executes "+
@@ -1006,8 +996,8 @@ function fourthStepThirdCaseAnimation() {
 				transferEffectFunction("#doubleEqualOperator", "#unitThirdLineText4", function() {
 					$("#unitThirdLineText4").effect('highlight',{color:'#da5805'}, 1000, function() {
 						$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" '+
-						'onclick="fifthStepFirstCaseAnimation()">Next &#8594;</span></div>');
+							'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fourthStepSecondCaseAnimation()">&#8592; Back</a>'+
+							'<a class="introjs-button user-btn" onclick="fifthStepFirstCaseAnimation()">Next &#8594;</a></div>');
 					});
 				});
 			});
@@ -1016,7 +1006,7 @@ function fourthStepThirdCaseAnimation() {
 }
 
 function fifthStepFirstCaseAnimation() {
-	$("#unitThirdLineText4").popover('hide');
+	$("#unitThirdLineText4, #unitSecondLineText5").popover('hide');
 	$("#codeLine5").css("background", "#c0e1fb");
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitFirstLineText5', '#svg', 'svgLine5', 'marker', function() {
 		TweenMax.to($("#unitFirstLineTd5"), 0.5, {opacity: 1, onComplete: function() {
@@ -1028,8 +1018,8 @@ function fifthStepFirstCaseAnimation() {
 					transferEffectFunction("#equalOperator", "#unitFirstLineText5", function() {
 						$("#unitFirstLineText5").effect('highlight',{color:'#da5805'}, 1000, function() {
 							$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-							'<span class="introjs-button user-btn" '+
-							'onclick="fifthStepSecondCaseAnimation()">Next &#8594;</span></div>');
+								'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fourthStepThirdCaseAnimation()">&#8592; Back</a>'+
+								'<a class="introjs-button user-btn" onclick="fifthStepSecondCaseAnimation()">Next &#8594;</a></div>');
 						});
 					});
 				});
@@ -1039,7 +1029,7 @@ function fifthStepFirstCaseAnimation() {
 }
 
 function fifthStepSecondCaseAnimation() {
-	$("#unitFirstLineText5").popover('hide');
+	$("#unitFirstLineText5, #unitThirdLineText5").popover('hide');
 	TweenMax.to($("#unitSecondLineTd5"), 0.5, {opacity: 1, onComplete: function() {
 		popoverAppendFunction("#unitSecondLineText5", 5);
 		var text = "If key element is at middle position then the <span class='ct-code-b-yellow'>=</span> operator executes "+
@@ -1049,8 +1039,8 @@ function fifthStepSecondCaseAnimation() {
 				transferEffectFunction("#equalOperator", "#unitSecondLineText5", function() {
 					$("#unitSecondLineText5").effect('highlight',{color:'#da5805'}, 1000, function() {
 						$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" '+
-						'onclick="fifthStepThirdCaseAnimation()">Next &#8594;</span></div>');
+							'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fifthStepFirstCaseAnimation()">&#8592; Back</a>'+
+							'<a class="introjs-button user-btn" onclick="fifthStepThirdCaseAnimation()">Next &#8594;</a></div>');
 					});
 				});
 			});
@@ -1059,7 +1049,7 @@ function fifthStepSecondCaseAnimation() {
 }
 
 function fifthStepThirdCaseAnimation() {
-	$("#unitSecondLineText5").popover('hide');
+	$("#unitSecondLineText5, #unitThirdLineText6").popover('hide');
 	TweenMax.to($("#unitThirdLineTd5"), 0.5, {opacity: 1, onComplete: function() {
 		popoverAppendFunction("#unitThirdLineText5", 5);
 		var text = "If element is not found then the <span class='ct-code-b-yellow'>=</span> operator executes "+
@@ -1069,8 +1059,8 @@ function fifthStepThirdCaseAnimation() {
 				transferEffectFunction("#equalOperator", "#unitThirdLineText5", function() {
 					$("#unitThirdLineText5").effect('highlight',{color:'#da5805'}, 1000, function() {
 						$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-						'<span class="introjs-button user-btn" '+
-						'onclick="sixthStepAnimation()">Next &#8594;</span></div>');
+							'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fifthStepSecondCaseAnimation()">&#8592; Back</a>'+
+							'<a class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</a></div>');
 					});
 				});
 			});
@@ -1079,15 +1069,16 @@ function fifthStepThirdCaseAnimation() {
 }
 
 function sixthStepAnimation() {
-	$("#unitThirdLineText5").popover('hide');
+	$("#unitThirdLineText5, #unitThirdLineText8").popover('hide');
 	$("#codeLine6").css("background", "#c0e1fb");
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitFirstLineText6', '#svg', 'svgLine6', 'marker', function() {
 		TweenMax.to($("#unitFirstLineTd6, #unitSecondLineTd6, #unitThirdLineTd6"), 0.5, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitThirdLineText6", 6);
 			$('#popover6').append("The <span class='ct-code-b-yellow'>break</span> statement didn't take any "+
 					"<span class='ct-code-teal'>unit of time</span>.");
-			$('#popover6').append('<div class="introjs-tooltipbuttons popover-btn-css"><span class="introjs-button user-btn" '+
-			'onclick="seventhStepAnimation()">Next &#8594;</span></div>');
+			$('#popover6').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+				'<a class="introjs-button user-back-btn" tabindex="-1" onclick="fifthStepThirdCaseAnimation()">&#8592; Back</a>'+
+				'<a class="introjs-button user-btn" onclick="seventhStepAnimation()">Next &#8594;</a></div>');
 		}});
 	});
 }
@@ -1104,8 +1095,9 @@ function seventhStepAnimation() {
 		popoverAppendFunction("#unitThirdLineText8", 8);
 			$('#popover8').append("No operation is involved in closed braces. So "+
 					"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.");
-			$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css"><span class="introjs-button user-btn" '+
-			'onclick="eighthStepAnimation()">Next &#8594;</span></div>');
+			$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+					'<a class="introjs-button user-back-btn" tabindex="-1" onclick="sixthStepAnimation()">&#8592; Back</a>'+
+					'<a class="introjs-button user-btn" onclick="eighthStepAnimation()">Next &#8594;</a></div>');
 		}});
 	});
 }
@@ -1146,7 +1138,7 @@ function transferEffectFunction(selector1, selector2, callBackFunction) {
 	});
 }
 
-function tweenmaxAnimation(selector1, selector2, callBackFunction) {
+function tweenMaxAnimation(selector1, selector2, callBackFunction) {
 	var l3 = $(selector1).offset();
 	var l4 = $(selector2).offset();
 	var topLength = l3.top - l4.top;
@@ -1227,7 +1219,7 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 	var x2 = $(selector2).offset().left - parentOffset.left;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
 	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(),0.6, {attr: {x2: x2, y2: y2}, onComplete: function() {	//	0.5
+	TweenMax.to($('#' + svgLineId).show(),0.4, {attr: {x2: x2, y2: y2}, onComplete: function() {	//	0.5
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}

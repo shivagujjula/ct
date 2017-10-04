@@ -125,7 +125,7 @@ td:nth-child(4) {
 
 .blinking {
 	animation-name: blink;
-	animation-duration: 0.8s;
+	animation-duration: 0.4s;
 	animation-iteration-count: 3;
 }
 
