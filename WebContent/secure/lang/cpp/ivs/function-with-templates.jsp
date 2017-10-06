@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js/function-with-templates.js"></script>
-<!-- <script src="/secure/lang/cpp/js-min/fwt.min.js"></script> -->
+<script src="/secure/lang/cpp/js-min/fwt.min.js"></script>
 <title>Function With Templates</title>
 <style type="text/css">
 #informationDiv {

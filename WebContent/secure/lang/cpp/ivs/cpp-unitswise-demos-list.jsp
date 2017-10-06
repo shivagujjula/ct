@@ -1363,11 +1363,11 @@
 						<td>53</td>
 						<td>Functions</td>
 						<td>
-							<div>
+							<!-- <div>
 								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('function overloading', 'function-overloading.jsp', 1, 1)"><i
+									href="javascript:opendialog('function overloading', 'function-overloading-in-cpp.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">function overloading</span>
-							</div>
+							</div> -->
 							
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1588,13 +1588,25 @@
 						<td></td>
 					</tr>
 					
+					<tr>
+						<td>6</td>
+						<td>Friend functions</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Friend functions', 'friend-function.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Friend functions</span></td>
+						<td>Anil</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					
 					<!-- <tr>
 						<td>1</td>
 						<td></td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('', '', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
-						<td>Shanthan</td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>

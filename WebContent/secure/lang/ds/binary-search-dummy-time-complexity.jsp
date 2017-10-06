@@ -87,7 +87,7 @@ td:nth-child(4), td:nth-child(5) {
 }
 
 .popover {
-	z-index: 9999999 !important;
+	z-index: 9999999;
 	width: 260px;
 }
 
@@ -240,17 +240,6 @@ span {
 	background: #5bc0de !important;
 }
 
-.creamPreTab4 {
-	-moz-tab-size: 4;
-	background-color: #fffae6;
-	border-radius: 8px;
-	font-size: 13px;
-	margin: 5px;
-	padding: 10px;
-	white-space: pre;
-	font-family: monospace;
-}
-
 </style>
 </head>
 <body>
@@ -264,44 +253,175 @@ span {
 		</h3>
 	</div>
 	<div class="col-xs-12 margin-top-3">
-		<div class="col-xs-5">
-<pre class="creamPreTab4" id="preCode1" style="font-size: 12px;">
-<span id="line1">int binary_search_it(int a[10], int n, int key) {</span>
-	int low, high, mid, flag = -1;
-	low = 0, high = n - 1;
-	while (flag == -1 && low <= high) {
-		mid = (low + high) / 2;
-		if (a[mid] == key) {
-			flag = mid;
-			break;
-		} else if (key < a[mid]) {
-			high = mid - 1;
-		} else if (key > a[mid]){
-			low = mid + 1;
-		}
-	}
-	return flag;
-}
-</pre>		
-		</div>
-		<div class="col-xs-5 col-xs-offset-1">
-<pre class="creamPreTab4" id="preCode2">
-int binary_search_re(int a[10], int low, int high, int key) {
-	int mid;
-	if (low <= high) {
-		mid = (low + high) / 2;
-		if (a[mid] == key) {
-			return mid;
-		} else if (key < a[mid]) {
-			binary_search_re(a, low, mid - 1, key);
-		} else if (key > a[mid]) {
-			binary_search_re(a, mid + 1, high, key);
-		}
-	} else {
-		return -1;
-	}
-}
-</pre>
+		<div class="col-xs-9 col-xs-offset-1 opacity00" id="divTable" style="background: antiquewhite;">
+			<table align="center">
+				<tbody>
+					<tr>
+						<th class="steps-heading-css">Steps</th>
+						<th class="code-heading-css">Code</th>
+						<th></th>
+						<th class="units-heading-css" style="text-align: start;">Units</th>
+					</tr>
+					<tr>
+						<th class="steps-heading-css"></th>
+						<th class="code-heading-css"></th>
+						<th><span class="opacity00" id="unitsForLeast">Key element is first element itself</span></th>
+						<th><span class="opacity00" id="unitsForMiddle">Element is at middle position</span></th>
+						<th><span class="opacity00" id="unitsForHigher">Element is not found</span></th>
+					</tr>
+					<tr>
+						<td>1.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>int binary_search(int a[], int key, int n) {</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>2.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>int low, high, mid, flag = -1;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>3.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>low = 0;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>4.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>high = n - 1;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>5.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>while(flag == -1 && low <= high) {</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>mid = (low + high) / 2;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>7.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>if (a[mid] == key) {</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>8.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>flag = mid;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>9.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>break;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>10.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>} else if (a[mid] < key) {</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>11.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>low = mid + 1;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>12.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>} else if (a[mid] > key) {</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>13.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>high = mid - 1;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>14.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>}</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>15.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>}</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>16.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>return flag;</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>17.</td>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>}</span>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr>
+						<td class="opacity00" id="stepNo10"></td>
+						<td class="td-code-text">
+							<span class="opacity00" id="codeLine10" style="float: right;">Total = </span>
+						</td>
+						<td class="opacity00" id="unitFirstLineTd10">
+							<span id="unitFirstLineText10" style="padding: 2px 42px; background: aquamarine">5</span></td>
+						<td class="opacity00" id="unitSecondLineTd10">
+							<span id="unitSecondLineText10" style="/* padding: 2px 42px; */ background: aquamarine">
+							2n + 2</span></td>
+						<td class="opacity00" id="unitThirdLineTd10">
+							<span id="unitThirdLineText10" style="/* padding: 2px 42px; */ background: aquamarine">
+							4n + 3</span></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-3">
@@ -332,7 +452,7 @@ int binary_search_re(int a[10], int low, int high, int key) {
 </body>
 <script>
 $(document).ready(function() {
-//	$(".opacity00").removeClass("opacity00");
+	$(".opacity00").removeClass("opacity00");
 	introGuide();
 });
 
@@ -355,11 +475,14 @@ function introGuide() {
 		keyboardNavigation : false,
 		tooltip : false,
 		steps :[{
-			element : '#preCode1',
+			element : '#divTable',
 			intro : '',
+			animateStep : 'codeReveledAction'
 		}, {
-			element : '#preCode2',
+			element : '#divTable',
 			intro : '',
+			animateStep : 'explanationOfUnits',
+			tooltipClass : 'hide'
 		}, {
 			element : '#explanationDiv',
 			intro : '',
@@ -375,25 +498,6 @@ function introGuide() {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'preCode1':
-			var text = 'This is the iterative code for binary search.';
-			typing('.introjs-tooltiptext', text, function() {
-				popoverAppendFunction("#line1", 1);
-				var text = "Let us assume time complexity is T(n);";
-				typing("#popover1", text, function() {
-					$('.introjs-nextbutton').show();
-				});
-			});
-			break;
-		case 'preCode2':
-			$('.introjs-helperLayer').one('transitionend', function() {
-			//	$("#preCode1").addClass("z-index9999999");
-				var text = 'This is the recursive code for binary search.';
-				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show();
-				});
-			});
-			break;
 		case 'infoDiv':
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 				$("#line1").fadeTo(1000, 1, function() {

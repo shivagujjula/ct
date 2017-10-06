@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js/array-of-objects.js"></script>
- <!-- <script src="/secure/lang/cpp/js-min/aoo.min.js"></script> -->
+<script src="/secure/lang/cpp/js-min/aoo.min.js"></script>
 <title>Array of objects</title>
 <style type="text/css">
 #informationDiv {
