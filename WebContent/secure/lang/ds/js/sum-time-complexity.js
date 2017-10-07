@@ -1,4 +1,4 @@
-var factorialTimeComplexityReady = function() {
+var sumTimeComplexityReady = function() {
 	$(document).ready(function() {
 		introGuide();
 	});
@@ -46,25 +46,12 @@ function introGuide() {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
 		switch(elementId) {
-		case 'infoDiv':
-			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
-				$("#line1").fadeTo(1000, 1, function() {
-					$("#line2").fadeTo(1000, 1, function() {
-						$("#infoDiv").addClass('z-index9999999');
-						$('#nextButton').removeClass("opacity00");
-						$('.user-btn').click(function() {
-							$('.user-btn').remove();
-								introjs.nextStep();
-						});
-					});
-				});
-			break;
 		case 'divTable':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'codeReveledAction':
 		//		$(".introjs-helperLayer").one('transitionend', function() {
-					TweenMax.to($("#divTable"), 1.5, {opacity: 1, onComplete: function() {
+					TweenMax.to($("#divTable"), 1, {opacity: 1, onComplete: function() {
 						codeLinesReveledFunction(1);
 					}});
 		//		});
@@ -74,7 +61,7 @@ function introGuide() {
 				svgAppend($('#divTable'), 'svg');
 				svgMarkerAppend($('#svg'), 'marker');
 				svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitLineText1', '#svg', 'svgLine1', 'marker', function() {	
-					TweenMax.to($("#unitLine1"), 1.5, {opacity: 1, onComplete: function() {
+					TweenMax.to($("#unitLine1"), 1, {opacity: 1, onComplete: function() {
 						$("#unitLineText1").popover({
 							placement: 'right',
 							html: true,
@@ -97,10 +84,10 @@ function introGuide() {
 		case 'finalDiv':
 			$("#unitLineText8").popover('hide');
 			$(".introjs-helperLayer").one('transitionend', function() {
-				TweenMax.to($("#finalDiv"), 1.5, {opacity: 1, onComplete: function() {
+				TweenMax.to($("#finalDiv"), 1, {opacity: 1, onComplete: function() {
 					$("#finalDiv").addClass("z-index9999999");
-					TweenMax.to($("#finalLine1"), 1.5, {opacity: 1, onComplete: function() {
-						TweenMax.to($("#finalLine2"), 1.5, {opacity: 1, onComplete: function() {
+					TweenMax.to($("#finalLine1"), 1, {opacity: 1, onComplete: function() {
+						TweenMax.to($("#finalLine2"), 1, {opacity: 1, onComplete: function() {
 							$("#conclusionId").effect('highlight',{color:'#da5805'}, 1500, function() {
 								$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
 									tweenmaxAnimation("#alphabetN1", "#alphabetN2", function() {
@@ -133,8 +120,8 @@ function setTimeoutFunction() {
 }
 
 function codeLinesReveledFunction(i) {
-	$("#stepNo" + i).fadeTo("slow", 1);
-	$("#codeLine" + i).fadeTo("slow", 1, function() {
+	$("#stepNo" + i).fadeTo(500, 1);
+	$("#codeLine" + i).fadeTo(500, 1, function() {
 		if (i < 7) {
 			codeLinesReveledFunction(++i);
 		} else {
@@ -153,7 +140,7 @@ function secondStepAnimation() {
 	$("#codeLine2").css("background", "#c0e1fb");
 	$("#unitLineText1").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {	
-		TweenMax.to($("#unitLine2"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine2"), 1, {opacity: 1, onComplete: function() {
 			$("#operator1").addClass("blinking").one('animationend', function() {
 				$("#operator1").removeClass("blinking");
 				$("#unitLineText2").popover({
@@ -180,7 +167,7 @@ function thirdStepAnimation() {
 	$("#codeLine3").css("background", "#c0e1fb");
 	$("#unitLineText2").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitLineText3', '#svg', 'svgLine3', 'marker', function() {	
-		TweenMax.to($("#unitLine3"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine3"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText3").popover({
 				placement: 'right',
 				html: true,
@@ -265,7 +252,7 @@ function fourthStepAnimation() {
 	$("#codeLine4").css("background", "#c0e1fb");
 	$("#unitLineText3").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitLineText4', '#svg', 'svgLine4', 'marker', function() {	
-		TweenMax.to($("#unitLine4"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine4"), 1, {opacity: 1, onComplete: function() {
 			$("#equalOperator, #mulOperator").addClass("blinking").one('animationend', function() {
 				$("#equalOperator, #mulOperator").removeClass("blinking").off();
 				$("#unitLineText4").popover({
@@ -293,7 +280,7 @@ function fifthStepAnimation() {
 	$("#codeLine5").css("background", "#c0e1fb");
 	$("#unitLineText4").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitLineText5', '#svg', 'svgLine5', 'marker', function() {	
-		TweenMax.to($("#unitLine5"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine5"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText5").popover({
 				placement: 'right',
 				html: true,
@@ -316,7 +303,7 @@ function sixthStepAnimation() {
 	$("#codeLine6").css("background", "#c0e1fb");
 	$("#unitLineText5").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitLineText6', '#svg', 'svgLine6', 'marker', function() {	
-		TweenMax.to($("#unitLine6"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine6"), 1, {opacity: 1, onComplete: function() {
 			$("#returnOperator").addClass("blinking").one('animationend', function() {
 				$("#returnOperator").removeClass("blinking");
 				$("#unitLineText6").popover({
@@ -341,7 +328,7 @@ function seventhStepAnimation() {
 	$("#codeLine7").css("background", "#c0e1fb");
 	$("#unitLineText6").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine7', '#unitLineText7', '#svg', 'svgLine7', 'marker', function() {	
-		TweenMax.to($("#unitLine7"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine7"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText7").popover({
 				placement: 'right',
 				html: true,
@@ -361,7 +348,7 @@ function seventhStepAnimation() {
 
 function eigthStepAnimation() {
 	$("#unitLineText7").popover('hide');
-	TweenMax.to($("#unitLine8, #codeLine8"), 1.5, {opacity: 1, onComplete: function() {
+	TweenMax.to($("#unitLine8, #codeLine8"), 1, {opacity: 1, onComplete: function() {
 		$("#unitLineText8").popover({
 			placement: 'right',
 			html: true,
@@ -456,7 +443,7 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 	var x2 = $(selector2).offset().left - parentOffset.left;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
 	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(),1.5, {attr: {x2: x2, y2: y2}, onComplete: function() {
+	TweenMax.to($('#' + svgLineId).show(),0.6, {attr: {x2: x2, y2: y2}, onComplete: function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}

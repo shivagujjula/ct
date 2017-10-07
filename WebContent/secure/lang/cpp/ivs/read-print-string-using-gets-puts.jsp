@@ -172,6 +172,12 @@
     width: 40px;
 }
 
+y {
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
+}
+
 </style>
 <body>
 <div class="col-sm-12 text-center">
@@ -187,15 +193,15 @@
 <div class="col-xs-5">
 <!-- <pre id="typewritingId"></pre> -->
 <pre class="creamPreTab4" id="preBody">
-#include&lt;iostream&gt;
-#include&lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;stdio.h&gt;
 <span>using <b>namespace</b> std;</span>
-int <span id='line1'><b>main()</b></span> {
- <span id='line2'><b>char</b> name[50];</span>
- <span id='line3'><b>cout</b>&lt;&lt; "Enter your name : ";</span>
- <span id='line4'><b>gets(name)</b>;</span>
- <span id='line5'><b>cout</b>&lt;&lt;"Your name is : ";</span>
- <span id='line6'><b>puts(name)</b>;</span>
+void <span id='line1'><b>main()</b></span> {
+ <span id='line2'><b>char</b> ch[20];</span>
+ <span id='line3'><b>cout</b> &lt;&lt; "Enter a string : ";</span>
+ <span id='line4'><b>gets(ch)</b>;</span>
+ <span id='line5'><b>cout</b> &lt;&lt; "The entered string is : ";</span>
+ <span id='line6'><b>puts(ch)</b>;</span>
 <span id='line7'>}</span>
 </pre>
 </div>
@@ -273,9 +279,11 @@ int <span id='line1'><b>main()</b></span> {
 	</div>
 <div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top: 15px;">Restart </button></div>
 <script>
+	
 	$(document).ready(function() {
 		readPrintStringUsingGetsPutsReady();
 	});
+	
 </script>
 </body>
 </html>

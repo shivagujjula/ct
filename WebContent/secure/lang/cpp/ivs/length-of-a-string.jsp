@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/loas.min.js"></script>
+<script src="/secure/lang/cpp/js-min/loas.min.js"></script>
 <title>Length of a string</title>
 </head>
 <style>
@@ -170,6 +170,32 @@ table {
 	color: green;
 }
 
+.display-inline-block {
+	display: inline-block;
+}
+
+.relative {
+	position: relative;
+}
+
+y {
+	color: yellow;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.usr-btn {
+	background-color: green;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: grenn;
+    font: 11px sans-serif;
+    padding: 4px;
+    cursor: pointer;
+    margin-bottom: 2px;
+    display:inline-block;
+}
+
 </style>
 <script>
 
@@ -190,13 +216,13 @@ using <b>namespace</b> std;
 int main() {
 	<span id="charDec">char ch[20];</span>
 	<span id="intDec">int i = <span class="zero">0</span>;</span>
-	<span id="enterString">cout<<"Enter a string : ";</span>
+	<span id="enterString">cout << "Enter a string : ";</span>
 	<span id="scanf">cin >> ch;</span>
 	<span id="stringIs">cout << "The entered string is : " << ch << "\n";</span>
-	<span id="whileCond">while (ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b>)</span> {
+	<span id="whileCond">while (<span id="condtn">ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b></span>)</span> {
 		<span id="increment">i++;</span>
 	}
-	<span id="stringLength">cout << "The length of the string : " << ch <<" is "<< i <<"\n";</span>
+	<span id="stringLength">cout << "The length of the string " << ch <<" is : "<< i <<"\n";</span>
 }
 </pre>
 			</div>

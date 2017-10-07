@@ -180,11 +180,12 @@ function introGuide() {
 			break;
 		case 'line1':
 			$('.introjs-helperLayer').one('transitionend', function() {
+				//$("#arrayDiv").removeClass("opacity00");
 				var typingContent = "Here <span class='ct-code-b-yellow'>3</span> character array variables <span class='ct-code-b-yellow'>a</span>, "+
 				"<span class='ct-code-b-yellow'>b</span> and <span class='ct-code-b-yellow'>c</span> are declared with size "+
 				"<span class='ct-code-b-yellow'>20</span>.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -193,7 +194,7 @@ function introGuide() {
 				var typingContent = "Here <span class='ct-code-b-yellow'>length</span> is declared as "+
 				"<span class='ct-code-b-yellow'>int data type</span>.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -215,61 +216,70 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "<span class='ct-code-b-yellow'>cin</span> is used to read a string from the keyboard.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
+			
 		case 'line5':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "<span class='ct-code-b-yellow'>strlen()</span> is used to find the length of the given string. This function "+
 				"returns only the integer data or numeric data.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
+			
 		case 'line7':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "<span class='ct-code-b-yellow'>strcpy()</span> is used to copy one string to another string.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
+			
 		case 'line10':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "<span class='ct-code-b-yellow'>cin</span> is used to read a string from the keyboard.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
+			
 		case 'line11':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "<span class='ct-code-b-yellow'>strcat()</span> is used to concatenate two strings into one string.<br><br>" +
 				"Here string <span class='ct-code-b-yellow'>c</span> is concatenate with string <span class='ct-code-b-yellow'>a</span>, "+
 				"and the result is also stored in string <span class='ct-code-b-yellow'>a</span>.";
+				
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
+			
 		case 'line13':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "<span class='ct-code-b-yellow'>strcmp()</span> is used for comparison of two strings and it always returns "+
 									"only the numeric data.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'arrayDiv':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			$("#arrayDiv").removeClass("opacity00");
 			switch(animateStep) {
 			case 'arrayZoomingEffect':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var typingContent = "The memory created for each array variable.";
+					$(".small-box, .index-box").remove();
+					var typingContent = "The memory created for each <y>array</y> variable.";
 					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
+						
 						for (var i = 0; i < 20; i++) {
 							$('#indices').append('<td class="index-box" id="indexA' + i + '">'+ i +'</td>');
 							$('#arrayBox1').append('<td class="small-box index-char" id="chartdA' + i + '"><span id="chartdAspan'+ i +'"></span></td>');
@@ -279,7 +289,7 @@ function introGuide() {
 						TweenMax.to($("#aArrayDiv"), 1, {opacity: 1, onComplete: function() {
 							TweenMax.to($("#bArrayDiv"), 1, {opacity: 1, onComplete: function() {
 								TweenMax.to($("#cArrayDiv"), 1, {opacity: 1, onComplete: function() {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								}});
 							}});
 						}});
@@ -287,8 +297,9 @@ function introGuide() {
 				});
 				break;
 			case 'tweenmax':
+				$("[id^='chartdAspan']").text("");
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var typingContent = "The given string characters are allocated into memory.";
+					var typingContent = "The given string <y>characters</y> are allocated into memory.";
 					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {	
 						var string = $("#inputText").text();
 						for (var i = 0; i < string.length; i++) {
@@ -309,6 +320,7 @@ function introGuide() {
 				});
 				break;
 			case 'copyText':
+				$("[id^='chartdBspan']").text("");
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var typingContent = "So the string of <span class='ct-code-b-yellow'>a</span> is copied into "+
 					"<span class='ct-code-b-yellow'>b</span>.";
@@ -325,7 +337,7 @@ function introGuide() {
 								$("#chartdBspan" + arrayBox2Length).append("\\0");
 								zoomingEffect($("#chartdBspan" + arrayBox2Length), function() {
 									$("#chartdBspan" + arrayBox2Length).off();
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
 							});
 						});
@@ -333,8 +345,9 @@ function introGuide() {
 				});
 				break;
 			case 'cMemoryAllocation':
+				$("[id^='chartdCspan']").text("");
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var typingContent = "The given string characters are allocated into memory.";
+					var typingContent = "The given string <y>characters</y> are allocated into memory.";
 					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {	
 						var string = $("#inputTextTwo").text();
 						for (var i = 0; i < string.length; i++) {
@@ -348,7 +361,7 @@ function introGuide() {
 								$("#chartdCspan" + arrayBox3Length).append("\\0");
 								zoomingEffect($("#chartdCspan" + arrayBox3Length), function() {
 									$("#chartdCspan" + arrayBox3Length).off();
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});	
 							});
 						});
@@ -397,8 +410,10 @@ function introGuide() {
 			break;
 		case 'functionDiv':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			$("#functionDiv").removeClass("opacity00");
 			switch(animateStep) {
 			case 'countingLength':
+				//$("[id^='chartdAspan']").text("");
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$(".function-class").removeClass("opacity00");
 					var typingContent = $(".function-class").html();
@@ -447,13 +462,11 @@ function introGuide() {
 						if(n == 0) {
 							$("#compareSymbol").append("=");
 							$("#printText6").append("The given two strings are equal");
-						}
-						else if(n == 1) {
+						} else if(n == 1) {
 							$("#compareSymbol").append(">");
 							$("#printText6").append("The string <span class='ct-code-b-yellow'>" + bBoxSubString + "</span> is higher than the string "+
 									"<span class='ct-code-b-yellow'>" + cBoxSubString + "</span>");
-						}
-						else {
+						} else {
 							$("#compareSymbol").append("<");
 							$("#printText6").append("The string <span class='ct-code-b-yellow'>" + cBoxSubString + "</span> is higher than the string "+
 									"<span class='ct-code-b-yellow'>" + bBoxSubString + "</span>");
@@ -494,6 +507,7 @@ function introGuide() {
 			break;
 		case 'consoleId':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			$("#consoleId").removeClass("opacity00");
 			switch(animateStep) {
 			case 'printText1':
 				$('.introjs-helperLayer').one('transitionend', function() {
@@ -546,6 +560,7 @@ function introGuide() {
 				});
 				break;
 			case 'inputTextTwo':
+				$("#inputTextTwo").text("");
 				$('.introjs-helperLayer').one('transitionend', function() {
 					keyCodeCondition();
 					var typingContent = "Enter a string.";
@@ -650,7 +665,7 @@ function animationEffect(i) {
 				TweenMax.to($("#countLength"), 0.1, {opacity: 1, onComplete: function() {
 					setTimeout(function() {
 						introjs.nextStep();
-					},1500);
+					}, 1500);
 				}});
 			});
 		} else {

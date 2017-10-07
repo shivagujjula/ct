@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src = '/secure/lang/cpp/js-min/sf.min.js'></script>
+<script src="/secure/lang/cpp/js-min/sf.min.js" ></script>
 
 <title>String functions</title>
 
@@ -202,6 +202,13 @@ div, span, tr, td {
 	}
 }
 
+y {
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+
 </style>
 
 </head>
@@ -227,28 +234,28 @@ div, span, tr, td {
 int main () {
 	<span id="line1">char a[20], b[20], c[20];</span>
 	<span id="line2">int length;</span>
-	<span id="line3">cout&lt;&lt;"Enter a string :";</span>
+	<span id="line3">cout &lt;&lt; "Enter a string :";</span>
 	<span id="line4">cin >> a;</span>
 	<span id="line5">length = strlen(a);</span>
 	<span id="line6">cout << "The length of the string " << a <<" is "<< length <<"\n";</span>
 	<span id="line7">strcpy(b, a);</span>
-	<span id="line8">cout << "The copied string = "<< b <<"\n";</span>
+	<span id="line8">cout << "The copied string = " << b << "\n";</span>
 	<span id="line9">cout << "Enter the second string :";</span>
 	<span id="line10">cin >> c;</span>
 	<span id="line11">strcat(a, c);</span>
-	<span id="line12">cout << "The concatenated string = " << a <<"\n";</span>
+	<span id="line12">cout << "The concatenated string = " << a << "\n";</span>
 	<span id="line13">i=strcmp(b, c);</span>
 	<span id="line14">if(i == 0) {
 		cout << "The given two strings are equal" << "\n";</span>
 	} <span id="line15">else if(i > 0) {
-		cout << "The string "<< b <<" is higher than the string "<< c <<"\n";</span>
+		cout << "The string " << b << " is higher than the string " << c << "\n";</span>
 	} <span id="line16">else {
-		cout << "The string "<< c <<" is higher than the string "<< b <<"\n";</span>
+		cout << "The string " << c << " is higher than the string " << b << "\n";</span>
 	}
 }
 </pre>
 		</div>
-		<div class="col-xs-6 border" id="arrayDiv">
+		<div class="col-xs-6 border opacity00" id="arrayDiv">
 			<div class="col-xs-12 opacity00" id="aArrayDiv">
 				<div class="col-xs-1 Vertical-variable-text-center">a</div>
 				<div class="col-xs-10" id="firstMemoryAllocation">
@@ -275,7 +282,7 @@ int main () {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-5 col-xs-offset-1 border margin-top-2" id="functionDiv">
+		<div class="col-xs-5 col-xs-offset-1 border margin-top-2 opacity00" id="functionDiv">
 			<div class="col-xs-12">
 				<div class="function-class opacity00">Length of given string <b>length</b> =  <span id="countLength" class="opacity00 count-length">0</span></div>
 				<div id="concateId" class="opacity00">Concatenating given two strings = <span id="adding" class="add-strings"></span></div>
@@ -285,7 +292,7 @@ int main () {
 	</div>
 	<div class="col-xs-12">
 		<div class="col-xs-4 col-xs-offset-6 margin-top-1">
-			<div id="consoleId">
+			<div id="consoleId" class="opacity00">
 				<div class="output-console-title-bar">
 					<span class="title"><b>Console</b></span>
 				</div>

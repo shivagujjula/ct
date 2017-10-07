@@ -21,6 +21,7 @@
 
 <title>Sum Time Complexity</title>
 <style type="text/css">
+
 #infoDiv {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
@@ -63,15 +64,11 @@ table {
 }
 
 td, th {
-   /*  border: 1px solid #dddddd; */
-    /* text-align: left; */
     padding: 2px 8px;
 }
 
 .td-code-text {
 	font-family: monospace;
-	/* font-style: italic; */
-	font-weight: bold;
 }
 
 th, td:nth-child(1), td:nth-child(3) {
@@ -121,7 +118,7 @@ th:nth-child(3) {
 
 .blinking {
 	animation-name: blink;
-	animation-duration: 0.8s;
+	animation-duration: 0.4s;
 	animation-iteration-count: 3;
 }
 
@@ -135,10 +132,6 @@ th:nth-child(3) {
 	border: 1px solid green;
 	 z-index: 9999999 !important;
 }
-
-/* .td-code-text {
-	background: #c0e1fb;
-} */
 
 .ct-color-green {
 	color: green;
@@ -196,6 +189,20 @@ th:nth-child(3) {
 	padding: 0;
 }
 
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
+}
+
 </style>
 
 </head>
@@ -232,8 +239,9 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
-						<td class="td-code-text" id="tdCodeLine1">
-							<span class="opacity00" id="codeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;int sum(int n) {</span>
+						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine1">
+							<span class="color-green">int</span> sum(<span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="opacity00" id="unitLine1">
 							<span id="unitLineText1" style="padding: 2px 42px;">0</span>
@@ -241,8 +249,9 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;int i, total <span id="operator1">=</span> 0;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine2"><span class="color-green">int</span> i, total <span id="operator1">=</span>
+							<span class="color-deeppink">0</span>;</span>
 						</td>
 						<td class="opacity00" id="unitLine2">
 							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
@@ -250,9 +259,9 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo3">3.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine3">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							for(<span id="forInit">i = 1;</span> <span id="forCondition">i <= n;</span> <span id="forIncrement">i++</span>) {</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine3">
+							for(<span id="forInit">i = <span class="color-deeppink">1</span>;</span> <span id="forCondition">i <= n;</span> <span id="forIncrement">i++</span>) {</span>
 						</td>
 						<td class="opacity00" id="unitLine3">
 							<span id="unitLineText3" style="padding: 2px 2px;"><span id="initUnitNo">1</span> + <span id="conditionUnitNo">(n + 1)</span> 
@@ -260,8 +269,8 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo4">4.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine4">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine4">
 								total <span id="equalOperator">=</span> total <span id="mulOperator">+</span> i;</span>
 						</td>
 						<td class="opacity00" id="unitLine4">
@@ -269,24 +278,24 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo5">5.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine5">}</span>
 						</td>
 						<td class="opacity00" id="unitLine5">
 							<span id="unitLineText5" style="padding: 2px 42px;">0</span></td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine6">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="returnOperator">return</span> total;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine6"><span id="returnOperator" class="color-deeppink">return</span> total;</span>
 						</td>
 						<td class="opacity00" id="unitLine6">
 							<span id="unitLineText6" style="padding: 2px 42px;">1</span></td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo7">7.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine7">&emsp;&emsp;&emsp;&emsp;&emsp;}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine7">}</span>
 						</td>
 						<td class="opacity00" id="unitLine7">
 							<span id="unitLineText7" style="padding: 2px 42px;">0</span></td>
@@ -318,6 +327,6 @@ th:nth-child(3) {
 </body>
 
 <script type="text/javascript">
-factorialTimeComplexityReady();
+sumTimeComplexityReady();
 </script>
 </html>

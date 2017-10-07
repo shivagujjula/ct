@@ -71,7 +71,7 @@ td, th {
 .td-code-text {
 	font-family: monospace;
 	/* font-style: italic; */
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 th, td:nth-child(1), td:nth-child(3) {
@@ -204,6 +204,20 @@ td:nth-child(4) {
 	padding: 0;
 }
 
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
+}
+
 </style>
 </head>
 <body>
@@ -230,8 +244,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
-						<td class="td-code-text" id="tdCodeLine1">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1">int fibonacci(int n) {</span>
+						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine1"><span class="color-green">int</span> fibonacci(<span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd1">
 							<span id="unitFirstLineText1" style="padding: 2px 42px;">-</span>
@@ -242,9 +256,10 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine2">int f1 
-							<span id="operator1">=</span> 1, f2 <span id="operator2">=</span> 1, f3;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine2"><span class="color-green">int</span> f1 
+							<span id="operator1">=</span> <span class="color-deeppink">1</span>,
+							f2 <span id="operator2">=</span> <span class="color-deeppink">1</span>, f3;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd2">
 							<span id="unitFirstLineText2" style="padding: 2px 42px;">2</span>
@@ -255,8 +270,9 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo3">3.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine3">if (<span id="ifCondition">n <= 1</span>) {</span> 
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine3"><span class="color-maroon">if</span> (
+							<span id="ifCondition">n <= <span class="color-deeppink">1</span></span>) {</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd3">
 							<span id="unitFirstLineText3" style="padding: 2px 42px;">1</span>
@@ -267,8 +283,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo4">4.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine4">return n;</span> 
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine4"><span class="color-maroon">return</span> n;</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd4">
 							<span id="unitFirstLineText4" style="padding: 2px 42px;">1</span>
@@ -279,8 +295,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo5">5.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine5">} <span id="elseCondition">else</span> {</span> 
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine5">} <span id="elseCondition" class="color-maroon">else</span> {</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd5">
 							<span id="unitFirstLineText5" style="padding: 2px 42px;">-</span>
@@ -289,23 +305,13 @@ td:nth-child(4) {
 							<span id="unitSecondLineText5" style="padding: 2px 42px;">-</span>
 						</td>
 					</tr>
-					<!-- <tr>
-						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine6"><span id="elseCondition">else</span> {</span> 
-						</td>
-						<td class="opacity00" id="unitFirstLineTd6">
-							<span id="unitFirstLineText6" style="padding: 2px 42px;">-</span>
-						</td>
-						<td class="opacity00" id="unitSecondLineTd6">
-							<span id="unitSecondLineText6" style="padding: 2px 42px;">-</span>
-						</td>
-					</tr> -->
 					<tr>
 						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine6">
-							for(<span id="forInit">i = 2;</span> <span id="forCondition">i <= n;</span> <span id="forIncrement">i++</span>) {</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine6">
+							<span class="color-maroon">for</span
+							>(<span id="forInit">i = <span class="color-deeppink">2</span>;</span> <span id="forCondition">i <= n;
+							</span> <span id="forIncrement">i++</span>) {</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd6">
 							<span id="unitFirstLineText6" style="padding: 2px 42px;">-</span>
@@ -316,8 +322,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo7">7.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine7">
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine7">
 								f3 <span id="equalOperator">=</span> f1 <span id="plusOperator">+</span> f2;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd7">
@@ -327,8 +333,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo8">8.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine8">
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine8">
 								f1 <span id="equalOperator2">=</span> f2;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd8">
@@ -338,8 +344,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo9">9.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine9">
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine9">
 								f2 <span id="equalOperator3">=</span> f3;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd9">
@@ -349,8 +355,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo10">10.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine10">}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine10">}</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd10">
 							<span id="unitFirstLineText10" style="padding: 2px 42px;">-</span></td>
@@ -359,9 +365,9 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo11">11.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine11">
-							<span id="returnOperator">return</span> f3;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine11">
+							<span id="returnOperator" class="color-maroon">return</span> f3;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd11">
 							<span id="unitFirstLineText11" style="padding: 2px 42px;">1</span></td>
@@ -370,8 +376,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo12">12.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine12">}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine12">}</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd12">
 							<span id="unitFirstLineText12" style="padding: 2px 42px;">-</span></td>
@@ -380,8 +386,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo13">13.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine13">}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine13">}</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd13">
 							<span id="unitFirstLineText13" style="padding: 2px 42px;">-</span></td>

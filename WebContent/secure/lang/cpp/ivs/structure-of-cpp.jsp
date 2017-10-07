@@ -85,6 +85,12 @@
 .background-color-blue {
 	background-color: #87CEFA
 }
+
+y {
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -105,9 +111,8 @@
 <span id="defSection" class="opacity00">Definition section</span>
 <span id="globalDef" class="opacity00">Global definition section</span>
 <span id="totalMainFun" class="opacity00">class Example {
-<span id="totalMainSec">{
-  <span id="dclrPart">Data Members Part</span>
-  <span id="excPart">Member Functions Part</span>
+<span id="totalMainSec"> <span id="dclrPart">Data members part;</span>
+  <span id="excPart">Member functions part;</span>
 }</span></span>
 <span id="subPro" class="opacity00">int main() {
   <span>Object declaration part</span>
@@ -116,15 +121,15 @@
 	</div>
   </div>
  <div class="col-xs-6">
-  	<div id="rightDiv">
+  	<!-- <div id="rightDiv"> -->
   	<pre class="creampretab2 opacity00" id='rightCode'><span id="comment" class="opacity00">/* C++ language was 
 Develop by Bjarne Stroustrup. */
 //This is a sample C++ program developed by user.</span>
-<span id="links" class="opacity00">#include&lt;iostream&gt;
+<span id="links" class="opacity00">#include &lt;iostream&gt;
 using namespace std;</span>
 <span id="define" class="opacity00">#define VALUE 10;</span>
 <span id="globalVariable" class="opacity00">int total;</span>
-<span  id="totalMain" class="opacity00">class example {
+<span  id="totalMain" class="opacity00">class Example {
      <span id="declPart">private: int a, b;</span>
      public: <span id="exePart1">void read()</span> {
          cout << "Enter two integer values : ";
@@ -136,17 +141,17 @@ using namespace std;</span>
      }
 };</span>
 <span id="sumFun" class="opacity00">int main() <span id="mainFun">{
- example e;
- e.read();
- e.display();
+ Example e;
+  e.read();
+  e.display();
 }</span></span>
 </pre>
-  	</div>
+  <!-- 	</div> -->
   </div>
   </div>
 </div>
 <div class="col-xs-12 text-center margin-top-20">
-<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
+	<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
 </div>
 </body>
 </html>

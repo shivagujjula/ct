@@ -61,15 +61,11 @@ table {
 }
 
 td, th {
-   /*  border: 1px solid #dddddd; */
-    /* text-align: left; */
     padding: 2px 8px;
 }
 
 .td-code-text {
 	font-family: monospace;
-	/* font-style: italic; */
-	font-weight: bold;
 }
 
 th, td:nth-child(1), td:nth-child(3) {
@@ -123,7 +119,7 @@ td:nth-child(4) {
 
 .blinking {
 	animation-name: blink;
-	animation-duration: 0.8s;
+	animation-duration: 0.4s;
 	animation-iteration-count: 3;
 }
 
@@ -137,10 +133,6 @@ td:nth-child(4) {
 	border: 1px solid green;
 	 z-index: 9999999 !important;
 }
-
-/* .td-code-text {
-	background: #c0e1fb;
-} */
 
 .ct-color-green {
 	color: green;
@@ -202,6 +194,20 @@ td:nth-child(4) {
 	padding: 0;
 }
 
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
+}
+
 </style>
 </head>
 <body>
@@ -222,8 +228,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
-						<td class="td-code-text" id="tdCodeLine1">
-							<span class="opacity00" id="codeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;int sum(int n) {</span>
+						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1">
+						<span class="color-green">int</span> sum(<span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="opacity00" id="unitLine1">
 							<span id="unitLineText1" style="padding: 2px 42px;">0</span>
@@ -231,8 +237,8 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;int i, j, sum <span id="operator1">=</span> 0;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine2">
+						<span class="color-green">int</span> i, j, total <span id="operator1">=</span> <span class="color-deeppink">0</span>;</span>
 						</td>
 						<td class="opacity00" id="unitLine2">
 							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
@@ -240,9 +246,10 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo3">3.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine3">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							for(<span id="forInit">i = 0;</span> <span id="forCondition">i < n;</span> <span id="forIncrement">i++</span>) {</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine3">
+							<span class="color-maroon">for</span>(<span id="forInit">i = <span class="color-deeppink">0</span>;</span>
+							 <span id="forCondition">i < n;</span> <span id="forIncrement">i++</span>) {</span>
 						</td>
 						<td class="opacity00" id="unitLine3">
 							<span id="unitLineText3" style="padding: 2px 2px;"><span id="initUnitNo">1</span> + <span id="conditionUnitNo">(n + 1)</span> 
@@ -250,9 +257,10 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo4">4.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine4">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							for(<span id="forInit2">j = 0;</span> <span id="forCondition2">j < n;</span> <span id="forIncrement2">j++</span>) {</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine4">
+							<span class="color-maroon">for</span>(<span id="forInit2">j = <span class="color-deeppink">0</span>;</span>
+							 <span id="forCondition2">j < n;</span> <span id="forIncrement2">j++</span>) {</span>
 						</td>
 						<td class="opacity00" id="unitLine4">
 							<span id="unitLineText4" style="padding: 2px 2px;"><span id="initUnitNo2">n</span> + <span id="conditionUnitNo2">n * (n + 1)</span> 
@@ -260,42 +268,42 @@ td:nth-child(4) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo5">5.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								sum<span id="incrementOperator">++</span>;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine5">
+								total<span id="incrementOperator">++</span>;</span>
 						</td>
 						<td class="opacity00" id="unitLine5">
 							<span id="unitLineText5" style="padding: 2px 32px;">n<sup>2</sup></span></td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine6">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine6">}</span>
 						</td>
 						<td class="opacity00" id="unitLine6">
 							<span id="unitLineText6" style="padding: 2px 42px;">0</span></td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo7">7.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine7">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine7">}</span>
 						</td>
 						<td class="opacity00" id="unitLine7">
 							<span id="unitLineText7" style="padding: 2px 42px;">0</span></td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo8">8.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine8">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span id="returnOperator">return</span> sum;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine8">
+							<span id="returnOperator" class="color-maroon">return</span> total;</span>
 						</td>
 						<td class="opacity00" id="unitLine8">
 							<span id="unitLineText8" style="padding: 2px 42px;">1</span></td>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo9">9.</td>
-						<td class="td-code-text">
-							<span class="opacity00" id="codeLine9">&emsp;&emsp;&emsp;&emsp;&emsp;}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine9">}</span>
 						</td>
 						<td class="opacity00" id="unitLine9">
 							<span id="unitLineText9" style="padding: 2px 42px;">0</span></td>
@@ -396,7 +404,7 @@ function introGuide() {
 			case 'codeReveledAction':
 			//	$(".introjs-helperLayer").one('transitionend', function() {
 				$(".introjs-tooltip").hide();	
-				TweenMax.to($("#divTable"), 1.5, {opacity: 1, onComplete: function() {
+				TweenMax.to($("#divTable"), 1, {opacity: 1, onComplete: function() {
 					codeLinesReveledFunction(1);
 				}});
 			//	});
@@ -406,7 +414,7 @@ function introGuide() {
 				svgAppend($('#divTable'), 'svg');
 				svgMarkerAppend($('#svg'), 'marker');
 				svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitLineText1', '#svg', 'svgLine1', 'marker', function() {	
-					TweenMax.to($("#unitLine1"), 1.5, {opacity: 1, onComplete: function() {
+					TweenMax.to($("#unitLine1"), 1, {opacity: 1, onComplete: function() {
 						$("#unitLineText1").popover({
 							placement: 'right',
 							html: true,
@@ -414,7 +422,7 @@ function introGuide() {
 							content: '<div id="popover1"></div>',
 						}).popover('show');
 						$(".popover").css({"top" : "0px;"});
-						var text = "<span class='step-color-css'>step-1 :</span> This is the function header and no operation is involved so "+
+						var text = "<span class='step-color-css'>Step 1 :</span> This is the function header and no operation is involved so "+
 						"the <span class='ct-code-teal'>unit of time</span> count is <span class='ct-code-b-yellow'>0</span>.";
 						typing("#popover1", text, function() {
 							$('#popover1').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -429,10 +437,10 @@ function introGuide() {
 		case 'finalDiv':
 			$("#unitLineText10").popover('hide');
 			$(".introjs-helperLayer").one('transitionend', function() {
-				TweenMax.to($("#finalDiv"), 1.5, {opacity: 1, onComplete: function() {
+				TweenMax.to($("#finalDiv"), 1, {opacity: 1, onComplete: function() {
 					$("#finalDiv").addClass("z-index9999999");
-					TweenMax.to($("#finalLine1"), 1.5, {opacity: 1, onComplete: function() {
-						TweenMax.to($("#finalLine2"), 1.5, {opacity: 1, onComplete: function() {
+					TweenMax.to($("#finalLine1"), 1, {opacity: 1, onComplete: function() {
+						TweenMax.to($("#finalLine2"), 1, {opacity: 1, onComplete: function() {
 							$("#conclusionId").effect('highlight',{color:'#da5805'}, 1500, function() {
 								$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
 									tweenmaxAnimation("#alphabetN1", "#alphabetN2", function() {
@@ -486,7 +494,7 @@ function secondStepAnimation() {
 	$("#codeLine2").css("background", "#c0e1fb");
 	$("#unitLineText1").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {	
-		TweenMax.to($("#unitLine2"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine2"), 1, {opacity: 1, onComplete: function() {
 			$("#operator1").addClass("blinking").one('animationend', function() {
 				$("#operator1").removeClass("blinking");
 				$("#unitLineText2").popover({
@@ -497,7 +505,7 @@ function secondStepAnimation() {
 				}).popover('show');
 				$(".popover").css({"top" : "0px;"});
 			//	$("#operator1").effect('highlight',{color:'#da5805'}, 2000, function() {
-				var text = "<span class='step-color-css'>step-2 :</span> Only one operator "+
+				var text = "<span class='step-color-css'>Step 2 :</span> Only one operator "+
 				"<span class='ct-code-b-yellow'>=</span> is used in this statement, it takes "+
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.";
 				typing("#popover2", text, function() {
@@ -513,7 +521,7 @@ function thirdStepAnimation() {
 	$("#codeLine3").css("background", "#c0e1fb");
 	$("#unitLineText2").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitLineText3', '#svg', 'svgLine3', 'marker', function() {	
-		TweenMax.to($("#unitLine3"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine3"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText3").popover({
 				placement: 'right',
 				html: true,
@@ -521,7 +529,7 @@ function thirdStepAnimation() {
 				content: '<div id="popover3"></div>',
 			}).popover('show');
 			$(".popover").css({"top" : "0px;"});
-			var text = "<span id='popover3Text1'><span class='step-color-css'>step-3 :</span><br/>This for loop involves three instructions which are "+
+			var text = "<span id='popover3Text1'><span class='step-color-css'>Step 3 :</span><br/>This for loop involves three instructions which are "+
 			"<span class='ct-code-b-yellow'>initialization</span>, "+
 			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>"
 			typing("#popover3", text, function() {
@@ -554,7 +562,7 @@ function thirdStepAnimationSecondStep() {
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 								"executes <span class='ct-code-teal'>n</span> "+
 								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
-								"So takes <span class='ct-code-b-yellow'>n + 1</span> "+
+								"So takes <span class='ct-code-b-yellow'>n+1</span> "+
 								"<span class='ct-code-teal'>units of time</span>.</li>");
 						typing("#conditionLine", $("#conditionLine").html(), function() {
 							$("#forCondition").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -597,7 +605,7 @@ function fourthStepAnimation() {
 	$("#codeLine4").css("background", "#c0e1fb");
 	$("#unitLineText3").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitLineText4', '#svg', 'svgLine4', 'marker', function() {	
-		TweenMax.to($("#unitLine4"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine4"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText4").popover({
 				placement: 'right',
 				html: true,
@@ -605,7 +613,7 @@ function fourthStepAnimation() {
 				content: '<div id="popover4"></div>',
 			}).popover('show');
 			$(".popover").css({"top" : "0px;"});
-			var text = "<span id='popover4Text1'><span class='step-color-css'>step-4 :</span><br/>This <span class='ct-code-b-yellow'>for</span> loop "+
+			var text = "<span id='popover4Text1'><span class='step-color-css'>Step 4 :</span><br/>This <span class='ct-code-b-yellow'>for</span> loop "+
 			"as <span class='for-loop-li-css'>inner loop</span> of the another <span class='ct-code-b-yellow'>for</span> loop.</span>";
 			typing("#popover4", text, function() {
 				$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -624,7 +632,7 @@ function fourthStepAnimationSecondStep() {
 			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
 			" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
 			"<span class='ct-code-teal'>unit of time</span>. But this loop executes <span class='ct-code-b-yellow'>n</span> times because of "+
-			"the inner for loop. So it takes <span class='ct-code-b-yellow'>n * 1 = n</span> <span class='ct-code-teal'>units of time</span>.</li>"+
+			"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*1 = n</span> <span class='ct-code-teal'>units of time</span>.</li>"+
 			"</ul></span>");
 	typing("#initLine2", $("#initLine2").html(), function() {
 		$("#forInit2").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -639,10 +647,10 @@ function fourthStepAnimationSecondStep() {
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 								"executes <span class='ct-code-teal'>n</span> "+
 								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
-								"So takes <span class='ct-code-b-yellow'>n + 1</span> "+
+								"So takes <span class='ct-code-b-yellow'>n+1</span> "+
 								"<span class='ct-code-teal'>units of time</span>. But this loop executes <span class='ct-code-b-yellow'>n</span> "+
 								"times because of "+
-								"the inner for loop. So it takes <span class='ct-code-b-yellow'>n * (n + 1) = n<sup>2</sup> + n</span> "+
+								"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*(n+1) = n<sup>2</sup>+n</span> "+
 								"<span class='ct-code-teal'>units of time</span>.</li>");
 						typing("#conditionLine2", $("#conditionLine2").html(), function() {
 							$("#forCondition2").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -659,7 +667,7 @@ function fourthStepAnimationSecondStep() {
 													"of times. So it takes <span class='ct-code-b-yellow'>n</span> "+
 													"<span class='ct-code-teal'>units of time</span>. But this loop executes "+
 													"<span class='ct-code-b-yellow'>n</span> times because of "+
-													"the inner for loop. So it takes <span class='ct-code-b-yellow'>n * n = n<sup>2</sup></span> "+
+													"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*n = n<sup>2</sup></span> "+
 													"<span class='ct-code-teal'>units of time</span>.</li>");
 											typing("#incrementLine2", $("#incrementLine2").html(), function() {
 												$("#forIncrement2").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -689,7 +697,7 @@ function fifthStepAnimation() {
 	$("#codeLine5").css("background", "#c0e1fb");
 	$("#unitLineText4").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitLineText5', '#svg', 'svgLine5', 'marker', function() {	
-		TweenMax.to($("#unitLine5"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine5"), 1, {opacity: 1, onComplete: function() {
 			$("#incrementOperator").addClass("blinking").one('animationend', function() {
 				$("#incrementOperator").removeClass("blinking").off();
 				$("#unitLineText5").popover({
@@ -699,12 +707,12 @@ function fifthStepAnimation() {
 					content: '<div id="popover5"></div>',
 				}).popover('show');
 				$(".popover").css({"top" : "0px;"});
-				var text = "<span class='step-color-css'>step-5 :</span><br/><ul><li> Only one statement is involved in the for loop which contains" +
+				var text = "<span class='step-color-css'>Step 5 :</span><br/><ul><li> Only one statement is involved in the for loop which contains" +
 						" only one operator <span class='ct-code-b-yellow'>++</span>.</li>"+
 				"<li>This statement is executed <span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n</span>) "+
 				"number of times.</li><li>So it takes <span class='ct-code-b-yellow'>n</span> "+
 				"number of <span class='ct-code-teal'>units of time</span>. But this statement involved in two inner for loops i.e. "+
-				"number of <span class='ct-code-teal'>units of time</span> is <span class='ct-code-b-yellow'>n * n = n<sup>2</sup></span></li></ul>";
+				"number of <span class='ct-code-teal'>units of time</span> is <span class='ct-code-b-yellow'>n*n=n<sup>2</sup></span></li></ul>";
 				typing("#popover5", text, function() {
 					$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 							'<span class="introjs-button user-btn" onclick="sixthStepAnimation()">Next &#8594;</span></div>');
@@ -718,7 +726,7 @@ function sixthStepAnimation() {
 	$("#codeLine6").css("background", "#c0e1fb");
 	$("#unitLineText5").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitLineText6', '#svg', 'svgLine6', 'marker', function() {	
-		TweenMax.to($("#unitLine6"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine6"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText6").popover({
 				placement: 'right',
 				html: true,
@@ -726,7 +734,7 @@ function sixthStepAnimation() {
 				content: '<div id="popover6"></div>',
 			}).popover('show');
 			$(".popover").css({"top" : "0px;"});
-			var text = "<span class='step-color-css'>step-6 :</span> No operation is involved in closed brace. So "+
+			var text = "<span class='step-color-css'>Step 6 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";	
 			"<span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover6", text, function() {
@@ -741,7 +749,7 @@ function seventhStepAnimation() {
 	$("#codeLine7").css("background", "#c0e1fb");
 	$("#unitLineText6").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine7', '#unitLineText7', '#svg', 'svgLine7', 'marker', function() {	
-		TweenMax.to($("#unitLine7"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine7"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText7").popover({
 				placement: 'right',
 				html: true,
@@ -749,7 +757,7 @@ function seventhStepAnimation() {
 				content: '<div id="popover7"></div>',
 			}).popover('show');
 			$(".popover").css({"top" : "0px;"});
-			var text = "<span class='step-color-css'>step-7 :</span> No operation is involved in closed brace. So "+
+			var text = "<span class='step-color-css'>Step 7 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover7", text, function() {
 				$('#popover7').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -763,7 +771,7 @@ function eigthStepAnimation() {
 	$("#codeLine8").css("background", "#c0e1fb");
 	$("#unitLineText7").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine8', '#unitLineText8', '#svg', 'svgLine8', 'marker', function() {	
-		TweenMax.to($("#unitLine8"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine8"), 1, {opacity: 1, onComplete: function() {
 			$("#returnOperator").addClass("blinking").one('animationend', function() {
 				$("#returnOperator").removeClass("blinking");
 				$("#unitLineText8").popover({
@@ -773,7 +781,7 @@ function eigthStepAnimation() {
 					content: '<div id="popover8"></div>',
 				}).popover('show');
 				$(".popover").css({"top" : "0px;"});
-				var text = "<span class='step-color-css'>step-8 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
+				var text = "<span class='step-color-css'>Step 8 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
 					"<span class='ct-code-b-yellow'>1</span> unit of time.";
 				typing("#popover8", text, function() {
 					$('#popover8').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -788,7 +796,7 @@ function ninenthStepAnimation() {
 	$("#codeLine9").css("background", "#c0e1fb");
 	$("#unitLineText8").popover('hide');
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine9', '#unitLineText9', '#svg', 'svgLine9', 'marker', function() {	
-		TweenMax.to($("#unitLine9"), 1.5, {opacity: 1, onComplete: function() {
+		TweenMax.to($("#unitLine9"), 1, {opacity: 1, onComplete: function() {
 			$("#unitLineText9").popover({
 				placement: 'right',
 				html: true,
@@ -796,7 +804,7 @@ function ninenthStepAnimation() {
 				content: '<div id="popover9"></div>',
 			}).popover('show');
 			$(".popover").css({"top" : "0px;"});
-			var text = "<span class='step-color-css'>step-9 :</span> No operation is involved in closed brace. So "+
+			var text = "<span class='step-color-css'>Step 9 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover9", text, function() {
 				$('#popover9').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -809,7 +817,7 @@ function ninenthStepAnimation() {
 
 function tenthStepAnimation() {
 	$("#unitLineText9").popover('hide');
-	TweenMax.to($("#unitLine10, #codeLine10"), 1.5, {opacity: 1, onComplete: function() {
+	TweenMax.to($("#unitLine10, #codeLine10"), 1, {opacity: 1, onComplete: function() {
 		$("#unitLineText10").popover({
 			placement: 'right',
 			html: true,
@@ -904,7 +912,7 @@ function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, s
 	var x2 = $(selector2).offset().left - parentOffset.left;
 	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
 	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
-	TweenMax.to($('#' + svgLineId).show(),0.8, {attr: {x2: x2, y2: y2}, onComplete: function() {
+	TweenMax.to($('#' + svgLineId).show(),0.6, {attr: {x2: x2, y2: y2}, onComplete: function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}

@@ -70,14 +70,25 @@ var readPrintStringUsingGetsPutsReady = function() {
 	});
 	
 	intro.onafterchange(function(targetElement) {
+		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
-			
+		
+		case "preBody":
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				typing(".introjs-tooltiptext", "Let us see a sample program on the usage of the functions <span class='ct-code-b-yellow'>gets()</span> and <span class='ct-code-b-yellow'>puts()</span>.", 10, "",function() {
+					$('.introjs-nextbutton').show();
+				});
+			})
+		break;	
+		
 		case "line2" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<ul><li>Here, ch is the <span class='ct-code-b-yellow'>character array varaiable</span> which contains 20 characters.</li><li>Each element occupies <span class='ct-code-b-yellow'>1</span> byte(8 bits) in the memory.</li></ul> ", 10, "",function() {
-					$('.introjs-nextbutton').show();
+				typing(".introjs-tooltiptext", "<ul><li>Here, ch is the <span class='ct-code-b-yellow'>character array varaiable</span>"
+						+" which contains 20 characters.</li><li>Each element occupies <span class='ct-code-b-yellow'>1</span> byte(8 bits)"
+						+" in the memory.</li></ul> ", 10, "",function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -88,8 +99,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#addressBox").removeClass("opacity00");
 					TweenMax.to("#tableId", 0.2, {opacity: 1, onComplete: function() {
-						typing(".introjs-tooltiptext", "20 bytes are allocated to the array of the variable <span class='ct-code-b-yellow'>ch</span>.", 10, "",function() {
-							$('.introjs-nextbutton').show();
+						typing(".introjs-tooltiptext", "<y>20 bytes</y> are allocated to the array of the variable <span class='ct-code-b-yellow'>ch</span>.", 10, "",function() {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					}});
 				});
@@ -99,8 +110,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 					intro.refresh();
 					$(".td-css").addClass("ct-code-b-green");
 					TweenMax.to(".td-css", 0.2, {opacity: 1, onComplete: function() {
-						typing(".introjs-tooltiptext", "The given string is stored in the array and delimiter <span class='ct-code-b-yellow'>\\0</span> (or) <span class='ct-code-b-yellow'>\\n</span> is placed at the end of the string by the system.", 5, "",function() {
-							$('.introjs-nextbutton').show();
+						typing(".introjs-tooltiptext", "The given string is stored in the array and delimiter"
+								+" <span class='ct-code-b-yellow'>\\0</span> (or) <span class='ct-code-b-yellow'>\\n</span>"
+								+" is placed at the end of the string by the system.", 5, "",function() {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					}});
 				});
@@ -108,6 +121,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			
 		case "line3" :
+			$("#hiddenTypingChar").addClass("hidden");
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				setTimeout(function() {
@@ -120,14 +134,20 @@ var readPrintStringUsingGetsPutsReady = function() {
 			$("#hiddenTypingChar").removeClass("hidden");
 			$("#totalBlinkText").addClass("hidden");
 			$('.introjs-nextbutton').hide();
+			$("table tr:nth-child(2) td:nth-child(n+2)").text("");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<ul><li><span class='ct-code-b-yellow'>gets()</span> is library function it reads a string from the keyboard. </li><li><span class='ct-code-b-yellow'>gets()</span> function reads <span class='ct-code-b-yellow'>whitespace</span> characters.</li></ul>", 10, "",function() {
+				typing(".introjs-tooltiptext", "<ul><li><span class='ct-code-b-yellow'>gets()</span> "
+						+"is library function it reads a string from the keyboard.</li><li><span class='ct-code-b-yellow'>gets()</span>"
+						+" function reads <span class='ct-code-b-yellow'>whitespace</span> characters also.</li></ul>", 10, "",function() {
+					
 					var result = $("#inputChar").val();
+					
 					for(var i = 0; i <= result.length; i++) {
+						
 						if (result.length >= 0 && result.length < 20) {
 							if (i == result.length) {
 								$("table tr:nth-child(2) td:eq("+ (i+1) + ")").text("\\0");
-								console.log("i am in if...")
+								console.log("I am in if...")
 							} else {
 								$("table tr:nth-child(2) td:eq("+ (i+1) +")").text(result[i]);
 							}
@@ -140,9 +160,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 								console.log("I am in else" + result[i]);
 								$("table tr:nth-child(2) td:eq("+ (i+1) +")").text(result[i]);
 							}
-						} 
+						}
+						
 					}
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -159,33 +180,41 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case "line6" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>puts()</span> is library function.<br/> It displays a string onto the output screen.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>puts()</span> is a library function.<br/> which is used to display a string on to the output screen.", 10, "",function() {
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
 			break;
 			
 		case "consoleId" :
 			$('.introjs-nextbutton').hide();
+			
+			/*if(flag1) {
+				$("#inputChar").val("");
+				flag1 = false;
+			}*/
+			
 			if(intro._currentStep == 4) {
+				$("#hiddenTypingChar").addClass("hidden");
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#inputChar").val("");
 					$("#consoleId").removeClass("opacity00");
 					typing("#typeChar", "<span id='totalBlinkText'>Enter a String : <span id='blinkChar'><input id='in' maxlength='0' tabindex='0' value=''/></span></span>", 10, "",function() {
 						$("#hiddenTypingChar").removeClass("hidden");
 						$("#totalBlinkText").addClass("hidden");
 						$("#inputChar").focus();
-						typing(".introjs-tooltiptext", "Enter a string. ", 10, "",function() {
+						typing(".introjs-tooltiptext", "Enter a string.", 10, "",function() {
 							$('#inputChar').keyup(function(e) {
 								if ($("#inputChar").val().length < 1) {
-									$('.introjs-nextbutton').hide();
+									console.log("From the keyup");
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								} else {
-									$('.introjs-nextbutton').show();
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								}
 							});
 						});
 					});
 				});
-				
 			} else if(intro._currentStep == 8) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					typing("#totalEnterChar", "The entered string is : <span id='putValueId'></span>", 10, "",function() {
@@ -215,7 +244,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			});
 			break;
 			
-		case "restartBtn" :
+		case "restartBtn":
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#restartBtn").removeClass("opacity00");
@@ -235,6 +264,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 		$('.introjs-nextbutton').show();
 	});
 }
+
+var flag1 = true;
 
 function typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction) {
 	$(typingId).typewriting(typingContent, {

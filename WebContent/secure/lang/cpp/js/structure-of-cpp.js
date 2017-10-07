@@ -4,12 +4,14 @@ var typingSpeed = 5;
 var structureOfCReady = function() {
 	introGuide();
 	$('.introjs-nextbutton').keydown(function(e) {
+		
 		if (e.which == 13) {
 			e.preventDefault();
 		}
+		
 	});
 
-	$("#restart").click(function(){
+	$("#restart").click(function() {
 		location.reload();
 	});
 }
@@ -95,14 +97,16 @@ function introGuide() {
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
+		
 		case "heading":	
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			var text = "Let us learn the basic structure of a <b class ='ct-code-b-yellow'>C++</b> program.";
-			typing(".introjs-tooltiptext", text, function(){
+			typing(".introjs-tooltiptext", text, function() {
 				$('.introjs-nextbutton').show();
 			});
 		break;
+		
 		case "leftDiv":
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
@@ -113,14 +117,15 @@ function introGuide() {
 				}, 1000);
 			});	
 		break;
-		case "dcmntSection":
+		
+		case "dcmntSection" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$("#dcmntSection").addClass("color-black");
 			$(".introjs-helperLayer").one("transitionend", function() {	
 				$("#dcmntSection").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 					var text = "<b class ='ct-code-b-yellow'>Documentation section:</b><br> This section consists of documentation comments"
-							+ " where the developer gives details of the current program and also its author, date of creation etc."
+							+ " where the developer gives details of the current program and also its author, date of creation etc.."
 							+ " We will learn more about comments later.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#dcmntSection").css({"background-color": "white"}).addClass("zIndex");
@@ -156,8 +161,9 @@ function introGuide() {
 				$("#linkSection").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 					var text = "<b class ='ct-code-b-yellow'>Link section:</b> This section provides instructions to the compiler, to link pre-defined functions"
 							+ " which are available in the header files from the system library to the program.<br>"
-							+ " <b class ='color-red'>Example:</b> <br><b class ='ct-code-b-yellow'>#include&lt;iostream&gt;</b><br>"
-							+ " <b class ='ct-code-b-yellow'>using namespace std;</b>";
+							+ " <b class ='color-red'>Example:</b> <br><b class ='ct-code-b-yellow'>#include &lt;iostream&gt;</b><br>"
+							+ " <b class ='ct-code-b-yellow'>using namespace std;</b><ul><li>Which grants access to the <y>std</y> "
+							+"namespace that includes <y>C++ I/O</y> objects <y>cout</y> and <y>cin</y>.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#linkSection").css({"background-color": "white"}).addClass("zIndex");
 						$(".introjs-nextbutton").show();
@@ -205,7 +211,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#define").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 					var text = "<b class ='ct-code-b-yellow'>#define VALUE 10;</b><br>"
-						+ " The symbolic constant VALUE is defined with constatnt value 10."
+						+ " The symbolic constant <y>VALUE</y> is defined with constatnt value <y>10</y>."
 						+ " So <b class ='ct-code-b-yellow'>VALUE</b> is replaced with <b class ='ct-code-b-yellow'>10</b> before compilation process.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton").show();
@@ -237,7 +243,7 @@ function introGuide() {
 			$("#globalVariable").addClass("color-black");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#globalVariable").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-					var text = "The variable <b class ='ct-code-b-yellow'>total</b> is declared outside of the main() function so it is treated as"
+					var text = "The variable <b class ='ct-code-b-yellow'>total</b> is declared outside of the <y>main()</y> function so it is treated as"
 						+ "  <b class ='ct-code-b-yellow'>global variable</b> and this variable can be accessed from any part of the program.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton").show();
@@ -290,8 +296,8 @@ function introGuide() {
 							+ "<li>Operating System calls the main() And the main() execution starting point.</li>"
 							+ "<li>main() function contains <b class ='ct-code-b-yellow'>Declaration part</b> and <b class ='ct-code-b-yellow'>Execution part</b>."
 							+ "  These two parts must appear in between the opening and closing braces of main().</li></ul>";*/
-					var text = "<ul><li>A class is an organization of <span class ='ct-code-b-yellow'>data</span> and "
-								+"<span class ='ct-code-b-yellow'>functions</span> which operate on them.</li>"
+					var text = "<ul><li>A class is a combination of <span class ='ct-code-b-yellow'>data</span> and "
+								+"<span class ='ct-code-b-yellow'>functions</span>.</li>"
 								+" <li>Different variables with data types are called <span class ='ct-code-b-yellow'>data members</span> and the "
 								+"functions are called <span class ='ct-code-b-yellow'>member functions</span>.</li><li> The combination of "
 								+"<span class ='ct-code-b-yellow'>data members</span> and <span class ='ct-code-b-yellow'>"
@@ -312,10 +318,10 @@ function introGuide() {
 			$("#exePart2").addClass("background-color-blue");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#totalMain").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-					var text = "<ul><li><b class ='ct-code-b-yellow'>int a, b</b> are declared in <b class ='ct-code-b-yellow'>Data Members Part</b>.</li>"
+					var text = "<ul><li><b class ='ct-code-b-yellow'>int a, b</b> are declared in <b class ='ct-code-b-yellow'>data members part</b>.</li>"
 					+ "<li><b class ='ct-code-b-yellow'>void read()</b>; and<br> <b class ='ct-code-b-yellow'>void display()</b>; are in" 
-					+ " <b class ='ct-code-b-yellow'>Member Functions Part</b>.</li>"
-					+ " <li><b class ='ct-code-b-yellow'>VALUE</b> is replaced with <b class ='ct-code-b-yellow'>10</b> before compilation process.</li></ul>";
+					+ " <b class ='ct-code-b-yellow'>member functions part</b>.</li>"
+					+ " </ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton").show();
 					});

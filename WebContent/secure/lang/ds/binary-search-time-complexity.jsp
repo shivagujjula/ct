@@ -249,6 +249,21 @@ span {
 	padding: 10px;
 	white-space: pre;
 	font-family: monospace;
+	overflow: initial;
+}
+
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
 }
 
 </style>
@@ -270,7 +285,7 @@ span {
 	int low, high, mid, flag = -1;
 	low = 0, high = n - 1;
 	while (flag == -1 && low <= high) {
-		mid = (low + high) / 2;
+		<span id="line5">mid = (low + high) / 2;			</span>
 		if (a[mid] == key) {
 			flag = mid;
 			break;
@@ -381,7 +396,22 @@ function introGuide() {
 				popoverAppendFunction("#line1", 1);
 				var text = "Let us assume time complexity is T(n);";
 				typing("#popover1", text, function() {
-					$('.introjs-nextbutton').show();
+					$("#popover1").append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+						'<a class="introjs-button user-btn">Next &#8594;</a></div>');
+					$(".user-btn").click(function() {
+						$(".user-btn").remove();
+						$("#line1").popover('hide');
+						popoverAppendFunction("#line5", 5);
+						var text = "<ul><li>The main principle of binary search is to divide the given list into two halfs.</li>"+
+						"<li>Compare the key element with the middle element.</li><li>If the comparision result is true then print's "+
+						"its position.</li><li>If key element is found at middle element then the break statement terminate the loop.</li>"+
+						"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(1)</span>.</li></ul>";
+						typing("#popover5", text, function() {
+							
+						});
+						
+					});
+				//	$('.introjs-nextbutton').show();
 				});
 			});
 			break;

@@ -66,7 +66,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
@@ -594,7 +594,7 @@
 						<td>Karthik</td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>07-10-17</td>
 					</tr>
 					
 					<tr>
@@ -635,7 +635,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
@@ -1250,8 +1250,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">string functions</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>07-10-17</td>
 					</tr>
 					
 					<tr>
@@ -1262,8 +1262,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String using gets() and puts()</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>07-10-17</td>
 					</tr>
 					
 					
@@ -1275,8 +1275,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String length</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>07-10-17</td>
 					</tr>
 					
 					<tr>
@@ -1363,11 +1363,11 @@
 						<td>53</td>
 						<td>Functions</td>
 						<td>
-							<!-- <div>
+							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('function overloading', 'function-overloading-in-cpp.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">function overloading</span>
-							</div> -->
+							</div>
 							
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1397,7 +1397,7 @@
 						<td>Anil</td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>07-10-17</td>
 					</tr>
 					
 					<tr>
@@ -1507,7 +1507,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
@@ -1597,20 +1597,20 @@
 						<td>Anil</td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>06-10-17</td>
 					</tr>
 					
-					<!-- <tr>
-						<td>1</td>
-						<td></td>
+					<tr>
+						<td>7</td>
+						<td>Static variables</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+							href="javascript:opendialog('Static variables', 'static-variables.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static variables</span></td>
+						<td>Anil</td>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td></td>
-					</tr> -->
+						<td>07-10-17</td>
+					</tr>
 				</tbody>
 			</table>
 			
@@ -1625,7 +1625,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
@@ -1725,7 +1725,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
@@ -1793,7 +1793,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					<tr>
@@ -1822,7 +1822,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					
@@ -1851,7 +1851,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					
@@ -1881,7 +1881,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					
@@ -1910,7 +1910,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					
@@ -1939,7 +1939,7 @@
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
 					<th class="col-xs-2">Status</th>
-					<th class="col-xs-1">Assign Date</th>
+					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
 					

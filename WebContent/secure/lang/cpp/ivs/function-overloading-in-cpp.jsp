@@ -15,7 +15,6 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-
 <script src="../js-min/fold.min.js"></script>
 
 <title>Function overloading</title>
@@ -150,9 +149,9 @@ $(document).ready(function() {
 		<div id="topDiv">
 			<div id="typingDiv1">
 				<ul style="font-family: monospace;">
-					<li id="li1" class="opacity00">Two or more functions having <g>same name</g> but <g>different arguments</g> are known as <g>overloaded functions</g>.</li>
-					<li id="li2" class="opacity00">Function overloading can be considered as an example of <g>polymorphism</g> feature in C++.</li>
-					<li id="li3" class="opacity00">The return type may be similar but <g>type of the arguments</g> and <g>number of arguments</g> must be <g>different</g> in function overloading.
+					<li id="li1" class="opacity00">Two or more functions having same name but different arguments are known as overloaded functions.</li>
+					<li id="li2" class="opacity00">Function overloading can be considered as an example of polymorphism feature in C++.</li>
+					<li id="li3" class="opacity00">The return type may be similar but type of the arguments and number of arguments must be different in function overloading.
 						&emsp; <span class='user-btn introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span><br>
 					</li>
 				</ul>

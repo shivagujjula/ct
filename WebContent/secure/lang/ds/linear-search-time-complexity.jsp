@@ -69,18 +69,17 @@ td, th {
 }
 
 .td-code-text {
-	font-family: monospace;
-	/* font-style: italic; */
-	font-weight: bold;
+	/* font-family: monospace;
+	font-weight: bold; */
 }
 
 th, td:nth-child(1), td:nth-child(3) {
 	text-align: center;
 }
 
-/* th:nth-child(3) {
-	width: 30%;
-} */
+td:nth-child(2) {
+	font-family: monospace;
+}
 
 td:nth-child(4), td:nth-child(5) {
 	text-align: center;
@@ -139,10 +138,6 @@ td:nth-child(4), td:nth-child(5) {
 	border: 1px solid #0bf30b;
 	 z-index: 9999999 !important;
 }
-
-/* .td-code-text {
-	background: #c0e1fb;
-} */
 
 .ct-color-green {
 	color: green;
@@ -211,7 +206,7 @@ td:nth-child(4), td:nth-child(5) {
 
 span {
 	position: relative;
-	display: inline-block;
+	/* display: inline-block; */
 }
 
 .margin-left82 {
@@ -237,7 +232,25 @@ span {
 }
 
 .user-back-btn {
-	background: #5bc0de !important
+	background: #5bc0de !important;
+}
+
+th {
+	font-weight: normal;
+}
+
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
 }
 
 </style>
@@ -265,14 +278,15 @@ span {
 					<tr>
 						<th class="steps-heading-css"></th>
 						<th class="code-heading-css"></th>
-						<th><span class="opacity00" id="unitsForLeast">Key element is first element itself</span></th>
-						<th><span class="opacity00" id="unitsForMiddle">Element is at middle position</span></th>
-						<th><span class="opacity00" id="unitsForHigher">Element is not found</span></th>
+						<th><span class="opacity00" id="unitsForLeast">Scenario when the  key element itself<br>(Best case)</span></th>
+						<th><span class="opacity00" id="unitsForMiddle">Scenario when the key element is at middle position<br>(Average case)</span></th>
+						<th><span class="opacity00" id="unitsForHigher">Scenario when the key element is not found<br>(Worst case)</span></th>
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
 						<td class="td-code-text" id="tdCodeLine1">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1">int linear_search(int a[], int key, int n) {</span>
+							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1"><span class="color-green">int</span>
+							linear_search(<span class="color-green">int</span> a[], <span class="color-green">int</span> key, <span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd1">
 							<span id="unitFirstLineText1" style="padding: 2px 42px;">-</span>
@@ -287,7 +301,7 @@ span {
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
 						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine2">int i, pos <span id="operator1">=</span> -1;</span>
+							<span class="opacity00" id="codeLine2"><span class="color-green">int</span> i, pos <span id="operator1">=</span> -1;</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd2">
 							<span id="unitFirstLineText2" style="padding: 2px 42px;">1</span>
@@ -303,7 +317,8 @@ span {
 						<td class="opacity00" id="stepNo3">3.</td>
 						<td class="td-code-text">
 							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine3">
-							for (<span id="forInit">i = 0</span>; <span id="forCondition">i < n;</span> <span id="forIncrement">i++</span>) {</span> 
+							<span class="color-maroon">for</span> (<span id="forInit">i = 0</span>; <span id="forCondition">i < n;
+							</span> <span id="forIncrement">i++</span>) {</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd3">
 							<span id="unitFirstLineText3" style="padding: 2px 17px;">
@@ -324,7 +339,8 @@ span {
 						<td class="opacity00" id="stepNo4">4.</td>
 						<td class="td-code-text">
 							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine4">if (key <span id="doubleEqualOperator">==</span> a[i]) {</span> 
+							<span class="opacity00" id="codeLine4"><span class="color-maroon">if</span> (key <span id="doubleEqualOperator">==
+							</span> a[i]) {</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd4">
 							<span id="unitFirstLineText4" style="padding: 2px 42px;">1</span>
@@ -356,7 +372,7 @@ span {
 						<td class="opacity00" id="stepNo6">6.</td>
 						<td class="td-code-text">
 							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine6">break;</span></span> 
+							<span class="opacity00" id="codeLine6"><span class="color-maroon">break;</span></span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd6">
 							<span id="unitFirstLineText6" style="padding: 2px 42px;">-</span>
@@ -715,7 +731,7 @@ function firstStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitFirstLineText1', '#svg', 'svgLine1', 'marker', function() {
 		TweenMax.to($("#unitFirstLineTd1, #unitSecondLineTd1, #unitThirdLineTd1"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitThirdLineText1", 1);
-			var text = "<span class='step-color-css'>step-1 :</span> This is the function header and no operation is involved so "+
+			var text = "<span class='step-color-css'>Step 1 :</span> This is the function header and no operation is involved so "+
 			"the <span class='ct-code-teal'>unit of time</span> count is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover1", text, function() {
 				$('#popover1').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -733,7 +749,7 @@ function secondStepAnimation() {
 			$("#operator1").removeClass("blinking").off();
 			TweenMax.to($("#unitFirstLineTd2, #unitSecondLineTd2, #unitThirdLineTd2"), 1, {opacity: 1, onComplete: function() {
 				popoverAppendFunction("#unitThirdLineText2", 2);
-				var text = "<span id='textTooltipForIf'><span class='step-color-css'>step-2 :</span> Only one operator "+
+				var text = "<span id='textTooltipForIf'><span class='step-color-css'>Step 2 :</span> Only one operator "+
 				"<span class='ct-code-b-yellow'>=</span> is used in this statement, it takes "+
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.</span>";
 				typing("#popover2", text, function() {
@@ -755,7 +771,7 @@ function thirdStepFirstCaseAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3', '#unitFirstLineText3', '#svg', 'svgLine3', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd3"), 0.5, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitFirstLineText3", 3);
-			var text = "<span id='popover3Text1'><span class='step-color-css'>step-3 :</span><br/>This for loop involves three instructions which are "+
+			var text = "<span id='popover3Text1'><span class='step-color-css'>Step 3 :</span><br/>This for loop involves three instructions which are "+
 			"<span class='ct-code-b-yellow'>initialization</span>, "+
 			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>"
 			typing("#popover3", text, function() {
@@ -821,7 +837,7 @@ function thirdStepFirstCaseSecondAnimation() {
 function thirdStepSecondCaseAnimation() {
 	$("#unitFirstLineText3, #unitThirdLineText3").popover('hide');
 	popoverAppendFunction("#unitSecondLineText3", 32);
-	var text = "<span id='popover3Text2'><span class='step-color-css'>step-3 :</span><br/>If element is at the middile position then.</span>"
+	var text = "<span id='popover3Text2'><span class='step-color-css'>Step 3 :</span><br/>If element is at the middile position then.</span>"
 		typing("#popover32", text, function() {
 			TweenMax.to($("#unitSecondLineTd3"), 0.5, {opacity: 1, onComplete: function() {
 			$('#popover32').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -887,7 +903,7 @@ function thirdStepSecondCaseSecondAnimation() {
 function thirdStepThirdCaseAnimation() {
 	$("#unitSecondLineText3, #unitFirstLineText4").popover('hide');
 	popoverAppendFunction("#unitThirdLineText3", 33);
-	var text = "<span id='popover3Text3'><span class='step-color-css'>step-3 :</span><br/>If element is not found.</span>"
+	var text = "<span id='popover3Text3'><span class='step-color-css'>Step 3 :</span><br/>If element is not found.</span>"
 		typing("#popover33", text, function() {
 			TweenMax.to($("#unitThirdLineTd3"), 0.5, {opacity: 1, onComplete: function() {
 			$('#popover33').append('<div class="introjs-tooltipbuttons popover-btn-css">'+

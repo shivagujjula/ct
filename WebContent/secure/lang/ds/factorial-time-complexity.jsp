@@ -67,7 +67,7 @@ td, th {
 .td-code-text {
 	font-family: monospace;
 	/* font-style: italic; */
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 th, td:nth-child(1), td:nth-child(3) {
@@ -196,6 +196,20 @@ th:nth-child(3) {
 	background: #5bc0de !important
 }
 
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
+}
+
 </style>
 
 </head>
@@ -233,7 +247,7 @@ th:nth-child(3) {
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
 						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine1">int factorial(int n) {</span>
+							<span class="opacity00" id="codeLine1"><span class="color-green">int</span> factorial(<span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="opacity00" id="unitLine1">
 							<span id="unitLineText1" style="padding: 2px 42px;">0</span>
@@ -241,8 +255,9 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine2">int i, fact <span id="operator1">=</span> 1;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine2"><span class="color-green">int</span> i, fact <span id="operator1">=</span> 
+							<span class="color-deeppink">1</span>;</span>
 						</td>
 						<td class="opacity00" id="unitLine2">
 							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
@@ -250,9 +265,10 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo3">3.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="opacity00" id="codeLine3">
-							for(<span id="forInit">i = 0;</span> <span id="forCondition">i < n;</span> <span id="forIncrement">i++</span>) {</span>
+							<span class="color-maroon">for</span> (<span id="forInit">i = <span class="color-deeppink">0</span>;
+							</span> <span id="forCondition">i < n;</span> <span id="forIncrement">i++</span>) {</span>
 						</td>
 						<td class="opacity00" id="unitLine3">
 							<span id="unitLineText3" style="padding: 2px 2px;"><span id="initUnitNo">1</span> + <span id="conditionUnitNo">(n + 1)</span> 
@@ -260,7 +276,7 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo4">4.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="opacity00" id="codeLine4">
 								fact <span id="equalOperator">=</span> fact <span id="mulOperator">*</span> i;</span>
 						</td>
@@ -269,7 +285,7 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo5">5.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="opacity00" id="codeLine5">}</span>
 						</td>
 						<td class="opacity00" id="unitLine5">
@@ -277,8 +293,8 @@ th:nth-child(3) {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine6"><span id="returnOperator">return</span> fact;</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine6"><span class="color-maroon" id="returnOperator">return</span> fact;</span>
 						</td>
 						<td class="opacity00" id="unitLine6">
 							<span id="unitLineText6" style="padding: 2px 42px;">1</span></td>

@@ -71,7 +71,7 @@ td, th {
 .td-code-text {
 	font-family: monospace;
 	/* font-style: italic; */
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 th, td:nth-child(1), td:nth-child(3) {
@@ -79,7 +79,7 @@ th, td:nth-child(1), td:nth-child(3) {
 }
 
 th:nth-child(3) {
-	width: 30%;
+	width: 26%;
 }
 
 td:nth-child(4) {
@@ -239,6 +239,20 @@ span {
 	background: #5bc0de !important
 }
 
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
+}
+
 </style>
 </head>
 <body>
@@ -268,8 +282,9 @@ span {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo1">1.</td>
-						<td class="td-code-text" id="tdCodeLine1">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine1">int sum(int a[], int n) {</span>
+						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine1">
+							<span class="color-green">int</span> sum(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd1">
 							<span id="unitFirstLineText1" style="padding: 2px 42px;">-</span>
@@ -280,9 +295,10 @@ span {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo2">2.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine2">
-							if (<span id="ifCondition">n <span id="operator1"><=</span> 0</span>) {</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine2">
+							<span class="color-maroon">if</span> (<span id="ifCondition">n <span id="operator1"><=</span> 
+							<span class="color-deeppink">0</span></span>) {</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd2">
 							<span id="unitFirstLineText2" style="padding: 2px 42px;">1</span>
@@ -294,8 +310,8 @@ span {
 					<tr>
 						<td class="opacity00" id="stepNo3">3.</td>
 						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine3">return 0;</span> 
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine3"><span class="color-maroon">return</span> <span class="color-deeppink">0</span>;</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd3">
 							<span id="unitFirstLineText3" style="padding: 2px 42px;">1</span>
@@ -306,9 +322,8 @@ span {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo4">4.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine4">} <span id="elseCondition">else</span> {</span> 
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine4">} <span id="elseCondition" class="color-maroon">else</span> {</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd4">
 							<span id="unitFirstLineText4" style="padding: 2px 42px;">-</span>
@@ -319,9 +334,10 @@ span {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo5">5.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="opacity00" id="codeLine5">return (a[n]<span id="asteriskOperator">+</span><span id="sumOperator">sum(a, n-1)</span>);</span> 
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine5">
+							<span class="color-maroon">return</span> (a[n] <span id="asteriskOperator">+</span>
+							<span id="sumOperator">sum(a, n-<span class="color-deeppink">1</span>)</span>);</span> 
 						</td>
 						<td class="opacity00" id="unitFirstLineTd5">
 							<span id="unitFirstLineText5" style="padding: 2px 42px;">-</span>
@@ -333,8 +349,7 @@ span {
 					</tr>
 					<tr>
 						<td class="opacity00" id="stepNo6">6.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="opacity00" id="codeLine6">}</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd6">
@@ -346,8 +361,8 @@ span {
 					
 					<tr>
 						<td class="opacity00" id="stepNo7">7.</td>
-						<td class="td-code-text">
-							&emsp;&emsp;&emsp;&emsp;&emsp;<span class="opacity00" id="codeLine7">}</span>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="opacity00" id="codeLine7">}</span>
 						</td>
 						<td class="opacity00" id="unitFirstLineTd7">
 							<span id="unitFirstLineText7" style="padding: 2px 42px;">-</span></td>
@@ -379,10 +394,10 @@ span {
 					<span id="greaterThanResultSpan">sum(n) = <span id="mainResult" class="position">2 + sum(n-1)</span></span>, if n > 0
 				</span><br>
 				<span class="heading-css">Simplification :</span><br>
-				<span id="line1" class="opacity00" style="padding-right: 68px;">
+				<span id="line1" class="opacity00 display" style="padding-right: 68px;">
 					sum(n) = <span id="line1Span">2 + sum(n-1)</span>
 				</span><br>
-				<span id="line2" class="opacity00"><span class="opacity00">sum(n)</span> = 
+				<span id="line2" class="opacity00 display"><span class="opacity00">sum(n)</span> = 
 					<span id="line2Span" class="opacity00">2 + <span id="line2SpanSum">sum(n-1)</span></span>
 				</span><br>
 				<span id="line3" class="opacity00"><span class="opacity00">sum(n)</span> = 
@@ -420,6 +435,7 @@ span {
 <script>
 $(document).ready(function() {
 //	$(".opacity00").removeClass("opacity00");
+	$("td > span").css("display", "initial");
 	introGuide();
 });
 
@@ -592,7 +608,7 @@ function line2CalculationAnimation() {
 							buttonAppendFunction("#popover2", function() {
 								$("#Line2SecondLi").after("<li id='Line2ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
 								"<span class='ct-code-b-yellow'>n-1</span>.<br>"+
-								"<span class='ct-code-b-yellow opacity00' id='Line2ThirdLiSpan'>sum(<span id='numericalId2' class='display'>n</span>) = "+
+								"<span class='ct-code-b-yellow opacity00 display' id='Line2ThirdLiSpan'>sum(<span id='numericalId2' class='display'>n</span>) = "+
 								"<span id='value2ParentSpan' class='display'>2 + sum(<span id='value2Sum' class='display'>"+
 									"<span id='value2' class='display'>n</span>-1</span>)</span></span></li>");
 								tweenmaxAnimation("#Line2SecondLiSpan", "#Line2ThirdLiSpan", function() {
