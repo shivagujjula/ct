@@ -266,6 +266,10 @@ span {
 	color: deeppink;
 }
 
+td {
+	border: 1px solid;
+}
+
 </style>
 </head>
 <body>
@@ -281,42 +285,72 @@ span {
 	<div class="col-xs-12 margin-top-3">
 		<div class="col-xs-5">
 <pre class="creamPreTab4" id="preCode1" style="font-size: 12px;">
-<span id="line1">int binary_search_it(int a[10], int n, int key) {</span>
-	int low, high, mid, flag = -1;
-	low = 0, high = n - 1;
-	while (flag == -1 && low <= high) {
-		<span id="line5">mid = (low + high) / 2;			</span>
-		if (a[mid] == key) {
+<span id="line1"><span class="color-green">int</span> binary_search_it(<span class="color-green">int</span> a[], <span class="color-green">int</span> n, <span class="color-green">int</span> key) {</span>
+	<span class="color-green">int</span> low, high, mid, flag = -<span class="color-deeppink">1</span>;
+	low = <span class="color-deeppink">0</span>, high = n - <span class="color-deeppink">1</span>;
+	<span class="color-maroon">while</span> (flag == -<span class="color-deeppink">1</span> && low <= high) {
+		<span id="line5">mid = (low + high) / <span class="color-deeppink">2</span>;			</span>
+		<span class="color-maroon">if</span> (a[mid] == key) {
 			flag = mid;
-			break;
-		} else if (key < a[mid]) {
-			high = mid - 1;
-		} else if (key > a[mid]){
-			low = mid + 1;
+			<span class="color-maroon">break</span>;
+		} <span class="color-maroon">else if</span> (key < a[mid]) {
+			high = mid - <span class="color-deeppink">1</span>;
+		} <span class="color-maroon">else if</span> (key > a[mid]){
+			low = mid + <span class="color-deeppink">1</span>;
 		}
 	}
-	return flag;
+	<span class="color-maroon">return</span> flag;
 }
 </pre>		
 		</div>
 		<div class="col-xs-5 col-xs-offset-1">
 <pre class="creamPreTab4" id="preCode2">
-int binary_search_re(int a[10], int low, int high, int key) {
-	int mid;
-	if (low <= high) {
-		mid = (low + high) / 2;
-		if (a[mid] == key) {
-			return mid;
-		} else if (key < a[mid]) {
-			binary_search_re(a, low, mid - 1, key);
-		} else if (key > a[mid]) {
-			binary_search_re(a, mid + 1, high, key);
+<span class="color-green">int</span> binary_search_re(<span class="color-green">int</span> a[], <span class="color-green">int</span> low, <span class="color-green">int</span> high, <span class="color-green">int</span> key) {
+	<span class="color-green">int</span> mid;
+	<span class="color-maroon">if</span> (low <= high) {
+		mid = (low + high) / <span class="color-deeppink">2</span>;
+		<span class="color-maroon">if</span> (a[mid] == key) {
+			<span class="color-maroon">return</span> mid;
+		} <span class="color-maroon">else if</span> (key < a[mid]) {
+			binary_search_re(a, low, mid - <span class="color-deeppink">1</span>, key);
+		} <span class="color-maroon">else if</span> (key > a[mid]) {
+			binary_search_re(a, mid + <span class="color-deeppink">1</span>, high, key);
 		}
-	} else {
-		return -1;
+	} <span class="color-maroon">else</span> {
+		<span class="color-maroon">return</span> -<span class="color-deeppink">1</span>;
 	}
 }
 </pre>
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<div class="col-xs-6 col-xs-offset-3 margin-top-3" style="border: 1px solid; height: 300px;">
+			<div class="col-xs-12">
+				<div class="col-xs-9 col-xs-offset-1 margin-top-3">
+					<table>
+						<tr>
+							<td><span class="opacity00">1</span></td>
+							<td><span class="opacity00">2</span></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-xs-7 col-xs-offset-2 margin-top-3">
+					<table>
+						<tr>
+							<td><span class="opacity00">1</span></td>
+							<td><span class="opacity00">2</span></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-xs-5 col-xs-offset-3 margin-top-3">
+					<table>
+						<tr>
+							<td><span class="opacity00">1</span></td>
+							<td><span class="opacity00">2</span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-3">
@@ -503,7 +537,7 @@ function introGuide() {
 			break;
 		}
 	});
-	introjs.start();
+//	introjs.start();
 }
 
 function previousStepFunction() {

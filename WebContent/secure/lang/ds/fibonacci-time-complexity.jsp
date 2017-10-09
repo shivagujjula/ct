@@ -510,7 +510,7 @@ function introGuide() {
 							content: '<div id="popover1"></div>',
 						}).popover('show');
 						$(".popover").css({"top" : "0px;"});
-						var text = "<span class='step-color-css'>step-1 :</span> This is the function header and no operation is involved so "+
+						var text = "<span class='step-color-css'>Step 1 :</span> This is the function header and no operation is involved so "+
 						"the <span class='ct-code-teal'>unit of time</span> count is <span class='ct-code-b-yellow'>0</span>.";
 						typing("#popover1", text, function() {
 							$('#popover1').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -615,7 +615,7 @@ function secondStepAnimation() {
 					content: '<div id="popover2"></div>',
 				}).popover('show');
 				$(".popover").css({"top" : "0px;"});
-				var text = "<span class='step-color-css'>step-2 :</span> <span class='ct-code-teal'>Two</span> "+
+				var text = "<span class='step-color-css'>Step 2 :</span> <span class='ct-code-teal'>Two</span> "+
 				"<span class='ct-code-b-yellow'>=</span> operators are used in this statement, so it takes "+
 				"<span class='ct-code-b-yellow'>2</span> <span class='ct-code-teal'>unit of time</span>.";
 				typing("#popover2", text, function() {
@@ -636,7 +636,7 @@ function thirdStepAnimation() {
 			/* $("#operator1").addClass("blinking").one('animationend', function() {
 				$("#operator1").removeClass("blinking"); */
 				popoverAppendFunction("#unitSecondLineText3", 3);
-				var text = "<span id='textTooptipForIf'><span class='step-color-css'>step-2 :</span> Only one operator "+
+				var text = "<span id='textTooptipForIf'><span class='step-color-css'>Step 2 :</span> Only one operator "+
 				"<span class='ct-code-b-yellow'><=</span> is used in this statement, it takes "+
 				"<span class='ct-code-b-yellow'>1</span> <span class='ct-code-teal'>unit of time</span>.</span>";
 				typing("#popover3", text, function() {
@@ -665,7 +665,7 @@ function fourthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine4', '#unitFirstLineText4', '#svg', 'svgLine4', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd4, #unitSecondLineTd4"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText4", 4);
-			var text = "<span class='step-color-css'>step-4 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
+			var text = "<span class='step-color-css'>Step 4 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
 			"<span class='ct-code-b-yellow'>1</span> unit of time.";
 			typing("#popover4", text, function() {
 				$('#popover4').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -682,7 +682,7 @@ function fifthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine5', '#unitFirstLineText5', '#svg', 'svgLine5', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd5, #unitSecondLineTd5"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText5", 5);
-			var text = "<span class='step-color-css'>step-5 :</span> No operation is involved in this statement. So "+
+			var text = "<span class='step-color-css'>Step 5 :</span> No operation is involved in this statement. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover5", text, function() {
 				$('#popover5').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -699,7 +699,7 @@ function fifthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitFirstLineText6', '#svg', 'svgLine6', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd6, #unitSecondLineTd6"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText6", 6);
-			var text = "<span class='step-color-css'>step-6 :</span> No operation is involved in <span class='ct-code-b-yellow'>else</span> "+
+			var text = "<span class='step-color-css'>Step 6 :</span> No operation is involved in <span class='ct-code-b-yellow'>else</span> "+
 			"statement. So the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover6", text, function() {
 				$('#popover6').append('<div class="popover-height"><span class="introjs-button user-btn" onclick="seventhStepAnimation()">Next &#8594;</span></div>');
@@ -715,7 +715,7 @@ function sixthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine6', '#unitFirstLineText6', '#svg', 'svgLine6', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd6, #unitSecondLineTd6"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText6", 6);
-			var text = "<span id='popover6Text1'><span class='step-color-css'>step-6 :</span><br/>This for loop involves three instructions which are "+
+			var text = "<span id='popover6Text1'><span class='step-color-css'>Step 6 :</span><br/>This for loop involves three instructions which are "+
 			"<span class='ct-code-b-yellow'>initialization</span>, "+
 			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>"
 			typing("#popover6", text, function() {
@@ -797,7 +797,7 @@ function seventhStepAnimation() {
 			TweenMax.to($("#unitFirstLineTd7, #unitSecondLineTd7"), 1, {opacity: 1, onComplete: function() {
 				$("#equalOperator, #plusOperator").removeClass("blinking").off();
 				popoverAppendFunction("#unitSecondLineText7", 7);
-				var text = "<span class='step-color-css'>step-7 :</span> <br/><ul><li> This statement is involved in the for loop which contains" +
+				var text = "<span class='step-color-css'>Step 7 :</span> <br/><ul><li> This statement is involved in the for loop which contains" +
 						" two operators <span class='ct-code-b-yellow'>=</span> and <span class='ct-code-b-yellow'>+</span>.</li>"+
 				"<li>This statement is executed <span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n - 1</span>) "+
 				"number of times.</li><li>So it takes <span class='ct-code-b-yellow'>2 * (n - 1) = 2n - 2</span> "+
@@ -820,7 +820,7 @@ function eighthStepAnimation() {
 			TweenMax.to($("#unitFirstLineTd8, #unitSecondLineTd8"), 1, {opacity: 1, onComplete: function() {
 				$("#equalOperator2").removeClass("blinking").off();
 				popoverAppendFunction("#unitSecondLineText8", 8);
-				var text = "<span class='step-color-css'>step-8 :</span> <br/><ul><li> This statement is involved in the for loop which contains" +
+				var text = "<span class='step-color-css'>Step 8 :</span> <br/><ul><li> This statement is involved in the for loop which contains" +
 				" only one operator <span class='ct-code-b-yellow'>=</span>.</li>"+
 				"<li>This statement is executed <span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n - 1</span>) "+
 				"number of times.</li><li>So it takes <span class='ct-code-b-yellow'>n - 1</span> "+
@@ -843,7 +843,7 @@ function ninthStepAnimation() {
 			TweenMax.to($("#unitFirstLineTd9, #unitSecondLineTd9"), 1, {opacity: 1, onComplete: function() {
 				$("#equalOperator3").removeClass("blinking").off();
 				popoverAppendFunction("#unitSecondLineText9", 9);
-				var text = "<span class='step-color-css'>step-9 :</span> <br/><ul><li> This statement is involved in the for loop which contains" +
+				var text = "<span class='step-color-css'>Step 9 :</span> <br/><ul><li> This statement is involved in the for loop which contains" +
 				" only one operator <span class='ct-code-b-yellow'>=</span>.</li>"+
 				"<li>This statement is executed <span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n - 1</span>) "+
 				"number of times.</li><li>So it takes <span class='ct-code-b-yellow'>n - 1</span> "+
@@ -864,7 +864,7 @@ function tenthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine10', '#unitFirstLineText10', '#svg', 'svgLine10', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd10, #unitSecondLineTd10"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText10", 10);
-			var text = "<span class='step-color-css'>step-10 :</span> No operation is involved in closed brace. So "+
+			var text = "<span class='step-color-css'>Step 10 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";	
 			"<span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover10", text, function() {
@@ -882,7 +882,7 @@ function eleventhStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine11', '#unitFirstLineText11', '#svg', 'svgLine11', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd11, #unitSecondLineTd11"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText11", 11);
-			var text = "<span class='step-color-css'>step-11 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
+			var text = "<span class='step-color-css'>Step 11 :</span> The <span class='ct-code-b-yellow'>return</span> statement always take "+
 			"<span class='ct-code-b-yellow'>1</span> unit of time.";
 			typing("#popover11", text, function() {
 				$('#popover11').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
@@ -899,7 +899,7 @@ function twelfthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine12', '#unitFirstLineText12', '#svg', 'svgLine12', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd12, #unitSecondLineTd12"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText12", 12);
-			var text = "<span class='step-color-css'>step-12 :</span> No operation is involved in closed brace. So "+
+			var text = "<span class='step-color-css'>Step 12 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";	
 			"<span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover12", text, function() {
@@ -917,7 +917,7 @@ function thirteenthStepAnimation() {
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine13', '#unitFirstLineText13', '#svg', 'svgLine13', 'marker', function() {	
 		TweenMax.to($("#unitFirstLineTd13, #unitSecondLineTd13"), 1, {opacity: 1, onComplete: function() {
 			popoverAppendFunction("#unitSecondLineText13", 13);
-			var text = "<span class='step-color-css'>step-13 :</span> No operation is involved in closed brace. So "+
+			var text = "<span class='step-color-css'>Step 13 :</span> No operation is involved in closed brace. So "+
 			"the <span class='ct-code-teal'>unit count</span> is <span class='ct-code-b-yellow'>0</span>.";	
 			"<span class='ct-code-b-yellow'>0</span>.";
 			typing("#popover13", text, function() {
