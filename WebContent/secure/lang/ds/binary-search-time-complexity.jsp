@@ -285,17 +285,17 @@ td {
 	<div class="col-xs-12 margin-top-3">
 		<div class="col-xs-5">
 <pre class="creamPreTab4" id="preCode1" style="font-size: 12px;">
-<span id="line1"><span class="color-green">int</span> binary_search_it(<span class="color-green">int</span> a[], <span class="color-green">int</span> n, <span class="color-green">int</span> key) {</span>
+<span id="line1"><span class="color-green">int</span> binary_search_itr(<span class="color-green">int</span> a[], <span class="color-green">int</span> n, <span class="color-green">int</span> key) {</span>
 	<span class="color-green">int</span> low, high, mid, flag = -<span class="color-deeppink">1</span>;
 	low = <span class="color-deeppink">0</span>, high = n - <span class="color-deeppink">1</span>;
 	<span class="color-maroon">while</span> (flag == -<span class="color-deeppink">1</span> && low <= high) {
 		<span id="line5">mid = (low + high) / <span class="color-deeppink">2</span>;			</span>
-		<span class="color-maroon">if</span> (a[mid] == key) {
-			flag = mid;
-			<span class="color-maroon">break</span>;
-		} <span class="color-maroon">else if</span> (key < a[mid]) {
+		<span class="color-maroon">if</span> (<span id="line6">a[mid] == key</span>) {
+			<span id="line7">flag = mid;</span>
+			<span class="color-maroon" id="line8">break</span>;
+		} <span class="color-maroon">else if</span> (<span id="line9">key < a[mid]</span>) {
 			high = mid - <span class="color-deeppink">1</span>;
-		} <span class="color-maroon">else if</span> (key > a[mid]){
+		} <span class="color-maroon">else if</span> (<span id="line10">key > a[mid]</span>){
 			low = mid + <span class="color-deeppink">1</span>;
 		}
 	}
@@ -305,16 +305,16 @@ td {
 		</div>
 		<div class="col-xs-5 col-xs-offset-1">
 <pre class="creamPreTab4" id="preCode2">
-<span class="color-green">int</span> binary_search_re(<span class="color-green">int</span> a[], <span class="color-green">int</span> low, <span class="color-green">int</span> high, <span class="color-green">int</span> key) {
+<span class="color-green">int</span> binary_search_rec(<span class="color-green">int</span> a[], <span class="color-green">int</span> low, <span class="color-green">int</span> high, <span class="color-green">int</span> key) {
 	<span class="color-green">int</span> mid;
 	<span class="color-maroon">if</span> (low <= high) {
 		mid = (low + high) / <span class="color-deeppink">2</span>;
 		<span class="color-maroon">if</span> (a[mid] == key) {
 			<span class="color-maroon">return</span> mid;
 		} <span class="color-maroon">else if</span> (key < a[mid]) {
-			binary_search_re(a, low, mid - <span class="color-deeppink">1</span>, key);
+			binary_search_rec(a, low, mid - <span class="color-deeppink">1</span>, key);
 		} <span class="color-maroon">else if</span> (key > a[mid]) {
-			binary_search_re(a, mid + <span class="color-deeppink">1</span>, high, key);
+			binary_search_rec(a, mid + <span class="color-deeppink">1</span>, high, key);
 		}
 	} <span class="color-maroon">else</span> {
 		<span class="color-maroon">return</span> -<span class="color-deeppink">1</span>;
@@ -324,7 +324,7 @@ td {
 		</div>
 	</div>
 	<div class="col-xs-12">
-		<div class="col-xs-6 col-xs-offset-3 margin-top-3" style="border: 1px solid; height: 300px;">
+		<div class="col-xs-6 col-xs-offset-3 margin-top-3" style="border: 1px solid; height: 300px;" id="binaryAnalysisDiv">
 			<div class="col-xs-12">
 				<div class="col-xs-9 col-xs-offset-1 margin-top-3">
 					<table>
@@ -436,12 +436,32 @@ function introGuide() {
 						$(".user-btn").remove();
 						$("#line1").popover('hide');
 						popoverAppendFunction("#line5", 5);
-						var text = "<ul><li>The main principle of binary search is to divide the given list into two halfs.</li>"+
-						"<li>Compare the key element with the middle element.</li><li>If the comparision result is true then print's "+
-						"its position.</li><li>If key element is found at middle element then the break statement terminate the loop.</li>"+
-						"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(1)</span>.</li></ul>";
+						var text = "<ul><li id='liLine1'>The main principle of binary search is to divide the given list into two halfs.</li></ul>";
 						typing("#popover5", text, function() {
-							
+							$("#line5").effect('highlight',{color:'#da5805'}, 1500);
+							buttonAppendFunction("#liLine1", function() {
+								$("#liLine1").append("<li id='liLine2'>Compare the key element with the middle element.</li>");
+								typing("#liLine2", $("#liLine2").html(), function() {
+									$("#line6").effect('highlight',{color:'#da5805'}, 1500);
+									$("#liLine2").append("<li id='liLine3'>If the comparision result is true then print's its position.</li>");
+									typing("#liLine3", $("#liLine3").html(), function() {
+										$("#line6").effect('highlight',{color:'#da5805'}, 1500);
+										$("#liLine3").append("<li id='liLine4'>If key element is found at middle element then the break "+
+												"statement terminate the loop.</li>");
+										typing("#liLine4", $("#liLine4").html(), function() {
+											$("#line7").effect('highlight',{color:'#da5805'}, 1500);
+											$("#liLine4").append("<li id='liLine5'>In this type of cases the time complexity is "+
+													"<span class='ct-code-b-yellow'>T(1)</span>.</li>");
+											typing("#liLine5", $("#liLine5").html(), function() {
+											});
+										});
+									});
+								});
+							});
+							/* <li>If the comparision result is true then print's "+
+							"its position.</li>
+							"<li>If key element is found at middle element then the break statement terminate the loop.</li>"+
+							"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(1)</span>.</li></ul>" */
 						});
 						
 					});
@@ -537,7 +557,7 @@ function introGuide() {
 			break;
 		}
 	});
-//	introjs.start();
+	introjs.start();
 }
 
 function previousStepFunction() {
