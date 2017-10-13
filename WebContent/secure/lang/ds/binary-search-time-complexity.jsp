@@ -293,7 +293,7 @@ td {
 		<span class="color-maroon">if</span> (<span id="line6">a[mid] == key</span>) {
 			<span id="line7">flag = mid;</span>
 			<span class="color-maroon" id="line8">break</span>;
-		} <span class="color-maroon">else if</span> (<span id="line9">key < a[mid]</span>) {
+		<span id="line9">} <span class="color-maroon">else if</span> (<span id="line9SubSpan">key < a[mid]</span>) {</span>
 			high = mid - <span class="color-deeppink">1</span>;
 		} <span class="color-maroon">else if</span> (<span id="line10">key > a[mid]</span>){
 			low = mid + <span class="color-deeppink">1</span>;
@@ -443,16 +443,23 @@ function introGuide() {
 								$("#liLine1").append("<li id='liLine2'>Compare the key element with the middle element.</li>");
 								typing("#liLine2", $("#liLine2").html(), function() {
 									$("#line6").effect('highlight',{color:'#da5805'}, 1500);
-									$("#liLine2").append("<li id='liLine3'>If the comparision result is true then print's its position.</li>");
-									typing("#liLine3", $("#liLine3").html(), function() {
-										$("#line6").effect('highlight',{color:'#da5805'}, 1500);
-										$("#liLine3").append("<li id='liLine4'>If key element is found at middle element then the break "+
-												"statement terminate the loop.</li>");
-										typing("#liLine4", $("#liLine4").html(), function() {
+									buttonAppendFunction("#liLine2", function() {
+										$("#liLine2").append("<li id='liLine3'>If the comparision result is true then print's its position.</li>");
+										typing("#liLine3", $("#liLine3").html(), function() {
 											$("#line7").effect('highlight',{color:'#da5805'}, 1500);
-											$("#liLine4").append("<li id='liLine5'>In this type of cases the time complexity is "+
-													"<span class='ct-code-b-yellow'>T(1)</span>.</li>");
-											typing("#liLine5", $("#liLine5").html(), function() {
+											buttonAppendFunction("#liLine3", function() {
+												$("#liLine3").append("<li id='liLine4'>If key element is found at middle element then the break "+
+														"statement terminate the loop.</li>");
+												typing("#liLine4", $("#liLine4").html(), function() {
+													$("#line8").effect('highlight',{color:'#da5805'}, 1500);
+													$("#liLine4").append("<li id='liLine5'>In this type of cases the time complexity is "+
+															"<span class='ct-code-b-yellow'>T(1)</span>.</li>");
+													typing("#liLine5", $("#liLine5").html(), function() {
+														buttonAppendFunction("#liLine5", function() {
+															
+														});
+													});
+												});
 											});
 										});
 									});
@@ -646,6 +653,11 @@ function codeLinesReveledFunction(i) {
 			});
 		}
 	});
+}
+
+function secondStep() {
+	popoverAppendFunction("#line9", 9);
+	
 }
 
 /* function firstAnimation(selector1, selector2, selector3, selector4, value, callBackFunction) {
