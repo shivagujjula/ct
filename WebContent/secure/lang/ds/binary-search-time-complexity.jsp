@@ -293,9 +293,9 @@ td {
 		<span class="color-maroon">if</span> (<span id="line6">a[mid] == key</span>) {
 			<span id="line7">flag = mid;</span>
 			<span class="color-maroon" id="line8">break</span>;
-		<span id="line9">} <span class="color-maroon">else if</span> (<span id="line9SubSpan">key < a[mid]</span>) {</span>
+		<span id="line9">} <span class="color-maroon">else if</span> (<span id="lessThanid">key < a[mid]</span>) {</span>
 			high = mid - <span class="color-deeppink">1</span>;
-		} <span class="color-maroon">else if</span> (<span id="line10">key > a[mid]</span>){
+		<span id="line10">} <span class="color-maroon">else if</span> (<span id="greaterThanid">key > a[mid]</span>){</span>
 			low = mid + <span class="color-deeppink">1</span>;
 		}
 	}
@@ -309,12 +309,12 @@ td {
 	<span class="color-green">int</span> mid;
 	<span class="color-maroon">if</span> (low <= high) {
 		mid = (low + high) / <span class="color-deeppink">2</span>;
-		<span class="color-maroon">if</span> (a[mid] == key) {
-			<span class="color-maroon">return</span> mid;
+		<span id="recLine4"><span class="color-maroon">if</span> (a[mid] == key) {</span>
+			<span id="recLine5"><span class="color-maroon">return</span> mid;</span>												<span id="timeC1" class="opacity00">T(1)</span>
 		} <span class="color-maroon">else if</span> (key < a[mid]) {
-			binary_search_rec(a, low, mid - <span class="color-deeppink">1</span>, key);
+			<span id="recLine7">binary_search_rec(a, low, mid - <span class="color-deeppink">1</span>, key);</span>		<span id="timeC2" class="opacity00">T(n/2)</span>
 		} <span class="color-maroon">else if</span> (key > a[mid]) {
-			binary_search_rec(a, mid + <span class="color-deeppink">1</span>, high, key);
+			<span id="recLine9">binary_search_rec(a, mid + <span class="color-deeppink">1</span>, high, key);</span>		<span id="timeC3" class="opacity00">T(n/2)</span>
 		}
 	} <span class="color-maroon">else</span> {
 		<span class="color-maroon">return</span> -<span class="color-deeppink">1</span>;
@@ -456,7 +456,7 @@ function introGuide() {
 															"<span class='ct-code-b-yellow'>T(1)</span>.</li>");
 													typing("#liLine5", $("#liLine5").html(), function() {
 														buttonAppendFunction("#liLine5", function() {
-															
+															secondStep();
 														});
 													});
 												});
@@ -479,9 +479,32 @@ function introGuide() {
 		case 'preCode2':
 			$('.introjs-helperLayer').one('transitionend', function() {
 			//	$("#preCode1").addClass("z-index9999999");
-				var text = 'This is the recursive code for binary search.';
+				var text = '<span id="tooltiptextId">This is the recursive code for binary search.</span>';
 				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show();
+					buttonAppendFunction(".introjs-tooltipbuttons", function() {
+						$("#tooltiptextId").append("<ul id='ulTextId'><li>If key element found at middle position then the Time Complexity is "+
+						"<span class='ct-code-b-yellow'>T(n)</span></li>"+
+						"<li>If the key element is less than middle element then search the key element in the first half. Then the "+
+						"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li>"+
+						"<li>If the key element is greater than middle element then search the key element in the second half. In this type of cases the "+
+						"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>");
+						typing("#ulTextId", $("#ulTextId").html(), function() {
+							$("#recLine5").effect('highlight',{color:'#da5805'}, 1500, function() {
+								TweenMax.to($("#timeC1"), 1, {opacity : 1, onComplete: function() {
+									$("#recLine7").effect('highlight',{color:'#da5805'}, 1500, function() {
+										TweenMax.to($("#timeC2"), 1, {opacity : 1, onComplete: function() {
+											$("#recLine9").effect('highlight',{color:'#da5805'}, 1500, function() {
+												TweenMax.to($("#timeC3"), 1, {opacity : 1, onComplete: function() {
+													$('.introjs-nextbutton').show();
+												}});
+											});
+										}});
+									});
+								}});
+							});
+						});
+					});
+					//$('.introjs-nextbutton').show();
 				});
 			});
 			break;
@@ -656,8 +679,30 @@ function codeLinesReveledFunction(i) {
 }
 
 function secondStep() {
+	$("#line5").popover('hide');
 	popoverAppendFunction("#line9", 9);
-	
+	var text = "If the key element is less than middle element then search the key element in the first half. In this type of cases the "+
+		"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+	typing("#popover9", text, function() {
+		$("#lessThanid").effect('highlight',{color:'#da5805'}, 1500);
+		buttonAppendFunction("#popover9", function() {
+			thirdStep();
+		});
+	});
+}
+
+function thirdStep() {
+	$("#line9").popover('hide');
+	popoverAppendFunction("#line10", 10);
+	var text = "If the key element is greater than middle element then search the key element in the second half. In this type of cases the "+
+		"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+	typing("#popover10", text, function() {
+		$("#greaterThanid").effect('highlight',{color:'#da5805'}, 1500);
+		buttonAppendFunction("#popover10", function() {
+			introjs.nextStep();
+			$("#line10").popover('hide');
+		});
+	});
 }
 
 /* function firstAnimation(selector1, selector2, selector3, selector4, value, callBackFunction) {
