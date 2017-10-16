@@ -1,4 +1,5 @@
 var arr = [];
+var count = 0;
 var readPrintStringUsingGetsPutsReady = function() {
 	$('#restartBtn').click(function() {
 		$('#inputChar').val('');
@@ -34,10 +35,12 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#count',
 			intro : '',
+			tooltipClass : 'hide'
 		}, {
 			element : '#animationBox',
 			intro : '',
-			animateStep : 'memory'
+			animateStep : 'memory',
+			tooltipClass : 'hide'
 		}, {
 			element : '#int',
 			intro : '',
@@ -45,7 +48,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#animationBox',
 			intro : '',
-			animateStep : 'countIncrease'
+			animateStep : 'countIncrease',
+			tooltipClass : 'hide'
 		}, {
 			element : '#main',
 			intro : '',
@@ -53,10 +57,12 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#object',
 			intro : '',	
+			tooltipClass : 'hide'
 		}, {
 			element : '#animationBox',
 			intro : '',
-			animateStep : 'memory1'
+			animateStep : 'memory1',
+			tooltipClass : 'hide'
 		}, {
 			element : '#data',
 			intro : '',	
@@ -67,27 +73,33 @@ var readPrintStringUsingGetsPutsReady = function() {
 		},{
 			element : '#cout',
 			intro : '',
-			animateStep : 'output'
+			animateStep : 'output',
+			tooltipClass : 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterData'
+			animateStep : 'enterData',
+			tooltipClass : 'hide'
 		}, {
 			element : '#enterVal',
 			intro : '',	
-			animateStep : 'value'
+			animateStep : 'value',
+			tooltipClass: 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterValue'
+			animateStep : 'enterValue',
+			tooltipClass: 'hide'
 		},{
 			element : '#count1',
 			intro : '',
-			animateStep : 'increment'
+			animateStep : 'increment',
+			tooltipClass: 'hide'
 		},{
 			element : '#animationBox',
 			intro : '',
-			animateStep : 'increment1'
+			animateStep : 'increment1',
+			tooltipClass: 'hide'
 		}, {
 			element : '#data1',
 			intro : '',	
@@ -106,19 +118,24 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#enterVal',
 			intro : '',	
-			animateStep : 'value1'
+			animateStep : 'value1',
+			tooltipClass: 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterValue1'
+			animateStep : 'enterValue1',
+			tooltipClass: 'hide'
 		},{
 			element : '#count1',
 			intro : '',
-			animateStep : 'increment2'
+			animateStep : 'increment2',
+			tooltipClass: 'hide'
+			
 		},{
 			element : '#animationBox',
 			intro : '',
-			animateStep : 'increment3'
+			animateStep : 'increment3',
+			tooltipClass: 'hide'
 		}, {
 			element : '#count2',
 			intro : '',	
@@ -129,56 +146,70 @@ var readPrintStringUsingGetsPutsReady = function() {
 		},{
 			element : '#cout1',
 			intro : '',
-			animateStep : 'outputt'
+			animateStep : 'outputt',
+			tooltipClass : 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterData2'
+			animateStep : 'enterData2',
+			tooltipClass: 'hide'
 		}, {
 			element : '#element',
 			intro : '',
-			animateStep : 'element11'
+			animateStep : 'element11',
+			tooltipClass: 'hide'
 		
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'dataEntry'
+			animateStep : 'dataEntry',
+			tooltipClass: 'hide'
 		},{
 			element : '#cout2',
 			intro : '',
-			animateStep : 'outptt'
+			animateStep : 'outptt',
+			tooltipClass :'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterData3'
+			animateStep : 'enterData3',
+			tooltipClass :'hide'
 		}, {
 			element : '#count4',
 			intro : '',
-			animateStep : 'count_1'
+			animateStep : 'count_1',
+			tooltipClass :'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'dataEntry1'
+			animateStep : 'dataEntry1',
+			tooltipClass :'hide'
 		},{
 			element : '#cout1',
 			intro : '',
-			animateStep : 'outputt1'
+			animateStep : 'outputt1',
+			tooltipClass: 'hide'
+				
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'enterData4'
+			animateStep : 'enterData4',
+			tooltipClass: 'hide'
 		}, {
 			element : '#element',
 			intro : '',
-			animateStep : 'element12'
+			animateStep : 'element12',
+			tooltipClass: 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'dataEntry2'
+			animateStep : 'dataEntry2',
+			tooltipClass: 'hide'
 		},{
 			element : '#cout2',
 			intro : '',
-			animateStep : 'outptt1'
+			animateStep : 'outptt1',
+			tooltipClass: 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
@@ -187,11 +218,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#count4',
 			intro : '',
-			animateStep : 'count_2'
+			animateStep : 'count_2',
+			tooltipClass: 'hide'
 		},{
 			element : '#outputBox',
 			intro : '',
-			animateStep : 'dataEntry3'
+			animateStep : 'dataEntry3',
+			tooltipClass: 'hide'
 		},{
 			element : '#mainClose',
 			intro : '',
@@ -201,12 +234,170 @@ var readPrintStringUsingGetsPutsReady = function() {
 			position : "left"
 		}]
 	});
-	intro.onafterchange(function(targetElement) {
+	
+	intro.onbeforechange(function(targetElement){
 		var elementId = targetElement.id;
+		switch(elementId) {
+		case 'count' :
+			$("#countBox").addClass("opacity00");
+		break;
+		case 'int' :
+			$("#countCupValue").addClass('opacity00');
+		break;
+		case 'object':
+			$("#borderBox, #borderBox1").addClass("opacity00")
+			$("#one, #two, #three, #four").addClass("opacity00");
+		break;
+		case 'cout' :
+			intro.refresh();
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "output" :
+				$("#outputBody").empty();
+				
+				break;
+			}
+			break;
+		case "enterVal" :
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "value" :
+				$('#inputChar').text("");
+				$('.arrayValue').text("");
+				$("#inputChar").removeAttr("placeholder");
+			break;
+			case "value1":
+				$('#inputChar1').text("");
+				$("#inputChar1").removeAttr("placeholder");
+				$('.arrayValue1').text("");
+			break;
+			}
+			break;
+		case 'cout1' :
+			intro.refresh();
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "outputt" :
+				$('#inputNumber2').addClass("opacity00");
+			break;
+			case "outputt1" :
+				$('#inputNumber4').addClass("opacity00");
+			break;
+			}
+			break;
+		case "element" :
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "element11" :
+				$("#value11").addClass("opacity00");
+				$('#value12').addClass("opacity00");
+				break;
+			case "element12" :
+				$("#value14").addClass("opacity00");
+				$('#value15').addClass("opacity00");
+				break;
+			}
+			break;
+		case 'cout2' :
+			intro.refresh();
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "outptt" :
+				$('#inputNumber3').addClass("opacity00");
+			break;
+			case "outptt1" :
+				$('#inputNumber5').addClass("opacity00");
+			break;
+			}
+			break;
+		case 'count4' :
+			intro.refresh();
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "count_1" :
+				$('#value13').addClass("opacity00");
+			break;
+			case "count_2" :
+				$('#value16').addClass("opacity00");
+			break;
+			}
+			break;
+		case "animationBox" :
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "memory" :
+				$("#countBox").addClass("opacity00");
+			break;
+			case "countIncrease":
+				count = 0;
+				$("#countCupValue").addClass('opacity00');
+			break;
+			case "increment1":
+				count = 1;
+				//$("#countCupValue").text(0);
+			break;
+			case "increment3":
+				count = 2;
+				//$("#countCupValue").text(1);
+			break;
+			case 'memory1':
+				$("#borderBox, #borderBox1").addClass("opacity00");
+				$("#one, #two, #three, #four").addClass("opacity00");
+				break;
+			}
+			break;
+		case "outputBox" :
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "enterData" :
+				$("#outputBody").empty();
+			break;
+			case "enterData2" :
+				$("#inputNumber2").addClass('opacity00');
+			break;
+			case "enterData3" :
+				$("#inputNumber3").addClass('opacity00');
+			break;
+			case "enterData4" :
+				$("#inputNumber4").addClass('opacity00');
+			break;
+			case "enterData5" :
+				$("#inputNumber5").addClass('opacity00');
+			break;
+			case "enterValue" :
+				$('#inputChar').text("");
+				$('.arrayValue').text("");
+				$("#inputChar").removeAttr("placeholder");
+			break;
+			case 'enterValue1':
+				$("#inputChar1").text("");
+				$("#inputChar1").removeAttr("placeholder");
+				$('.arrayValue1').text("");
+			break;
+			case 'dataEntry':
+				$("#value11").addClass("opacity00");
+				$('#value12').addClass("opacity00");
+			break;
+			case 'dataEntry1':
+				$("#value13").addClass("opacity00");
+			break;
+			case 'dataEntry2':
+				$("#value14").addClass("opacity00");
+				$('#value15').addClass("opacity00");
+			break;
+			case 'dataEntry3':
+				$("#value16").addClass("opacity00");
+			break;
+			}
+		break;
+		}
+	});
+	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		intro.refresh();
+		var elementId = targetElement.id;
 		switch(elementId) {
 			case  "preBody" :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend',function() {
 					$('#preBody').removeClass("opacity00");
 					typing('.introjs-tooltiptext',"Let us learn <span class='ct-code-b-yellow'>"+
@@ -217,79 +408,72 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			
 			case 'class' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend',function() {
 					typing('.introjs-tooltiptext',"To create a class as <span class='ct-code-b-yellow'>Student</span>", 10, "",function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case 'int' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend',function() {
 					typing('.introjs-tooltiptext',"A <y>static varibles</y> are initialised to <y>zero</y>" +
 							" by default the user can also initialise a value to the static variable.", 10, "",function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case 'count' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend',function() {
+					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<ul><li>The type of each <y>static member</y> variable must be defined outside class defination.</li>" +
 							"<li>This is necessary because the <y>static data members</y> are stored separately rather than a part of an object.</li>" +
 							"<li>They are also associated with the class itself ratherthan with any object, they are also known as <y>variable</y>.</li>" +
 							"</ul>", 10, "",function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case 'object' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one("transitionend", function() {
+					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<span class='ct-code-b-yellow'>s1</span>,<span class='ct-code-b-yellow'>s2</span>,"+
 							"are the objects for class student", 10, "", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 			case 'data' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one("transitionend", function() {
 					typing('.introjs-tooltiptext',"", 10, "", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 			case 'data1' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#countCupValue").removeClass('z-index10000000');
 					typing('.introjs-tooltiptext',"", 10, "", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 			case 'mainClose' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$('#countBox').removeClass('z-index10000000');
 					typing('.introjs-tooltiptext',"close the main tag", 10, "", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 			case 'count2' :
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#countCupValue").removeClass('z-index10000000');
 					typing('.introjs-tooltiptext',"", 10, "", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 			case 'variables' :
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "first":
@@ -311,14 +495,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			case  'method':
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case 'public1' :
 					$('.introjs-helperLayer').one('transitionend',function() {
 						typing('.introjs-tooltiptext',"The method access specifier is <span class='ct-code-b-yellow'>"+
 								"public</span>.", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
@@ -335,30 +518,46 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			case  'count1':
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case 'increment' :
+					if (intro._direction == "backward") {
+						if (parseInt($("#countCupValue").text()) > 0) {
+							count--;
+							$("#countCupValue").text(count);
+						}
+					}/* else {
+						$("#countCupValue").text(parseInt($("#countCupValue").text()) + 1);
+					}*/
 					$('.introjs-helperLayer').one('transitionend',function() {
+						$('.introjs-tooltip').removeClass("hide");
 						typing('.introjs-tooltiptext',"To increment <span class='ct-code-b-yellow'>count</span>" +
 								" value.", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
 				
 				case "increment2":
+					if (intro._direction == "backward") {
+						if (parseInt($("#countCupValue").text()) > 0) {
+							count--;
+							$("#countCupValue").text(count);
+						}
+					}/* else {
+						$("#countCupValue").text(parseInt($("#countCupValue").text()) + 1);
+					}*/
 					$('.introjs-helperLayer').one('transitionend',function() {
+						$('.introjs-tooltip').removeClass("hide");
 						typing('.introjs-tooltiptext',"To increment <span class='ct-code-b-yellow'>count</span>" +
 								" value.", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
 				}
 			break;
 			case  'method1':
-				$('.introjs-nextbutton').hide();
 				intro.refresh();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
@@ -366,7 +565,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 					$('.introjs-helperLayer').one('transitionend',function() {
 						typing('.introjs-tooltiptext',"By default the method access the specifier is <span class='ct-code-b-yellow'>"+
 								"public</span>.", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
@@ -382,14 +581,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			case "main" :
 				intro.refresh();
-			$('.introjs-nextbutton').hide();
+			
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 				case "execution" :
 					$('.introjs-helperLayer').one("transitionend",function() {
 						$("#countCupValue").removeClass('z-index10000000');
 						typing('.introjs-tooltiptext',"<span class='ct-code-b-yellow'>main()</span> method to execute the programm.", 10,"",function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				break;
@@ -397,54 +596,40 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			case "animationBox" :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "memory" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#animationBox').removeClass('opacity00');
 						$('#countBox').removeClass("opacity00").addClass('animated zoomIn').one('animationend', function() {
+							$('#countBox').removeClass("animated zoomIn");
 							$(".introjs-tooltip").removeClass("hide");
 							typing('.introjs-tooltiptext',"Memory is allocated to the <span class='ct-code-b-yellow'>count</span>.", 10,"",function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});
 					break;
 				case 'memory1' :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#animationBox').removeClass('opacity00');
-						transferEffect("#paraMeter1","#s1", function() {
-							$('#s1').fadeTo(500,1, function() {
-								$('#borderBox').fadeTo(500,1, function() {
-									$("#boxParent").fadeTo(500,1, function() {
-										transferEffect("#first","#boxParent", function() {
-											$("#one").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-												$("#boxParent1").fadeTo(500,1, function() {
-													transferEffect("#second", "#boxParent1", function() {
-														$("#two").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-															transferEffect("#paraMeter2","#s2", function() {
-																$('#s2').fadeTo(500, 1, function() {
-																	$('#borderBox1').fadeTo(500,1, function() {
-																		$("#boxParent2").fadeTo(500,1, function() {
-																		transferEffect("#first", "#boxParent2", function() {
-																				$("#three").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-																					$("#boxParent3").fadeTo(500,1, function() {
-																					transferEffect("#second", "#boxParent3", function() {
-																							$("#four").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
-																								$(".introjs-tooltip").removeClass("hide");
-																								$("#object").removeClass('z-index1000000');
-																								typing('.introjs-tooltiptext',"<y>S1</y> ,<y>S2</y> memories are allocated to the <y>2bytes</y> of memory.",10, "", function() {
-																									$('.introjs-nextbutton').show();
-																								});
-																							});
-																						});
-																					});
-																				});
-																			});
-																		});
+						transferEffect("#paraMeter1","#borderBox", function() {
+							$('#borderBox').removeClass("opacity00");
+								transferEffect("#first","#bodyBox", function() {
+									$("#one").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+										transferEffect("#second", "#bodyBox1", function() {
+											$("#two").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+												transferEffect("#paraMeter2","#borderBox1", function() {
+													$('#borderBox1').removeClass("opacity00");
+													transferEffect("#first", "#bodyBox2", function() {
+														$("#three").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+															transferEffect("#second", "#bodyBox3", function() {
+																$("#four").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
+																	$(".introjs-tooltip").removeClass("hide");
+																	$("#object").removeClass('z-index1000000');
+																	typing('.introjs-tooltiptext',"<y>S1</y> ,<y>S2</y> memories are allocated to the <y>2bytes</y> of memory.",10, "", function() {
+																		$("#one, #two, #three, #four").removeClass("animated zoomIn");
+																		$('.introjs-nextbutton, .introjs-prevbutton').show();
 																	});
 																});
 															});
@@ -457,52 +642,50 @@ var readPrintStringUsingGetsPutsReady = function() {
 								});
 							});
 						});
-					});
-				break;
+					break;
 				case "increment1":
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend',function() {
 						$('#animationBox').removeClass('opacity00');
 						$("#count1").addClass("z-index1000000");
-						transferEffectCircle("#count1","#countCupValue", function() {
-							$("#countCupValue").text(parseInt($("#countCupValue").text()) + 1);
-							$(".introjs-tooltip").removeClass("hide");
+						transferEffect("#count1","#countCupValue", function() {
+							$("#countCupValue").text(count);
 							$("#count1").removeClass("z-index1000000");
+							$(".introjs-tooltip").removeClass("hide");
 							typing('.introjs-tooltiptext',"Increment to  <span class='ct-code-b-yellow'>count</span>" +
 								" value is  <span class='ct-code-b-yellow'>1</span>.", 10, "", function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});
 					break;
 				case "increment3":
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend',function() {
 						$('#animationBox').removeClass('opacity00');
 						$("#count1").addClass("z-index1000000");
-						transferEffectCircle("#count1","#countCupValue", function() {
-							$("#countCupValue").text(parseInt($("#countCupValue").text()) + 1);
-							$(".introjs-tooltip").removeClass("hide");
+						transferEffect("#count1","#countCupValue", function() {
+							$("#countCupValue").text(count);
 							$("#count1").removeClass("z-index1000000")
+							$(".introjs-tooltip").removeClass("hide");
 							typing('.introjs-tooltiptext',"Increment to  <span class='ct-code-b-yellow'>count</span>" +
 								" value is  <span class='ct-code-b-yellow'>2</span>.", 10, "", function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});
 					break;
 				case "countIncrease":
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#animationBox').removeClass('opacity00');
 						$("#int").addClass("z-index1000000");
-						$("#countCupValue").text('0').addClass('opacity00');
+						//count = intro._introItems[intro._currentStep]["count"];
+						console.log(count);
+						$("#countCupValue").text(count).addClass('opacity00');
 						transferEffect("#int","#countCupValue", function() {
 							$("#countCupValue").removeClass('opacity00');
 							$(".introjs-tooltip").removeClass("hide");
 							$("#int").removeClass("z-index1000000");
 							typing('.introjs-tooltiptext',"By default count value is initilased to <y>0</y>.", 10, "", function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});
@@ -511,13 +694,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'cout' :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "output" :
 					$('.introjs-helperLayer').one('transitionend', function() {
+						$('.introjs-tooltip').removeClass("hide");
 						typing('.introjs-tooltiptext',"<y>cout</y> is used to display the output in console", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
@@ -533,13 +716,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case "cin" :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
+				
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "result" :
 					$('.introjs-helperLayer').one("transitionend", function() {
 						typing('.introjs-tooltiptext',"<y>cin</y> is used to input the given data", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
@@ -555,21 +738,22 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break; 
 			case 'cout1' :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "outputt" :
 					$('.introjs-helperLayer').one('transitionend', function() {
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext',"<y>cout</y> is used to display the output in console", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
 				case "outputt1" :
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#countBox').removeClass('z-index10000000');
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext',"", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});;
 					});
 					break;
@@ -577,20 +761,19 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'cout2' :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "outptt" :
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#borderBox').removeClass('z-index1000000');
 						$("#box1").removeClass("z-index1000000")
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext',"<y>cout</y> is used to display the output in console", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
 				case "outptt1" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#borderBox1').removeClass('z-index1000000');
 						setTimeout(function() {
@@ -602,18 +785,17 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'count4' :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "count_1" :
 					$('.introjs-helperLayer').one('transitionend', function() {
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext',"", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
 				case "count_2" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one('transitionend', function() {
 						$('#borderBox1').removeClass('z-index1000000');
 						setTimeout(function() {
@@ -624,14 +806,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 				}
 				break;
 			case "enterVal" :
-				$('.introjs-nextbutton').hide();
 				intro.refresh();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "value" :
 					$('.introjs-helperLayer').one("transitionend", function() {
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext',"<y>cin</y> is used to input the given data", 10, "", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
@@ -647,14 +829,15 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break; 
 			case "element" :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
+				
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "element11" :
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$("#textEnter1").removeClass("z-index1000000");
-						typing('.introjs-tooltiptext',"<y>cin</y> is used to input the given data", 10, "", function() {
-							$('.introjs-nextbutton').show();
+						$('.introjs-tooltip').removeClass('hide');
+						typing('.introjs-tooltiptext',"<y>cout</y> is used to input the given data", 10, "", function() {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 					break;
@@ -671,11 +854,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break; 
 			case "outputBox" :
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 				case "enterData" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$('#outputBox').removeClass('opacity00');
 						$("#outputBody").append(' <span id ="inputNumber" class="opacity00">Enter two subject marks  : <span id="outputPrintfLine"><div  id="inputChar" contenteditable="true" maxlength="2" class="position input-char"></div></span></span><br><br>');
@@ -688,16 +869,17 @@ var readPrintStringUsingGetsPutsReady = function() {
 					});
 					break;
 				case "enterValue" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
+					//$('#inputChar').removeAttr('disabled').focus();
 					$('.introjs-helperLayer').one("transitionend", function() {
-						$('#inputChar').attr({contenteditable: 'true', placeholder: 'Enter 2 values'});
+						$('#inputChar').attr({contenteditable: 'true', placeholder: 'Enter 2 values'}).focus();
 						$("#borderBox").addClass("z-index1000000");
 						$('#inputChar').removeAttr('disabled').focus();
-						checking('#inputChar')
-						charAtEnd("inputChar");
 						$(".introjs-tooltip").removeClass("hide");
-						typing(".introjs-tooltiptext", "Please enter <y>two</y> values with space.", 10, "",function() {
+						typing(".introjs-tooltiptext", "Please enter <y>two</y> values with space.","",10,function() {
 							//$('.introjs-nextbutton').show();
+							//$('.introjs-nextbutton, .introjs-prevbutton').show();
+							checking('#inputChar');
+							charAtEnd("inputChar");
 						});
 				});
 				break;
@@ -715,7 +897,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 					});
 					break;
 				case "enterValue1" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$('#inputChar1').attr({contenteditable: 'true', placeholder: 'Enter 2 values'});
 						$("#borderBox1").addClass("z-index1000000");
@@ -732,9 +913,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$('#outputBox').removeClass('opacity00');
-							$("#outputBody").append(' <span id ="inputNumber2" class="opacity00">The given two subjects marks are  :<span class="border opacity00 position" id="value11">'
+							$("#outputBody").append(' <span id ="inputNumber2" class="opacity00">The given two subjects marks are  : <span class="border opacity00 position" id="value11">'
 									+ $('#box').text() +'</span> <span class="border opacity00 position" id="value12">' 
-									+ $('#box1').text()+'</span></span><br><br> ');
+									+ $('#box1').text()+'</span></span><br><br>');
 							transferEffect("#textEnter1","#inputNumber2",function() {
 								$('#inputNumber2').removeClass('opacity00');
 								setTimeout(function () {
@@ -744,7 +925,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 						});
 					break;
 				case 'dataEntry' :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('#borderBox').addClass('z-index1000000');
 					$("#box").effect( "highlight",{color: 'red'}, 200);
 					transferEffect("#box","#value11", function() {
@@ -753,7 +933,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						transferEffect("#box1","#value12", function() {
 							$("#value12").removeClass("opacity00");
 							$(".introjs-tooltip").removeClass("hide");
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						})
 					});
 					break;
@@ -761,8 +941,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$('#outputBox').removeClass('opacity00');
-							$("#outputBody").append(' <span id ="inputNumber3" class="opacity00">Student count is :<span class="border opacity00 position" id="value13">'
-									+ $('#countCupValue').text()+'</span><br><br> ');
+							$("#outputBody").append(' <span id ="inputNumber3" class="opacity00">Student count is : <span class="border opacity00 position" id="value13">'
+									+ $('#countCupValue').text()+'</span><br><br>');
 							transferEffect("#textEnter2","#inputNumber3",function() {
 								$('#inputNumber3').removeClass('opacity00');
 								setTimeout(function () {
@@ -772,21 +952,20 @@ var readPrintStringUsingGetsPutsReady = function() {
 					});
 					break;
 				case 'dataEntry1' :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('#countBox').addClass('z-index10000000');
 					$("#textEnter2").removeClass("z-index1000000");
-					$("#countCupValue").css("zIndex","10000000").effect( "highlight",{color: '#ffff33'}, 200);
+					$("#countCupValue").effect( "highlight",{color: '#ffff33'}, 200);
 					transferEffect("#countBox","#value13", function() {
 						$("#value13").removeClass("opacity00");
 						$(".introjs-tooltip").removeClass("hide");
-							$('.introjs-nextbutton').show();
+						$('#countBox').removeClass('z-index10000000');
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 					break;
 				case "enterData4" :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$('#outputBox').removeClass('opacity00');
-							$("#outputBody").append(' <span id ="inputNumber4" class="opacity00">The given two subjects marks are  :<span class="border opacity00 position" id="value14">'
+							$("#outputBody").append(' <span id ="inputNumber4" class="opacity00">The given two subjects marks are  : <span class="border opacity00 position" id="value14">'
 									+ $('#box2').text() +'</span> <span class="border opacity00 position" id="value15">' 
 									+ $('#box3').text()+'</span></span><br><br> ');
 							transferEffect("#textEnter1","#inputNumber4",function() {
@@ -798,24 +977,23 @@ var readPrintStringUsingGetsPutsReady = function() {
 					});
 					break;
 				case 'dataEntry2' :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('#borderBox1').addClass('z-index1000000');
 					$("#box2").css("zIndex","1000000").effect( "highlight",{color: 'red'}, 200);
 					transferEffect("#box2","#value14", function() {
 						$("#value14").removeClass("opacity00");
-						$("#box3").addClass("z-index10000000").effect( "highlight",{color: '#ffff33'}, 200);
+						$("#box3").css("zIndex","1000000").effect( "highlight",{color: '#ffff33'}, 200);
 						transferEffect("#box3","#value15", function() {
 							$("#value15").removeClass("opacity00");
 							$(".introjs-tooltip").removeClass("hide");
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						})
 					});
 					break;
 				case "enterData5" :
 					$('.introjs-helperLayer').one("transitionend", function() {
 						$('#outputBox').removeClass('opacity00');
-							$("#outputBody").append(' <span id ="inputNumber5" class="opacity00">Student count is :<span class="border opacity00 position" id="value16">'
-									+ $('#countCupValue').text()+'</span> ');
+							$("#outputBody").append(' <span id ="inputNumber5" class="opacity00">Student count is : <span class="border opacity00 position" id="value16">'
+									+ $('#countCupValue').text()+'</span>');
 							transferEffect("#textEnter2","#inputNumber5",function() {
 								$('#inputNumber5').removeClass('opacity00');
 								setTimeout(function () {
@@ -825,14 +1003,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 						});
 					break;
 				case 'dataEntry3' :
-					intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 					$('#countBox').addClass('z-index10000000');
 					$("#textEnter2").removeClass("z-index1000000");
-					$("#countCupValue").css("zIndex","10000000").effect( "highlight",{color: 'red'}, 200);
+					$("#countCupValue").effect( "highlight",{color: 'red'}, 200);
 					transferEffect("#countBox","#value16", function() {
 						$("#value16").removeClass("opacity00");
 						$(".introjs-tooltip").removeClass("hide");
-							$('.introjs-nextbutton').show();
+						$('#countBox').removeClass('z-index10000000');
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 					break;
 				}
@@ -955,7 +1133,7 @@ function storeVal1() {
 		TweenMax.to($('.arrayValue').eq(idx), 1, {top: 0, left : 0, onComplete:function() {
 			$(".z-index1000000").removeClass("z-index1000000");
 			$('.scanfValue').removeClass('output-value-circle circle-css');
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}});
 	});
 }
@@ -994,7 +1172,7 @@ function storeVal2() {
 		TweenMax.to($('.arrayValue1').eq(idx), 1, {top: 0, left : 0, onComplete:function() {
 			$(".z-index1000000").removeClass("z-index1000000");
 			$('.scanfValue1').removeClass('output-value-circle circle-css');
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}});
 	});
 }
@@ -1007,6 +1185,7 @@ function typing(typingId, typingContent,cursorColor, typingInterval, typingCallb
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	})
 }
 function zoomInEffect(id, callBackFunction) {
@@ -1022,16 +1201,6 @@ function transferEffect(selector1, selector2, callBackFunction) {
 	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1300 , function() {
 	/*$(selector2).removeClass("opacity00");*/
 	$(selector1).removeClass("z-index1000000")
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	});
-}
-function transferEffectCircle(selector1, selector2, callBackFunction) {
-	$(selector1).addClass("circle-css").effect( "highlight",{color: '#ffff33'}, 500);
-	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effectss-transfer" }, 2000 , function() {
-	$(selector2).removeClass("opacity00");
-	$(selector1).removeClass("circle-css")
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}

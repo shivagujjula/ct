@@ -1548,8 +1548,8 @@
 						</td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>16-10-17</td>
 					</tr>
 					
 					<tr>
@@ -1884,7 +1884,6 @@
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
-					
 					<tr>
 						<td>1</td>
 						<td>Function with templates</td>
@@ -1893,8 +1892,19 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation about function with templates</span></td>
 						<td>Rajashekar</td>
 						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>16-10-17</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Class templates with parameters</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Class templates with parameters', 'class-templates-with-parameters.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Class templates with parameters</span></td>
+						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>16-10-17</td>
 					</tr>
 				</tbody>
 			</table>

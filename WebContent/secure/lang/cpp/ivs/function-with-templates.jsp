@@ -129,16 +129,16 @@ k {
 	position: relative;
 }
 .ui-effects-transfer {
-    border: 2px dashed blue;
+    border: 2px dashed deeppink;
     z-index: 99999999 !important;
  }
   .ui-effectss-transfer {
-    border: 2px dashed blue;
+    border: 2px dashed deeppink;
     z-index: 99999999 !important;
     border-radius: 8px;
  }
  .circle-css {
-	border: 1px solid;
+	border: 1px solid white;
 	border-radius: 50%;
 	padding: 2px;
 	position: relative;
@@ -153,7 +153,8 @@ k {
 	border: 2px solid #ccefd0;
 	background : #bdf3a5;
 	color: black;
-	border-radius: 8px;
+	font-weight: bold;
+	border-radius: 2px;
 }
 .managerBox {
 	background: #8ddcd0 none repeat scroll 0 0;

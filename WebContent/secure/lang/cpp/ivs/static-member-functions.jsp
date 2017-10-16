@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js/static-member-functions.js"></script>
-<!-- <script src="/secure/lang/cpp/js-min/smf.min.js"></script> -->
+<script src="/secure/lang/cpp/js-min/smf.min.js"></script>
 <title>Static-Member-Functions</title>
 <style type="text/css">
 #informationDiv {
@@ -72,7 +71,7 @@
 	margin-top: 30px;
 }
 .ui-effects-transfer {
-    border: 2px dashed blue;
+    border: 2px dashed deeppink;
     z-index: 99999999 !important;
  }
   
@@ -101,12 +100,11 @@
 	position: relative;
 }
 
- [contenteditable="true"] {
- 	display: inline;
-	font-weight: normal;
-	outline: medium none;
-	
-} 
+[contenteditable=true]:empty:before, [contenteditable=false]:empty:before {
+	content: attr(placeholder);
+	color: #B8B8A0;
+	font-family: monospace;
+}
 .circle-css {
 	border: 1px solid;
 	border-radius: 50%;
@@ -121,9 +119,10 @@
 }
 .border {
 	border: 1px solid white;
-	background : #acf5a9;
-	color: black;
-	border-radius: 8px;
+	background : #f5efbe;
+	color: #262222;
+	border-radius: 2px;
+	font-weight: bold;
 }
 .user-btn {
 	background-color: green;
@@ -271,7 +270,7 @@ y {
 						<div class="panel-heading text-center" id="s1">S1</div>
 						<div class="col-xs-12 panel-body">
 							<div id="one" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top">
+								<div class="panel panel-primary padding margin-top" id="bodyBox">
 									<div class="panel-heading1 text-center">maths</div>
 									<div class="panel-body1 text-center" id="boxParent">
 										<span class="arrayValue text-center position" id="box"></span>
@@ -279,7 +278,7 @@ y {
 								</div>
 							</div>
 							<div id="two" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top">
+								<div class="panel panel-primary padding margin-top" id="bodyBox1">
 									<div class="panel-heading1 text-center">physics</div>
 									<div class="panel-body1 text-center" id="boxParent1">
 										<span class="arrayValue text-center position" id="box1"></span>
@@ -294,7 +293,7 @@ y {
 						<div class="panel-heading text-center" id="s2">S2</div>
 						<div class="col-xs-12 panel-body">
 							<div id="three" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top">
+								<div class="panel panel-primary padding margin-top" id="bodyBox2">
 									<div class="panel-heading1 text-center">maths</div>
 									<div class="panel-body1 text-center" id="boxParent2">
 										<span class="arrayValue1 text-center position" id="box2"></span>
@@ -302,7 +301,7 @@ y {
 								</div>
 							</div>
 							<div id="four" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top">
+								<div class="panel panel-primary padding margin-top" id="bodyBox3">
 									<div class="panel-heading1 text-center">physics</div>
 									<div class="panel-body1 text-center" id="boxParent3">
 										<span class="arrayValue1 text-center position" id="box3"></span>
