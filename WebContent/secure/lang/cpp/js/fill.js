@@ -30,31 +30,37 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line2',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
-						animateStep : "memory"
+						animateStep : "memory",
+						tooltipClass: 'hide'
 					},{
 						element :'#line3',
 						intro :'',
 					},{
 						element :'#line4',
 						intro :'',
+						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
 						position:"left",
-						animateStep : "animation"
+						animateStep : "animation",
+						tooltipClass: 'hide'
 					},{
 						element :'#line5',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					
 					},{
 						element :'#addressBox',
 						intro :'',
-						animateStep : "memory1"
+						animateStep : "memory1",
+						tooltipClass: 'hide'
 					},{
 						element :'#line6',
 						intro :'',
@@ -62,12 +68,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line7',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
 						position:"bottom",
-						animateStep : "animation1"
+						animateStep : "animation1",
+						tooltipClass: 'hide'
 					
 					},{
 						element :'#line8',
@@ -79,12 +87,53 @@ var readPrintStringUsingGetsPutsReady = function() {
 						position:"right"
 					}]
 	});
-	
+	intro.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "addressBox" :
+			intro.refresh();
+			$('.introjs-nextbutton').hide();
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "memory":
+				$("#addressBox").addClass("opacity00");
+				$("#tableId").addClass("opacity00").css('opacity', '');
+			break;
+			case "animation" :
+				$("#c1, #c2, #c3, #c4, #c5,#c6, #c7, #c8, #c9").addClass("opacity00");
+				$('.star').addClass("opacity00").css("opacity", "");
+			break;
+			case "animation1" :
+				$("#d1, #d2, #d3, #d4, #d5,#d6").addClass("opacity00");
+				$('.starr').addClass("opacity00").css("opacity", "");
+			break;
+			case "memory1":
+				$("#tableId1").addClass("opacity00").css('opacity', '');
+			break;
+			}
+			break;
+		case 'line2':
+			$("#addressBox").addClass("opacity00");
+			$("#tableId").addClass("opacity00").css('opacity', '');
+		break;
+		case 'line4':
+			$("#c1, #c2, #c3, #c4, #c5,#c6, #c7, #c8, #c9").addClass("opacity00");
+			$('.star').addClass("opacity00").css("opacity", "");
+		break;
+		case 'line5':
+			$("#tableId1").addClass("opacity00").css('opacity', '');
+		break;
+		case 'line7':
+			$("#d1, #d2, #d3, #d4, #d5,#d6").addClass("opacity00");
+			$('.starr').addClass("opacity00").css("opacity", "");
+		break;
+		}
+	});
 	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preBody").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Let us learn <y>fill()</y> field in <y>c++</y>. ", 10, "",function() {
@@ -93,69 +142,65 @@ var readPrintStringUsingGetsPutsReady = function() {
 			});
 			break;
 		case "line2" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Here <y>width </y>field is set as <y>15</y>. ", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line3" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", " Once <y>fill</y> is set then it is applicable up to the " +
 						"next change of <y>fill</y> or to the end of the program.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line4" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", " <y>cout</y> is used to display the output in <y>monitor</y>.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line6" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", " Once <y>fill</y> is set then it is applicable up to the next" +
 						" change of <y>fill</y> or to the end of the program.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line7" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", " <y>cout</y> is used to display the output in monitor.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line5" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Here <y>width </y>field is set as <y>10</y>. ", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line8" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "Close the <y>main()</y> tag. ", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "addressBox" :
-			$('.introjs-nextbutton').hide();
+			intro.refresh();
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 			case "memory":
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#addressBox").removeClass("opacity00");
 					$("#tableId").fadeTo(800, 1, function() {
@@ -163,15 +208,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 						typing(".introjs-tooltiptext", "In the output <y>15</y>" +
 								" digits space is occupied by "+
 								"<y>width(15)</y>.", 10, "",function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
 				break;
 			case "animation" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					intro.refresh();
 					for (var i = 1; i < 10; i++) {
 						var l = $("#data" + i).offset();
 						$("#c" + i).removeClass("opacity00").offset({
@@ -192,11 +235,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 										
 										$(".user-btn").click(function() {
 											$(".user-btn").remove();
+											$('.star').addClass('blinking-orange');
 											$(".star").fadeTo(1000, 1, function() {
 												$(".introjs-tooltip").removeClass("hide");
 												typing(".introjs-tooltiptext", "<y>Empty</y> field is filled with <y>'*'</y> as " +
 														"for the specified notation.", 10, "",function() {
-													$('.introjs-nextbutton').show();
+													$('.star').removeClass('blinking-orange');
+													$('.introjs-nextbutton, .introjs-prevbutton').show();
 												});
 											});
 										});
@@ -208,22 +253,19 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 			break;
 			case "memory1" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#tableId1").fadeTo(800, 1, function() {
 						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", "In the output <y>10</y>" +
 								" digits space is occupied by "+
 								"<y>width(10)</y>.", 10, "",function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
 				break;
 			case "animation1" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					intro.refresh();
 					for (var i = 1; i <= 6; i++) {
 						var l = $("#value" + i).offset();
 						$("#d" + i).removeClass("opacity00").offset({
@@ -241,9 +283,11 @@ var readPrintStringUsingGetsPutsReady = function() {
 										
 										$(".user-btn").click(function() {
 											$(".user-btn").remove();
+											$('.starr').addClass('blinking-orange');
 											$(".starr").fadeTo(1000, 1, function() {
 												typing(".introjs-tooltiptext", "<y>Empty</y> field is filled with <y>'*'</y> as for the specified notation.", 10, "",function() {
-													$('.introjs-nextbutton').show();
+													$('.starr').removeClass('blinking-orange');
+													$('.introjs-nextbutton, .introjs-prevbutton').show();
 												});
 											});
 										});
@@ -292,5 +336,6 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }

@@ -21,12 +21,6 @@
 <title>binary search time complexity</title>
 
 <style type="text/css">
-#infoDiv {
-	background-color: rgb(243, 235, 235);
-	border-radius: 10px;
-	margin-left: 20.5%;
-	margin-top: 2%;
-}
 
 .user-btn {
 	background: green;
@@ -125,8 +119,10 @@ td:nth-child(4), td:nth-child(5) {
 
 .blinking {
 	animation-name: blink;
-	animation-duration: 0.4s;
+	animation-duration: 0.6s;
 	animation-iteration-count: 3;
+	z-index: 9999999 !important;
+	background: white;
 }
 
 @keyframes blink {
@@ -319,12 +315,12 @@ td {
 	<span class="color-maroon">while</span> (flag == -<span class="color-deeppink">1</span> && low <= high) {
 		<span id="line5">mid = (low + high) / <span class="color-deeppink">2</span>;			</span>
 		<span class="color-maroon">if</span> (<span id="line6">a[mid] == key</span>) {
-			<span id="line7">flag = mid;</span>								<span id="timeCtPre1" class="opacity00">//	T(1)</span>
+			<span id="line7">flag = mid;</span>								<span id="timeCtPre1" class="opacity00">//	<span id="timeItrSpan1">T(1)</span></span>
 			<span class="color-maroon" id="line8">break</span>;
 		<span id="line9">} <span class="color-maroon">else if</span> (<span id="lessThanid">key < a[mid]</span>) {</span>
-			high = mid - <span class="color-deeppink">1</span>;						<span id="timeCtPre2" class="opacity00">//	T(n/2)</span>
+			high = mid - <span class="color-deeppink">1</span>;						<span id="timeCtPre2" class="opacity00">//	<span id="timeItrSpan2">T(n/2)</span></span>
 		<span id="line10">} <span class="color-maroon">else if</span> (<span id="greaterThanid">key > a[mid]</span>){</span>
-			low = mid + <span class="color-deeppink">1</span>;							<span id="timeCtPre3" class="opacity00">//	T(n/2)</span>
+			low = mid + <span class="color-deeppink">1</span>;							<span id="timeCtPre3" class="opacity00">//	<span id="timeItrSpan3">T(n/2)</span></span>
 		}
 	}
 	<span class="color-maroon">return</span> flag;
@@ -337,12 +333,12 @@ td {
 	<span class="color-green">int</span> mid;
 	<span class="color-maroon">if</span> (low <= high) {
 		mid = (low + high) / <span class="color-deeppink">2</span>;
-		<span id="recLine4"><span class="color-maroon">if</span> (a[mid] == key) {</span>
-			<span id="recLine5"><span class="color-maroon">return</span> mid;</span>												<span id="timeC1" class="opacity00">T(1)</span>
-		} <span class="color-maroon">else if</span> (key < a[mid]) {
-			<span id="recLine7">binarySearchRecursion(a, low, mid - <span class="color-deeppink">1</span>, key);</span>		<span id="timeC2" class="opacity00">T(n/2)</span>
-		} <span class="color-maroon">else if</span> (key > a[mid]) {
-			<span id="recLine9">binarySearchRecursion(a, mid + <span class="color-deeppink">1</span>, high, key);</span>		<span id="timeC3" class="opacity00">T(n/2)</span>
+		<span id="recLine4"><span class="color-maroon">if</span> (<span id="recEqualId">a[mid] == key</span>) {</span>
+			<span id="recLine5"><span class="color-maroon">return</span> mid;</span>												<span id="timeC1" class="opacity00">//	<span id="timeRecSpan1">T(1)</span></span>
+		<span id="recLine6">} <span class="color-maroon">else if</span> (<span id="recLessThanId">key < a[mid]</span>) {</span>
+			<span id="recLine7">binarySearchRecursion(a, low, mid - <span class="color-deeppink">1</span>, key);</span>	<span id="timeC2" class="opacity00">//	<span id="timeRecSpan2">T(n/2)</span></span>
+		<span id="recLine8">} <span class="color-maroon">else if</span> (<span id="recGreaterThanlId">key > a[mid]</span>) {</span>
+			<span id="recLine9">binarySearchRecursion(a, mid + <span class="color-deeppink">1</span>, high, key);</span><span id="timeC3" class="opacity00">//	<span id="timeRecSpan3">T(n/2)</span></span>
 		}
 	} <span class="color-maroon">else</span> {
 		<span class="color-maroon">return</span> -<span class="color-deeppink">1</span>;
@@ -356,18 +352,21 @@ td {
 			<div class="col-xs-offset-">
 				<span>We have : </span>
 					<ul>
-						<li>if (a[mid] < key) --> T(n/2) + 1</li>
-						<li>if (a[mid] > key) --> T(n/2) + 1</li>
+						<li id="caseList1" class="opacity00">if (a[mid] == key) --> T(1)</li>
+						<li id="caseList2" class="opacity00">if (a[mid] < key) --> T(n/2)</li>
+						<li id="caseList3" class="opacity00">if (a[mid] > key) --> T(n/2)</li>
 					</ul>
-				<span>For simplification assume n = 2<sup>k</sup></span>
+				<span class="opacity00" id="calcLine1">For simplification assume n = 2<sup>k</sup></span>
 			</div>
 			<div class="col-xs-offset-4">
-				<span>T(n) = T(n/2) + c</span><br>
-				<span>T(n) = T(n/2) + 2</span><br>
-				<span>T(n) = T((n/2)/2) + (2 + 2)</span><br>
-				<span>T(n) = T(n/4) + (2 * 2)</span><br>
-				<span>T(n) = T(n/8) + (2 * 2 * 2)</span><br>
-				<span>T(n) = T(n/2<sup>3</sup>) + (4 * 2)</span><br>
+				<br>
+				<span id="divCalcLine1" class="opacity00">T(n) = T(n/2) + c</span><br>
+				<span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br>
+				<span id="divCalcLine3" class="opacity00"><span class="opacity00">T(n)</span> = 
+					<span id="divCalcLine3Span"><span id="line3Span" class="display">T(n/2)</span> + 2</span></span><br>
+				<span id="divCalcLine4" class="opacity00">T(n) = T(n/4) + (2 * 2)</span><br>
+				<span id="divCalcLine5" class="opacity00">T(n) = T(n/8) + (2 * 2 * 2)</span><br>
+				<span id="divCalcLine6" class="opacity00">T(n) = T(n/2<sup>3</sup>) + (4 * 2)</span><br>
 				...<br>
 				...<br>
 				<span>T(n) = T(n/2<sup>k</sup>) + (k * 2)</span><br>
@@ -407,7 +406,7 @@ function introGuide() {
 		exitOnEsc : false,
 		keyboardNavigation : false,
 		tooltip : false,
-		steps :[{
+		steps :[/* {
 			element : '#indexDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -417,7 +416,7 @@ function introGuide() {
 		}, {
 			element : '#preCode2',
 			intro : '',
-		}, {
+		},  */{
 			element : '#explanationDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -454,15 +453,11 @@ function introGuide() {
 					var text = 'This is the iterative code for binary search.';
 					typing('.introjs-tooltiptext', text, function() {
 						buttonAppendFunction(".introjs-tooltipbuttons", function() {
-							$(".user-btn").remove();
 							$(".introjs-tooltip").hide();
 							popoverAppendFunction("#line1", 1);
 							var text = "Let us assume time complexity is T(n);";
 							typing("#popover1", text, function() {
-								$("#popover1").append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-									'<a class="introjs-button user-btn">Next &#8594;</a></div>');
-								$(".user-btn").click(function() {
-									$(".user-btn").remove();
+								buttonAppendFunction("#popover1", function() {
 									$("#line1").popover('hide');
 									popoverAppendFunction("#line5", 5);
 									var text = "<ul><li id='liLine1'>The main principle of binary search is to divide the given list into two halfs.</li></ul>";
@@ -505,86 +500,87 @@ function introGuide() {
 		case 'preCode2':
 			$('.introjs-helperLayer').one('transitionend', function() {
 			//	$("#preCode1").addClass("z-index9999999");
+			TweenMax.to($("#preCode2"), 1, {opacity: 1, onComplete: function() {
 				var text = '<span id="tooltiptextId">This is the recursive code for binary search.</span>';
-				typing('.introjs-tooltiptext', text, function() {
-					buttonAppendFunction(".introjs-tooltipbuttons", function() {
-						$("#tooltiptextId").append("<ul id='ulTextId'><li>If key element found at middle position then the Time Complexity is "+
-						"<span class='ct-code-b-yellow'>T(n)</span></li>"+
-						"<li>If the key element is less than middle element then search the key element in the first half. Then the "+
-						"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li>"+
-						"<li>If the key element is greater than middle element then search the key element in the second half. In this type of cases the "+
-						"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>");
-						typing("#ulTextId", $("#ulTextId").html(), function() {
-							$("#recLine5").effect('highlight',{color:'#da5805'}, 1500, function() {
-								TweenMax.to($("#timeC1"), 1, {opacity : 1, onComplete: function() {
-									$("#recLine7").effect('highlight',{color:'#da5805'}, 1500, function() {
-										TweenMax.to($("#timeC2"), 1, {opacity : 1, onComplete: function() {
-											$("#recLine9").effect('highlight',{color:'#da5805'}, 1500, function() {
-												TweenMax.to($("#timeC3"), 1, {opacity : 1, onComplete: function() {
-													$('.introjs-nextbutton').show();
+					typing('.introjs-tooltiptext', text, function() {
+						buttonAppendFunction(".introjs-tooltiptext", function() {
+							$(".introjs-tooltip").hide();
+							popoverAppendFunction("#recLine4", 4);
+							var text = "<span id='recSpanText1'>If key element found at middle position then the Time Complexity is "+
+							"<span class='ct-code-b-yellow'>T(1)</span></span>";
+							typing("#popover4", text, function() {
+								$("#recEqualId").effect('highlight',{color:'#da5805'}, 1500);
+								buttonAppendFunction("#recSpanText1", function() {
+									$("#recLine4").popover('hide');
+									TweenMax.to($("#timeC1"), 1, {opacity: 1, onComplete:function() {
+										popoverAppendFunction("#recLine6", 6);
+										var text = "<span id='recSpanText2'>If the key element is less than middle element then search the key "+
+										"element in the first half. Then the "+
+										"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+										typing("#popover6", text, function() {
+											$("#recLessThanId").effect('highlight',{color:'#da5805'}, 1500);
+											buttonAppendFunction("#recSpanText2", function() {
+												$("#recLine6").popover('hide');
+												TweenMax.to($("#timeC2"), 1, {opacity: 1, onComplete:function() {
+													popoverAppendFunction("#recLine8", 8);
+													var text = "<span id='recSpanText3'>If the key element is greater than middle element "+
+													"then search the key element in the second half. In this type of cases the "+
+													"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+													typing("#popover8", text, function() {
+														$("#recGreaterThanlId").effect('highlight',{color:'#da5805'}, 1500);
+														buttonAppendFunction("#recSpanText3", function() {
+															$("#recLine8").popover('hide');
+															TweenMax.to($("#timeC3"), 1, {opacity: 1, onComplete:function() {
+																setTimeoutFunction();
+															}});
+														});
+													});
+												}});
+											});
+										});
+									}});
+								});
+							});
+						}); 
+					});
+				}});
+			});
+			break;
+		case 'explanationDiv':
+			$("#unitSecondLineText8").popover('hide');
+		//	$(".introjs-helperLayer").one('transitionend', function() {
+				TweenMax.to($("#explanationDiv"), 1, {opacity: 1, onComplete: function() {
+					popoverLeftSideAppendFunction("#caseList1", 1);
+					var text = "<span id='text1'>For best case the Time Complexity is <span class='ct-code-b-yellow'>1</span>.</span>";
+					typing(".popover-content", text, function() {
+						TweenMax.to($("#caseList1"), 1, {opacity: 1, onComplete: function() {
+							$("#timeItrSpan1, #timeRecSpan1").addClass("blinking").one('animationend', function() {
+								$("#timeItrSpan1, #timeRecSpan1").removeClass("blinking").off();
+								buttonAppendFunction("#text1", function() {
+									$("#caseList1").popover('hide');
+									popoverLeftSideAppendFunction("#caseList2", 2);
+									var text = "<span id='text2'>For worst case the Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</span>";
+									typing(".popover-content", text, function() {
+										TweenMax.to($("#caseList2"), 1, {opacity: 1, onComplete: function() {
+											$("#timeItrSpan2, #timeRecSpan2").addClass("blinking").one('animationend', function() {
+												$("#timeItrSpan2, #timeRecSpan2").removeClass("blinking").off();
+												TweenMax.to($("#caseList3"), 1, {opacity: 1, onComplete: function() {
+													$("#timeItrSpan3, #timeRecSpan3").addClass("blinking").one('animationend', function() {
+														$("#timeItrSpan3, #timeRecSpan3").removeClass("blinking").off();
+														buttonAppendFunction("#text2", function() {
+															$("#caseList2").popover('hide');
+															calculationActionFunction();
+														});
+													});
 												}});
 											});
 										}});
 									});
-								}});
-							});
-						});
-					});
-					//$('.introjs-nextbutton').show();
-				});
-			});
-			break;
-		case 'infoDiv':
-			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
-				$("#line1").fadeTo(1000, 1, function() {
-					$("#line2").fadeTo(1000, 1, function() {
-						$("#infoDiv").addClass('z-index9999999');
-						$('#nextButton').removeClass("opacity00");
-						$('.user-btn').click(function() {
-							$('.user-btn').remove();
-								introjs.nextStep();
-						});
-					});
-				});
-			break;
-		case 'divTable':
-			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-			switch(animateStep) {
-			case 'codeReveledAction':
-				$(".introjs-tooltip").hide();
-				TweenMax.to($("#divTable"), 1.5, {opacity: 1, onComplete: function() {
-					codeLinesReveledFunction(1);
-				}});
-				break;
-			case 'explanationOfUnits':
-				firstStepAnimation();
-				break;
-			}
-			break;
-		case 'explanationDiv':
-			$("#unitSecondLineText8").popover('hide');
-			$(".introjs-helperLayer").one('transitionend', function() {
-				$("#explanationDiv").removeClass("opacity00");
-				$("#line1").fadeTo(1000, 1, function() {
-					tweenMaxAnimation("#unitFirstLineText10", "#firstCase", function() {
-						$("#line2").fadeTo(1000, 1, function() {
-							tweenMaxAnimation("#unitSecondLineText10", "#secondCase", function() {
-								$("#line3").fadeTo(1000, 1, function() {
-									tweenMaxAnimation("#unitThirdLineText10", "#thirdCase", function() {
-										fadeToAndTransferAction("#firstCaseComplexity", "#firstCase", "#result1", function() {
-											fadeToAndTransferAction("#secondCaseComplexity", "#valueN1", "#result2", function() {
-												fadeToAndTransferAction("#thirdCaseComplexity", "#valueN2", "#result3", function() {
-													setTimeoutFunction();
-												});
-											});
-										});
-									});
 								});
 							});
-						});
+						}});
 					});
-				});
-			});
+				}});
 			break;
 		case 'finalDiv':
 			$("#unitSecondLineText15").popover('hide');
@@ -630,7 +626,6 @@ function buttonAppendFunction(selector, callBackFunction) {
 	$(selector).append('<div class="introjs-tooltipbuttons popover-btn-css"><span class="introjs-button user-btn">Next &#8594;</span></div>');
 	$(".user-btn").click(function() {
 		$(".user-btn").remove();
-		console.log("button removed");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
@@ -702,6 +697,79 @@ function thirdStep() {
 			});
 		});
 	}});
+}
+
+function calculationActionFunction() {
+	$("#calcLine1").removeClass("opacity00");
+	typing("#calcLine1", $("#calcLine1").html(), function() {
+		popoverLeftSideAppendFunction("#divCalcLine1", 1);
+		var text = "<span id='popoverText'>So we have time complexity of <span class='ct-code-b-yellow' id='textDeclaration'>T(n) = T(n/2) + c</span>.</span>";
+		typing(".popover-content", text, function() {
+			transferEffectFunction("#textDeclaration", "#divCalcLine1", function() {
+				buttonAppendFunction("#popoverText", function() {
+					tweenMaxAnimation("#divCalcLine1", "#divCalcLine2", function() {
+						$("#popoverText").after("<br><span id='popoverSubText'>Here C is represented as a constant i.e. "+
+							"<span class='ct-code-b-yellow'>2</span>");
+						typing("#popoverSubText", $("#popoverSubText").html(), function() {
+							$("#cValue").effect( "highlight", {color:"#FFD700"}, 2000);
+							flipEffect("#cValue", "2", function() {
+								buttonAppendFunction(".popover-content", function() {
+									line3CalculationAnimation();
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function line3CalculationAnimation() {
+	$("#divCalcLine1").popover("hide");
+	popoverLeftSideAppendFunction("#divCalcLine3", 3);
+	$("#divCalcLine3").removeClass("opacity00");
+	tweenMaxAnimation("#divCalcLine2", "#divCalcLine3", function() {	
+		var text = "<ul><li id='Line3FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";
+		typing("#popover3", text, function() {
+			$("#line3Span").effect('highlight',{color:'#da5805'}, 1500, function() {
+				buttonAppendFunction("#popover3", function() {
+					$("#Line3FirstLi").after("<li id='Line3SecondLi'>Consider <span class='ct-code-b-yellow'>T(n)</span> value<br>"+
+						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>T(n) = T(n/2) + 2</span></li>");
+					$("#divCalcLine2").effect( "highlight", {color:"#FFD700"}, 2000);
+					transferEffectFunction("#divCalcLine2", "#Line3SecondLiSpan", function() {
+						buttonAppendFunction("#popover3", function() {
+							$("#Line3SecondLi").after("<li id='Line3ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
+							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
+							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>T(<span id='numericalId3' class='display'>n</span>) = "+
+							"<span id='value3ParentSpan' class='display'>T(<span id='value3' class='display'>n</span>/2)</span> + 2</span></li>");
+							tweenMaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
+								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
+								flipEffect("#numericalId3", "n/2", function() {
+									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
+									flipEffect("#value3", "(n/2)", function() {
+										buttonAppendFunction("#popover3", function() {
+											/* $("#value3Sum").effect( "highlight", {color:"#FFD700"}, 2000);
+											flipEffect("#value3Sum", "n-3", function() {
+												$("#value3ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
+												transferEffectFunction("#value3ParentSpan", "#line3SpanSum", function() {
+													flipEffect("#line3SpanSum", $("#value3ParentSpan").text(), function() {
+														$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
+														'<span class="introjs-button user-btn" onclick="line4CalculationAnimation()">'+
+														'Next &#8594;</span></div>');
+													});
+												});
+											}); */
+										});
+									});
+								});
+							}); 
+					});
+					});
+				});
+			});
+		});
+	});
 }
 
 function typing(selector, text, callBackFunction) {

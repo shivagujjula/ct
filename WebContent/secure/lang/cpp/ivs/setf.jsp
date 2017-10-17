@@ -27,7 +27,6 @@
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	font-size: 0.75em;
- 	/* margin-top: 20px;  */
 	padding: 2px 0;
 	text-align: center;
 }
@@ -122,7 +121,7 @@
 }
 
 .blink {
-  animation: blinker 1s linear infinite;
+ 	animation: blinker 1s linear infinite;
 }
 
 @keyframes blinker {
@@ -142,12 +141,6 @@
     position: relative;
     z-index: 9999999;
 }
-
-.creamPreTab4 {
-	tab-size: 4;
-	-moz-tab-size: 4;
-}
-
 .padding0 {
 	padding: 0px;
 }
@@ -158,7 +151,6 @@
 
 #in, .input-char {
 	width: 170px;
- /* padding: 8px; */
 	border-width: 0px 0 0 0;
 	background-color: #000;
 	color: #0f0;
@@ -179,10 +171,6 @@
 .green {
 	color: green;
 }
-.array {
-	color: red;
-	font-weight: bold;
-}
 .tdata {
 	border-top: medium none;
 	color: purple;
@@ -191,16 +179,13 @@
 #nextButton {
 	background-color: green ;
 }
-.border-top-none {
+ .border-top-none {
 	border-top: none !important; 
 }
 #tableRowId {
 	border: 2px solid gray;
 }
 #tableRowId1 {
-	border: 2px solid gray;
-}
-.td-css {
 	border: 2px solid gray;
 }
 .color-b-green {
@@ -222,9 +207,6 @@
 #symbl {
 	color: red;
 }
-/* .bg-color-tan {
-	background: tan;
-} */
 .user-btn {
 	background-color: green;
 }
@@ -238,10 +220,18 @@
 	background: white;
 }
 .greenn {
-	color : green;
+	color: #d0289d;
 	font-weight: bold;
-	padding: 10px;
+	padding : 10px;
+}
+.array {
+	color: #4ec028;
+	font-weight: bold;
 } 
+.td-css {
+	border: 2px solid gray;
+	background-color: #defadc;
+}
 .violet {
 	color : #ad08ad;
 }
@@ -249,7 +239,7 @@
 	color : green;
 }
 .red {
-	color : red;
+	color : #af0a0a;
 }
 .pink {
 	color : deeppink;
@@ -258,9 +248,32 @@ y {
 	color: yellow;
 	font-weight: bold;
 }
-
+.creamPreTab4 {
+	tab-size: 4;
+	margin: 2px;
+	padding: 12px;
+	-moz-tab-size: 4;
+	border-radius: 8px;
+	font-family: monospace; 
+	background-color: #e5eecc;
+}
 .margin-top-1 {
 	margin-top: 1%;
+}
+.blinking-orange {
+	animation-name: blink-border-background-orange ;
+	animation-duration: 3s ;
+	animation-iteration-count: infinite;
+	animation-direction: alternate ;
+	z-index: 10000000;
+	position: relative;
+}
+
+@keyframes blink-border-background-orange { 
+	50% {
+		border-color: white;
+		background: #edd73e;
+	}
 }
 </style>
 <body>
@@ -279,15 +292,12 @@ y {
 					<span class="color-b-green">ios_base::showpoint</span> to show a trailing decimal point.</li>
 						<a class="introjs-button user-button" id="nextButton">Next&#8594;</a></ul>
 					</span>
-	
 				</div>
 			</div>
 		</div>
-	<div class="body-div col-sm-12 padding0">
-	<br>
-	<div class="col-xs-5">
-	<!-- <pre id="typewritingId"></pre> -->
-	<pre class="creamPreTab4 opacity00" id="preBody">
+		<div class="col-xs-12 " style='margin-top: 10px;'>
+			<div class="col-xs-5">
+				<pre class="creamPreTab4 opacity00" id="preBody">
 <span id="declaration"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
 <span class="red">using namespace</span> std;
 <span class="green">int</span> <span id='line1'>main()</span> {
@@ -301,139 +311,130 @@ y {
 	<span id='line9'>cout.width(<span id="symbl">15</span>);</span>
 	<span id='line10'>cout &lt;&lt; <span id="code">"<span id="value1">-</span><span id="value2">8</span><span id="value3">9</span><span id="value4">.</span><span id="value5">1</span><span id="value6">2</span><span id="value7">3</span><span id="value8">4</span><span id="value9">5</span>";</span></span>
 	<span id='line11'>cout.width(<span id="symbl">2</span>);</span>
-	<span id='line12'>cout << <span id="number" class="pink"><span id="val1">1</span><span id="val2">0</span></span> << "\n";</span>
+	<span id='line12'>cout << <span id="number" class="pink"><span id="val1">1</span><span id="val2">0</span></span> << "\n"</span>;
 	<span id='line13'>cout.setf<span id="ios">(ios::oct, ios::basefield)</span>;</span>
-	<span id='line14'>cout << <span id="numbr" class="pink">10</span> << "\n";</span>
+	<span id='line14'>cout << <span id="numbr" class="pink">10</span> << "\n"</span>;
 <span id='line15'>}</span>
-	</pre>
-	</div>
-	<div class="col-xs-7">
-		<div class="address-box  col-xs-12 opacity00" id="addressBox">
-	  		<div class="col-xs-12" id="animationBox">
-	  			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
-					
-					<tbody>
-						<tr class="text-center">
-					       <!--  <td class=""></td> -->
-					        <td class="array border-top-none text-center">0</td>
-					        <td class="array border-top-none text-center">1</td>
-					        <td class="array border-top-none text-center">2</td>
-					        <td class="array border-top-none text-center">3</td>
-					        <td class="array border-top-none text-center">4</td>
-					        <td class="array border-top-none text-center">5</td>
-					        <td class="array border-top-none text-center">6</td>
-					        <td class="array border-top-none text-center">7</td>
-					        <td class="array border-top-none text-center">8</td>
-					        <td class="array border-top-none text-center">9</td>
-						</tr>
-				  
-				      <tr id="tableRowId" class="">
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c1">Y</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c2">a</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c3">m</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c4">u</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c5">n</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c6">a</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
-				      	</tr>
-				      	
-					</tbody>
-	  			</table>
-	  			 <table id="tableId1" class="table opacity00" style="margin-top: -1px;">
-					
-					<tbody>
-						<tr class="table  text-center">
-					       <!--  <td class=""></td> -->
-					        <td class="array border-top-none text-center">0</td>
-					        <td class="array border-top-none text-center">1</td>
-					        <td class="array border-top-none text-center">2</td>
-					        <td class="array border-top-none text-center">3</td>
-					        <td class="array border-top-none text-center">4</td>
-					        <td class="array border-top-none text-center">5</td>
-					        <td class="array border-top-none text-center">6</td>
-					        <td class="array border-top-none text-center">7</td>
-					        <td class="array border-top-none text-center">8</td>
-					        <td class="array border-top-none text-center">9</td>
-					        <td class="array border-top-none text-center">10</td>
-					        <td class="array border-top-none text-center">11</td>
-					        <td class="array border-top-none text-center">12</td>
-					        <td class="array border-top-none text-center">13</td>
-					        <td class="array border-top-none text-center">14</td>
-						</tr>
-				  
-				      <tr id="tableRowId1" class="">
-					     	<td class="td-css table-bordered text-center"><span id ="negative"class="greenn opacity00">-</span></td>
-					        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00" >*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d1">8</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d2">.</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d3">9</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d4">1</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d5">2</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d6">e</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d7">+</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d8">0</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d9">1</span></td>
-				      	</tr>
-					</tbody>
-	  			</table> 
-	  			
-	  			 <table id="tableId2" class="table1 col-xs-offset-5 col-xs-1 opacity00" style="margin-top: -1px;">
-					
-					<tbody>
-						<tr class="table  text-center">
-					       <!--  <td class=""></td> -->
-					        <td class="array border-top-none text-center">0</td>
-					        <td class="array border-top-none text-center">1</td>
-					        </tr>
-				  
-				      <tr id="tableRowId2" class="">
-				       <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="e1">1</span></td>
-					        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="e2">0</span></td>
-					        </tr>
-					</tbody>
-	  			</table> 
-	  			
+				</pre>
 			</div>
-			
-	  		
-		</div>
-		<div class="col-xs-12" style="margin-top: 20px;" id="calculation">
-	  				<span id="octa" class="col-xs-offset-5 col-xs-3 text-center bg-color-tan1 z-index1 opacity00"><span id='valueOne'  style="position: relative;" class="opacity00">1</span><span class="opacity00"  style="position: relative;" id="valueTwo">2</span></span>
-	  	</div>
-		<div class='col-xs-12' style='margin-top: 20px; margin-bottom: 20px'>
-			<div class="z-index col-xs-3 col-xs-offset-5 opacity00" id="calculationBox">
-			<table class='text-center bg-color-tan' style="width: 98%; " align= 'center'>
-				<tr>
-					<td id="eight" class=" greenn opacity00">8</td>
-					<td id="close" class="greenn opacity00">)</td>
-					<td id ="tenth" class="greenn opacity00" style="position: relative;">10</td>
-					<td id="open" class="greenn opacity00">(</td>
-					<td id='quotient' class="greenn opacity00">1</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td id="eight1" class="greenn opacity00">8</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td id="two" class="greenn opacity00">2</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
+			<div class="col-xs-7">
+			<div class="address-box  col-xs-12 opacity00" id="addressBox">
+		  		<div class="col-xs-12" id="animationBox">
+		  			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
+						<tbody>
+							<tr class="text-center">
+						       <!--  <td class=""></td> -->
+						        <td class="array border-top-none text-center">0</td>
+						        <td class="array border-top-none text-center">1</td>
+						        <td class="array border-top-none text-center">2</td>
+						        <td class="array border-top-none text-center">3</td>
+						        <td class="array border-top-none text-center">4</td>
+						        <td class="array border-top-none text-center">5</td>
+						        <td class="array border-top-none text-center">6</td>
+						        <td class="array border-top-none text-center">7</td>
+						        <td class="array border-top-none text-center">8</td>
+						        <td class="array border-top-none text-center">9</td>
+							</tr>
+					      <tr id="tableRowId" class="">
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c1">Y</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c2">a</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c3">m</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c4">u</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c5">n</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c6">a</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn star opacity00">*</span></td>
+					      	</tr>
+						</tbody>
+		  			</table>
+		  			 <table id="tableId1" class="table opacity00" style="margin-top: -1px;">
+						
+						<tbody>
+							<tr class="table  text-center">
+						       <!--  <td class=""></td> -->
+						        <td class="array border-top-none text-center">0</td>
+						        <td class="array border-top-none text-center">1</td>
+						        <td class="array border-top-none text-center">2</td>
+						        <td class="array border-top-none text-center">3</td>
+						        <td class="array border-top-none text-center">4</td>
+						        <td class="array border-top-none text-center">5</td>
+						        <td class="array border-top-none text-center">6</td>
+						        <td class="array border-top-none text-center">7</td>
+						        <td class="array border-top-none text-center">8</td>
+						        <td class="array border-top-none text-center">9</td>
+						        <td class="array border-top-none text-center">10</td>
+						        <td class="array border-top-none text-center">11</td>
+						        <td class="array border-top-none text-center">12</td>
+						        <td class="array border-top-none text-center">13</td>
+						        <td class="array border-top-none text-center">14</td>
+							</tr>
+					      <tr id="tableRowId1" class="">
+						     	<td class="td-css table-bordered text-center"><span id ="negative"class="greenn opacity00">-</span></td>
+						        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00" >*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="starr greenn opacity00">*</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d1">8</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d2">.</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d3">9</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d4">1</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d5">2</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d6">e</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d7">+</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d8">0</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="d9">1</span></td>
+					      	</tr>
+						</tbody>
+		  			</table> 
+		  			 <table id="tableId2" class="table1 col-xs-offset-5 col-xs-1 opacity00" style="margin-top: -1px;">
+						<tbody>
+							<tr class="table  text-center">
+						       <!--  <td class=""></td> -->
+						        <td class="array border-top-none text-center">0</td>
+						        <td class="array border-top-none text-center">1</td>
+						        </tr>
+					  
+					      <tr id="tableRowId2" class="">
+					       <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="e1">1</span></td>
+						        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="e2">0</span></td>
+						        </tr>
+						</tbody>
+		  			</table> 
+				</div>
 			</div>
-		</div>
+			<div class="col-xs-12" style="margin-top: 20px;" id="calculation">
+	  			<span id="octa" class="col-xs-offset-5 col-xs-3 text-center bg-color-tan1 z-index1 opacity00"><span id='valueOne'  style="position: relative;" class="opacity00">1</span><span class="opacity00"  style="position: relative;" id="valueTwo">2</span></span>
+	  		</div>
+			<div class='col-xs-12' style='margin-top: 20px; margin-bottom: 20px'>
+				<div class="z-index col-xs-3 col-xs-offset-5 opacity00" id="calculationBox">
+				<table class='text-center bg-color-tan' style="width: 98%; " align= 'center'>
+					<tr>
+						<td id="eight" class=" greenn opacity00">8</td>
+						<td id="close" class="greenn opacity00">)</td>
+						<td id ="tenth" class="greenn opacity00" style="position: relative;">10</td>
+						<td id="open" class="greenn opacity00">(</td>
+						<td id='quotient' class="greenn opacity00">1</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td id="eight1" class="greenn opacity00">8</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td id="two" class="greenn opacity00">2</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">

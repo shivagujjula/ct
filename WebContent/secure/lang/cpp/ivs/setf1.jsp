@@ -7,18 +7,17 @@
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/jquery-ui-latest.js"></script>
 <link rel="stylesheet" href="/css/jquery-ui.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css" />
-<link href="/css/introjs.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/introjs-ct.css" />
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/css/animate.css" />
-
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/css/font-awesome.min.css" />
+<link href="/css/introjs.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/introjs-ct.css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/animate.css" />
 <script src="/secure/lang/cpp/js-min/set.min.js" type="text/javascript"></script>
 <title>Understanding setf()</title>
 </head>
@@ -34,6 +33,15 @@
 }
 .margin-top {
 	margin-top: 20px;
+}
+.creamPreTab4 {
+	tab-size: 4;
+	margin: 2px;
+	padding: 12px;
+	-moz-tab-size: 4;
+	border-radius: 8px;
+	font-family: monospace; 
+	background-color: #e5eecc;
 }
 .output-console-body {
 	background-color: black;
@@ -133,6 +141,8 @@
 .address-box {
 	border: 1px solid lightgray;
 	border-radius: 4px;
+	min-height: 170px;
+	
 }
 
 .ct-demo-heading {
@@ -142,11 +152,6 @@
     position: relative;
     z-index: 9999999;
 }
-
-/* .creamPreTab4 {
-	height: 167px;
-} */
-
 .padding0 {
 	padding: 0px;
 }
@@ -157,7 +162,6 @@
 
 #in, .input-char {
 	width: 170px;
- /* padding: 8px; */
 	border-width: 0px 0 0 0;
 	background-color: #000;
 	color: #0f0;
@@ -176,12 +180,16 @@
     border-radius: 6px;
 }
 .greenn {
-	color: green;
+	color: #d0289d;
 	font-weight: bold;
 }
 .array {
-	color: red;
+	color: #4ec028;
 	font-weight: bold;
+} 
+.td-css {
+	border: 2px solid gray;
+	background-color: #defadc;
 }
 .tdata {
 	border-top: medium none;
@@ -198,9 +206,6 @@
 	border: 2px solid gray;
 }
 #tableRowId1 {
-	border: 2px solid gray;
-}
-.td-css {
 	border: 2px solid gray;
 }
 .color-b-green {
@@ -236,33 +241,27 @@
 }
 </style>
 <body>
-<div class="col-sm-12 text-center">
-	<div class="margin-padding-css text-center" >
-		<div class="col-sm-1"></div>
-		<div class="col-sm-offset-3 col-sm-3">
-			<h3><span class="ct-demo-heading label label-default" id="titleName">Understanding setf()</span></h3>
-		</div>
+<div class="col-xs-12">
+	<div class="text-center margin-top">
+		<h3 class='label ct-demo-heading' id="heading">
+			<span>Understanding setf()</span>
+		</h3>
 	</div>
-</div>
-<div class='col-xs-12'>
-		<div class="col-xs-8 col-xs-offset-2 opacity00 "id="informationDiv" style='margin-top: 5px;'>
+	<div class='col-xs-12' style='margin-top: 15px;'>
+		<div class="col-xs-8 col-xs-offset-2 opacity00 "id="informationDiv">
 			<div class='col-xs-12'>
 				<span class="opacity00" id="infotext"><ul><li>We can use the <span class="color-b-green">setf()</span> function to configure formatting for the <span class="color-b-green">cout</span> object.</li><li>
-				We pass the <span class="color-b-green">setf()</span> function arguments made up of ios_base class constants such as 
-				<span class="color-b-green">ios_base::boolalpha</span> to display bool values as true or false instead of <span class="color-b-green">1 or 0</span>, and 
-				<span class="color-b-green">ios_base::showpoint</span> to show a trailing decimal point.</li>
-				<a class="introjs-button user-button" id="nextButton">Next&#8594;</a></ul>
-				
+					We pass the <span class="color-b-green">setf()</span> function arguments made up of ios_base class constants such as 
+					<span class="color-b-green">ios_base::boolalpha</span> to display bool values as true or false instead of <span class="color-b-green">1 or 0</span>, and 
+					<span class="color-b-green">ios_base::showpoint</span> to show a trailing decimal point.</li>
+					<a class="introjs-button user-button" id="nextButton">Next&#8594;</a></ul>
 				</span>
-
 			</div>
 		</div>
 	</div>
-<div class="body-div col-sm-12 padding0">
-<br>
-<div class="col-xs-5">
-<!-- <pre id="typewritingId"></pre> -->
-<pre class="creamPreTab4 opacity00" id="preBody">
+	<div class="col-xs-12 " style='margin-top: 10px;'>
+		<div class="col-xs-5">
+			<pre class="creamPreTab4 opacity00" id="preBody">
 <span id="declaration"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
 <span class="red">using namespace</span> std;
 <span class="green">int</span> <span id='line1'>main()</span> {
@@ -274,89 +273,48 @@
 	<span id='line7'>cout.width(<span id="symbl">10</span>);</span>
 	<span id='line8'>cout &lt;&lt; <span id="code">"<span id="data1">5</span><span id="data2">7</span><span id="data3">5</span><span id="data4">.</span><span id="data5">5</span><span id="data6"></span><span id="data7"></span>";</span></span>
 <span id='line9'>}</span>
-</pre>
-</div>
-<div class="col-xs-7">
-	<div class="address-box opacity00 col-xs-12" id="addressBox">
-  		<div class="col-xs-12" id="animationBox">
-  			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
-				
-				<tbody>
-					<tr class="text-center">
-				       <!--  <td class=""></td> -->
-				        <td class="array border-top-none text-center">0</td>
-				        <td class="array border-top-none text-center">1</td>
-				        <td class="array border-top-none text-center">2</td>
-				        <td class="array border-top-none text-center">3</td>
-				        <td class="array border-top-none text-center">4</td>
-				        <td class="array border-top-none text-center">5</td>
-				        <td class="array border-top-none text-center">6</td>
-				        <td class="array border-top-none text-center">7</td>
-				        <td class="array border-top-none text-center">8</td>
-				        <td class="array border-top-none text-center">9</td>
-					</tr>
-			  
-			      <tr id="tableRowId" class="">
-					    <td class="td-css table-bordered text-center"><span id ="positive" class="greenn opacity00">+</span></td>
-					    <td class="td-css table-bordered text-center"><span class="greenn"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c1">5</span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c2">7</span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c3">5</span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c4">.</span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c5">5</span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c6">0</span></td>
-				        <td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c7">0</span></td>
-			      	</tr>
-			      	
-				</tbody>
-  			</table>
-  			 <!-- <table id="tableId1" class="table opacity00" style="margin-top: -1px;">
-				
-				<tbody>
-					<tr class="table opacity00 text-center">
-				        <td class=""></td>
-				        <td class="array border-top-none text-center">0</td>
-				        <td class="array border-top-none text-center">1</td>
-				        <td class="array border-top-none text-center">2</td>
-				        <td class="array border-top-none text-center">3</td>
-				        <td class="array border-top-none text-center">4</td>
-				        <td class="array border-top-none text-center">5</td>
-				        <td class="array border-top-none text-center">6</td>
-				        <td class="array border-top-none text-center">7</td>
-				        <td class="array border-top-none text-center">8</td>
-				        <td class="array border-top-none text-center">9</td>
-				        <td class="array border-top-none text-center">10</td>
-				        <td class="array border-top-none text-center">11</td>
-				        <td class="array border-top-none text-center">12</td>
-				        <td class="array border-top-none text-center">13</td>
-				        <td class="array border-top-none text-center">14</td>
-					</tr>
-			  
-			      <tr id="tableRowId1" class="">
-				     	<td class="td-css table-bordered text-center"><span id ="negative"class="green opacity00">-</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="green"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="green"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="green"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="green"></span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d1">8</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d2">.</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d3">9</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d4">1</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d5">2</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d6">e</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d7">+</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d8">0</span></td>
-				        <td class="td-css table-bordered text-center"><span class="green opacity00" id="d9">1</span></td>
-			      	</tr>
-				</tbody>
-  			</table>  -->
+			</pre>
+		</div>
+		<div class="col-xs-7">
+			<div class="address-box opacity00 col-xs-12" id="addressBox">
+		  		<div class="col-xs-12" id="animationBox" style="margin-top : 30px;">
+		  			<table id="tableId" class="table opacity00">
+						
+						<tbody>
+							<tr class="text-center">
+								<td class="array border-top-none text-center">0</td>
+								<td class="array border-top-none text-center">1</td>
+								<td class="array border-top-none text-center">2</td>
+								<td class="array border-top-none text-center">3</td>
+								<td class="array border-top-none text-center">4</td>
+								<td class="array border-top-none text-center">5</td>
+								<td class="array border-top-none text-center">6</td>
+								<td class="array border-top-none text-center">7</td>
+								<td class="array border-top-none text-center">8</td>
+								<td class="array border-top-none text-center">9</td>
+							</tr>
+							<tr id="tableRowId" class="">
+								<td class="td-css table-bordered text-center"><span id ="positive" class="greenn opacity00">+</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn"></span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn"></span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c1">5</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c2">7</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c3">5</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c4">.</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c5">5</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c6">0</span></td>
+								<td class="td-css table-bordered text-center"><span class="greenn opacity00" id="c7">0</span></td>
+							</tr>
+						</tbody>
+		  			</table>
+				</div>
+			</div>
 		</div>
 	</div>
+	<div class="button col-xs-12 text-center margin-top-1" id="button">
+		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+	</div>
 </div>
-</div>
-<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top: 15px;">Restart </button></div>
 <script>
 	$(document).ready(function() {
 		readPrintStringUsingGetsPutsReady();

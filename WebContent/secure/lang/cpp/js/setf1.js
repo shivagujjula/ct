@@ -47,20 +47,24 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line7',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
-						animateStep : "memory"
+						animateStep : "memory",
+						tooltipClass: 'hide'
 					},{
 						element :'#line8',
 						intro :'',
-						position:"bottom"
+						position:"bottom",
+						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
 						position:"left",
-						animateStep : "animation"
+						animateStep : "animation",
+						tooltipClass: 'hide'
 					
 					},{
 						element :'#restartBtn',
@@ -68,12 +72,37 @@ var readPrintStringUsingGetsPutsReady = function() {
 						position:"right"
 					}]
 	});
-	
+	intro.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "addressBox" :
+			intro.refresh();
+			$('.introjs-nextbutton').hide();
+			var animateStep = intro._introItems[intro._currentStep].animateStep;
+			switch(animateStep) {
+			case "memory":
+				$("#addressBox").addClass("opacity00");
+				$("#tableId").addClass("opacity00").css('opacity', '');
+			break;
+			case 'animation':
+				$("#c1, #c2, #c3, #c4, #c5, #c6, #c7, #positive").addClass("opacity00");
+			break;
+			}
+			break;
+		case "line7" :
+			$("#addressBox").addClass("opacity00");
+			$("#tableId").addClass("opacity00").css('opacity', '');
+		break;
+		case 'line8':
+			$("#c1, #c2, #c3, #c4, #c5, #c6, #c7, #positive").addClass("opacity00");
+		break;
+		}
+	});
 	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preBody").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Let us consider a sample code with <span class='ct-code-b-yellow'>width()</span>. ", 10, "",function() {
@@ -82,87 +111,79 @@ var readPrintStringUsingGetsPutsReady = function() {
 			});
 			break;
 		case "line2" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", " Display <span class='ct-code-b-yellow'>decimal point</span> and <span class='ct-code-b-yellow'>" +
 						"trailing zeros</span> for all <span class='ct-code-b-yellow'>floating point numbers</span>," +
 						" even if the decimal places are not needed.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line3" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "Display a leading plus sign before <span class='ct-code-b-yellow'>" +
 						"positive values</span>.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line5" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", " Display floating point numbers in <span class='ct-code-b-yellow'>normal notation - no trailing</span> "+
 						"<span class='ct-code-b-yellow'>zeroes</span> and no <span class='ct-code-b-yellow'>" +
 						"scientific notation</span>.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line6" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", " Sets the adjustfield of the <span class='ct-code-b-yellow'>stream cout</span> to " +
 						"<span class='ct-code-b-yellow'>internal</span>.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line7" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass("hide");
 				typing(".introjs-tooltiptext", "Here <span class='ct-code-b-yellow'>width </span>field is set as 10. ", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line4" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "The <span class='ct-code-b-yellow'>setprecision()</span> manipulator " +
 						"can also be used to set the number of <span class='ct-code-b-yellow'>" +
 						"decimal places</span> to be displayed.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "line8" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass("hide");
 				typing(".introjs-tooltiptext", " <span class='ct-code-b-yellow'>cout</span> is used to display the output on monitor.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		case "addressBox" :
-			$('.introjs-nextbutton').hide();
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 			case "memory":
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#addressBox").removeClass("opacity00");
 					$("#tableId").fadeTo(1000, 1,  function() {
 						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", "In the output <span class='ct-code-b-yellow'>10</span>  digits space is occupied by "+
 								"<span class='ct-code-b-yellow'>width(10)</span>.", 10, "",function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
 				break;
 			case "animation" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					intro.refresh();
 					var i;
@@ -183,7 +204,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 											"<li>Remaining fields are <span class='ct-code-b-yellow'>empty</span>. </ul>", 10, "",function() {
 										$("#tableId td span:empty").text("");
 										$("#positive").removeClass("opacity00");
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									});
 								}
 							}});
@@ -226,5 +247,6 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }
