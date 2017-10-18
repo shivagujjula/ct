@@ -18,6 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/ds/js/factorial-time-complexity.js"></script>
+<script type="text/javascript" src="/secure/ct-utility-functions.js"></script>
 
 <title>Factorial Time Complexity</title>
 <style type="text/css">

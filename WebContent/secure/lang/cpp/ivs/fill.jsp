@@ -187,7 +187,6 @@
 .greenn {
 	color: #d0289d;
 	font-weight: bold;
-	padding : 10px;
 }
 .array {
 	color: #4ec028;

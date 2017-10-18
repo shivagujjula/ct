@@ -364,8 +364,9 @@ td {
 				<span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br>
 				<span id="divCalcLine3" class="opacity00"><span class="opacity00">T(n)</span> = 
 					<span id="divCalcLine3Span"><span id="line3Span" class="display">T(n/2)</span> + 2</span></span><br>
-				<span id="divCalcLine4" class="opacity00">T(n) = T(n/4) + (2 * 2)</span><br>
-				<span id="divCalcLine5" class="opacity00">T(n) = T(n/8) + (2 * 2 * 2)</span><br>
+				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = <span id="line4Span" class="display">T(n/4)</span> + 2 + 2</span><br>
+				<span id="divCalcLine5" class="opacity00">
+					<span class="opacity00">T(n)</span> = T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">(2 + 2 + 2)</span></span><br>
 				<span id="divCalcLine6" class="opacity00">T(n) = T(n/2<sup>3</sup>) + (4 * 2)</span><br>
 				...<br>
 				...<br>
@@ -700,8 +701,7 @@ function thirdStep() {
 }
 
 function calculationActionFunction() {
-	$("#calcLine1").removeClass("opacity00");
-	typing("#calcLine1", $("#calcLine1").html(), function() {
+	TweenMax.to($("#calcLine1"), 1, {opacity:1, onComplete:function() {
 		popoverLeftSideAppendFunction("#divCalcLine1", 1);
 		var text = "<span id='popoverText'>So we have time complexity of <span class='ct-code-b-yellow' id='textDeclaration'>T(n) = T(n/2) + c</span>.</span>";
 		typing(".popover-content", text, function() {
@@ -722,7 +722,7 @@ function calculationActionFunction() {
 				});
 			});
 		});
-	});
+	}});
 }
 
 function line3CalculationAnimation() {
@@ -742,29 +742,111 @@ function line3CalculationAnimation() {
 							$("#Line3SecondLi").after("<li id='Line3ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
 							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
 							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>T(<span id='numericalId3' class='display'>n</span>) = "+
-							"<span id='value3ParentSpan' class='display'>T(<span id='value3' class='display'>n</span>/2)</span> + 2</span></li>");
+							"<span id='value3Main' class='display'>"+
+							"<span id='value3ParentSpan' class='display'>T(<span id='value3SecondParent' class='display'>"+
+								"<span id='value3' class='display'>n</span>/2</span>)</span> + 2</span></span></li>");
 							tweenMaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
 								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
 								flipEffect("#numericalId3", "n/2", function() {
 									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
 									flipEffect("#value3", "(n/2)", function() {
 										buttonAppendFunction("#popover3", function() {
-											/* $("#value3Sum").effect( "highlight", {color:"#FFD700"}, 2000);
-											flipEffect("#value3Sum", "n-3", function() {
-												$("#value3ParentSpan").effect( "highlight", {color:"#FFD700"}, 2000);
-												transferEffectFunction("#value3ParentSpan", "#line3SpanSum", function() {
-													flipEffect("#line3SpanSum", $("#value3ParentSpan").text(), function() {
-														$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
-														'<span class="introjs-button user-btn" onclick="line4CalculationAnimation()">'+
-														'Next &#8594;</span></div>');
+											$("#value3SecondParent").effect( "highlight", {color:"#FFD700"}, 2000);
+											flipEffect("#value3SecondParent", "n/4", function() {
+												buttonAppendFunction("#popover3", function() {
+													transferEffectFunction("#Line3ThirdLiSpan", "#line3Span", function() {
+														$("#line3Span").effect( "highlight", {color:"#FFD700"}, 2000);
+														flipEffect("#line3Span", $("#value3Main").text(), function() {
+															buttonAppendFunction("#popover3", function() {
+																line4CalculationAnimation();
+															});
+														});
 													});
 												});
-											}); */
+											}); 
 										});
 									});
 								});
 							}); 
+						});
 					});
+				});
+			});
+		});
+	});
+}
+
+function line4CalculationAnimation() {
+	$("#divCalcLine3").popover("hide");
+	popoverLeftSideAppendFunction("#divCalcLine4", 4);
+	tweenMaxAnimation("#divCalcLine3", "#divCalcLine4", function() {	
+		var text = "<ul><li id='Line4FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>T(n/4)</span>.</li></ul>";
+		typing("#popover4", text, function() {
+			$("#line4Span").effect('highlight',{color:'#da5805'}, 1500, function() {
+				buttonAppendFunction("#popover4", function() {
+					$("#Line4FirstLi").after("<li id='Line4SecondLi'>Consider <span class='ct-code-b-yellow'>T(n)</span> value<br>"+
+						"<span class='ct-code-b-yellow opacity00' id='Line4SecondLiSpan'>T(n) = T(n/2) + 2</span></li>");
+					$("#divCalcLine2").effect( "highlight", {color:"#FFD700"}, 2000);
+					transferEffectFunction("#divCalcLine2", "#Line4SecondLiSpan", function() {
+						buttonAppendFunction("#popover4", function() {
+							$("#Line4SecondLi").after("<li id='Line4ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
+							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
+							"<span class='ct-code-b-yellow opacity00' id='Line4ThirdLiSpan'>T(<span id='numericalId4' class='display'>n</span>) = "+
+							"<span id='value4Main' class='display'>"+
+							"<span id='value4ParentSpan' class='display'>T(<span id='value4SecondParent' class='display'>"+
+								"<span id='value4' class='display'>n</span>/4</span>)</span> + 2</span></span></li>");
+							tweenMaxAnimation("#Line4SecondLiSpan", "#Line4ThirdLiSpan", function() {
+								$("#numericalId4").effect( "highlight", {color:"#FFD700"}, 2000);
+								flipEffect("#numericalId4", "n/2", function() {
+									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
+									flipEffect("#value4", "(n/2)", function() {
+										buttonAppendFunction("#popover4", function() {
+											$("#value4SecondParent").effect( "highlight", {color:"#FFD700"}, 2000);
+											flipEffect("#value4SecondParent", "n/8", function() {
+												buttonAppendFunction("#popover4", function() {
+													transferEffectFunction("#Line4ThirdLiSpan", "#line4Span", function() {
+														$("#line4Span").effect( "highlight", {color:"#FFD700"}, 2000);
+														flipEffect("#line4Span", $("#value4Main").text(), function() {
+															buttonAppendFunction("#popover4", function() {
+																line5CalculationAnimation();
+															});
+														});
+													});
+												});
+											}); 
+										});
+									});
+								});
+							}); 
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function line5CalculationAnimation() {
+	$("#divCalcLine4").popover("hide");
+	tweenMaxAnimation("#divCalcLine4", "#divCalcLine5", function() {
+		popoverLeftSideAppendFunction("#divCalcLine5", 5);
+		var text = "<ul><li id='Line5FirstLi'>Here <span class='ct-code-b-yellow'>8</span> can be written as "+
+		"<span class='ct-code-b-yellow' id='twoPowerId'>2<sup>3</sup></span>.</li></ul>";
+		typing("#popover5", text, function() {
+			buttonAppendFunction("#popover5", function() {
+				$("#line5Span").effect( "highlight", {color:"#FFD700"}, 2000);
+				flipEffect("#line5Span", $("#twoPowerId").html(), function() {
+					buttonAppendFunction("#popover5", function() {
+						$("#Line5FirstLi").after("<li id='Line5SecondLi'><span class='ct-code-b-yellow'>2+2+2</span> can be written as<br>"+
+						"<span class='ct-code-b-yellow' id='Line4SecondLiSpan'>2*2*2</span> i.e. <span  class='ct-code-b-yellow'>3*2</span>.</li>");
+						typing("#Line5SecondLi", $("#Line5SecondLi").html(), function() {
+							buttonAppendFunction("#popover5", function() {
+								$("#line5SpanParent").effect( "highlight", {color:"#FFD700"}, 2000);
+								flipEffect("#line5SpanParent", "(3 * 2)", function() {
+									
+								});
+							});
+						});
 					});
 				});
 			});

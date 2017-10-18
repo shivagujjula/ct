@@ -1709,7 +1709,17 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
+					<tr>
+						<td>7</td>
+						<td>Static data members in constructors</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Static data members in constructors', 'static-data-members-in-constructors.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static data members in constructors</span></td>
+						<td>Anil</td>
+						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>18-10-17</td>
+					</tr>
 					
 				</tbody>
 			</table>
@@ -1926,14 +1936,25 @@
 					
 					<tr>
 						<td>1</td>
-						<td></td>
+						<td>Catch all exceptions</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+							href="javascript:opendialog('Catch all exceptions', 'catch-all-exceptions.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Catch all exceptions</span></td>
+						<td>Anil</td>
 						<td></td>
 						<td></td>
+						<td>18-10-17</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Exception handling</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Exception handling', 'exception-handling.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Exception handling</span></td>
+						<td>Anil</td>
 						<td></td>
 						<td></td>
+						<td>18-10-17</td>
 					</tr>
 				</tbody>
 			</table>
