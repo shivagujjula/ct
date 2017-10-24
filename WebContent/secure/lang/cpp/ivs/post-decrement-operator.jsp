@@ -17,8 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/cpp/js-min/podo.min.js"></script>
-
+<script src="/secure/lang/cpp/js-min/podo.min.js" type="text/javascript"></script>
 <title>post-decrement-operator.jsp</title>
 
 <style type="text/css">

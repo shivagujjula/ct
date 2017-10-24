@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/cpp/js-min/poio.min.js"></script>
-
+<script src="/secure/lang/cpp/js-min/poio.min.js" type="text/javascript"></script>
 <title>post-increment-operator.jsp</title> 
 
 <style type="text/css">

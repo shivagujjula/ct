@@ -14,7 +14,6 @@ var postIncrementOperatorReady = function() {
 			steps : [{
 						element :'#program',
 						intro :'',
-						tooltipClass : "hide"
 					},{
 						element :'#yVariableDeclararionLine',
 						intro :'',
@@ -80,7 +79,53 @@ var postIncrementOperatorReady = function() {
 						position : "right"
 					}]
 	});
+	
+	introcode.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "animationDiv1"  :
+			$('.animation-div1').addClass("opacity00").css("opacity", "");
+			$('.animation-div2').addClass("opacity00").css("opacity", "");
+			$('.animation-div3').addClass("opacity00").css("opacity", "");
+		break;
+		case "yVariableDeclararionLine"  :
+			if (introcode._currentStep == 1) {
+				$('.animation-div1').addClass("opacity00").css("opacity", "");
+				$('.animation-div2').addClass("opacity00").css("opacity", "");
+				$('.animation-div3').addClass("opacity00").css("opacity", "");
+			} else if(introcode._currentStep == 5) {
+				$("#xCupValue").text($("#xvalue").text());
+				$("#yCup").addClass("visibility-hidden");
+				$('.animation-div5').addClass("opacity00").css("opacity", "");
+				$("#yCupValue").text("");
+			} else if(introcode._currentStep == 6) {
+				$("#xCupValue").text($("#xvalue").text());
+			}
+		break;
+		case "xCup":
+			$("#xCup").addClass("visibility-hidden");
+			$("#xCupValue").text("");
+		break;
+		case "expressionStatement":
+			$("#yCup").addClass("visibility-hidden");
+			$('.animation-div5').addClass("opacity00").css("opacity", "");
+			$("#yCupValue").text("");
+		break;
+		case "outputDiv":
+			if (introcode._currentStep == 10) {
+				$('#yValue').remove();
+			} 
+		break;
+		case "singleStatement"  :
+			if (introcode._currentStep == 11) {
+				$("#xCupValue").text("15");
+				$(".animation-div6").addClass("opacity00").css("opacity", "");
+			} 
+		break;
+		}
+	});
 	introcode.onafterchange(function(targetElement) {
+	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 	var elementId = targetElement.id;
 		switch (elementId) {
 			case "program" :
@@ -96,7 +141,7 @@ var postIncrementOperatorReady = function() {
 			break;
 			case "yVariableDeclararionLine"  :
 				$(".introjs-duplicate-nextbutton").remove();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
@@ -105,7 +150,7 @@ var postIncrementOperatorReady = function() {
 						text = 'Here, <span class="ct-code-b-yellow">y</span> is assigned'+
 								' a value with <span class="ct-code-b-yellow">x++</span>.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					break;
 					case "example" :
@@ -113,7 +158,7 @@ var postIncrementOperatorReady = function() {
 						text = 'Here, we are using a '+
 								'<span class="ct-code-b-yellow">post-increment</span> operator.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					break;
 					}
@@ -121,9 +166,8 @@ var postIncrementOperatorReady = function() {
 			break;
 			case "animationDiv1"  :
 				introcode.refresh();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					TweenMax.to('.animation-div1', 1, {opacity: 1, onComplete: function() {
+					$('.animation-div1').fadeTo(500, 1, function() {
 						svgBoxAnimation(0, function() {
 							$('.introjs-tooltip').removeClass('hide');
 							text = 'In the above expression, we are using <span class="ct-code-b-yellow">post-increment</span>'+
@@ -137,11 +181,10 @@ var postIncrementOperatorReady = function() {
 								xValueAssignedToVariabley();
 							});
 						});
-					}});
+					});
 				});
 			break;
 			case "xVariableDeclararionLine":
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
 					text = 'Let us work with a live example.<br/>'+
@@ -149,7 +192,7 @@ var postIncrementOperatorReady = function() {
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 						$("#xvalue").effect( "highlight",{color: 'yellow'});
 						caretAtEnd('xvalue');
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -175,7 +218,6 @@ var postIncrementOperatorReady = function() {
 			break;
 			case "expressionStatement":
 				$("#yVariableDeclararionLine").addClass("z-index1000000");
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#yVariable").effect( "highlight",{color: '#ffff33'}, 500);
 					$("#yVariable").effect( "transfer", { to: $("#yCup"), className: "ui-effects-transfer" }, 1000 , function(){
@@ -183,17 +225,16 @@ var postIncrementOperatorReady = function() {
 							setTimeout(function() {
 								$("#yVariableDeclararionLine").effect( "highlight",{color: '#ffff33'}, 500);
 								$("#yVariableDeclararionLine").effect( "transfer", { to: $("#yvalueassignment"), className: "ui-effects-transfer" }, 1000 , function(){
-									TweenMax.to('.animation-div5', 1, {opacity: 1, onComplete: function() {
+									$('.animation-div5').fadeTo(1000, 1, function() {
 										$("#yVariableDeclararionLine").removeClass("z-index1000000");
 										postIncrementOperatorAnimation();
-									}});
+									});
 								});
 						  },1000);
 					});							
 				});
 			break;
 			case "sopLine" + sopLineCount:
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					setTimeout(function(){
 						introcode.nextStep();
@@ -203,20 +244,19 @@ var postIncrementOperatorReady = function() {
 				break;
 			case "outputDiv":
 				$("#xCup").removeClass("z-index1000000");
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (introcode._currentStep == 8) {
-						$(".output").append('<span> x value : '+ $("#xCupValue").text() + '</span><br>');
+						$(".output").append('<span id="xVal"> x value : '+ $("#xCupValue").text() + '</span><br>');
 						setTimeout(function(){
 							introcode.nextStep();
 						},1000);
 					} else if (introcode._currentStep == 10) {
-						$(".output").append('<span> y value : '+ $("#yCupValue").text() + '</span>');
+						$(".output").append('<span id="yValue"> y value : '+ $("#yCupValue").text() + '</span>');
 							setTimeout(function(){
 								introcode.nextStep();
 							},1000);
 					} else {
-						$(".output").append('<br><span> x value : '+ $("#xCupValue").text() + '</span>');
+						$(".output").append('<br><span id="xVal1"> x value : '+ $("#xCupValue").text() + '</span>');
 						setTimeout(function(){
 							introcode.nextStep();
 						},1000);
@@ -225,14 +265,13 @@ var postIncrementOperatorReady = function() {
 				break;
 			case "singleStatement"  :
 				$(".introjs-duplicate-nextbutton").remove();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 						$('.introjs-tooltip').removeClass('hide');
 						text = '<span class="ct-code-b-yellow">post-increment</span> operator '+
 								'can also be applied on a variable which can exist as a single statement'+
 								' as shown here.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -242,7 +281,7 @@ var postIncrementOperatorReady = function() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#singleStatement").effect( "highlight",{color: 'yellow'});
 					$("#singleStatement").effect( "transfer", { to: $("#singleStatementDiv"), className: "ui-effects-transfer" }, 1000 , function(){
-						TweenMax.to('.animation-div6', 1, {opacity: 1, onComplete: function() {
+						$('.animation-div6').fadeTo(500, 1, function() {
 							$('.introjs-tooltip').removeClass('hide');
 							text = '<span class="ct-code-b-yellow">x</span> value '+
 									'which is currently <span class="ct-code-b-yellow">'+ $("#xCupValue").text() +'</span>'+
@@ -266,13 +305,13 @@ var postIncrementOperatorReady = function() {
 													$("#xCupValue").text() +'</span>.';
 											typing('#appendSpan', text, typingInterval, 'white', function() {
 												$(".x-cup").removeClass("blinking");
-												$(".introjs-nextbutton").show();
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
 											});
 										}});
 									}});
 								});
 							});
-						}});
+						});
 					});
 				});
 			break;
@@ -332,7 +371,7 @@ function postIncrementOperatorAnimation() {
 										$("#xCupValue").text() +'</span>.';
 								typing('#appendSpan', text, typingInterval, 'white', function() {
 									$(".x-cup").removeClass("blinking");
-									$(".introjs-nextbutton").show();
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								});
 							}});
 						}});
@@ -355,7 +394,7 @@ function xValueAssignedToVariabley() {
 				$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
 				$(".introjs-duplicate-nextbutton").click(function() {
 					$(".introjs-duplicate-nextbutton").remove();
-					TweenMax.to('.animation-div2', 1, {opacity: 1, onComplete: function() {
+					$('.animation-div2').fadeTo(500, 1, function() {
 						$(".animation-div2").effect( "highlight",{color: 'yellow'});
 						$('.introjs-tooltip').removeClass('hide');
 						text = 'First, the <span class="ct-code-b-yellow">x</span> value will be assigned to the '+
@@ -364,7 +403,7 @@ function xValueAssignedToVariabley() {
 						typing('#appendSpan', text, typingInterval, 'white', function() {
 							xValueIncrementByOne();
 						});
-					}});
+					});
 				});
 		});
 	});
@@ -375,15 +414,15 @@ function xValueIncrementByOne() {
 	"Next &#8594;</a>");
 	$(".introjs-duplicate-nextbutton").click(function() {
 		$(".introjs-duplicate-nextbutton").remove();
-		TweenMax.to('.animation-div3', 1, {opacity: 1, onComplete: function() {
+		$('.animation-div3').fadeTo(500, 1, function() {
 			$(".animation-div3").effect( "highlight",{color: 'yellow'});
 			$('.introjs-tooltip').removeClass('hide');
 			text = 'Later the value of <span class="ct-code-b-yellow">x</span> will be '+
 				'<span class="ct-code-b-yellow">incremented</span> by <span class="ct-code-b-yellow">1</span>.';
 			typing('#appendSpan1', text, typingInterval, 'white', function(){
-				$('.introjs-nextbutton').show();
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			});
-		}});
+		});
 	});
 }
 
@@ -431,6 +470,7 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
+		introcode._introItems[introcode._currentStep].introcode = $(".introjs-tooltiptext").html();
 		$('.introjs-tooltip').show();
 	});
 } 

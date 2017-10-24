@@ -17,8 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/cpp/js-min/pio.min.js"></script>
-
+<script src="/secure/lang/cpp/js-min/pio.min.js" type="text/javascript"></script>
 <title>pre-increment-operator.jsp</title>
 
 <style type="text/css">

@@ -5,19 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/jquery-latest.js"></script>
-<script src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/uow.min.js'></script>
-
-<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <title>usage of write()</title>
 </head>
@@ -103,7 +103,7 @@
 	color: teal;
 }
 pre#desc{
-	width : 620px;
+	max-width : 365px; 
 	background-color: #fcfae3;
 }
 ul.expl {
@@ -117,7 +117,6 @@ ul.expl {
 	font-family: monospace;
 	font-size: 13px;
 	/* margin-bottom: 14px; */
-	height: 120px; 
 	overflow: auto;
 	padding: 10px;
 	white-space: nowrap;
@@ -149,22 +148,10 @@ div, span {
 	tab-size: 3;
 	background-color: #fffae6;
 	border-radius: 8px;
-	font-size: 13px;
-	margin: 5px;
-	padding: 6px;
-	white-space: pre;
-}
-
-.creamPreTable2 {
-	-moz-tab-size: 3;
-	tab-size: 3;
-	background-color: #fffae6;
-	border-radius: 8px;
 	font-size: 12px;
 	margin: 5px;
 	padding: 6px;
 	white-space: pre;
-	width: 567px;
 }
 
 .margin-top-4 {
@@ -212,12 +199,9 @@ div, span {
 	font-family: monospace;
 	font-size : 15px;
 }
-
-/* #animationBox {
-	border: 1px solid green;
-	border-radius: 4%;
-	height: 154px;
-} */
+.padding10 {
+	padding: 10px;
+}
 
 .fa-arrow-left {
 	color: green;
@@ -283,46 +267,49 @@ div, span {
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2 infoDiv" id="infoDiv">
 		<ul>
 			<li id="list" class="opacity00">The <span class="ct-code-b-green">write( )</span> function  display a line of text on the standard output device.</li> 
-		 	<li id="list1" class="opacity00">It is a <span class="ct-code-b-green">member</span> function of the <span class="ct-code-b-green">ostream</span> class and it is involved with an <span class="ct-code-b-green">ostream</span> object <span class="ct-code-b-green">cout</span>.</li> 
-		 	<li id="list2" class="opacity00">The format of  <span class="ct-code-b-green">write( )</span>  is:<br> 
-		 		<span class="syntax opacity00" id="syntax">cout.write(char *, size);</span><br>
+		 	<li id="list1" class="opacity00">It is a <span class="ct-code-b-green">member</span> function of the <span class="ct-code-b-green">ostream</span> class.</li> 
+		 	<li id="list2" class="opacity00">The format of  <span class="ct-code-b-green">write( )</span>  is: 
+		 		<span class="syntax opacity00" id="syntax">cout.write(char *line, int size);</span><br>
 		 		<ul class="expl">
-			 		<li id="list3" class="opacity00">where <span class='ct-code-b-green'>char *(line)</span> specifies the string variable whose contents are to be displayed, and</li>
-			 		<li id="list4" class="opacity00">size specifies the number of characters to be displays.</li>
+			 		<li id="list3" class="opacity00">where <span class='ct-code-b-green'>char *line</span> specifies the string variable whose contents are to be displayed.</li>
+			 		<li id="list4" class="opacity00"><span class='ct-code-b-green'>int size</span> specifies the number of characters to be displays.</li>
 		 		</ul>
 		 	</li>
-	 	</ul><br>
-	 		 <span id="example" class="opacity00"><span id="line">Let us consider an example :</span><br>
+	 	
+	 		 <li id="example" class="opacity00"><span id="line">Let us consider an example :</span><br>
 		 		<pre id="desc" class="opacity00">
-<span class="ct-Maroon-color">cout.write("C++ supports OOPS concepts", 3);</span>  
-<b>// It will display only the first 3 characters of the given text</b>   <span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></pre>
-	</span>
+<span class="ct-Maroon-color">cout.write("C++ supports OOPS concepts", 3);</span></pre>  
+			<ul><li  id="example1" class="opacity00">The above write() will display only first 3 characters of message, because size is mentioned as 3.</li></ul> <span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
+		</li>
+	</ul><br>
 	</div>
 	<div class="col-xs-12 margin-top-2">
-	<div class="col-xs-offset-1 col-xs-4">
-	<pre id="preTableDiv" class="creamPreTable2 opacity00">
+	<div class="col-xs-offset-1 col-xs-6">
+	<pre id="preTableDiv" class="creamPreTab1 opacity00">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-green-color">namespace</span> std;
 <span class="ct-blue-color">int</span> main () {
 	<span id="preline1">cout.write("CodeTantra loves Coding", 10) << endl;</span>
 	<span id="preline2">cout.write("India is the first Asian country to reach Mars", 5) << endl;</span>
 	<span id="preline3">cout.write("Baahubali is the pride of telugu film industry", 46) << endl;</span>
-}
+	<span id="preline4">cout.write("Code", 10) << endl;</span>
+<span id="end">}</span>
 	</pre>
 	</div>
-		<div class="col-sm-offset-2 col-sm-4">
+		<div class="col-xs-4">
 			<div id="consoleId" class="center opacity00" style="margin-top: 3%">
 				<div class="output-console-title-bar">
 					<span class="title"><b>Console</b></span>
 				</div>
-				<div class="output-console-body" id="consoleBodyDiv">
+		 		<div class="output-console-body" id="consoleBodyDiv">
 					<div id="codeTantra" class="opacity00">CodeTantra</div><br> 
 					<div id="india" class="opacity00"><span class='ct-code-b-gold'>In</span>d<span class='ct-code-b-green'>ia</span></div><br>
-					<div id="baahubali" class="opacity00"> <span class='ct-sgreen-color'>Baahubali</span> is the pride of telugu film industry</div>
+					<div id="baahubali" class="opacity00"> <span class='ct-sgreen-color'>Baahubali</span> is the pride of telugu film industry</div><br>
+					<div id="code" class="opacity00">Code</div><br> 
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 		<div class="col-xs-3 col-sm-offset-4">
 			<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
 				<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
@@ -332,7 +319,7 @@ div, span {
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	usageOfGetcharReady();
+	usageOfWriteReady();
 });
 </script>
 </html>

@@ -5,19 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/jquery-latest.js"></script>
-<script src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/animate.css">
+
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
+<script src='/secure/lang/cpp/js-min/uogl.min.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
-<script src='/secure/lang/cpp/js-min/uogl.min.js'></script>
 <title>usage of getline()</title>
 </head>
 
@@ -75,7 +76,6 @@
 	font-weight: bold;
 }
 .ct-code-b-green {
-	/* font-family: monospace; */
 	font-weight: bold;
 	color: green;
 }
@@ -124,7 +124,6 @@ pre#line1 {
 	color: #f0f0f0;
 	font-family: monospace;
 	font-size: 13px;
-	/* margin-bottom: 14px; */
 	height: 120px; 
 	overflow: auto;
 	padding: 10px;
@@ -132,13 +131,6 @@ pre#line1 {
 }
 
 .input-char {
-	width: 10px; 
-	border-width: 0px 0 0 0;
-	background-color: #000;
-	color: #0f0;
-}
-.input-char-2,.input-char-3 {
-	/* width: 30px;  */
 	border-width: 0px 0 0 0;
 	background-color: #000;
 	color: #0f0;
@@ -219,20 +211,12 @@ div, span {
 	font-family: monospace;
 	font-size : 15px;
 }
-
-/* #animationBox {
-	border: 1px solid green;
-	border-radius: 4%;
-	height: 154px;
-} */
-
 .fa-arrow-left {
 	color: green;
 	position: relative;
 	-webkit-animation: myfirst 1s infinite; /* Chrome, Safari, Opera */
 	-webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
 	animation: myfirst 1s infinite;
-	/* animation-direction:alternate; */
 }
 
 .user-btn {
@@ -290,17 +274,18 @@ div, span {
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2 infoDiv" id="infoDiv">
 		<ul>
 			<li id="list" class="opacity00">The <span class="ct-code-b-green">getline( )</span> function reads a line of text that ends with a <span class="ct-code-b-green">new line character (\n)</span> from the standard input device.</li> 
-		 	<li id="list1" class="opacity00">It is a <span class="ct-code-b-green">member</span> function of the <span class="ct-code-b-green">istream</span> class and it is involved with an <span class="ct-code-b-green">istream</span> object <span class="ct-code-b-green">cin</span>.</li> 
-		 	<li id="list2" class="opacity00">The format of  <span class="ct-code-b-green">getline( )</span>  is:<br> 
-		 		<span class="syntax opacity00" id="syntax">cin.getline(char *, size);</span><br>
+		 	<li id="list1" class="opacity00">It is a <span class="ct-code-b-green">member</span> function of the <span class="ct-code-b-green">istream</span> class.</li> 
+		 	<li id="list2" class="opacity00">The format of  <span class="ct-code-b-green">getline( )</span> is:
+		 		<span class="syntax opacity00" id="syntax">cin.getline(char *line, int size);</span></li>
+		 		<li id="list3" class="opacity00">Let us consider an example :
 		 		<pre class="opacity00" id="line1">char ch[20];
 cin.getline(ch, 20);</pre>
-				<span class="opacity00" id="line2">Here <span class='ct-code-b-green'>ch</span> is an array of type char, <span class='ct-code-b-green'>cin.getline( )</span> is used to read a line of text from the input stream and it is terminated as soon as either a <span class='ct-code-b-green'>new line character (\n)</span> is occurred or <span class='ct-code-b-green'>maximum size of characters</span> are read.</span>
+				<ul><li class="opacity00" id="line2">Here <span class='ct-code-b-green'>ch</span> is an array of type char, <span class='ct-code-b-green'>cin.getline( )</span> is used to read a line of text from the input stream and it is terminated as soon as either a <span class='ct-code-b-green'>new line character (\n)</span> is occurred or <span class='ct-code-b-green'>maximum size of characters</span> are read.</li></ul>
 		 		<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li>
 		</ul>
 	</div>
 	<div class="col-xs-12 margin-top-2">
-	<div class="col-xs-offset-1 col-xs-4">
+		<div class="col-xs-offset-1 col-xs-4">
 	<pre id="preTableDiv" class="creamPreTable2 opacity00">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-green-color">namespace</span> std;
@@ -309,91 +294,85 @@ cin.getline(ch, 20);</pre>
 	<span id="preline11">cout << "Enter a String : ";</span>
 	<span id="preline2">cin.getline(ch, 20);</span>
 	<span id="preline3">cout << "The Output is : " << ch << endl;</span>
-}
+<span id="end">}</span>
 	</pre>
-	</div>
-	<div class="col-xs-7">
-<div class="address-box opacity00" id="addressBox">
- 		<div class="col-xs-12" id="animationBox">
- 			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
-			
-			<tbody>
-				<tr class="">
-			        <td class=""></td>
-			        <td class="ct-code-b-gold">0</td>
-			        <td class="ct-code-b-gold">1</td>
-			        <td class="ct-code-b-gold">2</td>
-			        <td class="ct-code-b-gold">3</td>
-			        <td class="ct-code-b-gold">4</td>
-			        <td class="ct-code-b-gold">5</td>
-			        <td class="ct-code-b-gold">6</td>
-			        <td class="ct-code-b-gold">7</td>
-			        <td class="ct-code-b-gold">8</td>
-			        <td class="ct-code-b-gold">9</td>
-			        <td class="ct-code-b-gold">10</td>
-			        <td class="ct-code-b-gold">11</td>
-			        <td class="ct-code-b-gold">12</td>
-			        <td class="ct-code-b-gold">13</td>
-			        <td class="ct-code-b-gold">14</td>
-			        <td class="ct-code-b-gold">15</td>
-			        <td class="ct-code-b-gold">16</td>
-			        <td class="ct-code-b-gold">17</td>
-			        <td class="ct-code-b-gold">18</td>
-			        <td class="ct-code-b-gold">19</td>
-				</tr>
-		  
-		      <tr id="tableRowId" class="">
-			     	<td style="border-top: none;"><b>ch </b>=</td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td>
-				        <td class="td-css table-bordered opacity00"></td> 
-			      	</tr>
-				</tbody>
-  			</table>
 		</div>
-	</div>
-</div>
-</div>
-		<div class="col-sm-offset-4 col-sm-4">
-			<div id="consoleId" class="center opacity00" style="margin-top: 3%">
-				<div class="output-console-title-bar">
-					<span class="title"><b>Console</b></span>
-				</div>
-				<div class="output-console-body" id="consoleBodyDiv">
-					<span id="typeChar"></span>
-					<div id="hiddenTypingChar" >Enter a String : <input id='inputChar' maxlength='20' class='input-char-2' tabindex='0'/></div><br>
-					<div id="printpreLine1" class="opacity00">The Output is :  </div>
-				</div>
+		<div class="col-xs-7">
+	 		<div class="col-xs-12 address-box opacity00" id="addressBox">
+	 			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
+					<tbody>
+						<tr class="">
+					        <td class=""></td>
+					        <td class="ct-code-b-gold">0</td>
+					        <td class="ct-code-b-gold">1</td>
+					        <td class="ct-code-b-gold">2</td>
+					        <td class="ct-code-b-gold">3</td>
+					        <td class="ct-code-b-gold">4</td>
+					        <td class="ct-code-b-gold">5</td>
+					        <td class="ct-code-b-gold">6</td>
+					        <td class="ct-code-b-gold">7</td>
+					        <td class="ct-code-b-gold">8</td>
+					        <td class="ct-code-b-gold">9</td>
+					        <td class="ct-code-b-gold">10</td>
+					        <td class="ct-code-b-gold">11</td>
+					        <td class="ct-code-b-gold">12</td>
+					        <td class="ct-code-b-gold">13</td>
+					        <td class="ct-code-b-gold">14</td>
+					        <td class="ct-code-b-gold">15</td>
+					        <td class="ct-code-b-gold">16</td>
+					        <td class="ct-code-b-gold">17</td>
+					        <td class="ct-code-b-gold">18</td>
+					        <td class="ct-code-b-gold">19</td>
+						</tr>
+			     		<tr id="tableRowId" class="">
+				     		<td style="border-top: none;"><b>ch </b>=</td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td>
+					        <td class="td-css table-bordered opacity00"></td> 
+				      	</tr>
+					</tbody>
+	  			</table>
 			</div>
 		</div>
-	
-		<div class="col-xs-3 col-sm-offset-4">
-			<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
-				<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+	</div>
+	<div class="col-sm-offset-4 col-sm-4">
+		<div id="consoleId" class="center opacity00" style="margin-top: 3%">
+			<div class="output-console-title-bar">
+				<span class="title"><b>Console</b></span>
+			</div>
+			<div class="output-console-body" id="consoleBodyDiv">
+				<div id="typeChar" class="opacity00">Enter a String : <input id='inputChar' maxlength='20' class='input-char' tabindex='0'/></div><br>
+				<span id="printpreLine1" class="opacity00">The Output is :  </span>
 			</div>
 		</div>
+	</div>
+	<div class="col-xs-3 col-sm-offset-4">
+		<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
+			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+		</div>
+	</div>
 </div>	
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	usageOfGetcharReady();
+	usageOfGetlineReady();
 });
 </script>
 </html>

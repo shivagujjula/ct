@@ -9,7 +9,6 @@ var preIncrementOperatorReady = function() {
 			steps : [{
 						element :'#program',
 						intro :'',
-						tooltipClass : "hide"
 					},{
 						element :'#yVariableDeclararionLine',
 						intro :'',
@@ -75,12 +74,57 @@ var preIncrementOperatorReady = function() {
 						position : "right"
 					}]
 	});
+	
+	introcode.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "animationDiv1"  :
+			$('.animation-div1').addClass("opacity00").css("opacity", "");
+			$('.animation-div2').addClass("opacity00").css("opacity", "");
+			$('.animation-div3').addClass("opacity00").css("opacity", "");
+		break;
+		case "yVariableDeclararionLine"  :
+			if(introcode._currentStep == 1) {
+				$('.animation-div1').addClass("opacity00").css("opacity", "");
+				$('.animation-div2').addClass("opacity00").css("opacity", "");
+				$('.animation-div3').addClass("opacity00").css("opacity", "");
+			} else if(introcode._currentStep == 5) {
+				$('#xCupValue').text($('#xvalue').text());
+				$('#yCup').addClass('visibility-hidden');
+				$('.animation-div5').addClass('opacity00').css('opacity', "");
+				$('#yCupValue').text("");
+			} else if(introcode._currentStep == 6) {
+				$('#xCupValue').text($('#xvalue').text());
+			}
+		break;
+		case "xCup" :
+			$("#xCup").addClass("visibility-hidden");
+			$("#xCupValue").text("");
+		break;
+		case "expressionStatement":
+			$('#yCup').addClass('visibility-hidden');
+			$('.animation-div5').addClass('opacity00').css('opacity', "");
+			$('#yCupValue').text("");
+		break;
+		case "outputDiv":
+			if (introcode._currentStep == 10) {
+				$('#yValue').remove();
+			} 
+			
+		break;
+		case "singleStatement"  :
+			if (introcode._currentStep == 11) {
+				$("#xCupValue").text("15");
+				$(".animation-div6").addClass("opacity00").css("opacity", "");
+			} 
+		break;
+		}
+	});
 	introcode.onafterchange(function(targetElement) {
+	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 	var elementId = targetElement.id;
 		switch (elementId) {
 			case "program" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
-				$('.introjs-tooltip').removeClass('hide');
 				 text = '<span class="ct-code-b-yellow">++</span> indicates increment.<br>'+
 				 		'When it is applied before a variable, for example: <span class="ct-code-b-yellow">++x</span>,'+
 				 		' it is called <span class="ct-code-b-yellow">pre-increment</span>.<br/><br/>'+
@@ -92,7 +136,6 @@ var preIncrementOperatorReady = function() {
 			break;
 			case "yVariableDeclararionLine"  :
 				$(".introjs-duplicate-nextbutton").remove();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
@@ -101,7 +144,7 @@ var preIncrementOperatorReady = function() {
 						text = 'Here, <span class="ct-code-b-yellow">y</span> is assigned'+
 								' a value with <span class="ct-code-b-yellow">++x</span>.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					break;
 					case "example" :
@@ -109,7 +152,7 @@ var preIncrementOperatorReady = function() {
 						text = 'Here, we are using a '+
 								'<span class="ct-code-b-yellow">pre-increment</span> operator.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					break;
 					}
@@ -117,7 +160,6 @@ var preIncrementOperatorReady = function() {
 			break;
 			case "animationDiv1"  :
 				introcode.refresh();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					TweenMax.to('.animation-div1', 1, {opacity: 1, onComplete: function() {
 						svgBoxAnimation(0, function(){
@@ -137,7 +179,6 @@ var preIncrementOperatorReady = function() {
 				});
 			break;
 			case "xVariableDeclararionLine":
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
 					text = 'Let us work with a live example.<br/>'+
@@ -145,14 +186,13 @@ var preIncrementOperatorReady = function() {
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 						$("#xvalue").effect( "highlight",{color: 'yellow'});
 						caretAtEnd(document.getElementById('xvalue'));
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "xCup":
 				$("#xvalue").attr("contenteditable", "false");
 				$("#xVariableDeclararionLine").addClass("z-index1000000");
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
 					$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
@@ -171,7 +211,6 @@ var preIncrementOperatorReady = function() {
 			break;
 			case "expressionStatement":
 				$("#yVariableDeclararionLine").addClass("z-index1000000");
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#yVariable").effect( "highlight",{color: '#ffff33'}, 500);
 					$("#yVariable").effect( "transfer", { to: $("#yCup"), className: "ui-effects-transfer" }, 1000 , function(){
@@ -189,7 +228,6 @@ var preIncrementOperatorReady = function() {
 				});
 			break;
 			case "sopLine" + sopLineCount:
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					setTimeout(function(){
 						introcode.nextStep();
@@ -199,7 +237,6 @@ var preIncrementOperatorReady = function() {
 				break;
 			case "outputDiv":
 				$("#xCup").removeClass("z-index1000000");
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (introcode._currentStep == 8) {
 						$(".output").append('<span> x value : '+ $("#xCupValue").text() + '</span><br>');
@@ -207,7 +244,7 @@ var preIncrementOperatorReady = function() {
 							introcode.nextStep();
 						},1000);
 					} else if (introcode._currentStep == 10) {
-						$(".output").append('<span> y value : '+ $("#yCupValue").text() + '</span>');
+						$(".output").append('<span id="yValue"> y value : '+ $("#yCupValue").text() + '</span>');
 							setTimeout(function(){
 								introcode.nextStep();
 							},1000);
@@ -222,20 +259,18 @@ var preIncrementOperatorReady = function() {
 				break;
 			case "singleStatement"  :
 				$(".introjs-duplicate-nextbutton").remove();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
 					text = '<span class="ct-code-b-yellow">pre-increment</span> operator '+
 							'can also be applied on a variable which can exist as a single statement'+
 							' as shown here.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "animationDiv5"  :
 				$(".introjs-duplicate-nextbutton").remove();
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#singleStatement").effect( "highlight",{color: 'yellow'});
 					$("#singleStatement").effect( "transfer", { to: $("#singleStatementDiv"), className: "ui-effects-transfer" }, 1000 , function(){
@@ -262,7 +297,7 @@ var preIncrementOperatorReady = function() {
 													' becomes <span class="ct-code-b-yellow">'+ 
 													$("#xCupValue").text() +'</span>.';
 											typing('#appendSpan', text, typingInterval, 'white', function() {
-												$(".introjs-nextbutton").show();
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
 											});
 										}});
 									}});
@@ -429,6 +464,7 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
+		introcode._introItems[introcode._currentStep].introcode = $(".introjs-tooltiptext").html();
 		$('.introjs-tooltip').show();
 	});
 } 

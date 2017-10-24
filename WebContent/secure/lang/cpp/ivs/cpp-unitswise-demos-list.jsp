@@ -308,8 +308,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of get()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>
@@ -320,8 +320,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of put()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>
@@ -332,8 +332,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of getline()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>
@@ -344,8 +344,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of read()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>
@@ -356,8 +356,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of write()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>
@@ -368,8 +368,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of gcount()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>
@@ -716,8 +716,8 @@
 						</td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>24-10-17</td>
 					</tr>
 					
 					<tr>

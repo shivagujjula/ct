@@ -172,13 +172,6 @@ td:nth-child(4), td:nth-child(5) {
 	background: white;
 }
 
-#finalDiv {
-	border: 1px solid;
-	border-radius: 6px;
-	padding: 4px;
-	margin-left: 29%;
-}
-
 .ct-code-teal {
 	color: #54f309;
 	font-weight: bold;
@@ -356,7 +349,7 @@ td {
 						<li id="caseList2" class="opacity00">if (a[mid] < key) --> T(n/2)</li>
 						<li id="caseList3" class="opacity00">if (a[mid] > key) --> T(n/2)</li>
 					</ul>
-				<span class="opacity00" id="calcLine1">For simplification assume n = 2<sup>k</sup></span>
+				<span class="opacity00" id="calcLine1">For simplification assume <span id="calcLine1Span">n = 2<sup>k</sup></span></span>
 			</div>
 			<div class="col-xs-offset-4">
 				<br>
@@ -367,14 +360,16 @@ td {
 				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = <span id="line4Span" class="display">T(n/4)</span> + 2 + 2</span><br>
 				<span id="divCalcLine5" class="opacity00">
 					<span class="opacity00">T(n)</span> = T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">(2 + 2 + 2)</span></span><br>
-				<span id="divCalcLine6" class="opacity00">T(n) = T(n/2<sup>3</sup>) + (4 * 2)</span><br>
-				...<br>
-				...<br>
-				<span>T(n) = T(n/2<sup>k</sup>) + (k * 2)</span><br>
-				<span>T(n) = T(n/n) + 2k</span><br>
-				<span>T(n) = T(1) + 2k</span><br>
-				<span>T(n) = c + 2 log<sup>n</sup><sub>2</sub></span><br>
-				<span>Time Complexity : O(log<sup>n</sup><sub>2</sub>)</span>
+				<span id="divCalcLine6" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>4</sup>) + (4 * 2)</span><br>
+				<span id="divCalcLine7" class="opacity00" style="margin-left: 65px;">...</span><br>
+				<span id="divCalcLine8" class="opacity00" style="margin-left: 65px;">...</span><br>
+				<span id="divCalcLine9" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>k</sup>) + (k * 2)</span><br>
+				<span id="divCalcLine10" class="opacity00"><span class="opacity00">T(n)</span> = T(n/<span id="kPowerId" class="display">2<sup>k</sup></span>) + (2 * k)</span><br>
+				<span id="divCalcLine11" class="opacity00"><span class="opacity00">T(n)</span> = T(<span id="nDivisionId" class="display">n/n</span>) + (2 * k)</span><br>
+				<span id="divCalcLine12" class="opacity00">T(n) = <span id="finalIdC" class="display">T(1)</span> + 2 * <span id="finalIdK" class="display">k</span></span><br>
+				<span id="divCalcLine13" class="opacity00" style="color: darkblue;">
+					Time Complexity : O(<span class="opacity00" id="resultTimeCt">log<sup>n</sup><sub>2</sub></span>)
+				</span>
 			</div>
 		</div>
 	</div>
@@ -407,7 +402,7 @@ function introGuide() {
 		exitOnEsc : false,
 		keyboardNavigation : false,
 		tooltip : false,
-		steps :[/* {
+		steps :[{
 			element : '#indexDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -417,7 +412,7 @@ function introGuide() {
 		}, {
 			element : '#preCode2',
 			intro : '',
-		},  */{
+		}, {
 			element : '#explanationDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -549,7 +544,7 @@ function introGuide() {
 			break;
 		case 'explanationDiv':
 			$("#unitSecondLineText8").popover('hide');
-		//	$(".introjs-helperLayer").one('transitionend', function() {
+			$(".introjs-helperLayer").one('transitionend', function() {
 				TweenMax.to($("#explanationDiv"), 1, {opacity: 1, onComplete: function() {
 					popoverLeftSideAppendFunction("#caseList1", 1);
 					var text = "<span id='text1'>For best case the Time Complexity is <span class='ct-code-b-yellow'>1</span>.</span>";
@@ -581,22 +576,6 @@ function introGuide() {
 							});
 						}});
 					});
-				}});
-			break;
-		case 'finalDiv':
-			$("#unitSecondLineText15").popover('hide');
-			$(".introjs-helperLayer").one('transitionend', function() {
-				TweenMax.to($("#finalDiv"), 1.5, {opacity: 1, onComplete: function() {
-					$("#finalDiv").addClass("z-index9999999");
-					TweenMax.to($("#finalLine1"), 1.5, {opacity: 1, onComplete: function() {
-						$("#unitSecondLineText15").effect('highlight',{color:'#da5805'}, 1500, function() {
-							$("#alphabetN1").effect('highlight',{color:'#da5805'}, 1500, function() {
-								tweenMaxAnimation("#alphabetN1", "#alphabetN2", function() {
-									setTimeoutFunction();
-								});
-							});
-						});
-					}});
 				}});
 			});
 			break;
@@ -708,8 +687,8 @@ function calculationActionFunction() {
 			transferEffectFunction("#textDeclaration", "#divCalcLine1", function() {
 				buttonAppendFunction("#popoverText", function() {
 					tweenMaxAnimation("#divCalcLine1", "#divCalcLine2", function() {
-						$("#popoverText").after("<br><span id='popoverSubText'>Here C is represented as a constant i.e. "+
-							"<span class='ct-code-b-yellow'>2</span>");
+						$("#popoverText").after("<br><span id='popoverSubText'>Here <span class='ct-code-b-yellow'>c</span> is represented as "+
+								"a constant i.e. <span class='ct-code-b-yellow'>2</span>");
 						typing("#popoverSubText", $("#popoverSubText").html(), function() {
 							$("#cValue").effect( "highlight", {color:"#FFD700"}, 2000);
 							flipEffect("#cValue", "2", function() {
@@ -835,7 +814,8 @@ function line5CalculationAnimation() {
 		typing("#popover5", text, function() {
 			buttonAppendFunction("#popover5", function() {
 				$("#line5Span").effect( "highlight", {color:"#FFD700"}, 2000);
-				flipEffect("#line5Span", $("#twoPowerId").html(), function() {
+				flipEffect("#line5Span", "", function() {
+					$("#line5Span").append("2<sup>3</sup>");				
 					buttonAppendFunction("#popover5", function() {
 						$("#Line5FirstLi").after("<li id='Line5SecondLi'><span class='ct-code-b-yellow'>2+2+2</span> can be written as<br>"+
 						"<span class='ct-code-b-yellow' id='Line4SecondLiSpan'>2*2*2</span> i.e. <span  class='ct-code-b-yellow'>3*2</span>.</li>");
@@ -843,7 +823,10 @@ function line5CalculationAnimation() {
 							buttonAppendFunction("#popover5", function() {
 								$("#line5SpanParent").effect( "highlight", {color:"#FFD700"}, 2000);
 								flipEffect("#line5SpanParent", "(3 * 2)", function() {
-									
+									buttonAppendFunction("#popover5", function() {
+										$("#divCalcLine5").popover("hide");
+										line6CalculationAnimation();
+									});
 								});
 							});
 						});
@@ -852,6 +835,78 @@ function line5CalculationAnimation() {
 			});
 		});
 	});
+}
+
+function line6CalculationAnimation() {
+	$("#divCalcLine6").fadeTo(500, 1, function() {
+		$("#divCalcLine6").effect( "highlight", {color:"#FFD700"}, 1000);
+		$("#divCalcLine7").fadeTo(500, 1, function() {
+			$("#divCalcLine7").effect( "highlight", {color:"#FFD700"}, 1000);
+			$("#divCalcLine8").fadeTo(500, 1, function() {
+				$("#divCalcLine8").effect( "highlight", {color:"#FFD700"}, 1000);
+				popoverLeftSideAppendFunction("#divCalcLine9", 9);
+				var text = "For <span class='ct-code-b-yellow'>k<sup>th</sup></span> order the <span class='ct-code-b-yellow'>T(n)</span> written as";
+				typing("#popover9", text, function() {
+					TweenMax.to($("#divCalcLine9"), 1, {opacity : 1, onComplete:function() {
+						buttonAppendFunction("#popover9", function() {
+							$("#divCalcLine9").popover("hide");
+							popoverLeftSideAppendFunction("#divCalcLine10", 10);
+							tweenMaxAnimation("#divCalcLine9", "#divCalcLine10", function() {
+								var text = "We have <span class='ct-code-b-yellow'>n = 2<sup>k</sup></span>."
+								typing("#popover10", text, function() {
+									$("#calcLine1Span").effect( "highlight", {color:"#FFD700"}, 1000);
+									transferEffectFunction("#calcLine1Span", "#kPowerId", function() {
+										flipEffect("#kPowerId", "n", function() {
+											buttonAppendFunction("#popover10", function() {
+												$("#divCalcLine10").popover("hide");
+												tweenMaxAnimation("#divCalcLine10", "#divCalcLine11", function() {
+													flipEffect("#nDivisionId", "1", function() {
+														line11CalculationAnimation();
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					}});
+				});
+			});
+		});
+	});
+}
+
+function line11CalculationAnimation() {
+	popoverLeftSideAppendFunction("#divCalcLine12", 12);
+	var text = "<ul><li><span class='ct-code-b-yellow'>T(1)</span> can be represents as a constant (<span>c</span>).</li>"+
+	"<li>From <span class='ct-code-b-yellow'>n = 2<sup>k</sup></span>, the <span class='ct-code-b-yellow'>k</span> value can be written as "+
+	"<span class='ct-code-b-yellow'>log<sup>n</sup><sub>2</sub></span>.</li>";
+	typing("#popover12", text, function() {
+		buttonAppendFunction("#popover12", function() {
+			transferEffectFunction("#divCalcLine11", "#divCalcLine12", function() {
+				buttonAppendFunction("#popover12", function() {
+					$("#finalIdC").effect( "highlight", {color:"#FFD700"}, 2000);
+					flipEffect("#finalIdC", "c", function() {
+						$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
+						flipEffect("#finalIdK", "", function() {
+							$("#finalIdK").append("log<sup>n</sup><sub>2</sub>");
+							buttonAppendFunction("#popover12", function() {
+								$("#divCalcLine12").popover("hide");
+								TweenMax.to($("#divCalcLine13"), 1, {opacity : 1, onComplete: function() {
+									$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
+									transferEffectFunction("#finalIdK", "#resultTimeCt", function() {
+										setTimeoutFunction();										
+									});
+								}});
+							});
+						});
+					});
+				});
+			}); 
+		});
+	});
+	
 }
 
 function typing(selector, text, callBackFunction) {
@@ -887,6 +942,17 @@ function tweenMaxAnimation(selector1, selector2, callBackFunction) {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
+	}});
+}
+
+function flipEffect(selector, val, callBackFunction) {
+	TweenMax.to($(selector), 0.6, {rotationX : -90, onComplete:function() {
+		$(selector).text(val);
+		TweenMax.to($(selector), 0.6, {css: {top : 0, rotationX : 0}, onComplete:function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}});
 	}});
 }
 

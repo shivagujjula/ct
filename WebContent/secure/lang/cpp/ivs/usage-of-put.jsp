@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/jquery-latest.js"></script>
-<script src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/animate.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
@@ -118,18 +118,13 @@
 #restart {
     margin-top: 13%;
 }
-
-#animationBox, #addressBox {
-	/* border: 1px; */
-	border-radius: 4%;
-	height: 130px;
-}
-
 .panel-heading {
 	padding: 2px;
 }
 .panel-body {
-	padding: 18px;	
+	padding: 18px;
+	min-width: 91px;
+    min-height: 36px;	
 }
 
 .panel-group {
@@ -216,9 +211,8 @@ div, span {
 	<div class="col-xs-9 col-xs-offset-1 margin-top-2 infoDiv" id="infoDiv">
 		<ul>
 			<li id="list1" class="opacity00">The function <span class="ct-code-b-teal">put( )</span> prints a single character on to the console.</li>
-			<li id="list2" class="opacity00"><span class="ct-code-b-teal">put( )</span> is a member of <span class='ct-green-color'>ostream</span> class and is involved with an <span class='ct-green-color'>ostream</span> object <span class='ct-green-color'>cout</span>.</li>
-			<li id="list3" class="opacity00">Below line shows the usage of <span class="ct-code-b-teal">put( )</span> function :<br>
-				 <span class="syntax">put(variable);</span></li>
+			<li id="list2" class="opacity00"><span class="ct-code-b-teal">put( )</span> is a member of <span class='ct-green-color'>ostream</span> class.</li>
+			<li id="list3" class="opacity00">The format of <span class="ct-code-b-teal">put( )</span> function : <span class="syntax">put(variable);</span></li>
 			<li id="list4" class="opacity00">When we enter a character using keyboard, the <span class="ct-Maroon-color">get( )</span> reads 
 				and converts it to <span class="ct-green-color">ASCII</span> value then stores it in the memory.</li>
 			<li	id="list5" class="opacity00">The <span class="ct-Maroon-color">get( )</span> is used to read where as the 
@@ -236,23 +230,21 @@ div, span {
 	<span id="line3">cout << "Enter a Character : "; </span>
 	<span id="line4">ch = cin.get(); </span> 
 	<span id="line5">cout.put(ch);</span>
-}
+<span id="end">}</span>
 	</pre>
 		</div>
 		<div class="col-xs-3">
-			<div class="col-xs-12 " id="animationBox" style="margin-top: 3%">
-				<div class="address-box" id="addressBox">
-					<div class="col-xs-6 col-xs-offset-3 text-center visibility-hidden" id="memoryBox">
-						<div class="panel-group" id="panelBox">
-							<div class="panel panel-info">
-								<div class="panel-heading"><b>ch</b></div>
-								<div class="panel-body" id="panelBody"></div>
-							</div>
-			 			</div>
-				 		<div>
-				 		<span id="addressId">2034</span>
-				 		</div>
-					</div>
+			<div class="col-xs-12 " style="margin-top: 3%">
+				<div class="col-xs-6 col-xs-offset-3 text-center visibility-hidden" id="memoryBox">
+					<div class="panel-group" id="panelBox">
+						<div class="panel panel-info">
+							<div class="panel-heading"><b>ch</b></div>
+							<div class="panel-body" id="panelBody"></div>
+						</div>
+		 			</div>
+			 		<div>
+			 		<span id="addressId">2034</span>
+			 		</div>
 				</div>
 			</div>
 		</div>
@@ -262,8 +254,7 @@ div, span {
 					<span class="title"><b>Console</b></span>
 				</div>
 				<div class="output-console-body" id="consoleBodyDiv">
-				<span id="typeChar"></span>
-						<div id="hiddenTypingChar">Enter a character :  <input id='inputChar' maxlength='1' class='input-char' tabindex='0'/></div>
+					<div id="typeChar" class="visibility-hidden">Enter a character :  <input id='inputChar' maxlength='1' class='input-char' tabindex='0'/></div>
 					<div id='inputValue'><input id='inputChar' maxlength='1' class='input-char' tabindex='0'/></div>
 					<span id="typingChar"><input id='outputChar' maxlength='0' class='output-char' tabindex='0' contenteditable="false"/></span>
 				</div>
@@ -278,7 +269,7 @@ div, span {
 <span class="ct-blue-color">int</span> main () {
 	<span id="line6" class="">cout.put('<span id="constantId">p</span>');</span>
 	<span id="line7" class="">cout.put(65);</span>
-}
+<span id="end1">}</span>
 	</pre>
 		</div>
 		<div class="col-xs-4 col-xs-offset-1">
@@ -287,7 +278,7 @@ div, span {
 					<span class="title"><b>Console</b></span>
 				</div>
 				<div class="output-console-body" id="consoleBodyDiv">
-					<div><span id="constantChar"></span></div>
+					<span id="constantChar"></span>
 					<span id="asciiChar"></span>
 				</div>
 			</div>
@@ -308,7 +299,7 @@ div, span {
 
 <script type="text/javascript">
 $(document).ready(function() {
-	usageOfPutcharReady();
+	usageOfPutReady();
 });
 </script>
 
