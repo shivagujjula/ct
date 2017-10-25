@@ -21,10 +21,6 @@
 <title>Pointers Introduction</title>
 <style>
 
-.introjs-tooltiptext br {
-	margin: 15px;
-}
-
 .introjs-tooltip {
 	min-width: 300px;
 }
@@ -104,11 +100,12 @@ div, span {
 }
 
 .output-console-body {
-	padding: 5px 20px;
+	padding: 8px 20px;
+	font-size: 12px;
 }
 
 .color-gray {
-	color: gray;
+	color: rgb();
 }
 
 .blinking-border-background-blue {
@@ -142,13 +139,47 @@ div, span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
 .ct-blue-color {
 	font-weight: bold;
 }
+
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+
 </style>
 </head>
 <body>
@@ -162,20 +193,20 @@ div, span {
 				<div class='col-xs-5'>
 					<div class='col-xs-12 box-border'>
 <pre class='creamPreTab4' id='preCode'>
-<span>#include&lt;iostream&gt;</span>
-<span>using namespace std;</span>
-int <span>main() {</span>
- <span id='line1'>int x = <span id='valueOfX'>3</span>;</span>
- <span id='line2'>int y = x;</span>
- <span id='line3'>int *z;</span>
+<span><in>#include</in> <ink>&lt;iostream&gt;</ink></span>
+<span><go><b>using namespace</b></go> std;</span>
+<g>int</g> <span>main() {</span>
+ <span id='line1'><g>int</g> x = <g><span id='valueOfX'>3</span></g>;</span>
+ <span id='line2'><g>int</g> y = x;</span>
+ <span id='line3'><g>int</g> *z;</span>
  <span id='line4'>z = &x;</span>
- <span id='printf1'>cout << "The value of x = " << x;</span>
- <span id='printf2'>cout << "The address of x = " << &x;</span>
- <span id='printf3'>cout << "The value of y = " << y;</span>
- <span id='printf4'>cout << "The address of y = " << &y;</span>
- <span id='printf5'>cout << "The value of z = " << z;</span>
- <span id='printf6'>cout << "The address of z = " << &z;</span>
- <span id='printf7'>cout << "The value of *z = " << *z;</span>
+ <span id='printf1'>cout << <ink>"The value of x = "</ink> << x;</span>
+ <span id='printf2'>cout << <ink>"The address of x = "</ink> << &x;</span>
+ <span id='printf3'>cout << <ink>"The value of y = "</ink> << y;</span>
+ <span id='printf4'>cout << <ink>"The address of y = "</ink> << &y;</span>
+ <span id='printf5'>cout << <ink>"The value of z = "</ink> << z;</span>
+ <span id='printf6'>cout << <ink>"The address of z = "</ink> << &z;</span>
+ <span id='printf7'>cout << <ink>"The value of *z = "</ink> << *z;</span>
 <span>}</span>
 </pre>
 					</div>
@@ -185,7 +216,7 @@ int <span>main() {</span>
 						<div class="col-xs-12 padding10">
 							<div class='col-xs-6'>
 								<div class='center width200'>
-									<div class='col-xs-12 visibility-hidden' id='xBox'>
+									<div class='col-xs-12 opacity00' id='xBox'>
 										<div class='col-xs-4 Vertical-text-center'>x =</div>
 										<div class="col-xs-6 text-center">
 											<div><span class='color-gray'>2 bytes</span></div>
@@ -197,7 +228,7 @@ int <span>main() {</span>
 							</div>
 							<div class='col-xs-6'>
 								<div class='center width200'>
-									<div class='col-xs-12 visibility-hidden' id='yBox'>
+									<div class='col-xs-12 opacity00' id='yBox'>
 										<div class='col-xs-4 Vertical-text-center'>y =</div>
 										<div class="col-xs-6 text-center">
 											<div><span class='color-gray'>2 bytes</span></div>
@@ -210,7 +241,7 @@ int <span>main() {</span>
 						</div>
 						<div class="col-xs-12 padding10">
 							<div class='center width200'>
-								<div class='col-xs-12 visibility-hidden' id='zBox'>
+								<div class='col-xs-12 opacity00' id='zBox'>
 									<div class='col-xs-4 Vertical-text-center'>z =</div>
 									<div class="col-xs-6 text-center">
 										<div><span class='color-gray'>2 bytes</span></div>
@@ -224,19 +255,19 @@ int <span>main() {</span>
 							<marker id="arrowEnd" refX="4" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: gray;">
 								<path d="M0,0 L5,2.5 L0,5 Z"/>
 							</marker>
-							<line class="svg-line" x1="47.7%" y1="73%" x2="47.6%" y2="73%"/>
+							<line class="svg-line" x1="47.7%" y1="73%" x2="47.7%" y2="73%"/>
 						</svg>
 					</div>
 					<div class='col-xs-12 margin-top30'>
 						<div class="output-console center" id='outputBox'>
 							<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><span class='visibility-hidden'>The value of x = <span class='ct-blue-color'>3</span></span>
-<span class='visibility-hidden'>The address of x = <span class='ct-blue-color'>1111</span></span>
-<span class='visibility-hidden'>The value of y = <span class='ct-blue-color'>3</span></span>
-<span class='visibility-hidden'>The address of y = <span class='ct-blue-color'>1234</span></span>
-<span class='visibility-hidden'>The value of z = <span class='ct-blue-color'>1111</span></span>
-<span class='visibility-hidden'>The address of z = <span class='ct-blue-color'>2222</span></span>
-<span class='visibility-hidden'>The value of *z = <span class='ct-blue-color'>3</span></span>
+<div class="output-console-body"><span class='visibility-hidden'>The value of x = <span class='ct-code-b-yellow'>3</span></span>
+<span class='visibility-hidden'>The address of x = <span class='ct-code-b-yellow'>1111</span></span>
+<span class='visibility-hidden'>The value of y = <span class='ct-code-b-yellow'>3</span></span>
+<span class='visibility-hidden'>The address of y = <span class='ct-code-b-yellow'>1234</span></span>
+<span class='visibility-hidden'>The value of z = <span class='ct-code-b-yellow'>1111</span></span>
+<span class='visibility-hidden'>The address of z = <span class='ct-code-b-yellow'>2222</span></span>
+<span class='visibility-hidden'>The value of *z = <span class='ct-code-b-yellow'>3</span></span>
 </div>
 						</div>
 					</div>

@@ -144,7 +144,7 @@
 }
 
 .creamPreTab4 {
-	height: 200px;
+	height: 205px;
 }
 
 .padding0 {
@@ -172,10 +172,37 @@
     width: 40px;
 }
 
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
 y {
-	color: yellow;
 	font-family: monospace;
 	font-weight: bold;
+	color: yellow;
 }
 
 </style>
@@ -193,14 +220,14 @@ y {
 <div class="col-xs-5">
 <!-- <pre id="typewritingId"></pre> -->
 <pre class="creamPreTab4" id="preBody">
-#include &lt;iostream&gt;
-#include &lt;stdio.h&gt;
-<span>using <b>namespace</b> std;</span>
-void <span id='line1'><b>main()</b></span> {
- <span id='line2'><b>char</b> ch[20];</span>
- <span id='line3'><b>cout</b> &lt;&lt; "Enter a string : ";</span>
+<in>#include</in> <ink>&lt;iostream&gt;</ink>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<go><span>using <b>namespace</b></go> std;</span>
+<g>int</g> <span id='line1'><b>main()</b></span> {
+ <span id='line2'><b>char</b> ch[<ink>20</ink>];</span>
+ <span id='line3'><b>cout</b> &lt;&lt; <ink>"Enter a string : "</ink>;</span>
  <span id='line4'><b>gets(ch)</b>;</span>
- <span id='line5'><b>cout</b> &lt;&lt; "The entered string is : ";</span>
+ <span id='line5'><b>cout</b> &lt;&lt; <ink>"The entered string is : "</ink>;</span>
  <span id='line6'><b>puts(ch)</b>;</span>
 <span id='line7'>}</span>
 </pre>

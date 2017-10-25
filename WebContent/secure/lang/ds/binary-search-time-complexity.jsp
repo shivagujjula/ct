@@ -43,41 +43,11 @@
 	tab-size: 3;
 	background-color: #fffae6;
 	border-radius: 8px;
-	font-size: 13px;
+	font-size: 12px;
 	margin: 5px;
 	padding: 10px;
 	white-space: pre;
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    /* max-width: 800px; */
-}
-
-td, th {
-   /*  border: 1px solid #dddddd; */
-    /* text-align: left; */
-	padding: 2px 8px;
-}
-
-.td-code-text {
-	font-family: monospace;
-	/* font-style: italic; */
-	font-weight: bold;
-}
-
-th, td:nth-child(1), td:nth-child(3) {
-	text-align: center;
-}
-
-/* th:nth-child(3) {
-	width: 30%;
-} */
-
-td:nth-child(4), td:nth-child(5) {
-	text-align: center;
+	overflow: initial;
 }
 
 .popover {
@@ -136,35 +106,9 @@ td:nth-child(4), td:nth-child(5) {
 	 z-index: 9999999 !important;
 }
 
-/* .td-code-text {
-	background: #c0e1fb;
-} */
-
 .ct-color-green {
 	color: green;
 	font-weight: bold;
-}
-
-.steps-heading-css {
-	text-decoration: underline;
-	color: #820202;
-}
-
-.code-heading-css {
-	text-decoration: underline;
-	color: #026302;
-	width: 50%;
-}
-
-.units-heading-css {
-	text-decoration: underline;
-	color: darkmagenta;
-}
-
-.for-loop-li-css {
-	color: #00ff8d;
-	font-weight: bold;
-	font-size: 14px;
 }
 
 .z-index9999999 {
@@ -229,18 +173,6 @@ span {
 	background: #5bc0de !important;
 }
 
-.creamPreTab4 {
-	-moz-tab-size: 4;
-	background-color: #fffae6;
-	border-radius: 8px;
-	font-size: 13px;
-	margin: 5px;
-	padding: 10px;
-	white-space: pre;
-	font-family: monospace;
-	overflow: initial;
-}
-
 .color-green {
 	color: green;
 	font-weight: bold;
@@ -259,6 +191,11 @@ span {
 	color: deeppink;
 }
 
+.color-highlight {
+	color: rgb(45, 255, 54);
+}
+
+
 td {
 	border: 1px solid;
 }
@@ -269,6 +206,7 @@ td {
 	padding: 6px;
 	border-radius: 8px;
 	background: papayawhip;
+	font-size: 13px;
 }
 
 </style>
@@ -299,7 +237,7 @@ td {
 			</ul>
 		</div>
 	</div>
-	<div class="col-xs-12 margin-top-3">
+	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-5">
 <pre class="creamPreTab4 opacity00" id="preCode1" style="font-size: 12px;">
 <span id="line1"><span class="color-green">int</span> binarySearchIteration(<span class="color-green">int</span> a[], <span class="color-green">int</span> n, <span class="color-green">int</span> key) {</span>
@@ -349,24 +287,24 @@ td {
 						<li id="caseList2" class="opacity00">if (a[mid] < key) --> T(n/2)</li>
 						<li id="caseList3" class="opacity00">if (a[mid] > key) --> T(n/2)</li>
 					</ul>
-				<span class="opacity00" id="calcLine1">For simplification assume <span id="calcLine1Span">n = 2<sup>k</sup></span></span>
 			</div>
 			<div class="col-xs-offset-4">
+				<span class="opacity00" id="calcLine1">The time complexity formula is : </span>
 				<br>
 				<span id="divCalcLine1" class="opacity00">T(n) = T(n/2) + c</span><br>
-				<span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br>
+				<!-- <span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br> -->
 				<span id="divCalcLine3" class="opacity00"><span class="opacity00">T(n)</span> = 
-					<span id="divCalcLine3Span"><span id="line3Span" class="display">T(n/2)</span> + 2</span></span><br>
-				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = <span id="line4Span" class="display">T(n/4)</span> + 2 + 2</span><br>
+					<span id="divCalcLine3Span"><span id="line3Span" class="display">T(n/2)</span> + c</span></span><br>
+				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = <span id="line4Span" class="display">T(n/4)</span> + c + c</span><br>
 				<span id="divCalcLine5" class="opacity00">
-					<span class="opacity00">T(n)</span> = T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">(2 + 2 + 2)</span></span><br>
-				<span id="divCalcLine6" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>4</sup>) + (4 * 2)</span><br>
+					<span class="opacity00">T(n)</span> = T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">(c + c + c)</span></span><br>
+				<span id="divCalcLine6" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>4</sup>) + (4 * c)</span><br>
 				<span id="divCalcLine7" class="opacity00" style="margin-left: 65px;">...</span><br>
 				<span id="divCalcLine8" class="opacity00" style="margin-left: 65px;">...</span><br>
-				<span id="divCalcLine9" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>k</sup>) + (k * 2)</span><br>
-				<span id="divCalcLine10" class="opacity00"><span class="opacity00">T(n)</span> = T(n/<span id="kPowerId" class="display">2<sup>k</sup></span>) + (2 * k)</span><br>
-				<span id="divCalcLine11" class="opacity00"><span class="opacity00">T(n)</span> = T(<span id="nDivisionId" class="display">n/n</span>) + (2 * k)</span><br>
-				<span id="divCalcLine12" class="opacity00">T(n) = <span id="finalIdC" class="display">T(1)</span> + 2 * <span id="finalIdK" class="display">k</span></span><br>
+				<span id="divCalcLine9" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>k</sup>) + (k * c)</span><br>
+				<span id="divCalcLine10" class="opacity00"><span class="opacity00">T(n)</span> = T(n/<span id="kPowerId" class="display">2<sup>k</sup></span>) + (c * k)</span><br>
+				<span id="divCalcLine11" class="opacity00"><span class="opacity00">T(n)</span> = T(<span id="nDivisionId" class="display">n/n</span>) + (c * k)</span><br>
+				<span id="divCalcLine12" class="opacity00">T(n) = <span id="finalIdC" class="display">T(1)</span> + c * <span id="finalIdK" class="display">k</span></span><br>
 				<span id="divCalcLine13" class="opacity00" style="color: darkblue;">
 					Time Complexity : O(<span class="opacity00" id="resultTimeCt">log<sup>n</sup><sub>2</sub></span>)
 				</span>
@@ -402,7 +340,7 @@ function introGuide() {
 		exitOnEsc : false,
 		keyboardNavigation : false,
 		tooltip : false,
-		steps :[{
+		steps :[/* {
 			element : '#indexDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -412,7 +350,7 @@ function introGuide() {
 		}, {
 			element : '#preCode2',
 			intro : '',
-		}, {
+		},  */{
 			element : '#explanationDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -446,30 +384,36 @@ function introGuide() {
 		case 'preCode1':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				TweenMax.to($("#preCode1"), 1, {opacity: 1, onComplete: function() {
-					var text = 'This is the iterative code for binary search.';
+					var text = 'This is an iterative code for <span class="ct-code-b-yellow">binary search</span>.';
 					typing('.introjs-tooltiptext', text, function() {
 						buttonAppendFunction(".introjs-tooltipbuttons", function() {
 							$(".introjs-tooltip").hide();
 							popoverAppendFunction("#line1", 1);
-							var text = "Let us assume time complexity is T(n);";
+							var text = "Let us calculate <span class='ct-code-b-yellow'>time complexity</span> of "+
+							"<span class='ct-code-b-yellow'>binarySearchIteration()</span>.";
 							typing("#popover1", text, function() {
 								buttonAppendFunction("#popover1", function() {
 									$("#line1").popover('hide');
 									popoverAppendFunction("#line5", 5);
-									var text = "<ul><li id='liLine1'>The main principle of binary search is to divide the given list into two halfs.</li></ul>";
+									var text = "<ul><li id='liLine1'>The main principle of <span class='ct-code-b-yellow'>binary search</span> is "+
+										"to <span class='color-highlight'>divide</span> the given list into "+
+										"<span class='ct-code-b-yellow'>two halfs</span>.</li></ul>";
 									typing("#popover5", text, function() {
 										$("#line5").effect('highlight',{color:'#da5805'}, 1500);
 										buttonAppendFunction("#liLine1", function() {
-											$("#liLine1").append("<li id='liLine2'>Compare the key element with the middle element.</li>");
+											$("#liLine1").append("<li id='liLine2'>Compare the <span class='color-highlight'>key</span> element "+
+													"with the <span class='color-highlight'>middle</span> element.</li>");
 											typing("#liLine2", $("#liLine2").html(), function() {
 												$("#line6").effect('highlight',{color:'#da5805'}, 1500);
 												buttonAppendFunction("#liLine2", function() {
-													$("#liLine2").append("<li id='liLine3'>If the comparision result is true then print's its position.</li>");
+													$("#liLine2").append("<li id='liLine3'>If the comparision result is <span class='color-highlight'>"+
+														"true</span> then print's its position.</li>");
 													typing("#liLine3", $("#liLine3").html(), function() {
 														$("#line7").effect('highlight',{color:'#da5805'}, 1500);
 														buttonAppendFunction("#liLine3", function() {
-															$("#liLine3").append("<li id='liLine4'>If key element is found at middle element then the break "+
-																	"statement terminate the loop.</li>");
+															$("#liLine3").append("<li id='liLine4'>If <span class='color-highlight'>key</span> "+
+																"element is found at <span class='color-highlight'>middle</span> element then the "+
+																"<span class='ct-code-b-yellow'>break</span> statement terminate the loop.</li>");
 															typing("#liLine4", $("#liLine4").html(), function() {
 																$("#line8").effect('highlight',{color:'#da5805'}, 1500);
 																$("#liLine4").append("<li id='liLine5'>In this type of cases the time complexity is "+
@@ -497,34 +441,39 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 			//	$("#preCode1").addClass("z-index9999999");
 			TweenMax.to($("#preCode2"), 1, {opacity: 1, onComplete: function() {
-				var text = '<span id="tooltiptextId">This is the recursive code for binary search.</span>';
+				var text = '<span id="tooltiptextId">This is a recursive code for <span class="ct-code-b-yellow">binary search.</span>';
 					typing('.introjs-tooltiptext', text, function() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							$(".introjs-tooltip").hide();
 							popoverAppendFunction("#recLine4", 4);
-							var text = "<span id='recSpanText1'>If key element found at middle position then the Time Complexity is "+
-							"<span class='ct-code-b-yellow'>T(1)</span></span>";
+							var text = "<span id='recSpanText1'>If <span class='color-highlight'>key</span> element found at "+
+							"<span class='color-highlight'>middle</span>"+
+							" position then the time complexity is <span class='ct-code-b-yellow'>T(1)</span>.</span>";
 							typing("#popover4", text, function() {
 								$("#recEqualId").effect('highlight',{color:'#da5805'}, 1500);
-								buttonAppendFunction("#recSpanText1", function() {
+								buttonAppendFunction("#popover4", function() {
 									$("#recLine4").popover('hide');
 									TweenMax.to($("#timeC1"), 1, {opacity: 1, onComplete:function() {
 										popoverAppendFunction("#recLine6", 6);
-										var text = "<span id='recSpanText2'>If the key element is less than middle element then search the key "+
-										"element in the first half. Then the "+
-										"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+										var text = "<span id='recSpanText2'><ul><li>If the <span class='color-highlight'>key</span> element is "+
+										"less than <span class='color-highlight'>middle</span> element then search the "+
+										"<span class='color-highlight'>key</span> element in the <span class='ct-code-b-yellow'>first half</span>."+
+										"</li> <li>Then the "+
+										"time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul></span>";
 										typing("#popover6", text, function() {
 											$("#recLessThanId").effect('highlight',{color:'#da5805'}, 1500);
-											buttonAppendFunction("#recSpanText2", function() {
+											buttonAppendFunction("#popover6", function() {
 												$("#recLine6").popover('hide');
 												TweenMax.to($("#timeC2"), 1, {opacity: 1, onComplete:function() {
 													popoverAppendFunction("#recLine8", 8);
-													var text = "<span id='recSpanText3'>If the key element is greater than middle element "+
-													"then search the key element in the second half. In this type of cases the "+
-													"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+													var text = "<span id='recSpanText3'><ul><li>If the <span class='color-highlight'>key</span> "+
+													"element is greater than <span class='color-highlight'>middle</span> element "+
+													"then search the <span class='color-highlight'>key</span> element in the "+
+													"<span class='ct-code-b-yellow'>second half</span>.</li> <li>In this type of cases the "+
+													"time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul></span>";
 													typing("#popover8", text, function() {
 														$("#recGreaterThanlId").effect('highlight',{color:'#da5805'}, 1500);
-														buttonAppendFunction("#recSpanText3", function() {
+														buttonAppendFunction("#popover8", function() {
 															$("#recLine8").popover('hide');
 															TweenMax.to($("#timeC3"), 1, {opacity: 1, onComplete:function() {
 																setTimeoutFunction();
@@ -544,19 +493,19 @@ function introGuide() {
 			break;
 		case 'explanationDiv':
 			$("#unitSecondLineText8").popover('hide');
-			$(".introjs-helperLayer").one('transitionend', function() {
+		//	$(".introjs-helperLayer").one('transitionend', function() {
 				TweenMax.to($("#explanationDiv"), 1, {opacity: 1, onComplete: function() {
 					popoverLeftSideAppendFunction("#caseList1", 1);
-					var text = "<span id='text1'>For best case the Time Complexity is <span class='ct-code-b-yellow'>1</span>.</span>";
+					var text = "<ul><li id='text1'>The <span class='color-highlight'>best case</span> time complexity of "+
+					"<span class='ct-code-b-yellow'>binary search</span> is <span class='ct-code-b-yellow'>T(1)</span>.</li></ul>";
 					typing(".popover-content", text, function() {
 						TweenMax.to($("#caseList1"), 1, {opacity: 1, onComplete: function() {
 							$("#timeItrSpan1, #timeRecSpan1").addClass("blinking").one('animationend', function() {
 								$("#timeItrSpan1, #timeRecSpan1").removeClass("blinking").off();
 								buttonAppendFunction("#text1", function() {
-									$("#caseList1").popover('hide');
-									popoverLeftSideAppendFunction("#caseList2", 2);
-									var text = "<span id='text2'>For worst case the Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</span>";
-									typing(".popover-content", text, function() {
+									$("#text1").after("<li id='text2'>The <span class='color-highlight'>worst case</span> the time complexity "+
+											"is <span class='ct-code-b-yellow'>T(n/2)</span>.</li>");
+									typing("#text2", $("#text2").html(), function() {
 										TweenMax.to($("#caseList2"), 1, {opacity: 1, onComplete: function() {
 											$("#timeItrSpan2, #timeRecSpan2").addClass("blinking").one('animationend', function() {
 												$("#timeItrSpan2, #timeRecSpan2").removeClass("blinking").off();
@@ -564,7 +513,7 @@ function introGuide() {
 													$("#timeItrSpan3, #timeRecSpan3").addClass("blinking").one('animationend', function() {
 														$("#timeItrSpan3, #timeRecSpan3").removeClass("blinking").off();
 														buttonAppendFunction("#text2", function() {
-															$("#caseList2").popover('hide');
+															$("#caseList1").popover('hide');
 															calculationActionFunction();
 														});
 													});
@@ -577,7 +526,7 @@ function introGuide() {
 						}});
 					});
 				}});
-			});
+		//	});
 			break;
 		case "restart":
 			$('.introjs-nextbutton').hide();
@@ -650,8 +599,9 @@ function secondStep() {
 	$("#line5").popover('hide');
 	TweenMax.to($("#timeCtPre1"), 1, {opacity: 1, onComplete:function() {
 		popoverAppendFunction("#line9", 9);
-		var text = "If the key element is less than middle element then search the key element in the first half. In this type of cases the "+
-			"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+		var text = "<ul><li>If the <span class='color-highlight'>key</span> element is less than <span class='color-highlight'>middle</span> "+
+		"element then search the <span class='color-highlight'>key</span> element in the <span class='ct-code-b-yellow'>first half</span>.</li> "+
+		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";
 		typing("#popover9", text, function() {
 			$("#lessThanid").effect('highlight',{color:'#da5805'}, 1500);
 			buttonAppendFunction("#popover9", function() {
@@ -665,8 +615,9 @@ function thirdStep() {
 	$("#line9").popover('hide');
 	TweenMax.to($("#timeCtPre2"), 1, {opacity: 1, onComplete:function() {
 		popoverAppendFunction("#line10", 10);
-		var text = "If the key element is greater than middle element then search the key element in the second half. In this type of cases the "+
-			"Time Complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.";
+		var text = "<ul><li>If the <span class='color-highlight'>key</span> element is greater than <span class='color-highlight'>middle</span> "+
+		"element then search the <span class='color-highlight'>key</span> element in the <span class='ct-code-b-yellow'>second half</span>.</li> "+
+		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";
 		typing("#popover10", text, function() {
 			$("#greaterThanid").effect('highlight',{color:'#da5805'}, 1500);
 			buttonAppendFunction("#popover10", function() {
@@ -681,26 +632,17 @@ function thirdStep() {
 
 function calculationActionFunction() {
 	TweenMax.to($("#calcLine1"), 1, {opacity:1, onComplete:function() {
-		popoverLeftSideAppendFunction("#divCalcLine1", 1);
-		var text = "<span id='popoverText'>So we have time complexity of <span class='ct-code-b-yellow' id='textDeclaration'>T(n) = T(n/2) + c</span>.</span>";
-		typing(".popover-content", text, function() {
-			transferEffectFunction("#textDeclaration", "#divCalcLine1", function() {
-				buttonAppendFunction("#popoverText", function() {
-					tweenMaxAnimation("#divCalcLine1", "#divCalcLine2", function() {
-						$("#popoverText").after("<br><span id='popoverSubText'>Here <span class='ct-code-b-yellow'>c</span> is represented as "+
-								"a constant i.e. <span class='ct-code-b-yellow'>2</span>");
-						typing("#popoverSubText", $("#popoverSubText").html(), function() {
-							$("#cValue").effect( "highlight", {color:"#FFD700"}, 2000);
-							flipEffect("#cValue", "2", function() {
-								buttonAppendFunction(".popover-content", function() {
-									line3CalculationAnimation();
-								});
-							});
-						});
-					});
+		TweenMax.to($("#divCalcLine1"), 1, {opacity:1, onComplete:function() {
+			popoverLeftSideAppendFunction("#divCalcLine1", 1);
+			var text = "<ul><li id='popoverText'><span class='ct-code-b-yellow'>T(n/2)</span> is the time taken to find the "+
+					"<span class='color-highlight'>key</span> element in any one half (i.e. If the given key element is not middle element).</li>"+
+					"<li><span class='ct-code-b-yellow'>c</span> is a constant time taken to compare the key element with different elements.</li></ul>";
+			typing(".popover-content", text, function() {
+				buttonAppendFunction(".popover-content", function() {
+					line3CalculationAnimation();
 				});
 			});
-		});
+		}});
 	}});
 }
 
@@ -708,22 +650,22 @@ function line3CalculationAnimation() {
 	$("#divCalcLine1").popover("hide");
 	popoverLeftSideAppendFunction("#divCalcLine3", 3);
 	$("#divCalcLine3").removeClass("opacity00");
-	tweenMaxAnimation("#divCalcLine2", "#divCalcLine3", function() {	
+	tweenMaxAnimation("#divCalcLine1", "#divCalcLine3", function() {	
 		var text = "<ul><li id='Line3FirstLi'>Now calculate value of <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";
 		typing("#popover3", text, function() {
 			$("#line3Span").effect('highlight',{color:'#da5805'}, 1500, function() {
 				buttonAppendFunction("#popover3", function() {
 					$("#Line3FirstLi").after("<li id='Line3SecondLi'>Consider <span class='ct-code-b-yellow'>T(n)</span> value<br>"+
-						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>T(n) = T(n/2) + 2</span></li>");
-					$("#divCalcLine2").effect( "highlight", {color:"#FFD700"}, 2000);
-					transferEffectFunction("#divCalcLine2", "#Line3SecondLiSpan", function() {
+						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>T(n) = T(n/2) + c</span></li>");
+					$("#divCalcLine1").effect( "highlight", {color:"#FFD700"}, 2000);
+					transferEffectFunction("#divCalcLine1", "#Line3SecondLiSpan", function() {
 						buttonAppendFunction("#popover3", function() {
 							$("#Line3SecondLi").after("<li id='Line3ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
 							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
 							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>T(<span id='numericalId3' class='display'>n</span>) = "+
 							"<span id='value3Main' class='display'>"+
 							"<span id='value3ParentSpan' class='display'>T(<span id='value3SecondParent' class='display'>"+
-								"<span id='value3' class='display'>n</span>/2</span>)</span> + 2</span></span></li>");
+								"<span id='value3' class='display'>n</span>/2</span>)</span> + c</span></span></li>");
 							tweenMaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
 								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
 								flipEffect("#numericalId3", "n/2", function() {
@@ -764,16 +706,16 @@ function line4CalculationAnimation() {
 			$("#line4Span").effect('highlight',{color:'#da5805'}, 1500, function() {
 				buttonAppendFunction("#popover4", function() {
 					$("#Line4FirstLi").after("<li id='Line4SecondLi'>Consider <span class='ct-code-b-yellow'>T(n)</span> value<br>"+
-						"<span class='ct-code-b-yellow opacity00' id='Line4SecondLiSpan'>T(n) = T(n/2) + 2</span></li>");
-					$("#divCalcLine2").effect( "highlight", {color:"#FFD700"}, 2000);
-					transferEffectFunction("#divCalcLine2", "#Line4SecondLiSpan", function() {
+						"<span class='ct-code-b-yellow opacity00' id='Line4SecondLiSpan'>T(n) = T(n/2) + c</span></li>");
+					$("#divCalcLine1").effect( "highlight", {color:"#FFD700"}, 2000);
+					transferEffectFunction("#divCalcLine1", "#Line4SecondLiSpan", function() {
 						buttonAppendFunction("#popover4", function() {
 							$("#Line4SecondLi").after("<li id='Line4ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
 							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
 							"<span class='ct-code-b-yellow opacity00' id='Line4ThirdLiSpan'>T(<span id='numericalId4' class='display'>n</span>) = "+
 							"<span id='value4Main' class='display'>"+
 							"<span id='value4ParentSpan' class='display'>T(<span id='value4SecondParent' class='display'>"+
-								"<span id='value4' class='display'>n</span>/4</span>)</span> + 2</span></span></li>");
+								"<span id='value4' class='display'>n</span>/4</span>)</span> + c</span></span></li>");
 							tweenMaxAnimation("#Line4SecondLiSpan", "#Line4ThirdLiSpan", function() {
 								$("#numericalId4").effect( "highlight", {color:"#FFD700"}, 2000);
 								flipEffect("#numericalId4", "n/2", function() {
@@ -817,12 +759,12 @@ function line5CalculationAnimation() {
 				flipEffect("#line5Span", "", function() {
 					$("#line5Span").append("2<sup>3</sup>");				
 					buttonAppendFunction("#popover5", function() {
-						$("#Line5FirstLi").after("<li id='Line5SecondLi'><span class='ct-code-b-yellow'>2+2+2</span> can be written as<br>"+
-						"<span class='ct-code-b-yellow' id='Line4SecondLiSpan'>2*2*2</span> i.e. <span  class='ct-code-b-yellow'>3*2</span>.</li>");
+						$("#Line5FirstLi").after("<li id='Line5SecondLi'><span class='ct-code-b-yellow'>c+c+c</span> can be written as<br>"+
+						"<span class='ct-code-b-yellow' id='Line4SecondLiSpan'>c*c*c</span> i.e. <span  class='ct-code-b-yellow'>3*c</span>.</li>");
 						typing("#Line5SecondLi", $("#Line5SecondLi").html(), function() {
 							buttonAppendFunction("#popover5", function() {
 								$("#line5SpanParent").effect( "highlight", {color:"#FFD700"}, 2000);
-								flipEffect("#line5SpanParent", "(3 * 2)", function() {
+								flipEffect("#line5SpanParent", "(3 * c)", function() {
 									buttonAppendFunction("#popover5", function() {
 										$("#divCalcLine5").popover("hide");
 										line6CalculationAnimation();
@@ -852,16 +794,22 @@ function line6CalculationAnimation() {
 							$("#divCalcLine9").popover("hide");
 							popoverLeftSideAppendFunction("#divCalcLine10", 10);
 							tweenMaxAnimation("#divCalcLine9", "#divCalcLine10", function() {
-								var text = "We have <span class='ct-code-b-yellow'>n = 2<sup>k</sup></span>."
+								var text = "We do a <span class='ct-code-b-yellow'>binary search</span> (half the elements) until we found it. "+
+								"So we can divide <span class='ct-code-b-yellow'>n/2</span> times until we get <span class='ct-code-b-yellow'>1</span>."+
+								"<br>i.e. <span class='ct-code-b-yellow'>n/2<sup>k</sup> = 1</span><br>From above "+
+								"<span class='ct-code-b-yellow' id='calcLine1Span'>n = 2<sup>k</sup></span>.";
+								/* var text = "We have <span class='ct-code-b-yellow'>n = 2<sup>k</sup></span>." */
 								typing("#popover10", text, function() {
-									$("#calcLine1Span").effect( "highlight", {color:"#FFD700"}, 1000);
-									transferEffectFunction("#calcLine1Span", "#kPowerId", function() {
-										flipEffect("#kPowerId", "n", function() {
-											buttonAppendFunction("#popover10", function() {
-												$("#divCalcLine10").popover("hide");
-												tweenMaxAnimation("#divCalcLine10", "#divCalcLine11", function() {
-													flipEffect("#nDivisionId", "1", function() {
-														line11CalculationAnimation();
+									buttonAppendFunction("#popover10", function() {
+										$("#calcLine1Span").effect( "highlight", {color:"#FFD700"}, 1000);
+										transferEffectFunction("#calcLine1Span", "#kPowerId", function() {
+											flipEffect("#kPowerId", "n", function() {
+												buttonAppendFunction("#popover10", function() {
+													$("#divCalcLine10").popover("hide");
+													tweenMaxAnimation("#divCalcLine10", "#divCalcLine11", function() {
+														flipEffect("#nDivisionId", "1", function() {
+															line11CalculationAnimation();
+														});
 													});
 												});
 											});
@@ -879,12 +827,16 @@ function line6CalculationAnimation() {
 
 function line11CalculationAnimation() {
 	popoverLeftSideAppendFunction("#divCalcLine12", 12);
-	var text = "<ul><li><span class='ct-code-b-yellow'>T(1)</span> can be represents as a constant (<span>c</span>).</li>"+
-	"<li>From <span class='ct-code-b-yellow'>n = 2<sup>k</sup></span>, the <span class='ct-code-b-yellow'>k</span> value can be written as "+
-	"<span class='ct-code-b-yellow'>log<sup>n</sup><sub>2</sub></span>.</li>";
+	var text = "<ul><li><span class='ct-code-b-yellow'>T(1)</span> value is <span class='ct-code-b-yellow'>1</span>.</li>"+
+	"<li id='li2Text'>We have <span class='ct-code-b-yellow'>2<sup>k</sup> = n</span>.</li></ul>";
 	typing("#popover12", text, function() {
 		buttonAppendFunction("#popover12", function() {
-			transferEffectFunction("#divCalcLine11", "#divCalcLine12", function() {
+			$("#li2Text").after("now do the log<sub>2</sub> on both sides.");
+			buttonAppendFunction("#popover12", function() {
+				$("#li2Text").after("log<sub>2</sub>(2<sup>k</sup>) = log<sub>2</sub>n");
+				$("#li2Text").after("k * log<sub>2</sub>(2) = log<sub>2</sub>n");
+				$("#li2Text").after("k * 1 = log<sub>2</sub>n");
+		/* 	transferEffectFunction("#divCalcLine11", "#divCalcLine12", function() {
 				buttonAppendFunction("#popover12", function() {
 					$("#finalIdC").effect( "highlight", {color:"#FFD700"}, 2000);
 					flipEffect("#finalIdC", "c", function() {
@@ -903,7 +855,8 @@ function line11CalculationAnimation() {
 						});
 					});
 				});
-			}); 
+			});  */
+			});
 		});
 	});
 	

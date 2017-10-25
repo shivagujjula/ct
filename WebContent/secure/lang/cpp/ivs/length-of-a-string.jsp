@@ -178,22 +178,48 @@ table {
 	position: relative;
 }
 
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
 y {
+	font-family: monospace;
+	font-weight: bold;
 	color: yellow;
-    font-family: monospace;
-    font-weight: bold;
 }
 
 .usr-btn {
 	background-color: green;
-    border: 1px solid white;
-    border-radius: 3px;
-    color: grenn;
-    font: 11px sans-serif;
-    padding: 4px;
-    cursor: pointer;
-    margin-bottom: 2px;
-    display:inline-block;
+	border: 1px solid white;
+	border-radius: 3px;
+	color: grenn;
+	font: 11px sans-serif;
+	padding: 4px;
+	cursor: pointer;
+	margin-bottom: 2px;
+	display:inline-block;
 }
 
 </style>
@@ -211,18 +237,18 @@ y {
 	<div class="col-xs-12 margin-top-40">
 		<div class="col-xs-12">
 			<div class="col-xs-6 padding0" id="program">
-<pre class="margin0"><span id="cup" class="cup-css opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="cup-value opacity00"><span id="iSpan"></span></span></span>#include&lt;iostream&gt;
-using <b>namespace</b> std;
-int main() {
-	<span id="charDec">char ch[20];</span>
-	<span id="intDec">int i = <span class="zero">0</span>;</span>
-	<span id="enterString">cout << "Enter a string : ";</span>
+<pre class="margin0"><span id="cup" class="cup-css opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="cup-value opacity00"><span id="iSpan"></span></span></span><in>#include</in> <ink>&lt;iostream&gt;</ink>
+<go><b>using namespace</b></go> std;
+<g>int</g> main() {
+	<span id="charDec"><g>char</g> ch[<ink>20</ink>];</span>
+	<span id="intDec"><g>int</g> i = <ink><span class="zero">0</span></ink>;</span>
+	<span id="enterString">cout << <ink>"Enter a string : "</ink>;</span>
 	<span id="scanf">cin >> ch;</span>
-	<span id="stringIs">cout << "The entered string is : " << ch << "\n";</span>
-	<span id="whileCond">while (<span id="condtn">ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b></span>)</span> {
+	<span id="stringIs">cout << <ink>"The entered string is : "</ink> << ch << "<g>\n</g>";</span>
+	<span id="whileCond"><go><b>while</b></go> (<span id="condtn">ch[i] <b class="ct-green">!=</b> <ink><b>'\0'</b></ink></span>)</span> {
 		<span id="increment">i++;</span>
 	}
-	<span id="stringLength">cout << "The length of the string " << ch <<" is : "<< i <<"\n";</span>
+	<span id="stringLength">cout << <ink>"The length of the string "</ink> << ch << <ink>" is : "</ink> << i <<"<g>\n</g>";</span>
 }
 </pre>
 			</div>
@@ -253,7 +279,6 @@ int main() {
 								<td>18</td>
 								<td>19</td>
 							</tr>
-								
 							<tr id="userString" class="hide user-string">
 								<td><div class="td-border opacity00">00</div></td>
 							</tr>

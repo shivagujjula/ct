@@ -17,13 +17,10 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/poda.min.js"></script>
+
 <title>Pointers With One Dimensional Array</title>
 
 <style>
-
-.introjs-tooltiptext br {
-	margin: 15px;
-}
 
 .introjs-tooltip {
 	min-width: 300px;
@@ -167,15 +164,43 @@ pre > span {
 	z-index: 9999999;
 }
 
-.ct-lime-color {
-	color: lime;
-	font-weight: bold;
-}
-
-.ct-green-color {
+.ct-lime-color, .ct-green-color {
 	color: green;
 	font-weight: bold;
 }
+
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
 </style>
 </head>
 <body>
@@ -189,17 +214,17 @@ pre > span {
 		<div class='col-xs-5'>
 					<div class='col-xs-12 box-border'>
 <pre class='creamPreTab4' id='preCode'>
-<span>#include&lt;iostream&gt;</span>
-<span>using namespace std;</span>
-int <b class="ct-blue-color">main()</b> {
-	<span id='line1'>int *p, i;</span>
-	<span id='pLine'>p = <b class="ct-green-color">new int[5]</b>;</span>
-	<span id='printf1'>cout << "Enter 5 values : ";</span>
-	<span id='forScanf'><span id='for1'>for (i = 0; i < 5; i++) {</span>
+<span><in>#include</in> <ink>&lt;iostream&gt;</ink></span>
+<span><go><b>using namespace</b></go> std;</span>
+<g>int</g> <b class="ct-blue-color">main()</b> {
+	<span id='line1'><g>int</g> *p, i;</span>
+	<span id='pLine'>p = <b><go>new</go> <g>int</g>[<ink>5</ink>]</b>;</span>
+	<span id='printf1'>cout << <ink>"Enter 5 values : "</ink>;</span>
+	<span id='forScanf'><span id='for1'><go><b>for</b></go> (i = <ink>0</ink>; i < <ink>5</ink>; i++) {</span>
 		<span id='scanf'>cin >> *(p + i);</span>
 	}</span>
-	<span id='printf2'>cout << "The given array elements are : ");</span>
-	<span id='forPrintf'><span id='for2'>for (i = 0; i < 5; i++) {</span>
+	<span id='printf2'>cout << <ink>"The given array elements are : "</ink>;</span>
+	<span id='forPrintf'><span id='for2'><go><b>for</b></go> (i = <ink>0</ink>; i < <ink>5</ink>; i++) {</span>
 		<span id='printf3'>cout << *(p + i) << " ";</span>
 	}</span>
 	<span>cout << endl</span>
@@ -212,7 +237,7 @@ int <b class="ct-blue-color">main()</b> {
 				<div class='col-xs-12 vertical-align-center' id='animationBox'>
 					<div class='col-xs-5' id='variablesBox'>
 						<div class='center width200'>
-							<div class='col-xs-12 visibility-hidden' id='pBox'>
+							<div class='col-xs-12 opacity00' id='pBox'>
 								<div class='col-xs-3 Vertical-text-center'>p</div>
 								<div class="col-xs-7 text-center">
 									<div><span class='color-gray'>2 bytes</span></div>
@@ -222,7 +247,7 @@ int <b class="ct-blue-color">main()</b> {
 							</div>
 						</div>
 					</div>
-					<div class='col-xs-7 visibility-hidden' id='arrayBox'>
+					<div class='col-xs-7 opacity00' id='arrayBox'>
 						<table class='table-css'>
 							<tbody>
 								<tr>
@@ -249,8 +274,10 @@ int <b class="ct-blue-color">main()</b> {
 				<div class="col-xs-12 margin-top30">
 				<div id="outputBox" class="output-console center">
 					<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><span class="visibility-hidden">Enter 5 values : </span><span class='output-scanf-line' id='outputScanfLine'></span>
-<span class="visibility-hidden">The given array elements are : </span><span id='outputPrintfLine' class='ct-blue-color'></span>
+<div class="output-console-body"><span class="visibility-hidden">Enter 5 values : </span>
+<span class='output-scanf-line' id='outputScanfLine'></span>
+<span class="visibility-hidden">The given array elements are : </span>
+<span id='outputPrintfLine' class='ct-code-b-yellow'></span>
 </div>
 				</div>
 			</div>

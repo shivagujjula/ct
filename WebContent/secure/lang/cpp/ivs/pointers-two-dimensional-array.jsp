@@ -15,14 +15,12 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
+
 <script src="/secure/lang/cpp/js-min/ptda.min.js"></script>
+
 <title>Pointers with Two Dimensional Array</title>
 
 <style>
-
-.introjs-tooltiptext br {
-	margin: 15px;
-}
 
 .introjs-tooltip {
 	min-width: 300px;
@@ -172,9 +170,70 @@ pre > span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
+
+.blue {
+ 	border:1px solid blue;
+ }
+ 
+ .red {
+ 	border:1px solid red;
+ }
+ 
+ .green {
+ 	border:1px solid green;
+ }
+ 
+  .red-text {
+ 	color: red;
+ 	font-weight: bold;
+ }
+ 
+  .green-text {
+ 	color: green;
+ 	font-weight: bold;
+ }
+ 
+  .blue-text {
+ 	color: blue;
+ 	font-weight: bold;
+ }
+ 
+ in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+ 
 </style>
 </head>
 <body>
@@ -185,25 +244,25 @@ pre > span {
 		<div class='col-xs-5'>
 			<div class='col-xs-12 box-border'>
 <pre class='creamPreTab4' id='preCode'>
-<span>#include&lt;iostream&gt;</span>
-<span>using namespace std;</span>
-int <b class='ct-blue-color'>main()</b> {
-	<span id='line1'>int *p, m, n, i, j;</span>
-	<span id='printf1'>cout << "Enter number of rows and columns : ";</span>
+<span><in>#include</in> <ink>&lt;iostream&gt;</ink></span>
+<span><go>using namespace</go> std;</span>
+<g>int</g> <b>main()</b> {
+	<span id='line1'><g>int</g> *p, m, n, i, j;</span>
+	<span id='printf1'>cout << <ink>"Enter number of rows and columns : "</ink>;</span>
 	<span id='scanf1'>cin >> m >> n;</span>
-	<span id='pLine'>p = <span class='ct-green-color'>new int[m * n]</span>;</span>
-	<span id='printf2'>cout << "Enter the matrix elements : ";</span>
-	<span id='forScanf'>for (i = 0; i < m; i++) {
-		for (j = 0; j < n; j++) {
+	<span id='pLine'>p = <span><go>new</go> <g>int</g>[m * n]</span>;</span>
+	<span id='printf2'>cout << <ink>"Enter the matrix elements : "</ink>;</span>
+	<span id='forScanf'><go>for</go> (i = <ink>0</ink>; i < m; i++) {
+		<go>for</go> (j = <ink>0</ink>; j < n; j++) {
 			<span id='scanf2'>cin >> *(p + (i * n) + j);</span>
 		}
 	}</span>
-	<span id='printf3'>cout << "The given matrix is : \n";</span>
-	<span id='forPrintf'>for (i = 0; i < m; i++) {
-		for (j = 0; j < n; j++) {
-			<span id='printf4'>cout << *(p + (i * n) + j) << " ";</span>
+	<span id='printf3'>cout << <ink>"The given matrix is : \n"</ink>;</span>
+	<span id='forPrintf'><go>for</go> (i = <ink>0</ink>; i < m; i++) {
+		<go>for</go> (j = <ink>0</ink>; j < n; j++) {
+			<span id='printf4'>cout << *(p + (i * n) + j) << <ink>" "</ink>;</span>
 		}
-		<span id='printf5'>cout << "\n";</span>
+		<span id='printf5'>cout << "<g>\n</g>";</span>
 	}</span>
 }
 </pre>
@@ -214,7 +273,7 @@ int <b class='ct-blue-color'>main()</b> {
 				<div class='col-xs-12 vertical-align-center' id='animationBox'>
 					<div class='col-xs-4' id='variablesBox'>
 						<div class='center width200'>
-							<div class='col-xs-12 visibility-hidden' id='pBox'>
+							<div class='col-xs-12 opacity00' id='pBox'>
 								<div class='col-xs-3 Vertical-text-center'>p</div>
 								<div class="col-xs-7 text-center">
 									<div><span class='color-gray'>2 bytes</span></div>
@@ -224,7 +283,7 @@ int <b class='ct-blue-color'>main()</b> {
 							</div>
 						</div>
 					</div>
-					<div class='col-xs-8 visibility-hidden' id='arrayBox'>
+					<div class='col-xs-8 opacity00' id='arrayBox'>
 						<table class='table-css'>
 							<tbody><tr></tr><tr></tr><tr></tr></tbody>
 						</table>
@@ -241,11 +300,12 @@ int <b class='ct-blue-color'>main()</b> {
 			<div class="col-xs-12 margin-top30">
 				<div id="outputBox" class="output-console center">
 					<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body">
-<span class="visibility-hidden">Enter number of rows and columns : </span><span class='output-scanf-line' id='outputScanfLine1'></span>
-<span class="visibility-hidden">Enter the matrix elements : </span><span class='output-scanf-line' id='outputScanfLine2'></span>
+<div class="output-console-body"><span class="visibility-hidden">Enter number of rows and columns : </span>
+<span class='output-scanf-line' id='outputScanfLine1'></span>
+<span class="visibility-hidden">Enter the matrix elements : </span>
+<span class='output-scanf-line' id='outputScanfLine2'></span>
 <span class="visibility-hidden">The given matrix is : </span>
-<span id='outputPrintfLine' class='ct-blue-color'></span>
+<span id='outputPrintfLine' class='ct-code-b-yellow'></span>
 </div>
 				</div>
 			</div>

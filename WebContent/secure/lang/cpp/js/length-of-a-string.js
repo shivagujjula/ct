@@ -37,6 +37,7 @@ function introGuide() {
 						}, {
 							element: '#intDec',
 							intro: '',
+							tooltipClass: 'hide'
 						}, {
 							element: '#enterString',
 							intro: '',
@@ -53,7 +54,8 @@ function introGuide() {
 						}, {
 							element: '#output',
 							intro: '',
-							outputStep: 'EnterString'
+							outputStep: 'EnterString',
+							tooltipClass: 'hide'
 						}, {
 							element: '#memory',
 							memoryStep: 'spaceFind',
@@ -87,9 +89,122 @@ function introGuide() {
 						}]
 				})
 	
+				
+	introjs.onbeforechange(function(targetElement) {
+		
+		var elementId = targetElement.id;
+		
+switch (elementId) {
+		
+		case "program":
+
+			break;
+			
+		case "charDec":
+			
+			break;
+			
+		case "memory":
+			$('.usr-btn').remove();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var memoryStep = introjs._introItems[introjs._currentStep].memoryStep;
+				switch(memoryStep) {
+				case "tableDefine":
+					$("#cup").addClass("opacity00");
+					$("#memory").addClass("opacity00");
+				break;
+					
+				case "spaceFind":
+					
+					break;
+				}
+			});
+			break;
+			
+		case "intDec":
+			$("#cup").addClass("opacity00");
+			break;
+			
+		case "enterString":
+			
+			break;
+			
+		case "output":
+			$('.introjs-tooltip').css({'min-width' : '200px'});
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
+				switch(outputStep) {
+
+				case "firstPrint":
+						
+					break;
+					
+				case "EnterString":
+					$("#userString td").eq($(".filled").length + 1).text('');
+					$('.filled').text('');
+					break;
+						
+				case "secondPrint":
+						$(".secondLine").empty();
+					break;
+					
+				case "lastPrint":
+					
+					break;
+				}
+			});
+			break;
+			
+		case "scanf":
+				$('#textEnter').remove();
+			break;
+			
+		case "stringIs":
+			
+			break;
+			
+		case "whileCond":
+				
+			break;
+			
+		case "increment":
+			
+			break;
+			
+		case "stringLength":
+			
+			break;
+			
+		case "restart":
+			
+			break;
+		}
+			
+	})
+				
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
+		
 		var elementId = targetElement.id;
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
+		
 		switch (elementId) {
 		
 		case "program":
@@ -116,20 +231,25 @@ function introGuide() {
 				var memoryStep = introjs._introItems[introjs._currentStep].memoryStep;
 				switch(memoryStep) {
 				case "tableDefine":
-					$("#cup").addClass("opacity00");
-					$("#memory").removeClass("opacity00");
-					$("#userString td:nth-child(n+2)").remove()
-					$("#tableId").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-						$("#tableId").removeClass("animated zoomIn");
-						$("#userString").removeClass("hide");
-						for (var i = 0; i < 20; i++) {
-							$("#userString").append("<td class='td-border'></td>");
-						}
-						/* $("#userString").append("<td><div class='opacity00'></div></td>"); */
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
-				});
+					
+					if (introjs._direction == "backward") {
+						introjs.previousStep()
+					} else {
+						$("#memory").removeClass("opacity00");
+						$("#userString td:nth-child(n+2)").remove()
+						$("#tableId").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+							$("#tableId").removeClass("animated zoomIn");
+							$("#userString").removeClass("hide");
+							for (var i = 0; i < 20; i++) {
+								$("#userString").append("<td class='td-border'></td>");
+							}
+							/* $("#userString").append("<td><div class='opacity00'></div></td>"); */
+							setTimeout(function() {
+								introjs.nextStep();
+							}, 1000);
+						});
+					}	
+					
 				break;
 					
 				case "spaceFind":
@@ -152,8 +272,10 @@ function introGuide() {
 			break;
 			
 		case "intDec":
-			$("#cup").addClass("opacity00");
+			//$("#cup").addClass("opacity00");
+			
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
 				var text = "A variable <y>i</y> of type int is declared and initialized to <y>0</y>.";
 				typing('.introjs-tooltiptext', text, function() {
 					$("#cup").addClass("z-index");
@@ -185,14 +307,21 @@ function introGuide() {
 				switch(outputStep) {
 
 				case "firstPrint":
-					$("#output").removeClass("opacity00");
-					$(".firstLine").append('<span id="printString">Enter a string : </span>');
-					timeOut();
+					if (introjs._direction == 'backward') {
+						$('#printString').remove();
+						timeOut();
+					} else {
+						$("#output").removeClass("opacity00");
+						$(".firstLine").append('<span id="printString">Enter a string : </span>');
+						timeOut();
+					}
 					break;
 					
 				case "EnterString":
 					var text = "Enter a string.";
 					$("#usrText").val("");
+					$("#textEnter").remove();
+					$(".introjs-tooltip").removeClass('hide');
 					typing('.introjs-tooltiptext', text, function() {
 						$(".firstLine").append('<span id="textEnter"><input type="text" class="input" maxlength="19" id ="usrText"></span>');
 						$("#usrText").effect("highlight", {color: 'yellow'}, 500);
@@ -202,14 +331,20 @@ function introGuide() {
 					break;
 						
 				case "secondPrint":
-					$(".secondLine").append('<span id="givenString">The entered string is&nbsp;:&nbsp;</span>');
-					$.each($("#usrText").val().split(""), function(index, value) {
-						if (value.trim() == "") {
-							return false;
-						}
-						$("#givenString").append('<span>' + value + '</span>');
-					});
-					timeOut();
+					
+					if (introjs._direction == "backward") {
+						timeOut();
+					} else {
+						$(".secondLine").append('<span id="givenString">The entered string is&nbsp;:&nbsp;</span>');
+						$.each($("#usrText").val().split(""), function(index, value) {
+							if (value.trim() == "") {
+								return false;
+							}
+							$("#givenString").append('<span>' + value + '</span>');
+						});
+						timeOut();
+					}
+					
 					break;
 					
 				case "lastPrint":
@@ -231,25 +366,13 @@ function introGuide() {
 			$('.introjs-tooltip').css({'min-width' : '300px'});
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				timeOut();
-				/*var text = "The <span class='ct-code-b-yellow'>cin</span> reads multiple characters specified"
-							+ " on the console until it encounters a white space.<br><br>"
-							+ " The content that is stored into the <span class='ct-code-b-yellow'>ch</span> character array"
-							+ " will always have a <span class='ct-code-b-yellow'>'\\0'</span>"
-							+ " character at the end specifying the end of the string.";
-				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show();
-				});*/
+				
 			});
 			break;
 			
 		case "stringIs":
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				timeOut();
-				/*var text = "The <span class='ct-code-b-yellow'>cout</span> prints all the characters stored in the character array"
-							+ " <span class='ct-code-b-yellow'>ch</span> until it encounters the <span class='ct-code-b-yellow'>\\0</span> character.";
-				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show();
-				});*/
 			});
 			break;
 			
@@ -258,11 +381,12 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				//if (count < ($("#usrText").val().length)) {
 				if (flag1) {
-					var startingText = "Inorder to calculate the string length (the number of characters stored in the character array)"
-										+ " we need to count all the characters in the character array untill we encounter the "
+					var startingText = "Inorder to calculate the string <y>length</y> (the number of characters stored in the character <y>array</y>)"
+										+ " we need to count all the characters in the character <y>array</y> untill we encounter the "
 										+ "<span class='ct-code-b-yellow'>\\0</span> character"
-										+ " which is used to mark the end of the character sequence.<br><br>";
-					var text1 = "The condition in the <y>while</y> loop evaluates if the character at the given position <y>i</y> is <y>\\0</y> or not.<br><br>"
+										+ " which is used to mark the end of the <y>character</y> sequence.<br><br>";
+					var text1 = "The condition in the <y>while</y> loop evaluates if the <y>character</y> at the given position <y>i</y> is <y>\\0</y> or not.<br><br>"
+						$('.introjs-prevbutton').hide();
 					if (($("#usrText").val().charAt(count)) == " " || ($("#usrText").val().charAt(count) == "")) {
 						
 						var text2 =	"ch[" + count + "] = \\0 and "
@@ -271,10 +395,6 @@ function introGuide() {
 					} else {
 						var newStep = getStep('#increment', '', '', '');
 						introjs.insertOption(introjs._currentStep + 1, newStep);
-						/*var text2 = "ch[" + count + "] = " + $('#usrText').val().charAt(count) + " and "
-									+ "<span class='ct-code-b-yellow'>" +  $('#usrText').val().charAt(count) + " != \\0 </span><br>condition"
-									+ " evaluates to <span class='ct-code-b-yellow'>true</span> hence control enters in to the loop.";*/
-						/*abValues();*/
 					}
 					if (count == 0) {
 						var text = startingText + text1;
@@ -282,27 +402,20 @@ function introGuide() {
 						//var text = text1 + text2;//whileCond
 					}
 					typing('.introjs-tooltiptext', text, function() {
+						//$(".introjs-prevbutton").show();
 						$(".introjs-tooltipbuttons").append("<span class='usr-btn' onclick='abValues();'>Next &rarr;</span>");
-						//abValues();
-						//$('.introjs-nextbutton').show();
 					});
 				} else {
-					//if (($("#usrText").val().charAt(count)) == " " || ($("#usrText").val().charAt(count) == "")) {
+					
 					if ($(".td-border").eq(count + 1).text() == "\\0") {
-						
-						/*var text2 =	"ch[" + count + "] = \\0 and "
-									+ "<span class='ct-code-b-yellow'>\\0 != \\0</span><br> condition evaluates to <span class='ct-red'>false</span>"
-									+ " and control comes out of the for loop.";
-						timeOut();*/
-						
 						abValues();
 					} else {
 						var newStep = getStep('#increment', '', 'hide', '');
 						introjs.insertOption(introjs._currentStep + 1, newStep);
 						abValues();
 					}
+					
 				} 
-				
 			});
 			break;
 			
@@ -311,6 +424,7 @@ function introGuide() {
 			iValue++;
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				if (flag1) {
+					$(".introjs-tooltip").removeClass('hide');
 					var text = "Since the character " 
 								+ "<y>'" + $('#usrText').val().charAt(count) + "' != \\0 </y> then the <span class='ct-code-b-yellow'>i</span> value will be"
 								+ " incremented to <span class='ct-code-b-yellow animate'>" + iValue + "</span>."; 
@@ -371,6 +485,7 @@ function typing(typingId, typingContent,callBackFunction) {
 		$(typingId).removeClass('typingCursor');
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -394,6 +509,8 @@ function getStep(element, intro, tooltipClass, position) {
 
 
 function spaceFind() {
+	$('.filled').removeClass('filled');
+	/*$("#userString td").eq($(".filled").length + 1).text('');*/
 	$.each($("#usrText").val().split(""), function(index, value) {
 		if (value.trim() != "") {
 	    	$("#userString td").eq(index + 1).addClass("filled").text(value);
@@ -406,6 +523,7 @@ function spaceFind() {
 	if ($(".filled").length < 20) {
 		$("#userString td").eq($(".filled").length + 1).text("\\0");
 	}
+	
 }
 
 function events() {
@@ -436,9 +554,9 @@ function events() {
 	$("#usrText").on("keyup", function(e) {
 		$('.error-text').remove();
 		if ($("#usrText").val().length < 1) {
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		} else {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}
 	});
 }
@@ -460,7 +578,6 @@ function abValues() {
 				if(flag1) {
 					var text = "Condition evaluates to <span class='ct-code-b-yellow'>true</span> hence control enters in to the loop.";
 					typing("#ext", text, function() {
-						console.log("In the abValues....");
 						$(".introjs-nextbutton").show();
 					})
 				} else {
@@ -487,10 +604,15 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 }
 
 function timeOut() {
-	
-	setTimeout(function() {
-		introjs.nextStep();
-	}, 800);
+	if (introjs._direction == 'backward') {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 800);
+	} else{
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 800);
+	}
 	
 }
 

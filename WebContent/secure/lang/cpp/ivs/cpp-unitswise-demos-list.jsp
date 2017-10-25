@@ -1263,7 +1263,7 @@
 						<td>Karthik</td>
 						<td></td>
 						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
-						<td>07-10-17</td>
+						<td>25-10-17</td>
 					</tr>
 					
 					
@@ -1276,11 +1276,23 @@
 						<td>Karthik</td>
 						<td></td>
 						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
-						<td>07-10-17</td>
+						<td>25-10-17</td>
 					</tr>
 					
 					<tr>
 						<td>50</td>
+						<td>Strings</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Copy of a string', 'copy-of-a-string.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Copy of a string</span></td>
+						<td>Karthik</td>
+						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
+					</tr>
+					
+					<tr>
+						<td>51</td>
 						<td>Float data type</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('float data type', 'float-data-type.jsp', 1, 1)"><i
@@ -1292,7 +1304,7 @@
 					</tr>
 					
 					<tr>
-						<td>51</td>
+						<td>52</td>
 						<td>Functions</td>
 						<td>
 							<div>
@@ -1325,7 +1337,7 @@
 					</tr>
 					
 					<tr>
-						<td>52</td>
+						<td>53</td>
 						<td>Functions</td>
 						<td>
 							<div>
@@ -1360,7 +1372,7 @@
 					</tr>
 					
 					<tr>
-						<td>53</td>
+						<td>54</td>
 						<td>Functions</td>
 						<td>
 							<div>
@@ -1401,7 +1413,7 @@
 					</tr>
 					
 					<tr>
-						<td>54</td>
+						<td>55</td>
 						<td>Pointers</td>
 						<td>
 							<div>
@@ -1433,12 +1445,12 @@
 						</td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
 					</tr>
 					
 					<tr>
-						<td>55</td>
+						<td>56</td>
 						<td>statements in c++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('statements in c++', 'statements-in-cpp.jsp', 1, 1)"><i
@@ -1450,7 +1462,7 @@
 					</tr>
 					
 					<tr>
-						<td>56</td>
+						<td>57</td>
 						<td>Recursion</td>
 						<td>
 							<div>
@@ -1572,8 +1584,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of nested classes</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
 					</tr>
 					
 					<tr>
@@ -1584,8 +1596,8 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of object memory allocation</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
 					</tr>
 					
 					<tr>

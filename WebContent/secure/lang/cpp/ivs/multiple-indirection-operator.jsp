@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -132,7 +133,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -140,6 +141,39 @@ div, span {
 .font-size-13 {
 	font-size: 13px;
 }
+
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
 </style>
 
 </head>
@@ -156,17 +190,16 @@ div, span {
 	<div class="col-xs-12 margin-top-7">
 		<div class="col-xs-4">
 <pre class="creamPreTab4 opacity00" id="preCode">
-<span>#include&lt;iostream&gt;</span>
-<span>using namespace std;</span>
-<span></span>	
-int <b class='ct-blue-color'>main()</b> {
-	<span id="line1">int x, *p;</span>
-	<span id="line7">int **q;</span>
-	<span id="line2">x = <span id="input1">10</span>;</span>
+<span><in>#include</in> <ink>&lt;iostream&gt;</ink></span>
+<span><go><b>using namespace</b></go> std;</span>
+<g>int</g> <b class='ct-blue-color'>main()</b> {
+	<span id="line1"><g>int</g> x, *p;</span>
+	<span id="line7"><g>int</g> **q;</span>
+	<span id="line2">x = <ink><span id="input1">10</span></ink>;</span>
 	<span id="line3">p = &x;</span>
 	<span id="line4">q = &p;</span>
-	<span id="line5">**q = <span id = "input2">20</span>;</span>
-	<span id="line6">cout << "value of **q is : " << **q;</span>
+	<span id="line5">**q = <ink><span id = "input2">20</span></ink>;</span>
+	<span id="line6">cout << <ink>"value of **q is : "</ink> << **q;</span>
 }
 </pre>
 		</div>
@@ -207,7 +240,7 @@ int <b class='ct-blue-color'>main()</b> {
 			<div id="consoleId">
 				<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
 				<div class="output-console-body" id="consoleBodyDiv">
-					<span class='visibility-hidden' id="printText1">value of **q is : <b class='ct-blue-color'>20</b></span>
+					<span class='visibility-hidden' id="printText1">value of **q is : <b class='ct-code-b-yellow'>20</b></span>
 				</div>
 			</div>
 		</div>

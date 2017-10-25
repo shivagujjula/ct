@@ -3,7 +3,7 @@ var typingInterval = 10;
 
 var objectMemoryAllocationReady = function() {
 	introJsFunction();
-	var typingContent = 'Here we learn how the memory will allocated in this demo.';
+	var typingContent = 'Here we will learn about how the <y>memory</y> is allocated to objects.';
 	typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 		$('.introjs-nextbutton').show();
 	});
@@ -23,7 +23,7 @@ function introJsFunction() {
 			intro : "",
 			position : "right"
 		},{
-			element : "#headerFile",
+			element : "#pre",
 			intro : "",
 			position : "right"
 		},{
@@ -53,13 +53,13 @@ function introJsFunction() {
 		},{
 			element : "#objMemory",
 			intro : "",
-			position : "right",
+			position : "bottom",
 			tooltipClass: "hide"
 		},{
 			element : "#putIn1",
 			intro : "",
 			position : "right"
-		},{
+		},/*{
 			element : "#fullStack",
 			intro : "",
 			position : "bottom",
@@ -68,25 +68,25 @@ function introJsFunction() {
 		},{
 			element : "#s1",
 			intro : "",
-			position : "right"
-		},{
+			position : "bottom"
+		},*/{
 			element : "#putIn2",
 			intro : "",
 			position : "right"
-		},{
+		},/*{
 			element : "#s2",
 			intro : "",
-			position : "right"
-		},{
+			position : "bottom"
+		},*/{
 			element : "#getIn1",
 			intro : "",
 			position : "right"
-		},{
+		},/*{
 			element : "#memoGetData",
 			intro : "",
 			position : "right",
 			tooltipClass: "hide"
-		},{
+		},*/{
 			element : "#outputBox",
 			intro : "",
 			position : "right",
@@ -111,8 +111,116 @@ function introJsFunction() {
 		}
 		]});
 	
+	introjs.onbeforechange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();	
+	var elementId = targetElement.id;
+	var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+	switch (elementId) {
+	case "preCode":
+		
+	break;
+		
+	case "pre":
+		
+	break;
+		
+	case "classDecl":
+		
+	break;
+		
+	case "privateVariable":
+		
+	break;
+		
+	case "putData":
+		
+	break;
+		
+	case "getData":
+		
+	break;
+	
+	case "mainMthd":
+	
+	break;
+	
+	case "objDec":
+		$('.objMemory').addClass('opacity00');
+	break;
+		
+	case "objMemory":
+		$('.objMemory').addClass('opacity00');
+	break;	
+	
+	case "putIn1":
+		
+	break;
+		
+	case "fullStack":
+		
+	break;
+	
+	case "s1":
+		
+	break;
+		
+	case "putIn2":
+		
+	break;
+		
+	case "s2":
+		
+	break;
+		
+	case "getIn1":
+	case "getIn2":
+			
+	break;
+	
+	case "memoGetData":
+		
+		break;
+		
+	case "outputBox":
+		if (animateStep == "getData1") {
+				
+			} else {
+			
+			}
+			
+		
+		break;
+		
+	case "restartBtn":
+		
+		break;
+		
+		
+	}
+})	
+	
+	
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
+		
 		var elementId = targetElement.id;
 		var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 		switch (elementId) {
@@ -125,52 +233,52 @@ function introJsFunction() {
 			});
 			break;
 			
-		case "headerFile":
+		case "pre":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = 'The preprocessor command <span class="ct-code-b-yellow">#include</span> is used to link header files to our program.';
+				$("#pre").removeClass("opacity00");
+				var typingContent = "This is the sample program for memory allocation to <y>objects</y>.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$('.introjs-nextbutton').show();
 				});
 			});
-			break;
+		break;
 			
 		case "classDecl":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "Here we have declared a class with name <span class='ct-code-b-yellow'>Item</span>"
-									+" is an organization of <span class='ct-code-b-yellow'>data</span> and "
-									+"<span class='ct-code-b-yellow'>functions</span> which operate on them.";
+				var typingContent = "Here a class is declared with the name <y>Item</y>, which consist of two data members"
+									+" <y>itemNo</y>, <y>price</y> and two member functions <y>setData()</y>, <y>display()</y>.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
-			break;
+		break;
 			
 		case "privateVariable":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "These are the variables declared inside the class and outside the methods,"
-									+" since it doesn't have any access specifiers like <span class='ct-code-b-yellow'>public</span>,"
-									+" <span class='ct-code-b-yellow'>protected</span>. so, by default it takes <span class='ct-code-b-yellow'>private</span>.";
+				var typingContent = "<ul><li>The two data members <y>itemNo</y>, <y>price</y> are default <y>private</y>.</li>"
+									+"<li>The <y>private</y> data members are only accessed by the member functions of thata class only.</li></ul>";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
-			break;
+		break;
 			
 		case "putData":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "This <span class='ct-code-b-yellow'>putData()</span> is used to intitialze "
+				var typingContent = "This <span class='ct-code-b-yellow'>setData()</span> is used to intitialze "
 									+"the values to a declared <span class='ct-code-b-yellow'>private</span> variables.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			})
 			break;
 			
 		case "getData":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = 'The <span class="ct-code-b-yellow">getData()</span> is used to get the initilaized values of variables and print.';
+				var typingContent = 'The <span class="ct-code-b-yellow">display()</span> used to display'
+									+' the values of the <y>private</y> data members.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
 			break;
@@ -179,7 +287,7 @@ function introJsFunction() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var typingContent = 'The program execution starts from the <span class="ct-code-b-yellow">main()</span>.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
 			break;
@@ -187,35 +295,95 @@ function introJsFunction() {
 		case "objDec":
 			$(".border1px").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = 'Here for the class <span class="ct-code-b-yellow">Item</span> objects are '
-									+'declared <span class="ct-code-b-yellow">s1</span> and <span class="ct-code-b-yellow">s2</span>,'
-									+' the <span class="ct-code-b-yellow">memory</span> space for objects are allocated.';
+				var typingContent = '<ul><li>Here <y>s1</y>, <y>s2</y> are the objects declared to the class <y>Item</y>.</li>'
+									+'<li>When ever an object is created, the <y>memory</y> space will be allocated to them.</li></ul>';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
 			break;
 			
 		case "objMemory":
+			$(".introjs-fixParent").removeClass('introjs-fixParent');
 			$(".introjs-helperLayer").one("transitionend", function() {
-				//var typingContent = '';
-				$(".objMemory").removeClass("opacity00");
-					setTimeout(function() {
-						introjs.nextStep();
-					},1500);
-				//});
+				$('.introjs-tooltip').removeClass('hide');
+				if (introjs._direction == "forward") {
+					$(".objMemory").removeClass("opacity00");
+					var typingContent = "<y>s1</y> and <y>s2</y> are two different objects to the class <y>Item</y>."
+						+" so they allocated memory saperately to the data members but they allocated"
+						+"common space to member functions. ";
+					
+					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
+						$('.introjs-prevbutton,  .introjs-nextbutton').show();
+					});
+				} else {
+					introjs.previousStep();
+				}
+
 			});
 			break;	
 		
 		case "putIn1":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "calling the <span class='ct-code-b-yellow'>putData()</span> with values as a parameter";
+				var typingContent = "<div>The <y>setData()</y> function is called by the object <y>s1</y> with "
+									+"values <y>1001</y>, <y>17.2</y>.</div><br><div id='setAnimate'></div>";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$("#putData").addClass("zIndex");
-					$('.introjs-nextbutton').show();
+					$('#objMemory').css('border-bottom','1px solid gray');
+					$("#setMthd").addClass("zIndex").removeClass('opacity00');
+					$("#setMthd").effect( "highlight",{color: 'green'}, 500, function() {
+						$('#setAnimate').append('<span class="displayInline"><b>&emsp;&emsp;&emsp;&emsp;void setData(<span id="iVal1">&nbsp;i</span>,&emsp; <span id="jVal1">j</span>&nbsp;) {'
+												+'<br>&emsp;&emsp;&emsp;&emsp;&emsp;itemNo = &nbsp;<span id="iVal2" class="displayInline">i</span>;'
+												+'<br>&emsp;&emsp;&emsp;&emsp;&emsp;price = &nbsp;<span id="jVal2" class="displayInline">j</span>;'
+												+'<br>&emsp;&emsp;&emsp;&emsp;}</b></span>');
+						var first = $('#toolTipSet').offset();
+						$("#setAnimate > span").offset({'top' : first.top, 'left' : first.left});
+						$("#putData").addClass("zIndex");
+						$("#putData").effect( "highlight",{color: 'green'}, 1000, function() {
+							animationStep("putData", "1001", "17.2", function() {
+								$("#s1").addClass("zIndex");
+								animateToMemory("iVal2", "s1Item", function() {
+									animateToMemory("jVal2", "s1Price", function() {
+										$("#s1Item, #s1Price").removeClass("zIndex");
+										$("#s1, #putData").removeClass("zIndex");
+										$('.introjs-nextbutton').show();
+									})
+								})
+							});
+						})
+					})
 				});
 			});
 			break;
+		
+		case "putIn2":
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var typingContent = "<div>The <y>setData()</y> function is called by the object <y>s2</y> with "
+									+"values <y>1002</y>, <y>18.5</y>.</div><br><div id='setAnimate'></div>";
+					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
+						
+						$('#setAnimate').append('<span class="displayInline"><b>&emsp;&emsp;&emsp;&emsp;void setData(<span id="iVal1">&nbsp;i</span>,&emsp; <span id="jVal1">j</span>&nbsp;) {'
+								+'<br>&emsp;&emsp;&emsp;&emsp;&emsp;itemNo = &nbsp;<span id="iVal2" class="displayInline">i</span>;'
+								+'<br>&emsp;&emsp;&emsp;&emsp;&emsp;price = &nbsp;<span id="jVal2" class="displayInline">j</span>;'
+								+'<br>&emsp;&emsp;&emsp;&emsp;}</b></span>');
+				var first = $('#toolTipSet').offset();
+				$("#setAnimate > span").offset({'top' : first.top, 'left' : first.left});
+				$("#putData").addClass("zIndex");
+				$("#putData").effect( "highlight",{color: 'green'}, 500, function() {
+					animationStep("putData", "1002", "18.5", function() {
+						$("#s2").addClass("zIndex");
+						animateToMemory("iVal2", "s2Item", function() {
+							animateToMemory("jVal2", "s2Price", function() {
+								$("#s2Item, #s2Price").removeClass("zIndex");
+								$("#s2, #putData").removeClass("zIndex");
+								$('.introjs-nextbutton').show();
+							})
+						})
+					});
+				})
+				})
+			});
+			break;	
+			
 			
 		case "fullStack":
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -225,7 +393,6 @@ function introJsFunction() {
 						$("#memoPutData").removeClass("opacity00");
 						setTimeout(function() {
 							introjs.nextStep();
-							//$('.introjs-nextbutton').show();
 						}, 800)
 					}
 				});
@@ -234,56 +401,47 @@ function introJsFunction() {
 		
 		case "s1":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "we are calling the putData() by s1 and passing the values as parameter.";
+				var typingContent = "we are calling the <y>setData()</y> by <y>s1</y> and passing the values as parameter.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					//if (animateStep == "s1Obj") {
-						//$("#memoPutData").removeClass("opacity00");
 						$(".itemNoS1, .priceNoS1").removeClass("opacity00");
-						$('.introjs-nextbutton').show();
-					//}
+						$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				});
 			});
 			break;
 			
-		case "putIn2":
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "we are calling the putData() by s2 and passing the values as parameter.";
-					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-						$("#putData").removeClass("zIndex");//memoPutData
-						$("#memoPutData").addClass("zIndex");
-						$('.introjs-nextbutton').show();
-				})
-			});
-			break;
+		
 			
 		case "s2":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var typingContent = "The passed parameter values are stored in a memory.";
+				var typingContent = "The passed parameter values are stored in a <y>memory</y>.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					//$("#memoPutData").removeClass("zIndex");
 					$(".itemNoS2, .priceNoS2").removeClass("opacity00");
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,  .introjs-nextbutton').show();
 				})
 			});
-			break;
+		break;
 			
 		case "getIn1":
 		case "getIn2":
-			$("#memoPutData").removeClass("zIndex");
+			$("#setMthd").removeClass("zIndex");
+			$("#dispMthd").addClass("zIndex").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var typingContent;
-				if (animateStep == "getIn2") {
+				if (elementId == "getIn1") {
 					$("#memoGetData").addClass("zIndex");
-					typingContent = "This getData() is used to print the values which we passed in putData() of s2 object.";
+					typingContent = "<div>The <y>display()</y> is called by the object <y>s1</y>. so, "
+									+"the data members related to <y>s1</y> are accessable.</div><div id='setAnimate'></div>";
 				} else {
-					//$("#memoGetData").removeClass("zIndex");
-					typingContent = "This getData() is used to print the values which we passed in putData() of s1 object.";
+					typingContent = "<div>The <y>display()</y> is called by the object <y>s2</y>. so, "
+									+"the data members related to <y>s2</y> are accessable.</div><div id='setAnimate'></div>";
 				}
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					setTimeout(function() {
-						$("#getData").addClass("zIndex");
-						$('.introjs-nextbutton').show();
-					}, 600);
+					if (elementId == "getIn1") {
+						getAnimation("getIn1", "1001", "17.2", "s1")
+					} else {
+						$("#s1").removeClass("zIndex");
+						getAnimation("getIn2", "1002", "18.5", "s2")
+					}
 				})
 			});
 			break;
@@ -306,7 +464,7 @@ function introJsFunction() {
 					$("#getData").removeClass("zIndex");
 					$("#s1OutPut").removeClass("opacity00");
 				} else {
-					$("#memoGetData").removeClass("zIndex");
+					$("#dispMthd, #s2").removeClass("zIndex");
 					$("#getData").addClass("zIndex");
 					$("#s2OutPut").removeClass("opacity00");
 				}
@@ -330,7 +488,69 @@ function introJsFunction() {
 		}});
 	introjs.start();
 	}
+	
+	function getAnimation(elementId, val1, val2, block) {
+		$("#dispMthd").effect( "highlight",{color: 'green'}, 500, function() {
+			$('#setAnimate').append('<span class="displayInline"><b>&emsp;&emsp;&emsp;&emsp;void display() {'
+					+'<br>&emsp;&emsp;&emsp;&emsp;&emsp;cout &nbsp;<<&nbsp;"ItemNo :"&nbsp;<< &nbsp;<span id="iVal2" class="displayInline">itemNo</span>;'
+					+'<br>&emsp;&emsp;&emsp;&emsp;&emsp;cout &nbsp;<<&nbsp;"Price :"&nbsp;<< &nbsp;<span id="jVal2" class="displayInline">price</span>;'
+					+'<br>&emsp;&emsp;&emsp;&emsp;}</b></span>');
+			
+			var first = $('#getData').offset();
+			$("#setAnimate > span").offset({'top' : first.top, 'left' : first.left});
+			$("#getData").addClass("zIndex");
+			$("#getData").effect( "highlight",{color: 'green'}, 500, function() {
+				animationStep("getData", val1, val2, function() {
+					$("#" + block).addClass("zIndex");
+					$('.introjs-nextbutton').show();
+				})
+			})
+		})
+	}
+
+
+	function animationStep(method, val1, val2, callBack) {
 		
+		TweenMax.to($("#setAnimate > span"), 1, {opacity:1, top: 0, left: 0, onComplete: function() {
+			flipEffectWithTweenMax("#iVal2", val1, function() {
+				flipEffectWithTweenMax("#jVal2", val2, function() {
+					if (typeof callBack === "function") {
+						callBack();
+					}
+				})
+			});
+		}})
+		
+	}
+
+	function animateToMemory(toolId, currentId,callBack) {
+		
+		var first = $("#" + toolId).offset();
+		$("#" + currentId).offset({'top': first.top, 'left': first.left});
+		$("#" + currentId).removeClass('opacity00');
+		$("#" + toolId).effect( "highlight",{color: 'green'}, 500, function() {
+			TweenMax.to($("#" + currentId), 1, {top:0, left:0, onComplete: function() {
+				if (typeof callBack === "function") {
+					callBack();
+				}
+			}})
+		})
+	}
+	
+function flipEffectWithTweenMax(selector, val, callBackFunction) {
+	console.log("function Entered");
+	$(selector).effect( "highlight",{color: 'green'}, 500, function() {
+		TweenMax.to($(selector), 0.3, {rotationX : -90, onComplete:function() {
+			$(selector).text(val);
+			TweenMax.to($(selector), 0.3, {rotationX : 0, onComplete:function() {
+				if (typeof callBackFunction === "function") {
+					callBackFunction();
+				}
+			}});
+		}});
+	});
+}
+
 	function typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction) {
 		$(typingId).typewriting(typingContent, {
 			"typing_interval": typingInterval,
@@ -339,6 +559,7 @@ function introJsFunction() {
 			$(typingId).removeClass('typingCursor');
 			if (typeof typingCallbackFunction === "function") {
 				typingCallbackFunction();
+				introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 			}
 		});
 	}
