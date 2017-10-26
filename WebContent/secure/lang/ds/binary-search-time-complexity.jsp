@@ -167,6 +167,8 @@ span {
 	border-radius: 10px;
 	font-family: monospace;
 	border: 1px solid;
+	font-size: 13px;
+	background: #ecf5fa;
 }
 
 .user-back-btn {
@@ -178,8 +180,9 @@ span {
 	font-weight: bold;
 }
 
-.ct-green {
-	color: green;
+.ct-blue {
+	color: blue;
+	/* font-weight: bold; */
 }
 
 .color-maroon {
@@ -224,14 +227,14 @@ td {
 	<div class="col-xs-12">
 		<div class="col-xs-8 col-xs-offset-2 index-div" id="indexDiv">
 			<ul>
-				<li id="listLine1" class="opacity00"><span class="ct-green">Binary search</span> can be solved by using iteration process or 
-					recursion process.</li>
-				<li id="listLine2" class="opacity00"><span class="ct-green">Binary search</span> uses <b>divide and conquer</b> technique and it 
+				<li id="listLine1" class="opacity00"><span class="ct-blue">Binary search</span> can be solved by using <b>iteration process</b> (or) 
+					<b>recursion process</b>.</li>
+				<li id="listLine2" class="opacity00"><span class="ct-blue">Binary search</span> uses <b>divide and conquer</b> technique and it 
 					works on the sorted list either in ascending or descending order.</li>
-				<li id="listLine3" class="opacity00"><span class="ct-green">Binary search</span> (or) <span class="ct-green">Half-interval search</span> (or) 
-					<span class="ct-green">Logarithmic search</span> is a search algorithm that finds the position of a <b>key element</b>
+				<li id="listLine3" class="opacity00"><span class="ct-blue">Binary search</span> (or) <span class="ct-blue">Half-interval search</span> (or) 
+					<span class="ct-blue">Logarithmic search</span> is a search algorithm that finds the position of a <b>key element</b>
 					 within a sorted array.</li>
-				<li id="listLine4" class="opacity00"><span class="ct-green">Binary search</span> compares the <b>key element</b> to the 
+				<li id="listLine4" class="opacity00"><span class="ct-blue">Binary search</span> compares the <b>key element</b> to the 
 					<b>middle element</b> of the array. If they are <b>unequal</b>, the half in which the <b>key element</b>
 					 cannot lie is eliminated and the search continues on the remaining half until it is successful.</li>
 			</ul>
@@ -278,7 +281,7 @@ td {
 </pre>
 		</div>
 	</div>
-	<div class="col-xs-12 margin-top-3">
+	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-6 col-xs-offset-3 explanation-div opacity00" id="explanationDiv">
 			<div class="col-xs-offset-">
 				<span>We have : </span>
@@ -289,7 +292,7 @@ td {
 					</ul>
 			</div>
 			<div class="col-xs-offset-4">
-				<span class="opacity00" id="calcLine1">The time complexity formula is : </span>
+				<span class="opacity00" id="calcLine1" style="background: #bbecc3;">The time complexity formula is : </span>
 				<br>
 				<span id="divCalcLine1" class="opacity00">T(n) = T(n/2) + c</span><br>
 				<!-- <span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br> -->
@@ -306,7 +309,7 @@ td {
 				<span id="divCalcLine11" class="opacity00"><span class="opacity00">T(n)</span> = T(<span id="nDivisionId" class="display">n/n</span>) + (c * k)</span><br>
 				<span id="divCalcLine12" class="opacity00">T(n) = <span id="finalIdC" class="display">T(1)</span> + c * <span id="finalIdK" class="display">k</span></span><br>
 				<span id="divCalcLine13" class="opacity00" style="color: darkblue;">
-					Time Complexity : O(<span class="opacity00" id="resultTimeCt">log<sup>n</sup><sub>2</sub></span>)
+					Time Complexity : O(<span class="opacity00" id="resultTimeCt">log<sub>2</sub>n</span>)
 				</span>
 			</div>
 		</div>
@@ -340,7 +343,7 @@ function introGuide() {
 		exitOnEsc : false,
 		keyboardNavigation : false,
 		tooltip : false,
-		steps :[/* {
+		steps :[{
 			element : '#indexDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -350,7 +353,7 @@ function introGuide() {
 		}, {
 			element : '#preCode2',
 			intro : '',
-		},  */{
+		}, {
 			element : '#explanationDiv',
 			intro : '',
 			tooltipClass : 'hide'
@@ -493,7 +496,7 @@ function introGuide() {
 			break;
 		case 'explanationDiv':
 			$("#unitSecondLineText8").popover('hide');
-		//	$(".introjs-helperLayer").one('transitionend', function() {
+			$(".introjs-helperLayer").one('transitionend', function() {
 				TweenMax.to($("#explanationDiv"), 1, {opacity: 1, onComplete: function() {
 					popoverLeftSideAppendFunction("#caseList1", 1);
 					var text = "<ul><li id='text1'>The <span class='color-highlight'>best case</span> time complexity of "+
@@ -526,7 +529,7 @@ function introGuide() {
 						}});
 					});
 				}});
-		//	});
+			});
 			break;
 		case "restart":
 			$('.introjs-nextbutton').hide();
@@ -635,8 +638,10 @@ function calculationActionFunction() {
 		TweenMax.to($("#divCalcLine1"), 1, {opacity:1, onComplete:function() {
 			popoverLeftSideAppendFunction("#divCalcLine1", 1);
 			var text = "<ul><li id='popoverText'><span class='ct-code-b-yellow'>T(n/2)</span> is the time taken to find the "+
-					"<span class='color-highlight'>key</span> element in any one half (i.e. If the given key element is not middle element).</li>"+
-					"<li><span class='ct-code-b-yellow'>c</span> is a constant time taken to compare the key element with different elements.</li></ul>";
+					"<span class='color-highlight'>key</span> element in any one half (i.e. If the given <span class='color-highlight'>key</span> "+
+					"element is not <span class='color-highlight'>middle</span> element).</li>"+
+					"<li><span class='ct-code-b-yellow'>c</span> is a constant time taken to compare the <span class='color-highlight'>key</span> "+
+					"element with different elements.</li></ul>";
 			typing(".popover-content", text, function() {
 				buttonAppendFunction(".popover-content", function() {
 					line3CalculationAnimation();
@@ -826,40 +831,48 @@ function line6CalculationAnimation() {
 }
 
 function line11CalculationAnimation() {
-	popoverLeftSideAppendFunction("#divCalcLine12", 12);
+	popoverLeftSideAppendFunction("#divCalcLine11", 11);
 	var text = "<ul><li><span class='ct-code-b-yellow'>T(1)</span> value is <span class='ct-code-b-yellow'>1</span>.</li>"+
-	"<li id='li2Text'>We have <span class='ct-code-b-yellow'>2<sup>k</sup> = n</span>.</li></ul>";
-	typing("#popover12", text, function() {
-		buttonAppendFunction("#popover12", function() {
-			$("#li2Text").after("now do the log<sub>2</sub> on both sides.");
-			buttonAppendFunction("#popover12", function() {
-				$("#li2Text").after("log<sub>2</sub>(2<sup>k</sup>) = log<sub>2</sub>n");
-				$("#li2Text").after("k * log<sub>2</sub>(2) = log<sub>2</sub>n");
-				$("#li2Text").after("k * 1 = log<sub>2</sub>n");
-		/* 	transferEffectFunction("#divCalcLine11", "#divCalcLine12", function() {
-				buttonAppendFunction("#popover12", function() {
-					$("#finalIdC").effect( "highlight", {color:"#FFD700"}, 2000);
-					flipEffect("#finalIdC", "c", function() {
-						$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
-						flipEffect("#finalIdK", "", function() {
-							$("#finalIdK").append("log<sup>n</sup><sub>2</sub>");
-							buttonAppendFunction("#popover12", function() {
-								$("#divCalcLine12").popover("hide");
-								TweenMax.to($("#divCalcLine13"), 1, {opacity : 1, onComplete: function() {
-									$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
-									transferEffectFunction("#finalIdK", "#resultTimeCt", function() {
-										setTimeoutFunction();										
+	"<li id='li2Text1'>We have <span class='ct-code-b-yellow'>2<sup>k</sup> = n</span>.</li></ul>";
+	typing("#popover11", text, function() {
+		buttonAppendFunction("#popover11", function() {
+			$("#li2Text1").after("<span id='li2Text2'>now do the <span class='ct-code-b-yellow'>log<sub>2</sub></span> on both sides.</span>");
+			buttonAppendFunction("#popover11", function() {
+				$("#li2Text2").after("<br><span id='li2Text3' class='ct-code-b-yellow'>log<sub>2</sub>(2<sup>k</sup>) = log<sub>2</sub>n</span>");
+				buttonAppendFunction("#popover11", function() {
+					$("#li2Text3").after("<br><span id='li2Text4' class='ct-code-b-yellow'>k * log<sub>2</sub>(2) = log<sub>2</sub>n</span>");
+					buttonAppendFunction("#popover11", function() {
+						$("#li2Text4").after("<br><span id='li2Text5' class='ct-code-b-yellow'>k * 1 = log<sub>2</sub>n</span>");
+						buttonAppendFunction("#popover11", function() {
+							$("#li2Text5").after("<br><span id='li2Text6' class='ct-code-b-yellow'>k = log<sub>2</sub>n</span>");
+							transferEffectFunction("#divCalcLine11", "#divCalcLine12", function() {
+								console.log("transferred");
+								buttonAppendFunction("#popover11", function() {
+									console.log("Button");
+									$("#finalIdC").effect( "highlight", {color:"#FFD700"}, 2000);
+									flipEffect("#finalIdC", "1", function() {
+										$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
+										flipEffect("#finalIdK", "", function() {
+											$("#finalIdK").append("log<sub>2</sub>n");
+											buttonAppendFunction("#popover11", function() {
+												$("#divCalcLine11").popover("hide");
+												TweenMax.to($("#divCalcLine13"), 1, {opacity : 1, onComplete: function() {
+													$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
+													transferEffectFunction("#finalIdK", "#resultTimeCt", function() {
+														setTimeoutFunction();										
+													});
+												}});
+											});
+										});
 									});
-								}});
+								});
 							});
 						});
 					});
 				});
-			});  */
 			});
 		});
 	});
-	
 }
 
 function typing(selector, text, callBackFunction) {

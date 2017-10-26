@@ -18,6 +18,8 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
+<script type="text/javascript" src="/secure/ct-utilities.js"></script>
+
 <title>factorial recursion time complexity</title>
 
 <style type="text/css">
@@ -1004,7 +1006,7 @@ function transferEffectFunction(selector1, selector2, callBackFunction) {
 	});
 }
 
-function tweenmaxAnimation(selector1, selector2, callBackFunction) {
+/* function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	var l3 = $(selector1).offset();
 	var l4 = $(selector2).offset();
 	var topLength = l3.top - l4.top;
@@ -1015,7 +1017,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 			callBackFunction();
 		}
 	}});
-}
+} */
 
 function flipEffect(selector, val, callBackFunction) {
 	TweenMax.to($(selector), 0.6, {rotationX : -90, onComplete:function() {

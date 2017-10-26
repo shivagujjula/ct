@@ -32,10 +32,9 @@ function buttonAppend(selector, callBackFunction) {
 
 function transferEffectFunction(selector1, selector2, callBackFunction) {
 	$(selector1).effect("transfer", { to: $(selector2)}, 1000).addClass(".ui-effects-transfer", function() {
-		$(selector2).removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
-		}
+		}  
 	});
 }
 
@@ -60,5 +59,111 @@ function flipEffect(selector, val, callBackFunction) {
 				callBackFunction();
 			}
 		}});
+	}});
+}
+
+function bounceFromEffextWithTimelineMax(selector1, selector2, callBackFunction) {
+	var timelineMax = new TimelineMax();
+	var l1 = $(selector1).offset();
+	var l2 = $(selector2).offset();
+	var topLength = l1.top - l2.top;
+	var leftLength = l1.left - l2.left;
+	$(selector2).parent().append('<span id="temp" style="position: absolute;"></span>');
+	$('#temp').offset({top: l2.top, left: l2.left}).text($(selector2).text());
+	$(selector2).text($(selector1).text());
+	timelineMax.from(selector2, 3, {ease:  Bounce.easeOut, top: topLength, left: leftLength, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}}).to('#temp', 1, { ease: Sine.easeOut, top: "-=100", opacity: 0, onComplete: function() {
+		$('#temp').remove();
+	}}, "-=2");
+}
+
+function svgAppend(selector, svgId) {
+	var code = '<svg class="svg-css" id="' + svgId + '"></svg>';
+	$(selector).append(code);
+}
+
+function svgMarkerAppend(svgId, svgMarkerId, curve) {
+	var marker = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
+	marker.setAttribute('id', svgMarkerId);
+	marker.setAttribute('refX', '5');
+	marker.setAttribute('refY', '2.5');
+	marker.setAttribute('markerWidth', '5');
+	marker.setAttribute('markerHeight', '5');
+	marker.setAttribute('orient', 'auto');
+	marker.style.fill = 'gray';
+	$(svgId).append(marker);
+	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
+	$('#' + svgMarkerId).append(path);
+}
+
+function svgLineAppend(svgId, svgLineId, markerId, x1, y1, x2, y2) {
+	var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+	line.setAttribute("id", svgLineId);
+	line.setAttribute("class", "svg-line lines");
+	line.setAttribute("x1", x1);
+	line.setAttribute("y1", y1);
+	line.setAttribute("x2", x2);
+	line.setAttribute("y2", y2);
+	line.style.markerEnd = 'url("#' + markerId + '")';
+	$(svgId).append(line);
+}
+
+function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, selector1, selector2, svgId, svgLineId, markerId, callBackFunction) {
+	var parentOffset = $(parentSelector).offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	var x2 = $(selector2).offset().left - parentOffset.left;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}
+
+function svgAnimatingLineSelector1LeftSideToSelector2RightSide(parentSelector, selector1, selector2, svgId, svgLineId, markerId, callBackFunction) {
+	var parentOffset = $(parentSelector).offset();
+	var x1 = $(selector1).offset().left - parentOffset.left;
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth();
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}
+
+function svgAnimatingLineSelector1BottomSideToSelector2TopSide(parentSelector, selector1, selector2, svgId, svgLineId, markerId, callBackFunction) {
+	var parentOffset = $(parentSelector).offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight();
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
+	var y2 = $(selector2).offset().top - parentOffset.top;
+	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}
+
+function svgAnimatingLineSelector1TopSideToSelector2BottomSide(parentSelector, selector1, selector2, svgId, svgLineId, markerId, callBackFunction) {
+	var parentOffset = $(parentSelector).offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth() / 2;
+	var y1 = $(selector1).offset().top - parentOffset.top;
+	var x2 = $(selector2).offset().left - parentOffset.left + $(selector2).outerWidth() / 2;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight();
+	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(), 1, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
 	}});
 }

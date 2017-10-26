@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 30;
+var typingSpeed = 0.1;
 var flag1 = true;
 var clickIndex;
 

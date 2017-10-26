@@ -1826,8 +1826,30 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation about types of inheritance</span></td>
 						<td>Karthik</td>
 						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Virtual base inheritance</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Virtual base inheritance', 'virtual-base-inheritance.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual base inheritance</span></td>
+						<td>Karthik</td>
 						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Virtual destructor</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Virtual destructor', 'virtual-destructor.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual destructor</span></td>
+						<td>Karthik</td>
 						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>25-10-17</td>
 					</tr>
 					
 				</tbody>
