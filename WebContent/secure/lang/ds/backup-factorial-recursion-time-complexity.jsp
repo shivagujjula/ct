@@ -994,7 +994,7 @@ function typing(selector, text, callBackFunction) {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
-	})
+	});
 }
 
 function transferEffectFunction(selector1, selector2, callBackFunction) {
