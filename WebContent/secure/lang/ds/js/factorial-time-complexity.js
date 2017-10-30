@@ -200,7 +200,7 @@ function thirdStepAnimation() {
 			popoverAppendFunction("#unitLineText3", 3);
 			var text = "<span id='popover3Text1'><span class='step-color-css'>step-3 :</span><br/>This for loop involves three instructions which are "+
 			"<span class='ct-code-b-yellow'>initialization</span>, "+
-			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>"
+			"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>";
 			typing("#popover3", text, function() {
 				$('#popover3').append('<div class="introjs-tooltipbuttons popover-btn-css">'+
 						'<span class="introjs-button user-btn" >Next &#8594;</span></div>');

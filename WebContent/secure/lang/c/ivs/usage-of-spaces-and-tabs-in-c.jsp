@@ -78,6 +78,7 @@
 .tab-css {
 	border:1px solid pink;
 	border-radius:8px;
+	display: inline-block;
 }
 
 .enter-css {
@@ -107,14 +108,14 @@
 <pre class="creamPreTab4" id='preCode'>
 <span id='code'><span id='include'>#include</span><span id='stdio'>&lt;stdio.h&gt;</span><span class='enter-css' id='enterButton1'>¬</span>
 <span id='void'>void</span><span id="spaceId1" class='space-css'> </span><span id='main'>main()</span><span class='space-css'> </span><span id='openBrace1'>{</span><span class='enter-css' id='enterButton2'>¬</span>
-<span class='tab-css' id='tabLine1'>→	</span><span id='int'>int</span><span class='space-css'> </span><span id='i'>i</span><span id='semicolon'>;</span><span class='enter-css' id='enterButton3'>¬</span>
-<span class='tab-css'>→	</span><span id='for'>for</span><span class='space-css'> </span>(i<span class='space-css'> </span><span id='equalTo'>=</span><span class='space-css'> </span>0;<span class='space-css'> </span>i<span class='space-css'> </span><span id='lessThan'>&lt;</span><span class='space-css'> </span>5;<span class='space-css'> </span>i++)<span class='space-css'> </span><span id='openBrace2'>{</span><span class='enter-css' id='enterButton4'>¬</span>
-<span class='tab-css'>→	</span><span class='tab-css'>→	</span>printf("i = %d\n",<span class='space-css'> </span>i);<span class='enter-css' id='enterButton5'>¬</span>
-<span class='tab-css'>→	</span><span id='closeBrace1'>}</span><span class='enter-css' id='enterButton6'>¬</span>
+<div class='tab-css' id='tabLine1'>→	</div><span id='int'>int</span><span class='space-css'> </span><span id='i'>i</span><span id='semicolon'>;</span><span class='enter-css' id='enterButton3'>¬</span>
+<div class='tab-css'>→	</div><span id='for'>for</span><span class='space-css'> </span>(i<span class='space-css'> </span><span id='equalTo'>=</span><span class='space-css'> </span>0;<span class='space-css'> </span>i<span class='space-css'> </span><span id='lessThan'>&lt;</span><span class='space-css'> </span>5;<span class='space-css'> </span>i++)<span class='space-css'> </span><span id='openBrace2'>{</span><span class='enter-css' id='enterButton4'>¬</span>
+<div class='tab-css'>→	</div><div class='tab-css'>→	</div>printf("i = %d\n",<span class='space-css'> </span>i);<span class='enter-css' id='enterButton5'>¬</span>
+<div class='tab-css'>→	</div><span id='closeBrace1'>}</span><span class='enter-css' id='enterButton6'>¬</span>
 <span id='closeBrace2'>}</span><span class='enter-css' id='enterButton7'>¬</span></span>
 
 <span class='space-css'> </span> orange borders mark spaces
-<span class='tab-css'>→	</span> pink borders mark tabs
+<div class='tab-css'>→	</div> pink borders mark tabs
 </pre>
 		</div>
 	</div>

@@ -65,7 +65,7 @@ function introJsFunction() {
 		{
 			element : "#tabLine1",
 			intro : "The lines inside a block are always indented by a single <span class='ct-code-b-yellow'>tab</span> " + 
-					"<span class='tab-css' style='white-space: pre'>→	</span>."
+					"<div class='tab-css' style='white-space: pre'>→	</div>."
 		},
 		{
 			element : "#int",

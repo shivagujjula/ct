@@ -1690,7 +1690,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Declaration</td>
 						<td>Suresh</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>02-09-2016</td>
 					</tr>
 
@@ -1702,7 +1702,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Definition</td>
 						<td>Suresh</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>07-09-2016</td>
 					</tr>
 
@@ -1714,7 +1714,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Call</td>
 						<td>Anil</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>02-09-2016</td>
 					</tr>
 
@@ -1726,7 +1726,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Formal & actual parameters</td>
 						<td>Ajay</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>22-09-16</td>
 					</tr>
 
@@ -1774,7 +1774,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Sample program on functions</td>
 						<td>Anil</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>07-09-2016</td>
 					</tr>
 					<tr>
@@ -1785,7 +1785,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Local & global variables</td>
 						<td>Ajay</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>22-09-16</td>
 					</tr>
 				</tbody>
@@ -1977,7 +1977,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers declaration</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>03-09-2016</td>
 					</tr>
 
@@ -2051,7 +2051,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of calloc()</td>
 						<td>Shiva</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>22-09-2016</td>
 					</tr>
 
@@ -2063,7 +2063,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of realloc()</td>
 						<td>Shiva</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>28-09-2016</td>
 					</tr>
 	
@@ -2075,7 +2075,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of free()</td>
 						<td>Shiva</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>30-09-2016</td>
 					</tr>
 
@@ -2087,7 +2087,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers with 1-D arrays</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-09-2016</td>
 					</tr>
 
@@ -2099,7 +2099,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers with 2-D arrays</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>28-09-2016</td>
 					</tr>
 
@@ -2111,7 +2111,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Arrays of Pointers</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>30-09-2016</td>
 					</tr>
 
@@ -2123,7 +2123,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointer to an array</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>03-10-2016</td>
 					</tr>
 
@@ -2134,8 +2134,8 @@
 							href="javascript:opendialog('Multiple indirection operator', 'multiple-indirection-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Multiple indirection operator</td>
 						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>Sekhar -- success</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>04-10-2016</td>
 					</tr>
 
@@ -2147,7 +2147,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Disadvantages in Pointers</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>04-10-2016</td>
 					</tr>
 					<tr>
@@ -2158,7 +2158,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Array of Pointers with 2-D</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>04-10-2016</td>
 					</tr>
 					

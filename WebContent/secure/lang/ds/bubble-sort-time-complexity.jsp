@@ -42,11 +42,32 @@
 }
 
 td {
-	padding: 4px 6px;
+	padding: 3px 6px;
 	border: 2px solid gray;
 	min-width: 65px !important;
 	min-height: 30px !important;
-	text-align: center !important;
+	/* text-align: center !important; */
+}
+
+#tableCode {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 650px;
+}
+
+/* #tableCode > tbody > tr > td {
+    padding: 2px 8px;
+} */
+
+.td-code-text {
+	font-family: monospace;
+	border : none;
+}
+
+.td-border {
+	border : none;
+	padding: 0;
 }
 
 .ifConditionFontSize, #outerArrow, #innerArrow {
@@ -79,6 +100,63 @@ div, span {
 	color: rgb(252, 66, 66);
 }
 
+.arrTable {
+	border: 1px solid;
+	border-radius: 9px;
+	background: #fefcd4;
+}
+
+.popover {
+	z-index: 9999999;
+	width: 400px;
+}
+
+.popover-content {
+    background-color: #003399;
+    color: white;
+    min-height: 30px;
+    letter-spacing: 1px;
+}
+
+.arrow {
+	top: 20px !important;
+}
+
+.svg-css {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.svg-line {
+	display: none;
+	position: relative;
+	stroke: gray;
+	stroke-width: 2; 
+}
+
+.ui-effects-transfer {
+	border: 1px solid green;
+	z-index: 9999999 !important;
+}
+
+.for-loop-li-css {
+	color: #00ff8d;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.ct-code-teal {
+	color: #54f309;
+	font-weight: bold;
+} 
+
+.ct-color-boolean {
+	color: #4ce8fb;
+}
+
 </style>
 </head>
 <body>
@@ -89,10 +167,90 @@ div, span {
 		</h3>
 	</div>
 	<div class="col-xs-12 margin-top-2">
-		<div class="col-xs-6">
+		<div class="col-xs-6 hide" id="divTable" style="background: antiquewhite;">
+			<table align="center" id="tableCode">
+				<tbody>
+					<tr>
+						<th class="code-heading-css" style="text-align: center;">Code</th>
+						<th class="units-heading-css">Units</th>
+					</tr>
+					<tr>
+						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;
+							<span class="" id="codeLine1">
+							for (<span id="initilizationId1">i <span id="equalOperator1">=</span> 0;</span> 
+							<span id="conditionId1">i <span id="lessOperator1"><</span> n - 1;</span> 
+							<span id="incrementId1">i<span id="incrementOperator1">++</span></span>) {</span>
+						</td>
+						<td class="td-border" id="unitLine1">
+							<span id="unitLineText1" style="padding: 1px 10px;">
+							<span class="opacity00" id="firstUnitValue1">1</span> <span id="plusOp1" class="opacity00">+</span> 
+							<span class="opacity00" id="firstUnitValue2">(n - 1) + 1</span>
+							 <span id="plusOp2" class="opacity00">+</span> <span class="opacity00" id="firstUnitValue3">(n - 1)</span></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="" id="codeLine2">
+							for (<span id="initilizationId2">j <span id="equalOperator2">=</span> 0;</span> 
+							<span id="conditionId2">j <span id="lessOperator2"><</span> n - i - 1;</span> 
+							<span id="incrementId2">j<span id="incrementOperator2">++</span></span>) {</span>
+						</td>
+						<td class="td-border" id="unitLine2">
+							<span id="unitLineText2" style="padding: 1px 10px;">
+							<span class="opacity00" id="secondUnitValue1">1</span> <span id="plusOp3" class="opacity00">+</span> 
+							<span class="opacity00" id="secondUnitValue2">(n - i - 1) + 1</span>
+							 <span id="plusOp4" class="opacity00">+</span> <span class="opacity00" id="secondUnitValue3">(n - i - 1)</span></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span id="ifSpan">	
+								<span class="" id="codeLine3span1">if (a[j] > a[j+1]) {</span><br>
+								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								<span class="" id="codeLine3span2">temp = a[j];</span><br>
+								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								<span class="" id="codeLine3span3" style="padding: 0px 34px 0px 0px;">a[j] = a[j+1];</span><br>
+								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								<span class="" id="codeLine3span4">a[j+1] = temp;</span><br>
+								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								<span class="" id="codeLine3span5">}</span>
+							</span>
+						</td>
+						<td class="td-border" id="unitLine3">
+							<span class="opacity00" id="unitLineText3" style="padding: 2px 12px;">n - i - 1</span>
+						</td>
+					</tr>
+					<!-- <tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="" id="codeLine2">}</span>
+						</td>
+						<td class="opacity00 td-border" id="unitLine2">
+							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
+						</td>
+					</tr> -->
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span class="" id="codeLine2">}</span>
+						</td>
+						<td class="opacity00 td-border" id="unitLine2">
+							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;
+							<span class="" id="codeLine2">}</span>
+						</td>
+						<td class="opacity00 td-border" id="unitLine2">
+							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-6" id="preCodeDiv">
 			<pre class="creamPreTab4" id="preCode1">
 for (i = 0; i < n - 1; i++) {
-	for (j = 0; j < n - i - 1; j++) {			
+	for (j = 0; j < n - i - 1; j++) {		
 		if (a[j] > a[j+1]) {
 			temp = a[j];
 			a[j] = a[j+1];
@@ -102,7 +260,7 @@ for (i = 0; i < n - 1; i++) {
 }
 			</pre>
 		</div>
-		<div class="col-xs-6">
+		<div class="col-xs-5">
 			<div class="arrTable margin-top col-xs-12" id="arrTable">
 				<table style="width:100%" class="" id="arrElements">
 		  			<tbody>
@@ -170,9 +328,8 @@ function introGuide() {
 			element : '#arrTable',
 			intro : '',
 		}, {
-			element : '#explanationDiv',
+			element : '#divTable',
 			intro : '',
-			tooltipClass : 'hide'
 		}, {
 			element : "#restart",
 			intro : '',
@@ -209,12 +366,147 @@ function introGuide() {
 					})
 				});
 			});
-		break;
+			break;
+		case 'divTable':
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "Now find the time complexity for the bubble sort function.";
+				typing(".introjs-tooltiptext", text, function() {
+					buttonAppendFunction(".introjs-tooltiptext", function() {
+						$(".introjs-tooltip").hide();
+						firstStepAnimation();
+					});
+				});
+			});
+			break;
 		}
 	});
 	introjs.start();
 }
 
+function firstStepAnimation() {
+	svgAppend($('#divTable'), 'svg');
+	svgMarkerAppend($('#svg'), 'marker');
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine1', '#unitLineText1', '#svg', 'svgLine1', 'marker', function() {
+		popoverAppendFunction("#unitLine1", 1);
+		var text = "<span id='popover1Text1'>This for loop involves three instructions which are "+
+		"<span class='ct-code-b-yellow'>initialization</span>, "+
+		"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>";
+		typing("#popover1", text, function() {
+			buttonAppendFunction("#popover1", function() {
+				$("#popover1Text1").after("<span><ul><li id='initLine'><span class='for-loop-li-css'>i = 0</span><br/>In the "+
+						"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
+						" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
+						"<span class='ct-code-teal'>unit of time</span>.</li></ul></span>");
+				typing("#initLine", $("#initLine").html(), function() {
+					$("#initilizationId1").effect('highlight',{color:'#da5805'}, 1000, function() {
+						transferEffectFunction("#initilizationId1", "#firstUnitValue1", function() {
+							buttonAppendFunction("#popover1", function() {
+								$("#plusOp1").removeClass("opacity00");
+								$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i < n - 1</span><br>In the "+
+										"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
+										"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
+										"executes <span class='ct-code-teal'>n - 1</span> "+
+										"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
+										"So takes <span class='ct-code-b-yellow'>(n-1)+1</span> "+
+										"<span class='ct-code-teal'>units of time</span>.</li>");
+								typing("#conditionLine", $("#conditionLine").html(), function() {
+									$("#conditionId1").effect('highlight',{color:'#da5805'}, 1000, function() {
+										transferEffectFunction("#conditionId1", "#firstUnitValue2", function() {
+											buttonAppendFunction("#popover1", function() {
+												$("#plusOp2").removeClass("opacity00");
+												$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i++</span><br>In the "+
+														"<span class='ct-code-b-yellow'>increment</span> part only 1 operator "+
+														"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
+														"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-1</span>) number "+
+														"of times. So it takes <span class='ct-code-b-yellow'>n-1</span> "+
+														"<span class='ct-code-teal'>units of time</span>.</li>");
+												typing("#incrementLine", $("#incrementLine").html(), function() {
+													$("#incrementId1").effect('highlight',{color:'#da5805'}, 1000, function() {
+														transferEffectFunction("#incrementId1", "#firstUnitValue3", function() {
+															buttonAppendFunction("#popover1", function() {
+																$("#unitLine1").popover("hide");
+																secondStepAnimation();
+															});
+														});
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function secondStepAnimation() {
+	/* svgAppend($('#divTable'), 'svg');
+	svgMarkerAppend($('#svg'), 'marker'); */
+	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {
+		popoverAppendFunction("#unitLine2", 2);
+		var text = "<ul><li id='initLine'><span class='for-loop-li-css'>j = 0</span><br/>In the "+
+				"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
+				" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
+				"<span class='ct-code-teal'>unit of time</span>.</li></ul>";
+		typing("#popover2", text, function() {
+			$("#initilizationId2").effect('highlight',{color:'#da5805'}, 1000, function() {
+				transferEffectFunction("#initilizationId2", "#secondUnitValue1", function() {
+					buttonAppendFunction("#popover2", function() {
+						$("#plusOp3").removeClass("opacity00");
+						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>j < n - i -  1</span><br>In the "+
+								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
+								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
+								"executes <span class='ct-code-teal'>n - i - 1</span> "+
+								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
+								"So takes <span class='ct-code-b-yellow'>(n-i-1)+1</span> "+
+								"<span class='ct-code-teal'>units of time</span>.</li>");
+						typing("#conditionLine", $("#conditionLine").html(), function() {
+							$("#conditionId2").effect('highlight',{color:'#da5805'}, 1000, function() {
+								transferEffectFunction("#conditionId2", "#secondUnitValue2", function() {
+									buttonAppendFunction("#popover2", function() {
+										$("#plusOp4").removeClass("opacity00");
+										$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>j++</span><br>In the "+
+												"<span class='ct-code-b-yellow'>increment</span> part only 1 operator "+
+												"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
+												"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-i-1</span>) number "+
+												"of times. So it takes <span class='ct-code-b-yellow'>n-i-1</span> "+
+												"<span class='ct-code-teal'>units of time</span>.</li>");
+										typing("#incrementLine", $("#incrementLine").html(), function() {
+											$("#incrementId2").effect('highlight',{color:'#da5805'}, 1000, function() {
+												transferEffectFunction("#incrementId2", "#secondUnitValue3", function() {
+													buttonAppendFunction("#popover2", function() {
+														$("#unitLine2").popover("hide");
+														thirdStepAnimation();
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function thirdStepAnimation() {
+	$("#ifSpan").effect('highlight',{color:'#da5805'}, 2000, function() {
+		svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3span3', '#unitLineText3', '#svg', 'svgLine3', 'marker', function() {
+			$("#unitLineText3").fadeTo(500, 1);
+			$("#unitLineText3").effect('highlight',{color:'#da5805'}, 1500, function() {
+				popoverAppendFunction("#unitLineText3", 3);
+				var text = ""
+			});
+		});
+	});
+}
 function typing(selector, text, callBackFunction) {
 	var typingSpeed = 0.05;
 	$(selector).typewriting( text , {
@@ -227,6 +519,25 @@ function typing(selector, text, callBackFunction) {
 			callBackFunction();
 		}
 	});
+}
+
+function transferEffectFunction(selector1, selector2, callBackFunction) {
+	$(selector1).effect("transfer", { to: $(selector2)}, 1000).addClass(".ui-effects-transfer", function() {
+		$(selector2).removeClass("opacity00");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
+}
+
+function popoverAppendFunction(selector, divIdNum) {
+	$(selector).popover({
+		placement: 'right',
+		html: true,
+		trigger: 'focus',
+		content: '<div id="popover' + divIdNum +'"></div>',
+	}).popover('show');
+	$(".popover").css({"top" : "0px;"});
 }
 
 function buttonAppendFunction(selector, callBackFunction) {
@@ -340,15 +651,66 @@ function bubbleSort() {
 				text = 'All elements are sorted successfully.'
 						+ ' <span id="appendButton"></span>';
 				typing('#explanationDiv', text, function() {
-				$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
+				/* $('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
 				$('.introjs-duplicate-nextbutton').click(function() {
 					$('.introjs-duplicate-nextbutton').remove();
-					introNextSteps("#printArr", "printArr", 'bottom');
-					introcode.nextStep();
+				//	introNextSteps("#printArr", "printArr", 'bottom');
+					introjs.nextStep();
+				}); */
+				buttonAppendFunction(".introjs-tooltiptext", function() {
+					$("#divTable").removeClass("hide");
+					$("#preCodeDiv").hide();
+					introjs.nextStep();
 				});
 			});
 		}
  	}
+}
+
+function svgAppend(selector, svgId) {
+	var code = '<svg class="svg-css" id="' + svgId + '"></svg>';
+	$(selector).append(code);
+}
+
+function svgMarkerAppend(svgId, svgMarkerId, curve) {
+	var marker = document.createElementNS("http://www.w3.org/2000/svg", 'marker');
+	marker.setAttribute('id', svgMarkerId);
+	marker.setAttribute('refX', '5');
+	marker.setAttribute('refY', '2.5');
+	marker.setAttribute('markerWidth', '5');
+	marker.setAttribute('markerHeight', '5');
+	marker.setAttribute('orient', 'auto');   
+	marker.style.fill = 'gray';
+	$(svgId).append(marker);
+	var path = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+	path.setAttribute("d", "M0,0 L5,2.5 L0,5 Z");
+	$('#' + svgMarkerId).append(path);
+}
+
+function svgLineAppend(svgId, svgLineId, markerId, x1, y1, x2, y2) {
+	var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+	line.setAttribute("id", svgLineId);
+	line.setAttribute("class", "svg-line lines");
+	line.setAttribute("x1", x1);
+	line.setAttribute("y1", y1);
+	line.setAttribute("x2", x2);
+	line.setAttribute("y2", y2);
+	line.style.markerEnd = 'url("#' + markerId + '")';
+	$(svgId).append(line);
+}
+
+function svgAnimatingLineSelector1RightSideToSelector2LeftSide(parentSelector, selector1, selector2, svgId, svgLineId, markerId, callBackFunction) {
+	var parentOffset = $(parentSelector).offset();
+	var x1 = $(selector1).offset().left - parentOffset.left + $(selector1).outerWidth();
+	var y1 = $(selector1).offset().top - parentOffset.top + $(selector1).outerHeight() / 2;
+	var x2 = $(selector2).offset().left - parentOffset.left;
+	var y2 = $(selector2).offset().top - parentOffset.top + $(selector2).outerHeight() / 2;
+	svgLineAppend(svgId, svgLineId, markerId, x1, y1, x1, y1);
+	TweenMax.to($('#' + svgLineId).show(),0.6, {attr: {x2: x2, y2: y2}, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
 }
 </script>
 </html>
