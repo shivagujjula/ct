@@ -45,7 +45,8 @@
 	tab-size: 3;
 	background-color: #fffae6;
 	border-radius: 8px;
-	font-size: 12px;
+	font-size: 11px;
+	font-family: monospace;
 	margin: 5px;
 	padding: 10px;
 	white-space: pre;
@@ -109,6 +110,10 @@ pre > span {
 	padding: 5px 20px;
 	white-space: initial
 }
+.z-index9999999 {
+	z-index: 9999999 !important;
+	background-color: white;
+}
 
 .svg-css {
 	position: absolute;
@@ -141,6 +146,11 @@ pre > span {
 	padding: 5px;
 	text-align: center;
 }
+.ui-effects-transfer {
+	border: 1px solid white;
+	border-radius: 10px;
+	z-index: 9999999 !important;
+}
 
 .ct-blue-color {
 	font-weight: bold;
@@ -154,6 +164,27 @@ pre > span {
 .ct-lime-color {
 	color: lime;
 	font-weight: bold;
+}
+.output-console-title-bar {
+	background-color : #bcbbbc;
+}
+.blinking-white {
+	animation-name: blink-border-background-white ;
+	animation-duration: 1s ;
+	animation-iteration-count: infinite;
+	animation-direction: alternate ;
+	z-index: 9999999 !important;
+	position: relative;
+}
+
+@keyframes blink-border-background-white { 
+	50% {
+		border-color: white;
+		background: white;
+	}
+}
+@keyframes blinker {  
+  100% { opacity: 0.0; }
 }
 </style>
 
@@ -169,20 +200,22 @@ pre > span {
 				<div class='col-xs-7'>
 					<div class='col-xs-12 box-border'>
 <pre class='creamPreTab4' id='preCode'>
+<span id="preDir"><span id="include">#include</span> &lt;<span id="ioStream">iostream</span>&gt;</span>
+<span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
 <span id='swapDeclareLine'>int <span class='ct-green-color'>swap(int *, int *)</span>;</span>
-<span id='mainMethodBlock'><span class='ct-blue-color'>main()</span> {
+<span id='mainMethodBlock'>int <span class='ct-blue-color'>main()</span> {
 	<span id='aLine'>int a = <span id='valueOfA'>5</span>;</span>
 	<span id='bLine'>int b = <span id='valueOfB'>10</span>;</span>
-	<span id='printBeforeSwapInMain'>cout << "Before swapping in main : a = " << "\t" << "b = " << b << "\n";</span>
+	<span id='printBeforeSwapInMain'>cout << <span id="printBfr">"Before swapping in main : "</span> << <span id="aSec">"a = " << <span id="aVal">a</span></span> << " " << <span id="bSec">"b = " << <span id="bVal">b</span> </span><< "\n";</span>
 	<span id='swapLine' class='ct-green-color'>swap(&a, &b);</span>
-	<span id='printAfterSwapInMain'>cout << "After swapping in main : a = " << "\t" << "b = " << b << "\n";</span>
-}</span>
+	<span id='printAfterSwapInMain'>cout << <span id="printAftr">"After swapping in main :  "</span> << <span id="aSec1">"a = " << <span id="aVal1">a</span></span> << " " << <span id="bSec1">"b = " << <span id="bVal1">b</span> </span><< "\n";</span>
+<span id="end">}</span></span>
 <span id='swapMethodBlock'>int <span class='ct-green-color'>swap(int *x, int *y)</span> {
 	<span id='tDeclareLine'>int t;</span>
 	<span id='tAssignLine'>t = *x;</span>
 	<span id='xLine'>*x = *y;</span>
 	<span id='yLine'>*y = t;</span>
-	<span id='printAfterSwapInSwap'>cout << "After swapping in swap : *x = " << *x << "\t" << "*y = " << *y << "\n";</span>
+	<span id='printAfterSwapInSwap'>cout << <span id="swapAftr">"After swapping in swap : "</span> << <span id="ptrX">"*x = " << <span id="ptrXVal">*x</span></span> << " " << <span id="ptrY">"*y = " << <span id="ptrYVal">*y</span></span> << "\n";</span>
 <span id='swapMethodCloseBrace'>}</span></span>
 </pre>
 					</div>
@@ -200,7 +233,7 @@ pre > span {
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='aValue' class='ct-blue-color'></span></div>
-													<div><span id='aAddress' class='ct-lime-color'>1111</span></div>
+													<div><span id='aAddress' class='ct-green-color'>1111</span></div>
 												</div>
 											</div>
 										</div>
@@ -212,7 +245,7 @@ pre > span {
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='bValue' class='ct-blue-color'></span></div>
-													<div><span id='bAddress' class='ct-lime-color'>1234</span></div>
+													<div><span id='bAddress' class='ct-green-color'>1234</span></div>
 												</div>
 											</div>
 										</div>
@@ -231,7 +264,7 @@ pre > span {
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='xValue' class='ct-blue-color'></span></div>
-													<div><span id='xAddress' class='ct-lime-color'>2222</span></div>
+													<div><span id='xAddress' class='ct-green-color'>2222</span></div>
 												</div>
 											</div>
 										</div>
@@ -243,7 +276,7 @@ pre > span {
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='yValue' class='ct-blue-color'></span></div>
-													<div><span id='yAddress' class='ct-lime-color'>2345</span></div>
+													<div><span id='yAddress' class='ct-green-color'>2345</span></div>
 												</div>
 											</div>
 										</div>
@@ -257,7 +290,7 @@ pre > span {
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='tValue' class='ct-blue-color'></span></div>
-													<div><span id='tAddress' class='ct-lime-color'>3333</span></div>
+													<div><span id='tAddress' class='ct-green-color'>3333</span></div>
 												</div>
 											</div>
 										</div>
@@ -277,17 +310,17 @@ pre > span {
 						</svg>
 					</div>
 					<div class="col-xs-12 margin-top30">
-						<div id="outputBox" class="output-console center">
+						<div id="outputBox" class="output-console opacity00 center">
 							<div class="output-console-title-bar"><span>Output</span></div>
 							<div class="output-console-body">
-								<div class="visibility-hidden">Before swapping in main : a = <span class='ct-blue-color'>5</span>
-									b = <span class='ct-blue-color'>10</span>
+								<div id = "bfrSwap" class="visibility-hidden">Before swapping in main : <span id="aBfr" class="opacity00">a = <span class='ct-code-b-yellow opacity00' id="aConsVal">5</span></span>
+									<span id="bBfr" class="opacity00">b = <span id="bConsVal" class='ct-code-b-yellow opacity00 bConsVal'>10</span></span>
 								</div>
-								<div class="visibility-hidden">After swapping in swap : *x = <span class='ct-blue-color'>10</span>   
-									*y = <span class='ct-blue-color'>5</span>
+								<div id = "aftrSwap" class="visibility-hidden">After swapping in swap : <span id="xAftr" class="opacity00">*x = <span class='ct-code-b-yellow opacity00' id="xConsVal">10</span></span>  
+									<span id="yAftr" class="opacity00">*y = <span  class='ct-code-b-yellow opacity00' id="yConsVal">5</span></span>
 								</div>
-								<div class="visibility-hidden">After swapping in main : a = <span class='ct-blue-color'>10</span>   
-									b = <span class='ct-blue-color'>5</span>
+								<div id = "aftrMain" class="visibility-hidden">After swapping in main : <span id="aAftr" class="opacity00">a = <span class='ct-code-b-yellow opacity00' id="aConsVal1">10</span></span>   
+									<span id="bAftr" class="opacity00">b = <span id="bConsVal1" class='ct-code-b-yellow opacity00'>5</span></span>
 								</div>
 							</div>
 						</div>

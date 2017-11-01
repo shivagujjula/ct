@@ -157,6 +157,52 @@ div, span {
 	color: #4ce8fb;
 }
 
+#finalDiv {
+	border: 1px solid;
+	border-radius: 6px;
+	padding: 4px;
+	margin-left: 29%;
+}
+
+.color-green {
+	color: green;
+	font-weight: bold;
+}
+
+.color-maroon {
+	color: maroon;
+	font-weight: bold;
+}
+
+.color-deeppink {
+	color: deeppink;
+}
+
+.inner-loop-color {
+	font-weight: bold;
+	color: green !important;
+	font-family: monospace;
+}
+
+.outer-loop-color {
+	font-weight: bold;
+	color: blue !important;
+	font-family: monospace; 
+}
+
+.index-div {
+	border: 1px solid;
+	margin-top: 15px;
+	padding: 6px;
+	border-radius: 8px;
+	background: papayawhip;
+	font-size: 13px;
+}
+
+.ct-blue {
+	color: blue;
+}
+
 </style>
 </head>
 <body>
@@ -165,6 +211,23 @@ div, span {
 		<h3 class='label ct-demo-heading' id="heading">
 			<span>Time Complexity of Bubble Sort</span>
 		</h3>
+	</div>
+	<div class="col-xs-12">
+		<div class="col-xs-8 col-xs-offset-2 index-div" id="indexDiv">
+			<ul>
+				<li id="listLine1" class="opacity00"><span class="ct-blue">Bubble sort</span> is an internal sorting technique in which <b>adjacent 
+				elements</b> are compared and exchanged if necessary.</li>
+				<li id="listLine2" class="opacity00">The working procedure for <span class="ct-blue">Bubble sort</span> is as follows:</li>
+				<ol>
+					<li id="listLine3" class="opacity00">Let us consider an array of <b>n</b> elements (i.e., <b>a[n]</b>) to be sorted.</li>
+					<li id="listLine4" class="opacity00">Compare the first two elements in the array i.e., <b>a[0]</b> and <b>a[1]</b>, if <b>a[1]</b> is less than <b>a[0]</b> 
+						then interchange the two values.</li>
+					<li id="listLine5" class="opacity00">Next compare <b>a[1]</b> and <b>a[2]</b>, if <b>a[2]</b> is less than <b>a[1]</b> then interchange the values.</li>
+					<li id="listLine6" class="opacity00">Continue this process till the last two elements are <b>compared</b> and <b>interchanged</b>.</li>
+					<li id="listLine7" class="opacity00">Repeat the above steps for <b>n - 1</b> passes.</li>
+				</ol>
+			</ul>
+		</div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-6 hide" id="divTable" style="background: antiquewhite;">
@@ -175,10 +238,27 @@ div, span {
 						<th class="units-heading-css">Units</th>
 					</tr>
 					<tr>
+						<td class="td-code-text" id="tdCodeLine0">
+							<span class="" id="codeLine0">
+							<span class="color-green">void</span> bubbleSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
+						</td>
+						<td class="td-border" id="unitLine0">
+							<span id="unitLineText0" style="padding: 1px 10px;"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text" id="">&emsp;&emsp;
+							<span class="color-green">int</span> i, j, temp;
+						</td>
+						<td class="td-border" id="">
+							<span id="" style="padding: 1px 10px;"></span>
+						</td>
+					</tr>
+					<tr>
 						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;
 							<span class="" id="codeLine1">
-							for (<span id="initilizationId1">i <span id="equalOperator1">=</span> 0;</span> 
-							<span id="conditionId1">i <span id="lessOperator1"><</span> n - 1;</span> 
+							<span class="color-maroon">for</span> (<span class="color-green">int</span> <span id="initilizationId1">i <span id="equalOperator1">=</span> <span class="color-deeppink">0</span>;</span> 
+							<span id="conditionId1">i <span id="lessOperator1"><</span> n - <span class="color-deeppink">1</span>;</span> 
 							<span id="incrementId1">i<span id="incrementOperator1">++</span></span>) {</span>
 						</td>
 						<td class="td-border" id="unitLine1">
@@ -191,27 +271,27 @@ div, span {
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="" id="codeLine2">
-							for (<span id="initilizationId2">j <span id="equalOperator2">=</span> 0;</span> 
-							<span id="conditionId2">j <span id="lessOperator2"><</span> n - i - 1;</span> 
+							<span class="color-maroon">for</span> (<span class="color-green">int</span> <span id="initilizationId2">j <span id="equalOperator2">=</span> <span class="color-deeppink">0</span>;</span> 
+							<span id="conditionId2">j <span id="lessOperator2"><</span> n - i - <span class="color-deeppink">1</span>;</span> 
 							<span id="incrementId2">j<span id="incrementOperator2">++</span></span>) {</span>
 						</td>
 						<td class="td-border" id="unitLine2">
 							<span id="unitLineText2" style="padding: 1px 10px;">
-							<span class="opacity00" id="secondUnitValue1">1</span> <span id="plusOp3" class="opacity00">+</span> 
-							<span class="opacity00" id="secondUnitValue2">(n - i - 1) + 1</span>
-							 <span id="plusOp4" class="opacity00">+</span> <span class="opacity00" id="secondUnitValue3">(n - i - 1)</span></span>
+							<span class="opacity00" id="secondUnitValue1">n</span> <span id="plusOp3" class="opacity00">+</span> 
+							<span class="opacity00" id="secondUnitValue2">n * ((n - i - 1) + 1)</span>
+							 <span id="plusOp4" class="opacity00">+</span> <span class="opacity00" id="secondUnitValue3">n * (n - i - 1)</span></span>
 						</td>
 					</tr>
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span id="ifSpan">	
-								<span class="" id="codeLine3span1">if (a[j] > a[j+1]) {</span><br>
+								<span class="" id="codeLine3span1"><span class="color-maroon">if</span> (a[j] > a[j+<span class="color-deeppink">1</span>]) {</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								<span class="" id="codeLine3span2">temp = a[j];</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								<span class="" id="codeLine3span3" style="padding: 0px 34px 0px 0px;">a[j] = a[j+1];</span><br>
+								<span class="" id="codeLine3span3" style="padding: 0px 34px 0px 0px;">a[j] = a[j+<span class="color-deeppink">1</span>];</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								<span class="" id="codeLine3span4">a[j+1] = temp;</span><br>
+								<span class="" id="codeLine3span4">a[j+<span class="color-deeppink">1</span>] = temp;</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								<span class="" id="codeLine3span5">}</span>
 							</span>
@@ -230,18 +310,34 @@ div, span {
 					</tr> -->
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="" id="codeLine2">}</span>
+							<span class="" id="codeLine4">}</span>
 						</td>
-						<td class="opacity00 td-border" id="unitLine2">
-							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
+						<td class="opacity00 td-border" id="unitLine4">
+							<span id="unitLineText4" style="padding: 2px 42px;">1</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;
-							<span class="" id="codeLine2">}</span>
+							<span class="" id="codeLine5">}</span>
 						</td>
-						<td class="opacity00 td-border" id="unitLine2">
-							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
+						<td class="opacity00 td-border" id="unitLine5">
+							<span id="unitLineText5" style="padding: 2px 42px;">1</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">
+							<span class="" id="codeLine7">}</span>
+						</td>
+						<td class="opacity00 td-border" id="unitLine7">
+							<span id="unitLineText7" style="padding: 2px 42px;">1</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text" style="text-align: right;">
+							<span class="opacity00" id="codeLine6"><b>Total = </b></span>
+						</td>
+						<td class="td-border" id="unitLine6">
+							<span id="unitLineText6" class="opacity00" style="padding: 2px 42px;">2<span id="nValue1">n<sup>2</sup></span> + 3n - 3in + 1</span>
 						</td>
 					</tr>
 				</tbody>
@@ -249,12 +345,15 @@ div, span {
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
 			<pre class="creamPreTab4" id="preCode1">
-for (i = 0; i < n - 1; i++) {
-	for (j = 0; j < n - i - 1; j++) {		
-		if (a[j] > a[j+1]) {
-			temp = a[j];
-			a[j] = a[j+1];
-			a[j+1] = temp;
+<span class="color-green">void</span> bubbleSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {
+	<span class="color-green">int</span> i, j, temp;
+	<span class="color-maroon">for</span> (i = <span class="color-deeppink">0</span>; i < n - <span class="color-deeppink">1</span>; i++) {
+		<span class="color-maroon">for</span> (j = <span class="color-deeppink">0</span>; j < n - i - <span class="color-deeppink">1</span>; j++) {
+			<span class="color-maroon">if</span> (a[j] > a[j+<span class="color-deeppink">1</span>]) {
+				temp = a[j];
+				a[j] = a[j+<span class="color-deeppink">1</span>];
+				a[j+<span class="color-deeppink">1</span>] = temp;
+			}
 		}
 	}
 }
@@ -272,7 +371,7 @@ for (i = 0; i < n - 1; i++) {
 					    	<td class="text-center"><span class="element" arrayvalue="2" id="sortEle2">5</span></td>
 					    	<td class="text-center"><span class="element" arrayvalue="3" id="sortEle3">13</span></td>
 					    	<td class="text-center"><span class="element" arrayvalue="4" id="sortEle4">12</span></td>
-					    	<td class="text-center"><span class="element" arrayvalue="5" id="sortEle5">39</span></td>
+					    	<!-- <td class="text-center"><span class="element" arrayvalue="5" id="sortEle5">39</span></td> -->
 					  		<!-- <td class="text-center"><span class="element" arrayvalue="6" id="sortEle6">33</span></td>
 					    	<td class="text-center"><span class="element" arrayvalue="7" id="sortEle7">6</span></td> -->
 					 	</tr>
@@ -288,6 +387,14 @@ for (i = 0; i < n - 1; i++) {
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="col-xs-12 margin-top-2">
+		<div id="finalDiv" class="col-xs-4 col-xs-offset-4 opacity00">
+			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : bigO(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
+		</div>
+	</div>
+	<div class="button col-xs-12 text-center margin-top-1" id="button">
+		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>
 	</div>
 </div>
 </body>
@@ -322,6 +429,10 @@ function introGuide() {
 		keyboardNavigation : false,
 		tooltip : false,
 		steps :[{
+			element : '#indexDiv',
+			intro : '',
+			tooltipClass : 'hide',
+		}, {
 			element : '#preCode1',
 			intro : '',
 		}, {
@@ -329,6 +440,9 @@ function introGuide() {
 			intro : '',
 		}, {
 			element : '#divTable',
+			intro : '',
+		}, {
+			element : '#finalDiv',
 			intro : '',
 		}, {
 			element : "#restart",
@@ -341,18 +455,32 @@ function introGuide() {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
 		switch(elementId) {
+		case 'indexDiv':
+			for (var i = 1; i <= 7; i++) {
+				$("#listLine" + i).fadeTo(1000, 1, function() {
+				});
+			}
+			$("#listLine7").after('<span class="introjs-button user-btn">Next &#8594;</span>');
+			introjs.refresh();
+			$(".user-btn").click(function() {
+				$(".user-btn").remove();
+				introjs.nextStep();
+			});
+			break;
 		case 'preCode1':
-				var text = "Let us consider a bubble sort function.";
+			$(".introjs-helperLayer").one("transitionend", function() {	
+				var text = "Here we will learn time complexity of <span class='ct-code-b-yellow'>bubble sort</span> function.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").show();
 				});
+			});
 			break;
 		case 'arrTable':
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('.arr-ele').attr('maxlength',2);
 			    $('.arr-ele').attr('contenteditable','true');
 				$('.introjs-tooltip').removeClass('hide');
-				text = 'Here, we are declaring and initializing an integer array with 8 elements : '
+				text = 'Here, we are declaring and initializing an integer array with 5 elements : '
 						+ '<span class="ct-code-b-yellow element" arrayvalue="0">'+ parseInt($("#number0").text()) +'</span>,'
 						+ '<span class="ct-code-b-yellow element" arrayvalue="1">'+ parseInt($("#number1").text()) +'</span>,'
 						+ '<span class="ct-code-b-yellow element" arrayvalue="2">'+ parseInt($("#number2").text()) +'</span>,'
@@ -378,10 +506,51 @@ function introGuide() {
 				});
 			});
 			break;
+		case 'finalDiv':
+			$(".introjs-helperLayer").one("transitionend", function() {
+				TweenMax.to($("#finalDiv"), 1, {opacity: 1, onComplete:function() {
+					$("#nValue1").effect('highlight',{color:'#da5805'}, 1000, function() {
+						tweenmaxAnimation("#nValue1", "#nValue2", function() {
+							$("#nValue2").effect('highlight',{color:'#da5805'}, 1000, function() {
+								setTimeoutFunction();
+							});
+						});
+					});
+				}});
+			});
+			break;
+		case "restart":
+			$('.introjs-nextbutton').hide();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restart").removeClass("opacity00");
+				typing('.introjs-tooltiptext', "Click to restart.", function() {
+					});
+				});
+			break;
 		}
 	});
 	introjs.start();
 }
+
+function setTimeoutFunction() {
+	setTimeout(function() {
+		introjs.nextStep();
+	}, 2000);
+}
+
+function tweenmaxAnimation(selector1, selector2, callBackFunction) {
+	var l3 = $(selector1).offset();
+	var l4 = $(selector2).offset();
+	var topLength = l3.top - l4.top;
+	var leftLength = l3.left - l4.left;
+	$(selector2).removeClass("opacity00");
+	TweenMax.from(selector2, 1, {top: topLength, left: leftLength, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
+}
+
 
 function firstStepAnimation() {
 	svgAppend($('#divTable'), 'svg');
@@ -448,34 +617,42 @@ function secondStepAnimation() {
 	svgMarkerAppend($('#svg'), 'marker'); */
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {
 		popoverAppendFunction("#unitLine2", 2);
-		var text = "<ul><li id='initLine'><span class='for-loop-li-css'>j = 0</span><br/>In the "+
-				"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
-				" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
-				"<span class='ct-code-teal'>unit of time</span>.</li></ul>";
+		var text = "<ul><li id='initLine2'><span class='for-loop-li-css'>j = 0</span><br/>In the "+
+			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
+			" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
+			"<span class='ct-code-teal'>unit of time</span>. But this loop executes <span class='ct-code-b-yellow'>n</span> times because of "+
+			"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*1 = n</span> <span class='ct-code-teal'>units of time</span>.</li>"+
+			"</ul>";
 		typing("#popover2", text, function() {
 			$("#initilizationId2").effect('highlight',{color:'#da5805'}, 1000, function() {
 				transferEffectFunction("#initilizationId2", "#secondUnitValue1", function() {
 					buttonAppendFunction("#popover2", function() {
 						$("#plusOp3").removeClass("opacity00");
-						$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>j < n - i -  1</span><br>In the "+
+						$("#initLine2").after("<li id='conditionLine2'><span class='for-loop-li-css'>j < n - i - 1</span><br>In the "+
 								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
 								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 								"executes <span class='ct-code-teal'>n - i - 1</span> "+
 								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
 								"So takes <span class='ct-code-b-yellow'>(n-i-1)+1</span> "+
+								"<span class='ct-code-teal'>units of time</span>. But this loop executes <span class='ct-code-b-yellow'>n</span> "+
+								"times because of "+
+								"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*(n-i-1)+1</span> "+
 								"<span class='ct-code-teal'>units of time</span>.</li>");
-						typing("#conditionLine", $("#conditionLine").html(), function() {
+						typing("#conditionLine2", $("#conditionLine2").html(), function() {
 							$("#conditionId2").effect('highlight',{color:'#da5805'}, 1000, function() {
 								transferEffectFunction("#conditionId2", "#secondUnitValue2", function() {
 									buttonAppendFunction("#popover2", function() {
 										$("#plusOp4").removeClass("opacity00");
-										$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>j++</span><br>In the "+
+										$("#conditionLine2").after("<li id='incrementLine2'><span class='for-loop-li-css'>j++</span><br>In the "+
 												"<span class='ct-code-b-yellow'>increment</span> part only 1 operator "+
 												"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
 												"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-i-1</span>) number "+
 												"of times. So it takes <span class='ct-code-b-yellow'>n-i-1</span> "+
+												"<span class='ct-code-teal'>units of time</span>. But this loop executes "+
+												"<span class='ct-code-b-yellow'>n</span> times because of "+
+												"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*(n-i-1)</span> "+
 												"<span class='ct-code-teal'>units of time</span>.</li>");
-										typing("#incrementLine", $("#incrementLine").html(), function() {
+										typing("#incrementLine2", $("#incrementLine2").html(), function() {
 											$("#incrementId2").effect('highlight',{color:'#da5805'}, 1000, function() {
 												transferEffectFunction("#incrementId2", "#secondUnitValue3", function() {
 													buttonAppendFunction("#popover2", function() {
@@ -502,11 +679,23 @@ function thirdStepAnimation() {
 			$("#unitLineText3").fadeTo(500, 1);
 			$("#unitLineText3").effect('highlight',{color:'#da5805'}, 1500, function() {
 				popoverAppendFunction("#unitLineText3", 3);
-				var text = ""
+				var text = "The <span class='ct-code-b-yellow'>swap</span> method executes <span class='ct-code-b-yellow'>n-i-1</span> "+
+					"<span class='ct-code-teal'>units of time</span>.</li>";
+				typing("#popover3", text, function() {
+					buttonAppendFunction("#popover3", function() {
+						$("#unitLineText3").popover("hide");
+						TweenMax.to($("#codeLine6"), 1, {opacity: 1, onComplete:function() {
+							TweenMax.to($("#unitLineText6"), 1, {opacity: 1, onComplete:function() {
+								setTimeoutFunction();
+							}});
+						}});
+					});
+				});
 			});
 		});
 	});
 }
+
 function typing(selector, text, callBackFunction) {
 	var typingSpeed = 0.05;
 	$(selector).typewriting( text , {
@@ -551,13 +740,13 @@ function buttonAppendFunction(selector, callBackFunction) {
 }
 
 function appendTds() {
-	for(var i = 0; i < 6; i++) {
+	for(var i = 0; i < 5; i++) {
 		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>')
 		$('#outerArrow').append('<th><div class="text-center opacity00" id="outerArrow'+ i + '">'
-				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">outer</span>Idx</div>'
+				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">i</span></div>'
 				+ '<i class="fa fa-arrow-down" id="outerarrow'+ i + '"></i></div></th>');
 		$('#innerArrow').append('<th><div class="text-center opacity00" id="innerArrow'+ i + '">'
-				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">inner</span>Idx</div>'
+				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">j</span></div>'
 				+ '<i class="fa fa-arrow-down" id="innerarrow'+ i + '"></i></div></th>'); 
 	}
 }
@@ -650,7 +839,7 @@ function bubbleSort() {
 				$('.introjs-duplicate-nextbutton').remove();
 				text = 'All elements are sorted successfully.'
 						+ ' <span id="appendButton"></span>';
-				typing('#explanationDiv', text, function() {
+				typing('.introjs-tooltiptext', text, function() {
 				/* $('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
 				$('.introjs-duplicate-nextbutton').click(function() {
 					$('.introjs-duplicate-nextbutton').remove();

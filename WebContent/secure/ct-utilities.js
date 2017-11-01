@@ -3,6 +3,7 @@ function typing(selector, text, jsonObj) {
 	if (jsonObj.hasOwnProperty('typingSpeed')) {
 		typingSpeed = jsonObj.typingSpeed;
 	}
+	console.log("typingSpeed : " + typingSpeed);
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -30,11 +31,19 @@ function buttonAppend(selector, callBackFunction) {
 	});
 }
 
-function transferEffectFunction(selector1, selector2, callBackFunction) {
-	$(selector1).effect("transfer", { to: $(selector2)}, 1000).addClass(".ui-effects-transfer", function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}  
+function transferEffectFunction(selector1, selector2, jsonObj) {
+	var duration = 1000;
+	if (jsonObj.hasOwnProperty('duration')) {
+		duration = jsonObj.duration;
+	}
+	$( this ).transfer( {
+	    to: $(selector2),
+	    duration: duration
+	  });
+	$(selector1).effect("transfer", { to: $(selector2), duration}).addClass(".ui-effects-transfer", function() {
+		if (jsonObj.hasOwnProperty('onComplete')) {
+			jsonObj.onComplete();
+		} 
 	});
 }
 

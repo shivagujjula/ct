@@ -18,19 +18,13 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/cbr.min.js"></script>
 <title>Call By Reference</title>
-
 <style>
-
 .introjs-tooltiptext br {
 	margin: 15px;
 }
 
 .introjs-tooltip {
 	min-width: 300px;
-}
-
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
 }
 
 .introjs-duplicate-nextbutton {
@@ -51,11 +45,11 @@
 	tab-size: 3;
 	background-color: #fffae6;
 	border-radius: 8px;
-	font-size: 12px;
+	font-size: 11px;
+	font-family: monospace;
 	margin: 5px;
 	padding: 10px;
 	white-space: pre;
-	font-famlity: monospace;
 }
 
 .box-border {
@@ -114,7 +108,27 @@ pre > span {
 
 .output-console-body {
 	padding: 5px 20px;
-	white-space: initial;
+	white-space: initial
+}
+.z-index9999999 {
+	z-index: 9999999 !important;
+	background-color: white;
+}
+
+.svg-css {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9999999;
+}
+
+.svg-line {
+	display: none;
+	position: relative;
+	stroke: gray;
+	stroke-width: 2; 
 }
 
 .method-box-css {
@@ -132,6 +146,15 @@ pre > span {
 	padding: 5px;
 	text-align: center;
 }
+.ui-effects-transfer {
+	border: 1px solid white;
+	border-radius: 10px;
+	z-index: 9999999 !important;
+}
+
+.ct-blue-color {
+	font-weight: bold;
+}
 
 .ct-green-color {
 	color: green;
@@ -139,80 +162,42 @@ pre > span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
-
-.ct-blue-color {
-	font-weight: bold;
+.output-console-title-bar {
+	background-color : #bcbbbc;
 }
-
-.visibility-hidden {
-	visibility: hidden;
-}
-
-in {
-	color: rgb(62, 50, 173);
-}
-
-ink {
-	color: 	rgb(255, 0, 191)
-}
-
-go {
-	color: rgb(134, 19, 19);
-}
-
-
-g {
-	color: 	rgb(64, 130, 65);
-	font-weight: bold;
-}
-
-r {
-	color: red;
-}
-
-pi {
-	color: fuchsia;
-}
-
-y {
-	font-family: monospace;
-	font-weight: bold;
-	color: yellow;
-}
-
 </style>
+
 </head>
 <body>
 
 <div class='col-xs-12'>
 	<div class='text-center heading-css'><h1 class='label ct-demo-heading'>Call By Reference</h1></div>
 	<div class='buttons-div'><button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button></div>
-
 	<div class="col-xs-12">
 		<div class='col-xs-12'>
 			<div class='col-xs-12'>
 				<div class='col-xs-7'>
 					<div class='col-xs-12 box-border'>
 <pre class='creamPreTab4' id='preCode'>
-<in>#include</in> <ink>&lt;iostream&gt;</ink>
-<go><span><b>using namespace</b></go> std;</span>
-<span id='swapDeclareLine'><g>int</g> <span>swap(<g>int</g> &, <g>int</g> &)</span>;</span>
-<span id='mainMethodBlock'><b class="ct-blue-color">main()</b> {
-	<span id='aLine'><g>int</g> a = <ink><span id='valueOfA'>5</span></ink>;</span>
-	<span id='bLine'><g>int</g> b = <ink><span id='valueOfB'>10</span></ink>;</span>
-	<span id='printBeforeSwapInMain'>cout << <ink>"Before swapping in main : a = "</ink> << a << " " << <ink>"b = "</ink> << b << "\n";</span>
-	<span id='swapLine'>swap(a, b);</span>
-	<span id='printAfterSwapInMain'>cout << <ink>"After swapping in main : a = "</ink> << a << " " << <ink>"b = "</ink> << b << "\n";</span>
-}</span>
-<span id='swapMethodBlock'><g>int</g> <span>swap(<g>int</g> &x, <g>int</g> &y)</span> {
-	<span id='tDeclareLine'><g>int</g> t;</span>
+<span id="preDir"><span id="include">#include</span> &lt;<span id="ioStream">iostream</span>&gt;</span>
+<span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
+<span id='swapDeclareLine'>int <span class="ct-green-color">swap(int &, int &)</span>;</span>
+<span id='mainMethodBlock'>int <span class='ct-blue-color'>main()</span> {
+	<span id='aLine'>int a = <span id='valueOfA'>5</span>;</span>
+	<span id='bLine'>int b = <span id='valueOfB'>10</span>;</span>
+	<span id='printBeforeSwapInMain'>cout << <span id="printBfr">"Before swapping in main : "</span> << <span id="aSec">"a = " << <span id="aVal">a</span></span> << " " << <span id="bSec">"b = " << <span id="bVal">b</span> </span><< "\n";</span>
+	<span id='swapLine' class="ct-green-color">swap(a, b);</span>
+	<span id='printAfterSwapInMain'>cout << <span id="printAftr">"After swapping in main :  "</span> << <span id="aSec1">"a = " << <span id="aVal1">a</span></span> << " " << <span id="bSec1">"b = " << <span id="bVal1">b</span> </span><< "\n";</span>
+<span id="end">}</span></span>
+<span id='swapMethodBlock'>int <span class="ct-green-color">swap(int &x, int &y)</span> {
+	<span id='tDeclareLine'>int t;</span>
 	<span id='tAssignLine'>t = x;</span>
 	<span id='xLine'>x = y;</span>
 	<span id='yLine'>y = t;</span>
-	<span id='printAfterSwapInSwap'>cout << <ink>"After swapping in swap : x = "</ink> << x << " " << <ink>"y = "</ink> << y << "\n";</span>
+	<span id='printAfterSwapInSwap'>cout << <span id="swapAftr">"After swapping in swap : "</span> << <span id="valX">"x = " << <span id="valXVal">x</span></span> << " " << <span id="valY">"y = " << <span id="valYVal">y</span></span> << "\n";</span>
 <span id='swapMethodCloseBrace'>}</span></span>
 </pre>
 					</div>
@@ -225,24 +210,24 @@ y {
 								<div class="col-xs-12 padding10">
 									<div class='col-xs-6'>
 										<div class='center width200'>
-											<div class='col-xs-12 opacity00' id='aBox'>
+											<div class='col-xs-12 visibility-hidden' id='aBox'>
 												<div class='col-xs-4 Vertical-text-center'>a</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='aValue' class='ct-blue-color'></span></div>
-													<div><span id='aAddress' class="ct-lime-color">1111</span></div>
+													<div><span id='aAddress' class='ct-lime-color'>1111</span></div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class='col-xs-6'>
 										<div class='center width200'>
-											<div class='col-xs-12 opacity00' id='bBox'>
+											<div class='col-xs-12 visibility-hidden' id='bBox'>
 												<div class='col-xs-4 Vertical-text-center'>b</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
 													<div class='border-height-css'><span id='bValue' class='ct-blue-color'></span></div>
-													<div><span id='bAddress' class="ct-lime-color">1234</span></div>
+													<div><span id='bAddress' class='ct-lime-color'>1234</span></div>
 												</div>
 											</div>
 										</div>
@@ -258,11 +243,6 @@ y {
 										<div class='center width200'>
 											<div class='col-xs-12 visibility-hidden' id='xBox'>
 												<div class='col-xs-4 Vertical-text-center'>x</div>
-												<div class="col-xs-6 text-center">
-													<div><span class='color-gray'>2 bytes</span></div>
-													<div class='border-height-css'><span id='xValue' class='ct-blue-color'></span></div>
-													<div><span id='xAddress' class="ct-lime-color">2222</span></div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -270,11 +250,6 @@ y {
 										<div class='center width200'>
 											<div class='col-xs-12 visibility-hidden' id='yBox'>
 												<div class='col-xs-4 Vertical-text-center'>y</div>
-												<div class="col-xs-6 text-center">
-													<div><span class='color-gray'>2 bytes</span></div>
-													<div class='border-height-css'><span id='yValue' class='ct-blue-color'></span></div>
-													<div><span id='yAddress' class="ct-lime-color">2345</span></div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -295,16 +270,31 @@ y {
 								</div>
 							</div>
 						</div>
+						<svg class='svg-css' id='svg'>
+							<marker id="arrowEnd1" refX="4" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: gray;">
+								<path d="M0,0 L5,2.5 L0,5 Z"/>
+							</marker>
+							<marker id="arrowEnd2" refX="4" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: gray;">
+								<path d="M0,0 L5,2.5 L0,5 Z"/>
+							</marker>
+							<line style='marker-end: url("#arrowEnd1");' class="svg-line" x1="22%" y1="59%" x2="20.5%" y2="57%"/>
+							<line style='marker-end: url("#arrowEnd2");' class="svg-line" x1="65%" y1="59%" x2="65.5%" y2="57%"/>
+						</svg>
 					</div>
-					
 					<div class="col-xs-12 margin-top30">
-						<div id="outputBox" class="output-console center">
+						<div id="outputBox" class="output-console opacity00 center">
 							<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><div class="visibility-hidden">Before swapping in main : a = <span class='ct-blue-color'>5</span>   
-		b = <span class='ct-blue-color'>10</span></div>
-<div class="visibility-hidden">After swapping in swap : x = <span class='ct-blue-color'>10</span>   y = <span class='ct-blue-color'>5</span></div>
-<div class="visibility-hidden">After swapping in main : a = <span class='ct-blue-color'>5</span>   b = <span class='ct-blue-color'>10</span></div>
-</div>
+							<div class="output-console-body">
+								<div  id = "bfrSwap" class="visibility-hidden">Before swapping in main : <span id="aBfr" class="opacity00">a = <span class='ct-code-b-yellow opacity00' id="aConsVal">5</span></span>
+									<span id="bBfr" class="opacity00">b = <span id="bConsVal" class='ct-code-b-yellow opacity00 bConsVal'>10</span></span>
+								</div>
+								<div id = "aftrSwap" class="visibility-hidden">After swapping in swap : <span id="xAftr" class="opacity00">x = <span class='ct-code-b-yellow opacity00' id="xConsVal">10</span></span>  
+									<span id="yAftr" class="opacity00">y = <span  class='ct-code-b-yellow opacity00' id="yConsVal">5</span></span>
+								</div>
+								<div id = "aftrMain" class="visibility-hidden">After swapping in main : <span id="aAftr" class="opacity00">a = <span class='ct-code-b-yellow opacity00' id="aConsVal1">10</span></span>   
+									<span id="bAftr" class="opacity00">b = <span id="bConsVal1" class='ct-code-b-yellow opacity00'>5</span></span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -312,12 +302,10 @@ y {
 		</div>
 	</div>
 </div>
-
 <script>
 	$(document).ready(function() {
-		callByValueReady();
+		callByReferenceReady();
 	});
 </script>
-
 </body>
 </html>

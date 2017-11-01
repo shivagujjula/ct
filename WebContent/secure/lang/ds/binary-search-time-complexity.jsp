@@ -182,7 +182,6 @@ span {
 
 .ct-blue {
 	color: blue;
-	/* font-weight: bold; */
 }
 
 .color-maroon {

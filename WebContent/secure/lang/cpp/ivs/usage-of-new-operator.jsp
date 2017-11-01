@@ -62,7 +62,7 @@
 	padding: 10px;
 	white-space: pre;
 	font-family: monospace;
-	width : 360px;
+	min-width : 360px;
 }
 #rBox{
 	margin-top: 6px;
@@ -183,7 +183,7 @@
 
 @keyframes blink {
 	50% {
-		background:  turquoise;
+		background:  orange;
 	}
 }
 
@@ -202,13 +202,17 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
-
+.ct-Maroon-color {
+	color: #800021;
+	font-weight: bold;
+}
 .ct-code-b-green {
 	color: green;
+	font-family: monospace;
 	font-weight: bold;
 }
 .output-console-title-bar {
@@ -226,18 +230,25 @@ div, span {
 		</h3>
 	</div>
 	<div class="col-xs-8 col-xs-offset-2 margin-top-2 info-div" id="infoDiv">
-		<div class="opacity00" id="list1">The <span class='ct-code-b-green'>new </span> operator is used for memory allocation 
-			during the time of execution.</div>
-		<span class="opacity00" id="list2"> &emsp; Syntax : <span class="ct-code-b-green">data_type pointer_variable = new data_type;</span></span>
+		<ul>
+		<li class="opacity00" id="list1">The <span class='ct-code-b-green'>new </span> operator is used to allocate 
+			a specified memory at runtime.
+			<span id='nextButton1' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li>
+		<li class="opacity00" id="list2">The Syntax is: <span class="value-css">data_type</span> 
+			<span class="ct-Maroon-color">pointer_variable</span> = <span class="ct-code-b-green">new</span> 
+			<span class="value-css">data_type;</span>
+		<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
+		</li>
+		</ul>
 	</div>
 	<div class="col-xs-12 margin-top-5">
 		<div class="col-xs-10 col-xs-offset-1">
 			<div class="col-xs-12 margin-top-7"  id="firstDivExample">
 				<div class="col-xs-5 border opacity00" id="exampleOne">
 <pre class="creamPreTab4 opacity00" id="preCode">
-<span id="line1"><span id="firstExLine1"><span class="value-css" id="dataTypeInt1">int</span> *p </span> = <span id="firstExLine2"><span class="ct-code-b-green" id="newSpan1">new</span><span class="value-css" id="dataTypeInt2"> int</span></span></span>;
+<span id="line1"><span id="firstExLine1"><span class="value-css" id="dataTypeInt1">int</span> *p </span> = <span id="firstExLine2"><span class="ct-code-b-green" id="newSpan">new</span><span class="value-css" id="dataTypeInt2"> int</span></span>;</span>
 <span id="firstExLine3">*p = <span class="" id="pValue">20</span>;</span>
-<span id="firstExLine4">cout << "The value of *p = " << *p << endl;</span>
+<span id="firstExLine4">cout << <span id="printP">"The value of *p</span> = " << <span id="pointerP">*p</span> << endl;</span>
 </pre>
 				</div>
 				<div class="col-xs-6 col-xs-offset-1 opacity00" id="totalfirstExDiv">
@@ -252,12 +263,11 @@ div, span {
 								</div>
 							</div>
 						</div>
-						
 						<div class="col-xs-6">
 							<div class="col-xs-12 opacity00" id="newBox">
 								<div class="col-xs-4 Vertical-text-center"></div>
 								<div class="col-xs-6 text-center">
-									<div style="color: lightslategrey;">4 bytes</div>
+									<div style="color: lightslategrey;">2 bytes</div>
 									<div class=" memory-box" id="memoryBox2"><span class="opacity00 value-css" id="Value">20</span></div>
 									<div><span id="newAddress" class="address-css">1054</span></div>
 								</div>
@@ -269,7 +279,7 @@ div, span {
 							<div id="consoleId" class="center"  style="margin-top: 8%">
 								<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
 								<div class="output-console-body" id="consoleBodyDiv">
-									<span class='visibility-hidden' id="printText">The value of *p = <span class='ct-blue-color'>20</span></span>
+									<span class='visibility-hidden' id="printText">The value of *p = <span class='ct-code-b-yellow' id="firstOutput">20</span></span>
 								</div>
 							</div>
 						</div>
@@ -283,7 +293,7 @@ div, span {
 			<div class="col-xs-12 margin-top-7">
 				<div class="col-xs-5 border opacity00" id="exampleTwo">
 <pre class="creamPreTab4 opacity00" id="preCodeTwo">
-<span id="line1"><span id="secondExLine1"><span class="value-css" id="dataTypeInt3">int</span> *p </span> = <span id="secondExLine2"><span class="ct-code-b-green" id="newSpan1">new</span><span class="value-css" id="dataTypeInt4"> int(<span class="ct-color-springgreen" id="kValue">20</span>)</span></span></span>;
+<span id="line2"><span id="secondExLine1"><span class="value-css" id="dataTypeInt3">int</span> *p </span> = <span id="secondExLine2"><span class="ct-code-b-green" id="newSpan1">new</span><span class="value-css" id="dataTypeInt4"> int(<span class="ct-code-b-green" id="kValue">20</span>)</span></span>;</span>
 <span id="secondExLine4">cout << "The value of *p = " << *p << endl;</span>
 </pre>
 				</div>
@@ -294,8 +304,8 @@ div, span {
 								<div class="col-xs-4 Vertical-text-center">p</div>
 								<div class="col-xs-6">
 									<div style="color: lightslategrey;">2 bytes</div>
-									<div class="memory-box" id="memoryBox3"><span class="opacity00 value-css" id="dValue">1054</span></div>
-									<div><span id="dBoxAddress" class="address-css">2024</span></div>
+									<div class="memory-box" id="memoryBox3"><span class="opacity00 value-css" id="dValue">3456</span></div>
+									<div><span id="dBoxAddress" class="address-css">1234</span></div>
 								</div>
 							</div>
 						</div>
@@ -303,20 +313,20 @@ div, span {
 							<div class="col-xs-12 opacity00" id="newBox1">
 								<div class="col-xs-4 Vertical-text-center"></div>
 								<div class="col-xs-6 text-center">
-									<div style="color: lightslategrey;">4 bytes</div>
+									<div style="color: lightslategrey;">2 bytes</div>
 									<div class=" memory-box" id="memoryBox4"><span class="opacity00 value-css" id="Value1">20</span></div>
-									<div><span id="newAddress1" class="address-css">1054</span></div>
+									<div><span id="newAddress1" class="address-css">3456</span></div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-12">
-					<div class="col-xs-7 col-xs-offset-3">
-						<div id="consoleId1" class="center opacity00"  style="margin-top: 8%">
-							<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
-							<div class="output-console-body" id="consoleBodyDiv">
-								<span class='visibility-hidden' id="printText1">The value of *p = <span class='ct-blue-color'>20</span></span>
+					<div class="col-xs-12">
+						<div class="col-xs-7 col-xs-offset-3">
+							<div id="consoleId1" class="center opacity00"  style="margin-top: 8%">
+								<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
+								<div class="output-console-body" id="consoleBodyDiv">
+									<span class='visibility-hidden' id="printText1">The value of *p = <span class='ct-code-b-yellow'>20</span></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -329,7 +339,7 @@ div, span {
 			<div class="col-xs-12 margin-top-7">
 				<div class="col-xs-5 border opacity00" id="exampleThree">
 <pre class="creamPreTab4 opacity00" id="preCodeThree">
-<span id="arr"><span id="thirdExLine1"><span class="value-css" id="dataTypeInt5">int</span> *p </span> = <span id="thirdExLine2"><span class="ct-code-b-green" id="newSpan2">new</span><span class="value-css" id="dataTypeInt6"> int[<span class="ct-color-springgreen" id="rValue">5</span>]</span></span></span>;
+<span id="arr"><span id="thirdExLine1"><span class="value-css" id="dataTypeInt5">int</span> *p </span> = <span id="thirdExLine2"><span class="ct-code-b-green" id="newSpan2">new</span><span class="value-css" id="dataTypeInt6"> int[<span class="ct-code-b-green" id="rValue">5</span>]</span></span>;</span>
 </pre>
 				</div>
 				<div class="col-xs-6 col-xs-offset-1 opacity00" id="totalThirdExDiv" >
@@ -340,34 +350,35 @@ div, span {
 								<div class="col-xs-8">
 									<div style="color: lightslategrey;">2 bytes</div>
 									<div class="memory-box" id="memoryBox5"><span class="opacity00 value-css" id="eValue">1924</span></div>
-									<div><span id="eBoxAddress" class="address-css">2024</span></div>
+									<div><span id="eBoxAddress" class="address-css">1357</span></div>
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-7 opacity00" id="arrayDiv">
 							<div class="col-xs-12">
 								<table align="center" id="memoryBox4" style="margin-left: 0%;">
-									<tbody><tr id="elementId">
+									<tbody>
+										<tr id="elementId">
 											<td class="element-box"><span id="element1">0</span></td>
 											<td class="element-box"><span id="element2">1</span></td>
 											<td class="element-box"><span id="element3">2</span></td>
 											<td class="element-box"><span id="element4">3</span></td>
 											<td class="element-box"><span id="element5">4</span></td>
-									</tr>
-									<tr id="smallBox">
+										</tr>
+										<tr id="smallBox">
 											<td class="small-box"><span class="opacity00 value-css" id="valuesId1">0</span></td>
 											<td class="small-box"><span class="opacity00 value-css" id="valuesId2">1</span></td>
 											<td class="small-box"><span class="opacity00 value-css" id="valuesId3">2</span></td>
 											<td class="small-box"><span class="opacity00 value-css" id="valuesId4">3</span></td>
 											<td class="small-box"><span class="opacity00 value-css" id="valuesId5">4</span></td>
-										
-									</tr>
-									<tr id="addressId">
-										<td class="address-box address-css"><span id="firstAddressId" style="">1924</span></td>
-										<td class="address-box address-css">1926</td><td class="address-box address-css">1928</td>
-										<td class="address-box address-css">1930</td><td class="address-box address-css">1932</td>
-									</tr>
-								</tbody></table>
+										</tr>
+										<tr id="addressId">
+											<td class="address-box address-css"><span id="firstAddressId" style="">1924</span></td>
+											<td class="address-box address-css">1926</td><td class="address-box address-css">1928</td>
+											<td class="address-box address-css">1930</td><td class="address-box address-css">1932</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -382,7 +393,7 @@ div, span {
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	usageOfmallocFunctionReady();
+	usageOfNewOperatorReady();
 });
 </script>
 </html>

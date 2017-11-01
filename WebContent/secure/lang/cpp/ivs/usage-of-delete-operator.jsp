@@ -54,7 +54,7 @@
 	min-width: 280px;
 }
 
-.creamPreTab4 {
+.creamPreTab {
 	-moz-tab-size: 3;
 	tab-size: 3;
 	background-color: #fffae6;
@@ -229,7 +229,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -246,20 +246,20 @@ div, span {
 	<div class="text-center margin-top-1"><h3 class='label ct-demo-heading' id="heading"><span>Usage of delete</span></h3></div>
 	<div class="col-xs-8 col-xs-offset-2 margin-top-2 info-div" id="infoDiv">
 		<ul>
-			<li id="list1" class="opacity00">The memory allocated by using <span class='ct-code-b-green'>new</span> operator can be freed by calling 
+			<li id="list1" class="opacity00">The memory allocated by using <span class='ct-code-b-green'>new</span> operator can be free by calling 
 				 the <span class='ct-code-b-green'>delete</span> operator.</li>
 			<li id="list2" class="opacity00">The <span class='ct-code-b-green'>delete</span> operator releases the memory pointed by the 
 				pointer variable.</li>
 			<li id="list3" class="opacity00">After freeing the memory <b>NULL</b> value is stored in the pointer.</li></ul>
-			<div id="list4" class="opacity00"> &emsp;  &emsp; Syntax : <span class="ct-code-b-green">delete pointer-variable;</span>
+			<div id="list4" class="opacity00"> &emsp;  &emsp; Syntax : <span class="ct-code-b-green">delete</span> <span class="value-css">pointer-variable;</span>
 				<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-10 col-xs-offset-1">
 			<div class="col-xs-12 margin-top-7"  id="firstDivExample">
 				<div class="col-xs-4 border opacity00" id="exampleOne">
-<pre class="creamPreTab4 opacity00" id="preCode">
-<span id="line1"><span id="firstExLine1"><span class="value-css" id="dataTypeInt1">int</span> *p </span> = <span id="firstExLine2"><span class="ct-code-b-green" id="newSpan1">new</span><span class="value-css" id="dataTypeInt2"> int</span></span></span>;
+<pre class="creamPreTab opacity00" id="preCode">
+<span id="line1"><span id="firstExLine1"><span class="value-css" id="dataTypeInt1">int</span> *p </span> = <span id="firstExLine2"><span class="ct-code-b-green" id="newSpan1">new</span><span class="value-css" id="dataTypeInt2"> int</span></span>;</span>
 <span id="firstExLine3">*p = <span class="" id="pValue">20</span>;</span>
 <span id="firstExLine4"><span class="ct-code-b-green">delete</span> p;</span>
 </pre>
@@ -276,12 +276,11 @@ div, span {
 								</div>
 							</div>
 						</div>
-						
 						<div class="col-xs-6">
 							<div class="col-xs-12 opacity00" id="firstMemoryAllocation">
 								<div class="col-xs-4 Vertical-text-center"></div>
 								<div class="col-xs-6 text-center">
-									<div style="color: lightslategrey;">4 bytes</div>
+									<div style="color: lightslategrey;">2 bytes</div>
 									<div class=" memory-box" id="memoryBox2"><span class="opacity00 value-css" id="Value">20</span></div>
 									<div><span id="newAddress" class="address-css">1054</span></div>
 								</div>
@@ -296,8 +295,8 @@ div, span {
 		<div class="col-xs-10 col-xs-offset-1">
 			<div class="col-xs-12 margin-top-7">
 				<div class="col-xs-4 border opacity00" id="secondDivExample">
-<pre class="creamPreTab4 opacity00" id="preCodeTwo">
-<span id="arr"><span id="secondExLine1"><span class="value-css" id="dataTypeInt5">int</span> *p </span> = <span id="secondExLine2"><span class="ct-code-b-green" id="newSpan2">new</span><span class="value-css" id="dataTypeInt6"> int[<span class="ct-color-springgreen" id="rValue">5</span>]</span></span></span>;
+<pre class="creamPreTab opacity00" id="preCodeTwo">
+<span id="arr"><span id="secondExLine1"><span class="value-css" id="dataTypeInt5">int</span> *p </span> = <span id="secondExLine2"><span class="ct-code-b-green" id="newSpan2">new</span><span class="value-css" id="dataTypeInt6"> int[<span class="ct-code-b-green" id="rValue">5</span>]</span></span>;</span>
 <span id="secondExLine3"><span class="ct-code-b-green">delete</span> p;</span>
  </pre>
 				</div>
@@ -351,7 +350,7 @@ div, span {
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	usageOfFreeFunctionReady();
+	usageOfDeleteOperatorReady();
 });
 </script>
 </html>

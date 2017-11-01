@@ -782,21 +782,22 @@ function codeLinesReveledFunction(i) {
 			"<li>The total number of units is measured depending upon the number of <span class='ct-code-b-yellow'>operations</span> "+
 			"done in the code.</li><li>Here the code contains if-else statement. So we have to calculate "+
 			"<span class='ct-code-b-yellow'>time complexity</span> for two conditions.</li></ul>";
-			typing(".introjs-tooltiptext", text, function() {
+			typing(".introjs-tooltiptext", text, {typingSpeed: 1, onComplete: function() {
 				$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
 				$(".user-btn").click(function() {
 					$(".user-btn").remove();
 					$("#ifCondition").effect('highlight', {color: '#da5805'}, 1000);
-					transferEffectFunction("#ifCondition", "#unitsForLessThanOne", function() {
+					transferEffectFunction("#ifCondition", "#unitsForLessThanOne", {duration: 2000, onComplete: function() {
+						console.log("duration : " + duration);
 						$("#unitsForLessThanOne").removeClass("opacity00");
 						$("#elseCondition").effect('highlight', {color: '#da5805'}, 1000);
 						transferEffectFunction("#elseCondition", "#unitsForGreaterThanOne", function() {
 							$("#unitsForGreaterThanOne").removeClass("opacity00");
 							$('.introjs-nextbutton').show();
 						});
-					});
+					}});
 				});
-			});
+			}});
 		}
 	});
 }
@@ -983,7 +984,7 @@ function ninenthStepAnimation() {
 }
 //$("#operator1").effect('highlight',{color:'#da5805'}, 2000, function() {
 
-function typing(selector, text, callBackFunction) {
+/* function typing(selector, text, callBackFunction) {
 	var typingSpeed = 0.05;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
@@ -995,16 +996,16 @@ function typing(selector, text, callBackFunction) {
 			callBackFunction();
 		}
 	});
-}
+} */
 
-function transferEffectFunction(selector1, selector2, callBackFunction) {
+/* function transferEffectFunction(selector1, selector2, callBackFunction) {
 	$(selector1).effect("transfer", { to: $(selector2)}, 1000).addClass(".ui-effects-transfer", function() {
 		$(selector2).removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
 	});
-}
+} */
 
 /* function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	var l3 = $(selector1).offset();

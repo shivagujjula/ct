@@ -53,7 +53,7 @@
 	border-radius: 8px;
 	font-size: 12px;
 	margin: 5px;
-	padding: 10px;
+	padding: 5px;
 	white-space: pre;
 	font-famlity: monospace;
 }
@@ -132,22 +132,29 @@ pre > span {
 	padding: 5px;
 	text-align: center;
 }
-
-.ct-green-color {
-	color: green;
-	font-weight: bold;
+.ui-effects-transfer {
+	border: 1px solid white;
+	border-radius: 10px;
+	z-index: 9999999 !important;
+}
+.z-index9999999 {
+	z-index: 9999999 !important;
+	background-color: white;
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
-
 .ct-blue-color {
+	color : blue;
 	font-weight: bold;
 }
 .visibility-hidden {
 	visibility: hidden;
+}
+.output-console-title-bar {
+	background-color : #bcbbbc;
 }
 </style>
 </head>
@@ -163,20 +170,22 @@ pre > span {
 				<div class='col-xs-7'>
 					<div class='col-xs-12 box-border'>
 <pre class='creamPreTab4' id='preCode'>
+<span id="preDir"><span id="include">#include</span> &lt;<span id="ioStream">iostream</span>&gt;</span>
+<span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
 <span id='swapDeclareLine'>int <span class="ct-green-color">swap(int, int)</span>;</span>
-<span id='mainMethodBlock'><b class="ct-blue-color">main()</b> {
+<span id='mainMethodBlock'>int <b class="ct-blue-color">main()</b> {
 	<span id='aLine'>int a = <span id='valueOfA'>5</span>;</span>
 	<span id='bLine'>int b = <span id='valueOfB'>10</span>;</span>
-	<span id='printBeforeSwapInMain'>cout << "Before swapping in main : a = " << a << "\t" << "b = " << b << "\n";</span>
+	<span id='printBeforeSwapInMain'>cout << <span id="printBfr">"Before swapping in main : "</span> << <span id="aSec">"a = " << <span id="aVal">a</span></span> << " " << <span id="bSec">"b = " << <span id="bVal">b</span></span><< "\n";</span>
 	<span id='swapLine' class="ct-green-color">swap(a, b);</span>
-	<span id='printAfterSwapInMain'>cout << "After swapping in main : a = " << a << "\t" << "b = " << b << "\n";</span>
-}</span>
+	<span id='printAfterSwapInMain'>cout << <span id="printAftr">"After swapping in main : "</span> << <span id="aSec1">"a = " << <span id="aVal1">a</span></span> << " " << <span id="bSec1">"b = " << <span id="bVal1">b</span></span><< "\n";</span>
+<span id="end">}</span></span>
 <span id='swapMethodBlock'>int <span class="ct-green-color">swap(int x, int y)</span> {
 	<span id='tDeclareLine'>int t;</span>
 	<span id='tAssignLine'>t = x;</span>
 	<span id='xLine'>x = y;</span>
 	<span id='yLine'>y = t;</span>
-	<span id='printAfterSwapInSwap'>cout << "After swapping in swap : x = " << x << "\t" << "y = " << y << "\n";</span>
+	<span id='printAfterSwapInSwap'>cout << <span id="swapAftr">"After swapping in swap : "</span> << <span id="valX">"x = " << <span id="valXVal">x</span></span> << " " << <span id="valY">"y = " << <span id="valYVal">y</span></span> << "\n";</span>
 <span id='swapMethodCloseBrace'>}</span></span>
 </pre>
 					</div>
@@ -262,13 +271,19 @@ pre > span {
 					</div>
 					
 					<div class="col-xs-12 margin-top30">
-						<div id="outputBox" class="output-console center">
+						<div id="outputBox" class="output-console opacity00 center">
 							<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><div class="visibility-hidden">Before swapping in main : a = <span class='ct-blue-color'>5</span>   
-		b = <span class='ct-blue-color'>10</span></div>
-<div class="visibility-hidden">After swapping in swap : x = <span class='ct-blue-color'>10</span>   y = <span class='ct-blue-color'>5</span></div>
-<div class="visibility-hidden">After swapping in main : a = <span class='ct-blue-color'>5</span>   b = <span class='ct-blue-color'>10</span></div>
-</div>
+								<div class="output-console-body">
+									<div id = "bfrSwap" class="visibility-hidden">Before swapping in main : <span id="aBfr" class="opacity00">a = <span class='ct-code-b-yellow opacity00' id="aConsVal">5</span></span>
+										<span id="bBfr" class="opacity00">b = <span id="bConsVal" class='ct-code-b-yellow opacity00 bConsVal'>10</span></span>
+									</div>
+									<div id = "aftrSwap" class="visibility-hidden">After swapping in swap : <span id="xAftr" class="opacity00">x = <span class='ct-code-b-yellow opacity00' id="xConsVal">10</span></span>  
+										<span id="yAftr" class="opacity00">y = <span  class='ct-code-b-yellow opacity00' id="yConsVal">5</span></span>
+									</div>
+									<div id = "aftrMain" class="visibility-hidden">After swapping in main : <span id="aAftr" class="opacity00">a = <span class='ct-code-b-yellow opacity00' id="aConsVal1">5</span></span>   
+										<span id="bAftr" class="opacity00">b = <span id="bConsVal1" class='ct-code-b-yellow opacity00'>10</span></span>
+									</div>
+								</div>
 						</div>
 					</div>
 				</div>

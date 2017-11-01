@@ -1813,7 +1813,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Automatic Variables</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>03-10-2016</td>
 					</tr>
 
@@ -1838,7 +1838,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Static Variables</td>
 						<td>Ajay</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>04-10-2016</td>
 					</tr>
 
@@ -1850,7 +1850,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Register Variables</td>
 						<td>Padmaja</td>
 						<td></td>
-						<td></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>28-10-2016</td>
 					</tr>
 
@@ -1862,7 +1862,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; All 4 with	differences</td>
 						<td>Pavan</td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-08-2016</td>
 					</tr>
 				</tbody>
@@ -2187,7 +2187,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Structure Declaration and definition (3 different types in one demo)</td>
 						<td>Suresh</td>
 						<td></td>
-						<td></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>17-09-2016</td>
 					</tr>
 
