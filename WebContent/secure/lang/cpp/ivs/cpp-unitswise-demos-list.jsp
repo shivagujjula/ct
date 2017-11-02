@@ -77,7 +77,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">History of C++ Language</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -90,7 +90,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C++ program life cycle</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -103,7 +103,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C++ Identifiers</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -115,7 +115,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Coding Conventions in a C++ program</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td></td>
 					</tr>
 
@@ -308,7 +308,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of get()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -320,7 +320,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of put()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -332,7 +332,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of getline()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -344,7 +344,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of read()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -356,7 +356,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of write()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -368,7 +368,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of gcount()</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -380,7 +380,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of fill()</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>17-10-17</td>
 					</tr>
 					
@@ -392,7 +392,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of precision()</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>17-10-17</td>
 					</tr>
 					
@@ -413,7 +413,7 @@
 						</td>
 						<td>Rajashekar& Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>17-10-17</td>
 					</tr>
 					
@@ -437,7 +437,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of width()</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>17-10-17</td>
 					</tr>
 					
@@ -716,7 +716,7 @@
 						</td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>24-10-17</td>
 					</tr>
 					
@@ -1250,7 +1250,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">string functions</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>07-10-17</td>
 					</tr>
 					
@@ -1262,7 +1262,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String using gets() and puts()</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1275,7 +1275,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String length</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1287,7 +1287,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Copy of a string</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1367,7 +1367,7 @@
 						</td>
 						<td>Sathish & Shanthan</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>01-11-17</td>
 					</tr>
 					
@@ -1445,7 +1445,7 @@
 						</td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1560,7 +1560,7 @@
 						</td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>16-10-17</td>
 					</tr>
 					
@@ -1584,7 +1584,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of nested classes</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1596,7 +1596,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of object memory allocation</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1695,7 +1695,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static data members in constructors</span></td>
 						<td>Anil</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>18-10-17</td>
 					</tr>
 					
@@ -1826,7 +1826,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation about types of inheritance</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					<tr>
@@ -1837,7 +1837,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual base inheritance</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					<tr>
@@ -1848,7 +1848,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual destructor</span></td>
 						<td>Karthik</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>25-10-17</td>
 					</tr>
 					
@@ -1936,7 +1936,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation about function with templates</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>16-10-17</td>
 					</tr>
 					<tr>
@@ -1947,7 +1947,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Class templates with parameters</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>16-10-17</td>
 					</tr>
 				</tbody>
