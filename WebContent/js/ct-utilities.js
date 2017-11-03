@@ -31,6 +31,15 @@ function buttonAppend(selector, callBackFunction) {
 	});
 }
 
+function zoomingEffect(id, callBackFunction) {
+	$(id).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+		$(id).removeClass("animated zoomIn");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
+}
+
 function transferEffectFunction(selector1, selector2, jsonObj) {
 	var duration = 1000;
 	if (jsonObj.hasOwnProperty('duration')) {

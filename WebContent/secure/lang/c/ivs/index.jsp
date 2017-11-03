@@ -2199,7 +2199,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Processing of a Structure using dot operator</td>
 						<td>Ramya</td>
 						<td>sekhar</td>
-						<td>completed on 22-09-2016</td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>22-09-2016</td>
 					</tr>
 

@@ -74,6 +74,80 @@ function flipEffect(selector, val, jsonObj) {
 	}});
 }
 
+function characters() {
+	$("[contenteditable=true]").on("keydown keyup", function(e) {
+		$(".ct-code-b-red").remove();
+		var max = $(this).attr("maxlength");
+		if (($(this).text().length) >= max) {
+			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Please restrict the length of text to 20 characters,"
+						+ " because the array variable size is name[20].</div>");
+			if ((e.which == 46) || (e.which == 8) || (e.which == 37) || (e.which == 39)) {
+				return true;
+			} else {
+			e.preventDefault();
+			}
+		}
+		if ($("[contenteditable=true]").text().length == 0) {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Please enter string.</div>");
+		} else {
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
+		} 
+		
+		if (((e.which >= 60 && e.which <= 90))) {
+			return true;
+		} else {
+			if ((e.which == 46) || (e.which == 8) || (e.which == 37) || (e.which == 39)) {
+				return true;
+			}  else {
+				e.preventDefault();
+			}
+		}
+		
+	});
+}
+
+
+function numbers(val) {
+	$("[contenteditable=true]").on('keydown', function(e) {
+		$('.ct-code-b-red').remove();
+		var max = $(this).attr('maxlength');
+		if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
+			return;
+		}
+		if (e.keyCode == 109 || e.keyCode == 189 || e.keyCode == 173) {
+			if ($(this).text().length < 1) {	
+				return;
+			} else {
+				e.preventDefault();
+			}
+		}
+		if (((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) || (e.keyCode == 13 || e.keyCode ==9)){
+			e.preventDefault();
+		}
+		if ($(this).text().length > max - 1) {
+			$('.introjs-tooltiptext').append('<div class="ct-code-b-red">Please restrict the maximum length to '+ val +' digits only.</div>')
+			e.preventDefault();
+		}
+	});
+	$("[contenteditable=true]").on('keyup', function(e) {
+		var max = $(this).attr('maxlength');
+		if ($(this).text().length != max ) {
+			$('.ct-code-b-red').remove();
+		}
+		if ($(this).text().length != 0) {
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
+		} else {
+			if ($('ct-code-b-red').length == 0) {
+				$('.introjs-tooltiptext').append('<div class="ct-code-b-red">Please enter any integer.</div>');
+			}
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		}
+	});
+}
+
+
+
 function bounceFromEffextWithTimelineMax(selector1, selector2, callBackFunction) {
 	var timelineMax = new TimelineMax();
 	var l1 = $(selector1).offset();
