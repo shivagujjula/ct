@@ -26,6 +26,10 @@
 .margin10 {
 	margin-top : 10px;
 }
+.user-btn, .nextBtn2 {
+	width : 46px;
+	background-color:#5bc0de
+}
 
  #firstDiv {
 	margin-left : -15px !important;

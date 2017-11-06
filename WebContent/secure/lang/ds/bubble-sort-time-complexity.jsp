@@ -276,10 +276,13 @@ div, span {
 							<span id="incrementId2">j<span id="incrementOperator2">++</span></span>) {</span>
 						</td>
 						<td class="td-border" id="unitLine2">
-							<span id="unitLineText2" style="padding: 1px 10px;">
-							<span class="opacity00" id="secondUnitValue1">n</span> <span id="plusOp3" class="opacity00">+</span> 
-							<span class="opacity00" id="secondUnitValue2">n * ((n - i - 1) + 1)</span>
-							 <span id="plusOp4" class="opacity00">+</span> <span class="opacity00" id="secondUnitValue3">n * (n - i - 1)</span></span>
+								<span id="unitLineText2" style="padding: 1px 10px;">
+								<span id="nMultiplyId1" class="opacity00">n * (</span>
+								<span class="opacity00" id="secondUnitValue1">1</span> <span id="plusOp3" class="opacity00">+</span> 
+								<span class="opacity00" id="secondUnitValue2">(n - i - 1) + 1</span>
+								 <span id="plusOp4" class="opacity00">+</span> <span class="opacity00" id="secondUnitValue3">n - i - 1</span>
+								 <span id="nMultiplyId2" class="opacity00">)</span>
+							 </span>
 						</td>
 					</tr>
 					<tr>
@@ -337,7 +340,7 @@ div, span {
 							<span class="opacity00" id="codeLine6"><b>Total = </b></span>
 						</td>
 						<td class="td-border" id="unitLine6">
-							<span id="unitLineText6" class="opacity00" style="padding: 2px 42px;">2<span id="nValue1">n<sup>2</sup></span> + 3n - 3in + 1</span>
+							<span id="unitLineText6" class="opacity00" style="padding: 2px 42px;">2<span id="nValue1">n<sup>2</sup></span> + 3n - 2ni - i + 1</span>
 						</td>
 					</tr>
 				</tbody>
@@ -381,7 +384,7 @@ div, span {
 				<div style="margin-top: 45px;">
 					<span>
 						<span id="arrDec" style="font-family: monospace;">
-							int arr[] = {<div class="arr-ele" id="number0" arrayvalue="0">1</div>,<div class="arr-ele" id="number1" arrayvalue="1">23</div>,<div class="arr-ele" id="number2" arrayvalue="2">5</div>,<div class="arr-ele" id="number3" arrayvalue="3">13</div>,<div class="arr-ele" id="number4" arrayvalue="4">12</div>};
+							int a[] = {<div class="arr-ele" id="number0" arrayvalue="0">1</div>,<div class="arr-ele" id="number1" arrayvalue="1">23</div>,<div class="arr-ele" id="number2" arrayvalue="2">5</div>,<div class="arr-ele" id="number3" arrayvalue="3">13</div>,<div class="arr-ele" id="number4" arrayvalue="4">12</div>};
 						</span>
 					</span>
 				</div>
@@ -406,7 +409,7 @@ $(document).ready(function() {
 });
 
 var staringPoint = 1;
-var endingPoint = 6;
+var endingPoint = 5;
 var flag = true;
 var outerIdx = 0;
 var len = 6, elementAtInnerIdx;
@@ -440,12 +443,28 @@ function introGuide() {
 		}, {
 			element : '#arrTable',
 			intro : '',
+			animateStep : 'sortingInAction'
 		}, {
 			element : '#divTable',
 			intro : '',
+			animateStep : 'firstStep',
 		}, {
 			element : '#finalDiv',
 			intro : '',
+		}, {
+			element : '#divTable',
+			intro : '',
+			animateStep : 'secondStep',
+			position : 'right',
+		}, {
+			element : '#arrTable',
+			intro : '',
+			animateStep : 'sortingExample'
+		}, {
+			element : '#divTable',
+			intro : '',
+			animateStep : 'thirdStep',
+			position : 'right',
 		}, {
 			element : "#restart",
 			intro : '',
@@ -483,48 +502,97 @@ function introGuide() {
 			});
 			break;
 		case 'arrTable':
-			$(".introjs-helperLayer").one("transitionend", function() {
-				$('.arr-ele').attr('maxlength',2);
-			    $('.arr-ele').attr('contenteditable','true');
-				$('.introjs-tooltip').removeClass('hide');
-				text = 'Here, we are declaring and initializing an integer array with 5 elements : '
-						+ '<span class="ct-code-b-yellow element" arrayvalue="0">'+ parseInt($("#number0").text()) +'</span>,'
-						+ '<span class="ct-code-b-yellow element" arrayvalue="1">'+ parseInt($("#number1").text()) +'</span>,'
-						+ '<span class="ct-code-b-yellow element" arrayvalue="2">'+ parseInt($("#number2").text()) +'</span>,'
-						+ '<span class="ct-code-b-yellow element" arrayvalue="3">'+ parseInt($("#number3").text()) +'</span>,'
-						+ '<span class="ct-code-b-yellow element" arrayvalue="4">'+ parseInt($("#number4").text()) +'</span>';
-				typing(".introjs-tooltiptext", text, function() {
-					$('#number0').focus();
-					changeValue();
-					buttonAppendFunction(".introjs-tooltiptext", function() {
-						zoomingEffect("#arrElements", function() {
-							buttonAppendFunction(".introjs-tooltiptext", function() {
-								outerLoopConditionChecking();
-								//	bubbleSort();
-							});
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'sortingInAction':
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$('.arr-ele').attr('maxlength',2);
+				    $('.arr-ele').attr('contenteditable','true');
+					$('.introjs-tooltip').removeClass('hide');
+					text = 'Here, we are declaring and initializing an integer array with 5 elements : '
+							+ '<span class="ct-code-b-yellow element" arrayvalue="0">'+ parseInt($("#number0").text()) +'</span>,'
+							+ '<span class="ct-code-b-yellow element" arrayvalue="1">'+ parseInt($("#number1").text()) +'</span>,'
+							+ '<span class="ct-code-b-yellow element" arrayvalue="2">'+ parseInt($("#number2").text()) +'</span>,'
+							+ '<span class="ct-code-b-yellow element" arrayvalue="3">'+ parseInt($("#number3").text()) +'</span>,'
+							+ '<span class="ct-code-b-yellow element" arrayvalue="4">'+ parseInt($("#number4").text()) +'</span>';
+					typing(".introjs-tooltiptext", text, function() {
+						$('#number0').focus();
+						changeValue();
+						buttonAppendFunction(".introjs-tooltiptext", function() {
+							zoomingEffect("#arrElements", function() {
+								buttonAppendFunction(".introjs-tooltiptext", function() {
+									//	outerLoopConditionChecking();
+										bubbleSort();
+								});
+							})
 						})
-					})
-				});
-			});
-			break;
-		case 'divTable':
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Now find the time complexity for the bubble sort function.";
-				typing(".introjs-tooltiptext", text, function() {
-					buttonAppendFunction(".introjs-tooltiptext", function() {
-						$(".introjs-tooltip").hide();
-						firstStepAnimation();
 					});
 				});
-			});
+				break;
+			case 'sortingExample':
+				$(".introjs-helperLayer").one("transitionend", function() {
+					var text = "From the above <span class='ct-code-b-yellow'>a[]</span> length is 5. So the total number of comparison will be : "+
+					"<ul><li>1st Phase - 5 time</li><li>2nd Phase - 4 time</li><li>3rd Phase - 3 time</li><li>4th Phase - 2 time</li>"+
+					"<li>5th Phase - 1 time</li></ul>";
+					typing(".introjs-tooltiptext", text, function() {
+						
+					});
+				});
+			}
+			break;
+		case 'divTable':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'firstStep':
+				$(".introjs-helperLayer").one("transitionend", function() {
+					var text = "Now find the time complexity for the bubble sort function.";
+					typing(".introjs-tooltiptext", text, function() {
+						buttonAppendFunction(".introjs-tooltiptext", function() {
+							$(".introjs-tooltip").hide();
+							firstStepAnimation();
+						});
+					});
+				});
+				break;
+			case 'secondStep':
+				$(".introjs-helperLayer").one("transitionend", function() {
+					var text = "<span id='tooltipTextId'>We can calculate <span class='ct-code-b-yellow'>time complexity</span> in "+
+					"another scenario.</span>";
+					typing('.introjs-tooltiptext', text, function() {
+						buttonAppendFunction(".introjs-tooltiptext", function() {
+							$("#tooltipTextId").append("<ul><li id='liTooltipTextId'>We can observe that in first phase inner loop run "+
+							"<span class='ct-code-b-yellow'>"+
+							"n</span> time then in second phase <span class='ct-code-b-yellow'>n-1</span>, and <span class='ct-code-b-yellow'>"+
+							"n-2</span> and so on. That means in every iteration its value goes down.</li></ul>");
+							typing('#liTooltipTextId', $('#liTooltipTextId').html(), function() {
+								$(".introjs-nextbutton").show();
+							});
+						});
+					});
+				});
+				break;
+			case 'thirdStep':
+				$(".introjs-helperLayer").one("transitionend", function() {
+					var text = "So we've noticed that the total number of comparisons done is n + (n - 1) + ... + 2 + 1."
+					typing(".introjs-tooltiptext", text, function() {
+						
+						$(".introjs-nextbutton").show();
+					});
+				});
+				break;
+			}
 			break;
 		case 'finalDiv':
 			$(".introjs-helperLayer").one("transitionend", function() {
 				TweenMax.to($("#finalDiv"), 1, {opacity: 1, onComplete:function() {
-					$("#nValue1").effect('highlight',{color:'#da5805'}, 1000, function() {
-						tweenmaxAnimation("#nValue1", "#nValue2", function() {
-							$("#nValue2").effect('highlight',{color:'#da5805'}, 1000, function() {
-								setTimeoutFunction();
+					var text = "The most significant term to represent the time complexity of an algorithm.";
+					typing(".introjs-tooltiptext", text, function() {
+						$("#nValue1").effect('highlight',{color:'#da5805'}, 1000, function() {
+							tweenmaxAnimation("#nValue1", "#nValue2", function() {
+								$("#nValue2").effect('highlight',{color:'#da5805'}, 1000, function() {
+									$(".introjs-nextbutton").show();
+									//	setTimeoutFunction();
+								});
 							});
 						});
 					});
@@ -619,7 +687,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 			text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx &lt; len - outerIdx - 1</span>'
 				+ ' evaluates <span class="ct-code-b-red">false</span>.&nbsp;'
 				+ ' <br/><span id="appendedText"></span> <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {
+			typing('#explanationDiv', text, function() {k
 				$('#innerLoop').effect( "highlight",{color: 'lightgreen'}, 800, function() {
 					text = 'The largest element <span class="outer-loop-color">'+ parseInt($('#sortEle' + innerIdx).text()) 
 							+ '</span> will be places at <span class="outer-loop-color">'+ innerIdx 
@@ -887,6 +955,8 @@ function firstStepAnimation() {
 	});
 }
 
+/* But this loop executes <span class='ct-code-b-yellow'>n</span> times because of "+
+"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*1 = n</span> <span class='ct-code-teal'>units of time</span>. */
 function secondStepAnimation() {
 	/* svgAppend($('#divTable'), 'svg');
 	svgMarkerAppend($('#svg'), 'marker'); */
@@ -895,9 +965,7 @@ function secondStepAnimation() {
 		var text = "<ul><li id='initLine2'><span class='for-loop-li-css'>j = 0</span><br/>In the "+
 			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
 			" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
-			"<span class='ct-code-teal'>unit of time</span>. But this loop executes <span class='ct-code-b-yellow'>n</span> times because of "+
-			"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*1 = n</span> <span class='ct-code-teal'>units of time</span>.</li>"+
-			"</ul>";
+			"<span class='ct-code-teal'>unit of time</span>.</li></ul>";
 		typing("#popover2", text, function() {
 			$("#initilizationId2").effect('highlight',{color:'#da5805'}, 1000, function() {
 				transferEffectFunction("#initilizationId2", "#secondUnitValue1", function() {
@@ -909,9 +977,6 @@ function secondStepAnimation() {
 								"executes <span class='ct-code-teal'>n - i - 1</span> "+
 								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
 								"So takes <span class='ct-code-b-yellow'>(n-i-1)+1</span> "+
-								"<span class='ct-code-teal'>units of time</span>. But this loop executes <span class='ct-code-b-yellow'>n</span> "+
-								"times because of "+
-								"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*(n-i-1)+1</span> "+
 								"<span class='ct-code-teal'>units of time</span>.</li>");
 						typing("#conditionLine2", $("#conditionLine2").html(), function() {
 							$("#conditionId2").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -923,16 +988,28 @@ function secondStepAnimation() {
 												"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
 												"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-i-1</span>) number "+
 												"of times. So it takes <span class='ct-code-b-yellow'>n-i-1</span> "+
-												"<span class='ct-code-teal'>units of time</span>. But this loop executes "+
-												"<span class='ct-code-b-yellow'>n</span> times because of "+
-												"the inner for loop. So it takes <span class='ct-code-b-yellow'>n*(n-i-1)</span> "+
 												"<span class='ct-code-teal'>units of time</span>.</li>");
 										typing("#incrementLine2", $("#incrementLine2").html(), function() {
 											$("#incrementId2").effect('highlight',{color:'#da5805'}, 1000, function() {
 												transferEffectFunction("#incrementId2", "#secondUnitValue3", function() {
 													buttonAppendFunction("#popover2", function() {
-														$("#unitLine2").popover("hide");
-														thirdStepAnimation();
+														$("#incrementLine2").append("<li id='nMultiplyText'>But this inner for loop executes "+
+															"<span class='ct-code-b-yellow'>n</span> times because of "+
+															"the outer for loop. So we have to multiply with <span class='ct-code-b-yellow'>n</span>"+
+															" to the inner for loop of <span class='ct-code-teal'>units of time</span>.</li>");
+														typing("#nMultiplyText", $("#nMultiplyText").html(), function() {
+															$("#codeLine1").effect('highlight',{color:'#da5805'}, 1000, function() {
+																$("#codeLine2").effect('highlight',{color:'#da5805'}, 1000, function() {
+																	transferEffectFunction("#codeLine2", "#unitLineText2", function() {
+																		$("#nMultiplyId1, #nMultiplyId2").removeClass("opacity00");
+																		buttonAppendFunction("#popover2", function() {
+																			$("#unitLine2").popover("hide");
+																			thirdStepAnimation();
+																		});
+																	});
+																});
+															});
+														});
 													});
 												});
 											});

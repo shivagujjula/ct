@@ -1,5 +1,5 @@
 var intro;
-var typingInterval = 5;
+var typingInterval = 3;
 var zeros1 = '';
 var binaryNumber = "";
 var number = "";
@@ -67,19 +67,54 @@ function introSteps() {
 		},{
 			element : "#inputDiv",
 			intro : "",
+			tooltipClass: "hide",
 			position:"bottom" 
 		},{
 			element : "#binaryValueDiv",
 			intro : "",
-			position:"right"
+			position:"right",
+			tooltipClass: "hide"
 		},{
 			element : "#restart",
 			intro : "",
 			position : "right"
 		}
 	]});
-	
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "inputDiv":
+			TweenMax.to("#inputDiv", 1, {"opacity" : "0"});
+			$("#firstNum").val("");
+			for (var i = 0; i < $("#values > span").length; i++) {
+				$("#values > span").remove();
+				$("#binaryBox" + i).remove();
+			}
+			$("#onesComplementValue").empty();
+			$("#firstNum").focus();
+			break;
+		case "binaryValueDiv":
+			zeros1 = "";
+			break;
+		}
+	}); 
 	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0 && intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "informationDiv":
@@ -92,12 +127,14 @@ function introSteps() {
 				});
 			break;
 			case "inputDiv":
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer ").one('transitionend', function() {
+				$(".introjs-prevbutton, .introjs-nextbutton").hide();
+				$(".introjs-helperLayer").one('transitionend', function() {
 					TweenMax.to("#inputDiv", 1, {"opacity" : "1"});
 					TweenMax.to("#firstNum", 1, {"opacity" : "1"});
 					TweenMax.to("#shiftNum", 1, {"opacity" : "1", onComplete:function() {
-						var text = "Select a data type and enter a value to perform <span class='ct-code-b-yellow'>one's complement</span>.";
+						$(".introjs-tooltip").removeClass("hide");
+						var text = "Select a data type and enter a value to perform "+
+									"<span class='ct-code-b-yellow'>one's complement</span>.";
 						typing(".introjs-tooltiptext", text, function() {
 							$("#firstNum, #shiftNum").effect( "highlight",{color: 'yellow'}, 1500 );
 							$("#firstNum").focus();
@@ -106,29 +143,30 @@ function introSteps() {
 				});
 			break;
 			case "binaryValueDiv" : 
-				$('.introjs-nextbutton').hide();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var value = $('#firstNum').val();
 				var positiveNumber = Math.abs(value);
 				var num1 = parseInt(positiveNumber, 10).toString(2);
 				count = num1.length;
-				
 				flipSpeed = 120 / (count * 60);
-				
 				if ($("#type").val() == "int") {
 					for(var i=num1.length; i < 16; i++) {
 						zeros1 = 0 + zeros1;
 					}
 					$.each((zeros1+num1).split(""), function(ind, val) {
 						number = number + " " + val;
-						$("#values").append("<span id= binaryBox" + ind + " class='box text-center ct-code-b-black opacity00'><span class='opacity00' id= binarySpan"+ ind +">"+ val +"</span></span>");
+						$("#values").append("<span id= binaryBox" + ind + " class='box text-center ct-code-b-black opacity00'>"+
+										"<span class='opacity00' id= binarySpan"+ ind +">"+ val +"</span></span>");
 					});
+					
 				} else if ($("#type").val() == "short int") {
 					for(var i=num1.length; i < 8; i++) {
 						zeros1 = 0 + zeros1;
 					}
 					$.each((zeros1+num1).split(""), function(ind, val) {
 						number = number + " " + val;
-						$("#values").append("<span id= binaryBox" + ind + " class='box text-center ct-code-b-black opacity00'><span class='opacity00' id= binarySpan"+ ind +">"+ val +"</span></span>");
+						$("#values").append("<span id= binaryBox" + ind + " class='box text-center ct-code-b-black opacity00'>"+
+										"<span class='opacity00' id= binarySpan"+ ind +">"+ val +"</span></span>");
 					});
 				} else if ($("#type").val() == "long int") {
 					for(var i=num1.length; i < 32; i++) {
@@ -136,7 +174,8 @@ function introSteps() {
 					}
 					$.each((zeros1+num1).split(""), function(ind, val) {
 						number = number + " " + val;
-						$("#values").append("<span id= binaryBox" + ind + " class='box text-center ct-code-b-black opacity00'><span class='opacity00' id= binarySpan"+ ind +">"+ val +"</span></span>");
+						$("#values").append("<span id= binaryBox" + ind + " class='box text-center ct-code-b-black opacity00'>"+
+										"<span class='opacity00' id= binarySpan"+ ind +">"+ val +"</span></span>");
 					});
 				}
 				intro.refresh();				
@@ -154,13 +193,14 @@ function introSteps() {
 							+ " long int occupies <span class='ct-code-b-yellow'>32 bits</span>, let us " 
 							+ "consider <span class='ct-code-b-yellow'>32 slots</span>.</li></ul>";
 					}
+					$(".introjs-tooltip").removeClass("hide");
 					typing(".introjs-tooltiptext", text, function() {
 						$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'showBinaryDigits()'>Next &#8594;</a>");			
 					});
 				});
 			break;
 			case "restart":
-				$('.introjs-nextbutton').hide();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$('#informationDiv').css({"z-index": "0"});
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
@@ -174,7 +214,7 @@ function introSteps() {
 		}
 	});
 	intro.start();
-	$('.introjs-nextbutton').show();
+	$('.introjs-nextbutton').hide();
 	$('.introjs-prevbutton').hide();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
@@ -207,6 +247,7 @@ function flipEffect(selector, val, callBackFunction) {
 
 function showBinaryDigits() {
 $(".nextButton").remove();
+$("#values").prepend("<span class='margin-top20'>Binary number :&emsp;&emsp;&emsp;&emsp;</span>");
 for (var i = 0; i < $("#values > span").length; i++) {
 	TweenMax.to("#binaryBox" + i, 1, {opacity : 1});
 	TweenMax.from($("#binaryBox" + i), 0.5, {top: -100});
@@ -228,7 +269,8 @@ for (var i = $("#values > span").length - 1; i >= 0; i--) {
 	$("#binarySpan" + i).removeClass("opacity00").fadeIn("slow", 1);
 }
 for (var i = 0; i < $("#values > span").length; i++) {
-	$("#onesComplementValue").append("<span id= 'complementValue" + i + "' class='box-yellow text-center ct-code-b-black opacity00'><span style='display:inline-block;' id= 'complementValueSpan" + i + "'>" + 0 + "</span></span>");
+	$("#onesComplementValue").append("<span id= 'complementValue" + i + "' class='box-yellow text-center ct-code-b-black opacity00'>"+
+							"<span style='display:inline-block;' id= 'complementValueSpan" + i + "'>" + 0 + "</span></span>");
 }
 $(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'createComplementBoxes()'>Next &#8594;</a>");
 }
@@ -246,8 +288,9 @@ for (var i = 0; i < $("#onesComplementValue > span").length; i++) {
 	$("#complementValueSpan" + i).text($("#binaryBox" + i).text());
 }
 var length = $("#onesComplementValue > span").length;
-var text = "The <span class='ct-code-b-yellow'>one's complement</span> form involves converting <span class='ct-code-b-yellow'>1's</span> to <span class='ct-code-b-yellow'>0's</span>" 
-	+ " and <span class='ct-code-b-yellow'>0's</span> to <span class='ct-code-b-yellow'>1's</span>."
+var text = "The <span class='ct-code-b-yellow'>one's complement</span> form involves converting "+
+			"<span class='ct-code-b-yellow'>1's</span> to <span class='ct-code-b-yellow'>0's</span>" 
+			+ " and <span class='ct-code-b-yellow'>0's</span> to <span class='ct-code-b-yellow'>1's</span>."
 typing(".introjs-tooltiptext", text, function() {
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'flipToComplement(" + length + ")'>Next &#8594;</a>");
 });
@@ -284,9 +327,12 @@ if(id >= 0) {
 		});
   	}
 } else {
-	var text = "After fliping, the <span class='ct-code-b-yellow'>one's complement</span> of <span class='ct-code-b-yellow'>" + $("#firstNum").val() + "</span> is represented as <span class='ct-code-b-yellow'> ~" + $("#firstNum").val() + "</span> value."
+	var text = "After fliping, the <span class='ct-code-b-yellow'>one's complement</span>"+
+				" of <span class='ct-code-b-yellow'>" + $("#firstNum").val() + 
+				"</span> is represented as <span class='ct-code-b-yellow'> ~" + $("#firstNum").val() + "</span> value."
 	typing(".introjs-tooltiptext", text, function() {
 		$('.introjs-nextbutton').show();
+		$('.introjs-prevbutton').show();
 	});
 }
 }

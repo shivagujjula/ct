@@ -496,9 +496,9 @@
 							href="javascript:opendialog('float Data-type', 'float-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">float Data-type</span></td>
 						<td>Shiva</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> by <b>shanthan</b></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 
 					<tr>
@@ -508,9 +508,9 @@
 							href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">double Data-type</span></td>
 						<td>Shiva</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> by <b>shanthan</b></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 
 					<tr>
@@ -520,9 +520,9 @@
 							href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span></td>
 						<td>Shiva</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> by <b>shanthan</b></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 
 					<tr>
@@ -568,9 +568,9 @@
 							href="javascript:opendialog('Explanation of ones complement', 'ones-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of	one's complement</span></td>
 						<td>Shiva</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> by <b>shanthan</b></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 
 					<tr>
@@ -580,9 +580,9 @@
 							href="javascript:opendialog('Explanation of twos complement', 'twos-complement.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of two's complement</span></td>
 						<td>Shiva</td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> by <b>shanthan</b></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 					
 					<tr>
@@ -1539,8 +1539,8 @@
 						</td>
 						<td>Shanthan</td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 					
 					<tr>
@@ -1872,14 +1872,14 @@
 					
 					<tr>
 						<td>1</td>
-						<td></td>
+						<td>Pure virtual functions</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
+							href="javascript:opendialog('Pure virtual functions', 'pure-virtual-functions.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Pure virtual functions</span></td>
+						<td>Shanthan</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>04-11-17</td>
 					</tr>
 				</tbody>
 			</table>

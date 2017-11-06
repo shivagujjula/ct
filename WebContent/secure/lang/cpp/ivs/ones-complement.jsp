@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +16,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js-min/oc.min.js"></script>
+<script src="/secure/lang/cpp/js/ones-complement.js"></script>
+<script src="/secure/lang/cpp/js-min/oc.min.js"></script> 
 
 <title>one's complement</title>
 <style>
@@ -176,7 +175,9 @@ table {
 					class='ct-code-b-green'>1's</span> to <span class='ct-code-b-green'>0's</span> and all <span
 					class='ct-code-b-green'>0's</span> to <span class='ct-code-b-green'>1's</span>.
 				</li>
-				<li class="opacity00" id="li2"><b>One's complement</b> form is used in <b>two's complement</b> form which we will learn later.</li>
+				<li class="opacity00" id="li2"><b>One's complement</b> form is used in 
+					<b>two's complement</b> form which we will learn later.
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -188,7 +189,8 @@ table {
 			<option value="long int">long int</option>
 		</select> 
 		<span id="number" style="margin-left: 20px;">Number : </span>
-		<input type="text" id="firstNum" class="input-text opacity00" contenteditable="true" maxlength="2" placeholder="eg: 34" style="margin-left: 20px;"/>
+		<input type="text" id="firstNum" class="input-text opacity00" 
+				contenteditable="true" maxlength="2" placeholder="eg: 34" style="margin-left: 20px;"/>
 	</div>
 	<div class="col-xs-offset-3 col-xs-7 binary-value-div margin-top20" id="binaryValueDiv" style="min-height: 200px;">
 		<div class="col-xs-12 padding0 margin-top20" id ="values"></div>

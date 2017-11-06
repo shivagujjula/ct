@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +18,8 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/cpp/js-min/tsc.min.js"></script>
+<script src="/secure/lang/cpp/js-min/tsc.min.js"></script> 
+
 
 <title>Two's complement</title>
 <style>
@@ -29,6 +28,10 @@
 	text-align: center;
 	border-radius: 5px;
 	width: 18%;
+}
+.prevButton {
+	 background-color: #5bc0de !important;
+    border-radius: 3px !important;
 }
 
 .ct-code-b-black {
@@ -198,11 +201,13 @@ table {
 					However, since <b>two's complement</b> form on a positive number does not alter the value of the number, 
 					let us consider performing <b>two's complement</b> form on a negative number.
 				</li>
-				<li class="opacity00" id ="li2">The below sequence of steps are followed to arrive at a <b>two's complement</b> of a given value :</li>
-				
-				
+				<li class="opacity00" id ="li2">The below sequence of steps are followed to arrive at a 
+						<b>two's complement</b> of a given value :
+				</li>
+							
 				<ol>
-					<li class="opacity00" id ="li3">The given number has to be converted into its binary form.</li>
+					<li class="opacity00" id ="li3">The given number has to be converted into its binary form.
+					</li>
 					<li class="opacity00" id ="li4"><b>One's complement</b> will be applied on the binary 
 						digits arrived in step 1.<br> (i.e, <span class='ct-code-b-green'><b>0's</b></span> are flipped to 
 						<span class='ct-code-b-green'><b>1's</b></span> and <span class='ct-code-b-green'><b>1's</b>
@@ -210,7 +215,9 @@ table {
 					</li>
 					<li class="opacity00" id ="li5">Finally, <b>1</b> will be added to <b>one's complement</b> value to get
 						<b>two's complement</b> value.<br>
-						Note: Whenever <b>1</b> and <b>1</b> bits are added, it will result in <b>0</b> with <b>1</b> being carried-on as shown in the table.</li>
+						Note: Whenever <b>1</b> and <b>1</b> bits are added, it will result in <b>0</b> with 
+						<b>1</b> being carried-on as shown in the table.
+					</li>
 				</ol>
 			</ul>
 		</div>
@@ -261,17 +268,22 @@ table {
 		<div class="col-xs-12 padding0" id="twosComplementValue" style="margin-top:5px;"></div>
 	</div>
 	<div class="col-xs-offset-6 col-xs-2 margin-top20 opacity00" id="carryBit">
-		<span style="float: right;" id ="carrySpan"><span id="carryDisplay" class="box-yellow text-center ct-code-b-black green-color-css" >
+		<span style="float: right;" id ="carrySpan">
+			<span id="carryDisplay" class="box-yellow text-center ct-code-b-black green-color-css" >
 			<span style="display:inline-block;" id="carryDisplaySpan">1</span>
-      </span> is the carry-on bit</span>
+      		</span> is the carry-on bit
+      	</span>
 	</div>
-	<div class="col-xs-offset-1 col-xs-10 binary-value-div" id="animationDiv2">
+	<div class="col-xs-offset-1 col-xs-10 margin-top20 binary-value-div" id="animationDiv2">
 		<div class="col-xs-12 padding0 margin-top20" id ="secondBinaryValue"></div>
 		<div class="col-xs-12 padding0 margin-top20" id="secondOnesComplementValue"></div>
 		<div class="col-xs-12 padding0" id="secondAddOne" style="margin-top:5px;"></div>
 		<div class="col-xs-12 padding0" id="result" style="margin-top:5px;"></div>
 	</div>
-	<div class="col-xs-offset-5 col-xs-4 opacity00" id="decimalValue"><span id = "displayText"> The decimal value is : </span></div>
-	<div style="min-height:200px;" id="extraDiv"></div>
+	<div class="col-xs-offset-5 col-xs-4 margin-top20 opacity00" id="decimalValue">
+		<span id = "displayText"> The decimal value is : </span>
+	</div>
+	<div style="min-height:200px;" id="extraDiv">
+	</div>
 </body>
 </html>

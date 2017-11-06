@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/socao.min.js"></script> 
+<script type="text/javascript" src="/secure/lang/cpp/js-min/socao.min.js"></script>  
 <style>
 
 .margin-top-20 {
@@ -36,9 +36,9 @@
 	border: 1px solid gray;
 	border-radius: 5px;
 	min-height: 230px;
-	padding-left: 50px;;
+	padding-left: 35px;;
 	font-family: monospace;
-	width: 410px;
+	width: 340px;
 	-moz-tab-size: 3;
 	background-color: lightyellow;
 	tab-size: 3;
@@ -52,7 +52,7 @@
 	min-height: 230px;
 	padding: 20px;
 	font-family: monospace;
-	width: 410px;
+	width: 340px;
 	-moz-tab-size: 3;
 	background-color: lightyellow;
 	tab-size: 3;
@@ -63,6 +63,12 @@
 .user-button {
 	background-color: green;
 }
+
+
+.user-button1 {
+	background-color: #5bc0de !important;
+}
+
 
 #informationDiv {
 	border: 1px solid gray;
@@ -118,30 +124,31 @@ stroke: black;
 .box-border {
     border: 1px solid grey;
     border-radius: 8px;
-    height: 240px;
-    width: 320px;
+    height: 220px;
+    width: 260px;
 }
+
 .box-border2 {
 	border: 1px solid grey;
 	border-radius: 8px;
-	       height: 115px;
-    width: 130px;
+    height: 100px;
+    width : 120px;
+    margin-left : 40px;
 }
 .box-border1 {
 	border: 1px solid grey;
     border-radius: 5px;
-    padding: 8px;
-      
-          height: 45px;
+    padding: 10px;
+    height: 45px;
     width: 45px;
-    margin-left: 25px;
+    margin-left: 21px;
     bottom: 39px;
     margin-top: 5px;
 }
 .box-border3 {
     border: 1px solid grey;
     border-radius: 5px;
-   margin: 8px;
+        margin: 3px 10px 10px 10px;
     height: 40px;
     width: 40px;
     }
@@ -151,6 +158,9 @@ stroke: black;
     height:90px;
     width: 90px;
     
+}
+.padding00 {
+	padding : 0px;
 }
 
 .output-console-body {
@@ -182,16 +192,13 @@ stroke: black;
 				<ul>
 					<li id="li1" class="margin-top-10 opacity00">A <b>class</b>  which is declared outside of
 						 all functions in a program is called <b class="ct-green-color">global class</b>.</li>
-		 			 	<a class="introjs-button user-button opacity00" id='nextButton'>Next&#8594;</a>
-	  		  		<li id="li2" class="margin-top-10 opacity00">An <b>object</b> is said to be 
+		 			<li id="li2" class="margin-top-10 opacity00">An <b>object</b> is said to be 
 	  	  				<b class="ct-green-color">global object</b>, when the object is declared outside of all functions.</li>
 	  	  				<a class="introjs-button user-button opacity00" id='nextButton'>Next&#8594;</a>
 	  		  		<li id="li3" class="margin-top-10 opacity00">A <b>class</b> which is declared within
 	  	  				 a function is said to be <b class="ct-green-color">local class</b>.</li>
-	  	  				<a class="introjs-button user-button opacity00" id='nextButton'>Next&#8594;</a>
-	  	 	  		<li id="li4" class="margin-top-10 opacity00">An <b>object</b> is a said to be 
+	  	  			<li id="li4" class="margin-top-10 opacity00">An <b>object</b> is a said to be 
 	  	  				<b class="ct-green-color">local object</b>, when the object is  declared within the function declaration.</li>
-	  	  				<a class="introjs-button user-button opacity00" id='nextButton'>Next&#8594;</a>	
 				</ul>
 			</div>
 		</div>
@@ -216,15 +223,15 @@ using namespace std;
   	 <span id="cout1">cout << <b class='ct-red-color'>out</b>.id << endl;</span>
   	 <span id="func1">display();</span>
   	 <span id="cout4">cout << <b class='ct-red-color'>out</b>.id << endl;</span>	 
-}</span>
+<span id="end">}</span></span>
 </pre>
 				</div>
 			<div class="col-xs-8 col-xs-offset-2">
 <pre class="classCode1 hide" id="code1">#include &lt;iostream&gt;
 using namespace std;
 <span id="Outer"><b class='ct-green-color'>class</b> <b class='ct-blue-color'>Outer</b> {
-		<span>public :</span>
-		   <span  id="variable2">int id;</span>
+	<span>public :</span>
+	   <span  id="variable2">int id;</span>
 };</span>
 <span id="main1">int main() {
 	 <span id="Inner"><b class='ct-green-color'>class</b> <b class='ct-blue-color'>Inner</b> {
@@ -237,55 +244,59 @@ using namespace std;
  	 <span id="objVal4"><b class='ct-red-color'>out</b>.id =  <span id="value4">401</span>;</span>
  	 <span id="cout3">cout << <b class='ct-red-color'>inn</b>.age  << endl;</span>
 	 <span id="cout5">cout << <b class='ct-red-color'>out</b>.id  << endl;</span>  
-}</span>
+<span id="end1">}</span></span>
 </pre>
 				</div>
 			</div>
 			<div class="col-xs-4 margin-top-20">
-				<div class="col-xs-8 col-xs-offset-2 margin-top-20 box-border opacity00"  id="animationBox">
-					<div class="col-xs-12 margin-top-20">
-						<div id="s1" class="col-xs-2 col-xs-offset-5 opacity00"><b style="color : maroon;">out</b>
-						</div>
+				<div class="col-xs-12" style="padding-left:25px;">
+					<div class="col-xs-8 col-xs-offset-2 margin-top-20 box-border opacity00"  id="animationBox">
+						<div class="col-xs-12 margin-top-20">
+							<div id="s1" style="color : maroon; margin-left : 45%;"><b>out</b>
+						</div>	
    					</div>
    					<div class="col-xs-12">
 						<div class="col-xs-6 col-xs-offset-3 box-border2 opacity00" id="borderBox">
-							<div id="one" class="text-center margin-top-20 opacity00"><b style="color : maroon; ">id</b>
+							<div id="one" class="text-center opacity00"><b style="color : maroon; ">id</b>
 								<div class="box-border1 text-center opacity00" id="boxParent">
-									<span id="box" class="text-center">
-									</span> 
+									<b id="box" class="text-center">
+									</b> 
 								</div>
 							</div>
 						</div>
 					</div>
    				</div>
   				<div class="col-xs-8 col-xs-offset-2 hide margin-top-20 box-border"  id="animationBox2">
-					<div class="col-xs-6">
-						<div id="s2" class="col-xs-6 col-xs-offset-3 opacity00 margin-top-20 "> <b style="color : maroon;">inn</b> 
+					<div class="col-xs-6 padding00"> 
+						<div id="s2" class="col-xs-6 opacity00 margin-top-20" style="margin-left: 34px;"> 
+							<b style="color : maroon;">inn</b> 
 						</div>
-						<div class="col-xs-12 margin-top-20">
+						<div class="col-xs-12">
 							<div class="col-xs-8 box-border4 opacity00" id="borderBox1">
 								<div id="three" class="text-center opacity00 "><b style="color : maroon">age</b>
 									<div class="box-border3 text-center opacity00" id="boxParent2">
-									<div id="box2" style="padding-top : 9px;"  class="text-center"></div>
+										<div style="padding-top : 9px;"><b id="box2"  class="text-center"></b></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-6">
-						<div id="s3" class="col-xs-6 col-xs-offset-3 margin-top-20 opacity00"><b style="color : maroon; margin-left : 20px;">out</b> 
+					<div class="col-xs-6 padding00">
+						<div id="s3" class="col-xs-6 margin-top-20 opacity00" style="margin-left: 30%;">
+							<b style="color : maroon;">out</b> 
 						</div>
-						<div class="col-xs-12 margin-top-20">
-							<div class="col-xs-8  col-xs-offset-2 opacity00 box-border4" id="borderBox2">
+						<div class="col-xs-12">
+							<div class="col-xs-8  opacity00 box-border4" id="borderBox2">
 								<div id="four" class="text-center opacity00"><b style="color : maroon">id</b>
 									<div class="box-border3 text-center opacity00" id="boxParent3">
-										<div id="box3" style="padding-top : 9px;"   class="text-center"></div>
+										<div style="padding-top : 9px;"><b id="box3"  class="text-center"></b></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 			<div class="col-xs-4 margin-top-20">
 				<div id="outputDiv" class="opacity00" >

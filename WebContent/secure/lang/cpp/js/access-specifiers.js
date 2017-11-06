@@ -34,6 +34,7 @@ function introGuide() {
 		},{
 			element : "#preBody", 
 			intro : "",
+			tooltipClass : 'hide',
 			position : "right"
 		},{
 			element : "#class",
@@ -47,6 +48,7 @@ function introGuide() {
 		},{
 			element : "#method1", 
 			intro : "",
+			animateStep : 'one',
 			position : "right"
 		},{
 			element : "#main",
@@ -55,11 +57,13 @@ function introGuide() {
 		},{
 			element : "#object1",
 			intro : "",
+			tooltipClass : 'hide',
 			position : "right"  
 		},{
 			element : "#animationBox",
 			intro : '',
 			animateStep : 'first',
+			tooltipClass : 'hide',
 			position : "bottom" 
 		},{
 			element : "#variable",
@@ -70,6 +74,7 @@ function introGuide() {
 			element : "#animationBox",
 			intro : '',
 			animateStep : 'second',
+			tooltipClass : 'hide',
 			position : "bottom" 
 		},{
 			element : "#funcCall",
@@ -79,16 +84,23 @@ function introGuide() {
 			element : "#outputBody", 
 			intro : "",
 			animateStep : "out1",
+			tooltipClass : 'hide',
+			position : "bottom"  
+		},{
+			element : "#method1", 
+			intro : "",
+			animateStep : 'two',
 			position : "right"  
 		},{
-			element : "#private", 
+			element : "#end",
 			intro : "",
-			position : "right"  
+			position : "right"
 		},{
 			element : "#informationDiv", 
 			intro : "",
 			animateStep : "li4",
-			tooltipClass : 'hide'
+			tooltipClass : 'hide',
+			position : "bottom"
 		},{
 			element : "#preBody1",
 			intro : "",
@@ -117,6 +129,7 @@ function introGuide() {
 			element : "#animationBox2",
 			intro : '',
 			animateStep : "boxfirst",
+			tooltipClass : 'hide',
 			position : "bottom"  
 			
 		},{
@@ -127,6 +140,7 @@ function introGuide() {
 			element : "#animationBox2",
 			intro : '',
 			animateStep : "boxsecond",
+			tooltipClass : 'hide',
 			position : "bottom"  
 		},{
 			element : "#areaVar",
@@ -136,6 +150,7 @@ function introGuide() {
 			element : "#animationBox2",
 			intro : '',
 			animateStep : "boxthird",
+			tooltipClass : 'hide',
 			position : "bottom"  
 			
 		},{
@@ -175,10 +190,12 @@ function introGuide() {
 			element : "#outputBody",
 			intro : "",
 			animateStep : "out3",
-			position : "right"  
+			tooltipClass : "hide",
+			position : "bottom"  
 		},{
 			element : "#area",  
 			intro : "",
+			tooltipClass : "hide",
 			position : "right" 
 		},{
 			element : "#console3",  
@@ -201,11 +218,18 @@ function introGuide() {
 			element : "#outputBody",
 			intro : "",
 			animateStep : "out5",
+			tooltipClass : "hide",
+			position : "bottom"
+		},{
+			element : "#end1",
+			intro : "",
+			tooltipClass : "hide",
 			position : "right"
 		},{
 			element : "#informationDiv",  
 			intro : "",
 			animateStep : "li5",
+			tooltipClass : "hide",
 			position : "bottom"
 		},{
 			element : "#restart", 
@@ -214,106 +238,215 @@ function introGuide() {
 		}]
 	});
 	
+	introjs.onbeforechange(function(targetElement) {
+		var element = targetElement.id;
+		switch(element) {
+		case "end1":
+			$("#outputBody, #preBody1, #animationBox2").removeClass("opacity00");
+			break;
+		case "console5":
+			$("#value1").addClass("opacity00")
+			break;
+		case "area":
+			$("#box4").text("");
+			break;
+		case "funcCall":
+			$("#outputBody").addClass("opacity00");
+			break;
+		case "object1" :
+			$("#animationBox, #s1, #borderBox").addClass("opacity00");
+			break;
+		case "main1":
+			$("#animationBox2").addClass("hide");
+			break;
+		case "variable":
+			$("#one").addClass("opacity00");
+			break;
+		case "variable2":
+			$("#four, #three").addClass("opacity00");
+			break;
+		case "areaVar":
+			$("#five").addClass("opacity00");
+			break;
+		case "preBody1":
+			$("#preBody1").removeClass("hide");
+			break;
+		
+		case "console1":
+			$("#outputBody").addClass("opacity00")
+			break;
+		case "animationBox2":
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "boxfirst" :
+				$("#animationBox2").removeClass("hide");
+				$("#s2, #borderBox1").addClass("opacity00");
+				break;
+			case "boxsecond":
+				$("#boxParent2,#boxParent3, #three, #four").addClass("opacity00");
+				break;
+			case "boxthird":
+				$("#boxParent4, #five").addClass("opacity00");
+				break;
+			}
+			break;
+		case "obj2":
+			$("#s2, #borderBox1").addClass("opacity00");
+			$("#animationBox2").addClass("hide");
+			break;
+			case "informationDiv":
+				var element = introjs._introItems[introjs._currentStep].animateStep;
+				switch(element) {
+				case "li4":
+					$("#preBody1").addClass("hide");
+					$("#li4, #li3").addClass("opacity00");
+					break;
+				case "li5":
+					$("#li5").addClass("opacity00");
+					$("#outputBody, #preBody1, #animationBox2").addClass("opacity00");
+					break;
+				}
+			break;
+			case "animationBox":
+				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+				switch(animateStep) {
+				case "first" :
+					$("#s1, #borderBox").addClass("opacity00");
+					break;
+				case "second":
+					$("#one").addClass("opacity00") 
+					break;
+			}
+			break;
+			case "outputBody" :
+				$("#outputBody").removeClass("opacity00");
+				introjs.refresh();
+				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+				if (animateStep == "out3") {
+					$(".scanfValue").hide();
+					$(" #box2, #box3").empty();
+					$("#outputPrintfLine").remove();
+					$("#box4").text("");
+				}
+				if (animateStep == "out5") {
+					$("#value1, #li5").addClass("opacity00");
+					$("#box4").removeAttr("style");
+				}
+				break;
+				
+			case "input1":
+				$(".scanfValue").hide(); 
+				$("#box2, #box3").empty();
+				$("#outputPrintfLine").remove();
+			break;
+			case "end":
+				$("#li4, #li3").addClass("opacity00");
+				$("#outputBody").removeClass("opacity00");
+				$("#err").show()
+				$("#preBody, #animationBox").show();
+				break;
+				
+			
+		}
+	}); 
+	
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		introjs.refresh();
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
 		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			if (introjs._currentStep != 0 && introjs._currentStep != 2) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
 		switch (elementId) {
 		case  "demoTitle" :
 			var text = "Let us learn about <span class='ct-code-b-yellow'>Access specifiers</span>.";
 			typing($('.introjs-tooltiptext'),text,function() {
 				$('.introjs-nextbutton').show();
 			});
-		break;
+			break;
 		case "informationDiv" :
 			introjs.refresh();
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			$('#informationDiv').removeClass("opacity00");
 			switch(animateStep) {
 			case "first":
-			$('.introjs-nextbutton').hide();
+				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#li").fadeTo(300, 1, function() {
-								$("#ul1").fadeTo(300, 1, function() {
-									$("#ul2").fadeTo(300, 1, function() {
-										$("#ul3").fadeTo(300, 1, function() {
-											$("#nextButton1").fadeTo(300, 1, function() {
-												$("#nextButton1").click(function() {
-													$('#nextButton1').remove();
-													$("#li2").fadeTo(300,1, function() {
-														$("#nextButton2").fadeTo(300, 1, function() {
-															$("#nextButton2").click(function() {
-																$('#nextButton2').remove();
-																$("#li3").fadeTo(300, 1, function() {
-																	$("#nextButton3").fadeTo(300, 1, function() {
-																		$("#nextButton3").click(function() {
-																			$('#nextButton3').remove();
-																			introjs.nextStep();
-																			
-																		});
-																	});
-																});
-															});
-														});
-													});
-												});
-											});	
-										});
+						$("#ul1").fadeTo(300, 1, function() {
+							$("#ul2").fadeTo(300, 1, function() {
+								$("#ul3").fadeTo(300, 1, function() {
+									$("#li2").fadeTo(300,1, function() {
+										$("#nextButton1").fadeTo(300, 1, function() {
+											$("#nextButton1").click(function() {
+												$('#nextButton1').remove();
+												introjs.nextStep();
+											});
+										});	
 									});
 								});
 							});
 						});
-			break;	
-		case "li4" :
-			/*$("#informationDiv").removeClass("z-index1000000");*/
-			$("#preBody, #animationBox").hide();
-			$("#outputBody").addClass("opacity00");
-			$("#err").hide();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#li4").fadeTo(300, 1, function() {
-					$("#nextButton4").fadeTo(300, 1, function() {
-						$("#nextButton4").click(function() {
-							$('#nextButton4').remove();
-							introjs.nextStep();
+					});
+				});
+				break;	
+			case "li4" :
+				$(".introjs-nextbutton, #err, #preBody, #animationBox").hide();
+				$("#outputBody").addClass("opacity00");
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$("#li3").removeClass("opacity00", function() {
+						$("#li4").removeClass("opacity00", function() {
+							$(".introjs-tooltip").removeClass("hide");
+							var text = "Now we learn about <span class='ct-code-b-yellow'>public access</span> and "+
+										"<span class='ct-code-b-yellow'>private access</span>  members.";
+							typing($('.introjs-tooltiptext'), text, function() { 
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
+							});
 						});
 					});
 				});
-			});
-			$("#preBody1").removeClass("hide");
-		break;
-		case "li5" :
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#li5").fadeTo(300, 1, function() {
-					var text = "<span class='ct-code-b-yellow'>Protected access</span> members can be used in child class.";
-					typing($('.introjs-tooltiptext'), text, function() { 
-						$('.introjs-nextbutton').show();
+				break;
+			case "li5" :
+				$('.introjs-nextbutton').hide();
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$("#li5").removeClass("opacity00");
+						$(".introjs-tooltip").removeClass("hide");
+						var text = "<span class='ct-code-b-yellow'>Protected access</span> members can be used in child class.";
+						typing($('.introjs-tooltiptext'), text, function() { 
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
-			});
-			break;
+				break;
 			}
-			break;
+		break;
 		case "preBody" :
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-		//	$("#informationDiv").addClass("z-index1000000");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#preBody').removeClass("opacity00");
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "Here let us see how <span class='ct-code-b-yellow'>" +
-							"access specifiers</span> are important.";
+				$('.introjs-tooltip').removeClass('hide');
+				var text = "Here let us learn about default <span class='ct-code-b-yellow'>access specifier</span></span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton').show();
 				});
 			});
 			break;
 		case "class" :
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$('#preBody').removeClass("opacity00");
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text =  "class <span class='ct-code-b-yellow'>Area</span> which is "+
@@ -321,7 +454,7 @@ function introGuide() {
 							"<span class='ct-code-b-yellow'>data members</span> and "+
 							"<span class='ct-code-b-yellow'>member functions</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -330,67 +463,84 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "first" :
-			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "Here data member <span class='ct-code-b-yellow'>len</span> is "+
+				$('.introjs-helperLayer').one('transitionend', function() {
+					var text = "Here data member <span class='ct-code-b-yellow'>len</span> is "+
 						   "<span class='ct-code-b-yellow'>private</span>, since there is no "+
 						   "<span class='ct-code-b-yellow'>access specifier</span> specified.";
-				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					typing($('.introjs-tooltiptext'), text, function() { 
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+					});
 				});
-			});
-			break;
+				break;
 			case "last":
 				introjs.refresh();
 				$("#object1").removeClass('z-index1000000');
 				$('.introjs-helperLayer').one("transitionend", function() {
-					setTimeout(function() {
-						introjs.nextStep();
-					},1500);
+					nextStep();
+					$("#object1").removeClass('z-index1000000');
 				});
 				break; 
 			}
 			break;
 		case "method1" :
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function() {
-				var text =  "member function <span class='ct-code-b-yellow'>sqr</span> is also " + 
+			var element = introjs._introItems[introjs._currentStep].animateStep;
+			switch(element) {
+			case "one" :
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$('.introjs-helperLayer').one('transitionend', function() {
+					var text =  "member function <span class='ct-code-b-yellow'>sqr</span> is also " + 
 							"<span class='ct-code-b-yellow'>private</span> by default, since there "+
 							"is no <span class='ct-code-b-yellow'>access specifier</span> specified.";
+					typing($('.introjs-tooltiptext'), text, function() { 
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+					});
+				});
+				break;
+			case "two" :
+				$('.introjs-helperLayer').one('transitionend', function() {
+					var text = "It shows <b class ='warning-color'>compile time error</b> that  <b class ='ct-code-b-yellow'>sqr</b> "+
+							"is <b class ='ct-code-b-yellow'>private</b> data member. <span class='ct-code-b-yellow'>sqr()</span>"+
+							" cannot be accessed outside of the class <span class='ct-code-b-yellow'>Area</span> and this "+
+							"concept is called  <span class='ct-code-b-yellow'>data hiding</span>.";
+					typing($('.introjs-tooltiptext'), text, function() { 
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+					});
+				});
+				break;
+			}
+			break;
+		case "end":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-helperLayer').one('transitionend', function() {
+				var text =  "End of the program of default access specifier."
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "main" :
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "In <span class='ct-code-b-yellow'>main</span> method";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;		
 		case "object1" :
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text =  "declaring <span class='ct-code-b-yellow'>obj1</span> object of "+
 							"class <span class='ct-code-b-yellow'>Area</span>.";
+				$(".introjs-tooltip").removeClass("hide");
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
-					
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
-			
 			break;
 		case "animationBox" :
-			$("#animationBox").removeClass("opacity00");
-			$('#preBody').removeClass("opacity00");
+			$("#preBody, #animationBox").removeClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "first" :
@@ -398,29 +548,33 @@ function introGuide() {
 					$('#object1').addClass('z-index1000000');
 					$("#s1").removeClass("opacity00").addClass("animated zoomIn").one('animationend',function() {
 						$("#borderBox").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+							$("#s1, #borderBox").removeClass("animated zoomIn");
+							$(".introjs-tooltip").removeClass("hide");
 							var text = "Memory is allocated when object <span class='ct-code-b-yellow'>obj1</span> is declared.";
-								typing($('.introjs-tooltiptext'),text,function() {
-									$('.introjs-nextbutton').show();
-								});
+							typing($('.introjs-tooltiptext'),text,function() {
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
+								$('#object1').removeClass('z-index1000000');
 							});
 						});
 					});
+				});
 				break;
 			case "second" :
 				$('.introjs-helperLayer').one('transitionend',function() {
-					$("#animationBox").removeClass("opacity00");
 					$("#variable").addClass('z-index1000000');
-						$("#boxParent").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-							transferEffect("#variable", "#boxParent", function() {
-								$("#one").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-									typing('.introjs-tooltiptext',"memory is allocated for variable <span class='ct-code-b-yellow'>len</span>.", function() {
-										
-										$('.introjs-nextbutton').show();
-									});
+					$("#boxParent").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+						transferEffect("#variable", "#boxParent", function() {
+							$("#one").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+								$(".introjs-tooltip").removeClass("hide");
+								$("#one, #boxParent").removeClass("animated zoomIn");
+								typing('.introjs-tooltiptext',"memory is allocated for variable <span class='ct-code-b-yellow'>len</span>.", function() {
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
+									$("#variable").removeClass('z-index1000000');
 								});
 							});
 						});
 					});
+				});
 				break;
 			}
 			break;
@@ -430,11 +584,10 @@ function introGuide() {
 				var text =  "when the function call of <span class='ct-code-b-yellow'>sqr(20)</span> through "+
 							"<span class='ct-code-b-yellow'>obj1</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
-			 break;
+			break;
 		case "outputBody" :
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -442,77 +595,73 @@ function introGuide() {
 				introjs.refresh();
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				if (animateStep == "out1") {
+					if (introjs._direction == "backward") {
+						$("#err").remove();
+					} else {
 					$("#outDiv").append("<div id='err'>sample.cpp: In function <b class ='ct-code-b-yellow'>int main()</b> : <br>"+
 							"sample.cpp: <b class ='warning-color'>error :</b> int <b class ='ct-code-b-yellow'>Area</b>::"+
 							"<b class ='ct-code-b-yellow'>sqr(int)</b> is private <br>int " +
 							"<b class ='ct-code-b-yellow'>sqr</b>(int num) { <br>sample.cpp: " +
 							"<b class ='warning-color'>error :</b> within this context<br>" +
 							"obj1.<b class ='ct-code-b-yellow'>sqr</b>(20);</div>");
-					var text =	"It shows <b class ='warning-color'>compile time error</b> that  <b class ='ct-code-b-yellow'>sqr</b> "+
-								"is <b class ='ct-code-b-yellow'>private</b>.";
-					typing($('.introjs-tooltiptext'), text, function() {
-						$('.introjs-nextbutton').show();
-					});
+					}
+					nextStep();
 				}
+				
 				if (animateStep == "out2") {
-					$("#outDiv").append('<span id ="inputNumber">Enter length and breadth  : <span id="outputPrintfLine"><div  id="inputChar" '+
-										'contenteditable="true" maxlength="2" class="position input-char"></div></span></span>');
-					setTimeout(function() {
-						introjs.nextStep();
-					},1500);
+					if (introjs._direction == "backward") {
+						$("#inputNumber").remove();
+					} else {
+						$("#outDiv").append('<span id ="inputNumber">Enter length and breadth  : <span>');
+					}
+					nextStep();
 				}
 				if (animateStep =="out3") {
 					$('#inputChar').attr({contenteditable: 'true', placeholder: 'Enter 2 values'});
+					$("#outDiv").append('<span id="outputPrintfLine"><div  id="inputChar" '+
+							'contenteditable="true" maxlength="2" class="position input-char"></div></span>');
 					$("#borderBox1").addClass("z-index1000000");
 					$('#inputChar').removeAttr('disabled').focus();
-					enterTwoValues('#inputChar')
+					$(".introjs-tooltip").removeClass("hide");
+					enterTwoValues('#inputChar');
 					charAtEnd("inputChar");
-						typing(".introjs-tooltiptext","<span id='please1'><span id='please'>Please enter two values<span></span>", 10, "",function() {
+					$("#borderBox1").removeClass("z-index1000000");
+					typing(".introjs-tooltiptext","<span id='please1'><span id='please'>Please enter two values<span></span>", 10, "",function() {
 					});
 				}
 				if (animateStep == "out4") {
-					$("#outDiv").append(' <span id ="outputNumber">The area of rectangle is : <span class="border opacity00 position" id="value1">'
-					+ $('#box4').text() + '</span></span><br>'); 
-					setTimeout(function() {
-						introjs.nextStep();
-					},1500)
+					if (introjs._direction == "backward") {
+						$("#outputNumber").remove();
+					} else {
+						$("#outDiv").append(' <span id ="outputNumber">The area of rectangle is : <span class="border opacity00 position" id="value1">'
+								+ $('#box4').text() + '</span></span>');
+					}
+					nextStep();
 				}
 				if (animateStep == "out5") {
-					$("#box4").css("zIndex","1000080").effect( "highlight",{color: 'red'}, 200);
-					transferEffect("#box4","#value1", function() {
-						$("#value1").removeClass("opacity00");
-						$("#box4").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 200);
-						$("#animationBox2, #borderBox1, .box-border2").removeClass("z-index1000000");
-						var text = "displays value of <span class='ct-code-b-yellow'>area</span> in output console.";
-						typing($('.introjs-tooltiptext'), text, function() { 
-							$('.introjs-nextbutton').show();
+					if (introjs._direction == "backward") {
+						$("#value1").addClass("opacity00");
+					} else {
+						$("#box4").css("zIndex","1000080").effect( "highlight",{color: 'red'}, 200);
+						transferEffect("#box4","#value1", function() {
+							$("#value1").removeClass("opacity00");
+							$("#box4").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 200);
+						 	$("#box4").removeClass("z-index1000000");
 						});
-					});
+					}
+					nextStep();
 				}
 			});
 			break;
-		case "private" :
-			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "since sqr is <span class='ct-code-b-yellow'>private</span> and <span class='ct-code-b-yellow'>sqr</span> "+
-							"function cannot be accessed outside of the class <span class='ct-code-b-yellow'>Area</span> and this "+
-							"concept is called  <span class='ct-code-b-yellow'>data hiding</span>.";
-				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
-				});
-			});
-			break;
+		
 		case "preBody1" :
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			 $("#preBody1").removeClass('opacity00');
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "Here we discuss about <span class='ct-code-b-yellow'>public access</span> specifier.";
+				var text =  "Here we discuss about <span class='ct-code-b-yellow'>public access</span> and "+
+							"<span class='ct-code-b-yellow'>private access</span>specifier.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -525,8 +674,7 @@ function introGuide() {
 							"member functions and data members as <span class='ct-code-b-yellow'>public</span> "+
 							"and <span class='ct-code-b-yellow'>private</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					//$('.introjs-prevbutton').show();
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;	
@@ -539,7 +687,7 @@ function introGuide() {
 							"bred</span> and member function <span class='ct-code-b-yellow'>read()</span> are specified "+
 							"as <span class='ct-code-b-yellow'>private</span>.";
 				typing($('.introjs-tooltiptext'), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;	
@@ -552,7 +700,7 @@ function introGuide() {
 							"<span class='ct-code-b-yellow'>rect()</span> are specified as <span class='ct-code-b-yellow'>public</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;	
@@ -564,42 +712,42 @@ function introGuide() {
 				var text = "During the execution of <span class='ct-code-b-yellow'>main()</span> method.";
 				typing($('.introjs-tooltiptext'), text, function() {
 					
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "obj2":
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
+			$('.introjs-prevbutton, .introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "Here declaring <span class='ct-code-b-yellow'>obj</span> for class <span class='ct-code-b-yellow'>Area</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
-			$("#animationBox2").removeClass("hide");
+			
 			break;	
 		case "animationBox2" :
 			introjs.refresh();
-			//$("#animationBox2").removeClass("opacity00")
 			$('.introjs-nextbutton').hide();
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "boxfirst" :
-			$('.introjs-helperLayer').one('transitionend',function() {
-				$("#obj2").addClass('z-index1000000');
-					$("#s2").removeClass("opacity00").addClass("animated zoomIn").one('animationend',function() {
-					$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-						typing($('.introjs-tooltiptext'),"Memory is allocated when object <span class='ct-code-b-yellow'>obj</span> "+
-								"is declared for class <span class='ct-code-b-yellow'>Area</span>.",function() {
-							$('.introjs-nextbutton').show();
+				$('.introjs-helperLayer').one('transitionend',function() {
+					$("#obj2").addClass('z-index1000000');
+						$("#s2").removeClass("opacity00").addClass("animated zoomIn").one('animationend',function() {
+							$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+								$("#s2, #borderBox1").removeClass("animated zoomIn");
+								$(".introjs-tooltip").removeClass("hide");
+								typing($('.introjs-tooltiptext'),"Memory is allocated when object <span class='ct-code-b-yellow'>obj</span> "+
+										"is declared for class <span class='ct-code-b-yellow'>Area</span>.",function() {
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
+									$("#obj2").removeClass('z-index1000000');
+								});
+							});
 						});
 					});
-				});
-			});
-			break;
+				break;
 			case "boxsecond" :
 				$('#variable2').addClass('z-index1000000');
 				$('.introjs-helperLayer').one('transitionend', function() {
@@ -609,10 +757,13 @@ function introGuide() {
 								$('#boxParent3').removeClass("opacity00").addClass('animated zoomIn').one('animationend', function() {
 									transferEffect("#bred", "#boxParent3", function() {
 										$("#four").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+											$("#boxParent2,#boxParent3, #three, #four").removeClass("animated zoomIn");
+											$(".introjs-tooltip").removeClass("hide");
 											typing('.introjs-tooltiptext',"here <span class='ct-code-b-yellow'>len</span> and "+
 													"<span class='ct-code-b-yellow'>bred</span> are <span class='ct-code-b-yellow'>private"+
 													"</span> members and can be accessed only inside <span class='ct-code-b-yellow'>class</span>.", function() {
-												$('.introjs-nextbutton').show();
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
+												$('#variable2').removeClass('z-index1000000');
 											});				
 										});			
 									});							
@@ -621,52 +772,47 @@ function introGuide() {
 						});
 					});
 				});
-			break;
+				break;
 			case "boxthird" :
-				$('#areaVar').addClass('z-index1000000');
-				$('.introjs-helperLayer').one('transitionend', function() {
-					$('#boxParent4').removeClass("opacity00").addClass('animated zoomIn').one('animationend', function() {
-						transferEffect("#areaVar", "#boxParent4", function() {
-							$("#five").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-								typing('.introjs-tooltiptext',"here <span class='ct-code-b-yellow'>area</span> "+
-										"is <span class='ct-code-b-yellow'>public</span> member and can be accessed "+
-										"outside <span class='ct-code-b-yellow'>class</span>", function() {
-										$('.introjs-nextbutton').show();
+					$('#areaVar').addClass('z-index1000000');
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$('#boxParent4').removeClass("opacity00").addClass('animated zoomIn').one('animationend', function() {
+							transferEffect("#areaVar", "#boxParent4", function() {
+								$("#five").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+									$(".introjs-tooltip").removeClass("hide");
+									$("#boxParent4, #five").removeClass("animated zoomIn");
+										typing('.introjs-tooltiptext',"here <span class='ct-code-b-yellow'>area</span> "+
+												"is <span class='ct-code-b-yellow'>public</span> member and can be accessed "+
+												"outside <span class='ct-code-b-yellow'>class</span>", function() {
+											$('.introjs-nextbutton, .introjs-prevbutton').show();
+											$('#areaVar').removeClass('z-index1000000');
+										});
+									});
 								});
-							});
-						});
-					});				
-				});			
-			break;
-		}
+							});				
+						});			
+				break;
+			}
 			break;
 		case "variable2":
 			$('.introjs-helperLayer').one('transitionend',function() {
-				setTimeout(function() {
-					introjs.nextStep();
-				},500);
+				nextStep();
 			});
 			break;
 		case "areaVar":
-			$('#variable2').removeClass('z-index1000000');
 			$('.introjs-helperLayer').one('transitionend',function() {
-					setTimeout(function() {
-						introjs.nextStep();
-					},500);
+				nextStep();
 			});
 			break;
 		case "funcCall2":
-			$("#obj2").removeClass('z-index1000000');
-			$('#areaVar').removeClass('z-index1000000');
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "calling the function <span class='ct-code-b-yellow'>rect()</span> through object "+
 							"<span class='ct-code-b-yellow'>obj</span>, it can be accessed directly since it "+
 							"is <span class='ct-code-b-yellow'>public</span> member.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -677,7 +823,7 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "Here in function definition of <span class='ct-code-b-yellow'>rect()</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -690,7 +836,7 @@ function introGuide() {
 							"is a <b class='ct-code-b-yellow'>private</b> member function and can be accessed only in class "+
 							"<span class='ct-code-b-yellow'>Area</span>."; 
 					typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -701,7 +847,7 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "During execution of <span class='ct-code-b-yellow'>read()</span> function.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -712,7 +858,7 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "<span class='ct-code-b-yellow'>cout</span> displays this statement in console.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -721,35 +867,29 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTimeout(function() {
-					introjs.nextStep();
-				},1500);
+				nextStep();
 				
 			});
 			break;
-			case "input1" :
-				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
-				$('.introjs-helperLayer').one('transitionend', function() {
-					var text = "<span class='ct-code-b-yellow'>cin</span> uses to store the values "+
-								"which you enter into <span class='ct-code-b-yellow'>len</span> and "+
-								"<span class='ct-code-b-yellow'>bred</span>.";
-					typing($('.introjs-tooltiptext'), text, function() { 
-						$('.introjs-nextbutton').show();
-					});
+		case "input1" :
+			introjs.refresh();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-helperLayer').one('transitionend', function() {
+				var text = "<span class='ct-code-b-yellow'>len</span> and <span class='ct-code-b-yellow'>bred</span> " +
+					"are used to store the values which you enter.";
+				typing($('.introjs-tooltiptext'), text, function() { 
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
-				break;
+			});
+			break;
 		case "area" :
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = " ";
+				$(".introjs-tooltip").removeClass("hide");
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$(".introjs-tooltiptext").append("<b class='ct-code-b-yellow opacity00' id='areamul'>area = len * bred</b><br><br>");
-					$("#areamul").fadeTo(200, 1);
-					
 					$(".introjs-tooltiptext").append("<b class='ct-code-b-yellow'>"+
 							"<div id='return'>area = <span id='mul'><span id='len1'>len"+
 							"</span> * <span id='len2'>bred</span></span></div></b><br>");
@@ -760,41 +900,29 @@ function introGuide() {
 					var leftLength = l2.left - l1.left;
 					TweenMax.from("#return", 1, {top : topLength, left : leftLength, onComplete:function() {
 						TweenMax.to("#len1", 0.5, {rotationX : -90, onComplete:function() {
-						
 							transferEffect("#box2", "#len1", function() {
-							$("#len1").text($("#box2").text());
-							TweenMax.to("#len1", 0.5, {rotationX : 0, onComplete:function() {
-								TweenMax.to("#len2", 0.5, {rotationX : -90, onComplete:function() {
-									transferEffect("#box3", "#len2", function() {
-										$("#len2").text($("#box3").text());
-										TweenMax.to("#len2", 0.5, {rotationX : 0, onComplete:function() {
-											$("#box-border2").removeClass("z-index1000000");
-											$("#mul").text(parseInt($("#box2").text()) * parseInt($("#box3").text()));
-											TweenMax.to("#mul", 0.5, {rotationX : 0, onComplete:function() {
-												introjs.refresh();
-												$(".introjs-tooltiptext").append('<a class="introjs-button user-button" '+
-														'style="text-align:right;" id="nextButton5">Next&rarr;</a>');
-												$("#nextButton5").click(function() {
-													$('#nextButton5').remove();
-													$("#animationBox2").addClass("z-index1000000");
-													transferEffect("#mul", "#boxParent4", function() {
+								$("#len1").text($("#box2").text());
+								TweenMax.to("#len1", 0.5, {rotationX : 0, onComplete:function() {
+									TweenMax.to("#len2", 0.5, {rotationX : -90, onComplete:function() {
+										transferEffect("#box3", "#len2", function() {
+											$("#len2").text($("#box3").text());
+											TweenMax.to("#len2", 0.5, {rotationX : 0, onComplete:function() {
+												$("#mul").text(parseInt($("#box2").text()) * parseInt($("#box3").text()));
+												TweenMax.to("#mul", 0.5, {rotationX : 0, onComplete:function() {
+													transferEffect2("#mul", "#boxParent4", function() {
 														$("#box4").text(parseInt($("#box2").text()) * parseInt($("#box3").text()));
-														typing($('.introjs-tooltiptext'), "value is stored in variable "+
-																"<span class='ct-code-b-yellow'>area</span>.", function() { 
-															$('.introjs-nextbutton').show();
-														});
+														$('.introjs-nextbutton, .introjs-prevbutton').show();
 													});
-												});
+												}});
 											}});
-										}});
-									});							
+										});							
+									}});
 								}});
-							}});
-						});
+							});
+						}});
 					}});
-				}});
+				});
 			});
-		});
 			break;
 		case "console3" :
 			introjs.refresh();
@@ -803,7 +931,7 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "<span class='ct-code-b-yellow'>cout</span> displays this statement in console.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -813,9 +941,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTimeout(function() {
-					introjs.nextStep();
-				},1000);
+				nextStep();
 			});
 			break;
 		case "console5" :
@@ -823,24 +949,23 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "<span class='ct-code-b-yellow'>cout</span> displays value of <span class='ct-code-b-yellow'>area</span> in console.";
+				var text = "<span class='ct-code-b-yellow'>cout</span> displays value of "+
+							"<span class='ct-code-b-yellow'>area</span> in console.";
 				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton').show();
-					});
-				});
-			break;
-		/*case "li5" :
-		
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#li5").fadeTo(300, 1, function() {
-					var text = "<span class='ct-code-b-yellow'>Protected access</span> members can be used in child class.";
-					typing($('.introjs-tooltiptext'), text, function() { 
-						$('.introjs-nextbutton').show();
-					});
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
-			break;*/
+			break;
+		case "end1":
+			introjs.refresh();
+			$('.introjs-helperLayer').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass("hide");
+				var text =  "End of the program";
+				typing($('.introjs-tooltiptext'), text, function() { 
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+			break;
 		case "restart":
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
@@ -855,9 +980,6 @@ function introGuide() {
 		}
 	});
 	introjs.start();
-	$('.introjs-skipbutton').hide();
-	$('.introjs-prevbutton').hide();
-	$('.introjs-nextbutton').hide();
 }
 
 function typing(selector, text, callBackFunction) {
@@ -869,8 +991,20 @@ function typing(selector, text, callBackFunction) {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
+		introjs._introItems[introjs._currentStep].intro= $(".introjs-tooltiptext").html();
 	});
 };
+}
+
+function transferEffect2(selector1, selector2, callBackFunction) {
+	$(selector1).addClass("z-index1000000").effect( "highlight",{color: 'green'}, 200);
+	$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 1000 , function() {
+	$(selector2).removeClass("opacity00");
+	$(selector1).removeClass("z-index1000000")
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
 }
 
 
@@ -915,55 +1049,53 @@ function enterTwoValues(selector) {
 		maxLengthOfInput = 1;
 		$('.length-error-text').remove();
 		if ($(this).text() == "") {
-			$('.introjs-tooltiptext')
-				.append("<span class='ct-code-b-red length-error-text'><br/>" + 
+			$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 				"Please enter " + maxNumberOfInputs + " number and separate each with space.</span>");
+			$('.user-btn').hide();
 		}
 		var givenText = $(this).text();
 		var splittedText = givenText.split(" ");
 		arr = [];
 		
 		$.each(splittedText, function(idx, val) {
-			if (val != '') {
+			if (val != '' ) {
 				arr.push(val);
 			}
 		});
 		
-		if (arr.length < maxNumberOfInputs) {
+		if (arr.length < 2 ) {
 			$(".introjs-nextbutton").hide();
-		} else if (arr.length == maxNumberOfInputs) {
+			
+		} else if (arr.length == 2) {
 			$('.user-btn').remove();
 			$("#please").hide();
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="storeVal3()">Next&rarr;</a>');
-		
 		}
-		
 		$.each(arr, function(idx, val) {
-			if ((val > 100 || val < 0)) {
+			if (val < 0 || val > 100 ) {
 				$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
-														"<ul><li>Please limit the index " + idx + " number in between 0 and 99.</li></ul></span>");
+						"<ul><li>Please limit the index " + idx + " number in between 0 and 99.</li></ul></span>");
 				$('.user-btn').remove();
 			}
 		});
 	});
 }
+
 function storeVal3() {
-	$("#please1").append("you entered values of <span class='ct-code-b-yellow'>length</span> and <span class='ct-code-b-yellow'>breadth</span>.");
-		$('.user-btn').remove();
+	$("#please1").append("you entered values of <span class='ct-code-b-yellow'>length</span> and "+
+						"<span class='ct-code-b-yellow'>breadth</span>.");
+	$('.user-btn').remove();
 	var splittedText = $('#inputChar').text().split(" ");
 	$('#inputChar').html('');
 	$.each(splittedText, function(idx, val) {
 		if (val != '') {
 			$('#inputChar').append('<span class="scanfValue">' + val + '</span> ');
 			$('#outputPrintfLine').append('<span class="printfValue visibility-hidden">' + val + '</span> ');
-
-				$('#outputPrintfLine').append('<br/>');
-			
+			$('#outputPrintfLine').append('<br/>');
 		} else {
 			$('#inputChar').append(' ');
 		}
 	});
-	
 	$('.scanfValue').addClass('output-value-circle circle-css');
 	TweenMax.fromTo($('.scanfValue'), 1, {backgroundColor: '#FFFFFF'}, {backgroundColor: 'cyan', onComplete: function() {
 		$('.scanfValue').removeClass('output-value-circle circle-css');
@@ -976,7 +1108,8 @@ function storeVal3() {
 				});
 			}
 		}
-		$('.introjs-nextbutton').show();
+		$('.scanfValue').removeClass('output-value-circle circle-css');
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}});
 }
 
@@ -990,6 +1123,7 @@ function charAtEnd(elementId) {
 	sel.removeAllRanges();
 	sel.addRange(range);
 }
+
 function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
 	var l1 = $(selector1).offset();
 	var l2 = $(selector2).offset();
@@ -1002,3 +1136,15 @@ function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
 		}
 	});
 }
+
+function nextStep() {
+	if (introjs._direction == "backward") {
+		setTimeout(function() {
+			introjs.previousStep();
+		},1500);
+	} else {
+		setTimeout(function() {
+			introjs.nextStep();
+		},1500);
+	}
+} 

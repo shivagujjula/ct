@@ -16,7 +16,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/da.min.js"></script>
+<script type="text/javascript" src="/secure/lang/cpp/js-min/da.min.js"></script> 
+
 
 
 <style type="text/css">
@@ -171,7 +172,7 @@ using namespace std;
 								class='display-inline-block' contenteditable='true' id='b2Val'>15</span>, <span
 								class='display-inline-block' contenteditable='true' id='c2Val'>25</span>, <span
 								class='display-inline-block' contenteditable='true' id='d2Val'>30</span>)</span> << endl;</span>
-}</span>
+<span id="end">}</span></span>
 </pre>
 			</div>
 		</div>
@@ -180,10 +181,10 @@ using namespace std;
 				<div class="output-console-title-bar">
 					<span class="title">Output</span>
 				</div>
-				<div class="output-console-body" class="col-xs-offset-3 col-xs-3"id="outputBody1">
+				<div class="output-console-body" class="col-xs-offset-3 col-xs-3" id="outputBody1">
 					<span id="output1" class="opacity00" style="color: green; padding: 4px;"><b>28</b></span><br>
-					<span id="output2" class="opacity00" style="color: green; padding: 4px;"><b>50</b></span><br>
-					<span id="output3" class="opacity00" style="color: green; padding: 4px;"><b>80</b></span>
+					 <span id="output2" class="opacity00" style="color: green; padding: 4px;"><b>50</b></span><br>
+					<span id="output3" class="opacity00" style="color: green; padding: 4px;"><b>80</b></span> 
 				</div>
 			</div>
 		</div>

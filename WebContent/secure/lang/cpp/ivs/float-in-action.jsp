@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +14,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/cpp/js-min/fia.min.js" type="text/javascript"></script>
+<script src="/secure/lang/cpp/js-min/fia.min.js" type="text/javascript"></script> 
+
 
 <title>float data-type</title>
 <style>
@@ -242,6 +241,13 @@ td {
 #intpart {
 	min-height : 180px;
 }
+.user-btn, #user-btn1, .user-btn2 {
+	width : 46px;
+	background-color:#5bc0de
+}
+.nextBtn2 {
+	background-color: #5bc0de !important;
+}
 #fractpart {
 	min-height : 180px;
 }
@@ -300,6 +306,7 @@ td {
 	<div class = 'text-center'>
 		<h1 class = 'label ct-demo-heading first-heading'>float data type</h1>	
 	</div>
+</div>
 	<div class='buttons-div text-center margin10'>
 		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 	</div>
@@ -309,24 +316,39 @@ td {
 				<div class = "border-box opacity00 padding2" id = "box0"></div>
 			</div>
 			<div class = 'floatsign-div col-xs-12 opacity00 margin4' id = 'floatsignDiv'>
-				<span id = 'firstDiv' class = 'opacity00 margin10'>sign bit</span><span id = 'secondDiv' class = 'opacity00 margin10'>exponent bits</span><span id = 'thirdDiv' class = 'opacity00 margin10'>mantissa</span>
+				<span id = 'firstDiv' class = 'opacity00 margin10'>sign bit</span>
+				<span id = 'secondDiv' class = 'opacity00 margin10'>exponent bits</span>
+				<span id = 'thirdDiv' class = 'opacity00 margin10'>mantissa</span>
 			</div>
 			<div class = 'floatnum-div col-xs-12 opacity00 margin4' id = 'floatnumDiv'>
-				<span id = 'first1Div' class = 'opacity00 margin10'>1 bit</span><span id = 'second2Div' class = 'opacity00 margin10'>8 bits</span><span id = 'third3Div' class = 'opacity00 margin10'>23 bits</span>
+				<span id = 'first1Div' class = 'opacity00 margin10'>1 bit</span>
+				<span id = 'second2Div' class = 'opacity00 margin10'>8 bits</span>
+				<span id = 'third3Div' class = 'opacity00 margin10'>23 bits</span>
 			</div>
 			<div class = "input-main-div col-xs-12" id = 'inputmainDiv'>
 			 	<br><span id = 'floatdec' class = 'opacity00 margin10'>A <b>float</b> is declared and initialised as</span>
-				<br><div id="inputDiv" class="col-xs-offset-2 col-xs-7 opacity00 margin10">float&nbsp;&nbsp;&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp<b>2.5</b>;
-						<br><br><span id = "floatVar" class = 'opacity00 margin10'> f <span class ="fa fa-arrow-right marginleft4"></span>&nbsp;&nbsp;&nbsp;variable</span>
-						<br><div id = 'fdec'><div id = 'floatBox' class = 'opacity00 margin10'>2.5</div><span class = 'opacity00 byte-div margin4 marginleft4'><span class ="fa fa-arrow-right margin4 marginleft4"></span>&nbsp;&nbsp;4 bytes</span></div>
-						<div id = 'addDiv' class = 'opacity00 margin10'>1024 <span class ="fa fa-arrow-right marginleft4"></span>&nbsp;&nbsp;&nbsp;address</div>
+				<br><div id="inputDiv" class="col-xs-offset-2 col-xs-7 opacity00 margin10">float&nbsp;&nbsp;&nbsp;&nbsp; 
+							f&nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp<b>2.5</b>;
+						<br><br><span id = "floatVar" class = 'opacity00 margin10'> f <span class ="fa fa-arrow-right marginleft4">
+						</span>&nbsp;&nbsp;&nbsp;variable</span>
+						<br><div id = 'fdec'><div id = 'floatBox' class = 'opacity00 margin10'>2.5
+						</div>
+							<span class = 'opacity00 byte-div margin4 marginleft4'>
+							<span class ="fa fa-arrow-right margin4 marginleft4">
+							</span>&nbsp;&nbsp;4 bytes</span></div>
+						<div id = 'addDiv' class = 'opacity00 margin10'>1024 <span class ="fa fa-arrow-right marginleft4">
+							</span>&nbsp;&nbsp;&nbsp;address</div>
 					</div>
 			</div>
 		</div>
 		<div class = 'col-xs-11 animation-div margin10' id = 'animationDiv'>
 			<div class = 'row'>
-				<div class = 'col-xs-offset-4 col-xs-6' id = 'mainnumDiv'><span id = 'numDiv' class = 'opacity00'>Consider a float <span id = 'intnumDiv'>12</span><span id = 'fractnumDiv'>.625</span> in which <b>12</b> is the integral part and <b>.625</b> is the fractional part.</span></div>
+				<div class = 'col-xs-offset-4 col-xs-6' id = 'mainnumDiv'>
+					<span id = 'numDiv' class = 'opacity00'>Consider a float <span id = 'intnumDiv'>12</span>
+					<span id = 'fractnumDiv'>.625</span> in which <b>12</b> is the integral part and <b>.625</b> is the fractional part.</span>
+				</div>
 				<div class = 'row'>
+				<div class="col-xs-12" style="margin-top:20px;">
 				<div class = 'col-xs-6 int-part padding0' id = 'intpart' style = "font-size : 13px">
 					<div class = 'col-xs-5 padding0'>
 						<div class = 'panel panel-default opacity00' id = 'int1Div'>
@@ -346,6 +368,7 @@ td {
 					</div>
 					<div class = 'col-xs-5 padding0 int-div box-border opacity00' id = 'int4Div'>
 					</div>
+				</div>
 				</div>
 				</div>
 			

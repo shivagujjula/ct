@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html">
 <html>
 <head>
@@ -16,7 +16,9 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/cpp/js-min/cdt.min.js"></script>
+<script src="/secure/lang/cpp/js-min/cdt.min.js"></script> 
+
+
 <title>char data type</title>
 <style>
 
@@ -88,6 +90,7 @@
 	margin-top: 10px ;
 	margin-bottom: 10px;
 	padding: 5px 15px;
+	min-height: 280px;
 }
 
 .array-div-css {
@@ -115,7 +118,10 @@
 .output-console {
 	margin: 10px;
 }
-
+.user-btn {
+	background-color: orange;
+	width : 35px;
+}
 .output-console-body {
 	padding: 5px 20px;
 	min-height: 60px;
@@ -197,23 +203,43 @@
 						<tbody>
 							<tr>
 								<td><span><b>Bits</b></span></td>
-								<%
-									for (int i = 7; i >= 0; i--) {
-								%>
-									<td><span><b><%=i%></b></span></td>
-								<%
-									}
-								%>
+								
+									<td><span><b>7</b></span></td>
+								
+									<td><span><b>6</b></span></td>
+								
+									<td><span><b>5</b></span></td>
+								
+									<td><span><b>4</b></span></td>
+								
+									<td><span><b>3</b></span></td>
+								
+									<td><span><b>2</b></span></td>
+								
+									<td><span><b>1</b></span></td>
+								
+									<td><span><b>0</b></span></td>
+								
 							</tr>
 							<tr>
 								<td><span>8</span></td>
-								<%
-									for (int i = 7; i >= 0; i--) {
-								%>
+								
 									<td class="td-css"></td>
-								<%
-									}
-								%>
+								
+									<td class="td-css"></td>
+								
+									<td class="td-css"></td>
+								
+									<td class="td-css"></td>
+								
+									<td class="td-css"></td>
+								
+									<td class="td-css"></td>
+								
+									<td class="td-css"></td>
+								
+									<td class="td-css"></td>
+								
 							</tr>
 						</tbody>
 					</table>
