@@ -2211,7 +2211,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of structure variable</td>
 						<td>Karthik</td>
 						<td></td>
-						<td></td>
+						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
 						<td>22-09-2016</td>
 					</tr>
 
@@ -2256,7 +2256,7 @@
 						</td>
 						<td>Suresh</td>
 						<td></td>
-						<td></td>
+						<td><span>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</span></td>
 						<td>22-09-2016</td>
 					</tr>
 

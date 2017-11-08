@@ -461,7 +461,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">int Data-type</span></td>
 						<td>Shiva</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -473,7 +473,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">short int Data-type</span></td>
 						<td>Shiva</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -485,7 +485,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">long int Data-type</span></td>
 						<td>Shiva</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -533,7 +533,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Different Data-types in C++</span></td>
 						<td>Shiva</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 
@@ -545,7 +545,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C++</span></td>
 						<td>Shiva</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
                     
@@ -605,7 +605,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">generation of Computers</span></td>
 						<td>Shanthan</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 					
@@ -617,7 +617,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">generation of programming languages</span></td>
 						<td>Anil</td>
 						<td></td>
-						<td></td>
+						<td><a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> is no needed</td>
 						<td></td>
 					</tr>
 

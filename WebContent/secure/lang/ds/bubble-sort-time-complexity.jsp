@@ -138,8 +138,8 @@ div, span {
 }
 
 .ui-effects-transfer {
-	border: 1px solid green;
-	z-index: 9999999 !important;
+	border: 1px solid #0bf30b;
+	 z-index: 9999999 !important;
 }
 
 .for-loop-li-css {
@@ -186,7 +186,7 @@ div, span {
 
 .outer-loop-color {
 	font-weight: bold;
-	color: blue !important;
+	color: #38e5d8 !important;
 	font-family: monospace; 
 }
 
@@ -201,6 +201,30 @@ div, span {
 
 .ct-blue {
 	color: blue;
+}
+
+a {
+	color: #09ff4d;
+	text-decoration: none;
+}
+
+.z-index {
+	z-index: 9999999;
+	position: relative;
+	background-color: white;
+}
+
+.box-border {
+	border-radius: 12px;
+	border: 2px solid gray;
+}
+
+.eleAtInnerIdx {
+	padding: 5px;
+}
+
+.eleAtInnerIdxDiv {
+	margin-top: 12px;
 }
 
 </style>
@@ -364,24 +388,30 @@ div, span {
 		</div>
 		<div class="col-xs-5">
 			<div class="arrTable margin-top col-xs-12" id="arrTable">
-				<table style="width:100%" class="opacity00" id="arrElements">
-		  			<tbody>
-		  				<tr id="outerArrow"></tr>
-		  				<tr id="innerArrow"></tr>
-			  			<tr border="2px" id="values">
-					    	<td class="text-center"><span class="element" arrayvalue="0" id="sortEle0">1</span></td>
-					   		<td class="text-center"><span class="element" arrayvalue="1" id="sortEle1">23</span></td>
-					    	<td class="text-center"><span class="element" arrayvalue="2" id="sortEle2">5</span></td>
-					    	<td class="text-center"><span class="element" arrayvalue="3" id="sortEle3">13</span></td>
-					    	<td class="text-center"><span class="element" arrayvalue="4" id="sortEle4">12</span></td>
-					    	<!-- <td class="text-center"><span class="element" arrayvalue="5" id="sortEle5">39</span></td> -->
-					  		<!-- <td class="text-center"><span class="element" arrayvalue="6" id="sortEle6">33</span></td>
-					    	<td class="text-center"><span class="element" arrayvalue="7" id="sortEle7">6</span></td> -->
-					 	</tr>
-					 	<tr id="arrayIndices"></tr>
-					</tbody>
-				</table>
-				<div style="margin-top: 45px;">
+				<div class="col-xs-12 text-center"><div id="eleAtInnerText">temp</div></div>
+				<div class="col-xs-12 text-center eleAtInnerIdxDiv"><span class="box-border eleAtInnerIdx">
+							<span id="eleAtInnerIdxVal">0</span>
+						</span></div>
+				<div class="col-xs-12">
+					<table style="width:100%" class="opacity00" id="arrElements">
+			  			<tbody>
+			  				<tr id="outerArrow"></tr>
+			  				<tr id="innerArrow"></tr>
+				  			<tr border="2px" id="values">
+						    	<td class="text-center"><span class="element" arrayvalue="0" id="sortEle0">1</span></td>
+						   		<td class="text-center"><span class="element" arrayvalue="1" id="sortEle1">23</span></td>
+						    	<td class="text-center"><span class="element" arrayvalue="2" id="sortEle2">5</span></td>
+						    	<td class="text-center"><span class="element" arrayvalue="3" id="sortEle3">13</span></td>
+						    	<td class="text-center"><span class="element" arrayvalue="4" id="sortEle4">12</span></td>
+						    	<!-- <td class="text-center"><span class="element" arrayvalue="5" id="sortEle5">39</span></td> -->
+						  		<!-- <td class="text-center"><span class="element" arrayvalue="6" id="sortEle6">33</span></td>
+						    	<td class="text-center"><span class="element" arrayvalue="7" id="sortEle7">6</span></td> -->
+						 	</tr>
+						 	<tr id="arrayIndices"></tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12" style="margin-top: 35px;">
 					<span>
 						<span id="arrDec" style="font-family: monospace;">
 							int a[] = {<div class="arr-ele" id="number0" arrayvalue="0">1</div>,<div class="arr-ele" id="number1" arrayvalue="1">23</div>,<div class="arr-ele" id="number2" arrayvalue="2">5</div>,<div class="arr-ele" id="number3" arrayvalue="3">13</div>,<div class="arr-ele" id="number4" arrayvalue="4">12</div>};
@@ -392,7 +422,7 @@ div, span {
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
-		<div id="finalDiv" class="col-xs-4 col-xs-offset-4 opacity00">
+		<div id="finalDiv" class="col-xs-5 col-xs-offset-5 text-center opacity00">
 			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : bigO(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
 		</div>
 	</div>
@@ -412,8 +442,9 @@ var staringPoint = 1;
 var endingPoint = 5;
 var flag = true;
 var outerIdx = 0;
-var len = 6, elementAtInnerIdx;
+var len = 5, elementAtInnerIdx;
 var arr = [];
+var array = ["1<sup>st</sup>", "2<sup>nd</sup>", "3<sup>rd</sup>", "4<sup>th</sup>", "5<sup>th</sup>"];
 
 function introGuide() {
 	introjs = introJs();
@@ -521,8 +552,9 @@ function introGuide() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							zoomingEffect("#arrElements", function() {
 								buttonAppendFunction(".introjs-tooltiptext", function() {
-									//	outerLoopConditionChecking();
-										bubbleSort();
+									outerLoopInitializationText();	
+									//outerLoopConditionChecking();
+										//	bubbleSort();
 								});
 							})
 						})
@@ -535,13 +567,14 @@ function introGuide() {
 					"<ul><li>1st Phase - 5 time</li><li>2nd Phase - 4 time</li><li>3rd Phase - 3 time</li><li>4th Phase - 2 time</li>"+
 					"<li>5th Phase - 1 time</li></ul>";
 					typing(".introjs-tooltiptext", text, function() {
-						
+						$(".introjs-nextbutton").show();
 					});
 				});
 			}
 			break;
 		case 'divTable':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			$(".introjs-tooltip").css("min-width", "250px");
 			switch(animateStep) {
 			case 'firstStep':
 				$(".introjs-helperLayer").one("transitionend", function() {
@@ -573,10 +606,31 @@ function introGuide() {
 				break;
 			case 'thirdStep':
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "So we've noticed that the total number of comparisons done is n + (n - 1) + ... + 2 + 1."
+					var text = "<ul><li id='liFinalText1'>So we've noticed that the total number of comparisons done is <br>"+
+					"<span class='ct-code-b-yellow'>n+(n-1)+...+2+1</span>.</li></ul>"
 					typing(".introjs-tooltiptext", text, function() {
-						
-						$(".introjs-nextbutton").show();
+						buttonAppendFunction(".introjs-tooltiptext", function() {
+							$("#liFinalText1").after("<li id='liFinalText2'>This sum is equal to <span class='ct-code-b-yellow' id='liFinalText1Span'>"+
+							"n*(n+1)/2</span><br>(see <a href='https://en.wikipedia.org/wiki/Triangular_number' target='_blank'>Triangular Numbers</a>).</li>");
+							typing("#liFinalText2", $("#liFinalText2").html(), function() {
+								buttonAppendFunction(".introjs-tooltiptext", function() {
+									$("#liFinalText2").after("<li><span class='ct-code-b-yellow opacity00' id='liFinalText2Span'>"+
+										"(<span id='nValue3'>n<sup>2</sup></span>*n)/2</span></li>");
+									transferEffectFunction("#liFinalText1Span", "#liFinalText2Span", function() {
+										buttonAppendFunction(".introjs-tooltiptext", function() {
+											$("#finalDiv").addClass("z-index");
+											$("#nValue3").effect('highlight',{color:'#da5805'}, 1000, function() {
+												tweenmaxAnimation("#nValue3", "#nValue2", function() {
+													$("#nValue2").effect('highlight',{color:'#da5805'}, 1000, function() {
+														$(".introjs-nextbutton").show();
+													});
+												});
+											});
+										});
+									});
+								});
+							});
+						});
 					});
 				});
 				break;
@@ -591,7 +645,6 @@ function introGuide() {
 							tweenmaxAnimation("#nValue1", "#nValue2", function() {
 								$("#nValue2").effect('highlight',{color:'#da5805'}, 1000, function() {
 									$(".introjs-nextbutton").show();
-									//	setTimeoutFunction();
 								});
 							});
 						});
@@ -601,6 +654,8 @@ function introGuide() {
 			break;
 		case "restart":
 			$('.introjs-nextbutton').hide();
+			$(".introjs-tooltip").css("min-width", "-moz-max-content");
+			$(".introjs-tooltip").css("min-width", "max-content");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restart").removeClass("opacity00");
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
@@ -640,17 +695,45 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	}});
 }
 
-	/* function outerLoopConditionChecking() {
-		if (outerIdx < (len - 1)) {
+	function outerLoopInitializationText() {
+		var text = "At first phase the elements are sorted as follows.<br><span id='buttonAppendSpan'></span>";
+		typing(".introjs-tooltiptext", text, function() {
+			outerLoopInitialization();
+		});
+	}
+
+	function outerLoopInitialization() {
+		zoomingEffect('#outerArrow' + outerIdx, function() {
 			setTimeout(function() {
-				innerLoopInitializationText();
+				outerLoopConditionChecking();
 			},500);
+		});
+	} 
+	
+	
+	function outerLoopConditionChecking() {
+		if (outerIdx < (len - 1)) {
+			if (flag) {
+				innerLoopInitializationText();
+			} else {
+				setTimeout(function() {
+					innerLoopInitializationText();
+				},500);
+			}
+		} else {
+			$('#sortEle0').parent().css('background', 'orange').addClass("completed");
+			endingPoint = 5 - $(".completed").length;
+			$('.introjs-tooltiptext').append("<a class='introjs-button user-btn'>Next &#8594;</a>");
+			$('.user-btn').click(function() {
+				$('.user-btn').remove();
+			});
 		}
 	}
 	
 	function innerLoopInitializationText() {
 		var innerIdx = 0;
 		if(innerIdx < (len - outerIdx - 1)) {
+			console.log("innerIdx < ");
 			setTimeout(function() {
 				innerLoopInitialization(innerIdx);
 			},500);
@@ -668,171 +751,105 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	
 	function innerLoopConditionChecking(innerIdx) {
 		if(innerIdx < (len - outerIdx - 1)) {
-			text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx &lt; len - outerIdx - 1</span>'
-				+ ' evaluates <span class="ct-code-b-green">true</span>.&nbsp;'
-				+ ' <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {
-				$('#innerLoop').css('background', 'lightgreen').effect( "highlight",{color: 'blue'}, 800, function() {
-					if (flag) {
-						$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-						 		+ "onclick=checkIfCondition(" + innerIdx + ")>Next &#8594;</a>");	
-					} else {
-						setTimeout(function() {
-							checkIfCondition(innerIdx);
-						},500)
-					}
-				});	
-			});
+			if (flag) {
+				checkIfCondition(innerIdx);
+			} else {
+				setTimeout(function() {
+					checkIfCondition(innerIdx);
+				},500)
+			}
 		} else {
-			text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx &lt; len - outerIdx - 1</span>'
-				+ ' evaluates <span class="ct-code-b-red">false</span>.&nbsp;'
-				+ ' <br/><span id="appendedText"></span> <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {k
-				$('#innerLoop').effect( "highlight",{color: 'lightgreen'}, 800, function() {
-					text = 'The largest element <span class="outer-loop-color">'+ parseInt($('#sortEle' + innerIdx).text()) 
-							+ '</span> will be places at <span class="outer-loop-color">'+ innerIdx 
-							+ '</span> location.<span id="appendButton"></span>';
-					typing('#appendedText', text, function() {
-						$('#sortEle' + innerIdx).parent().css('background', 'orange').addClass("completed");
-						
-						endingPoint = 8 - $(".completed").length;
-							$('.introjs-duplicate-skipbutton').remove();
-							$('#autoCompleButtons').append("<a class='introjs-button introjs-duplicate-skipbutton'" 
-								 	+ "onclick=bubbleSort()>Auto complete &#8594;</a>");
-						$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-						 		+ "onclick=outerIdxIncerementText(" + innerIdx + ")>Next &#8594;</a>");
-					});
-				});
+			$("#buttonAppendSpan").after('<span id="buttonAppendSpan2">The largest element <span class="outer-loop-color">'+ parseInt($('#sortEle' + innerIdx).text()) 
+					+ '</span> will be places at <span class="outer-loop-color">'+ innerIdx 
+					+ '</span> location.<span id="appendButton"></span>');
+			typing('#buttonAppendSpan2', $("#buttonAppendSpan2").html(), function() {
+				$('#sortEle' + innerIdx).parent().css('background', 'orange').addClass("completed");
+				
+				endingPoint = 5 - $(".completed").length;
+				$("#appendButton").append("<div class='introjs-tooltipbuttons popover-btn-css'><span class='introjs-button user-btn'" 
+				 		+ "onclick=outerIdxIncerementText(" + innerIdx + ")>Next &#8594;</span></div>");	
+			//	outerIdxIncerementText(innerIdx);
+				// need back button here
 			});
 		}
 	}
 	
 	function checkIfCondition(innerIdx) {
-		$('.introjs-duplicate-nextbutton').remove();
-		$('#innerLoop').css('background', '');
-		arrow('#innerForLoop', '#ifConditionCheck', function() {
-			$('#ifCondition').effect( "highlight",{color: 'blue'}, 500, function() {
-				arr[innerIdx] = parseInt($('#sortEle' + innerIdx).text());
-				arr[innerIdx + 1] = parseInt($('#sortEle' + (innerIdx + 1)).text());
-				if (arr[innerIdx] > arr[innerIdx + 1]) {
-					text = '<span class="ct-code-b-black">arr[<span class="inner-loop-color">inner</span>Idx &gt; arr['
-					        + '<span class="inner-loop-color">inner</span>Idx + 1]</span> evaluates  '
-							+ '<span class="inner-loop-color">true</span>.</span>'
-							+ ' <span id="appendButton"></span>';
-					typing('#explanationDiv', text, function() {
-						setTimeout(function() {
-							swapElements(innerIdx);
-						},500);
-					});
+		$('.user-btn').remove();
+		console.log("checkIfCondition");
+		arr[innerIdx] = parseInt($('#sortEle' + innerIdx).text());
+		console.log("arr[innerIdx] : " + arr[innerIdx]);
+		arr[innerIdx + 1] = parseInt($('#sortEle' + (innerIdx + 1)).text());
+		console.log("arr[innerIdx + 1] : " + arr[innerIdx + 1]);
+		if (arr[innerIdx] > arr[innerIdx + 1]) {
+				setTimeout(function() {
+					swapElements(innerIdx);
+				},500);
+		} else {
+				if (flag) {
+					innerIdxIncerementText(innerIdx);
 				} else {
-					text = '<span class="ct-code-b-black">arr[<span class="inner-loop-color">inner</span>Idx &gt; arr['
-				        + '<span class="inner-loop-color">inner</span>Idx + 1]</span> evaluates  '
-						+ '<span class="ct-code-b-red">false</span>.</span>'
-						+ ' <span id="appendButton"></span>';
-					typing('#explanationDiv', text, function() {
-						if (flag) {
-							$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-							 		+ "onclick=innerIdxIncerementText(" + innerIdx + ")>Next &#8594;</a>");	
-						} else {
-							setTimeout(function() {
-								innerIdxIncerementText(innerIdx);
-							},500);
-						}
-					});
+					setTimeout(function() {
+						innerIdxIncerementText(innerIdx);
+					},500);
 				}
-			});
-		});
+		}
 	}
 	
 	function innerIdxIncerementText(innerIdx) {
-		$('.introjs-duplicate-nextbutton').remove();
-		arrow('#ifConditionCheck', '#innerForLoop', function() {
-			text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx++</span> increment by one'
-					+ ' <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {
-				if (flag) {
-					$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-					 		+ "onclick=innerIdxIncerement(" + innerIdx + ")>Next &#8594;</a>");
-				} else {
-					setTimeout(function() {
-						innerIdxIncerement(innerIdx);
-					},500);
-				}
-			});
-		});
+		$('.user-btn').remove();
+		if (flag) {
+			innerIdxIncerement(innerIdx);
+		} else {
+			setTimeout(function() {
+				innerIdxIncerement(innerIdx);
+			},500);
+		}
 	}
 	
 	function innerIdxIncerement(innerIdx) {
-		$('#storeValueInOuterIdx, #storeArrInnerIdxPlusVal, #storeEleOuterIdxVal').css('background', '');
-		$('.introjs-duplicate-nextbutton').remove();
-		$('#innerInc').effect( "highlight",{color: 'blue'}, 500, function() {
-			++innerIdx;
-			toEffectWithTweenMax('#innerArrow' + (innerIdx - 1) , '#innerArrow' + innerIdx , function() {
-				flag = false;
-				setTimeout(function() {
-					innerLoopConditionChecking(innerIdx);
-				},500);
-			});
+		++innerIdx;
+		toEffectWithTweenMax('#innerArrow' + (innerIdx - 1) , '#innerArrow' + innerIdx , function() {
+			flag = false;
+			setTimeout(function() {
+				innerLoopConditionChecking(innerIdx);
+			},500);
 		});
 	}
 	
 	function swapElements(innerIdx) {
-		arrow('#ifConditionCheck', '#storeArrInnerIdxPlusVal', function() {
-			text = 'Now swap the elements.'
-					+ ' <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {
-				$('.introjs-duplicate-skipbutton').removeClass('opacity00');
-				$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-				$('.introjs-duplicate-nextbutton').click(function() {
-					$('.introjs-duplicate-nextbutton').remove();
-					$('#storeValueInOuterIdx, #storeArrInnerIdxPlusVal, #storeEleOuterIdxVal').css('background', 'lightgreen');
-					$('#storeValueInOuterIdx').effect( "highlight",{color: 'blue'});
-					$('#storeArrInnerIdxPlusVal').effect( "highlight",{color: 'blue'});
-					$('#storeEleOuterIdxVal').effect( "highlight",{color: 'blue'}, 800, function() {
-						fadeInFromEffectWithTimelineMax('#sortEle' + innerIdx, '#eleAtInnerIdxVal', function() {
-							fadeInFromEffectWithTimelineMax('#sortEle' + (innerIdx + 1), '#sortEle' + innerIdx, function() {
-								fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx + 1), function() {
-									setTimeout(function() {
-										innerIdxIncerementText(innerIdx);
-									},500);
-								});
-							});
-						});
-					});
-				});				
+		$('.introjs-duplicate-skipbutton').removeClass('opacity00');
+		fadeInFromEffectWithTimelineMax('#sortEle' + innerIdx, '#eleAtInnerIdxVal', function() {
+			fadeInFromEffectWithTimelineMax('#sortEle' + (innerIdx + 1), '#sortEle' + innerIdx, function() {
+				fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx + 1), function() {
+					setTimeout(function() {
+						innerIdxIncerementText(innerIdx);
+					},500);
+				});
 			});
 		});
 	}
 	
 	function outerIdxIncerementText(innerIdx) {
-		//$('#sortEle0').parent().css('background', 'orange').addClass("completed");
-		$('.introjs-duplicate-skipbutton').addClass('opacity00');
+		$(".introjs-tooltiptext").text("");
+		$(".user-btn").remove();
+		//text here
 		$('#innerArrow' +innerIdx ).css('opacity', '0');
-		$('.introjs-duplicate-nextbutton').remove();
-		arrow('#innerForLoop', '#outerForLoop', function() {
-			text = '<span class="ct-code-b-black"><span class="ct-code-b-blue">outer</span>Idx++</span> increment by one'
-					+ ' <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {
-				if (flag) {
-					$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-					 		+ "onclick=outerIdxIncerement()>Next &#8594;</a>");
-				} else {
-					setTimeout(function() {
-						outerIdxIncerement();
-					},500);
-				}
-			});
-		});
+		if (flag) {
+			outerIdxIncerement();
+		} else {
+			setTimeout(function() {
+				outerIdxIncerement();
+			},500);
+		}
 	}
 	
 	function outerIdxIncerement() {
-		$('#storeValueInOuterIdx, #storeArrInnerIdxPlusVal, #storeEleOuterIdxVal').css('background', '');
-		$('.introjs-duplicate-nextbutton').remove();
-		$('#outerInc').effect( "highlight",{color: 'blue'}, 500, function() {
-			toEffectWithTweenMax('#outerArrow' + outerIdx , '#outerArrow' + (outerIdx + 1) , function() {
-				flag = false;
-				++outerIdx;
-				
+		toEffectWithTweenMax('#outerArrow' + outerIdx , '#outerArrow' + (outerIdx + 1) , function() {
+			flag = false;
+			++outerIdx;
+			var text = "At " + array[outerIdx] +" phase the elements are sorted as follows.<br><span id='buttonAppendSpan'></span>";
+			typing(".introjs-tooltiptext", text, function() {
 				setTimeout(function() {
 					outerLoopConditionChecking();
 				},500);
@@ -850,7 +867,33 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 				callBackFunction();
 			}
 		}});
-	} */
+	}
+	
+	function fadeInFromEffectWithTimelineMax(selector1, selector2, callBackFunction) {
+		var timelineMax = new TimelineMax();
+		$(selector1).parent().effect( "highlight",{color: 'blue'}, 500, function() {
+			$(selector1).removeClass('z-index1000000');
+			var l1 = $(selector1).offset();
+			var l2 = $(selector2).offset();
+			var topLength = l1.top - l2.top;
+			var leftLength = l1.left - l2.left;
+			$("#programDiv").append("<span id='dummy' style='position: relative;color: black;'>" 
+				+ $(selector2).text() + "</span>");
+			$('#dummy').offset({
+				"top": l2.top, 
+				"left": l2.left
+			});
+			$(selector2).text($(selector1).text());
+			timelineMax.from(selector2, 1, {top: topLength, left: leftLength, onComplete: function() {
+				if (typeof callBackFunction === "function") {
+					callBackFunction();
+				}
+			}}).to('#dummy', 0.5, {opacity: 0, onComplete: function() {
+				$("#animationDiv").removeAttr("style").addClass("introjs-showElement");			
+				$('#dummy').remove();
+			}}, "-=0.5");
+		});
+	}
 
 
 
