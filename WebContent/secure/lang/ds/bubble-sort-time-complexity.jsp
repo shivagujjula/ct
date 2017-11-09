@@ -387,19 +387,19 @@ a {
 			</pre>
 		</div>
 		<div class="col-xs-5">
-			<div class="arrTable margin-top col-xs-12" id="arrTable">
-				<div class="col-xs-12 text-center"><div id="eleAtInnerText">temp</div></div>
-				<div class="col-xs-12 text-center eleAtInnerIdxDiv"><span class="box-border eleAtInnerIdx">
+			<div class="arrTable margin-top col-xs-12 opacity00" id="arrTable">
+				<div class="col-xs-12 text-center"><div id="eleAtInnerText" class="opacity00">temp</div></div>
+				<div class="col-xs-12 text-center eleAtInnerIdxDiv"><span class="box-border eleAtInnerIdx opacity00">
 							<span id="eleAtInnerIdxVal">0</span>
 						</span></div>
-				<div class="col-xs-12">
+				<div class="col-xs-12" style="margin-top: 3%;">
 					<table style="width:100%" class="opacity00" id="arrElements">
 			  			<tbody>
 			  				<tr id="outerArrow"></tr>
 			  				<tr id="innerArrow"></tr>
 				  			<tr border="2px" id="values">
-						    	<td class="text-center"><span class="element" arrayvalue="0" id="sortEle0">1</span></td>
-						   		<td class="text-center"><span class="element" arrayvalue="1" id="sortEle1">23</span></td>
+						    	<td class="text-center"><span class="element" arrayvalue="0" id="sortEle0">56</span></td>
+						   		<td class="text-center"><span class="element" arrayvalue="1" id="sortEle1">45</span></td>
 						    	<td class="text-center"><span class="element" arrayvalue="2" id="sortEle2">5</span></td>
 						    	<td class="text-center"><span class="element" arrayvalue="3" id="sortEle3">13</span></td>
 						    	<td class="text-center"><span class="element" arrayvalue="4" id="sortEle4">12</span></td>
@@ -414,7 +414,7 @@ a {
 				<div class="col-xs-12" style="margin-top: 35px;">
 					<span>
 						<span id="arrDec" style="font-family: monospace;">
-							int a[] = {<div class="arr-ele" id="number0" arrayvalue="0">1</div>,<div class="arr-ele" id="number1" arrayvalue="1">23</div>,<div class="arr-ele" id="number2" arrayvalue="2">5</div>,<div class="arr-ele" id="number3" arrayvalue="3">13</div>,<div class="arr-ele" id="number4" arrayvalue="4">12</div>};
+							int a[] = {<div class="arr-ele" id="number0" arrayvalue="0">56</div>,<div class="arr-ele" id="number1" arrayvalue="1">45</div>,<div class="arr-ele" id="number2" arrayvalue="2">5</div>,<div class="arr-ele" id="number3" arrayvalue="3">13</div>,<div class="arr-ele" id="number4" arrayvalue="4">12</div>};
 						</span>
 					</span>
 				</div>
@@ -537,28 +537,33 @@ function introGuide() {
 			switch(animateStep) {
 			case 'sortingInAction':
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$('.arr-ele').attr('maxlength',2);
-				    $('.arr-ele').attr('contenteditable','true');
-					$('.introjs-tooltip').removeClass('hide');
-					text = 'Here, we are declaring and initializing an integer array with 5 elements : '
-							+ '<span class="ct-code-b-yellow element" arrayvalue="0">'+ parseInt($("#number0").text()) +'</span>,'
-							+ '<span class="ct-code-b-yellow element" arrayvalue="1">'+ parseInt($("#number1").text()) +'</span>,'
-							+ '<span class="ct-code-b-yellow element" arrayvalue="2">'+ parseInt($("#number2").text()) +'</span>,'
-							+ '<span class="ct-code-b-yellow element" arrayvalue="3">'+ parseInt($("#number3").text()) +'</span>,'
-							+ '<span class="ct-code-b-yellow element" arrayvalue="4">'+ parseInt($("#number4").text()) +'</span>';
-					typing(".introjs-tooltiptext", text, function() {
-						$('#number0').focus();
-						changeValue();
-						buttonAppendFunction(".introjs-tooltiptext", function() {
-							zoomingEffect("#arrElements", function() {
-								buttonAppendFunction(".introjs-tooltiptext", function() {
-									outerLoopInitializationText();	
-									//outerLoopConditionChecking();
-										//	bubbleSort();
-								});
+					TweenMax.to($("#arrTable"), 1, {opacity: 1, onComplete:function() {
+						$('.arr-ele').attr('maxlength',2);
+					    $('.arr-ele').attr('contenteditable','true');
+						$('.introjs-tooltip').removeClass('hide');
+						text = 'Here, we are declaring and initializing an integer array with 5 elements : '
+								+ '<span class="ct-code-b-yellow element" arrayvalue="0">'+ parseInt($("#number0").text()) +'</span>,'
+								+ '<span class="ct-code-b-yellow element" arrayvalue="1">'+ parseInt($("#number1").text()) +'</span>,'
+								+ '<span class="ct-code-b-yellow element" arrayvalue="2">'+ parseInt($("#number2").text()) +'</span>,'
+								+ '<span class="ct-code-b-yellow element" arrayvalue="3">'+ parseInt($("#number3").text()) +'</span>,'
+								+ '<span class="ct-code-b-yellow element" arrayvalue="4">'+ parseInt($("#number4").text()) +'</span>';
+						typing(".introjs-tooltiptext", text, function() {
+							$('#number0').focus();
+							changeValue();
+							buttonAppendFunction(".introjs-tooltiptext", function() {
+								zoomingEffect("#arrElements", function() {
+									zoomingEffect("#eleAtInnerText");
+										zoomingEffect(".eleAtInnerIdx", function() {
+										buttonAppendFunction(".introjs-tooltiptext", function() {
+										outerLoopInitializationText();	
+										//outerLoopConditionChecking();
+											//	bubbleSort();
+										});
+									});
+								})
 							})
-						})
-					});
+						});
+					}});
 				});
 				break;
 			case 'sortingExample':
@@ -611,12 +616,14 @@ function introGuide() {
 					typing(".introjs-tooltiptext", text, function() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							$("#liFinalText1").after("<li id='liFinalText2'>This sum is equal to <span class='ct-code-b-yellow' id='liFinalText1Span'>"+
-							"n*(n+1)/2</span><br>(see <a href='https://en.wikipedia.org/wiki/Triangular_number' target='_blank'>Triangular Numbers</a>).</li>");
+							"n*(n+1)/2</span>.</li>");
 							typing("#liFinalText2", $("#liFinalText2").html(), function() {
 								buttonAppendFunction(".introjs-tooltiptext", function() {
-									$("#liFinalText2").after("<li><span class='ct-code-b-yellow opacity00' id='liFinalText2Span'>"+
+									$("#liFinalText2").after("<li>i.e. <span class='ct-code-b-yellow opacity00' id='liFinalText2Span'>"+
 										"(<span id='nValue3'>n<sup>2</sup></span>*n)/2</span></li>");
+									$("#liFinalText1Span").effect('highlight',{color:'#da5805'}, 1000);
 									transferEffectFunction("#liFinalText1Span", "#liFinalText2Span", function() {
+										$("#liFinalText2Span").effect('highlight',{color:'#da5805'}, 1000);
 										buttonAppendFunction(".introjs-tooltiptext", function() {
 											$("#finalDiv").addClass("z-index");
 											$("#nValue3").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -696,7 +703,8 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 }
 
 	function outerLoopInitializationText() {
-		var text = "At first phase the elements are sorted as follows.<br><span id='buttonAppendSpan'></span>";
+		var text = "At <span class='ct-code-b-yellow'>1<sup>st</sup></span> phase the elements are sorted as follows."+
+		"<br><span id='buttonAppendSpan'></span>";
 		typing(".introjs-tooltiptext", text, function() {
 			outerLoopInitialization();
 		});
@@ -706,7 +714,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 		zoomingEffect('#outerArrow' + outerIdx, function() {
 			setTimeout(function() {
 				outerLoopConditionChecking();
-			},500);
+			},200);
 		});
 	} 
 	
@@ -718,14 +726,20 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 			} else {
 				setTimeout(function() {
 					innerLoopInitializationText();
-				},500);
+				},200);
 			}
 		} else {
 			$('#sortEle0').parent().css('background', 'orange').addClass("completed");
 			endingPoint = 5 - $(".completed").length;
-			$('.introjs-tooltiptext').append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-			$('.user-btn').click(function() {
-				$('.user-btn').remove();
+			buttonAppendFunction(".introjs-tooltiptext", function() {
+				var text = "all elements are sorted succesfully.";
+				typing(".introjs-tooltiptext", text, function() {
+					buttonAppendFunction(".introjs-tooltiptext", function() {
+						$("#divTable").removeClass("hide");
+						$("#preCodeDiv").hide();
+						introjs.nextStep();
+					});
+				});
 			});
 		}
 	}
@@ -733,10 +747,9 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	function innerLoopInitializationText() {
 		var innerIdx = 0;
 		if(innerIdx < (len - outerIdx - 1)) {
-			console.log("innerIdx < ");
 			setTimeout(function() {
 				innerLoopInitialization(innerIdx);
-			},500);
+			},200);
 		}
 	}
 	
@@ -745,7 +758,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 				$('#innerArrow' + innerIdx).css({'opacity' : '1'});
 				setTimeout(function() {
 					innerLoopConditionChecking(innerIdx);
-				},500);
+				},200);
 			});
 	}
 	
@@ -756,7 +769,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 			} else {
 				setTimeout(function() {
 					checkIfCondition(innerIdx);
-				},500)
+				},200);
 			}
 		} else {
 			$("#buttonAppendSpan").after('<span id="buttonAppendSpan2">The largest element <span class="outer-loop-color">'+ parseInt($('#sortEle' + innerIdx).text()) 
@@ -776,22 +789,19 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	
 	function checkIfCondition(innerIdx) {
 		$('.user-btn').remove();
-		console.log("checkIfCondition");
 		arr[innerIdx] = parseInt($('#sortEle' + innerIdx).text());
-		console.log("arr[innerIdx] : " + arr[innerIdx]);
 		arr[innerIdx + 1] = parseInt($('#sortEle' + (innerIdx + 1)).text());
-		console.log("arr[innerIdx + 1] : " + arr[innerIdx + 1]);
 		if (arr[innerIdx] > arr[innerIdx + 1]) {
 				setTimeout(function() {
 					swapElements(innerIdx);
-				},500);
+				},200);
 		} else {
 				if (flag) {
 					innerIdxIncerementText(innerIdx);
 				} else {
 					setTimeout(function() {
 						innerIdxIncerementText(innerIdx);
-					},500);
+					},200);
 				}
 		}
 	}
@@ -803,7 +813,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 		} else {
 			setTimeout(function() {
 				innerIdxIncerement(innerIdx);
-			},500);
+			},200);
 		}
 	}
 	
@@ -813,7 +823,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 			flag = false;
 			setTimeout(function() {
 				innerLoopConditionChecking(innerIdx);
-			},500);
+			},200);
 		});
 	}
 	
@@ -824,7 +834,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 				fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx + 1), function() {
 					setTimeout(function() {
 						innerIdxIncerementText(innerIdx);
-					},500);
+					},200);
 				});
 			});
 		});
@@ -840,7 +850,7 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 		} else {
 			setTimeout(function() {
 				outerIdxIncerement();
-			},500);
+			},200);
 		}
 	}
 	
@@ -848,11 +858,12 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 		toEffectWithTweenMax('#outerArrow' + outerIdx , '#outerArrow' + (outerIdx + 1) , function() {
 			flag = false;
 			++outerIdx;
-			var text = "At " + array[outerIdx] +" phase the elements are sorted as follows.<br><span id='buttonAppendSpan'></span>";
+			var text = "At <span class='ct-code-b-yellow'>" + array[outerIdx] +"</span> phase the elements are sorted as follows."+
+			"<br><span id='buttonAppendSpan'></span>";
 			typing(".introjs-tooltiptext", text, function() {
 				setTimeout(function() {
 					outerLoopConditionChecking();
-				},500);
+				},200);
 			});
 		});
 	}

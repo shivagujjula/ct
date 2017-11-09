@@ -16,7 +16,8 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src="/secure/lang/c/js-min/iooda.min.js"></script>
+<!-- <script src="/secure/lang/c/js-min/iooda.min.js"></script> -->
+<script src="/secure/lang/c/js/initialization-of-one-dimensional-arrays.js"></script>
 
 <title>Initialization of arrays</title>
 </head>

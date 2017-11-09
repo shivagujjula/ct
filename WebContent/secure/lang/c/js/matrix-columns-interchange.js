@@ -1,4 +1,4 @@
-var typingSpeed = 0.05;
+var typingSpeed = 10;
 var row = 0, col = 0, count = 1;
 var valIndex = 0, index = 1;
 var stack = [], stackIndex = [];

@@ -79,8 +79,49 @@ function introGuide() {
 		}]
 	});
 	
+	introjs.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		
+		switch (elementId) {
+		case 'exampleDiv2':
+			break;
+		case 'exampleDiv3':
+			break;
+		case 'exampleDiv4':
+			break;
+		case 'exampleDiv5':
+			break;
+		case 'preLineArrayCode':
+			break;
+		case 'preCode':
+			break;
+		case 'exampleDiv6':
+			break;
+		case 'secondStep':
+			break;
+		}
+	})
+	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'infoDiv' :
@@ -108,12 +149,12 @@ function introGuide() {
 					$("#firstExample").removeClass("opacity00");
 					var text = $("#firstExample").html();
 					typing($("#firstExample"), text, function() {
-						var text = "Let us consider an example of an array declaration. <br>Here you will notice that an array "+
+						var text = "<ul><li id='firstSpan'>Let us consider an example of an array declaration. <br>Here you will notice that an array "+
 						"<span class='ct-code-b-yellow'>arr</span> of type <span class='ct-code-b-yellow'>int</span> with size "+
-						"<span class='ct-code-b-yellow'>4</span> is declared.<br><br>"+
+						"<span class='ct-code-b-yellow'>4</span> is declared.</li><li id='firstSpan1'>"+
 						"The array <span class='ct-code-b-yellow'>arr</span> is initialized with the integer constants <span class='ct-code-b-yellow'>10"+
 						"</span>, <span class='ct-code-b-yellow'>20</span>, <span class='ct-code-b-yellow'>30</span>, <span class='ct-code-b-yellow'>40"+
-						"</span> enclosed with in braces."
+						"</span> enclosed with in braces.</li></ul>";
 						typing('.introjs-tooltiptext', text, function() {
 							nextButtonFucntion(function() {
 								$("#smallBox1").removeClass("visibility-hidden");
@@ -121,17 +162,18 @@ function introGuide() {
 									$(".smallBox1").addClass("animated-border").one('animationend', function() {
 										$(".smallBox1").off();
 										$(".smallBox1").css("border-color", "dodgerblue");
-										var text = "Since an array always stores elements in a sequential manner the memory location of the second "+
-										"element will be adjacent to the memory location of the first element."
-										typing('.introjs-tooltiptext', text, function() {
+										$("#firstSpan1").after("<li id='firstSpan2'>Since an array always stores elements in a sequential manner "+
+											"the memory location of the second element will be adjacent to the memory location of the first element.</li>");
+										typing('#firstSpan2', $("#firstSpan2").html(), function() {
 											nextButtonFucntion(function() {
 												$("#address1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-													var text = "Since we are declaring an array of type <span class='ct-code-b-yellow'>int</span> "+
+													$("#firstSpan2").after("<li id='firstSpan3'>Since we are declaring an array of type "+
+													"<span class='ct-code-b-yellow'>int</span> "+
 													"and <span class='ct-code-b-yellow'>int</span> occupies <span class='ct-color-lime'>2 bytes</span>"+
 													" in memory you will notice that the memory addresses of all the elements very sequentially with "+
 													"<span class='ct-code-b-yellow'>2</span> as the difference "+
-													"starting with <span class='ct-code-b-yellow'>1023</span>.";	
-													typing('.introjs-tooltiptext', text, function() {
+													"starting with <span class='ct-code-b-yellow'>1023</span>.</li>");	
+													typing('#firstSpan3', $("#firstSpan3").html(), function() {
 														nextButtonFucntion(function() {
 															firstExampleElementRecursion(1);
 														});
@@ -153,8 +195,8 @@ function introGuide() {
 					$("#secondExample").removeClass("opacity00");
 					var text = $("#secondExample").html();
 					typing($("#secondExample"), text, function() {
-						typing('.introjs-tooltiptext', "Now let us consider an example where we are declaring an array of a larger size but "+
-								"initializing with fewer values.", function() {
+						typing('.introjs-tooltiptext', "<ul><li id='secondSpan1'>Now let us consider an example where we are declaring an array of a larger size but "+
+								"initializing with fewer values.</li></ul>", function() {
 							nextButtonFucntion(function() {
 								$("#arraySize2").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
 									$("#smallBox2").removeClass("visibility-hidden");
@@ -178,8 +220,8 @@ function introGuide() {
 					$("#thirdExample").removeClass("opacity00");
 					var text = $("#thirdExample").html();
 					typing($("#thirdExample"), text, function() {
-						typing('.introjs-tooltiptext', "In this example you will notice we are declaring an array of size 2 and are attempting to "+
-								"initialize it with 5 elements.", function() {
+						typing('.introjs-tooltiptext', "<ul><li id='thirdSpan1'>In this example you will notice we are declaring an array of size "+
+								"2 and are attempting to initialize it with 5 elements.</li></ul>", function() {
 							nextButtonFucntion(function() {
 								$("#arraySize3").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
 									$("#smallBox3").removeClass("visibility-hidden");
@@ -203,12 +245,13 @@ function introGuide() {
 					$("#fourthExample").removeClass("opacity00");
 					var text = $("#fourthExample").html();
 					typing($("#fourthExample"), text, function() {
-						typing('.introjs-tooltiptext', "array can also be declared without specifying the size in the declaration statement as "+
-							"shown above.", function() {
+						typing('.introjs-tooltiptext', "<ul><li id='fourthSpan1'>array can also be declared without specifying the size in the "+
+								"declaration statement as shown above.</li></ul>", function() {
 							nextButtonFucntion(function() {
-								var text = "If the size of an array is not mentioned during initialization, the compiler considers the number of"+
-								" values assigned as the <span class='ct-code-b-yellow'>size of the array</span>.";
-								typing('.introjs-tooltiptext', text, function() {
+								$("#fourthSpan1").after("<li id='fourthSpan2'>If the size of an array is not mentioned during initialization, "+
+									"the compiler considers the number of"+
+									" values assigned as the <span class='ct-code-b-yellow'>size of the array</span>.</li>");
+								typing("#fourthSpan2", $("#fourthSpan2").html(), function() {
 									nextButtonFucntion(function() {
 										$("#inputCount").effect("highlight", {color:"#FF9900"}, 1000, function() {
 											$("#arraySize4").effect("highlight", {color:"dodgerblue"}, 1000, function() {
@@ -263,7 +306,7 @@ function introGuide() {
 				var text = "Here you will notice an example of array declaration without initialization. Where the arrays elements are assigned at "+
 					"later stage."
 				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -319,7 +362,7 @@ function preCodeLineAnimation(i) {
 			} else {
 				var text = "These assignment statements individually assign the values in their respective indices.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			}
 		});
@@ -432,12 +475,12 @@ function firstAnimation(i) {
 			if (i < $("#arraySize1").text()) {
 				firstAnimation(++i);
 			} else {
-				var text = "The values of an elements are scanned from left to right and are assigned to "+
+				$("#firstSpan3").after("<span  id='firstSpan4'><li>The values of an elements are scanned from left to right and are assigned to "+
 				"<span class='ct-code-b-yellow'>arr[0]</span>, <span class='ct-code-b-yellow'>arr[1]</span>, "+
-				"and so on. <br>Please note that the array indexes starts with <span class='ct-code-b-yellow'>0</span> and ends the last index "+
-				"value is <span class='ct-code-b-yellow'>arrays total length-1</span>.";
-				typing('.introjs-tooltiptext',text , function() {
-					$(".introjs-nextbutton").show();
+				"and so on.</li> <li>Please note that the array indexes starts with <span class='ct-code-b-yellow'>0</span> and ends the last index "+
+				"value is <span class='ct-code-b-yellow'>arrays total length-1</span>.</li></span>");
+				typing('#firstSpan4', $("#firstSpan4").html(), function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			}
 		}});
@@ -455,13 +498,13 @@ function secondAnimation(i) {
 			if (i < 3) {
 				secondAnimation(++i);
 			} else{
-				var text = "Here you will notice that since only 3 values are provided even though array size is 5 only first three "+
-				"slots are filled with the given three values and the remaining slots will be filled with <span class='ct-code-b-yellow'>0's</span>."
-				typing('.introjs-tooltiptext', text, function() {
+				$("#secondSpan1").after("<li id='secondSpan2'>Here you will notice that since only 3 values are provided even though array size is 5 only first three "+
+				"slots are filled with the given three values and the remaining slots will be filled with <span class='ct-code-b-yellow'>0's</span>.</li>");
+				typing('#secondSpan2', $("#secondSpan2").html(), function() {
 					nextButtonFucntion(function() {
 						$("#valueId4").removeClass("opacity00").effect("highlight", {color:"#00FF00"}, 500, function() {
 							$("#valueId5").removeClass("opacity00").effect("highlight", {color:"#00FF00"}, 500, function() {
-								$(".introjs-nextbutton").show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});
@@ -482,13 +525,14 @@ function thirdAnimation(i) {
 			if (i < 2) {
 				thirdAnimation(++i);
 			} else {
-				typing('.introjs-tooltiptext', "Here you will notice that since the array size is only 2 and all the remaining three elements "+
-					"will be discarded.", function() {
+				$("#thirdSpan1").append("<li id='thirdSpan2'>Here you will notice that since the array size is only 2 and all the remaining "+
+						"three elements will be discarded.</li>");
+				typing('#thirdSpan2', $("#thirdSpan2").html(), function() {
 					nextButtonFucntion(function() {
 						$("#inValue3").effect( "highlight", {color:"red"}, 1000, function() {
 							$("#inValue4").effect( "highlight", {color:"red"}, 1000, function() {
 								$("#inValue5").effect( "highlight", {color:"red"}, 1000, function() {
-									$(".introjs-nextbutton").show();
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								});
 							});
 						});
@@ -510,7 +554,7 @@ function fourthAnimation(i) {
 			if (i < 3) {
 				fourthAnimation(++i);
 			} else {
-				$(".introjs-nextbutton").show();
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			}
 		}});
 	});

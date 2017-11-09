@@ -1155,7 +1155,7 @@ function scrollAtOutput() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 0.05;
+	var typingSpeed = 40;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
