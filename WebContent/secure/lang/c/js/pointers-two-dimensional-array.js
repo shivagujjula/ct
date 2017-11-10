@@ -297,16 +297,14 @@ function introJsFunction() {
 			
 		case "line1":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				
-					var typingContent = 'Here, a <span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span> and ' +
-										'<span class="ct-code-b-yellow">4 int</span> variables <span class="ct-code-b-yellow">m</span>, ' +
-										'<span class="ct-code-b-yellow">n</span>, <span class="ct-code-b-yellow">i</span>, ' +
-										'<span class="ct-code-b-yellow">j</span> are declared.<br><br> The demo shows the memory allocation of only the ' +
-										'<span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span>.';
-					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-						$('.introjs-nextbutton, .introjs-prevbutton').show();
-					});
-				
+				var typingContent = 'Here, a <span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span> and ' +
+						'<span class="ct-code-b-yellow">4 int</span> variables <span class="ct-code-b-yellow">m</span>, ' +
+						'<span class="ct-code-b-yellow">n</span>, <span class="ct-code-b-yellow">i</span>, ' +
+						'<span class="ct-code-b-yellow">j</span> are declared.<br><br> The demo shows the memory allocation of only the ' +
+						'<span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span>.';
+				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
 			});
 		break;
 			

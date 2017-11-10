@@ -4,7 +4,6 @@
 
 
 var initializationOfOneDimensionalArraysReady = function() {
-	console.log("*******************")
 	introGuide();
 	$("body").keydown(function(e) {
 		if (e.keyCode == 13) {
@@ -35,43 +34,33 @@ function introGuide() {
 		}, {
 			element : '#exampleDiv1',
 			intro : '',
+			tooltipClass : 'hide',
 			position : 'right',
 		}, {
 			element : '#exampleDiv2',
 			intro : '',
+			tooltipClass : 'hide',
 			position : 'right',
 		}, {
 			element : '#exampleDiv3',
 			intro : '',
+			tooltipClass : 'hide',
 			position : 'bottom',
 		}, {
 			element : '#exampleDiv4',
 			intro : '',
+			tooltipClass : 'hide',
 			position : 'bottom',
 		}, {
 			element : '#exampleDiv5',
 			intro : '',
-			position : 'bottom',
-		}, {
-			element : '#preLineArrayCode',
-			intro : '',
-			position : 'right',
-		}, {
-			element : '#exampleDiv6',
-			intro : '',
-			position : 'right',
-			animateStep : 'firstStep',
 			tooltipClass : 'hide',
+			position : 'bottom',
 		}, {
 			element : '#preCode',
 			intro : '',
-			position : 'top',
-		}, {
-			element : '#exampleDiv6',
-			intro : '',
-			position : 'right',
-			animateStep : 'secondStep',
 			tooltipClass : 'hide',
+			position : 'top',
 		}, {
 			element :"#restart",
 			intro : "Click to restart.",
@@ -79,28 +68,76 @@ function introGuide() {
 		}]
 	});
 	
-	introjs.onbeforechange(function(targetElement){
+	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		
 		switch (elementId) {
+		case 'exampleDiv1':
+			$("#exampleDiv1").addClass("opacity00");
+			$("#firstExample").css("opacity", "0");
+			$("#element1, #element2, #element3, #element4").css("opacity", "0");
+			$("#smallBox1").addClass("visibility-hidden");
+			$(".smallBox1").css("border-color", "white");
+			$("#value1, #value2, #value3, #value4").addClass("opacity00");
+			$("#address1").addClass("opacity00").removeClass("animated zoomIn");
+			$("#exampleDiv2").addClass("opacity00");
+			break;
 		case 'exampleDiv2':
+			$("#exampleDiv2").addClass("opacity00");
+			$("#secondExample").css("opacity", "0");
+			$("#element5, #element6, #element7, #element8, #element9").css("opacity", "0");
+			$("#smallBox2").addClass("visibility-hidden");
+			$(".smallBox2").css("border-color", "white");
+			$("#valueId1, #valueId2, #valueId3, #valueId4, #valueId5").addClass("opacity00");
+			$("#address2").addClass("opacity00").removeClass("animated zoomIn");
+			$("#exampleDiv3").addClass("opacity00");
 			break;
 		case 'exampleDiv3':
+			$("#exampleDiv3").addClass("opacity00");
+			$("#thirdExample").css("opacity", "0");
+			$("#element10, #element11").css("opacity", "0");
+			$("#smallBox3").addClass("visibility-hidden");
+			$(".smallBox3").css("border-color", "white");
+			$("#valueIds1, #valueIds2").addClass("opacity00");
+			$("#address3").addClass("opacity00").removeClass("animated zoomIn");
+			$("#exampleDiv4").addClass("opacity00");
 			break;
 		case 'exampleDiv4':
+			$("#exampleDiv4").addClass("opacity00");
+			$("#fourthExample").css("opacity", "0");
+			$("#element12, #element13, #element14").css("opacity", "0");
+			$("#smallBox4").addClass("visibility-hidden");
+			$(".smallBox4").css("border-color", "white");
+			$("#valuesId1, #valuesId2, #valuesId3").addClass("opacity00");
+			$("#address4").addClass("opacity00").removeClass("animated zoomIn");
+			$("#exampleDiv5").addClass("opacity00");
 			break;
 		case 'exampleDiv5':
-			break;
-		case 'preLineArrayCode':
+			$("#exampleDiv5").addClass("opacity00");
+			$("#fifthExample").css("opacity", "0");
+			for (var i = 0; i < 10; i++) {
+				$("#elementVal" + i).css("opacity", "0");
+			}
+			$("#smallBox5").addClass("visibility-hidden");
+			$(".smallBox5").css("border-color", "white");
+			$(".lastValues").css("opacity", "0");
+			$("#address5").addClass("opacity00").removeClass("animated zoomIn");
+			$("#exampleDiv6").addClass("opacity00");
+			$("#preCode, #preLineArrayCode").addClass("opacity00");
+			$(" #preLine1, #preLine2, #preLine3").css("opacity", "0");
 			break;
 		case 'preCode':
-			break;
-		case 'exampleDiv6':
-			break;
-		case 'secondStep':
+				$("#preCode, #preLineArrayCode").addClass("opacity00");
+				$("#exampleDiv6").addClass("opacity00");
+				$(" #preLine1, #preLine2, #preLine3").css("opacity", "0");
+				$("#elementSixth1, #elementSixth2, #elementSixth3").css("opacity", "0");
+				$("#smallBox6").addClass("visibility-hidden");
+				$(".smallBox6").css("border-color", "white");
+				$("#valuesLineId1, #valuesLineId2, #valuesLineId3").addClass("opacity00");
+				$("#address6").addClass("opacity00").removeClass("animated zoomIn");
 			break;
 		}
-	})
+	});
 	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
@@ -126,7 +163,6 @@ function introGuide() {
 		switch(elementId) {
 		case 'infoDiv' :
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
-			//var text = $("#infoDiv").html();
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
 					$("#list3").fadeTo(300, 1, function() {
@@ -145,38 +181,36 @@ function introGuide() {
 			break;
 		case 'exampleDiv1':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#exampleDiv1").removeClass("opacity00", function() {
-					$("#firstExample").removeClass("opacity00");
-					var text = $("#firstExample").html();
-					typing($("#firstExample"), text, function() {
-						var text = "<ul><li id='firstSpan'>Let us consider an example of an array declaration. <br>Here you will notice that an array "+
-						"<span class='ct-code-b-yellow'>arr</span> of type <span class='ct-code-b-yellow'>int</span> with size "+
-						"<span class='ct-code-b-yellow'>4</span> is declared.</li><li id='firstSpan1'>"+
-						"The array <span class='ct-code-b-yellow'>arr</span> is initialized with the integer constants <span class='ct-code-b-yellow'>10"+
-						"</span>, <span class='ct-code-b-yellow'>20</span>, <span class='ct-code-b-yellow'>30</span>, <span class='ct-code-b-yellow'>40"+
-						"</span> enclosed with in braces.</li></ul>";
-						typing('.introjs-tooltiptext', text, function() {
-							nextButtonFucntion(function() {
-								$("#smallBox1").removeClass("visibility-hidden");
-								$("#arraySize1").effect( "highlight", {color:"dodgerblue"}, 500, function() {
-									$(".smallBox1").addClass("animated-border").one('animationend', function() {
-										$(".smallBox1").off();
-										$(".smallBox1").css("border-color", "dodgerblue");
-										$("#firstSpan1").after("<li id='firstSpan2'>Since an array always stores elements in a sequential manner "+
-											"the memory location of the second element will be adjacent to the memory location of the first element.</li>");
-										typing('#firstSpan2', $("#firstSpan2").html(), function() {
-											nextButtonFucntion(function() {
-												$("#address1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-													$("#firstSpan2").after("<li id='firstSpan3'>Since we are declaring an array of type "+
-													"<span class='ct-code-b-yellow'>int</span> "+
-													"and <span class='ct-code-b-yellow'>int</span> occupies <span class='ct-color-lime'>2 bytes</span>"+
-													" in memory you will notice that the memory addresses of all the elements very sequentially with "+
-													"<span class='ct-code-b-yellow'>2</span> as the difference "+
-													"starting with <span class='ct-code-b-yellow'>1023</span>.</li>");	
-													typing('#firstSpan3', $("#firstSpan3").html(), function() {
-														nextButtonFucntion(function() {
-															firstExampleElementRecursion(1);
-														});
+				$("#exampleDiv1").removeClass("opacity00");
+				TweenMax.to($("#firstExample"), 1, {opacity: 1, onComplete:function() {
+					$(".introjs-tooltip").removeClass('hide');
+					var text = "<ul><li id='firstSpan'>Let us consider an example of an array declaration. <br>Here you will notice that an array "+
+					"<span class='ct-code-b-yellow'>arr</span> of type <span class='ct-code-b-yellow'>int</span> with size "+
+					"<span class='ct-code-b-yellow'>4</span> is declared.</li><li id='firstSpan1'>"+
+					"The array <span class='ct-code-b-yellow'>arr</span> is initialized with the integer constants <span class='ct-code-b-yellow'>10"+
+					"</span>, <span class='ct-code-b-yellow'>20</span>, <span class='ct-code-b-yellow'>30</span>, <span class='ct-code-b-yellow'>40"+
+					"</span> enclosed with in braces.</li></ul>";
+					typing('.introjs-tooltiptext', text, function() {
+						nextButtonFucntion(function() {
+							$("#smallBox1").removeClass("visibility-hidden");
+							$("#arraySize1").effect( "highlight", {color:"dodgerblue"}, 500, function() {
+								$(".smallBox1").addClass("animated-border").one('animationend', function() {
+									$(".smallBox1").removeClass("animated-border").off();
+									$(".smallBox1").css("border-color", "dodgerblue");
+									$("#firstSpan1").after("<li id='firstSpan2'>Since an array always stores elements in a sequential manner "+
+										"the memory location of the second element will be adjacent to the memory location of the first element.</li>");
+									typing('#firstSpan2', $("#firstSpan2").html(), function() {
+										nextButtonFucntion(function() {
+											zooming("#address1", function() {
+												$("#firstSpan2").after("<li id='firstSpan3'>Since we are declaring an array of type "+
+												"<span class='ct-code-b-yellow'>int</span> "+
+												"and <span class='ct-code-b-yellow'>int</span> occupies <span class='ct-color-lime'>2 bytes</span>"+
+												" in memory you will notice that the memory addresses of all the elements very sequentially with "+
+												"<span class='ct-code-b-yellow'>2</span> as the difference "+
+												"starting with <span class='ct-code-b-yellow'>1023</span>.</li>");	
+												typing('#firstSpan3', $("#firstSpan3").html(), function() {
+													nextButtonFucntion(function() {
+														firstExampleElementRecursion(1);
 													});
 												});
 											});
@@ -185,83 +219,78 @@ function introGuide() {
 								});
 							});
 						});
-					}); 
-				});
+					});
+				}}); 
 			}); 
 			break;
 		case 'exampleDiv2':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#exampleDiv2").removeClass("opacity00", function() {
-					$("#secondExample").removeClass("opacity00");
-					var text = $("#secondExample").html();
-					typing($("#secondExample"), text, function() {
-						typing('.introjs-tooltiptext', "<ul><li id='secondSpan1'>Now let us consider an example where we are declaring an array of a larger size but "+
-								"initializing with fewer values.</li></ul>", function() {
-							nextButtonFucntion(function() {
-								$("#arraySize2").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
-									$("#smallBox2").removeClass("visibility-hidden");
-									$(".smallBox2").addClass("animated-border").one('animationend', function() {
-										$(".smallBox2").off();
-										$(".smallBox2").css("border-color", "dodgerblue");
-										$("#address2").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-											secondExampleElementRecursion(5);
-										});
+				$("#exampleDiv2").removeClass("opacity00");
+				TweenMax.to($("#secondExample"), 1, {opacity: 1, onComplete:function() {
+					$(".introjs-tooltip").removeClass('hide');
+					typing('.introjs-tooltiptext', "<ul><li id='secondSpan1'>Now let us consider an example where we are declaring an array of a larger size but "+
+							"initializing with fewer values.</li></ul>", function() {
+						nextButtonFucntion(function() {
+							$("#arraySize2").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
+								$("#smallBox2").removeClass("visibility-hidden");
+								$(".smallBox2").addClass("animated-border").one('animationend', function() {
+									$(".smallBox2").removeClass("animated-border").off();
+									$(".smallBox2").css("border-color", "dodgerblue");
+									zooming("#address2", function() {
+										secondExampleElementRecursion(5);
 									});
 								});
 							});
 						});
 					});
-				});
+				}});
 			});
 			break;
 		case 'exampleDiv3':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#exampleDiv3").removeClass("opacity00", function() {
-					$("#thirdExample").removeClass("opacity00");
-					var text = $("#thirdExample").html();
-					typing($("#thirdExample"), text, function() {
-						typing('.introjs-tooltiptext', "<ul><li id='thirdSpan1'>In this example you will notice we are declaring an array of size "+
-								"2 and are attempting to initialize it with 5 elements.</li></ul>", function() {
-							nextButtonFucntion(function() {
-								$("#arraySize3").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
-									$("#smallBox3").removeClass("visibility-hidden");
-									$(".smallBox3").addClass("animated-border").one('animationend', function() {
-										$(".smallBox3").off();
-										$(".smallBox3").css("border-color", "dodgerblue");
-										$("#address3").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-											thirdExampleElementRecursion(10);
-										});
+				$("#exampleDiv3").removeClass("opacity00");
+				$("#thirdExample").removeClass("opacity00");
+				TweenMax.to($("#thirdExample"), 1, {opacity: 1, onComplete:function() {
+					$(".introjs-tooltip").removeClass('hide');
+					typing('.introjs-tooltiptext', "<ul><li id='thirdSpan1'>In this example you will notice we are declaring an array of size "+
+							"2 and are attempting to initialize it with 5 elements.</li></ul>", function() {
+						nextButtonFucntion(function() {
+							$("#arraySize3").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
+								$("#smallBox3").removeClass("visibility-hidden");
+								$(".smallBox3").addClass("animated-border").one('animationend', function() {
+									$(".smallBox3").removeClass("animated-border").off();
+									$(".smallBox3").css("border-color", "dodgerblue");
+									zooming("#address3", function() {
+										thirdExampleElementRecursion(10);
 									});
 								});
 							});
 						});
 					});
-				});
+				}});
 			});
 			break;
 		case 'exampleDiv4':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#exampleDiv4").removeClass("opacity00", function() {
-					$("#fourthExample").removeClass("opacity00");
-					var text = $("#fourthExample").html();
-					typing($("#fourthExample"), text, function() {
-						typing('.introjs-tooltiptext', "<ul><li id='fourthSpan1'>array can also be declared without specifying the size in the "+
-								"declaration statement as shown above.</li></ul>", function() {
-							nextButtonFucntion(function() {
-								$("#fourthSpan1").after("<li id='fourthSpan2'>If the size of an array is not mentioned during initialization, "+
-									"the compiler considers the number of"+
-									" values assigned as the <span class='ct-code-b-yellow'>size of the array</span>.</li>");
-								typing("#fourthSpan2", $("#fourthSpan2").html(), function() {
-									nextButtonFucntion(function() {
-										$("#inputCount").effect("highlight", {color:"#FF9900"}, 1000, function() {
-											$("#arraySize4").effect("highlight", {color:"dodgerblue"}, 1000, function() {
-												$("#smallBox4").removeClass("visibility-hidden");
-												$(".smallBox4").addClass("animated-border").one('animationend', function() {
-													$(".smallBox4").off();
-													$(".smallBox4").css("border-color", "dodgerblue");
-													$("#address4").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-														fourthExampleElementRecursion(12);
-													});
+				$("#exampleDiv4").removeClass("opacity00");
+				TweenMax.to($("#fourthExample"), 1, {opacity: 1, onComplete:function() {
+					$(".introjs-tooltip").removeClass('hide');
+					typing('.introjs-tooltiptext', "<ul><li id='fourthSpan1'>array can also be declared without specifying the size in the "+
+							"declaration statement as shown above.</li></ul>", function() {
+						nextButtonFucntion(function() {
+							$("#fourthSpan1").after("<li id='fourthSpan2'>If the size of an array is not mentioned during initialization, "+
+								"the compiler considers the number of"+
+								" values assigned as the <span class='ct-code-b-yellow'>size of the array</span>.</li>");
+							typing("#fourthSpan2", $("#fourthSpan2").html(), function() {
+								nextButtonFucntion(function() {
+									$("#inputCount").effect("highlight", {color:"#FF9900"}, 1000, function() {
+										$("#arraySize4").effect("highlight", {color:"dodgerblue"}, 1000, function() {
+											$("#smallBox4").removeClass("visibility-hidden");
+											$(".smallBox4").addClass("animated-border").one('animationend', function() {
+												$(".smallBox4").removeClass("animated-border").off();
+												$(".smallBox4").css("border-color", "dodgerblue");
+												zooming("#address4", function() {
+													fourthExampleElementRecursion(12);
 												});
 											});
 										});
@@ -270,49 +299,55 @@ function introGuide() {
 							});
 						});
 					});
-				});
+				}});
 			});
 			break;
 		case 'exampleDiv5':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#exampleDiv5").removeClass("opacity00", function() {
-					$("#fifthExample").removeClass("opacity00");
-					var text = $("#fifthExample").html();
-					typing($("#fifthExample"), text, function() {
-						typing('.introjs-tooltiptext', "Here you will notice we are declaring an array <span class='ct-code-b-yellow'>arr[10]</span> "+
-								"without any elements be initialized. In such a situation all the slots are filled with "+
-								"<span class='ct-code-b-yellow'>0's</span>.", function() {
-							nextButtonFucntion(function() {
-								$("#arraySize5").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
-									$("#smallBox5").removeClass("visibility-hidden");
-									$(".smallBox5").addClass("animated-border").one('animationend', function() {
-										$(".smallBox5").off();
-										$(".smallBox5").css("border-color", "dodgerblue");
-										$("#address5").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-											elementRecursion(0);
-										});
+				$("#exampleDiv5").removeClass("opacity00");
+				TweenMax.to($("#fifthExample"), 1, {opacity: 1, onComplete:function() {
+						$(".introjs-tooltip").removeClass('hide');
+					typing('.introjs-tooltiptext', "Here you will notice we are declaring an array <span class='ct-code-b-yellow'>arr[10]</span> "+
+							"without any elements be initialized. In such a situation all the slots are filled with "+
+							"<span class='ct-code-b-yellow'>0's</span>.", function() {
+						nextButtonFucntion(function() {
+							$("#arraySize5").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
+								$("#smallBox5").removeClass("visibility-hidden");
+								$(".smallBox5").addClass("animated-border").one('animationend', function() {
+									$(".smallBox5").removeClass("animated-border").off();
+									$(".smallBox5").css("border-color", "dodgerblue");
+									zooming("#address5", function() {
+										elementRecursion(0);
 									});
 								});
 							});
 						});
 					});
-				});
-			});
-			break;
-		case 'preLineArrayCode':
-		//	$("#preCode").removeClass("opacity00");
-			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#preLineArrayCode").removeClass("opacity00");
-				var text = "Here you will notice an example of array declaration without initialization. Where the arrays elements are assigned at "+
-					"later stage."
-				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				}});
 			});
 			break;
 		case 'preCode':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				preCodeLineAnimation(1);
+				$("#preLineArrayCode, #preCode").removeClass("opacity00");
+				$(".introjs-tooltip").removeClass('hide');
+				var text = "Here you will notice an example of array declaration without initialization. Where the arrays elements are assigned at "+
+					"later stage."
+				typing($(".introjs-tooltiptext"), text, function() {
+					nextButtonFucntion(function() {
+						$("#exampleDiv6").addClass("z-index9999999");
+						$("#exampleDiv6").removeClass("opacity00");
+						$("#preLineArrayCode").effect( "transfer", { to: $("#smallBox6"), className: "ui-effects-transfer" }, 1500 , function() {
+							$("#smallBox6").removeClass("visibility-hidden");
+							$(".smallBox6").addClass("animated-border").one('animationend', function() {
+								$(".smallBox6").removeClass("animated-border").off();
+								$(".smallBox6").css("border-color", "dodgerblue");
+								zooming("#address6", function() {
+									sixthExampleElementRecursion(1);
+								});
+							});
+						});
+					});
+				});
 			});
 			break;
 		case 'exampleDiv6':
@@ -325,9 +360,9 @@ function introGuide() {
 					$("#preLineArrayCode").effect( "transfer", { to: $("#smallBox6"), className: "ui-effects-transfer" }, 1500 , function() {
 						$("#smallBox6").removeClass("visibility-hidden");
 						$(".smallBox6").addClass("animated-border").one('animationend', function() {
-							$(".smallBox6").off();
+							$(".smallBox6").removeClass("animated-border").off();
 							$(".smallBox6").css("border-color", "dodgerblue");
-							$("#address6").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+							zooming("#address6", function() {
 								sixthExampleElementRecursion(1);
 							});
 						});
@@ -344,6 +379,7 @@ function introGuide() {
 		case "restart":
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
+			$("#exampleDiv6").removeClass("z-index9999999");
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$("#restart").fadeTo(1000, 1);
 				$("#restart").removeClass("opacity00");
@@ -362,7 +398,9 @@ function preCodeLineAnimation(i) {
 			} else {
 				var text = "These assignment statements individually assign the values in their respective indices.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
+					nextButtonFucntion(function() {
+						valuesAnimationLaterDeclaration(1);
+					});
 				});
 			}
 		});
@@ -374,16 +412,14 @@ function valuesAnimationLaterDeclaration(i) {
 	var l4 = $("#valuesLineId" + i).offset();
 	var topLength = l3.top - l4.top;
 	var leftLength = l3.left-l4.left;
-	$("#lineValue" + i).addClass("css-circle").effect( "highlight", {color:"white"}, 500, function() {
+	$("#lineValue" + i).addClass("css-circle").effect( "highlight", {color:"blue"}, 500, function() {
 		$("#lineValue" + i).removeClass("css-circle");
 		$("#valuesLineId" + i).removeClass("opacity00");
 		TweenMax.from("#valuesLineId" + i, 0.7, {top: topLength, left: leftLength, onComplete: function() {
 			if (i < 3) {
 				valuesAnimationLaterDeclaration(++i);
 			} else {
-				setTimeout(function () {
-					introjs.nextStep();
-				}, 500);
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			}
 		}});
 	});
@@ -435,15 +471,15 @@ function sixthExampleElementRecursion(i) {
 			sixthExampleElementRecursion(++i);
 		} else {
 			$("#preLineArrayCode").removeClass("z-index9999999");
-			setTimeout(function () {
-				introjs.nextStep();
-			}, 500);
+			nextButtonFucntion(function() {
+				preCodeLineAnimation(1);
+			});
 		}
 	}});
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 0.05;
+	var typingSpeed = 0.1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -452,12 +488,14 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }
 
 function zooming(selector, callBackFunction) {
 	$(selector).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+		$(selector).off();
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}	
@@ -480,7 +518,7 @@ function firstAnimation(i) {
 				"and so on.</li> <li>Please note that the array indexes starts with <span class='ct-code-b-yellow'>0</span> and ends the last index "+
 				"value is <span class='ct-code-b-yellow'>arrays total length-1</span>.</li></span>");
 				typing('#firstSpan4', $("#firstSpan4").html(), function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
+					$('.introjs-nextbutton').show();
 				});
 			}
 		}});
@@ -565,9 +603,9 @@ function elementRecursion(i) {
 		if (i < 9) {
 			elementRecursion(++i);
 		} else {
-			$(".lastValues").removeClass("opacity00");
+			$(".lastValues").css("opacity", "1");
 			TweenMax.staggerFrom(".lastValues", 1, {opacity:1, top:-95, onComplete: function() {
-				$(".introjs-nextbutton").show();
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 				$("#preCode").removeClass("opacity00");
 			}});
 		}

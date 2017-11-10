@@ -37,6 +37,7 @@ function introGuide() {
 			element :'#exampleDiv1',
 			intro : '',
 			animateStep: 'tdBoxAnimate',
+			tooltipClass: 'hide',
 		}, {
 			element :'#exampleDiv2',
 			intro : '',
@@ -59,19 +60,69 @@ function introGuide() {
 		}, {
 			element :'#exampleDiv5',
 			intro :'',
-		}/* , {
-			element :'#sixthExample',
-			intro : '',
-		} */, {
+		}, {
 			element :"#restart",
 			intro : "Click to restart.",
 			position : 'right',
 		}]
 	});
+	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		
+		switch (elementId) {
+		case 'exampleDiv1':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'firstExample':
+				break;
+			case 'tdBoxAnimate':
+				$("#smallBox1").addClass("visibility-hidden");
+				$(".smallBox1, .smallBox2, .smallBox3").css("border-color", "white");
+				$("#rowOneId1, #rowOneId2, #rowOneId3").css("opacity", "0");
+				for (var i = 0; i <= 6; i++) {
+					$("#element" + i).css("opacity", "0");
+				}
+				break;
+			}
+			
+			
+			
+			/*$("#exampleDiv1").addClass("opacity00");
+			$("#firstExample").css("opacity", "0");
+			$("#element1, #element2, #element3, #element4").css("opacity", "0");
+			$("#smallBox1").addClass("visibility-hidden");
+			$(".smallBox1").css("border-color", "white");
+			$("#value1, #value2, #value3, #value4").addClass("opacity00");
+			$("#address1").addClass("opacity00").removeClass("animated zoomIn");
+			$("#exampleDiv2").addClass("opacity00");*/
+			break;
+		case 'exampleDiv2':
+		break;
+		}
+	});
+	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
-//		console.log("steps :" + introjs._currentStep);
 		switch(elementId) {
 		case 'infoDiv' :
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
@@ -85,31 +136,30 @@ function introGuide() {
 				});
 			});
 			break;
-		case 'heading':
+		/*case 'heading':
 			$(".introjs-nextbutton").show();
-			break;
+			break;*/
 		case 'exampleDiv1':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 				case 'firstExample':
 					$('.introjs-helperLayer').one('transitionend', function() {	
-						$("#exampleDiv1").removeClass("opacity00", function() {
-							typing('.introjs-tooltiptext', "Let us consider an example of a simple <span class='ct-code-b-yellow'>"+
-									"two dimensional array</span>.", function() {
-								$("#firstExample").removeClass("opacity00", function() {
-									$(".introjs-nextbutton").show();
-								});
-							});
+						$("#exampleDiv1").removeClass("opacity00");
+						typing('.introjs-tooltiptext', "Let us consider an example of a simple <span class='ct-code-b-yellow'>"+
+								"two dimensional array</span>.", function() {
+							$("#firstExample").removeClass("opacity00");
+							$(".introjs-nextbutton").show();
 						});
 					});
 					break;
 				case 'tdBoxAnimate':
 					$('.introjs-helperLayer').one('transitionend', function() {
+						$(".introjs-tooltip").removeClass('hide');
 						var text = "Let us learn how the elements are distributed in rows and columns in the memory.";
 						typing('.introjs-tooltiptext', text, function() {
 							$("#smallBox1").removeClass("visibility-hidden");
 							$(".smallBox1, .smallBox2, .smallBox3").addClass("animated-border").one('animationend', function() {
-								$(".smallBox1, .smallBox2, .smallBox3").off();
+								$(".smallBox1, .smallBox2, .smallBox3").removeClass("animated-border").off();
 								borderColorForRows(".smallBox1", ".smallBox2", ".smallBox3");
 								rowsFirstRemove(1);
 							});
@@ -121,51 +171,43 @@ function introGuide() {
 		case 'rowColumnSyntax':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				typing('.introjs-tooltiptext', "3 represents number of rows and 2 represents the number of columns.", function() {
-					$(".introjs-nextbutton").show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case 'exampleDiv2':
-			/* var animateStep = introjs._introItems[introjs._currentStep].animateStep;
-			switch(animateStep) {
-			case 'secondExample': */
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#exampleDiv2").removeClass("opacity00", function() {
-					var text = "Here we will notice a similar <span class='ct-code-b-yellow'>two dimensional array</span> but in a more "+
-						"readable manner.";
-					typing('.introjs-tooltiptext', text, function() {
-						$("#secondExample").removeClass("opacity00", function() {
-							nextButtonFucntion(function() {
-								$("#smallBox2").removeClass("visibility-hidden");
-								$(".second-box-1, .second-box-2, .second-box-3").addClass("animated-border").one('animationend', function() {
-									$(".second-box-1, .second-box-2, .second-box-3").off();
-									borderColorForRows(".second-box-1", ".second-box-2", ".second-box-3");
-									rowsSecondRemoving(1);
-								});
-							});
+				$("#exampleDiv2").removeClass("opacity00");
+				var text = "Here we will notice a similar <span class='ct-code-b-yellow'>two dimensional array</span> but in a more "+
+					"readable manner.";
+				typing('.introjs-tooltiptext', text, function() {
+					$("#secondExample").removeClass("opacity00");
+					nextButtonFucntion(function() {
+						$("#smallBox2").removeClass("visibility-hidden");
+						$(".second-box-1, .second-box-2, .second-box-3").addClass("animated-border").one('animationend', function() {
+							$(".second-box-1, .second-box-2, .second-box-3").removeClass("animated-border").off();
+							borderColorForRows(".second-box-1", ".second-box-2", ".second-box-3");
+							rowsSecondRemoving(1);
 						});
 					});
 				});
 			});
-		//	}
 			break;
 		case 'exampleDiv3':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'thirdExample':
 				$('.introjs-helperLayer').one('transitionend', function() {	
-					$("#exampleDiv3").removeClass("opacity00", function() {
-						typing('.introjs-tooltiptext', "Let us consider another example where the number of elements provided is lower than "+
-								"the size specified in rows and columns.", function() {
-							$("#thirdExample").removeClass("opacity00", function() {
-								nextButtonFucntion(function() {
-									$("#smallBox3").removeClass("visibility-hidden");
-									$(".three-box-1, .three-box-2, .three-box-3").addClass("animated-border").one('animationend', function() {
-										$(".three-box-1, .three-box-2, .three-box-3").off();
-										borderColorForRows(".three-box-1", ".three-box-2", ".three-box-3");
-										rowsThirdRemoving(1);
-									});
-								});
+					$("#exampleDiv3").removeClass("opacity00");
+					typing('.introjs-tooltiptext', "Let us consider another example where the number of elements provided is lower than "+
+							"the size specified in rows and columns.", function() {
+						$("#thirdExample").removeClass("opacity00");
+						nextButtonFucntion(function() {
+							$("#smallBox3").removeClass("visibility-hidden");
+							$(".three-box-1, .three-box-2, .three-box-3").addClass("animated-border").one('animationend', function() {
+								$(".three-box-1, .three-box-2, .three-box-3").removeClass("animated-border").off();
+								borderColorForRows(".three-box-1", ".three-box-2", ".three-box-3");
+								rowsThirdRemoving(1);
 							});
 						});
 					});
@@ -197,20 +239,18 @@ function introGuide() {
 			break;
 		case 'exampleDiv4':
 			$('.introjs-helperLayer').one('transitionend', function() {	
-				$("#exampleDiv4").removeClass("opacity00", function() {
-					typing('.introjs-tooltiptext', "Let us consider another scenario where the given rows and columns do not match "+
-							"the elements in the initialization section.", function() {
-						$("#fourthExample").removeClass("opacity00", function() {
-							nextButtonFucntion(function() {
-								typing('.introjs-tooltiptext', "Here we have three rows and four columns however in the initialization "+
-										"section you notice that only two elements are provided while there are four columns in each row.", function() {
-									$("#smallBox4").removeClass("visibility-hidden");
-									$(".four-box-1, .four-box-2, .four-box-3").addClass("animated-border").one('animationend', function() {
-										$(".four-box-1, .four-box-2, .four-box-3").off();
-										borderColorForRows(".four-box-1", ".four-box-2", ".four-box-3");
-										rowsFourthRemoving(1);
-									});
-								});
+				$("#exampleDiv4").removeClass("opacity00");
+				typing('.introjs-tooltiptext', "Let us consider another scenario where the given rows and columns do not match "+
+						"the elements in the initialization section.", function() {
+					$("#fourthExample").removeClass("opacity00");
+					nextButtonFucntion(function() {
+						typing('.introjs-tooltiptext', "Here we have three rows and four columns however in the initialization "+
+								"section you notice that only two elements are provided while there are four columns in each row.", function() {
+							$("#smallBox4").removeClass("visibility-hidden");
+							$(".four-box-1, .four-box-2, .four-box-3").addClass("animated-border").one('animationend', function() {
+								$(".four-box-1, .four-box-2, .four-box-3").removeClass("animated-border").off();
+								borderColorForRows(".four-box-1", ".four-box-2", ".four-box-3");
+								rowsFourthRemoving(1);
 							});
 						});
 					});
@@ -219,42 +259,27 @@ function introGuide() {
 			break;
 		case 'exampleDiv5':
 			$('.introjs-helperLayer').one('transitionend', function() {	
-				$("#exampleDiv5").removeClass("opacity00", function() {
-					typing('.introjs-tooltiptext', "In the above example you will notice that we can also declare an array without "+
-							"mentioning the <span class='ct-code-b-yellow'>count of rows</span>. <br>In which case the compiler automatically "+
-							"will use the <span class='ct-code-b-yellow'>count of columns</span> "+
-							"to arrive at the <span class='ct-code-b-yellow'>count of rows</span>.", function() {
-						$("#fifthExample").removeClass("opacity00", function() {
-							nextButtonFucntion(function() {
-								$("#emptyRowArray").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
-									$("#smallBox5").removeClass("visibility-hidden");
-									$(".fifth-box-1, .fifth-box-2").addClass("animated-border").one('animationend', function() {
-										$(".fifth-box-1, .fifth-box-2").off();
-										$(".fifth-box-1").css("border-color", "green");
-										$(".fifth-box-2").css("border-color", "firebrick");
-										//$(".four-box-3").css("border-color", "royalblue");
-										rowsFifthRemoving(1);
-									});
-								});
+				$("#exampleDiv5").removeClass("opacity00");
+				typing('.introjs-tooltiptext', "In the above example you will notice that we can also declare an array without "+
+						"mentioning the <span class='ct-code-b-yellow'>count of rows</span>. <br>In which case the compiler automatically "+
+						"will use the <span class='ct-code-b-yellow'>count of columns</span> "+
+						"to arrive at the <span class='ct-code-b-yellow'>count of rows</span>.", function() {
+					$("#fifthExample").removeClass("opacity00");
+					nextButtonFucntion(function() {
+						$("#emptyRowArray").effect( "highlight", {color:"dodgerblue"}, 1000, function() {
+							$("#smallBox5").removeClass("visibility-hidden");
+							$(".fifth-box-1, .fifth-box-2").addClass("animated-border").one('animationend', function() {
+								$(".fifth-box-1, .fifth-box-2").removeClass("animated-border").off();
+								$(".fifth-box-1").css("border-color", "green");
+								$(".fifth-box-2").css("border-color", "firebrick");
+								//$(".four-box-3").css("border-color", "royalblue");
+								rowsFifthRemoving(1);
 							});
 						});
 					});
 				});
 			});
 			break;
-		/* case 'sixthExample':
-			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#sixthExample").removeClass("opacity00", function() {
-					typing('.introjs-tooltiptext', "Here row and column size is not mentioned. Without column size the memory will not be created. " +
-						"So it will gives an <span class='ct-color-red'><b>error</b></span>.", function() {
-						$("#emptySixRow").effect( "highlight", {color:"red"}, 1000);
-						$("#emptySixColumn").effect( "highlight", {color:"red"}, 1000, function() {
-							$(".introjs-nextbutton").show();
-						});
-					});
-				});
-			});
-			break; */
 		case "restart":
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
@@ -278,6 +303,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }
@@ -353,7 +379,7 @@ function firstAnimation(i) {
 			if (i < 6 ) {
 				firstAnimation(++i);
 			} else {
-				$(".introjs-nextbutton").show();
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			}
 		}});
 	});
