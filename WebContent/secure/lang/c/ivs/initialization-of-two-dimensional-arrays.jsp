@@ -29,8 +29,7 @@
 	border-radius: 10px;
 	font-size: 15px;
 	padding: 11px 12px;
-	/* margin-left: 19.5%;
-	margin-top: 1%; */
+	font-family: monospace;
 }
 
 
@@ -106,6 +105,7 @@
 
 .introjs-tooltip {
 	min-width: 280px;
+	overflow-y: auto; 
 }
 
 .z-index9999999 {
@@ -133,6 +133,14 @@ span, div {
 	font-family: monospace;
 }
 
+.append-zero, .zero-class {
+	opacity: 0;
+}
+
+.ct-color-num {
+	color: #0ad785;
+}
+
 
 </style>
 
@@ -150,10 +158,6 @@ span, div {
 				<span class='font-family'>int arr[3][2]</span>, 3 represents the number of <b>rows</b> and 2 represents the number of <b>columns</b>.</li>
 			<li id="list2" class="opacity00">While declaring two dimensional arrays the count of <b>rows</b> can be omitted however the size of the 
 				<b>columns</b> must be specified.<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li>
-			<!-- <li id="list1" class="opacity00">Array is a kind of data structure that can store a fixed-size sequential collection 
-				of elements of the same data type. And an array is used to store a collection of data.</li>
-			<li id="list2" class="opacity00">In two Dimensional arrays the size of the <b>row</b> can be omitted but size of the <b>column</b> must 
-			be specified.<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li> -->
 		</ul>
 	</div>
 	<div class="col-xs-12">
@@ -263,13 +267,13 @@ span, div {
 						<td class="three-box-1"><span class="opacity00" id="valueThree3">3</span></td>
 						<td class="three-box-1"><span class="opacity00" id="valueThree4">4</span></td>
 						<td class="three-box-2"><span class="opacity00" id="valueThree5">5</span></td>
-						<td class="three-box-2"><span class="append-zero opacity00" id="valueThree6">0</span></td>
-						<td class="three-box-2"><span class="append-zero opacity00" id="valueThree7">0</span></td>
-						<td class="three-box-2"><span class="append-zero opacity00" id="valueThree8">0</span></td>
-						<td class="three-box-3"><span class="append-zero opacity00" id="valueThree9">0</span></td>
-						<td class="three-box-3"><span class="append-zero opacity00" id="valueThree10">0</span></td>
-						<td class="three-box-3"><span class="append-zero opacity00" id="valueThree11">0</span></td>
-						<td class="three-box-3"><span class="append-zero opacity00" id="valueThree12">0</span></td>
+						<td class="three-box-2"><span class="append-zero" id="valueThree6">0</span></td>
+						<td class="three-box-2"><span class="append-zero" id="valueThree7">0</span></td>
+						<td class="three-box-2"><span class="append-zero" id="valueThree8">0</span></td>
+						<td class="three-box-3"><span class="append-zero" id="valueThree9">0</span></td>
+						<td class="three-box-3"><span class="append-zero" id="valueThree10">0</span></td>
+						<td class="three-box-3"><span class="append-zero" id="valueThree11">0</span></td>
+						<td class="three-box-3"><span class="append-zero" id="valueThree12">0</span></td>
 					</tr>
 					<tr class="opacity00" id="address3">
 						<td class="addressBox">1015</td>
@@ -349,17 +353,17 @@ span, div {
 					</tr>
 					<tr class="visibility-hidden" id="smallBox4">
 						<td class="four-box-1"><span class="opacity00" id="valueFourth1">1</span></td>
-						<td class="four-box-1"><span class="opacity00" id="valueFourths1">2</span></td>
-						<td class="four-box-1"><span class="zero-class opacity00">0</span></td>
-						<td class="four-box-1"><span class="zero-class opacity00">0</span></td>
+						<td class="four-box-1"><span class="opacity00" id="valueFourth2">2</span></td>
+						<td class="four-box-1"><span class="zero-class">0</span></td>
+						<td class="four-box-1"><span class="zero-class">0</span></td>
 						<td class="four-box-2"><span class="opacity00" id="valueFourth3">3</span></td>
 						<td class="four-box-2"><span class="opacity00" id="valueFourth4">4</span></td>
 						<td class="four-box-2"><span class="opacity00" id="valueFourth5">5</span></td>
-						<td class="four-box-2"><span class="zero-class opacity00">0</span></td>
-						<td class="four-box-3"><span class="zero-class opacity00">0</span></td>
-						<td class="four-box-3"><span class="zero-class opacity00">0</span></td>
-						<td class="four-box-3"><span class="zero-class opacity00">0</span></td>
-						<td class="four-box-3"><span class="zero-class opacity00">0</span></td>
+						<td class="four-box-2"><span class="zero-class">0</span></td>
+						<td class="four-box-3"><span class="zero-class">0</span></td>
+						<td class="four-box-3"><span class="zero-class">0</span></td>
+						<td class="four-box-3"><span class="zero-class">0</span></td>
+						<td class="four-box-3"><span class="zero-class">0</span></td>
 					</tr>
 					<tr class="opacity00" id="address4">
 						<td class="addressBox">1183</td>

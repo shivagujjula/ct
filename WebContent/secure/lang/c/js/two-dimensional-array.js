@@ -99,7 +99,7 @@ var twoDimensionalArrayReady = function() {
 			intro : "",
 			position : "left"
 		}]});
-	intro.onbeforechange(function(targetElement) {
+	intro.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "typingDiv":

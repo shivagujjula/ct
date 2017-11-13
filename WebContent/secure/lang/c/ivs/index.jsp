@@ -12,9 +12,18 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
 
+<style type="text/css">
+r {
+	color: red;
+	font-weight: bold;
+}
+
+.fa-check {
+	color: #8B0000;
+}
+</style>
+
 <script type="text/javascript">
-
-
 
 	function opendialog(className, url, width, height) {
 		if (width == undefined) {
@@ -1685,48 +1694,56 @@
 					<tr>
 						<td>1</td>
 						<td>Functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function Declaration', 'function-declaration.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Declaration</td>
-						<td>Suresh</td>
+						<td>Suresh / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>02-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>2</td>
 						<td>Functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function Definition', 'function-definition.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Definition</td>
-						<td>Suresh</td>
+						<td>Suresh / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>07-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>3</td>
 						<td>Functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Function Call', 'function-call.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Function Call</td>
-						<td>Anil</td>
+						<td>Anil / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>02-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>4</td>
 						<td>Formal & actual parameters</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Formal & actual parameters', 'different-argument-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Formal & actual parameters</td>
-						<td>Ajay</td>
+						<td>Ajay / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>22-09-16</td>
 					</tr>
 
@@ -1769,23 +1786,27 @@
 					<tr>
 						<td>8</td>
 						<td>Program on Functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Sample program on functions', 'sample-program-on-functions.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Sample program on functions</td>
-						<td>Anil</td>
+						<td>Anil / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>07-09-2016</td>
 					</tr>
 					<tr>
 						<td>9</td>
 						<td>Local & global variables</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Local & global variables', 'local-global-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Local & global variables</td>
-						<td>Ajay</td>
+						<td>Ajay / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>22-09-16</td>
 					</tr>
 				</tbody>
@@ -1808,12 +1829,14 @@
 					<tr>
 						<td>1</td>
 						<td>Storage Classes</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Automatic Variables', 'automatic-var.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Automatic Variables</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>03-10-2016</td>
 					</tr>
 
@@ -1833,36 +1856,42 @@
 					<tr>
 						<td>3</td>
 						<td>Storage Classes</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Static Variables', 'static-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Static Variables</td>
-						<td>Ajay</td>
+						<td>Ajay / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>04-10-2016</td>
 					</tr>
 
 					<tr>
 						<td>4</td>
 						<td>Storage Classes</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Register Variables', 'register-variable.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Register Variables</td>
-						<td>Padmaja</td>
+						<td>Padmaja / Mahesh <r>(back)</r></td>
 						<td></td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>28-10-2016</td>
 					</tr>
 
 					<tr>
 						<td>5</td>
 						<td>Storage Classes</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Storage Classes', 'storage-classes.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; All 4 with	differences</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>25-08-2016</td>
 					</tr>
 				</tbody>
@@ -1960,48 +1989,53 @@
 					<tr>
 						<td>1</td>
 						<td>Introduction to Pointers</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers introduction', 'pointers-introduction.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers introduction</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>01-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>2</td>
 						<td>Declaration of Pointers</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers declaration', 'pointers-declaration.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers declaration</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>03-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>3</td>
 						<td>Drawbacks of Pointers</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers drawbacks', 'pointers-drawbacks.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers drawbacks</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>07-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>4</td>
 						<td>Parameter passing methods</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Call by Value', 'call-by-value.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Call by Value</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>10-09-2016</td>
 					</tr>
 
@@ -2009,36 +2043,39 @@
 					<tr>
 						<td>5</td>
 						<td>Parameter passing methods</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Call by Address', 'call-by-address.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Call by Address</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>13-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>6</td>
 						<td>DMA</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Why DMA', 'dynamic-memory-allocation.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; why DMA (Dynamic memory Allocation)</td>
-						<td>Shiva</td>
+						<td>Shiva / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>17-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>7</td>
 						<td>DMA</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of malloc()', 'usage-of-malloc-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of malloc()</td>
-						<td>Shiva</td>
+						<td>Shiva / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>18-09-2016</td>
 					</tr>
 
@@ -2046,119 +2083,129 @@
 					<tr>
 						<td>8</td>
 						<td>DMA</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of calloc()', 'usage-of-calloc-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of calloc()</td>
-						<td>Shiva</td>
+						<td>Shiva / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>22-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>9</td>
 						<td>DMA</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of realloc()', 'usage-of-realloc-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of realloc()</td>
-						<td>Shiva</td>
+						<td>Shiva / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>28-09-2016</td>
 					</tr>
 	
 					<tr>
 						<td>10</td>
 						<td>DMA</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of free()', 'usage-of-free-function.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of free()</td>
-						<td>Shiva</td>
+						<td>Shiva / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>30-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>11</td>
 						<td>Pointers with Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers with 1-D arrays', 'pointers-one-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers with 1-D arrays</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>25-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>12</td>
 						<td>Pointers with Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointers with 2-D arrays', 'pointers-two-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointers with 2-D arrays</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>28-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>13</td>
 						<td>Array of Pointers</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Arrays of Pointers', 'array-of-pointers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Arrays of Pointers</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>30-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>14</td>
 						<td>Pointer to an Array</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Pointer to an array', 'pointer-to-an-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Pointer to an array</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>03-10-2016</td>
 					</tr>
 
 					<tr>
 						<td>15</td>
 						<td>Double Pointer</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Multiple indirection operator', 'multiple-indirection-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Multiple indirection operator</td>
-						<td>Shiva</td>
+						<td>Shiva / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>04-10-2016</td>
 					</tr>
 
 					<tr>
 						<td>16</td>
 						<td>Disadvantages of Pointers</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Disadvantages in Pointers', 'pointers-disadvantages.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Disadvantages in Pointers</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>04-10-2016</td>
 					</tr>
 					<tr>
 						<td>17</td>
 						<td>Array of Pointers with 2-D</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Array of Pointers with 2-D', 'two-dimensional-array-using-array-of-pointers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Array of Pointers with 2-D</td>
-						<td>Pavan</td>
+						<td>Pavan / Mahesh <r>(back)</r></td>
 						<td>Sekhar -- success</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>04-10-2016</td>
 					</tr>
 					
@@ -2182,36 +2229,41 @@
 					<tr>
 						<td>1</td>
 						<td>Structure Declarations and Definitions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure Declaration and Definition', 'structures.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Structure Declaration and definition (3 different types in one demo)</td>
-						<td>Suresh</td>
+						<td>Suresh / Mahesh <r>(back)</r></td>
 						<td></td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>17-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>2</td>
 						<td>Processing a Structure</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Processing of a Structure using dot operator', 'processing-of-structure-with-dot.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Processing of a Structure using dot operator</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td>sekhar</td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>22-09-2016</td>
 					</tr>
 
 					<tr>
 						<td>3</td>
 						<td>Initialization of Structures</td>
-						<td><a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of structure variable', 'structure-initialization.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Initialization of structure variable</td>
-						<td>Karthik</td>
+						<td>Karthik / Mahesh <r>(back)</r></td>
 						<td></td>
-						<td>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</td>
+						<td>Successfully Completed</td>
 						<td>22-09-2016</td>
 					</tr>
 
@@ -2232,31 +2284,35 @@
 						<td>Features of Structures</td>
 						<td>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Structures with Assignment operator', 'structure-with-assignment-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Structures with Assignment operator&emsp; 
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Nested Structures', 'nested-structures.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Nested Structures &emsp; 
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Structures with functions', 'structure-with-functions.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Structures with functions&emsp; 
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Structures with pointers', 'structure-with-pointers.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> Structures with pointers&emsp; 
 							</div>
 						</td>
-						<td>Suresh</td>
+						<td>Suresh / Mahesh <r>(back)</r></td>
 						<td></td>
-						<td><span>Successfully Completed with <a class="btn btn-xs" style="background: #08adde; color: white">&#8592; back</a> button</span></td>
+						<td>Successfully Completed</td>
 						<td>22-09-2016</td>
 					</tr>
 
@@ -2264,10 +2320,12 @@
 					<tr>
 						<td>6</td>
 						<td>Self referential structures</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Self referential structures', 'self-referential-structure.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Self referential structures</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>27-09-2016</td>

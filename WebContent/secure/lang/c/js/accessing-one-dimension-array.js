@@ -5,6 +5,7 @@ var index = 1;
 var size = ["1", "2", "3"];
 var print = 0;
 var count = 0;
+var flag = true;
 
 var oneDimesionalArrayReady = function() {
 
@@ -97,16 +98,49 @@ var oneDimesionalArrayReady = function() {
 	
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
+		
+		switch (elementId) {
+		case 'codeDiv':
+			$('#codeDiv').addClass('opacity00').removeClass('introjs-showElement');
+			break;
+		}
+	});
+	
+	intro.onafterchange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			
+			if (intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
+		var elementId = targetElement.id;
 		switch (elementId) {
 			case "typingDiv":
-			$('.introjs-nextbutton').hide();
-			if (intro._currentStep == 1) {
-				dynamicSteps();
-				setTimeout(function() {
-					intro.nextStep();
-				}, 500);
-			};
-			break;
+				$('.introjs-nextbutton').hide();
+				if (intro._currentStep == 1) {
+					if (flag) {
+						console.log("flag : " + flag);
+						dynamicSteps();
+						flag = !flag;
+					}
+					setTimeout(function() {
+						intro.nextStep();
+					}, 500);
+				};
+				break;
 			
 			case "codeDiv":
 				$('#typingDiv').addClass('bg-info zIndex');
@@ -116,7 +150,7 @@ var oneDimesionalArrayReady = function() {
 					var text = "Let us learn <span class='ct-code-b-yellow'>One Dimensional Array</span> in " +
 					"<span class='ct-code-b-yellow'>C</span> using this sample code.";
 	 				typing(".introjs-tooltiptext", text, function() {
-	 					$('.introjs-nextbutton').show();
+	 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 	 				});
 				});
 				break;
@@ -127,7 +161,7 @@ var oneDimesionalArrayReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>primitive data-type</b> like int,float, etc.";
 						typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 		 				});
 				});
 				break;
@@ -138,7 +172,7 @@ var oneDimesionalArrayReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>identifier</b> which represents array name.";
 						typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 		 				});
 				});
 				break;
@@ -149,7 +183,7 @@ var oneDimesionalArrayReady = function() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It is an integer constant represents <b class='ct-code-b-yellow'>size</b> of the array.";
 						typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 		 				});
 				});
 				break;
@@ -393,6 +427,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -414,7 +449,7 @@ function finalPrint() {
   if (count < arrValueCount ) {
     storingElement("#final"+count,".output-value-circle", count,function() {
       count++;
-      finalPrint()
+      finalPrint();
     });
   } else {
 	  intro.nextStep();
