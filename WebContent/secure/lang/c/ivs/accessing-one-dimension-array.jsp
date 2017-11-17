@@ -27,6 +27,7 @@
 .zIndex {
 	position: relative;
 	z-index: 9999999;
+	background: white;
 }
 
 .input-all {
@@ -140,9 +141,9 @@ div, span {
 	position: relative;
 }
 
-pre > span {
+/* pre > span {
 	position: static;
-}
+} */
 
 .table-css {
 	text-align: center;
