@@ -2334,10 +2334,12 @@ r {
 					<tr>
 						<td>7</td>
 						<td>Structures Vs Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Difference between Structures and Arrays', 'difference-between-array-and-structure.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Difference between Structures and Arrays with example</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>03-10-2016</td>
@@ -2346,10 +2348,12 @@ r {
 					<tr>
 						<td>8</td>
 						<td>Unions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of Unions', 'usage-of-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Explanation of Unions</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>30-09-2016</td>
@@ -2358,10 +2362,12 @@ r {
 					<tr>
 						<td>9</td>
 						<td>Structure vs Union</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure vs Union', 'difference-between-structure-and-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Structure vs Union	with example</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>04-10-2016</td>
@@ -2371,10 +2377,12 @@ r {
 					<tr>
 						<td>10</td>
 						<td>Processing a Structures</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Processing a structure using arrow operator', 'processing-of-structure-with-arrow.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Processing a structure using arrow operator</td>
-						<td>Ramya</td>
+						<td>Ramya / Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td>26-09-2016</td>
