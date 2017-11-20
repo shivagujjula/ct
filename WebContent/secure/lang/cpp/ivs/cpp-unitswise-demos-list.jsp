@@ -1133,10 +1133,12 @@ r {
 					<tr>
 						<td>35</td>
 						<td>Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of 1-D arrays', 'initialization-of-one-dimensional-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Initialization of 1-D arrays</span></td>
-						<td>Shiva</td>
+						<td>Shiva / Shiva <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -1145,10 +1147,12 @@ r {
 					<tr>
 						<td>36</td>
 						<td>Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Initialization of 2-D arrays', 'initialization-of-two-dimensional-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Initialization of 2-D arrays</span></td>
-						<td>Shiva</td>
+						<td>Shiva / Shiva <r>(back)</r></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -1406,7 +1410,7 @@ r {
 							</div>
 							
 						</td>
-						<td>Sathish & Shanthan</td>
+						<td>Sathish & Shanthan <r>(back)</r></td>
 						<td></td>
 						<td>Successfully Completed</td>
 						<td>01-11-17</td>

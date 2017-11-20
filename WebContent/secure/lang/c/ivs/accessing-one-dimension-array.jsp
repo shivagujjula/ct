@@ -224,7 +224,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div id='mainDiv' class='col-xs-12 padding0'>
-			<div class='col-xs-6 '>
+			<div class='col-xs-6'>
 				<pre class="creampretab4 opacity00" id='codeDiv'>
 #include <span>&lt;stdio.h&gt;</span>
 void main() {

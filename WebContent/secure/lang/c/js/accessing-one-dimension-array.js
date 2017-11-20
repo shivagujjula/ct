@@ -106,11 +106,12 @@ var oneDimesionalArrayReady = function() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'part3':
+			intro.refresh();
 			$('#codeDiv').addClass('opacity00');
 			break;
 		case 'codeDiv':
-			$('#codeDiv').removeClass('opacity00');
 			intro.refresh();
+			$('#codeDiv').removeClass('opacity00');
 			break;
 		case "variableDeclaraiton":
 			$('#tableDiv').addClass('opacity00');
@@ -201,8 +202,8 @@ var oneDimesionalArrayReady = function() {
 			
 			case "codeDiv":
 				$('#typingDiv').addClass('zIndex');
+				intro.refresh();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					intro.refresh();
 					$('#codeDiv').removeClass('opacity00');
 					$(".introjs-tooltip").removeClass('hide');
 					var text = "Let us learn <span class='ct-code-b-yellow'>One Dimensional Array</span> in " +

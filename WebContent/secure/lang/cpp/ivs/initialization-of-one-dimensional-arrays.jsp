@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src='/secure/lang/cpp/js-min/iooda.min.js'></script>
+<script src="/secure/lang/cpp/js-min/iooda.min.js"></script>
 
 <title>Initialization of arrays</title>
 </head>
@@ -130,13 +130,13 @@ pre {
 	</div>
 	<div class="col-xs-8 col-xs-offset-2 margin-top-2 infoDiv" id="infoDiv">
 		<ul>
-			<li id='list1' class="opacity00">an array is a kind of data structure of a fixed size that is used to store elements of a same data type in sequential order.</li>
-			<li id='list2' class="opacity00">an array can be visualized as a sequence of buckets in which the elements are stored. 
+			<li id='list1' class="opacity00">An array is a kind of data structure of a fixed size that is used to store elements of a same data type in sequential order.</li>
+			<li id='list2' class="opacity00">An array can be visualized as a sequence of buckets in which the elements are stored. 
 				These buckets are assigned positions starting from 0. These positions are also referred to as indices.</li>
 			<li id='list3' class="opacity00">There are two ways for declaring an array.
 				<ol>
-					<li id='list4' class="opacity00">array can be declared and  initialized in the same in a single statement.</li>
-					<li id='list5' class="opacity00">array can be declared and the elements of the array can be initialized subsequently.
+					<li id='list4' class="opacity00">Array can be declared and  initialized in the same in a single statement.</li>
+					<li id='list5' class="opacity00">Array can be declared and the elements of the array can be initialized subsequently.
 					<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li>
 				</ol>
 			</li>
