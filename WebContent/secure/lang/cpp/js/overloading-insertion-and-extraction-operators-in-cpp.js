@@ -32,10 +32,20 @@ function introGuide() {
 			element :"#preTableDiv",
 			intro : "",
 			position : 'right',
+			tooltipClass : 'hide',
 		}, {
 			element :"#class",
 			intro : "",
 			position : 'right',
+			tooltipClass : 'hide'
+		}, {
+			element : '#friendFunction',
+			intro : '',
+			position : "right"
+		}, {
+			element : '#friendFunction1',
+			intro : '',
+			position : "right"
 		}, {
 			element : '#main',
 			intro : '',
@@ -48,30 +58,11 @@ function introGuide() {
 			element : '#addressDiv',
 			intro : "",
 			animateStep : 'obj',
-		}, {
-			element :"#class",
-			intro : "",
-			position : 'right',
-		}, {
-			element : '#char',
-			intro : '',
-			position : "right"
-		}, {
-			element : '#addressDiv',
-			intro : "",
-			animateStep : 'charMemory',
-		}, {
-			element : '#init',
-			intro : "",
-			position : "right"
-		}, {
-			element : '#addressDiv',
-			intro : "",
-			animateStep : 'intMemory',
+			tooltipClass : 'hide'
 		}, {
 			element : '#eSd',
 			intro : '',
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -82,17 +73,13 @@ function introGuide() {
 			intro : "",
 			position : "right"
 		}, {
-			element : '#friendFunction1',
-			intro : '',
-			position : "right"
-		}, {
 			element : '#frndFunCin',
 			intro : "",
 			position : "right"
 		}, {
 			element : '#eSN',
 			intro : '',
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -101,20 +88,22 @@ function introGuide() {
 		}, {
 			element :"#sName",
 			intro : "",
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'enterName',
-			position : "left"
+			position : 'left',
+			tooltipClass : 'hide'
 		}, {
 			element : '#addressDiv',
 			intro : "",
 			animateStep : 'animationDiv',
-			position : "left"
+			tooltipClass: "hide"
 		}, {
 			element : '#eN',
 			intro : '',
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -123,20 +112,22 @@ function introGuide() {
 		}, {
 			element :"#sNo",
 			intro : "",
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'printLineInConsole1',
 			position : 'left',
+			tooltipClass : 'hide'
 		}, {
 			element : '#addressDiv',
 			intro : "",
 			animateStep : 'animationDiv1',
-			position : "left"
+			tooltipClass: "hide"
 		}, {
 			element : '#eM',
 			intro : '',
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -145,19 +136,22 @@ function introGuide() {
 		}, {
 			element :"#sMarks",
 			intro : "",
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'printLineInConsole2',
-			position : "left"
+			position : 'left',
+			tooltipClass : 'hide'
 		}, {
 			element : '#addressDiv',
 			intro : "",
 			animateStep : 'animationDiv2',
-			position : "left"
+			tooltipClass : 'hide'
 		}, {
 			element : '#tSd',
 			intro : '',
+			tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -173,24 +167,27 @@ function introGuide() {
 		}, {
 			element :"#sN",
 			intro : "",
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'stuName',
+			position : "left",
 			tooltipClass: "hide"
 		}, {
 			element : '#sName1',
 			intro : '',
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'printLineInConsole3',
+			position : 'left',
+			tooltipClass : 'hide'
 		}, {
 			element : '#no1',
 			intro : '',
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -199,53 +196,173 @@ function introGuide() {
 		}, {
 			element : '#sNo1',
 			intro : '',
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'printLineInConsole4',
+			position : "left",
+			tooltipClass: "hide"
 		}, {
 			element : '#marks',
 			intro : '',
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'stuMarks',
-			position : "left"
+			tooltipClass: "hide"
 		}, {
 			element : '#sMarks1',
 			intro : '',
-			position : "right"
+			//tooltipClass : 'hide'
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'printLineInConsole5',
-			position : "left"
+			position : "left",
+			tooltipClass: "hide"
+		}, {
+			element : '#end',
+			intro : '',
+			position : "right"
 		}, {
 			element :"#restart",
 			intro : "Click to restart.",
 			position : 'right',
 		}]
 	});
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case 'preTableDiv':
+			$("#class").css("opacity", 0);
+			break;
+		case 'class':
+			$("#class, #char, #init, #public, #friendFunction, #friendFunction1").fadeTo("slow" , 0);
+			break;
+		case 'sInit':
+			$("#addressDiv").addClass("opacity00");
+			break;
+		case "addressDiv" :
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "obj" :
+				$("#addressDiv, #obj, #addressAnimationDiv").addClass("opacity00");
+				TweenMax.to("#tableId, #noBox, #marksBox", 0.5, {opacity: 0});
+				$("#addressDiv").removeAttr("style");
+				break;
+			}
+			break;
+		case 'eSd':
+			$("#stuDet").addClass("opacity00");
+			break;
+		case 'frndFunCin':
+			$("#frndFunCin").show();
+			break;
+		case 'eSN':
+			$("#enterStuName").addClass("opacity00");
+			break;
+		case 'sName':
+			$("#enterName").val("");
+			break;
+		case 'eN':
+			$("#enterNo").addClass("opacity00");
+			break;
+		case 'sNo':
+			$("#printLineInConsole1").val("");
+			break;
+		case 'eM':
+			$('#enterMarks').addClass('opacity00');
+			break;
+		case 'sMarks':
+			$("#printLineInConsole2").val("");
+			break;
+		case 'tSd':
+			$("#theStuDet").addClass('opacity00');
+			break;
+		case 'frndFunCout':
+			$("#frndFunCout").show();
+			break;
+		case 'sN':
+			$("#stuName").addClass('opacity00');
+			break;
+		case 'no1':
+			$("#stuNo").addClass('opacity00');
+			break;
+		case 'marks':
+			$("#stuMarks").addClass('opacity00');
+			break;
+		case 'sMarks1':
+			$("#printLineInConsole5").text("");
+			break;
+		case 'consoleId':
+			$("#consoleId").removeClass("opacity00");
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'enterName':
+				$(".td-css").text("");
+				$("#enterName").val("");
+				break;
+			case 'printLineInConsole1':
+				$("#noVal").text("");
+				$("#printLineInConsole1").val("");
+				break;
+			case 'printLineInConsole2':
+				$("#marksVal").text("");
+				$("#printLineInConsole2").val("");
+				break;
+			case 'printLineInConsole3':
+				$("#printLineInConsole3").text("");
+				break;
+			case 'printLineInConsole4':
+				$("#printLineInConsole4").text("");
+				break;
+			case 'printLineInConsole5':
+				$("#printLineInConsole5").text("");
+				break;
+			}
+			break;
+		}
+	});
 	
 	introjs.onafterchange(function(targetElement) {
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			} 
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
 		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'infoDiv':
+			$("#frndFunCin, #frndFunCout").hide();
 			$("#infoDiv").removeClass("opacity00");
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list").fadeTo(300, 1, function() {
 				$("#list1").fadeTo(300, 1, function() {
 					$("#list11").fadeTo(300, 1, function() {
 						$("#list12").fadeTo(300, 1, function() {
-							$('#nextButton').removeClass("opacity00");
-								$('.user-btn').click(function() {
-								$('#nextButton').remove();
-								setTimeout(function () {
-									introjs.nextStep();
-								}, 1000);
+							$("#list13").fadeTo(300, 1, function() {
+								$("#list14").fadeTo(300, 1, function() {
+									$('#nextButton').removeClass("opacity00");
+									$('.user-btn').click(function() {
+										$('#nextButton').remove();
+										setTimeout(function () {
+											introjs.nextStep();
+										}, 500);
+									});
+								});
 							});
 						});
 					});
@@ -255,227 +372,194 @@ function introGuide() {
 		case 'preTableDiv':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preTableDiv").removeClass("opacity00");
-				typing('.introjs-tooltiptext', "Let us understand <span class='ct-code-b-yellow'>Operator"+
-						" overloading</span> in binary operators.", function() {
+				$('.introjs-tooltip').removeClass('hide');
+				typing('.introjs-tooltiptext', "Let us understand how <span class='ct-code-b-yellow'>insertion(<<)</span>"+
+						" and <span class='ct-code-b-yellow'>extraction(>>)</span> operators are overloaded.", function() {
 					$(".introjs-nextbutton").show();
+					$(".introjs-prevbutton").hide();
 				});
 			});
 			break;
 		case 'class':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#class").removeClass("opacity00");
-				$('.introjs-nextbutton').show();
+				$('.introjs-tooltip').removeClass('hide');
+				var text = "This is a class <span class='ct-code-b-yellow'>Student</span>, which consists of a private members" +
+						   " <span class='ct-code-b-yellow'>name, no and marks</span> and different friend functions in public section.";
+				typing(".introjs-tooltiptext",text, function() {
+					$("#class").fadeTo("slow" , 1, function() {
+						$("#char").fadeTo("slow" , 1, function() {
+							$("#init").fadeTo("slow" , 1, function() {
+								$("#public").fadeTo("slow" , 1, function() {
+									$("#friendFunction").fadeTo("slow" , 1, function() {
+										$("#friendFunction1").fadeTo("slow" , 1, function() {
+											$(".introjs-nextbutton, .introjs-prevbutton").show();
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+				
 			});
 			break;
 		case 'main':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#main").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is"+
-						" the operating system call.<ul><li><span class='ct-code-b-yellow'>main()"+
-						"</span> is execution starting point for any C++ program.</li></ul>", function() {
-					$('.introjs-nextbutton').show();
+				var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.</li></ul>";
+				typing(".introjs-tooltiptext", text, function() {
+					$("#main").fadeTo("slow" , 1, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 				});
 			});
 			break;
 		case 'sInit':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function () {
-					introjs.nextStep();
-				}, 1000);
-			});
-			break;
-		case 'char':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function () {
-					introjs.nextStep();
-				}, 1000);
-			});
-			break;
-		case 'init':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function () {
-					introjs.nextStep();
-				}, 1000);
+				var text = "<ul><li>Here, <span class='ct-code-b-yellow'>s</span>" +
+						" is  an object of a class <span class='ct-code-b-yellow'>Student</span>.</li>" +
+						"<li>When an object is created, memory is allocated for that object.</li></ul>";
+				typing(".introjs-tooltiptext",text, function() {
+					$("#sInit").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
 			});
 			break;
 		case 'sEnter':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = " ";
+				var text = "The statement <span class='ct-code-b-yellow'>cin >> s</span> will call as<br>" +
+						"<span class='ct-code-b-yellow'>operator >> (cin, s)</span> ";
 				typing(".introjs-tooltiptext",text, function() {
-					$('.introjs-nextbutton').show();
+					$("#sEnter").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
-		case 'char':
 		case 'friendFunction':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('.introjs-nextbutton').show();
+				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			});
 			break;
 		case 'friendFunction1':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('.introjs-nextbutton').show();
-			});
-			break;
-		case 'eSd':
-			$('.introjs-helperLayer').one("transitionend", function() {
-				typing(".introjs-tooltiptext"," ", function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-				});
+				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			});
 			break;
 		case 'frndFunCin':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				typing(".introjs-tooltiptext"," ", function() {
-					$('.introjs-nextbutton').show();
+				var text = "<span class='ct-code-b-yellow'>cin</span> is referenced with"+
+						   " <span class='ct-code-b-yellow'>&input</span> and " +
+						   " <span class='ct-code-b-yellow'>s</span> is referenced with"+
+						   " <span class='ct-code-b-yellow'>&s</span>.";
+				typing(".introjs-tooltiptext",text, function() {
+					$("#frndFunCin").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
+		case 'eSd':
 		case 'eSN':
-			$('.introjs-helperLayer').one("transitionend", function() {
-				typing(".introjs-tooltiptext"," ", function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
+		case 'eN':
+		case 'eM':
+		case 'tSd':
+		case 'sN':
+		case 'sName1':
+		case 'no1':
+		case 'sNo1':
+		case 'marks':
+		case 'sMarks1':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#" + elementId).removeClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
+				var text = "This statement is used to print the string in the console.";
+				typing(".introjs-tooltiptext",text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
+				
 			});
 			break;
 		case 'sName':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext"," ", function() {
-					$('.introjs-nextbutton').show();
-				});
-			});
-			break;
-		case 'eN':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
 		case 'sNo':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
-
-		case 'eM':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
 		case 'sMarks':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
-		case 'tSd':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = " ";
+			$("#" + elementId).removeClass("opacity00");
+			$('.introjs-tooltip').removeClass('hide');
+			var text = "This statement is used to extract from keyboard.";
 				typing(".introjs-tooltiptext",text, function() {
-					$('.introjs-nextbutton').show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'sOut':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = " ";
+				var text = 	"The statement <span class='ct-code-b-yellow'>cout << s</span> will " +
+							"call as<br> <span class='ct-code-b-yellow'>operator << (cout, s)</span> ";
 				typing(".introjs-tooltiptext",text, function() {
-					$('.introjs-nextbutton').show();
+					$("#sOut").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'frndFunCout':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = " ";
+				var text = "<span class='ct-code-b-yellow'>cout</span> is referenced with"+
+						   " <span class='ct-code-b-yellow'>&output</span> and " +
+						   " <span class='ct-code-b-yellow'>s</span> is referenced with"+
+						   " <span class='ct-code-b-yellow'>&s</span>.";
 				typing(".introjs-tooltiptext",text, function() {
-					$('.introjs-nextbutton').show();
+					$("#frndFunCout").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
-		case 'sN':
-			$('.introjs-helperLayer').one("transitionend", function() {
-				typing(".introjs-tooltiptext"," ", function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
+		case 'end':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "This is the end of the main() function where the program execution ends.";
+				typing(".introjs-tooltiptext",text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
-		case 'sName1':
-			$('.introjs-helperLayer').one("transitionend", function() {
-				typing(".introjs-tooltiptext"," ", function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-				});
-			});
-			break;
-		case 'no1':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
-		case 'sNo1':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
-		case 'marks':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
-
-		case 'sMarks1':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
-			});
-			break;
+			
 		case 'consoleId':
 			$("#consoleId").removeClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "stuDet" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#stuDet").removeClass("opacity00");
+					if (introjs._direction == "backward") {
+						$("#stuDet").addClass("opacity00");
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$("#stuDet").removeClass("opacity00");
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
-					
+					}
 				});
 				break;
 			case "enterStuName" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					//text = 'printing ' + introjs._introItems[introjs._currentStep].animateStep;
-					typing('.introjs-tooltiptext'," ", function() {
+					if (introjs._direction == "backward") {
+						$("#enterStuName").addClass("opacity00");
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
 						$("#enterStuName").removeClass("opacity00");
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
-					});
+					}
 				});
 				break;
 			case 'enterName':
+				$("#enterName").val("").removeAttr("disabled");
+				//$("#enterName").attr('disabled','disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					text = "Enter any name"; 
+					$('.introjs-tooltip').removeClass('hide');
+					var text = "Enter any name"; 
 					typing('.introjs-tooltiptext', text, function() {
 						$("#enterName").removeClass("opacity00").attr('contenteditable', true).addClass("blinking").focus();
 						checking("#enterName");
@@ -485,16 +569,26 @@ function introGuide() {
 			case 'enterNo':
 				$("#enterName").attr('contenteditable', false)
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#enterNo').removeClass('opacity00');
-					setTimeout(function () {
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "backward") {
+						$('#enterNo').addClass('opacity00');
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$('#enterNo').removeClass('opacity00');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					}
 				});
 				break;
 			case 'printLineInConsole1':
+				$("#printLineInConsole1").val("").removeAttr("disabled");
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#printLineInConsole1").removeClass("opacity00").attr('contenteditable', true).addClass("blinking").focus();
-					typing('.introjs-tooltiptext',"Enter numbers upto 5 digits <span class='ct-code-b-yellow'>i.e 12345</span>", function() {
+					$('.introjs-tooltip').removeClass('hide');
+					var text = "Enter rollno upto 4 digits <span class='ct-code-b-yellow'>i.e 1234</span>"; 
+					typing('.introjs-tooltiptext',text, function() {
+						$("#printLineInConsole1").removeClass("opacity00").attr('contenteditable', true).addClass("blinking").focus();
 						checking("#printLineInConsole1");
 					});	
 					
@@ -502,76 +596,143 @@ function introGuide() {
 				break;
 			case 'enterMarks':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#enterMarks').removeClass('opacity00');
-					typing('.introjs-tooltiptext'," ", function() {
+					if (introjs._direction == "backward") {
+						$('#enterMarks').addClass('opacity00');
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$('#enterMarks').removeClass('opacity00');
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
-					});
-					
+					}
 				});
 				break;
 			case 'printLineInConsole2':
+				$("#printLineInConsole2").val("").removeAttr("disabled");
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					$('.introjs-tooltip').removeClass('hide');
 					$("#printLineInConsole2").removeClass("opacity00").attr('contenteditable', true).addClass("blinking").focus();
-					checking("#printLineInConsole2");
-			});
-			break;
+					typing('.introjs-tooltiptext',"Enter marks upto 3digits <span class='ct-code-b-yellow'>i.e 123</span>", function() {
+						checking("#printLineInConsole2");
+					});	
+				});
+				break;
 			case 'theStuDet':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#theStuDet').removeClass('opacity00');
+					if (introjs._direction == "backward") {
+						$('#theStuDet').addClass('opacity00');
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$('#theStuDet').removeClass('opacity00');
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
+					}
 				});
 				break;
 			case 'stuName':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#stuName').removeClass('opacity00');
+					if (introjs._direction == "backward") {
+						$('#stuName').addClass('opacity00');
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$('#stuName').removeClass('opacity00');
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
+					}
 				});
 				break;
 			case 'printLineInConsole3':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#printLineInConsole3").append($("#enterName").val()).addClass("opacity00");
-						transferEffect("#sName1", "#printLineInConsole3", function() {
-								$('.introjs-nextbutton').show();
+					if (introjs._direction == "backward") {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 500);
+					} else {
+						$('#table').addClass('z-index1000000');
+						var value = $("#enterName").val().substr(0, 19);
+						$("#printLineInConsole3").append(value).addClass('opacity00');
+						transferEffect("#name", "#printLineInConsole3", function() {
+							$('#table').removeClass('z-index1000000');
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
 						});
+					}
 				});
 				break;
 			case 'stuNo':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#stuNo').removeClass('opacity00');
+					if (introjs._direction == "backward") {
+						$('#stuNo').addClass('opacity00');
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$('#stuNo').removeClass('opacity00');
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
+					}
 				});
 				break;
 			
 			case 'printLineInConsole4':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#printLineInConsole4").append($("#printLineInConsole1").val()).addClass("opacity00");
-						transferEffect("#sNo1", "#printLineInConsole4", function() {
-								$('.introjs-nextbutton').show();
+					if (introjs._direction == "backward") {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 500);
+					} else {
+						$("#printLineInConsole4").append($("#printLineInConsole1").val()).addClass('opacity00');
+						$('#noBox').addClass('z-index1000000');
+						transferEffect("#num", "#printLineInConsole4", function() {
+							$('#noBox').removeClass('z-index1000000');
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
 						});
+					}
 				});
 				break;
 			case 'stuMarks':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#stuMarks').removeClass('opacity00');
+					if (introjs._direction == "backward") {
+						$('#stuMarks').addClass('opacity00');
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+						$('#stuMarks').removeClass('opacity00');
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 1000);
+					}
 				});
 				break;
 			case 'printLineInConsole5':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#printLineInConsole5").append($("#printLineInConsole2").val()).addClass("opacity00");
-					transferEffect("#sMarks1", "#printLineInConsole5", function() {	
-							$('.introjs-nextbutton').show();
-					});
+					if (introjs._direction == "backward") {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 500);
+					} else {
+						$("#printLineInConsole5").append($("#printLineInConsole2").val()).addClass('opacity00');
+						$('#marksBox').addClass('z-index1000000');
+						transferEffect("#stdMarks", "#printLineInConsole5", function() {
+							$('#marksBox').removeClass('z-index1000000');
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						});
+					}
 				});
 				break;
 			}
@@ -584,29 +745,35 @@ function introGuide() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#obj").removeClass("opacity00");
 					$("#addressAnimationDiv").removeClass("opacity00");
-					$('.introjs-nextbutton').show();
-				});
-				break;
-			case "charMemory" :
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#addressAnimationDiv").removeClass("opacity00");
-					TweenMax.to("#tableId", 0.2, {opacity: 1, onComplete: function() {
-						typing(".introjs-tooltiptext", "20 bytes are allocated to the array of the variable <span class='ct-code-b-yellow'>ch</span>.", function() {
-							$('.introjs-nextbutton').show();
-						});
+					//$("#tableId").show();
+					$('#char').addClass('blinking-white');
+					TweenMax.to("#tableId", 0.5, {opacity: 1, onComplete: function() {
+						$('#char').removeClass('blinking-white');
+						//$("#noBox").show();
+						$('#no').addClass('blinking-white');
+						TweenMax.to("#noBox", 0.5, {opacity: 1, onComplete: function() {
+							$('#no').removeClass('blinking-white');
+							//$("#marksBox").show();
+							$('#mark').addClass('blinking-white');
+							TweenMax.to("#marksBox", 0.5, {opacity: 1, onComplete: function() {
+								$('#mark').removeClass('blinking-white');
+								$('.introjs-tooltip').removeClass('hide');
+								var text = 	'The members of  <span class="ct-code-b-yellow">s</span>'+
+											' can be accessed by using  <span class="ct-code-b-yellow">dot(.)</span>'+
+											' operator<br>i.e., <span class="ct-code-b-yellow">s.name</span>,'+
+											' <span class="ct-code-b-yellow">s.no</span> and'+
+											' <span class="ct-code-b-yellow">s.marks</span>';
+								typing(".introjs-tooltiptext",text, function() {
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
+								});
+							}});
+						}});
 					}});
 				});
 				break;
-			case "intMemory" :
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#noBox").removeClass("opacity00");
-					$("#marksBox").removeClass("opacity00");
-					$('.introjs-nextbutton').show();
-				});
-				break;
 			case "animationDiv" :
-				$("#enterName").attr('disabled','disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#enterName").attr('disabled','disabled');
 					$("#tableRowId").removeClass("opacity00");
 					introjs.refresh();
 					$(".td-css").addClass("ct-code-b-green");
@@ -614,13 +781,13 @@ function introGuide() {
 					for(var i = 0; i <= result.length; i++) {
 						if (result.length >= 0 && result.length < 20) {
 							if (i == result.length) {
-								$("table tr:nth-child(2) td:eq("+ (i+1) + ")").text("\\0");
+								$("table tr:nth-child(2) td:eq("+ (i+1) + ")");
 							} else {
 								$("table tr:nth-child(2) td:eq("+ (i+1) +")").text(result[i]);
 							}
 						}  else {
 							if (i == 19) {
-								$("table tr:nth-child(2) td:eq("+ (i+1) + ")").text("\\0");
+								$("table tr:nth-child(2) td:eq("+ (i+1) + ")");
 								break;
 							} else {
 								$("table tr:nth-child(2) td:eq("+ (i+1) +")").text(result[i]);
@@ -628,28 +795,36 @@ function introGuide() {
 						} 
 					}
 					TweenMax.to(".td-css", 1, {opacity: 1, onComplete: function() {
-						typing(".introjs-tooltiptext", "The given string is stored in the array and delimiter <span class='ct-code-b-yellow'>\\0</span> (or) <span class='ct-code-b-yellow'>\\n</span> is placed at the end of the string by the system.", function() {
-							$('.introjs-nextbutton').show();
+						$('.introjs-tooltip').removeClass('hide');
+						typing(".introjs-tooltiptext", "The given string is stored in the array.", function() {
+							 $(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
 					}});
-					
 				});
 				break;
 			case "animationDiv1" :
-				$("#printLineInConsole1").attr('disabled','disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#noVal").text($("#printLineInConsole1").val()).addClass("opacity00");
-					transferEffect("#printLineInConsole1", "#noVal", function() {
-						$('.introjs-nextbutton').show();
+					$("#printLineInConsole1").attr('disabled','disabled');
+					$("#noVal").text($("#printLineInConsole1").val());
+					fromEffectWithTweenMax("#printLineInConsole1", "#noVal", function() {
+						$('.introjs-tooltip').removeClass('hide');
+						typing(".introjs-tooltiptext", "The entered roll number is stored in the " +
+								"<span class='ct-code-b-yellow'>no</span>.", function() {
+							 $(".introjs-nextbutton, .introjs-prevbutton").show();
+						});
 					});
 				});
 				break;
 			case "animationDiv2" :
 				$("#printLineInConsole2").attr('disabled','disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#marksVal").text($("#printLineInConsole2").val()).addClass("opacity00");
-					transferEffect("#printLineInConsole2", "#marksVal", function() {
-						$('.introjs-nextbutton').show();
+					$("#marksVal").text($("#printLineInConsole2").val());
+					fromEffectWithTweenMax("#printLineInConsole2", "#marksVal", function() {
+						$('.introjs-tooltip').removeClass('hide');
+						typing(".introjs-tooltiptext", "The entered marks is stored in the " +
+								"<span class='ct-code-b-yellow'>marks</span>.", function() {
+							 $(".introjs-nextbutton, .introjs-prevbutton").show();
+						});
 					});
 				});
 				break;
@@ -681,11 +856,8 @@ function checking(selector) {
 	if(selector == "#enterName") {
 		$(selector).off("keydown keyup");
 			$(selector).on("keydown", function(e){
-				
 				  // Ignore controls such as backspace
-				
 				  var arr = [8,16,17,20,35,36,37,38,39,40,45,46];
-		
 				  // Allow letters
 				  for(var i = 65; i <= 90; i++){
 				    arr.push(i);
@@ -693,23 +865,21 @@ function checking(selector) {
 				  //Disable cut copy paste
 				  $(selector).bind('cut copy paste', function (e) {
 				        e.preventDefault();
-				    });
-				   
+				  });
 				    //Disable mouse right click
-				    $(selector).on("contextmenu",function(e){
-				        return false;
-				    });
-					    
-					  if($.inArray(e.which, arr) === -1  || e.ctrlKey || e.altKey){
+					$(selector).on("contextmenu",function(e){
+					    return false;
+					});
+					if($.inArray(e.which, arr) === -1  || e.ctrlKey || e.altKey){
 					    e.preventDefault();
-					  }
+					}
 				
 			});
 			$(selector).on("keyup", function(){
 				$('.error-text').remove();
 					var letters = /^[A-Za-z]+$/;
 				      if($(selector).val().match(letters)){
-				    	  $('.introjs-nextbutton').show();
+				    	  $(".introjs-nextbutton, .introjs-prevbutton").show();
 				      }
 				      else {
 				      $('.introjs-nextbutton').hide();
@@ -728,11 +898,12 @@ function checking(selector) {
 			if (((e.shiftKey) || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96) || (e.keyCode > 105))) {
 				e.preventDefault();
 			}
-		});$(selector).on("keyup", function(){
+		});
+		$(selector).on("keyup", function(){
 			$('.error-text').remove();
 				var letters = /^[0-9]+$/;
-			      if($(selector).val().match(letters) && $(this).val().length >= 1){
-			    	  $('.introjs-nextbutton').show();
+			      if($(selector).val().match(letters) && $(this).val().length >= 1 ){
+			    	  $(".introjs-nextbutton, .introjs-prevbutton").show();
 			      }
 			      else {
 			      $('.introjs-nextbutton').hide();
@@ -742,8 +913,6 @@ function checking(selector) {
 		});
 		
 	}
-		
-	
 }
 function rotation(selector1, val, callBackFunction) {
 	$(selector1).effect( "highlight",{color: '#ffff33'}, 1000);
@@ -783,7 +952,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -792,35 +961,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
-}
-function fadeInBounceEffectWithTimelineMax(selector1, selector2, callBackFunction) {
-	var timelineMax = new TimelineMax();
-	var val;
-	$(selector1).parent().effect( "highlight",{color: 'blue'}, 500);
-		var l1 = $(selector1).offset();
-		var l2 = $(selector2).offset();
-		var topLength = l1.top - l2.top;
-		var leftLength = l1.left - l2.left;
-		$('#codeDiv').append("<span id='dummy' class='ct-code-b-yellow ct-fonts' style='position: relative; z-index: 99999999;'>" 
-			+ $(selector2).text() + "</span>");
-		$('#dummy').offset({
-			"top": l2.top, 
-			"left": l2.left
-		});
-		
-		$(selector2).css('width', $('#dummy').width());
-		$(selector2).text($(selector1).text());
-		TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
-			$(selector2).fadeIn(1000, 0, function() {
-				$(selector2).fadeIn(1000, 1, function() {
-					$(selector2).css('width', "auto");
-					$("#dummy").remove();
-					if (typeof callBackFunction === "function") {
-						callBackFunction();
-					}
-				});
-			});
-		}});
 }

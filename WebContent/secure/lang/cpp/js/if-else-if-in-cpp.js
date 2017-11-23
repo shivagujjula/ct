@@ -1,7 +1,7 @@
 var checkval;
 var checkingFlag = false;
 var ch;
-
+var num;
 var ifElseIfInCReady = function() {
 	intro = introJs();
 	$("#restartBtn").click(function() {
@@ -12,14 +12,19 @@ var ifElseIfInCReady = function() {
 			 e.preventDefault();
 		  }
 	});
+	/*$("#consoleBodyDiv").click(function() {
+		$("#charInput").focus();
+	})*/
 	
 	$('#charInput').keyup(function() {
 		if($('#charInput').val().length > 0) {
 			$('.introjs-nextbutton').show();
+			$('.introjs-prevbutton').show();
 			$('.errorText').empty();
 		} else {
 			$('.errorText').html("Please enter a character.");
 			$('.introjs-nextbutton').hide();
+			$('.introjs-prevbutton').hide();
 		}
 	});
 	
@@ -35,61 +40,78 @@ var ifElseIfInCReady = function() {
 			intro :''
 		},{
 			element :'#mainFunctions',
-			intro :''
+			intro :'',
+			tooltipClass : "hide"
 		},{
 			element :'#charCh',
-			intro :''
+			intro :'',
+			tooltipClass : "hide"
 		},{
 			element :'#enterCharSpan',
-			intro :''
+			intro :'',
+			tooltipClass : "hide"
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#getCh',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#consoleId',
 			intro :'',
+			tooltipClass:'hide'
 			
 		},{
 			element :'#ifCondition',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#ifConditionForLowerCase',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#printF1',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#ifConditionForUpperCase',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#printF2',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#printF3',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#printF4',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
+		},{
+			element :'#end',
+			intro :'',
+			tooltipClass:'hide'
+			
 		},{
 			element :'#restartBtn',
 			intro :'',
@@ -104,94 +126,154 @@ var ifElseIfInCReady = function() {
 		console.log("Step : " + intro._currentStep);
 		switch (elementId) {
 		case "mainFunctions" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', "<ul><li><b class='color-yellow'>main()</b> function is called by the operating system.</li>"+
 						"<li><b class='color-yellow'>main()</b> is execution starting point for any <b class='color-yellow'>C++</b> program.</li>"+
 						"</ul>", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,.introjs-nextbutton').show();
 				});
 			});
 		break; 
 		case "charCh" :
-			$('.introjs-nextbutton').hide();
+			$(".introjs-nextbutton").hide()
+			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>ch</b> is the variable which is of type char.<ul><li>It allocates 1 byte "+
 		  				"of memory.</li><li>It stores only 1 character.</li></ul>", function() {  
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-prevbutton,.introjs-nextbutton').show();
 		  		});
 			});
 		break;
 	 	case "enterCharSpan" :
-			$('.introjs-nextbutton').hide();
+	 		$("#charInput").val("");
+			$(".user-btn").remove();
+	 		$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>cout</b> is library function, used to display the message specified "+
-		  				"with in double quotes on to the output screen.", function() {  
-		  			$('.introjs-nextbutton').show();	
+		  				"with in double quotes on to the output screen.", function() { 
+		  			$('.introjs-prevbutton,.introjs-nextbutton').show();
 				});
 			});
 		break; 
 		case "consoleId" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			if(intro._currentStep == 4) {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$('#consoleId').removeClass('opacity00');
+					if (intro._direction == "backward") {
+						setTimeout(function(){
+							intro.previousStep();
+							$('#consoleId').addClass('opacity00');
+						}, 800);
+					} else {
 					setTimeout(function(){
 						intro.nextStep();
 					}, 800);
+					}
 				 });
 			} else if(intro._currentStep == 6) {
+				$("#charInput").val("");
+				$(".user-btn").remove();
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#charInput").attr("disabled",false);
+					$(".introjs-tooltip").removeClass("hide");
 					typing('.introjs-tooltiptext', "Enter a <b class='color-yellow'>character</b>.<br><span class='errorText'></span>", function() {  
 		  				$('#charInput').focus();
 					});
 				 });
-			} else if(intro._currentStep == 10) {
+			} else if(intro._currentStep == 10 || num == 1) {
 				$(".introjs-helperLayer").one("transitionend", function() {
+					if (intro._direction == "backward" && num == 1) {
+						console.log(num)
+						setTimeout(function(){
+							intro.goToStep(10);
+						}, 1000); 
+					} else {
+						num = 1;
 					typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and vowel", function() {
 						setTimeout(function(){
 							intro.goToStep(19);
 						}, 1000); 
 					});
+					}
 				});
-			}  else if(intro._currentStep == 13) {
+			}  else if(intro._currentStep == 13 || num == 2) {
 				$(".introjs-helperLayer").one("transitionend", function() {
+					if (intro._direction == "backward" && num == 2) {
+						console.log(num)
+						setTimeout(function(){
+							intro.goToStep(13);
+						}, 1000); 
+					} else {
+						num = 2;
 					 typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and vowel", function() {
 					  setTimeout(function(){
 						  intro.goToStep(19);
 						}, 1000); 
 					});
+					}
 				});
-			} else if(intro._currentStep == 15) {
+			} else if(intro._currentStep == 15 || num == 3) {
 				$(".introjs-helperLayer").one("transitionend", function() {
-					 typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and consonant", function() {
-					  setTimeout(function(){
-						  intro.goToStep(19);
+					if (intro._direction == "backward" && num == 3) {
+						console.log(num)
+						setTimeout(function(){
+							intro.goToStep(15);
 						}, 1000); 
-					});
+					} else {
+						num = 3;
+						typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and consonant", function() {
+							setTimeout(function(){
+								intro.goToStep(19);
+							}, 1000); 
+						});
+					}
 				});
-			} else if(intro._currentStep == 17) {
+			} else if(intro._currentStep == 17 || num == 4) {
 				$(".introjs-helperLayer").one("transitionend", function() {
+					if (intro._direction == "backward" && num == 4) {
+						setTimeout(function(){
+						  intro.goToStep(17);
+						}, 1000); 
+					} else {
+						num = 4;
+						if (ch.charCodeAt(0) == 32) {
+							typing('#printInConsole',"<span style='color: #0f0;'>"+ "\'\'" + "</span> is not a letter", function() {
+								 setTimeout(function(){
+									 intro.goToStep(19);
+								 }, 1000); 
+							});
+						} else {
 					 typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is not a letter", function() {
-					  setTimeout(function(){
-						  intro.goToStep(19);
-						}, 1000); 
+						 setTimeout(function(){
+							 intro.goToStep(19);
+						 }, 1000); 
 					});
+						}
+					}
 				});
 			}
 			break;
 		case "getCh" :
 			ch = $('#charInput').val();
-			$('.introjs-nextbutton').hide();
+			$("#charInput").val("");
+			$(".user-btn").remove();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>cin</b> is a library function which reads character from "+
 		  				"keyboard and it is assigned to variable <b class='color-yellow'>ch</b>.", function() {  
-		  			$('.introjs-nextbutton').show();
+		  				$('.introjs-prevbutton,.introjs-nextbutton').show();
 			  		});
 				});
 			break;
 		case "enteredCharSpan" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				setTimeout(function(){
 					intro.nextStep();
@@ -199,87 +281,114 @@ var ifElseIfInCReady = function() {
 				});
 		break; 
 		case "putChar" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>putchar()</b> is used to print the character on to the console.", function() {  
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-prevbutton,.introjs-nextbutton').show();
 					});
 				});
 			break;
 		case "ifCondition" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			ch = $('#charInput').val();
 			checking();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				animation();				
-				});
+			});
 			break;
 		case "ifConditionForLowerCase":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				animation1();
-			  	 });
+			});
 			break;
 		case "printF1":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("div>#printInConsole").empty()
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
 						"<b class='color-yellow'>if</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,.introjs-nextbutton').show();
 					});
 				});
 			break;
 		case "ifConditionForUpperCase":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				animation2();
 			  	});
 			break;
 		case "printF1":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("div>#printInConsole").empty();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
 						"<b class='color-yellow'>if</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,.introjs-nextbutton').show();
 					});
 				});
 			break;
 		case "ifConditionForUpperCase":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				animation3();
 			  	});
 			break;
 		case "printF2":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".userBackBtn").remove();
+			$("div>#printInConsole").empty();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
 						"<b class='color-yellow'>else if</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-prevbutton,.introjs-nextbutton').show();
 					});
 				});
 			break;
 		case "printF3":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("div>#printInConsole").empty();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-red'>false</b>, the control enters into the "+
+				$(".introjs-tooltip").removeClass("hide");
+				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
+						"<b class='color-yellow'>if</b> block and inside <b class='color-yellow'>if</b> block it enters into "+
 						"<b class='color-yellow'>else</b> block.", function() {
+					$(".introjs-tooltipbuttons").prepend("<a class='introjs-button userBackBtn' onclick='backStep1()'>&#8592; Back</a>");
 					$('.introjs-nextbutton').show();
 					});
 				});
 			break;
 		case "printF4":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("div>#printInConsole").empty();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-red'>false</b>, the control enters into the "+
 						"<b class='color-yellow'>else</b> block.", function() {
+					$(".introjs-tooltipbuttons").prepend("<a class='introjs-button userBackBtn' onclick='backStep1()'>&#8592; Back</a>");
 					$('.introjs-nextbutton').show();
+					
 					});
 				});
 			break;
+		case "end":
+			$(".userBackBtn").remove();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
+				typing('.introjs-tooltiptext', "End of the program.", function() {
+					//$(".introjs-tooltipbuttons").prepend("<a class='introjs-button userBackBtn' onclick='backStep2()'>&#8592; Back</a>");
+					$('.introjs-prevbutton,.introjs-nextbutton').show();
+				});
+			});
+		break;
 		case "restartBtn":
+			//$(".userBackBtn").remove();
+			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$("#charInput").attr("disabled", false);
-			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
 					$("#restartBtn").removeClass("opacity00");
@@ -290,9 +399,8 @@ var ifElseIfInCReady = function() {
 	});
 
 intro.start();
-$('.introjs-skipbutton').hide();
-$('.introjs-prevbutton').hide();
-$('.introjs-nextbutton').hide();
+/*$("#charInput").attr("disabled",true);*/
+$('.introjs-nextbutton,.introjs-prevbutton,.introjs-skipbutton').hide();
 typing('.introjs-tooltiptext',"This code demonstrates the working of <b><span class='color-yellow'>if-else-if</span></b> block.",function() {
 	$('#preBox').removeClass('opacity00');
 	$('.introjs-nextbutton').show();
@@ -300,7 +408,7 @@ typing('.introjs-tooltiptext',"This code demonstrates the working of <b><span cl
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -309,17 +417,17 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro= $(".introjs-tooltiptext").html();
 		}
 	})
 }
 	
 function charcheck() {
-	if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
- 	{
-		
-	   if ( ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ) {
+	$('.introjs-prevbutton').show();
+	if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))	{
+		if ( ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ) {
 		   $(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-	    	$(".user-btn").click(function() {
+		   $(".user-btn").click(function() {
 	    		$(".user-btn").remove();
 	    		intro.goToStep(9);
 	        });
@@ -353,6 +461,10 @@ function checking() {
 		checkingFlag = true;
 	} else if((ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')) {
 		checkingFlag = true;
+	} else if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
+		checkingFlag = true;
+	} else {
+		checkingFlag = false;
 	}
 }
  
@@ -366,390 +478,333 @@ function evaluateCndtn(text) {
 }
  
  function animation() {
-	 typing('.introjs-tooltiptext', "This is the <b class='color-yellow'>condition</b> part. If the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the <b class='color-yellow'>if</b> block, otherwise the control enters into the <b class='color-yellow'>else</b> block.<br><br>" +
-				"<span id='ifConditionCheckIntooltip' class='opacity00'>(<span id='chFlip1' class='bold' style='display: inline-block;'>ch</span> >= <span class='color-yellow'> 'A'</span> <span class=''> && </span><span id='chFlip2' class='bold' style='display: inline-block;'> ch </span> <= <span class='color-yellow'> 'Z'</span>) <span class=''> ||"+
-				" </span>(<span id='chFlip3'class='bold' style='display: inline-block;'> ch </span> >= <span class='color-yellow'> 'a'</span> <span class=''> && </span><span id='chFlip4' class='bold' style='display: inline-block;'> ch </span> <= <span class='color-yellow'> 'z'</span>)</span><br><span id='span'class='opacity00'>System converts each and every character into <b class='color-yellow'>ASCII</b> value.</span><br><span id='ifConditionCheckIntooltip1'></span>", function() {  
+	 $(".introjs-tooltip").removeClass("hide");
+	 typing('.introjs-tooltiptext', "This is the <b class='color-yellow'>condition</b> part. If the condition evaluates to "
+			 	+ "<b class='color-yellow'>true</b>, the control enters into the <b class='color-yellow'>if</b> block, "
+			 	+ "otherwise the control enters into the <b class='color-yellow'>else</b> block.<br><br>" 
+				+ "<span id='ifConditionCheckIntooltip' class='opacity00'>(<span id='chFlip1' class='bold' style='display: inline-block;'>"
+				+ "ch</span> >= <span class='color-yellow'> 'A'</span> <span class=''> && </span><span id='chFlip2' class='bold' "
+				+ "style='display: inline-block;'> ch </span> <= <span class='color-yellow'> 'Z'</span>) <span class=''> ||"
+				+ " </span>(<span id='chFlip3'class='bold' style='display: inline-block;'> ch </span> >= <span class='color-yellow'> 'a'</span> "
+				+ "<span class=''> && </span><span id='chFlip4' class='bold' style='display: inline-block;'> ch </span> <= <span class='color-yellow'> "
+				+ "'z'</span>)</span><br><span id='span'class='opacity00'>System converts each and every character into "
+				+ "<b class='color-yellow'>ASCII</b> value.</span><br><span id='ifConditionCheckIntooltip1'></span>", function() {  
 		var l = $("#ifConditionCheck").offset();
 		$("#ifConditionCheckIntooltip").offset({"top": l.top,"left": l.left});
         TweenMax.to("#ifConditionCheckIntooltip", 0.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-        	t1.to("#chFlip1", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-        		$("#chFlip1").text('\'' +$("#charInput").val() +'\'');
-        		t1.to("#chFlip1", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-        			t1.to("#chFlip2", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-		        			$("#chFlip2").text('\'' +$("#charInput").val() +'\'');
-		        			t1.to("#chFlip2", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-		        				t1.to("#chFlip3", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-		        				$("#chFlip3").text('\'' +$("#charInput").val() +'\'');
-		        				t1.to("#chFlip3", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-		        					t1.to("#chFlip4", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-		        						$("#chFlip4").text('\'' +$("#charInput").val() +'\'');
-		        						t1.to("#chFlip4", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-		        							$('#span').removeClass('opacity00');
-		        							$('#ifConditionCheckIntooltip1').append("(<span id='chFlip11' class='bold' style='display: inline-block;'> '" + ch + "'</span> >= <span id='upperA' style='display: inline-block;' class='color-yellow'> 'A'</span> <span class=''> && </span><span id='chFlip22' class='bold' style='display: inline-block;'> '" + ch + "' </span> <= <span class='color-yellow' id='upperZ' style='display: inline-block;'> 'Z'</span>) <span class=''> ||"+
-  			        			  				" </span>(<span id='chFlip33'class='bold' style='display: inline-block;'> '" + ch + "' </span> >= <span class='color-yellow' id='lowerA' style='display: inline-block;'> 'a'</span> <span class=''> && </span><span id='chFlip44' class='bold' style='display: inline-block;'> '" + ch + "' </span> <= <span class='color-yellow' id='lowerZ' style='display: inline-block;'> 'z'</span>)</span><br><span id='trueAndFalse'></span><br><span id='trueAndFalse1'></span><br><span id='checking'></span>")
-  			        	  					var l = $("#ifConditionCheckIntooltip").offset();
-  			        	  					$("#ifConditionCheckIntooltip1").offset({"top": l.top,"left": l.left});
-  			        	  			        TweenMax.to("#ifConditionCheckIntooltip1", 1.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-  			        	  			        	t1.to("#chFlip11", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-  			        	  			        		$("#chFlip11").text($("#charInput").val().charCodeAt(0));
-  			        	  			        		t1.to("#chFlip11", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-  	  			        	  			        		t1.to("#upperA", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-	  	  			        	  			        		$("#upperA").text("65");
-	  	  			        	  			        		t1.to("#upperA", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-		  	  			        	  			        		t1.to("#chFlip22", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-			  	  			        	  			        		$("#chFlip22").text( $("#charInput").val().charCodeAt(0));
-			  	  			        	  			        		t1.to("#chFlip22", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-				  	  			        	  			        		t1.to("#upperZ", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-					  	  			        	  			        		$("#upperZ").text("90");
-					  	  			        	  			        		t1.to("#upperZ", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-						  	  			        	  			        		t1.to("#chFlip33", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-							  	  			        	  			        		$("#chFlip33").text($("#charInput").val().charCodeAt(0));
-							  	  			        	  			        		t1.to("#chFlip33", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-								  	  			        	  			        		t1.to("#lowerA", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-									  	  			        	  			        		$("#lowerA").text("97");
-									  	  			        	  			        		t1.to("#lowerA", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-										  	  			        	  			        		t1.to("#chFlip44", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-											  	  			        	  			        		$("#chFlip44").text($("#charInput").val().charCodeAt(0));
-											  	  			        	  			        		t1.to("#chFlip44", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-												  	  			        	  			        		t1.to("#lowerZ", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-													  	  			        	  			        		$("#lowerZ").text("122");
-													  	  			        	  			        		t1.to("#lowerZ", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-															  	  			        							$("#trueAndFalse").append(evaluateCndtn(ch >= "A" ? true : false) + " ");
-														  	  			        								$("#trueAndFalse").append("&& " + " ");
-														  	  			        								$("#trueAndFalse").append(evaluateCndtn(ch <= "Z" ? true : false) + " ");
-														  	  			        								$("#trueAndFalse").append("|| "+ " ");
-														  	  			        								$("#trueAndFalse").append(evaluateCndtn(ch >= "a" ? true : false) + " ");
-														  	  			        								$("#trueAndFalse").append("&& "+ " ");
-														  	  			        								$("#trueAndFalse").append(evaluateCndtn(ch <= "z" ? true : false) + " ");
-														  	  			        								$("#trueAndFalse1").append(evaluateCndtn(ch >= "A" && ch <= "Z" ? true : false) + " ");
-														  	  			        								$("#trueAndFalse1").append("|| "+ " ");
-														  	  			        								$("#trueAndFalse1").append(evaluateCndtn(ch >= "a" && ch <= "z" ? true : false) + " ");
-														  	  			        	  			        		var evaluateMsg;
-															  	  			        							if (checkingFlag) evaluateMsg = "evaluates to <b class='color-yellow'>" + checkingFlag + "</b>.";
-															  	  			        							else evaluateMsg = "evaluates to <b class='color-red'>" + checkingFlag + "</b>.";
-															  	  			        							typing('#checking', evaluateMsg, function() { 
-																  	  			        							  setTimeout(function(){
-																  	  			        								charcheck();
-																	  	  			        							}, 2600); 
-															  	  			        							 		});
-													  	  			        	  			        				}});
-								  	  			        	  			        								}});
-								  	  			        	  			        							}});
-								  	  			        	  			      							}});
-									  	  			        	  			  						}});
-				  	  			        	  			        								}});
-				  	  			        	  			        							}});
-				  	  			        	  			      							}});
-				  	  			        	  			        					}});
-  			        	  			        									}});
-  			        	  			        								}});
-  			        	  			      								}});
-	  	  			        	  			      					}});
-  	  			        	  			        				}});
-  	  			        	  			        			}});
-  	  			        	  			      			}});
-  			        	  			        		}});
-		  			        					}});
-											}});
-	        							}});
-									}});
-	        					}});
-							}});
-		      			}});
-					}});
-     			 }});
-			});
- 		}
+        	rotationEffect("#chFlip1", "#charInput", function() {
+        		rotationEffect("#chFlip2", "#charInput", function() {
+        			rotationEffect("#chFlip3", "#charInput", function() {
+        				rotationEffect("#chFlip4", "#charInput", function() {
+        					$('#span').removeClass('opacity00');
+		    				$('#ifConditionCheckIntooltip1').append("(<span id='chFlip11' class='bold' style='display: inline-block;'> '" + ch + 
+		    							"'</span> >= <span id='upperA' style='display: inline-block;' class='color-yellow'> 'A'</span> <span class=''> "+
+		    							"&& </span><span id='chFlip22' class='bold' style='display: inline-block;'> '" + ch + 
+		    							"' </span> <= <span class='color-yellow' id='upperZ' style='display: inline-block;'> 'Z'</span>) <span class=''> ||"+
+  			        			  		" </span>(<span id='chFlip33'class='bold' style='display: inline-block;'> '" + ch + 
+  			        			  		"' </span> >= <span class='color-yellow' id='lowerA' style='display: inline-block;'> "+
+  			        			  		"'a'</span> <span class=''> && </span><span id='chFlip44' class='bold' style='display: inline-block;'> '" + ch + 
+  			        			  		"' </span> <= <span class='color-yellow' id='lowerZ' style='display: inline-block;'> 'z'</span>)</span><br>"+
+  			        			  		"<span id='trueAndFalse'></span><br><span id='trueAndFalse1'></span><br><span id='checking'></span>");
+  							var l = $("#ifConditionCheckIntooltip").offset();
+  							$("#ifConditionCheckIntooltip1").offset({"top": l.top,"left": l.left});
+  			  			        TweenMax.to("#ifConditionCheckIntooltip1", 1.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+  			  			        	rotationEffect1("#chFlip11", "#charInput", function() {
+  			  			        		rotationEffect2("#upperA", "65", function() {    			  			        		
+  			  			        			rotationEffect1("#chFlip22", "#charInput", function() {
+  			  			        				rotationEffect2("#upperZ", "90", function() {  
+  			  			        					rotationEffect1("#chFlip33", "#charInput", function() {
+  			  			        						rotationEffect2("#lowerA", "97", function() {  
+  			  			        							rotationEffect1("#chFlip44", "#charInput", function() {
+  			  			        								rotationEffect2("#lowerZ", "122", function() {  
+  			  			        									$("#trueAndFalse").append(evaluateCndtn(ch >= "A" ? true : false) + " ");
+  			  			        									$("#trueAndFalse").append("&& " + " ");
+  			  			        									$("#trueAndFalse").append(evaluateCndtn(ch <= "Z" ? true : false) + " ");
+  			  			        									$("#trueAndFalse").append("|| "+ " ");
+  			  			        									$("#trueAndFalse").append(evaluateCndtn(ch >= "a" ? true : false) + " ");
+  			  			        									$("#trueAndFalse").append("&& "+ " ");
+  			  			        									$("#trueAndFalse").append(evaluateCndtn(ch <= "z" ? true : false) + " ");
+  			  			        									$("#trueAndFalse1").append(evaluateCndtn(ch >= "A" && ch <= "Z" ? true : false) + " ");
+  			  			        									$("#trueAndFalse1").append("|| "+ " ");
+  			  			        									$("#trueAndFalse1").append(evaluateCndtn(ch >= "a" && ch <= "z" ? true : false) + " ");
+  			  			        									var evaluateMsg;							  	  			        	  			        		
+															  	  	if (checkingFlag){
+															  	  	  	evaluateMsg = "evaluates to <b class='color-yellow'>" + checkingFlag + "</b>.";
+															  	  	} 	else {
+															  	  	 	evaluateMsg = "evaluates to <b class='color-red'>" + checkingFlag + "</b>.";
+															  	  	}
+															  	  	typing('#checking', evaluateMsg, function() { 
+																  	  setTimeout(function(){
+																  		  charcheck();
+																	  }, 2600); 
+															  	  	});
+  			  			        								});
+  			  			        							});
+			  			        						});	
+  			  			        					});
+  			  			        				});
+  			  			        			});	
+  			  			        		});
+  			  			        	});
+  			  			        }});		
+        				});
+        			});
+        		});
+        	});
+        }});
+	 });
+ }
  function animation1() {
-	 typing('.introjs-tooltiptext', "<span id='lowerLetterVowelsIntoolTip' class='opacity00'><span id='lowerCaseCh' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'a'</span> <span class=''>||</span> <span id='lowerCaseCh1' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'e'</span> <span class=''>||</span> <span id='lowerCaseCh2' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'i'</span> <span class=''>||</span> <span id='lowerCaseCh3' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'o'</span> <span class=''>||</span>"+
-				" <span id='lowerCaseCh4' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'u'</span></span><br><span id='lowerLetterVowelsIntoolTip1'></span><br><span id='trueSpan'></span>", function() {
+	 $(".introjs-tooltip").removeClass("hide");
+	 typing('.introjs-tooltiptext', "<span id='lowerLetterVowelsIntoolTip' class='opacity00'><span id='lowerCaseCh' class='bold' "
+			 + "style='display: inline-block;'>ch</span> == <span class='color-yellow'>'a'</span> <span class=''>||</span> "
+			 + "<span id='lowerCaseCh1' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'e'</span> "
+			 + "<span class=''>||</span> <span id='lowerCaseCh2' class='bold' style='display: inline-block;'>ch</span> == "
+			 + "<span class='color-yellow'>'i'</span> <span class=''>||</span> <span id='lowerCaseCh3' class='bold' "
+			 + "style='display: inline-block;'>ch</span> == <span class='color-yellow'>'o'</span> <span class=''>||</span>"
+			 + " <span id='lowerCaseCh4' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>"
+			 + "'u'</span></span><br><span id='lowerLetterVowelsIntoolTip1'></span><br><span id='trueSpan'></span>", function() {
 		var l = $("#lowerLetterVowels").offset();
 		$("#lowerLetterVowelsIntoolTip").offset({"top": l.top,"left": l.left});
 	    TweenMax.to("#lowerLetterVowelsIntoolTip", 0.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-	    	t1.to("#lowerCaseCh", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-	        	$("#lowerCaseCh").text('\'' +$("#charInput").val()+'\'');
-	        	t1.to("#lowerCaseCh", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-	        		t1.to("#lowerCaseCh1", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
- 			        	$("#lowerCaseCh1").text('\'' +$("#charInput").val()+'\'');
- 			        	t1.to("#lowerCaseCh1", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
- 			        		t1.to("#lowerCaseCh2", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
- 		 			        	$("#lowerCaseCh2").text('\'' +$("#charInput").val()+'\'');
- 		 			        	t1.to("#lowerCaseCh2",0.3, {opacity:1, rotationX: 0, onComplete: function() {
- 		 			        		t1.to("#lowerCaseCh3", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
- 		 		 			        	$("#lowerCaseCh3").text('\'' +$("#charInput").val()+'\'');
- 		 		 			        	t1.to("#lowerCaseCh3", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-		 		 		 			        	t1.to("#lowerCaseCh4", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-		 			 		 			        	$("#lowerCaseCh4").text('\'' +$("#charInput").val()+'\'');
-		 			 		 			        	t1.to("#lowerCaseCh4", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-								 			    	$('#lowerLetterVowelsIntoolTip1').append("<span id='lowerCaseCh10' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallA'>'a'</span> <span class=''>||</span> <span id='lowerCaseCh12' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallE'>'e'</span> <span class=''>||</span> <span id='lowerCaseCh23' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallI'>'i'</span> <span class=''>||</span> <span id='lowerCaseCh34' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallO'>'o'</span> <span class=''>||</span>"+
-								 							" <span id='lowerCaseCh45' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallU'>'u'</span></span>") 
-								 			    	var l = $("#lowerLetterVowelsIntoolTip").offset();
-									 				$("#lowerLetterVowelsIntoolTip1").offset({"top": l.top,"left": l.left});
-									 			    TweenMax.to("#lowerLetterVowelsIntoolTip1", 0.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-									 			    	t1.to("#lowerCaseCh10", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-									 			        	$("#lowerCaseCh10").text($("#charInput").val().charCodeAt(0));
-									 			        	t1.to("#lowerCaseCh10", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-									 			        		t1.to("#vowelsmallA", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-									 			        			$("#vowelsmallA").text("97");
-									 		 			        	t1.to("#vowelsmallA", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-									 		 			        		t1.to("#lowerCaseCh12", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-											 	  			        		$("#lowerCaseCh12").text($("#charInput").val().charCodeAt(0));
-											 	  			        		t1.to("#lowerCaseCh12", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-											 	  			        			t1.to("#vowelsmallE", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-											 		 			        			$("#vowelsmallE").text("101");
-											 		 		 			        	t1.to("#vowelsmallE", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-													 	  			        			t1.to("#lowerCaseCh23", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-													 	  			        				$("#lowerCaseCh23").text($("#charInput").val().charCodeAt(0));
-													 	  			        				t1.to("#lowerCaseCh23", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-													 	  			        					t1.to("#vowelsmallI", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-															 		 			        			$("#vowelsmallI").text("105");
-															 		 		 			        	t1.to("#vowelsmallI", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-															 	  			        					t1.to("#lowerCaseCh34", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-															 	  			        						$("#lowerCaseCh34").text($("#charInput").val().charCodeAt(0));
-															 	  			        						t1.to("#lowerCaseCh34", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-															 	  			        							t1.to("#vowelsmallO", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-																			 		 			        			$("#vowelsmallO").text("105");
-																			 		 		 			        	t1.to("#vowelsmallO", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-																	 	  			        							t1.to("#lowerCaseCh45", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-																		 		 	  			        					$("#lowerCaseCh45").text($("#charInput").val().charCodeAt(0));
-																		 		 	  			        					t1.to("#lowerCaseCh45", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-																			 		 	  			        					t1.to("#vowelsmallU", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-																							 		 			        			$("#vowelsmallU").text("117");
-																							 		 		 			        	t1.to("#vowelsmallU", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-																 		 	  			        										typing('#trueSpan', "evaluates to <b class=color-yellow>true</b>.", function() {
-																					  														$('.introjs-nextbutton').show();
-																				 		 	  			        							});
-																								 		 		 			        	}});
-																			 	  			        						 		}});
-								 		 	  			        																}});
-									 	  			        						 										}});
-								 		 	  			        														}});
-									 	  			        						 								}});
-								 		 	  			        												}});
-									 	  			        						 						}});
-																	 		 		 			     	}});
-												 	  			        						 	}});
-												 		 		 			        			}});
-									 	  			        						 		}});
- 	  			        																}});
-	  			        						 									}});
- 	  			        														}});
-	  			        						 							}});
- 	  			        												}});
-	  			        						 					}});
- 	  			        										}});
- 			        						 				}});
- 	  			        								}});
- 	  			        							}});
- 			        						 	}});
- 			        					  	}});
- 			        				   	}});
-									}});
-        						}});
-						 	}});
-        			   	}});
-				    }});
-	   			}});
-	        }});
-	  	});
- 	}
- 
- function animation2() {
-	 typing('.introjs-tooltiptext', "<span id='upperLetterVowelsIntoolTip' class='opacity00'><span id='upperCaseCh' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'A'</span> <span class=''>||</span> <span id='upperCaseCh1' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'E'</span> <span class=''>||</span> <span id='upperCaseCh2' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'I'</span> <span class=''>||</span> <span id='upperCaseCh3' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'O'</span> <span class=''>||</span>"+
-				" <span id='upperCaseCh4' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'U'</span></span><br><span id='upperLetterVowelsIntoolTip1' ></span><br><span id='trueSpan1'></span>", function() {
+	    	rotationEffect("#lowerCaseCh", "#charInput", function() {
+	    		rotationEffect("#lowerCaseCh1", "#charInput", function() {
+	    			rotationEffect("#lowerCaseCh2", "#charInput", function() {
+	    				rotationEffect("#lowerCaseCh3", "#charInput", function() {
+	    					rotationEffect("#lowerCaseCh4", "#charInput", function() {
+	    						$('#lowerLetterVowelsIntoolTip1').append("<span id='lowerCaseCh10' class='bold' style='display: inline-block;'>'"+ch+
+	    								"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallA'>'a'</span> "+
+	    								"<span class=''>||</span> <span id='lowerCaseCh12' class='bold' style='display: inline-block;'>'"+ch+
+	    								"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallE'>'e'</span> "+
+	    								"<span class=''>||</span> <span id='lowerCaseCh23' class='bold' style='display: inline-block;'>'"+ch+
+	    								"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallI'>'i'</span> "+
+	    								"<span class=''>||</span> <span id='lowerCaseCh34' class='bold' style='display: inline-block;'>'"+ch+
+	    								"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallO'>'o'</span> "+
+	    								"<span class=''>||</span>"+
+			 							" <span id='lowerCaseCh45' class='bold' style='display: inline-block;'>'"+ch+
+			 							"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelsmallU'>'u'</span></span>"); 
+			 			    	var l = $("#lowerLetterVowelsIntoolTip").offset();
+				 				$("#lowerLetterVowelsIntoolTip1").offset({"top": l.top,"left": l.left});
+				 			    TweenMax.to("#lowerLetterVowelsIntoolTip1", 0.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+				 			    	rotationEffect1("#lowerCaseCh10", "#charInput", function() {
+				 			    		rotationEffect2("#vowelsmallA", "97", function() {
+				 			    			rotationEffect1("#lowerCaseCh12", "#charInput", function() {
+				 			    				rotationEffect2("#vowelsmallE", "101", function() {
+				 			    					rotationEffect1("#lowerCaseCh23", "#charInput", function() {
+				 			    						rotationEffect2("#vowelsmallI", "105", function() {
+				 			    							rotationEffect1("#lowerCaseCh34", "#charInput", function() {
+				 			    								rotationEffect2("#vowelsmallO", "111", function() {
+				 			    									rotationEffect1("#lowerCaseCh45", "#charInput", function() {
+				 			    										rotationEffect2("#vowelsmallU", "117", function() {
+				 			    											typing('#trueSpan', "evaluates to <b class=color-yellow>true</b>.", function() {
+				 			    												$('.introjs-nextbutton, .introjs-prevbutton').show();
+				 			    											});
+				 			    										});
+				 			    									});
+																});
+					 										});
+														});
+				 			    					});
+		        						 		});
+											});
+										});
+									});
+				 			   }});	
+	    					});
+					 	});
+    			   	});
+			    });
+   			});
+        }});
+  	});
+	}
+
+function animation2() {
+	 $(".introjs-tooltip").removeClass("hide");
+	typing('.introjs-tooltiptext', "<span id='upperLetterVowelsIntoolTip' class='opacity00'><span id='upperCaseCh' "+
+		 "class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'A'</span> <span class=''>||</span> "+
+		 "<span id='upperCaseCh1' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'E'</span> "+
+		 "<span class=''>||</span> <span id='upperCaseCh2' class='bold' style='display: inline-block;'>ch</span> == "+
+		 "<span class='color-yellow'>'I'</span> <span class=''>||</span> <span id='upperCaseCh3' class='bold' "+
+		 "style='display: inline-block;'>ch</span> == <span class='color-yellow'>'O'</span> <span class=''>||</span>"+
+		" <span id='upperCaseCh4' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'U'</span></span>"+
+		"<br><span id='upperLetterVowelsIntoolTip1' ></span><br><span id='trueSpan1'></span>", function() {
 		var l = $("#upperLetterVowels").offset();
 		$("#upperLetterVowelsIntoolTip").offset({"top": l.top,"left": l.left});
-	    TweenMax.to("#upperLetterVowelsIntoolTip", 0.5, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-	    	t1.to("#upperCaseCh", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-	        	$("#upperCaseCh").text('\'' +$("#charInput").val()+'\'');
-	        	t1.to("#upperCaseCh", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-	        		t1.to("#upperCaseCh1", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
- 			        	$("#upperCaseCh1").text('\'' +$("#charInput").val()+'\'');
- 			        	t1.to("#upperCaseCh1", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
- 			        		t1.to("#upperCaseCh2", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
- 		 			        	$("#upperCaseCh2").text('\'' +$("#charInput").val()+'\'');
- 		 			        	t1.to("#upperCaseCh2", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
- 		 			        		t1.to("#upperCaseChe3", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
- 		 		 			        	$("#upperCaseCh3").text('\'' +$("#charInput").val()+'\'');
- 		 		 			        	t1.to("#upperCaseCh3", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-	 		 		 			        	t1.to("#upperCaseCh4", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-	 			 		 			        	$("#upperCaseCh4").text('\'' +$("#charInput").val()+'\'');
-	 			 		 			        	t1.to("#upperCaseCh4", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-	 			 		 			       
-								 			    	$('#upperLetterVowelsIntoolTip1').append("<span id='upperCaseCh10' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperA'>'A'</span> <span class=''>||</span> <span id='upperCaseCh11' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperE'>'E'</span> <span class=''>||</span> <span id='upperCaseCh22' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperI'>'I'</span> <span class=''>||</span> <span id='upperCaseCh33' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperO'>'O'</span> <span class=''>||</span>"+
-								 							" <span id='upperCaseCh44' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperU'>'U'</span></span");
-								 			      	var l = $("#upperLetterVowelsIntoolTip").offset();
-									 				$("#upperLetterVowelsIntoolTip1").offset({"top": l.top,"left": l.left});
-									 			    TweenMax.to("#upperLetterVowelsIntoolTip1", 0.5, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+		TweenMax.to("#upperLetterVowelsIntoolTip", 0.5, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+			rotationEffect("#upperCaseCh", "#charInput", function() {
+				rotationEffect("#upperCaseCh1", "#charInput", function() {
+					rotationEffect("#upperCaseCh2", "#charInput", function() {
+						rotationEffect("#upperCaseCh3", "#charInput", function() {
+							rotationEffect("#upperCaseCh4", "#charInput", function() {
+								$('#upperLetterVowelsIntoolTip1').append("<span id='upperCaseCh10' class='bold' style='display: inline-block;'>'"+ch+
+    								"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperA'>'A'</span> "+
+		 			    			"<span class=''>||</span> <span id='upperCaseCh11' class='bold' style='display: inline-block;'>'"+ch+
+		 			    			"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperE'>'E'</span> "+
+		 			    			"<span class=''>||</span> <span id='upperCaseCh22' class='bold' style='display: inline-block;'>ch"+
+		 			    			"</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperI'>'I'</span> "+
+		 			    			"<span class=''>||</span> <span id='upperCaseCh33' class='bold' style='display: inline-block;'>'"+ch+
+		 			    			"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperO'>'O'</span> "+
+		 			    			"<span class=''>||</span>"+
+		 							" <span id='upperCaseCh44' class='bold' style='display: inline-block;'>'"+ch+
+		 							"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperU'>'U'</span></span");
+								var l = $("#upperLetterVowelsIntoolTip").offset();
+								$("#upperLetterVowelsIntoolTip1").offset({"top": l.top,"left": l.left});
+								TweenMax.to("#upperLetterVowelsIntoolTip1", 0.5, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+									rotationEffect1("#upperCaseCh10", "#charInput", function() {
+										rotationEffect2("#vowelUpperA", "65", function() {
+											rotationEffect1("#upperCaseCh11", "#charInput", function() {
+												rotationEffect2("#vowelUpperE", "69", function() {
+													rotationEffect1("#upperCaseCh22", "#charInput", function() {
+														rotationEffect2("#vowelUpperI", "73", function() {
+															rotationEffect1("#upperCaseCh33", "#charInput", function() {
+																rotationEffect2("#vowelUpperO", "79", function() {
+																	rotationEffect1("#upperCaseCh44", "#charInput", function() {
+																		rotationEffect2("#vowelUpperU", "85", function() {
+																			typing('#trueSpan1', "evaluates to <b class=color-yellow>true</b>.", function() {
+																				$(".introjs-tooltipbuttons").prepend("<a class='introjs-button "+
+																						"userBackBtn' onclick='backStep1()'>&#8592; Back</a>");
+																				$('.introjs-nextbutton').show();
+			 		 	  			        								});
+			 			    											});
+			 			    										});
+			 			    									});
+				 											});
+			 			    							});
+			 			    						});
+	        						 			});
+			 			    				});
+			 			    			});
+			 			    		});
+			 					}});
+							});
+    					});
+    				});
+				});
+			});
+		}});
+	});
+}			    	
 								 			    	
-									 			    	t1.to("#upperCaseCh10", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-									 			        	$("#upperCaseCh10").text($("#charInput").val().charCodeAt(0));
-									 			        	t1.to("#upperCaseCh10", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-									 			        		t1.to("#vowelUpperA", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-									 		 			        	$("#vowelUpperA").text("65");
-									 		 			        	t1.to("#vowelUpperA", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-								 			        				
-									 		 			        		t1.to("#upperCaseCh11", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-									 		 	  			        		$("#upperCaseCh11").text($("#charInput").val().charCodeAt(0));
-									 		 	  			        		t1.to("#upperCaseCh11", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-										 		 	  			        		t1.to("#vowelUpperE", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-										 			 		 			        	$("#vowelUpperE").text("69");
-										 			 		 			        	t1.to("#vowelUpperE", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-										 			 		 			        		
-										 			 		 			        		t1.to("#upperCaseCh22", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-										 				 	  			        			$("#upperCaseCh22").text($("#charInput").val().charCodeAt(0));
-										 				 	  			        				t1.to("#upperCaseCh22", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-											 				 	  			        				t1.to("#vowelUpperI", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-											 				 			 		 			        	$("#vowelUpperI").text("73");
-											 				 			 		 			        	t1.to("#vowelUpperI", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-											 				 			 		 			        	
-											 				 			 		 			        		t1.to("#upperCaseCh33", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-												 					 	  			        					$("#upperCaseCh33").text($("#charInput").val().charCodeAt(0));
-												 					 	  			        						t1.to("#upperCaseCh33", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-													 					 	  			        						t1.to("#vowelUpperO", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-																 				 			 		 			        	$("#vowelUpperO").text("79");
-																 				 			 		 			        	t1.to("#vowelUpperO", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-										 				 			 		 			        		
-																	 				 			 		 			        	t1.to("#upperCaseCh44", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-																	 			 		 	  			        					$("#upperCaseCh44").text($("#charInput").val().charCodeAt(0));
-																	 			 		 	  			        					t1.to("#upperCaseCh44", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-																	 			 		 	  			        						t1.to("#vowelUpperU", 0.3, {opacity:1, rotationX: -90, onComplete: function() {
-																			 				 			 		 			        		$("#vowelUpperU").text("85");
-																			 				 			 		 			        		t1.to("#vowelUpperU", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
-																			 				 			 		 			        			typing('#trueSpan1', "evaluates to <b class=color-yellow>true</b>.", function() {
-																					  															$('.introjs-nextbutton').show();
-																				 		 	  			        								});
-																				 				 			 		 			        	 }});
-																		 																  }});
-																		 							        					 	   }});
-																		 													 		}});
-																		 					 		 			       			}});
-																		 													}});
-																		 				        						}});
-																		 										 	}});
-																		 										}});
-																		 									}});
-								 				 			 		 			        				}});
-					 																				}});
-					 									        					 			}});
-					 															 			}});
-					 				 			 		 			       				}});
-		 																			}});
-		 									        							}});
-		 															 		}});
-		 		 			         									}});
-																	}});
-	        					 								}});
-							  								}});
-		 		 			        					}});
-													}});
-	        					 				}});
-							 				}});
-		        				  		}});
-									}});
-        						}});
-							}});
-						}});
-	   		 		}});
-	  		 	});
- 			}
- 
- function animation3() {
-	 typing('.introjs-tooltiptext', "<span id='upperLetterVowelsIntoolTip' class='opacity00'><span id='upperCaseCh' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'A'</span> <span class=''>||</span> <span id='upperCaseCh1' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'E'</span> <span class=''>||</span> <span id='upperCaseCh2' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'I'</span> <span class=''>||</span> <span id='upperCaseCh3' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'O'</span> <span class=''>||</span>"+
-				" <span id='upperCaseCh4' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'U'</span></span><br><span id='upperLetterVowelsIntoolTip1' ></span><br><span id='trueSpan1'></span>", function() {
+         							
+
+function animation3() {
+	 $(".introjs-tooltip").removeClass("hide");
+	typing('.introjs-tooltiptext', "<span id='upperLetterVowelsIntoolTip' class='opacity00'><span id='upperCaseCh' class='bold' "+
+		 "style='display: inline-block;'>ch</span> == <span class='color-yellow'>'A'</span> <span class=''>||</span> "+
+		 "<span id='upperCaseCh1' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>'E'"+
+		 "</span> <span class=''>||</span> <span id='upperCaseCh2' class='bold' style='display: inline-block;'>ch</span> == "+
+		 "<span class='color-yellow'>'I'</span> <span class=''>||</span> <span id='upperCaseCh3' class='bold' style='display: "+
+		 "inline-block;'>ch</span> == <span class='color-yellow'>'O'</span> <span class=''>||</span>"+
+		" <span id='upperCaseCh4' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow'>"+
+		"'U'</span></span><br><span id='upperLetterVowelsIntoolTip1' ></span><br><span id='trueSpan1'></span>", function() {
 		var l = $("#upperLetterVowels").offset();
 		$("#upperLetterVowelsIntoolTip").offset({"top": l.top,"left": l.left});
-	    TweenMax.to("#upperLetterVowelsIntoolTip", 1.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-	    	t1.to("#upperCaseCh", 1, {opacity:1, rotationX: -90, onComplete: function() {
-	        	$("#upperCaseCh").text('\'' +$("#charInput").val()+'\'');
-	        	t1.to("#upperCaseCh", 1, {opacity:1, rotationX: 0, onComplete: function() {
-	        		t1.to("#upperCaseCh1", 1, {opacity:1, rotationX: -90, onComplete: function() {
- 			        	$("#upperCaseCh1").text('\'' +$("#charInput").val()+'\'');
- 			        	t1.to("#upperCaseCh1", 1, {opacity:1, rotationX: 0, onComplete: function() {
- 			        		t1.to("#upperCaseCh2", 1, {opacity:1, rotationX: -90, onComplete: function() {
- 		 			        	$("#upperCaseCh2").text('\'' +$("#charInput").val()+'\'');
- 		 			        	t1.to("#upperCaseCh2", 1, {opacity:1, rotationX: 0, onComplete: function() {
- 		 			        		t1.to("#upperCaseChe3", 1, {opacity:1, rotationX: -90, onComplete: function() {
- 		 		 			        	$("#upperCaseCh3").text('\'' +$("#charInput").val()+'\'');
- 		 		 			        	t1.to("#upperCaseCh3", 1, {opacity:1, rotationX: 0, onComplete: function() {
-	 		 		 			        	t1.to("#upperCaseCh4", 1, {opacity:1, rotationX: -90, onComplete: function() {
-	 			 		 			        	$("#upperCaseCh4").text('\'' +$("#charInput").val()+'\'');
-	 			 		 			        	t1.to("#upperCaseCh4", 1, {opacity:1, rotationX: 0, onComplete: function() {
-	 			 		 			       
-								 			    	$('#upperLetterVowelsIntoolTip1').append("<span id='upperCaseCh10' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperA'>'A'</span> <span class=''>||</span> <span id='upperCaseCh11' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperE'>'E'</span> <span class=''>||</span> <span id='upperCaseCh22' class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperI'>'I'</span> <span class=''>||</span> <span id='upperCaseCh33' class='bold' style='display: inline-block;'>"+ch+"</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperO'>'O'</span> <span class=''>||</span>"+
-								 							" <span id='upperCaseCh44' class='bold' style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' style='display: inline-block;' id='vowelUpperU'>'U'</span></span");
-								 			      	var l = $("#upperLetterVowelsIntoolTip").offset();
-									 				$("#upperLetterVowelsIntoolTip1").offset({"top": l.top,"left": l.left});
-									 			    TweenMax.to("#upperLetterVowelsIntoolTip1", 1.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-								 			    	
-									 			    	t1.to("#upperCaseCh10", 1, {opacity:1, rotationX: -90, onComplete: function() {
-									 			        	$("#upperCaseCh10").text($("#charInput").val().charCodeAt(0));
-									 			        	t1.to("#upperCaseCh10", 1, {opacity:1, rotationX: 0, onComplete: function() {
-									 			        		t1.to("#vowelUpperA", 1, {opacity:1, rotationX: -90, onComplete: function() {
-									 		 			        	$("#vowelUpperA").text("65");
-									 		 			        	t1.to("#vowelUpperA", 1, {opacity:1, rotationX: 0, onComplete: function() {
-								 			        				
-									 		 			        		t1.to("#upperCaseCh11", 1, {opacity:1, rotationX: -90, onComplete: function() {
-									 		 	  			        		$("#upperCaseCh11").text($("#charInput").val().charCodeAt(0));
-									 		 	  			        		t1.to("#upperCaseCh11", 1, {opacity:1, rotationX: 0, onComplete: function() {
-										 		 	  			        		t1.to("#vowelUpperE", 1, {opacity:1, rotationX: -90, onComplete: function() {
-										 			 		 			        	$("#vowelUpperE").text("69");
-										 			 		 			        	t1.to("#vowelUpperE", 1, {opacity:1, rotationX: 0, onComplete: function() {
-										 			 		 			        		
-										 			 		 			        		t1.to("#upperCaseCh22", 1, {opacity:1, rotationX: -90, onComplete: function() {
-										 				 	  			        			$("#upperCaseCh22").text($("#charInput").val().charCodeAt(0));
-										 				 	  			        				t1.to("#upperCaseCh22", 1, {opacity:1, rotationX: 0, onComplete: function() {
-											 				 	  			        				t1.to("#vowelUpperI", 1, {opacity:1, rotationX: -90, onComplete: function() {
-											 				 			 		 			        	$("#vowelUpperI").text("73");
-											 				 			 		 			        	t1.to("#vowelUpperI", 1, {opacity:1, rotationX: 0, onComplete: function() {
-											 				 			 		 			        	
-											 				 			 		 			        		t1.to("#upperCaseCh33", 1, {opacity:1, rotationX: -90, onComplete: function() {
-												 					 	  			        					$("#upperCaseCh33").text($("#charInput").val().charCodeAt(0));
-												 					 	  			        						t1.to("#upperCaseCh33", 1, {opacity:1, rotationX: 0, onComplete: function() {
-													 					 	  			        						t1.to("#vowelUpperO", 1, {opacity:1, rotationX: -90, onComplete: function() {
-																 				 			 		 			        	$("#vowelUpperO").text("79");
-																 				 			 		 			        	t1.to("#vowelUpperO", 1, {opacity:1, rotationX: 0, onComplete: function() {
-										 				 			 		 			        		
-																	 				 			 		 			        	t1.to("#upperCaseCh44", 1, {opacity:1, rotationX: -90, onComplete: function() {
-																	 			 		 	  			        					$("#upperCaseCh44").text($("#charInput").val().charCodeAt(0));
-																	 			 		 	  			        					t1.to("#upperCaseCh44", 1, {opacity:1, rotationX: 0, onComplete: function() {
-																	 			 		 	  			        						t1.to("#vowelUpperU", 1, {opacity:1, rotationX: -90, onComplete: function() {
-																			 				 			 		 			        		$("#vowelUpperU").text("85");
-																			 				 			 		 			        		t1.to("#vowelUpperU", 1, {opacity:1, rotationX: 0, onComplete: function() {
-																			 				 			 		 			        			typing('#trueSpan1', "evaluates to <b class=color-yellow>true</b>.", function() {
-																					  															$('.introjs-nextbutton').show();
-																				 		 	  			        								});
-																				 				 			 		 			        	 }});
-																		 																  }});
-																		 							        					 	   }});
-																		 													 		}});
-																		 					 		 			       			}});
-																		 													}});
-																		 				        						}});
-																		 										 	}});
-																		 										}});
-																		 									}});
-								 				 			 		 			        				}});
-					 																				}});
-					 									        					 			}});
-					 															 			}});
-					 				 			 		 			       				}});
-		 																			}});
-		 									        							}});
-		 															 		}});
-		 		 			         									}});
-																	}});
-	        					 								}});
-							  								}});
-		 		 			        					}});
-													}});
-	        					 				}});
-							 				}});
-		        				  		}});
-									}});
-        						}});
-							}});
-						}});
-	   		 		}});
-	  		 	});
- 			}
+		TweenMax.to("#upperLetterVowelsIntoolTip", 1.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+			rotationEffect("#upperCaseCh", "#charInput", function() {
+				rotationEffect("#upperCaseCh1", "#charInput", function() {
+					rotationEffect("#upperCaseCh2", "#charInput", function() {
+						rotationEffect("#upperCaseCh3", "#charInput", function() {
+							rotationEffect("#upperCaseCh4", "#charInput", function() {
+								$('#upperLetterVowelsIntoolTip1').append("<span id='upperCaseCh10' class='bold' "+
+		 			    			"style='display: inline-block;'>'"+ch+"'</span> == <span class='color-yellow' "+
+		 			    			"style='display: inline-block;' id='vowelUpperA'>'A'</span> <span class=''>||</span> "+
+		 			    			"<span id='upperCaseCh11' class='bold' style='display: inline-block;'>'"+ch+
+		 			    			"'</span> == <span class='color-yellow' style='display: inline-block;' "+
+		 			    			"id='vowelUpperE'>'E'</span> <span class=''>||</span> <span id='upperCaseCh22' "+
+		 			    			"class='bold' style='display: inline-block;'>ch</span> == <span class='color-yellow' "+
+		 			    			"style='display: inline-block;' id='vowelUpperI'>'I'</span> <span class=''>||</span> "+
+		 			    			"<span id='upperCaseCh33' class='bold' style='display: inline-block;'>"+ch+
+		 			    			"</span> == <span class='color-yellow' style='display: inline-block;' "+
+		 			    			"id='vowelUpperO'>'O'</span> <span class=''>||</span>"+
+		 							" <span id='upperCaseCh44' class='bold' style='display: inline-block;'>'"+ch+
+		 							"'</span> == <span class='color-yellow' style='display: inline-block;' "+
+		 							"id='vowelUpperU'>'U'</span></span");
+								var l = $("#upperLetterVowelsIntoolTip").offset();
+								$("#upperLetterVowelsIntoolTip1").offset({"top": l.top,"left": l.left});
+								TweenMax.to("#upperLetterVowelsIntoolTip1", 1.3, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
+									rotationEffect1("#upperCaseCh10", "#charInput", function() {
+										rotationEffect2("#vowelUpperA", "65", function() {
+											rotationEffect1("#upperCaseCh11", "#charInput", function() {
+												rotationEffect2("#vowelUpperE", "69", function() {
+													rotationEffect1("#upperCaseCh22", "#charInput", function() {
+														rotationEffect2("#vowelUpperI", "73", function() {
+															rotationEffect1("#upperCaseCh33", "#charInput", function() {
+																rotationEffect2("#vowelUpperO", "79", function() {
+																	rotationEffect1("#upperCaseCh44", "#charInput", function() {
+																		rotationEffect2("#vowelUpperU", "85", function() {
+																			typing('#trueSpan1', "evaluates to <b class=color-yellow>true</b>.", function() {
+																				$('.introjs-nextbutton, .introjs-prevbutton').show();
+				 		 	  			        							});
+		 			    												});
+																	});
+		 			    										});
+			 												});
+		 			    								});
+													});
+												});
+		 			    					});
+		 			    				});
+		 			    			}); 			  
+			 			    	}});
+							});
+						});
+					});
+				});
+			});							
+		}});
+	});
+}	 			   
+
+function rotationEffect(selector, selector2, callBackFunction) {
+ t1.to(selector, 0.3, {opacity:1, rotationX: -90, onComplete: function() {
+		$(selector).text('\'' +$(selector2).val() +'\'');
+		t1.to(selector, 0.3, {opacity:1, rotationX: 0, onComplete: function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}});
+	}});
+}
+
+function rotationEffect1(selector, selector2, callBackFunction) {
+ t1.to(selector, 0.3, {opacity:1, rotationX: -90, onComplete: function() {
+		$(selector).text($(selector2).val().charCodeAt(0));
+		t1.to(selector, 0.3, {opacity:1, rotationX: 0, onComplete: function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}});
+	}});
+}
+function rotationEffect2(selector, selector2, callBackFunction) {
+ t1.to(selector, 0.3, {opacity:1, rotationX: -90, onComplete: function() {
+		$(selector).text(selector2);
+		t1.to(selector, 0.3, {opacity:1, rotationX: 0, onComplete: function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}});
+	}});
+}    	
+				 			        		
+function backStep1() {
+	$(".userBackBtn").remove();
+	$(".introjs-nextbutton").hide();
+	intro.goToStep(8);
+}				 		 			        		
+				
+
+
+
+
+								 	  			        			
+								 	  			        					
+										 	  			        					
+											 		 	  			        										
+																			 		 		 			        
+							 		 		 			        		
+       								
+	    	
+								 			 
+        						

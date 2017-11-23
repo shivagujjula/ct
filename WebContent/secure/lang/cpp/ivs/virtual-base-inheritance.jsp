@@ -43,6 +43,7 @@ g {
 
 r {
 	color: red;
+	font-weight: bold;
 }
 /* a:focus {
 	outline: none;
@@ -116,26 +117,46 @@ y {
 
 .singleIn {
 	border: 1px solid grey;
-	margin-top: 7%;
+	margin-top: 4%;
 	margin-bottom: 7%;
 	padding: 10px;
 	background-color: lightblue;
 } 
 
+.gpAge {
+	border: 2px solid red;
+	margin-top: 4%;
+	padding: 2px;
+	background-color: lightgreen;
+	border-radius: 2px;
+	position: relative;
+}
+
+.varIn {
+	border: 2px solid gray;
+	margin-top: 4%;
+	/* margin-bottom: 7%; */
+	padding: 2px;
+	background-color: lightpink;
+	border-radius: 2px;
+} 
+
 .blinking-orange {
 	animation-name: blink-border-background-orange ;
-	animation-duration: 2s ;
+	animation-duration: 1s ;
 	animation-iteration-count: infinite;
 	animation-direction: alternate ;
 	z-index: 10000000;
 	position: relative;
 }
 
-@keyframes blink-border-background-orange { 
+@keyframes blink-border-background-orange {
+
 	50% {
 		border-color: white;
 		background: orange;
 	}
+	
 }
 
 .input-field {
@@ -143,6 +164,32 @@ y {
 	position: relative;
 	min-width: 12%;
 }
+
+.introjs-fixParent {
+	position: relative !important;
+}
+
+.initialColor {
+	color: initial;
+}
+
+.panel-heading {
+	padding: 4px 10px !important;
+}
+
+.panel-body {
+	padding: 10px !important;
+	background-color: #bd83b6;
+}
+
+.user-btn {
+	background-color: green;
+}
+
+#Height {
+	height: 450px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -163,72 +210,122 @@ $(document).ready(function() {
 
 <span id="gpCls"><go>class</go> GrandParent {
 	<go>public:</go>
-			<g>int</g> age1;
+			<g>int</g> gpAge;
 };</span>
 
-<span id="childParent"><span id="p1Cls"><go>class</go> Parent1 : <go>public <span class="displayNone">virtual</span></go> GrandParent {
+<span id="childParent"><span id="p1Cls" class="opacity00"><go>class</go> Parent1 : <go>public <span class="displayNone">virtual</span></go> GrandParent {
  	<go>public:</go>
- 			<g>int</g> age2;
+ 			<g>int</g> p1Age;
 };</span>
 
-<span id="p2Cls"><go>class</go> Parent2 : <go>public <span class="displayNone">virtual</span></go> GrandParent {
+<span id="p2Cls" class="opacity00"><go>class</go> Parent2 : <go>public <span class="displayNone">virtual</span></go> GrandParent {
 	<go>public:</go>
-			<g>int</g> age3;
+			<g>int</g> p2Age;
 };</span></span>
 
-<span id="childCls"><go>class</go> Child : <go>public</go> Parent1, Parent2 {
+<span id="childCls" class="opacity00"><go>class</go> Child : <go>public</go> <span id='supP1'>Parent1</span>, Parent2 {
 	<go>public:</go>
 		<span id="readMthd"><span><g>void</g> readAge() {
-			<span id="textPrint">cout << <ink>"Enter age1, age2, age3 :"</ink>;</span>
-			<span id="textRead">cin >> age1 >> age2 >> age3;</span>
+			<span id="textPrint">cout << <ink>"Enter gpAge, p1Age, p2Age :"</ink>;</span>
+			<span id="textRead">cin >> gpAge >> p1Age >> p2Age;</span>
 		}</span></span>
 	
 		<span id="printMthd"><g>void</g> printAge() {
 			<span id='result'><span>cout << <ink>"The values are :"</ink>;</span>
-			<span>cout << age1 << age2 << age3;</span></span>
+			<span>cout << gpAge << p1Age << p2Age;</span></span>
 		}</span>
 };</span>
 
-<span id="mainMthd"><g>int</g> main() {
+<span id="mainMthd" class="opacity00"><g>int</g> main() {
 	<span id="obj" class="opacity00">Child obj;</span>
 	<span id="callRead" class="opacity00">obj.readAge();</span>
 	<span id="callWrite" class="opacity00">obj.printAge();</span>
 }</span>
 </pre>
+<div class="col-xs-12" style="margin-top:5px;">
+	<div class="col-xs-offset-2 col-xs-10">
+		<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
+	</div>
+</div>
 </div>
 	<div id='animate' class="col-xs-6 border1px padding00 opacity00">
 		<div class="col-xs-12 padding00"> <!-- style="height: 650px;" -->
 		<div class="col-xs-12 text-center padding00"  style=" margin-top: 4%;"> <!-- style="height:290px;" -->
 			<div id="flow4" class="col-xs-12 padding00 vertial-align-middle opacity00 code">
-				
-				 <div class="displayInline border1px col-xs-offset-3 col-xs-6 lightGreen ">
-				 <svg class="svg-css">
+				 <div class="displayInline border1px col-xs-offset-2 col-xs-8" id="Height">
+				  <svg class="svg-css">
 					<marker id="flow4Marker" refX="4" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: #f53f3f;">
 	              			<path d="M0,0 L5,2.5 L0,5 Z"/>
 	          		</marker>
-					<!-- <line y2="48%" x2="50%" y1="39%" x1="50%" class="svg-line"/>
-					<line y2="48%" x2="60%" y1="48%" x1="40%" class="svg-line"/>
-					<line y2="60%" x2="40%" y1="48%" x1="40%" class="svg-line" style="marker-end: url(#flow4Marker);"/>
-					<line y2="60%" x2="60%" y1="48%" x1="60%" class="svg-line" style="marker-end: url(#flow4Marker);"/> -->
+					<line class="svg-line" y2="23%" x2="49%" y1="23%" x1="49%"></line> <!-- y2="29%" --> 
+					<line class="svg-line" x1="49%" y1="29%" y2="29%" x2="49%"></line> <!-- x2="15%" -->
+					<line class="svg-line" x1="15%" y1="29%" x2="15%" y2="29%"></line> <!-- y2="34%" -->
 					
-					<line class="svg-line" y2="34%" x2="50%" y1="25%" x1="50%" style=""/>
-					<line class="svg-line" y2="34%" x2="77%" y1="34%" x1="23%"/>
-					<line class="svg-line" y2="42%" x2="23%" y1="34%" x1="23%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line" y2="42%" x2="77%" y1="34%" x1="77%" style="marker-end: url(#flow4Marker);"/>
-					<line class="svg-line" y2="67%" x2="77%" y1="67%" x1="23%"/>
-					<line class="svg-line" y2="67%" x2="23%" y1="58%" x1="23%" style=""/>
-					<line class="svg-line" y2="67%" x2="77%" y1="58%" x1="77%" style=""/>
-					<line class="svg-line" y2="75%" x2="50%" y1="67%" x1="50%" style="marker-end: url(#flow4Marker);"/>
-				</svg>
-				 	<div>
-						<div class="singleIn displayInline"><div>class GP</div></div>
+					<line class="svg-line" x1="49%" x2="49%" y1="29%" y2="29%"></line> <!-- x2="85%" -->
+					<line class="svg-line" x1="85%" x2="85%" y1="29%" y2="29%"></line> <!-- y2="34%" -->
+					
+					<line class="svg-line" x1="15%" y1="59%" x2="15%" y2="59%"></line> <!-- style="marker-end: url(#flow4Marker);" --><!-- y2="83%" -->
+					<line class="svg-line" x1="15%" y1="83%" x2="15%" y2="83%"></line><!-- x2="34%" -->
+					
+					<line class="svg-line" x1="85%" x2="85%" y1="59%" y2="59%"></line>  <!-- style="marker-end: url(#flow4Marker);" --> <!-- y2="83%" -->
+					<line class="svg-line" x1="85%" y1="83%" y2="83%" x2="85%"></line> <!-- x2="66%" -->
+				</svg> 
+					<div class="col-xs-12 padding00" style="margin-top:20px;">
+						<div class="col-xs-offset-4 col-xs-4 padding00 opacity00" id="gp">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<b>GrandParent</b>
+								</div>
+								<div class="panel-body opacty00" id="">
+									<div><div class="gpAge displayInline" id="one"><b>gpAge</b></div></div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div> <!-- style="margin: 20px;" -->
-						<div class="singleIn displayInline" ><div>class P1</div></div>
-						<div class="singleIn displayInline" style="margin-left: 34%;"><div>class P2</div></div>
+					
+					<div class="col-xs-12 padding00" style="margin: 30px 0px 20px 0px;">
+						<div class="col-xs-offset-0 col-xs-3 padding00 opacity00" id="p1">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<b>Parent1</b>
+								</div>
+								<div class="panel-body opacty00" id="">
+									<div><div class="gpAge displayInline opacity00"  id="two"><b>gpAge</b></div></div>
+									<div class="varIn displayInline"><div><b>p1Age</b></div></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-offset-6 col-xs-3 padding00 opacity00" id="p2">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<b>Parent2</b>
+								</div>
+								<div class="panel-body opacty00" id="">
+									<div><div class="gpAge displayInline opacity00" id="three"><b>gpAge</b></div></div>
+									<div class="varIn displayInline"><div><b>p2Age</b></div></div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div>
-						<div class="singleIn displayInline"><div>class Child</div></div>
+					<div class="col-xs-12 padding00">
+						<div class="col-xs-offset-4 col-xs-4 padding00 opacity00" id="child">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<b>Child</b>
+								</div>
+								<div class="panel-body opacty00" id="">
+									<div id="last">
+										<div class="displayInline"><div class="gpAge displayInline opacity00" id="four"><b>gpAge</b></div></div>
+										<div class="displayInline"><div class="gpAge displayInline opacity00" id="five"><b>gpAge</b></div></div>
+									</div>
+									<div>
+										<div class="varIn displayInline"><div><b>p1Age</b></div></div>
+										<div class="varIn displayInline"><div><b>p2Age</b></div></div>
+									</div>	
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -243,9 +340,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-</div>
-<div class="col-xs-6 col-xs-offset-6">
-		<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
 </div>
 </body>
 </html>

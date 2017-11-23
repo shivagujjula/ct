@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
@@ -98,12 +98,8 @@
 }
 
 .ct-code-b-teal {
-	font-family: message-box;
-	color: teal;
-}
-pre#desc{
-	width : 525px;
-	background-color: #fcfae3;
+	color: rgb(75, 131, 0);
+    font-weight: bold;
 }
 ul.expl {
 	list-style-type: square;
@@ -116,7 +112,6 @@ ul.expl {
 	color: #0f0;
 }
 .input-char-2,.input-char-3 {
-	/* width: 30px;  */
 	border-width: 0px 0 0 0;
 	background-color: #000;
 	color: #0f0;
@@ -128,6 +123,7 @@ div, span {
 
 .z-index9999999 {
 	z-index: 9999999;
+	background: white;
 }
 
 .creamPreTab1 {
@@ -168,11 +164,11 @@ div, span {
 }
 
 .address-div {
-	height: 272px;
+	min-height: 272px;
 }
 
 .output-console-body {
-	height: 140px;
+	min-height: 140px;
 	white-space: initial;
 	padding: 10px;
 	font-size: 12px;
@@ -220,8 +216,9 @@ div, span {
 }
 
 .ui-effects-transfer {
-    background-color: orange;
+    border: 1px solid white;
     z-index: 99999999 !important;
+    border-radius: 10px;
 }
 
 #gVal {
@@ -274,11 +271,13 @@ div, span {
 	font-size : 12px;
 }
 
-/* #animationBox {
-	border: 1px solid green;
-	border-radius: 4%;
-	height: 154px;
-} */
+.circle-css {
+	border: 1px solid;
+	border-radius: 50%;
+	padding: 2px;
+	position: relative;
+	z-index: 9999999;
+}
 
 .fa-arrow-left {
 	color: green;
@@ -317,87 +316,91 @@ div, span {
 		 		<ul class="expl">
 		 		<li id="list2" class="opacity00"><b>To define a function outside a class.</b></li>
 		 		<li id="list3" class="opacity00"><b>To access a class’s static variables.</b></li>
-		 		<li id="list4" class="opacity00"><b>In case of multiple Inheritance:</b></li></ul><br>
-		 	<li id="list5" class="opacity00">The syntax for using a <span class="ct-code-b-teal">scope resolution operator (::)</span> is:<br> 
-		 		<span class="syntax opacity00" id="syntax">:: Variable_name</span>
+		 		<li id="list4" class="opacity00"><b>In case of multiple Inheritance:</b></li>
+		 		</ul>
+		 	<li id="list5" class="opacity00">The syntax  is: <span class="syntax opacity00" id="syntax">:: Variable_name</span>
 		 				<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li>
 		</ul>
 	</div>
 	<div class='col-xs-12 margin-top-2'>
-	<br>
-	<div class="col-xs-5">
+		<div class="col-xs-5">
 	<pre id="preTableDiv" class="creamPreTab1 opacity00">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-green-color">namespace</span> std;
 <span id="globalVar"><span class="ct-blue-color">int</span> a = <span id="tweenVal1">10</span>;</span>
-<span id="mainFunc"><span id="startMain"><span class="ct-blue-color">int</span> main () { </span>
+<span id="mainFunc"><span id="startMain"><span class="ct-blue-color">int</span> main() { </span>
 	<span id="localVar"><span class="ct-blue-color">int</span> a = <span id="tweenVal2">20</span>;</span>
-	<span id="mainPf1">cout << "Local variable value = " << a << endl;</span>
-	<span id="mainPf2">cout << "Global variable value = " << ::a << endl;</span>
+	<span id="mainPf1">cout << <span id="locaVarVal">"Local variable value = "</span> << <span id="locA">a</span> << endl;</span>
+	<span id="mainPf2">cout << <span id="globVarVal">"Global variable value = "</span> << <span id="globA">::a</span> << endl;</span>
 	<span id="funcDef"><span id="userFunc">{</span>
 		<span id="localVar1"><span class="ct-blue-color">int</span> a = <span id="tweenVal3">30</span>;</span>
-		<span id="mainPf3">cout << "Local variable value = " << a << endl;</span>
-		<span id="mainPf4">cout << "Global variable value = " << ::a << endl;</span>
+		<span id="mainPf3">cout << <span id="locaVarVal1">"Local variable value = "</span> << <span id="locA1">a</span> << endl;</span>
+		<span id="mainPf4">cout << <span id="globVarVal1">"Global variable value = "</span> << <span id="globA1">::a</span> << endl;</span>
 	<span id="endFunc">}</span></span>
 <span id="endMain">}</span></span>
 	</pre>
-	</div>
-	<div id="addressDiv" class="col-xs-7 box-border address-div opacity00">
+		</div>
+		<div id="addressDiv" class="col-xs-6 col-xs-offset-1 box-border address-div opacity00">
 			<div class="col-xs-12 margin-top-20">
 				<div class="col-xs-12 text-center" style="font-weight: bold; color: rgb(47, 79, 79);">
-					<div id="boxHeading" class="col-xs-4 col-xs-offset-3 opacity00">In main()</div>
+					<div id="boxHeading" class="col-xs-4 col-xs-offset-6 opacity00">In main()</div>
 				</div>
 				<div class="col-xs-12" style="margin-top: 10px;">
 					<div id="globalVal" class="col-xs-2  text-center opacity00">
 						<div><b style="color: maroon;">a</b></div>
 						<div class="box-border" style="line-height: 50px; height: 50px;">
-							<span id="gVal" class="opacity00"></span>
+							<span id="gVal" class="ct-blue-color opacity00"></span>
 						</div>
 						<div class='opacity00'>2323</div>
 					</div>
-					<div id="varBox" class="box-border col-xs-4 col-xs-offset-1 text-center opacity00">
-						<div id="localVal" class="col-xs-7 col-xs-offset-2">
-							<div><b style="color: maroon;">a</b></div>
-							<div style="line-height: 50px; height: 50px;" class="box-border">
-								<span id="lVal" class="opacity00"></span>
-							</div>
-							<div class='opacity00'>2323</div>
+					<div class="col-xs-6 box-border col-xs-offset-3 opacity00" style="padding: 20px;" id="mainDiv">
+						<div class="col-xs-12 text-center" style="font-weight: bold; color: rgb(47, 79, 79);">
+							<div id="boxHeading1" style="margin-left: 49%;" class="col-xs-8 opacity00">Inner block</div>
 						</div>
-					</div>
-					<div id="varBox1" class="box-border col-xs-4 col-xs-offset-1 text-center opacity00">
-						<div id="localVal1" class="col-xs-7 col-xs-offset-2">
-							<div><b style="color: maroon;">a</b></div>
-							<div style="line-height: 50px; height: 50px;" class="box-border">
-								<span id="lVal1" class="opacity00"></span>
+						<div id="varBox" class="col-xs-5 col-xs-offset-1 text-center opacity00">
+							<div id="localVal">
+								<div><b style="color: maroon;">a</b></div>
+								<div style="line-height: 50px; height: 50px;" class="box-border">
+									<span id="lVal" class="ct-blue-color opacity00"></span>
+								</div>
+								<div class='opacity00'>2323</div>
 							</div>
-							<div class='opacity00'>2323</div>
+						</div>
+						<div id="varBox1" class="box-border col-xs-5 col-xs-offset-1 text-center opacity00">
+							<div id="localVal1" style="margin-left: 2%;">
+								<div><b style="color: maroon;">a</b></div>
+								<div style="line-height: 50px; height: 50px;" class="box-border">
+									<span id="lVal1" class="opacity00 ct-blue-color"></span>
+								</div>
+								<div class='opacity00'>2323</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 		<div class="col-xs-4 col-xs-offset-2" style="margin-top: 30px;">
 			<div id="consoleId" class="output-console padding0 opacity00">
 				<div class="output-console-title-bar"><span class="title">Output</span></div>
 				<div style="color: white;" class="output-console-body">
-					<div id="runEditor1" class="opacity00"> Local variable value = <span class="ct-green-color">20</span></div>
-					<div id="runEditor2" class="opacity00"> Global variable value = <span class="ct-green-color">10</span></div><br>
-					<div id="runEditor3" class="opacity00"> Local variable value = <span class="ct-green-color">30</span></div>
-					<div id="runEditor4" class="opacity00"> Global variable value = <span class="ct-green-color">10</span></div>
+					<span id="runEditor1" class="opacity00">Local variable value = <span class="ct-code-b-yellow opacity00" id="locAVal">20</span></span><br>
+					<span id="runEditor2" class="opacity00">Global variable value = <span class="ct-code-b-yellow opacity00" id="globAVal">10</span></span><br><br>
+					<span id="runEditor3" class="opacity00">Local variable value = <span class="ct-code-b-yellow opacity00" id="locA1Val">30</span></span><br>
+					<span id="runEditor4" class="opacity00">Global variable value = <span class="ct-code-b-yellow opacity00" id="globA1Val">10</span></span>
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-3 col-sm-offset-4">
-			<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
-				<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
-			</div>
+	</div>
+	<div class="col-xs-3 col-sm-offset-4">
+		<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
+			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
 		</div>
 	</div>
+</div>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	usageOfGetcharReady();
+	usageOfScopeResolutionOperatorReady();
 });
 </script>
 </html>

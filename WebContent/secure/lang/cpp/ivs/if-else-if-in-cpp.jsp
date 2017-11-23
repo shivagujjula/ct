@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,8 +14,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/cpp/js-min/ieiic.min.js"></script>
-	
+ 	<script src="/secure/lang/cpp/js-min/ieiic.min.js"></script>
 	<title>if else if in C++</title>
 </head>
 
@@ -81,7 +78,7 @@
     height: 130px;
     margin-bottom: 14px;
     overflow: auto;
-    padding: 17px;
+    
     white-space: pre-line;
 }
 
@@ -131,6 +128,9 @@ pre {
 .user-btn {
 	background-color: green;
 }
+.userBackBtn {
+    background-color: #5bc0de !important;
+}
 </style>
 
 <body>
@@ -178,13 +178,15 @@ using namespace std;
       <span id='printF4'><span class='color-maroon'>cout</span> << ch << <span
 						class='color-lightblue'>" is not a letter\n"</span>;</span>
    }</span>  
+<span id="end">}</span>   
 </pre>
 		<div class='col-xs-4' style='margin-top: 15px;'>
 			<div id="consoleId" class="center opacity00" style="margin-top: 0px;">
 				<div class="output-console-title-bar">
 					<span class="title"><b>Console</b></span>
 				</div>
-				<div class="output-console-body" id="consoleBodyDiv"><div class='inputDiv' id='nameSpan'>Enter a character: <span id='nameEnterspan'><input
+				<div class="output-console-body" id="consoleBodyDiv">
+					<div class='inputDiv' id='nameSpan'>Enter a character: <span id='nameEnterspan'><input
 							class='index-textbox-size input' type='text' id='charInput'
 							Maxlength='1'></span>
 					</div><div><span id='enteredConsole'></span><span id='valGet'></span></div><div><span id='printInConsole'></span></div>

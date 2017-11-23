@@ -138,7 +138,7 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="col-xs-12 text-center marginTop20">
-	<div class="label label-default ct-demo-heading" id="heading">Destructor With Virtual</div>
+	<div class="label label-default ct-demo-heading" id="heading">VirtualDestructor</div>
 </div>
 
 <div class="col-xs-12 marginTop20">
@@ -148,21 +148,22 @@ $(document).ready(function() {
 <go>using namespace</go> std;
 
 <span id="baseClass"><span><go>class</go> Base</span> {
-	<span id="invokeSecond"><span><go>public</go>: Base()</span> {
-		<span id="baseCon">cout << <ink>"Base class constructor"</ink>;</span>
-	}</span>
+	<span id="invokeSecond"><span><go>public</go>:</span>
+		<span>Base()</span> {
+			<span id="baseCon">cout << <ink>"Base class constructor"</ink>;</span>
+		}</span>
 	
-	<span id="baseShow"><span><go>virtual</go> ~Base()</span> {
-		<span id="baseDes">cout << <ink>"Base class destructor"</ink>;</span>
-	}</span>
-<span>};</span></span>
+		<span id="baseShow"><span><go>virtual</go> ~Base()</span> {
+			<span id="baseDes">cout << <ink>"Base class destructor"</ink>;</span>
+		}</span>
+	<span>};</span></span>
 	
 <span id="deriveClass"><span><go>class</go> Derived : <go>public</go> Base</span> {
-	<span>int h;</span>
-	<span id="invokeFirst"><span><go>public</go>: Derived() {
-		<span id="deriveCon">cout << <ink>"Derived class constructor"</ink>;</span>
-	<span>}</span>
-	</span></span>
+	<span id="invokeFirst"><span><go>public</go>:
+		<span>Derived() {</span>
+			<span id="deriveCon">cout << <ink>"Derived class constructor"</ink>;</span>
+		<span>}</span>
+		</span></span>
 	<span id="parentShow" ><span> ~Derived() </span>{
 			<span id="deriveDes">cout <<<ink>"Derived class destructor"</ink>;</span>
 		<span>}</span></span>

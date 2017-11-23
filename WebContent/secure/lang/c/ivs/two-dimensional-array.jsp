@@ -206,13 +206,6 @@ pre > span {
 			<h1 class='label ct-demo-heading' id="heading">Two Dimensional Array</h1>
 		</div>
 
-		<div class='col-xs-12 text-center'>
-			<span id='restart'
-				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
-				&nbsp;<i class='fa fa-refresh'></i>
-			</span>
-		</div>
-
 		<div id="typingDiv"
 			class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
 				<ul><li>Two dimensional array can be used to represents matrix form of elements.</li>
@@ -277,5 +270,11 @@ void main() {
 					</div>
 </div></div>
 	</div>
+	<div class='col-xs-12 text-center'>
+			<span id='restart'
+				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
+				&nbsp;<i class='fa fa-refresh'></i>
+			</span>
+		</div>
 </body>
 </html>

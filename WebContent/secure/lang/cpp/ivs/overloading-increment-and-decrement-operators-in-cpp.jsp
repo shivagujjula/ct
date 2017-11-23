@@ -18,7 +18,6 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/oiadoic.min.js'></script>
-
 <title>Overloading increment(++) and decrement(--) operators in
 	cpp</title>
 </head>
@@ -27,16 +26,17 @@
 	background-color: rgb(243, 235, 235);
 	border: 1px solid grey;
 	border-radius: 10px;
-	font-size: 14px;
+	font-size: 16px;
+	/*font-family: monospace;*/
 	padding: 9px 14px;
+    min-height: 252px;
 }
-
 .creamPreTab1 {
-	-moz-tab-size: 3;
-	tab-size: 3;
+	-moz-tab-size: 2;
+	tab-size: 1;
 	background-color: #fffae6;
 	border-radius: 8px;
-	font-size: 11px;
+	font-size: 12px;
 	margin-top: 25px;
 	padding: 6px;
 	white-space: pre;
@@ -49,92 +49,37 @@
 #heading {
 	margin-top: 10px;
 }
-
 #restart {
 	margin-top: 13%;
 }
-
+.introjs-tooltip-min-width{
+	min-width: 300px;
+}
 .margin-top-2 {
 	margin-top: 2%;
 }
-
-.margin-top-5 {
-	margin-top: 5%;
-}
-
-.margin-top-10 {
-	margin-top: 10%;
-}
-
-.margin-top-15 {
-	margin-top: 15%;
-}
-
-.margin-top-20 {
-	margin-top: 20%;
+.margin-top-4 {
+	margin-top: 4%;
 }
 
 .margin-top-13 {
 	position: absolute;
 	margin: 7px 0 0 -3px;
 }
-
-.margin-top-25 {
-	margin-top: 25px;
+#classDiv, #mainDiv {
+	border: 1px solid black;
 }
-
-.margin-custom {
-	margin: 25px 0px 25px 0px;
-}
-
-#line1 {
-	color: maroon;
-}
-
-.ct-sgreen-color {
-	color: #0f0;
-	font-weight: bold;
-}
-
-.ct-green-color {
-	color: green;
-	font-weight: bold;
-}
-
-.ct-orange-color {
-	color: orange;
-}
-
-.ct-red-color {
-	color: red;
-	font-weight: bold;
-}
-
-.ct-blue-color {
-	color: blue;
-	font-weight: bold;
-}
-
-.ct-code-b-black {
-	font-weight: bold;
-	font-family: monospace;
-	color: black;
-}
-
-.ct-code-b-gold {
-	color: gold;
-	font-weight: bold;
-	border-top: none;
-}
-
 .ct-Maroon-color {
 	color: #800021;
 	font-weight: bold;
 	border-top: none;
 }
-
-.ct-white-color {
-	color: navajowhite;
+.ct-green-color {
+	color: green;
+	font-weight: bold;
+}
+.ct-lightblue-color {
+	color: #825cc7;
 	font-weight: bold;
 }
 
@@ -142,24 +87,10 @@
 	color: yellow;
 	font-weight: bold;
 }
-
-.ct-color-spring {
-	color: mediumspringgreen;
+.ct-code-b-blue {
+	font-weight: bold;
+	color: #3d69cc;
 }
-
-.ct-code-b-teal {
-	font-family: message-box;
-	color: teal;
-}
-
-ul.expl {
-	list-style-type: square;
-}
-
-#consoleId {
-	width: 550px;
-}
-
 .output-console-body {
 	background-color: black;
 	border-bottom-left-radius: 8px;
@@ -205,11 +136,11 @@ ul.expl {
 }
 
 #addressDiv {
-	height: 265px;
+	min-height: 280px;
 }
 
 #locVarAddress {
-	height: 200px;
+	min-height: 156px;
 }
 
 div, span {
@@ -218,32 +149,6 @@ div, span {
 
 .z-index9999999 {
 	z-index: 9999999;
-}
-
-.margin-top-4 {
-	margin-top: 4%;
-}
-
-.panel-heading, .panel-body {
-	padding: 5px;
-}
-
-.panel-group {
-	margin-top: 40px;
-	margin-bottom: 7px;
-}
-
-.panel-heading {
-	padding: 2px 40px;
-}
-
-.panel-body {
-	padding: 12px 44px;
-	height: 40px;
-}
-
-.panel-group {
-	margin-top: 45px;
 }
 
 .fa-arrow-left {
@@ -258,17 +163,20 @@ div, span {
 	background-color: green;
 }
 
-.blinking {
-	animation-name: blink;
-	animation-duration: 2s;
-	animation-iteration-count: 2;
+.blinking-white {
+	animation-name: blink-border-background-white ;
+	animation-duration: 1s ;
+	animation-iteration-count: infinite;
+	animation-direction: alternate ;
+	z-index: 10000000 !important;
+	position: relative;
 }
 
-@
-keyframes blink { 50% {
-	background: orange;
-}
-
+@keyframes blink-border-background-white { 
+	50% {
+		border-color: white;
+		background: white;
+	}
 }
 .ui-effects-transfer {
 	border: 1px solid green;
@@ -276,21 +184,21 @@ keyframes blink { 50% {
 	display: inline-block;
 }
 
-@
-keyframes blink { 50% {
+@keyframes blink { 
+50% {
 	border-color: white;
 	background: orange;
 }
 
 }
-@
-keyframes blinker { 100% {
+@keyframes blinker { 
+100% {
 	opacity: 0.0;
 }
 
 }
-@
-keyframes myfirst { 0% {
+@keyframes myfirst { 
+0% {
 	left: 0px;
 	top: 0px;
 }
@@ -309,29 +217,34 @@ top:0px;
 	display: inline-block;
 	position: relative;
 }
-
-.panel-heading, .panel-body {
-	padding: 5px;
-}
-
-.panel-group {
-	margin-top: 40px;
-	margin-bottom: 7px;
+.panel-primary>.panel-heading {
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #337ab7;
 }
 
 .panel-heading {
-	padding: 2px 40px;
+	padding: 2px 4px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.panel-primary {
+	border-color: #337ab7;
+}
+
+.panel {
+	margin-bottom: 0px;
+	background-color: #fff;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
 .panel-body {
-	padding: 12px 44px;
-	height: 40px;
-}
-
-.panel-group {
-	margin-top: 45px;
-}
-
+	padding: 6px;
+	min-height: 32px;
+} 
 [contenteditable="true"] {
 	font-weight: normal;
 	outline: medium none;
@@ -340,12 +253,6 @@ top:0px;
 .box-border {
 	border: 1px solid gray;
 }
-
-.errorText {
-	color: red;
-	font-weight: bold;
-}
-
 .output-console-title-bar {
 	background-color: rgba(165, 165, 165, 0.5);
 }
@@ -353,28 +260,10 @@ top:0px;
 .padding00 {
 	padding: 0px;
 }
-
 .z-index1000000 {
-	position: relative;
+	/* position: relative; */
 	background-color: white;
 	z-index: 1000000 !important;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-.method-box-text-css {
-	background: lightblue none repeat scroll 0 0;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-	font-family: monospace;
-	text-align: center;
-}
-
-.varBox2 {
-	height: 38px;
-	margin: 3px 15px 0 15px;
 }
 </style>
 <script>
@@ -386,266 +275,275 @@ top:0px;
 	<div class="main-div col-xs-12">
 		<div class="row text-center" id="heading">
 			<h3 class='label ct-demo-heading margin-top-2'>
-				<span>overloading increment and decrement operators in c++</span>
+				<span>Overloading increment and decrement operators in C++</span>
 			</h3>
 		</div>
-		<div class="col-xs-8 col-sm-offset-2 margin-top-2" id="infoDiv">
-			<ul>
-				<li id="list" class="opacity00">prefix increment <span class="ct-Maroon-color">operator++()</span> can be overload
-					with either a non-member function operator that has one argument of
-					class type or a reference to class type, or with a member function
-					operator that has no arguments.<br>
-				</li>
-
-				<li id="list1" class="opacity00">The postfix increment operator
-					++ can be overloaded for a class type by declaring a non-member
-					function operator <br><span class="ct-Maroon-color">operator++()</span> with two arguments, the first having
-					class type and the second having type int. Alternatively, you can
-					declare a member function operator <span class="ct-Maroon-color">operator++()</span> with one argument
-					having type int.</li>
-				<li id="list2" class="opacity00">The compiler uses the int
-					argument to distinguish between the prefix and postfix increment
-					operators. <span id='nextButton' class='opacity00'><a
-						class='introjs-button user-btn'>Next &#8594;</a></span>
-				</li>
-			</ul>
+		<div class="col-xs-12">
+			<div class="col-xs-8 col-sm-offset-2 margin-top-2" id="infoDiv">
+				<ul>
+					<li id="list" class="opacity00">The <span class="ct-lightblue-color">prefix increment</span> and 
+						<span class="ct-lightblue-color">decrement operators </span>
+					 	can be overloaded using operator function as <br>
+					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator++()</span>;<br>
+					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator--()</span>; // prefix
+					</li>
+	
+					<li id="list1" class="opacity00">The <span class="ct-lightblue-color">postfix increment</span> and 
+						<span class="ct-lightblue-color">decrement operators</span>
+						can be overloaded using operator function as <br>
+						&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator++(int)</span>;<br>
+					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator--(int)</span>; // postfix
+					</li>
+					<li id="list2" class="opacity00">To distinguish between two, the prefix form 
+						of the operator is declared exactly the same way as the other unary operators,
+						but the postfix form accepts dummy additional argument of type int.
+					</li>
+					<li id="list3" class="opacity00">Compiler uses the <span class="ct-green-color">int</span> 
+						argument to distinguish between the <span class="ct-green-color">prefix</span> and <span class="ct-green-color">postfix</span> 
+						<span class="ct-green-color">increment</span> and <span class="ct-green-color">decrement operators</span>. 
+						<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="col-xs-12 padding00">
 			<div class="col-xs-12" id="codeDiv">
-				<div class="col-xs-5 padding00">
+				<div class="col-xs-6 padding00">
 					<pre class="creamPreTab1 opacity00" id="preTableDiv">
-<span id="preDir"><span id="include">#include</span> &lt;<span
-							id="ioStream">iostream</span>&gt;</span>
-<span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
-<span id="class">class sample {
-		<span id="init">int a;</span>
-		<span id="sample">public:	sample() {
-	
-					}</span>
-					<span id="samplePara"><span id="sampleInt">sample(int <span
-									id="xInit">x</span>)</span> {
-							<span id="aValue">a = <span id="xValue">x</span>;</span>
-					}</span>
-					<span id="putData">void putdata() {
-							<span id="printA">cout << a << endl;</span>
-    				}</span>					
-					<span id="preInc">sample operator ++( ) { // prefix
-							<span id="preIncS1">sample s;</span>
-							<span id="aPreInc">a = a + 1;</span>
-							<span id="s1PreIncVal">s.a = a;</span>
-							<span id="return">return s;</span>
-					}</span>
-					<span id="postInc">sample operator ++(int d) { // postfix
-							<span id="postIncS1">sample s;</span>
-							<span id="s1PostIncVal">s.a = a;</span>
-							<span id="aPostIncVal">a = a + 1;</span>
-							<span id="return1">return s;</span>
-					}</span>
-					<span id="preDec">sample operator --( ) { // prefix
-							<span id="preDecS1">sample s;</span>
-							<span id="aPreDecVal">a = a - 1;</span>
-							<span id="s1PreDecVal">s.a = a;</span>
-							<span id="return2">return s;</span>
-					}</span>
-					<span id="postDec">sample operator --(int d) { // postfix
-							<span id="postDecS1">sample s;</span>
-							<span id="s1PostDecVal">s.a = a;</span>
-							<span id="aPostDecVal">a = a - 1;</span>
-							<span id="return3">return s;</span>
-				  	}</span>
-};</span>
-<span id="main">int main() {
-		<span id="s1Init">sample s1(<span id="num">5</span>);</span>
-		<span id="diffObj">sample s2, s3, s4, s5;</span>
-		<span id="s2PreInc">s2 = <span id="pre">++s1</span>;</span>
-		<span id="s1PutData">s1.putdata();</span>
-		<span id="s2PutData">s2.putdata();</span>
-		<span id="s3PostInc">s3 = <span id="post">s1++</span>;</span>
-		<span id="s1PutData1">s1.putdata();</span>
-		<span id="s3PutData">s3.putdata();</span>
-		<span id="s4PreDec">s4 = <span id="pre1">--s1</span>;</span>
-		<span id="s1PutData2">s1.putdata();</span>
-		<span id="s4PutData">s4.putdata();</span>
-		<span id="s5PostDec">s5 = <span id="post1">s1--</span>;</span>
-		<span id="s1PutData3">s1.putdata();</span>
-		<span id="s5PutData">s5.putdata();</span>
-}</span>
+						<div class="col-xs-6 padding00" id="classDiv">
+	<span id="preDir"><span id="include">#include</span> &lt;<span
+								id="ioStream">iostream</span>&gt;</span>
+	<span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
+	<span id="class" class="opacity00">class Sample {
+			<span id="init" class="opacity00">int <span id="intNum">num</span>;</span>
+			<span id="Sample" class="opacity00">public: 
+						Sample() {
+		
+						}</span>
+						<span id="SamplePara" class="opacity00"><span id="SampleInt">Sample(int <span id="xInit">x</span>)</span> {
+								<span id="aValue">num = <span id="xValue">x</span>;</span>
+						}</span>
+						<span id="putData" class="opacity00">void putData() {
+								<span id="printA">cout << <span id="value">num</span> << endl;</span>
+						}</span>					
+						<span id="preInc" class="opacity00">Sample operator ++( ) { 
+								<span id="preIncS1">Sample s;</span>
+								<span id="aPreInc">num = num + 1;</span>
+								<span id="s1PreIncVal">s.num = num;</span>
+								<span id="return">return s;</span>
+						}</span>
+						<span id="postInc" class="opacity00">Sample operator ++(int d) {
+								<span id="postIncS1">Sample s;</span>
+								<span id="s1PostIncVal">s.num = num;</span>
+								<span id="aPostIncVal">num = num + 1;</span>
+								<span id="return1">return s;</span>
+						}</span>
+						<span id="preDec" class="opacity00">Sample operator --( ) { 
+								<span id="preDecS1">Sample s;</span>
+								<span id="aPreDecVal">num = num - 1;</span>
+								<span id="s1PreDecVal">s.num = num;</span>
+								<span id="return2">return s;</span>
+						}</span>
+						<span id="postDec" class="opacity00">Sample operator --(int d) { 
+								<span id="postDecS1">Sample s;</span>
+								<span id="s1PostDecVal">s.num = num;</span>
+								<span id="aPostDecVal">num = num - 1;</span>
+								<span id="return3">return s;</span>
+						}</span>
+	};</span></div>
+<div class="col-xs-4 col-xs-offset-1 padding00" id="mainDiv" style="margin-top: -16px;">
+	<span id="main" class="opacity00">int main() {
+				<span id="s1Init" class="opacity00">Sample <span id="s1">s1(<span id="num">5</span>)</span>;</span>
+				<span id="diffObj" class="opacity00">Sample <span id="s2">s2</span>, <span id="s3">s3</span>, <span id="s4">s4</span>, <span id="s5">s5</span>;</span>
+				
+				<span id="s2PreInc" class="opacity00">s2 = <span id="pre">++s1</span>;</span>
+				<span id="s1PutData" class="opacity00">s1.putData();</span>
+				<span id="s2PutData" class="opacity00">s2.putData();</span>
+				
+				<span id="s3PostInc" class="opacity00">s3 = <span id="post">s1++</span>;</span>
+				<span id="s1PutData1" class="opacity00">s1.putData();</span>
+				<span id="s3PutData" class="opacity00">s3.putData();</span>
+				
+				<span id="s4PreDec" class="opacity00">s4 = <span id="pre1">--s1</span>;</span>
+				<span id="s1PutData2" class="opacity00">s1.putData();</span>
+				<span id="s4PutData" class="opacity00">s4.putData();</span>
+				
+				<span id="s5PostDec" class="opacity00">s5 = <span id="post1">s1--</span>;</span>
+				<span id="s1PutData3" class="opacity00">s1.putData();</span>
+				<span id="s5PutData" class="opacity00">s5.putData();</span>
+	<span id ="end">}</span></span></div>
 					</pre>
 				</div>
-				<div
-					class="col-xs-5  col-xs-offset-1 box-border address-box margin-top-15 opacity00"
-					id="addressDiv">
-					<div id="varBox1" class="col-xs-12 opacity00"
-						style="height: 110px; margin-top: 10px;">
-						<div id="xAddress" class="col-xs-3  text-center opacity00"
-							style="margin-top: 10px">
-							<div>
-								<b style="color: maroon;">x</b>
-							</div>
-							<div style="line-height: 80px; height: 80px;" class="box-border">
-								<span id="xVal" class="opacity00 ct-sgreen-color"></span>
-							</div>
-						</div>
-						<div id="aAddress" class="col-xs-3  text-center opacity00"
-							style="margin-top: 10px; height: 130px;">
-							<div>
-								<b style="color: maroon;">a</b>
-							</div>
-							<div style="line-height: 80px; height: 80px;" class="box-border">
-								<span id="aVal" class="opacity00 ct-sgreen-color"></span>
-							</div>
-						</div>
-						<div id="s1Address" class="col-xs-3  text-center opacity00"
-							style="margin-top: 10px; height: 115px;">
-							<div>
-								<b style="color: maroon;">s1</b>
-							</div>
-							<div style="height: 80px;" class="box-border">
-								<div id="aBoxS1" class="aBox opacity00">
-									<div>
-										<b style="color: maroon;">a</b>
+				<div class="col-xs-6 margin-top-2" >
+					<div class="col-xs-12 opacity00 panel panel-primary" id="addressDiv">
+						<div id="varBox1" class="col-xs-12  opacity00"
+							style="margin-top: 10px;">
+							<div class="col-xs-3 col-xs-offset-4"  >
+								<!-- <div  class="opacity00" id="s1Address"> -->
+									<div id="s1Address" class=" panel panel-primary opacity00">
+										<div class="panel-heading text-center">
+											<b style="color: whitesmoke;">s1</b>
+										</div>
+										<div class="panel panel-body">
+											<div id="aBoxS1" class="panel panel-primary  opacity00">
+												<div class="panel-heading text-center">
+													<b style="color: whitesmoke;">num</b>
+												</div>
+												<div id="s1AnimationDiv"
+													class="text-center panel-body">
+													<span id="s1Val" class="opacity00 aBox ct-green-color">5</span>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div id="s1AnimationDiv"
-										class="ct-sgreen-color varBox2 box-border">
-										<span id="s1Val"
-											class="opacity00 margin-top-13 ct-green-color"></span>
+								<!-- </div> -->
+							</div>
+						</div>
+						<div id="varBox2" class="col-xs-12  margin-top-4 opacity00">
+							<div  class="col-xs-3">
+								<div id="s2Address" class="opacity00  panel panel-primary ">
+									<div class="panel-heading text-center">
+										<b style="color: whitesmoke;">s2</b>
+									</div>
+									<div class="panel panel-body">
+										<div id="aBox" class="panel panel-primary opacity00">
+											<div class="panel-heading text-center">
+													<b style="color: whitesmoke;">num</b>
+												</div>
+											<div id="s2AnimationDiv"
+												class="text-center panel-body">
+												<span id="s2Val" class="opacity00 aBox  ct-green-color">6</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div  class="col-xs-3">
+								<div id="s3Address" class="opacity00 panel panel-primary ">
+									<div class="panel-heading text-center">
+										<b style="color: whitesmoke;">s3</b>
+									</div>
+									<div class="panel panel-body">
+										<div id="aBox1" class="panel panel-primary opacity00">
+											<div class="panel-heading text-center">
+												<b style="color: whitesmoke;">num</b>
+											</div>
+											<div id="s3AnimationDiv"
+												class="text-center panel-body">
+												<span id="s3Val" class="opacity00 aBox ct-green-color">6</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div  class="col-xs-3">
+								<div id="s4Address" class="opacity00 panel panel-primary">
+									<div class="panel-heading text-center">
+										<b style="color: whitesmoke;">s4</b>
+									</div>
+									<div class="panel panel-body">
+										<div id="aBox2" class="panel panel-primary opacity00">
+											<div class="panel-heading text-center">
+												<b style="color: whitesmoke;">num</b>
+											</div>
+											<div id="s4AnimationDiv"
+												class="text-center panel-body">
+												<span id="s4Val" class="opacity00 aBox ct-green-color">6</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div id="s5Address" class="opacity00 panel panel-primary">
+									<div class="panel-heading text-center">
+										<b style="color: whitesmoke;">s5</b>
+									</div>
+									<div class="panel panel-body">
+										<div id="aBox3" class="panel panel-primary opacity00">
+											<div class="panel-heading text-center">
+												<b style="color: whitesmoke;">num</b>
+											</div>
+											<div id="s5AnimationDiv" class="text-center panel-body">
+												<span id="s5Val" class="opacity00 aBox ct-green-color">6</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div id="varBox2" class="col-xs-12 opacity00"
-						style="height: 110px; margin-top: 10px;">
-						<div id="s2Address" class="col-xs-3  text-center"
-							style="margin-top: 10px; height: 115px;">
-							<div>
-								<b style="color: maroon;">s2</b>
-							</div>
-							<div style="height: 80px;" class="box-border">
-								<div id="aBox" class="aBox opacity00">
-									<div>
-										<b style="color: maroon;">a</b>
-									</div>
-									<div id="s2AnimationDiv"
-										class="ct-sgreen-color varBox2 box-border">
-										<span id="s2Val"
-											class="opacity00 margin-top-13 ct-green-color"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="s3Address" class="col-xs-3  text-center"
-							style="margin-top: 10px; height: 115px;">
-							<div>
-								<b style="color: maroon;">s3</b>
-							</div>
-							<div style="height: 80px;" class="box-border">
-								<div id="aBox1" class="aBox opacity00">
-									<div>
-										<b style="color: maroon;">a</b>
-									</div>
-									<div id="s3AnimationDiv"
-										class="ct-sgreen-color box-border varBox2">
-										<span id="s3Val"
-											class="opacity00 margin-top-13 ct-green-color"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="s4Address" class="col-xs-3  text-center"
-							style="margin-top: 10px; height: 115px;">
-							<div>
-								<b style="color: maroon;">s4</b>
-							</div>
-							<div style="height: 80px;" class="box-border">
-								<div id="aBox2" class="aBox opacity00">
-									<div>
-										<b style="color: maroon;">a</b>
-									</div>
-									<div id="s4AnimationDiv"
-										class="ct-sgreen-color box-border varBox2">
-										<span id="s4Val"
-											class="opacity00  margin-top-13 ct-green-color"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="s5Address" class="col-xs-3  text-center"
-							style="margin-top: 10px; height: 115px;">
-							<div>
-								<b style="color: maroon;">s5</b>
-							</div>
-							<div style="height: 80px;" class="box-border">
-								<div id="aBox3" class="aBox opacity00">
-									<div>
-										<b style="color: maroon;">a</b>
-									</div>
-									<div id="s5AnimationDiv"
-										class="ct-sgreen-color box-border varBox2">
-										<span id="s5Val"
-											class="opacity00 margin-top-13 ct-green-color"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="locVarAddress"
-						class="box-border col-xs-12 margin-top-10 opacity00">
+					<div id="locVarAddress" class="panel panel-primary col-xs-12 margin-top-4 opacity00">
 						<div class="col-xs-12 text-center"
-							style="font-weight: bold; color: rgb(47, 79, 79); padding: 0px;">
-							<div id="boxHeading1" class="col-xs-4 col-xs-offset-4 hide">In
-								operator++()</div>
-							<div id="boxHeading2" class="col-xs-4 col-xs-offset-4 hide">In
-								operator++(int)</div>
-							<div id="boxHeading3" class="col-xs-4 col-xs-offset-4 hide">In
-								operator--()</div>
-							<div id="boxHeading4" class="col-xs-4 col-xs-offset-4 hide">In
-								operator--(int)</div>
+							style="font-weight: bold; color: rgb(47, 79, 79); padding: 5px;">
+							<div id="boxHeading1" class="col-xs-4 col-xs-offset-4 opacity00">
+								In operator++()
+							</div>
 						</div>
-						<div id="sAddress"
-							class="col-xs-6 col-xs-offset-3 box-border text-center opacity00"
-							style="margin-top: 10px; height: 115px;">
-							<div id="sBox" class="opacity00">
-								<div>
-									<b style="color: maroon;">s</b>
-								</div>
-								<div id="aBoxS"
-									style="height: 80px; width: 126px; margin: 0 0 0 36px;"
-									class="aBox box-border opacity00">
-									<div>
-										<b style="color: maroon;">a</b>
-									</div>
-									<div id="sAnimationDiv"
-										class="ct-sgreen-color varBox2 box-border">
-										<span id="sVal" class="opacity00 margin-top-13 ct-green-color"></span>
+						<div class="col-xs-12 text-center" style="font-weight: bold; color: rgb(47, 79, 79); padding: 0px;">
+							<div id="boxHeading2" class="col-xs-4 col-xs-offset-4 opacity00">
+								In operator++(int)
+							</div>
+						</div>
+						<div class="col-xs-12 text-center" style="font-weight: bold; color: rgb(47, 79, 79); padding: 0px;">
+							<div id="boxHeading3" class="col-xs-4 col-xs-offset-4 opacity00">
+								In operator--()
+							</div>
+						</div>
+						<div class="col-xs-12 text-center" style="font-weight: bold; color: rgb(47, 79, 79); padding: 0px;">
+							<div id="boxHeading4" class="col-xs-4 col-xs-offset-4 opacity00">
+								In operator--(int)
+							</div>
+						</div>
+						<div class="col-xs-12 text-center">
+							<div id="sAddress" class="col-xs-4 col-xs-offset-4 opacity00">
+								<div id="sBox" class="opacity00">
+									<div class=" panel panel-primary">
+										<div class="panel-heading text-center">
+											<b style="color: whitesmoke;">s</b>
+										</div>
+										<div class="panel panel-body">
+											<div id="aBoxS" class="panel panel-primary opacity00">
+												<div class="panel-heading text-center">
+														<b style="color: whitesmoke;">num</b>
+													</div>
+												<div id="sAnimationDiv" class="text-center panel-body" style="height: 32px;">
+													<span id="sVal" class="opacity00 ct-green-color">5</span>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-4 col-xs-offset-1 margin-top-20">
-					<div id="consoleId" class="center opacity00">
-						<div class="output-console-title-bar">
-							<span class="title"><b>Console</b></span>
-						</div>
-						<div class="output-console-body" id="consoleBodyDiv">
-							<div id="s1Value" class="opacity00">6</div>
-							<div id="s2Value" class="opacity00">6</div>
-							<div id="s1Value1" class="opacity00">7</div>
-							<div id="s3Value" class="opacity00">6</div>
-							<div id="s1Value2" class="opacity00">6</div>
-							<div id="s4Value" class="opacity00">6</div>
-							<div id="s1Value3" class="opacity00">5</div>
-							<div id="s5Value" class="opacity00">6</div>
+					<div class="col-xs-12">
+						<div class="col-xs-6 margin-top-4">
+							<div id="consoleId" class="center opacity00">
+								<div class="output-console-title-bar">
+									<span class="title"><b>Console</b></span>
+								</div>
+								<div class="output-console-body" id="consoleBodyDiv">
+									<div><span id="s1Value" class="opacity00">6</span></div>
+									<div><span id="s2Value" class="opacity00">6</span></div>
+									<div><span id="s1Value1" class="opacity00">7</span></div>
+									<div><span id="s3Value" class="opacity00">6</span></div>
+									<div><span id="s1Value2" class="opacity00">6</span></div>
+									<div><span id="s4Value" class="opacity00">6</span></div>
+									<div><span id="s1Value3" class="opacity00">5</span></div>
+									<div><span id="s5Value" class="opacity00">6</span></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="col-xs-12">
 			<div class="col-xs-3 col-sm-offset-4">
 				<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
-					<a class="btn btn-warning opacity00" id="restart"><i
-						class="fa fa-refresh"></i>&nbsp;Restart</a>
+					<a class="btn btn-warning opacity00" id="restart">
+					<i class="fa fa-refresh"></i>&nbsp;Restart</a>
 				</div>
 			</div>
 		</div>

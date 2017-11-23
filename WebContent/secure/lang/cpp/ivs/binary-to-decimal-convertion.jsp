@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,8 +14,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	
-	<script src="/secure/lang/cpp/js-min/btdc.min.js"></script>
+	 <script src="/secure/lang/cpp/js-min/btdc.min.js"></script> 
 	
 	<title>Binary to Decimal</title>
 </head>
@@ -247,7 +244,8 @@ div, span {
 </style>
 <body>
 <div id ='totaldiv' class='totaldivclass col-xs-12 text-center'>
-	<span id='title' class='label ct-demo-heading'>Binary<sub>(<span id="radix">2</span>)</sub> to Decimal<sub>(<span id="radix">10</span>)</sub> Conversion</span>
+	<span id='title' class='label ct-demo-heading'>Binary<sub>(<span id="radix">2</span>)
+		</sub> to Decimal<sub>(<span id="radix">10</span>)</sub> Conversion</span>
 </div>
 
 <div class='col-xs-12'>
@@ -259,9 +257,12 @@ div, span {
 <div class="col-xs-12 visibility-hidden" id="totalbox">
 	<table class='col-xs-6 col-xs-offset-3' id="numberconversion" style="border-top: medium none;">
 			    <tr>
-					<td class="numberconversiontitle" style="background-color: #2e8b57; color: white; border:1px solid black; text-align: center"><b>MSB</b></td>
-					<td class="numberconversiontitle" colspan="6" style="border: white; color: white; text-align: center"><b></b></td>
-					<td class="numberconversiontitle" style="background-color: #2e8b57; color: white;  border:1px solid black; text-align: center"><b>LSB</b></td>
+					<td class="numberconversiontitle" style="background-color: #2e8b57; color: white; border:1px solid black; text-align: center">
+						<b>MSB</b></td>
+					<td class="numberconversiontitle" colspan="6" style="border: white; color: white; text-align: center">
+						<b></b></td>
+					<td class="numberconversiontitle" style="background-color: #2e8b57; color: white;  border:1px solid black; text-align: center">
+						<b>LSB</b></td>
 				</tr>
 				<tr >
 					<td id="numberconversiontitle"><span class='ct-demo-number'><b>1</b></span></td>
@@ -291,33 +292,41 @@ div, span {
 				<div id="tablecal" class="col-xs-offset-3 col-xs-6 text-center">Conversion of Binary to Decimal </div>
 			</div>
    			<div class="visibility-hidden col-xs-12" id="firstbox">
-				<span id="get"  class="col-xs-4  color-lightrose">Binary Digits<b>:</b></span> <span class='col-xs-8' ><span style='height: 31px; display: inline-block;position: relative;' id="binary"></span></span>
+				<span id="get"  class="col-xs-4  color-lightrose">Binary Digits<b>:</b></span> <span class='col-xs-8' >
+				<span style='height: 31px; display: inline-block;position: relative;' id="binary"></span></span>
 			</div>
 			<div class="visibility-hidden col-xs-12" style='margin-top: 1px;' id="positionBox">
-				<span id="get"  class="col-xs-4  color-lightrose">Positions <b>:</b></span><span class='col-xs-8'><span style='display: inline-block;position: relative;' id="positionDiv" ></span></span>
+				<span id="get"  class="col-xs-4  color-lightrose">Positions <b>:</b></span><span class='col-xs-8'>
+				<span style='display: inline-block;position: relative;' id="positionDiv" ></span></span>
 			</div>
 			<div class="visibility-hidden col-xs-12" style='margin-top: 15px;' id="secondbox">
-				<span id="get"  class="col-xs-4  ct-code-b-green "></span><span class='col-xs-8'><span style='height: 31px; display: inline-block;position: relative;' id="power" ></span></span>
+				<span id="get"  class="col-xs-4  ct-code-b-green "></span><span class='col-xs-8'>
+				<span style='height: 31px; display: inline-block;position: relative;' id="power" ></span></span>
 			</div>
 			
 			<div class="visibility-hidden col-xs-12" style='margin-top: 15px;' id="thirdbox">
-				<span id="get" class="color-lightrose col-xs-4" >Conversion<b>:</b></span><span class='col-xs-8'><span id="powecalculation"></span></span>
+				<span id="get" class="color-lightrose col-xs-4" >Conversion<b>:</b></span>
+				<span class='col-xs-8'><span id="powecalculation"></span></span>
 			</div>
 			
 			<div class="col-xs-12 visibility-hidden" style='margin-top: 15px;'  id="fourthbox">
-				<span id="get"  class="col-xs-4 color-lightrose"></span><span class='col-xs-8'><span id="multiply"></span></span>
+				<span id="get"  class="col-xs-4 color-lightrose"></span><span class='col-xs-8'>
+				<span id="multiply"></span></span>
 			</div>
 			
 			<div class="col-xs-12 visibility-hidden" style='margin-top: 15px;' id="fifthbox">
-				<span id="get" class="col-xs-4"></span><span class='col-xs-8'><span id="multiplytwonos"></span></span>
+				<span id="get" class="col-xs-4"></span><span class='col-xs-8'>
+				<span id="multiplytwonos"></span></span>
 			</div>
 			
 			<div class="col-xs-12 visibility-hidden" style='margin-top: 10px;' id="sixthbox">
-				<span id="get"   class=" col-xs-4 color-lightrose">Result<b>:</b></span><span  class ='col-xs-8'><span id="adding"></span></span>
+				<span id="get"   class=" col-xs-4 color-lightrose">Result<b>:</b></span>
+				<span  class ='col-xs-8'><span id="adding"></span></span>
 			</div>
 			
 			<div class="button  col-xs-12 text-center" id="button">
-				<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top: 30px'>Restart</button>
+				<button class="btn btn-success glyphicon glyphicon-refresh opacity00" 
+					type="button" id='restartBtn' style='margin-top: 30px'>Restart</button>
 			</div>
 		</div>
 	</div>

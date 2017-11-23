@@ -1,9 +1,9 @@
-var typingSpeed = 0.1;
+var typingSpeed = 10;
 var flag1 = false;
 var virtualDestructorFunction = function() {
 	introJsFunction();
 	$(".introjs-prevbutton").hide();
-	var text = "Here we learn about the <y>virtual</y> destructor.";
+	var text = "Here we will learn about the <y>virtual</y> destructor.";
 	typing($(".introjs-tooltiptext"), text, function() {
 		$(".introjs-nextbutton").show();
 	});
@@ -28,24 +28,141 @@ function introJsFunction() {
 		}]
 
 	})
+	
+	
+	introjs.onbeforechange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		var elementId = targetElement.id;
+		var animateStep = introjs._introItems[introjs._currentStep].action;
+		switch (elementId) {
+			case "pre":
+				
+			break;
+			
+			case "baseShow":
+				
+					if (animateStep == "print") {
+						
+					} else {
+						
+					}
+				
+			break;
+				
+			case "parentShow":
+				
+			break;	
+			
+			case "deriveDes":
+				
+			break;
+			
+			case "baseDes":
+				
+			break;	
+				
+			case "restart":
+				
+			break;	
+				
+			case "memoryRemove":
+				
+			break;
+			
+			case "baseClass":	
+				
+					if (animateStep == "check") {
+						
+					} else {
+						
+					}
+					
+				
+			break;
+				
+			case "deriveClass":	
+				
+					var text;
+					if (animateStep == "check") {
+				
+						
+					} else {
+						
+					}
+					
+			break;
+				
+			case "main":	
+					
+			break;
+				
+			case "objCreation":	
+				$("#animate, #obj, #derive").addClass("opacity00");
+				$("#addr1").empty();
+				flag1 = false;
+			break;	
+			
+			case "invokeFirst":
+			case "invokeSecond":
+			case "baseCon":
+			case "deriveCon":
+				
+			break;	
+				
+			case "removeMemory":
+				
+			break;
+			
+			case "animate":
+				$("#" + animateStep).addClass("opacity00");
+			break;
+			
+			case "outputBox":
+				
+			break;	
+		}
+	})
+	
+	
 	introjs.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
 		var animateStep = introjs._introItems[introjs._currentStep].action;
 		switch (elementId) {
 			case "pre":
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#pre").removeClass("opacity00");
-					var text = "This is the sample program of <y>destructor</y> with <y>virtual</y> key.";
+					var text = "Let us consider a sample program to understand the <y>virtual destructor</y> concepts.";
 					
 					typing($(".introjs-tooltiptext"), text, function() {
 						
 						
-						introjs.insertOption(introjs._currentStep + 1, insertionIntro("baseClass", "", "top"));
-						introjs.insertOption(introjs._currentStep + 2, insertionIntro("deriveClass", "", "top"));
-						introjs.insertOption(introjs._currentStep + 3, insertionIntro("main", "", "top"));
-						introjs.insertOption(introjs._currentStep + 4, insertionIntro("objCreation", "", "top"));
+						introjs.insertOption(introjs._currentStep + 1, insertionIntro("baseClass", "", "right"));
+						introjs.insertOption(introjs._currentStep + 2, insertionIntro("deriveClass", "", "right"));
+						introjs.insertOption(introjs._currentStep + 3, insertionIntro("main", "", "right"));
+						introjs.insertOption(introjs._currentStep + 4, insertionIntro("objCreation", "", "right"));
+						
 						introjs.insertOption(introjs._currentStep + 5, insertionIntro("animate", "", "top", "hide", "obj"));
+						
 						introjs.insertOption(introjs._currentStep + 6, insertionIntro("deriveClass", "", "top", "", "check"));
 						introjs.insertOption(introjs._currentStep + 7, insertionIntro("baseClass", "", "right","", "check"));
 						introjs.insertOption(introjs._currentStep + 8, insertionIntro("invokeSecond", "", "top", "hide"));
@@ -63,7 +180,7 @@ function introJsFunction() {
 						introjs.insertOption(introjs._currentStep + 19,insertionIntro("deriveDes", "", "top", "hide"));
 						//introjs.insertOption(introjs._currentStep + 19,insertionIntro("animate", "", "top", "hide", "desderive"));
 						//introjs.insertOption(introjs._currentStep + 18,insertionIntro("baseShow", "", "top", "","print"));//deriveDes
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 						
 						
 					});
@@ -115,11 +232,6 @@ function introJsFunction() {
 			
 			case "baseDes":
 				$(".introjs-helperLayer").one("transitionend", function() {
-						/*var text = "";
-							typing($(".introjs-tooltiptext"), text, function() {
-								$(".introjs-nextbutton").show();
-							});*/
-					
 					setTimeout(function() {
 						introjs.nextStep();
 					}, 600);
@@ -139,9 +251,9 @@ function introJsFunction() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "The <y>delete</y> key is used to remove the memory by calling the <y>destructor</y> of a class.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						/*$(".introjs-tooltiptext").append("<div></div>");*/
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
+					
 				});
 			break;
 			
@@ -152,7 +264,8 @@ function introJsFunction() {
 						text = "The class <y>Base</y> doesn't inherit any other class it executes the"
 								+" constructor of <y>base</y> class, then it execute the <y>derive</y> class constructor.";
 					} else {
-						text = "The base class contains the constructor <y>Base()</y> and destructor <y>~Base()</y>.";
+						/*text = "The base class contains the constructor <y>Base()</y> and destructor <y>~Base()</y>.";*/
+						text = "This is a class <y>Base</y> which contains the constructor <y>Base()</y> and destructor <y>~Base()</y>.";
 					}
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -164,20 +277,21 @@ function introJsFunction() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text;
 					if (animateStep == "check") {
-						text = "The derive class is extending or inherits the class <y>Base</y> so it invokes"
-								+" the <y>Base</y> class <y>constructor</y>.";
+						text = "Befor calling the constructor of the <y>derived</y> class it will be called <y>base</y> class of the member function.";
+						
 					} else {
-						text = "The base class contains the constructor <y>Derived()</y> and destructor <y>~Derived()</y>.";
+						text = "<ul><li>This is a <y>class Derived</y> which inherits the <y>class Base</y> publically.</li><li>The <y>class Derived</y>"
+								+" contains the constuctor <y>Derived()</y> and destructor <y>~Derived()</y>.</li></ul>";
 					}
 					typing($(".introjs-tooltiptext"), text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				})	
 			break;
 				
 			case "main":	
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The execution starts from <y>main()</y>.";
+					var text = "The program execution starts from <y>main()</y>.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -186,7 +300,8 @@ function introJsFunction() {
 				
 			case "objCreation":	
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Here the object is created to the <y>derived</y> class and storing in to the pointer <y>p</y>.";
+					var text = "<ul><li>A pointer object <y>p</y> is created to the <y>class Base</y>.</li><li>The keywor <y>new</y>"
+								+" will allocate memory of the <y>derived</y> class and which will return the <y>base</y> address</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -198,9 +313,12 @@ function introJsFunction() {
 			case "baseCon":
 			case "deriveCon":
 				$(".introjs-helperLayer").one("transitionend", function() {
-					setTimeout(function() {
-						introjs.nextStep();
-					}, 600);
+					
+					if (introjs._direction == "forward") {
+						stepNext();
+					} else {
+						stepNext();
+					}
 				})
 			break;	
 				
@@ -216,30 +334,32 @@ function introJsFunction() {
 			case "animate":
 				
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#animate").removeClass("opacity00");
-					$("#" + animateStep).removeClass("opacity00");
-					$("#derive").removeClass("opacity00");
-					if (animateStep == "obj") {
-						var l1 = $("#addr1").offset();
-						var l2 = $("#addr2").offset();
-						var topLength = l2.top - l1.top;
-						var leftLength = l2.left - l1.left;
-						setTimeout(function() {
-							$("#addr1").append("<b>1274</b>");
-							$("#p, #addr2").removeClass("opacity00");
-							TweenMax.from("#addr1", 2, {top : topLength, left : leftLength, onComplete:function() {
-								setTimeout(function() {
-									introjs.nextStep();
-									flag1 = true;
-								}, 1000);
-							}})
-						}, 500);
-					}
-					
-					if(flag1) {
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
+					if (introjs._direction == "forward") {
+						$("#animate").removeClass("opacity00");
+						$("#" + animateStep).removeClass("opacity00");
+						$("#derive").removeClass("opacity00");
+						if (animateStep == "obj") {
+							var l1 = $("#addr1").offset();
+							var l2 = $("#addr2").offset();
+							var topLength = l2.top - l1.top;
+							var leftLength = l2.left - l1.left;
+							setTimeout(function() {
+								$("#addr1").append("<b>1274</b>");
+								$("#p, #addr2").removeClass("opacity00");
+								TweenMax.from("#addr1", 2, {top : topLength, left : leftLength, onComplete:function() {
+									setTimeout(function() {
+										introjs.nextStep();
+										flag1 = true;
+									}, 1000);
+								}})
+							}, 500);
+						}
+						
+						if(flag1) {
+							stepNext();
+						}
+					} else {
+						stepNext();
 					}
 					
 				});
@@ -247,12 +367,18 @@ function introJsFunction() {
 			
 			case "outputBox":
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#outputBox").removeClass("opacity00");
-					$(".output-console-body div").eq(index).removeClass("opacity00");
-					index++;
-					setTimeout(function() {
-						introjs.nextStep();
-					}, 1000);
+					
+					if (introjs._direction == "forward") {
+						$("#outputBox").removeClass("opacity00");
+						$(".output-console-body div").eq(index).removeClass("opacity00");
+						index++;
+						stepNext();
+					} else {
+						$(".output-console-body div:not(.opacity00)").last().addClass("opacity00");
+						index--;
+						stepNext();
+					}
+					
 				})
 			break;	
 		}
@@ -261,24 +387,27 @@ function introJsFunction() {
 	introjs.start();
 }
 
-function typing(selector, text, callBackFunction) {
-	$(selector).typewriting(text, {
-		"typing_interval" : typingSpeed,
-		"cursor_color" : 'white',
-	}, function() {
-		$(selector).removeClass("typingCursor");
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
-		}
-	});
+
+function stepNext() {
+	
+	if (introjs._direction == "forward") {
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 800);
+	} else {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 800);
+	}
 }
+
 
 function insertionIntro(element, msg, position, tooltip, action) {
 	
-	var insert = {};
+	var insert = {}; 
 	if (typeof element != undefined) {
 		insert["element"] = "#"+ element;
-	}
+	} 
 	if (typeof msg != undefined) {
 		insert["intro"] = msg;
 	}
@@ -328,3 +457,15 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 }
 
 
+function typing(selector, text, callBackFunction) {
+	$(selector).typewriting(text, {
+		"typing_interval" : typingSpeed,
+		"cursor_color" : 'white',
+	}, function() {
+		$(selector).removeClass("typingCursor");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
+	});
+}

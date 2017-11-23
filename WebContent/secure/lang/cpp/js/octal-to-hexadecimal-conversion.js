@@ -29,22 +29,27 @@ var octalToHexadecimalConversionReady = function() {
 		},{
 			element :'#numberconversion1',
 			intro :'',
+			tooltipClass: "hide",
 			position:"right" 
 		},{
 			element :'#numberconversion',
 			intro :'',
+			tooltipClass: "hide",
 			position:"bottom" 
 		},{
 			element :'#inputDiv',
 			intro :'',
+			tooltipClass: "hide",
 			position:"right" 
 		},{
 			element :'#octalValuesDiv',
 			intro :'',
+			tooltipClass: "hide",
 			position:"right" 
 		},{
 			element :'#binaryValuesDiv',
 			intro :'',
+			tooltipClass: "hide",
 			position:"right" 
 		},{
 			element :'#combineBinaryNumbers',
@@ -54,14 +59,17 @@ var octalToHexadecimalConversionReady = function() {
 		},{
 			element :'#divideBinaryNumbersDiv',
 			intro :'',
+			tooltipClass:'hide',
 			position:"right"  
 		},{
 			element :'#divideGroupOfFourDiv',
 			intro :'',
+			tooltipClass:'hide',
 			position:"right" 
 		},{
 			element :'#binaryResult',
 			intro :'',
+			tooltipClass:'hide',
 			position:"right"
 		},{
 			element :'#restartBtn',
@@ -69,45 +77,128 @@ var octalToHexadecimalConversionReady = function() {
 			position:"right"
 		}]
 	});
+	
+	intro.onbeforechange(function(targetElement) {
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0 && intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			} 
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "numberconversion1":
+			$('#numberconversion').addClass('visibility-hidden');
+			break;
+		case "numberconversion":
+			$('#numberconversion').addClass('visibility-hidden');
+			$('#inputDiv').addClass('opacity00');
+			$("#convert").addClass("disabled");
+			$("#octalValue").removeClass("backgroundColor");
+			break;
+		case "inputDiv":
+			$("#convert").addClass("disabled").attr("disabled", true);
+			
+			$('#calculationTable').addClass('visibility-hidden');
+			$('#octalValuesDiv').addClass('opacity00');
+			$('.box').addClass('opacity00');
+			
+			$(".box, .box1, .divide-box, #binaryResultValue *").remove();
+			$("#numbersCombine, #divideBinaryNumbers").empty();
+			break;
+		case "octalValuesDiv":
+			$('#calculationTable').addClass('visibility-hidden');
+			$('#octalValuesDiv').addClass('opacity00');
+			$('.box').addClass('opacity00');
+			
+			$('#binaryValuesDiv').addClass('opacity00');
+			$('.box1').addClass('opacity00');
+			break;
+			
+		case "binaryValuesDiv":
+			$('#binaryValuesDiv').addClass('opacity00');
+			$('.box1').addClass('opacity00');
+			
+			$('#combineBinaryNumbers, #numbersCombine').addClass('opacity00');
+			$('#combineBinaryDigits0, #combineBinaryDigits1, #combineBinaryDigits2').addClass('opacity00').removeAttr('style');			
+			break;
+		case "combineBinaryNumbers":
+			$('#combineBinaryNumbers, #numbersCombine').addClass('opacity00');
+			$('#combineBinaryDigits0, #combineBinaryDigits1, #combineBinaryDigits2').addClass('opacity00').removeAttr('style');	
+			
+			$('#divideBinaryNumbersDiv').addClass('opacity00');
+			break;
+		case "divideBinaryNumbersDiv":
+			$('#divideBinaryNumbersDiv').addClass('opacity00');
+			
+			$('#divideGroupOfFourDiv').addClass('opacity00');
+			$('#groupOfFourDivideSpan').addClass('opacity00');
+			break;
+			
+		case "divideGroupOfFourDiv":
+			$('#divideGroupOfFourDiv').addClass('opacity00');
+			$('#groupOfFourDivideSpan').addClass('opacity00');
+			$("#binaryResult").addClass("opacity00");
+			break;
+		}
+	});
 	intro.onafterchange(function(targetElement) { 
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
 		case "numberconversion1" :
 			$("#octalValue").attr("disabled", true);
 			$('.user-btn').remove();
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberconversion1').removeClass('visibility-hidden');
-				typing('.introjs-tooltiptext',"This table provides a quick reference for converting all the 8 <span class='ct-code-b-yellow'>octal</span> numbers to their <span class='ct-code-b-yellow'>binary</span> equivalent values." ,function() {
-					$('.introjs-nextbutton').show();	
-				  	});
+				$(".introjs-tooltip").removeClass("hide");
+				typing('.introjs-tooltiptext',"This table provides a quick reference for converting all the 8 "+
+						"<span class='ct-code-b-yellow'>octal</span> numbers to their "+
+						"<span class='ct-code-b-yellow'>binary</span> equivalent values." ,function() {
+					$('.introjs-nextbutton').show();
 				});
+			});
 			break;
 		case "numberconversion" :
 			$("#octalValue").attr("disabled", true);
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberconversion').removeClass('visibility-hidden');
-					typing('.introjs-tooltiptext',"This table provides a quick reference for converting all the <span class='ct-code-b-yellow'>binary</span> equivalent values to their <span class='ct-code-b-yellow'>hexadecimal</span> digits." ,function() {
-					$('.introjs-nextbutton').show();	
+				$(".introjs-tooltip").removeClass("hide");
+					typing('.introjs-tooltiptext',"This table provides a quick reference for converting all the "+
+							"<span class='ct-code-b-yellow'>binary</span> equivalent values to their "+
+							"<span class='ct-code-b-yellow'>hexadecimal</span> digits." ,function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 				  	});
 				});
 			break;
 		case "inputDiv" :
-			$('.introjs-nextbutton').hide();
+			$("#octalValue").val("");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#inputDiv').removeClass('opacity00');
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', "Provide an octal number and click on <span class='convert'>Convert to Hexadecimal</span>"+
 						" button to understand how an octal number converted to hexadecimal.<br>"+
-						"<span class='ct-code-b-yellow'>Note:</span> Enter octal value with prefix <span class='ct-code-b-yellow'>0</span>.<br><span style='margin-left: 35px;'>Use an octal values from <span class='ct-code-b-yellow'>0</span> to <span class='ct-code-b-yellow'>7</span></span>.<br><span class='errorText'></span>", function() {
+						"<span class='ct-code-b-yellow'>Note:</span> Enter octal value with "+
+						"prefix <span class='ct-code-b-yellow'>0</span>.<br><span style='margin-left: 35px;'>Use an octal values "+
+						"from <span class='ct-code-b-yellow'>0</span> to <span class='ct-code-b-yellow'>7</span></span>.<br>"+
+						"<span class='errorText'></span>", function() {
 		  				$("#octalValue").attr("disabled", false);
 						$("#octalValue").focus();
+						$('.introjs-prevbutton').show();
 					});
 				});
 			break; 
 		case "octalValuesDiv" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#calculationTable').removeClass('visibility-hidden');
 				$('#octalValuesDiv').removeClass('opacity00');
@@ -115,41 +206,51 @@ var octalToHexadecimalConversionReady = function() {
 				var l = $("#octalValue").offset();
 				$(".box").offset({"top": l.top,"left": l.left + $("#octalValue").width()/2});
       			TweenMax.to(".box", 1, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() { 
-      				typing('.introjs-tooltiptext',"Let us consider the steps involved in converting an octal number: <ol><li>First segregate each octal digit."+
+      				$(".introjs-tooltip").removeClass("hide");
+      				typing('.introjs-tooltiptext',"Let us consider the steps involved in converting an "+
+      						"octal number: <ol><li>First segregate each octal digit."+
    							"</li><li>Then convert each octal digit into its three digit binary equivalent.</li></ol>" ,function() { 
-						$('.introjs-nextbutton').show();	
+      					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				 	 	});
        			 	}});
 				});
 			break; 
 		case "binaryValuesDiv" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#binaryValuesDiv').removeClass('opacity00');
 				$('.box1').removeClass('opacity00');
 				TweenMax.staggerFrom(".box1", 0.3, {opacity:0, top: -60}, -0.5, function() {
+					$(".introjs-tooltip").removeClass("hide");
 		  			typing('.introjs-tooltiptext',"Combining all the binary digits.</span>" ,function() { 
-						$('.introjs-nextbutton').show();	
-				 		 });
-					});
+		  				$('.introjs-nextbutton, .introjs-prevbutton').show();
+				 	 });
 				});
+			});
 			break; 
 		case "combineBinaryNumbers" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#combineBinaryNumbers').removeClass('opacity00');
 				$('#numbersCombine').removeClass('opacity00');
+				p = numberlength - 1 ;
 				binary(function() {
 					typing('.introjs-tooltiptext',"<ul><li></li></ul>" ,function() { 
-						setTimeout(function(){
-							intro.nextStep();
-							}, 500); 	
-						});
+						if (intro._direction == "backward") {
+							setTimeout(function() {
+								intro.previousStep();
+							}, 500);
+						} else {
+							setTimeout(function(){
+								intro.nextStep();
+							}, 500);
+						}
 					});
 				});
+			});
 			break; 
 		case "divideBinaryNumbersDiv" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#divideBinaryNumbersDiv').removeClass('opacity00');
 				var r = 4 - $('#divideBinaryNumbers').text().length % 4
@@ -163,51 +264,59 @@ var octalToHexadecimalConversionReady = function() {
 					$("#divideBinaryNumbers").effect('highlight',  {color: "#ffff00"}, 1000);
 					$("#divideBinaryNumbers").offset({"top": l.top,"left": l.left});
 					TweenMax.to("#divideBinaryNumbers", 0.5, {Color:"blue", opacity:1, top: 0, left:0 , onComplete:function() {
-		  				typing('.introjs-tooltiptext',"Let us group them into four digit." ,function() { 
-		  					$('.introjs-nextbutton').show();
+						$(".introjs-tooltip").removeClass("hide");
+						typing('.introjs-tooltiptext',"Let us group them into four digit." ,function() { 
+		  					$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		 			});
 				  		}});
 					});
 			break;
 		case "divideGroupOfFourDiv" :
+			$('#groupOfFourDivideSpan').empty();
 			$('#groupOfFourDivideSpan').append($('#divideBinaryNumbers').text());
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#divideGroupOfFourDiv').removeClass('opacity00');
 				$('#groupOfFourDivideSpan').removeClass('opacity00');
 				divideNumbersoffour();
 				valuelength = $("#octalValue").val().substring(1, $('#octalValue').val().length); 
 				l = valuelength.length;
+				$('#binaryResultValue').empty();
 					for (var i = 1; i <= l; i++) {
 						var d = $("#divide" + i).text();
 						var hex = parseInt(parseInt(d, 2).toString(10), 10).toString(16).toUpperCase();
 						$('#binaryResultValue').append('<span class= "opacity00" id = "hexa' + i + '" >' + hex + '</span>'); 
 					}
-						division(function() {
-		  					typing('.introjs-tooltiptext',"The left most group which contains lessthan four digits will be left padded appropriately zeros."+
-		  							"<br>Now we will replace each group with the equivalent hexadecimal digit." ,function() { 
-		  						$('.introjs-nextbutton').show();
-		  		 			});
-				  		});
-					});
+					q = numberlength;
+					division(function() {
+						$(".introjs-tooltip").removeClass("hide");
+		  				typing('.introjs-tooltiptext',"The left most group which contains less than four digits will be left "+
+		  						"padded appropriately zeros."+
+		  						"<br>Now we will replace each group with the equivalent hexadecimal digit." ,function() { 
+		  					$('.introjs-nextbutton, .introjs-prevbutton').show();
+		  		 		});
+				  	});
+				});
 			break;
 		case "binaryResult" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#binaryResult').removeClass('opacity00');
+				s = numberlength;
  			 	result(function() {
 	 				$('#sub').removeClass('opacity00'); 
 	 				var resultString = $('#binaryResultValue').text();
-	 				resultString; 
+	 				$(".introjs-tooltip").removeClass("hide");
 		  			typing('.introjs-tooltiptext',"Hence, <br><span class='ct-code-b-yellow'>("+ $('#octalValue').val() + ")<sub>8</sub></span>"+
-		  					"" + " = <span class='ct-code-b-yellow'>" + $('#binaryResultValue').text() +"<sub>16</sub></span><br> or simply <span class='ct-code-b-yellow'>0x" + resultString + "</span>." ,function() { 
-		  				$('.introjs-nextbutton').show();
+		  					"" + " = <span class='ct-code-b-yellow'>" + $('#binaryResultValue').text() +
+		  					"<sub>16</sub></span><br> or simply <span class='ct-code-b-yellow'>0x" + resultString + "</span>." ,function() { 
+		  				$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		 		});
 					});
 				});
 			break;
 		case "restartBtn":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
@@ -225,7 +334,8 @@ var octalToHexadecimalConversionReady = function() {
 	$('.introjs-nextbutton').hide();
 	$("#informationdiv").removeClass("visibility-hidden");
 	$('#informationdiv').html ("<ul>"+
-								"<li id='list4' class='opacity00'>When converting from octal to hexadecimal, it is often easier to first convert the octal number into binary and then from binary into hexadecimal."+
+								"<li id='list4' class='opacity00'>When converting from octal to hexadecimal, "+
+								"it is often easier to first convert the octal number into binary and then from binary into hexadecimal."+
 								"<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></li></ul>");
 		   setTimeout(function () {
 				$("#list4").fadeTo(300, 1, function() {
@@ -252,12 +362,13 @@ var octalToHexadecimalConversionReady = function() {
 				valuelength = $("#octalValue").val().substring(1, $('#octalValue').val().length); 
 				numberlength = valuelength.length;
 				p = numberlength - 1 ;
-				 q = numberlength;
-				 s = numberlength;
+				q = numberlength;
+				s = numberlength;
 				 
 				$('.introjs-nextbutton').click();
 				for (var i=0; i<valuelength.length; i++) {
-					$("#octalValuesGet").append("<span id='octal" + i + "' class='box  opacity00 text-center ct-code-b-black '><span id= octalNumbers"+ i +">"+ valuelength[i] +"</span></span>");
+					$("#octalValuesGet").append("<span id='octal" + i + "' class='box  opacity00 text-center ct-code-b-black '>"+
+							"<span id= octalNumbers"+ i +">"+ valuelength[i] +"</span></span>");
 				}
 				for (var i=0; i<valuelength.length; i++) {
 					var finalBinaryVal = parseInt(valuelength[i]).toString(2);
@@ -265,7 +376,8 @@ var octalToHexadecimalConversionReady = function() {
 						if (finalBinaryVal.length == 1) finalBinaryVal = "00" +  finalBinaryVal;
 						else if (finalBinaryVal.length == 2) finalBinaryVal = "0" +  finalBinaryVal;
 					}
-					$("#binaryValuesGet").append("<span id= 'binary" + i + "' class='box1 opacity00 text-center ct-code-b-black '><span id= binaryDigits"+ i +">"+ finalBinaryVal +"</span></span>");
+					$("#binaryValuesGet").append("<span id= 'binary" + i + "' class='box1 opacity00 text-center ct-code-b-black '>"+
+							"<span id= binaryDigits"+ i +">"+ finalBinaryVal +"</span></span>");
 				}
 				
 				for (var i=0; i<valuelength.length; i++) {
@@ -274,7 +386,8 @@ var octalToHexadecimalConversionReady = function() {
 						if (finalBinaryVal.length == 1) finalBinaryVal = "00" +  finalBinaryVal;
 						else if (finalBinaryVal.length == 2) finalBinaryVal = "0" +  finalBinaryVal;
 					}
-					$("#numbersCombine").append("<span id='combineBinary" + i + "' class='text-center ct-code-b-black'><span class='opacity00' id= combineBinaryDigits"+ i +">"+ finalBinaryVal +"</span></span>");
+					$("#numbersCombine").append("<span id='combineBinary" + i + "' class='text-center ct-code-b-black'>"+
+							"<span class='opacity00' id= combineBinaryDigits"+ i +">"+ finalBinaryVal +"</span></span>");
 				}
 				
 				for (var i=0; i<valuelength.length; i++) {
@@ -298,11 +411,12 @@ var octalToHexadecimalConversionReady = function() {
 				}
 					if($("#octalValue").val().charAt(0) == '0'){
 						$("#octalValue").removeClass("backgroundColor");
-						
+						$("#convert").addClass("disabled").attr("disabled", true);
 						if ($("#octalValue").val().length > 1 && $("#octalValue").val().startsWith("0")) {
 							$("#convert").removeClass("disabled").removeClass("opacity40");
 							$("#octalValue").removeClass("backgroundColor");
 							$('.errorText').empty();
+							$("#convert").attr("disabled", false);
 						} else {
 							$("#convert").addClass("disabled").addClass("opacity40");
 						}
@@ -336,11 +450,11 @@ var octalToHexadecimalConversionReady = function() {
 		
 		var non_zero_text = "";
 		$.each($(".split1").text().split(""), function(index, val) {
-			if (val == "0") {
-				non_zero_text = non_zero_text + "<span style='opacity: 0;'>" + val + "</span>";
-			} else {
+			//if (val == "0") {
+			//	non_zero_text = non_zero_text + "<span style='opacity: 0;'>" + val + "</span>";
+		//	} else {
 				non_zero_text = non_zero_text + "<span>" + val + "</span>";
-			}
+			//}
 		});
 		 $(".split1").html(non_zero_text);
 	} 
@@ -359,15 +473,7 @@ function divideNumbersoffour() {
 		    $("#divide" + count).append(val)
 		  }
 		});
-		/* var non_zero_text = "";
-		$.each($("#divide" + count).text().split(""), function(index, val) {
-			if (val != "0") {
-				non_zero_text = non_zero_text + val;
-			}
-		}); */
-		
-		//$("#divide" + count).text(non_zero_text);
-	}
+}
 
 function binary(callBackFunction) {
 	if (p >= 0 ) {
@@ -428,7 +534,7 @@ function result(callBackFunction) {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -437,6 +543,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }

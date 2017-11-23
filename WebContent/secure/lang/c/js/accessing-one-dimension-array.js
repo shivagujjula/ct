@@ -35,7 +35,8 @@ var oneDimesionalArrayReady = function() {
 		},  {
 			element : "#codeDiv",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass : "hide" 
 		},  {
 			element : "#variableDeclaraiton",
 			intro : "",
@@ -106,12 +107,12 @@ var oneDimesionalArrayReady = function() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'part3':
-			intro.refresh();
 			$('#codeDiv').addClass('opacity00');
+			intro.refresh();
 			break;
 		case 'codeDiv':
-			intro.refresh();
 			$('#codeDiv').removeClass('opacity00');
+			intro.refresh();
 			break;
 		case "variableDeclaraiton":
 			$('#tableDiv').addClass('opacity00');
@@ -185,7 +186,6 @@ var oneDimesionalArrayReady = function() {
 		}
 		
 		var elementId = targetElement.id;
-	console.log(intro._currentStep);
 		switch (elementId) {
 			case "typingDiv":
 				$('.introjs-nextbutton').hide();
@@ -216,7 +216,6 @@ var oneDimesionalArrayReady = function() {
 			
 		 	case "part1":
 				intro.refresh();
-			//	$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>primitive data-type</b> like int,float, etc.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -227,7 +226,6 @@ var oneDimesionalArrayReady = function() {
 				
 			case "part2":
 				intro.refresh();
-			//	$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>identifier</b> which represents array name.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -238,7 +236,6 @@ var oneDimesionalArrayReady = function() {
 				
 			case "part3":
 				intro.refresh();
-			//	$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It is an integer constant represents <b class='ct-code-b-yellow'>size</b> of the array.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -248,7 +245,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "printForLoop":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Using<b class='ct-code-b-yellow'> for-loop </b>we can display elements of the array .";
 					typing(".introjs-tooltiptext", text, function() {
@@ -270,7 +266,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "variableDeclaraiton":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#array").effect("highlight", {color: '#008000'}, 1000, function() {
 						$(".introjs-tooltip").removeClass('hide');
@@ -284,7 +279,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "getRowColumn":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -297,7 +291,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "scanf":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "<b class='ct-code-b-yellow'>scanf()</b> function reads integer value for an "
 					+"<b class='ct-code-b-yellow'>array</b> size.";
@@ -308,7 +301,6 @@ var oneDimesionalArrayReady = function() {
 				break;
 				
 			case "animationDiv":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._currentStep == 9) {
 						if (intro._direction == "forward") {
@@ -543,7 +535,7 @@ function finalPrint() {
   } else {
 	  setTimeout(function() {
 		  intro.nextStep();
-		}, 800);
+	  }, 800);
   }
 }
 
@@ -648,8 +640,6 @@ function keyDownEvent(e) {
 		}
 		if (e.keyCode == 13 && $(this).text().length > 0) {	
 	    	$(this).attr("contenteditable", false);
-	console.log("totalElements : " + totalElements);
-	console.log("valIndex : " + valIndex);
 	    	if (totalElements == (valIndex + 1)) {
 				e.preventDefault();
 				$('.introjs-nextbutton, .introjs-prevbutton').show();

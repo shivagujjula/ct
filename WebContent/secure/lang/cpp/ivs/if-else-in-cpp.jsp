@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>if-else-in-cpp</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js-min/ieic.min.js"></script>
+ <script src="/secure/lang/cpp/js-min/ieic.min.js"></script>
 
 <style type="text/css">
 
@@ -62,7 +62,9 @@ body {
 }
 
 .output-console-body {
-	border-bottom-left-radius: 8px;
+	border-bottom-left-radius: 8px;/**
+ * 
+ */
 	border-bottom-right-radius: 8px;
 	height: 200PX;
 	margin-bottom: 14px;
@@ -88,6 +90,9 @@ body {
 
 .initializeBtn, .evaluateBtn, .continueBtn, .animateBtn {
 	background-color: green !important;
+}
+.backBtn {
+	background-color: #5bc0de !important;
 }
 
 .FinishBtn {
