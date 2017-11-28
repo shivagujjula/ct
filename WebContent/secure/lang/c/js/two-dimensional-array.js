@@ -9,6 +9,7 @@ var typingSpeed = 5;
 	var count = 0;
 	var arrValueCount = 0;
 	var flag = true;
+	var inputFlag = true;
 	
 var twoDimensionalArrayReady = function() {
 	$('#secondInput').val("");
@@ -79,7 +80,8 @@ var twoDimensionalArrayReady = function() {
 		}, {
 			element : "#animationDiv",
 			intro : "",
-			position : "left"
+			position : "left",
+			tooltipClass : "hide"
 		}, {
 			element : "#tableDiv",
 			intro : "",
@@ -137,27 +139,25 @@ var twoDimensionalArrayReady = function() {
 			break;
 		case 'getRowColumn':
 			$('#animationDiv').addClass('opacity00');
+		//	$("#inputVal").after("<input id='secondInput' maxlength='20' class='input-all'/>");
 			break;
 		case 'scanf':
 			$('#secondInput').val("");
 			$("#secondInput").removeClass("blinking-orange");
 			break;
 		case 'getInputValues':
-			var length = $("#rowValue").text();
-			for (var i = 0; i < parseInt($('#val0').text()) * parseInt($('#val1').text()) ; i++) {
-				$("#value" + i).remove();
-			}
-			valIndex = 0;
+			$(".array-values").remove();
 			break;
 		case 'animationDiv':
-			/*if (intro._currentStep == 12) {
-			console.log("entered 12 step");	
-				$('#secondInput').val("");
+			if (intro._currentStep == 12) {
+				inputFlag = true;
+				$("#inputVal").empty();
+				$("#inputVal").append("<input id='secondInput' maxlength='20' class='input-all'/>");
 				$("#secondInput").removeClass("blinking-orange");
-			}*/
-			if (intro._currentStep == 13 ) {
-				var length = $("#rowValue").text();
-				for (var i = 0; i <= length; i++) {
+			}
+			if (intro._currentStep == 14 ) {
+				var length = parseInt($('#val0').text()) * parseInt($('#val1').text());
+				for (var i = 0; i < length; i++) {
 					$("#value" + i).remove();
 				}
 				valIndex = 0;
@@ -351,89 +351,84 @@ var twoDimensionalArrayReady = function() {
 					}
 					
 				} else if (intro._currentStep == 12 ) {
-				/*	if (intro._direction == "forward") {*/
-						$('#rowValue, #columnValue').attr('contenteditable','true');
-						$('.introjs-helperLayer ').one('transitionend', function() {
-						$('.matrix').removeClass('opacity00');
-						$(".introjs-tooltip").removeClass('hide');
-							var text ="Enter <b class='ct-code-b-yellow'>row size</b> and <b class='ct-code-b-yellow'>"
-							 			+"column size</b> values separated by <b class='ct-code-b-yellow'>space</b>.</br></br>"
-							 			+"For example your row size is <b class='ct-code-b-yellow'>2</b>"
-							 			+" and column size is <b class='ct-code-b-yellow'>3</b> enter them as <b class='ct-code-b-yellow'>2 3</b>.";
-							typing(".introjs-tooltiptext", text, function() {
-								arr = [];
-								$("#secondInput").addClass("blinking-orange").removeAttr('disabled').focus();;
-								$('#secondInput').on("keydown", function(e) {
-									if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+					$('#rowValue, #columnValue').attr('contenteditable','true');
+					$('.introjs-helperLayer ').one('transitionend', function() {
+					$('.matrix').removeClass('opacity00');
+					$(".introjs-tooltip").removeClass('hide');
+						var text ="Enter <b class='ct-code-b-yellow'>row size</b> and <b class='ct-code-b-yellow'>"
+						 			+"column size</b> values separated by <b class='ct-code-b-yellow'>space</b>.</br></br>"
+						 			+"For example your row size is <b class='ct-code-b-yellow'>2</b>"
+						 			+" and column size is <b class='ct-code-b-yellow'>3</b> enter them as <b class='ct-code-b-yellow'>2 3</b>.";
+						typing(".introjs-tooltiptext", text, function() {
+							arr = [];
+							$("#secondInput").addClass("blinking-orange").removeAttr('disabled').focus();;
+							$('#secondInput').on("keydown", function(e) {
+								if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+									e.preventDefault();
+								}
+								
+								if (arr.length == 1) {
+									var flag = false;
+									flag = $('#secondInput').val().indexOf(' ')>=0;
+									if (e.keyCode == 32 && flag) {
 										e.preventDefault();
 									}
-									
-									if (arr.length == 1) {
-										var flag = false;
-										flag = $('#secondInput').val().indexOf(' ')>=0;
-										if (e.keyCode == 32 && flag) {
-											e.preventDefault();
-										}
+								}
+								
+							 	if ($('.introjs-nextbutton[style="display: inline-block;"]').length == 1 && e.keyCode == 13) {
+									intro.nextStep();
+								}
+								
+							});
+								
+							$('#secondInput').on("keyup", function(e) {
+								$('.length-error-text,.size-error').remove();
+								if ($(this).val() == "") {
+									$(".introjs-nextbutton").hide();
+									$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
+																			"Please enter an row size and column size values each separated by a space.</span>");
+								} 
+								var givenText = $(this).val();
+								var splittedText = givenText.split(" ");
+								arr = [];
+								
+								$.each(splittedText, function(idx, val) {
+									if (val != '') {
+										arr.push(val);
 									}
-									
-								 	if ($('.introjs-nextbutton[style="display: inline-block;"]').length == 1 && e.keyCode == 13) {
-										intro.nextStep();
-									}
-									
 								});
-									
-								$('#secondInput').on("keyup", function(e) {
-									$('.length-error-text,.size-error').remove();
-									if ($(this).val() == "") {
-										$(".introjs-nextbutton").hide();
-										$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
-																				"Please enter an row size and column size values each separated by a space.</span>");
-									} 
-									var givenText = $(this).val();
-									var splittedText = givenText.split(" ");
-									arr = [];
-									
-									$.each(splittedText, function(idx, val) {
-										if (val != '') {
-											arr.push(val);
-										}
-									});
-									
-									if (arr.length == 1 && e.keyCode == 8 && $('.backspace-error').length == 0 ) {
-										$('.introjs-tooltiptext').append("<span class='ct-code-b-red backspace-error length-error-text'></br>Enter two numbers separated by space.</span>");
-									}
-									
-									if (arr.length == 2) {
-										var a0 = $.isNumeric(parseInt(arr[0]));
-										var a1 = $.isNumeric(parseInt(arr[1]));
-										var aFirst = parseInt(arr[0]).toString();
-										var aSecond = parseInt(arr[1]).toString();
-										var dot = arr[1].indexOf(".") == -1;
-										var dot1 = arr[0].indexOf(".") == -1;
-										if (a0 && a1 && dot && dot1) {
-											if ($.inArray(aFirst, size) !== -1 && $.inArray(aSecond, size) !== -1) {
-												$(".introjs-nextbutton, .introjs-prevbutton").show();
-											} else {
-												if ($('.size-error').length == 0 ) {
-													$(".introjs-nextbutton").hide();
-													$('.introjs-tooltiptext').append("<span class='ct-code-b-red size-error length-error-text'></br>size should be 1 to 3(inclusive)</span>");
-												}
+								
+								if (arr.length == 1 && e.keyCode == 8 && $('.backspace-error').length == 0 ) {
+									$('.introjs-tooltiptext').append("<span class='ct-code-b-red backspace-error length-error-text'></br>Enter two numbers separated by space.</span>");
+								}
+								
+								if (arr.length == 2) {
+									var a0 = $.isNumeric(parseInt(arr[0]));
+									var a1 = $.isNumeric(parseInt(arr[1]));
+									var aFirst = parseInt(arr[0]).toString();
+									var aSecond = parseInt(arr[1]).toString();
+									var dot = arr[1].indexOf(".") == -1;
+									var dot1 = arr[0].indexOf(".") == -1;
+									if (a0 && a1 && dot && dot1) {
+										if ($.inArray(aFirst, size) !== -1 && $.inArray(aSecond, size) !== -1) {
+											$(".introjs-nextbutton, .introjs-prevbutton").show();
+										} else {
+											if ($('.size-error').length == 0 ) {
+												$(".introjs-nextbutton").hide();
+												$('.introjs-tooltiptext').append("<span class='ct-code-b-red size-error length-error-text'></br>size should be 1 to 3(inclusive)</span>");
 											}
-										  } else {
-										  	$(".introjs-nextbutton").hide();
-										  	$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'> "
-													+"<br/> Please follow the above format.</br>size must be in numbers.</span>");
-										  }
-									} else {
-										$(".introjs-nextbutton").hide();
-									}
-								});
-			 				});
-						});
-			/*		} else {
-						$('#secondInput').val("");
-						setTimeToIntroPreviousStep();
-					}*/
+										}
+									  } else {
+									  	$(".introjs-nextbutton").hide();
+									  	$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'> "
+												+"<br/> Please follow the above format.</br>size must be in numbers.</span>");
+									  }
+								} else {
+									$(".introjs-nextbutton").hide();
+								}
+							});
+		 				});
+					});
 					
 				} else if (intro._currentStep == 17 ) {
 					$('.introjs-helperLayer ').one('transitionend', function() {
@@ -455,7 +450,7 @@ var twoDimensionalArrayReady = function() {
 				} else if (intro._currentStep == 19) {
 					$('.introjs-helperLayer ').one('transitionend', function() {
 						$(typingId).removeClass('typingCursor');
-							for (var i =0 ; i < parseInt($('#val0').text()) ; i++ ) {
+							for (var i = 0; i < parseInt($('#val0').text()) ; i++ ) {
 								for (var j = 0; j < parseInt($('#val1').text()); j++ ) {
 									$("#consoleBodyDiv1").append("<span  class='final' id='final"+print+"'><span><span>&nbsp;</span>");
 								 	if (parseInt($('#blinkCursor'+print+'').text()) == 0) {
@@ -474,10 +469,11 @@ var twoDimensionalArrayReady = function() {
 				} else {
 					$('.introjs-nextbutton').hide();
 					$('.introjs-helperLayer ').one('transitionend', function() {
+						$(".introjs-tooltip").removeClass('hide');
 						var text = "press enter key for next entry.";
 						typing(".introjs-tooltiptext", text, function() {
 							tableIndex(); 
-					 		$("#consoleBodyDiv1").append("<div id='value0'>Enter the value of a[0][0] &emsp;: <div id='blinkCursor0' style='display:inline-block' class='int input-char outline-none a00' placeholder='value' contenteditable='true' maxlength='2'></div></div>");
+					 		$("#consoleBodyDiv1").append("<div class='array-values' id='value0'>Enter the value of a[0][0] &emsp;: <div id='blinkCursor0' style='display:inline-block' class='int input-char outline-none a00' placeholder='value' contenteditable='true' maxlength='2'></div></div>");
 					 		$('#blinkCursor0').focus();
 					 		keyDownEvent();
 					 });
@@ -532,18 +528,22 @@ var twoDimensionalArrayReady = function() {
 				break;
 			case "getInputValues":
 				
-				var text = $('#secondInput').val();
-				var i = 0;
-				$('#inputVal').empty();
+				if (inputFlag) {
+					inputFlag = false; 
+					var text = $('#secondInput').val();
+					var i = 0;
+					$('#inputVal').empty();
 
 
-				$.each(text.split(' '), function (index, val) {
-					$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
-					if(i == 1) {
-						$("#space1").remove();
-					  }
-					i++ 
-				});
+					$.each(text.split(' '), function (index, val) {
+						$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
+						if(i == 1) {
+							$("#space1").remove();
+						  }
+						i++ 
+					});
+				}
+				
 				
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
@@ -729,7 +729,7 @@ function keyDownEvent(e) {
 				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			} else {
 				valIndex++;
-				$("#consoleBodyDiv1").append("<div id='value"+valIndex+"'>Enter the value of "+stack[index]+" &emsp;: <div style='display:inline-block;' id='blinkCursor"+valIndex+"' class='int input-char outline-none a" + stackIndex[index] + "' placeholder='value' contenteditable='true' maxlength='2'></div></div>");
+				$("#consoleBodyDiv1").append("<div class= 'array-values' id='value"+valIndex+"'>Enter the value of "+stack[index]+" &emsp;: <div style='display:inline-block;' id='blinkCursor"+valIndex+"' class='int input-char outline-none a" + stackIndex[index] + "' placeholder='value' contenteditable='true' maxlength='2'></div></div>");
 				index++;
 				charAtEnd('blinkCursor'+valIndex);
 				keyDownEvent(e);

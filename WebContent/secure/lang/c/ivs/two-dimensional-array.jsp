@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>review</title>
+<title>Two Dimensional Array</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
@@ -247,7 +247,8 @@ void main() {
 							<span class="title"><b>Console</b></span>
 						</div>
 						<div class="output-console-body" id="consoleBodyDiv1">
-							<div id="animationDivText" class='opacity00'>Enter number of rows and columns : <span id="inputVal" class='input-all'><input id='secondInput' maxlength='20' class='input-all'/></span>
+							<div id="animationDivText" class='opacity00'>Enter number of rows and columns : <span id="inputVal" class='input-all'>
+								<!-- <input id='secondInput' maxlength='20' class='input-all'/> --></span>
 							</div>
 						</div>
 					</div>

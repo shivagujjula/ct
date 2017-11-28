@@ -1939,7 +1939,7 @@ r {
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Multilevel Inheritance', 'multilevel-nheritance.jsp', 1, 1)"><i
+									href="javascript:opendialog('Multilevel Inheritance', 'multilevel-inheritance.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Multilevel Inheritance</span>
 							</div>
 							<div>
