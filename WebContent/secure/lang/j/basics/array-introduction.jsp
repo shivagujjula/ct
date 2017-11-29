@@ -15,7 +15,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/ai.min.js"></script>
+<script src="/secure/lang/j/js-min/ai.min.js"></script>
+<!-- <script type="text/javascript" src="/secure/lang/j/js/array-introduction.js"></script> -->
 <title>Insert title here</title>
 
 <style>

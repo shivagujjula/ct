@@ -130,6 +130,19 @@ var twoDimensionalArrayReady = function() {
 			var action = intro._introItems[intro._currentStep].action;
 			switch(action) {
 				case "placingValues":
+					valIndex = 0;
+					index = 1;
+					var length = parseInt($('#val0').text()) * parseInt($('#val1').text());
+					for (var i = 0; i < parseInt($('#val0').text()) * parseInt($('#val1').text()) ; i++) {
+						$("#arrayBox .a" + stackIndex[i]).text("").removeClass("output-value-circle");
+					}
+					
+					$(".table-css tr:eq(1) span").not(".output-value-circle").parent().removeClass('background-color');
+					$(".table-css tr:eq(1) span").each(function(ind, val) {
+						if (!$(this).text().trim().length) {
+					    	$(".table-css tr:eq(2) td").eq(ind).find("span").css("opacity", "1");
+						}
+					});
 					break;
 				case "arrayCreation":
 					$('#tableDiv').removeClass('opacity00');
@@ -139,7 +152,6 @@ var twoDimensionalArrayReady = function() {
 			break;
 		case 'getRowColumn':
 			$('#animationDiv').addClass('opacity00');
-		//	$("#inputVal").after("<input id='secondInput' maxlength='20' class='input-all'/>");
 			break;
 		case 'scanf':
 			$('#secondInput').val("");
@@ -147,6 +159,7 @@ var twoDimensionalArrayReady = function() {
 			break;
 		case 'getInputValues':
 			$(".array-values").remove();
+			
 			break;
 		case 'animationDiv':
 			if (intro._currentStep == 12) {
@@ -161,17 +174,22 @@ var twoDimensionalArrayReady = function() {
 					$("#value" + i).remove();
 				}
 				valIndex = 0;
+				index = 1;
 				for (var i = 0; i < parseInt(length); i++) {
 					$('#arrayVal' + i).text("");
+				}
+				
+				for (var i = 0; i < parseInt($('#val0').text()) * parseInt($('#val1').text()) ; i++) {
+					$("#arrayBox .a" + stackIndex[i]).text("");
 				}
 				
 				$(".table-css tr:eq(1) span").not(".output-value-circle").parent().removeClass('background-color');
 				$(".table-css tr:eq(1) span").each(function(ind, val) {
 					if (!$(this).text().trim().length) {
 				    	$(".table-css tr:eq(2) td").eq(ind).find("span").css("opacity", "1");
-				    	$(".table-css tr:eq(0) td").eq(ind).find("span").css("opacity", "1");
 					}
 				});
+				
 			}
 			break;
 		}
@@ -472,6 +490,9 @@ var twoDimensionalArrayReady = function() {
 						$(".introjs-tooltip").removeClass('hide');
 						var text = "press enter key for next entry.";
 						typing(".introjs-tooltiptext", text, function() {
+							stack = [];
+							stackIndex = [];
+							$(".output-value-circle").removeClass("output-value-circle");
 							tableIndex(); 
 					 		$("#consoleBodyDiv1").append("<div class='array-values' id='value0'>Enter the value of a[0][0] &emsp;: <div id='blinkCursor0' style='display:inline-block' class='int input-char outline-none a00' placeholder='value' contenteditable='true' maxlength='2'></div></div>");
 					 		$('#blinkCursor0').focus();
