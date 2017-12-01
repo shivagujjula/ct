@@ -395,17 +395,6 @@ r {
 						<td></td>
 						<td></td>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td></td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
 				</tbody>
 			</table>
 		</div>

@@ -241,9 +241,9 @@ function introJsFunction() {
 			break;
 		case "pLine":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				var typingContent = "<ul><li> A <span class='ct-code-b-yellow'>malloc()</span> function returns the pointer to the " + 
+				var typingContent = "<ul><li> A <span class='ct-code-b-yellow'>new</span> operator returns the pointer to the " + 
 									"<span class='ct-code-b-yellow'>base address</span> of the <span class='ct-code-b-yellow'>heap memory</span> " + 
-									"allocated.</li><li>A <span class='ct-code-b-yellow'>malloc()</span> function always returns a <span class=" +
+									"allocated.</li><li>A <span class='ct-code-b-yellow'>new</span> operator always returns a <span class=" +
 									"'ct-code-b-yellow'>void</span> pointer.<br/> So a typecast is used to convert to the datatype of the pointer that is returned.</li></ul>"; 
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();

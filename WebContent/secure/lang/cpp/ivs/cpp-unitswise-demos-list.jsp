@@ -537,9 +537,21 @@ r {
 						<td>Successfully Completed</td>
 						<td>04-11-17</td>
 					</tr>
-
+					
 					<tr>
 						<td>34</td>
+						<td>Float data type</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('float data type', 'float-data-type.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">float data type</span></td>
+						<td>Karthik</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td>35</td>
 						<td>double datatype</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -552,7 +564,7 @@ r {
 					</tr>
 
 					<tr>
-						<td>35</td>
+						<td>36</td>
 						<td>char datatype</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -565,7 +577,7 @@ r {
 					</tr>
 
 					<tr>
-						<td>36</td>
+						<td>37</td>
 						<td>Different data types in C++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Different Data-types in c++', 'datatypes-in-cpp.jsp', 1, 1)"><i
@@ -577,7 +589,7 @@ r {
 					</tr>
 
 					<tr>
-						<td>37</td>
+						<td>38</td>
 						<td>Different constants in C++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Constants in C++', 'constants-in-cpp.jsp', 1, 1)"><i
@@ -589,7 +601,7 @@ r {
 					</tr>
                     
                     <tr>
-						<td>38</td>
+						<td>39</td>
 						<td>Reference Variables</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Reference Variables in C++', 'reference-variables.jsp', 1, 1)"><i
@@ -601,7 +613,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>39</td>
+						<td>40</td>
 						<td>One's complement</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -614,7 +626,7 @@ r {
 					</tr>
 
 					<tr>
-						<td>40</td>
+						<td>41</td>
 						<td>Two's complement</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -627,7 +639,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>41</td>
+						<td>42</td>
 						<td>Structure of C++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure of C++', 'structure-of-cpp.jsp', 1, 1)"><i
@@ -639,7 +651,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>42</td>
+						<td>43</td>
 						<td>Generation of Computers</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('generation of Computers', 'generation-of-computers.jsp', 1, 1)"><i
@@ -651,7 +663,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>43</td>
+						<td>44</td>
 						<td>Generation of programming languages</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('generation of programming languages', 'generations-of-programming-languages.jsp', 1, 1)"><i
@@ -666,7 +678,7 @@ r {
 			</table>
 
 			<div class='text-center'>
-				<h3>UNIT-2: Basic Concepts of C++</h3>
+				<h3>UNIT-2: C++ - Operators and Control Statements</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -687,7 +699,7 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Arithmetic Operators</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
@@ -699,7 +711,7 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Relational Operators</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
@@ -711,7 +723,7 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"> Execution of Logical Operators</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
@@ -723,7 +735,7 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Compound Assignment Operator</span></td>
 						<td>Rajashekar</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
@@ -1126,9 +1138,25 @@ r {
 						<td></td>
 						<td></td>
 					</tr>
+				</tbody>
+			</table>
+			<div class='text-center'>
+				<h3>UNIT-3: C++ - Arrays, Functions and Pointers</h3>
+			</div>
+			<table class='table table-bordered'>
+				<tr>
+					<th>#</th>
+					<th class="col-xs-3">Topic</th>
+					<th class="col-xs-4">Details</th>
+					<th class="col-xs-1">Created By</th>
+					<th class="col-xs-1">Reviewed By</th>
+					<th class="col-xs-2">Status</th>
+					<th class="col-xs-1">Submit Date</th>
+				</tr>
+				<tbody class='table-striped'>
 					
 					<tr>
-						<td>33</td>
+						<td>1</td>
 						<td>1-D Arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing One-dimensional arrays', 'accessing-one-dimension-array.jsp', 1, 1)"><i
@@ -1140,7 +1168,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>34</td>
+						<td>2</td>
 						<td>2-D Arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing Two-dimensional arrays', 'two-dimensional-array.jsp', 1, 1)"><i
@@ -1152,7 +1180,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>35</td>
+						<td>3</td>
 						<td>Arrays</td>
 						<td>
 							<i class="fa fa-check fa-1x"></i>
@@ -1166,7 +1194,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>36</td>
+						<td>4</td>
 						<td>Arrays</td>
 						<td>
 							<i class="fa fa-check fa-1x"></i>
@@ -1180,115 +1208,115 @@ r {
 					</tr>
 					
 					<tr>
-						<td>37</td>
+						<td>5</td>
 						<td>Program on arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program on Multiplication of two Matrices', 'matrix-multiplication.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program on Multiplication of two Matrices</span></td>
 						<td>Shiva</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>38</td>
+						<td>6</td>
 						<td>Program on arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to Interchange two rows in a matrix', 'matrix-rows-interchange.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program to Interchange two rows in a matrix</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>39</td>
+						<td>7</td>
 						<td>Program on arrays</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Program to Interchange two columns in a matrix', 'matrix-columns-interchange.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program to Interchange two columns in a matrix</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>40</td>
+						<td>8</td>
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Bubble sort', '/secure/lang/ds/bubble-sort.jsp?lang=cpp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Bubble sort</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>41</td>
+						<td>9</td>
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Insertion sort', '/secure/lang/ds/insertion-sort.jsp?lang=cpp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Insertion sort</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>42</td>
+						<td>10</td>
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Selection sort with largest element', '/secure/lang/ds/selection-sort-largest-element.jsp?lang=cpp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Selection sort with largest element</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>43</td>
+						<td>11</td>
 						<td>Sorting Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Selection sort with smallest element', '/secure/lang/ds/selection-sort-smallest-element.jsp?lang=cpp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Selection sort with smallest element</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>44</td>
+						<td>12</td>
 						<td>Searching Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Binary search', '/secure/lang/ds/binary-search.jsp?lang=cpp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Binary search</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>45</td>
+						<td>13</td>
 						<td>Searching Technique</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Linear search', '/secure/lang/ds/linear-search.jsp?lang=cpp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Linear search</span></td>
 						<td>Sathish</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					
 					<tr>
-						<td>46</td>
+						<td>14</td>
 						<td>Scope</td>
 						<td>
 							<i class="fa fa-check fa-1x"></i>
@@ -1302,7 +1330,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>47</td>
+						<td>15</td>
 						<td>Strings</td>
 						<td>
 							<i class="fa fa-check fa-1x"></i>
@@ -1316,7 +1344,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>48</td>
+						<td>16</td>
 						<td>Strings</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -1330,7 +1358,7 @@ r {
 					
 					
 					<tr>
-						<td>49</td>
+						<td>17</td>
 						<td>Strings</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -1343,7 +1371,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>50</td>
+						<td>18</td>
 						<td>Strings</td>
 						<td><i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
@@ -1356,19 +1384,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>51</td>
-						<td>Float data type</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('float data type', 'float-data-type.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">float data type</span></td>
-						<td>Karthik</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td>52</td>
+						<td>19</td>
 						<td>Functions</td>
 						<td>
 							<div>
@@ -1401,7 +1417,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>53</td>
+						<td>20</td>
 						<td>Functions</td>
 						<td>
 							<div>
@@ -1440,7 +1456,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>54</td>
+						<td>21</td>
 						<td>Functions</td>
 						<td>
 							<div>
@@ -1481,7 +1497,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>55</td>
+						<td>22</td>
 						<td>Pointers</td>
 						<td>
 							<div>
@@ -1523,7 +1539,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>56</td>
+						<td>23</td>
 						<td>statements in c++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('statements in c++', 'statements-in-cpp.jsp', 1, 1)"><i
@@ -1535,7 +1551,7 @@ r {
 					</tr>
 					
 					<tr>
-						<td>57</td>
+						<td>24</td>
 						<td>Recursion</td>
 						<td>
 							<div>
@@ -1569,7 +1585,7 @@ r {
 						<td></td>
 					</tr>
 					<tr>
-						<td>57</td>
+						<td>25</td>
 						<td>Inline functions</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Inline Functions', 'inline-functions.jsp', 1, 1)"><i
@@ -1582,7 +1598,7 @@ r {
 				</tbody>
 			</table>
 			<div class='text-center'>
-				<h3>UNIT-3: Classes and Objects</h3>
+				<h3>UNIT-4: Classes and Objects</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1708,7 +1724,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-4: Constructors and Destructors</h3>
+				<h3>UNIT-5: Constructors and Destructors</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1786,7 +1802,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-5: Operator Overloading and Type Conversions</h3>
+				<h3>UNIT-6: Operator Overloading and Type Conversions</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1910,7 +1926,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-6: Inheritance</h3>
+				<h3>UNIT-7: Inheritance</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1928,21 +1944,25 @@ r {
 						<td>Types of Inheritance</td>
 						<td>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Single Inheritance', 'single-inheritance.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Single Inheritance</span>
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Muliple Inheritance', 'muliple-inheritance.jsp', 1, 1)"><i
+									href="javascript:opendialog('Muliple Inheritance', 'multiple-inheritance.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Muliple Inheritance</span>
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Multilevel Inheritance', 'multilevel-inheritance.jsp', 1, 1)"><i
+									href="javascript:opendialog('Multilevel Inheritance', 'multi-level-inheritance.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Multilevel Inheritance</span>
 							</div>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Hierarchical Inheritance', 'hierarchical-inheritance.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hierarchical Inheritance</span>
@@ -1953,10 +1973,10 @@ r {
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hybrid Inheritance</span>
 							</div>
 						</td>
-						<td>Karthik</td>
+						<td>Karthik / Karthik <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>01-12-17</td>
 					</tr>
 					<tr>
 						<td>2</td>
@@ -2002,7 +2022,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-7: Binding, Polymorphism and Virtual Functions</h3>
+				<h3>UNIT-8: Binding, Polymorphism and Virtual Functions</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -2033,7 +2053,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-8: Applications with Files</h3>
+				<h3>UNIT-9: Applications with Files</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -2063,7 +2083,7 @@ r {
 			
 			
 			<div class='text-center'>
-				<h3>UNIT-9: Generic Programming with Templates</h3>
+				<h3>UNIT-10: Generic Programming with Templates</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -2106,7 +2126,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-10: Exception Handling</h3>
+				<h3>UNIT-11: Exception Handling</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -2146,7 +2166,7 @@ r {
 			</table>
 			
 			<div class='text-center'>
-				<h3>UNIT-11: Overview of Standard Template Library</h3>
+				<h3>UNIT-12: Overview of Standard Template Library</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
