@@ -18,8 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/tda.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/two-dimensional-array.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/tda.min.js" type="text/javascript"></script>
 
 
 <style>
@@ -71,7 +70,8 @@ pre {
 }
 
 #typingDiv {
-	height: 40px;
+	min-height: 40px;
+	font-family: monospace;
 }
 
 .back-color {
@@ -207,7 +207,7 @@ pre > span {
 		</div>
 
 		<div id="typingDiv"
-			class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
+			class='margin-top20 col-xs-offset-2 col-xs-8 col-xs-offset-2'>
 				<ul><li>Two dimensional array can be used to represents matrix form of elements.</li>
 				<li>General format of two dimenstional array is as follows 
 				<div id="textAnimate" class="text-bold" style="display:inline-block"> 
@@ -222,18 +222,18 @@ pre > span {
 #include <span>&lt;stdio.h&gt;</span>
 void main() {
 	<span id='variableDeclaraiton'><span id='array'>int a[3][3]</span>, rows, cols, i, j;</span>
-	<span id='getRowColumn'>printf (" Enter the number of rows and columns: ");</span>
-	<span id='scanf'>scanf ("%d %d", &rows, &cols );</span>
+	<span id='getRowColumn'>printf("Enter the number of rows and columns: ");</span>
+	<span id='scanf'>scanf("%d %d", &rows, &cols );</span>
 	<span id='getInputValues'>for (i = 0; i &lt; rows; i++ ) {
 		for (j = 0; j &lt; cols; j++ ) {
-			<span id='matrixValues'>printf ( " Enter the value of a[%d][%d] : " , i, j );</span>
-			scanf ("%d", &a[i][j]);
+			<span id='matrixValues'>printf("Enter the value of a[%d][%d] : " , i, j );</span>
+			scanf("%d", &a[i][j]);
 		}
 	} </span>
-	<span id='codePrintf'>printf (" The array elements are : \n");</span>
-	<span id='printForLoop'>for( i = 0; i &lt; rows; i++ ) {
+	<span id='codePrintf'>printf("The array elements are : \n");</span>
+	<span id='printForLoop'>for(i = 0; i &lt; rows; i++ ) {
 		for( j = 0; j &lt; cols; j++) {
-			printf (" \t %d ", a[i][j]);
+			printf(" \t %d ", a[i][j]);
 		}
 		printf("\n");
 	}</span>

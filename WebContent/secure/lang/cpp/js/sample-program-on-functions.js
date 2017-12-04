@@ -1,7 +1,7 @@
 var putElement;
 var introjs;
 var timelineLite = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 
 var sampleProgramOnFunctionsReady = function() {
 	introGuide();
@@ -15,9 +15,9 @@ var sampleProgramOnFunctionsReady = function() {
 		introjs.refresh();
 		
 	 	if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton,.introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton,.introjs-prevbutton").show();
 		}
 		
 		var max = $(this).attr("maxlength");
@@ -59,7 +59,8 @@ function introGuide() {
 				},{
 			 		element : "#funDec",
 					intro : "",
-					position : "right"
+					position : "right",
+					
 				}/* ,{
 			 		element : "#main",
 					intro : "",
@@ -67,11 +68,13 @@ function introGuide() {
 				} */,{
 			 		element : "#varDec",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#memoryDiv",
 					intro : "",
-					position : "bottom"
+					position : "bottom",
+					tooltipClass:"hide"
 				},{
 			 		element : "#sum",
 					intro : "",
@@ -83,11 +86,13 @@ function introGuide() {
 				},{
 			 		element : "#funDef",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#return",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#callingFun",
 					intro : "",
@@ -111,8 +116,81 @@ function introGuide() {
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
 		$('.introjs-nextbutton').hide();
+		var elementId = targetElement.id;
+		introjs.refresh();
+		switch (elementId) {
+		case "demoTitle":
+			
+		break;
+		case "leftDiv":
+			
+		break;
+		case "funDec":
+			$("#varDec").addClass("opacity00");
+		break;
+		case "varDec":
+			if (introjs._direction == "backward") {
+				$("#sum").addClass("opacity00");
+				$("#memoryDiv").addClass("opacity00");
+				$("#aPanelVal").addClass("opacity00");
+				$("#aPanel").addClass("opacity00");
+				$("#bPanelVal").addClass("opacity00")
+				$("#bPanel").addClass("opacity00");
+				//$("#cPanelVal").text("");
+				$("#sumPanel").addClass("opacity00");
+			}
+		break;
+		case "memoryDiv":
+			
+		break;
+		case "sum":
+			
+		break;
+		case "callingFun":
+			if (introjs._currentStep == 6){
+				$("#funDef").addClass("opacity00");
+			} else if (introjs._currentStep == 9) {
+				
+			}
+		break;
+		case "funDef":
+			if (introjs._direction == "backward") {
+				$("#funDef").removeClass("opacity00");
+			}
+		break;
+		case "return":
+			
+		break;
+		case "printf":
+			
+		break;
+		case "outputDiv":
+			
+		break;
+
+		}
 	});
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		var elementId = targetElement.id;
 		introjs.refresh();
 		switch (elementId) {
@@ -136,26 +214,39 @@ function introGuide() {
 		case "funDec":
 			introjs.refresh();
 				$(".introjs-helperLayer").one("transitionend", function() {
+					//$("#varDec").removeClass("opacity00");
+					$(".introjs-tooltip").removeClass("hide")
 					var text = "We declare a function with name <span class='ct-code-b-yellow'>addition(int, int)</span> "
 						+ " with two arguments of type <b>int</b> and return value of type int.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
 				});
 		break;
 		case "varDec":
+			
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-prevbutton").hide();
+				$("#varDec").removeClass("opacity00");
+				$(".introjs-tooltip").removeClass("hide")
 				var text = "Here, you can edit the values of <b class ='ct-code-b-yellow'>a</b> and <b class ='ct-code-b-yellow'>b</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
+					
 					charAtEnd("aVal");
 					introjs.refresh();
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "memoryDiv":
+			if (introjs._direction == "forward") {
 			$("#memoryDiv").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				
+				$("#aPanel").removeClass("opacity00");
+				$("#bPanel").removeClass("opacity00");
+				$("#sumPanel").removeClass("opacity00");
+				$(".introjs-tooltip").removeClass("hide")
 				var text = "Memory is created for variable <y>a</y>, <y>b</y> and <y>sum</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$("#aVal").addClass("z-index");
@@ -166,17 +257,27 @@ function introGuide() {
 						fromEffectWithTweenMax("#bVal", "#bPanelVal", function(){
 							$("#bPanelVal").removeClass("opacity");
 							$("#bVal").removeClass("z-index");
-							$(".introjs-nextbutton").show();
+							$(".introjs-nextbutton,.introjs-prevbutton").show();
 						});
 					});
 				});
 			});
+			} else {
+				introjs.previousStep()
+			}
 		break;
 		case "sum":
+			console.log("comeing")
 			$(".introjs-helperLayer").one("transitionend", function() {
 				setTimeout(function() {
+					if (introjs._direction == "forward") {
 					introjs.nextStep()
-				}, 1000);
+					} else {
+						
+					introjs.previousStep()
+						}
+					
+				}, 500);
 			});
 		break;
 		case "callingFun":
@@ -185,32 +286,35 @@ function introGuide() {
 					var text = "A call made to function <span class='ct-code-b-yellow'>addition(a, b)</span> by sending the values of " 
 							+ " <y>a</y>, <y>b</y> as parameters. This is known as <span class='ct-code-b-yellow'>Funciton Call</span>.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
 				});
 			} else if (introjs._currentStep == 9) {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "The return value will be stored in <b class ='ct-code-b-yellow'>sum</b>.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
 				});
 			}
 		break;
 		case "funDef":
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#funDef").removeClass("opacity00");
+				$(".introjs-tooltip").removeClass("hide")
 				var text = "This is <b class ='ct-code-b-yellow'>Function Definition</b>."
 					+ " Whenever a function call is made, the argument values of the calling function i.e "
 					+ " values of <b class ='ct-code-b-yellow'>a</b> and <b class ='ct-code-b-yellow'>b</b> are copied into the parameters "
 					+ "of the called function i.e., <b class ='ct-code-b-yellow'>x</b> and <b class ='ct-code-b-yellow'>y</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					introjs.refresh();
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "return":
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
 				var text = "The return type of the function is an integer, the addition of x and y is an integer which is returned.<br>"
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append("<b class ='ct-code-b-yellow'>"
@@ -234,7 +338,7 @@ function introGuide() {
 											$("#xyVal").text(parseInt($("#aVal").text()) + parseInt($("#bVal").text()));
 											TweenMax.to("#xyVal", 0.5, {rotationX : 0, onComplete:function() {
 												introjs.refresh();
-												$(".introjs-nextbutton").show();
+												$(".introjs-nextbutton,.introjs-prevbutton").show();
 											}});
 										}});
 									}});
@@ -288,6 +392,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }

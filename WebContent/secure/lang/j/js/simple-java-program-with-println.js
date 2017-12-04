@@ -1,76 +1,305 @@
+var introjs;
+var tl = new TimelineLite();	
+var typingSpeed = 5;
+var buttonCount = 1;
+var delete_key = 46;
+var backspace_key = 8;
 var simpleJavaProgramWithPrintlnReady = function() {
+	introGuide();
 
-	$("#typeWriteId").hide();
-	$("#consoleId").hide();
-	startIntro();
-	$("#startBtn").click(function() {
-		$("#consoleId").show();
-		$("#typeWriteId").show();
-		$("#startBtn").addClass("hidden");
-		$('.introjs-nextbutton').show();
-		$('.introjs-nextbutton').css("opacity",0);
-		$('.introjs-nextbutton').click();
-			$("#preBody").addClass("hidden");
-		    $("#typeWriteId").removeClass("hidden");
-				$("#typeWriteId").typewriting('public class <b>Example</b> {\n\t\t public static void <b>main(String[] args)</b> {\n\t\t\t\t System.out.<b>println</b>("Hello"); \n\t\t\t\t System.out.<b>println</b>("I am learning Java.");\n\t\t\t\t System.out.<b>println</b>("Bye!"); \n\t\t}\n}',
-						{
-							"typing_interval" : 25,
-							"cursor_color" : 'white'
-						},
-						function() {
-							$("head").append("<style>.typingCursor::after{ width : 0px; }</style>");
-							$("#typeWriteId").addClass("hidden");
-							$('.introjs-nextbutton').addClass("opacity00").fadeTo(2000,1);
-							$("#preBody").addClass("introjs-showElement introjs-relativePosition").removeClass("hidden");
-						    $('.introjs-nextbutton').removeClass("opacity00");
-						    $('.introjs-nextbutton').show();
-					});
+	$('#reStartBtn').click(function() {
+		location.reload();
+	});
+}
+
+function introGuide() {
+	introjs = introJs();
+	introjs.setOptions({
+		showStepNumbers: false,
+		exitOnOverlayClick: false,
+		showBullets: false,
+		exitOnEsc: false,
+		keyboardNavigation: false,
+		steps : [ {
+			element : "#startBtn",
+			intro : "Click to Start",
+			position : "right"
+		},{
+			element : "#preBody",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#line1",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#line2",
+			intro : "",
+			position : "#bottom"
+		},{
+			element : "#line3",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#printlnId1",
+			position : "top",
+			position : "bottom"
+		},{
+			element : "#line4",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#printlnId2",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#line5",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#printlnId3",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#line6",
+			intro : "",
+			position : "bottom"
+		},{
+			element : "#reStartBtn",
+			intro : "Click to Restart",
+			position : "right"
+		}
+		]});
+	
+	introjs.onbeforechange(function(targetElement) {
+
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "startBtn":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;	
+		case "preBody":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line2":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line3":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#printlnId1").addClass("opacity00 white");
+			$("#printlnId1").removeClass("green");
+		break;
+		case "printlnId1":
+			$("#printlnId1").removeClass("opacity00");
+			$("#printlnId1").removeClass("white");
+			$("#printlnId1").addClass("green");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line4":
+			$("#printlnId1").addClass("white");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#printlnId2").addClass("opacity00 white");
+			$("#printlnId2").addClass("opacity00");
+		break;
+		case "printlnId2":
+			$("#printlnId2").removeClass("opacity00 white");
+			$("#printlnId2").addClass("green");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line5":
+			$("#printlnId2").addClass("white");
+			$("#printlnId3").addClass("opacity00");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "printlnId3":
+			$("#printlnId3").removeClass("opacity00 white");
+			$("#printlnId3").addClass("green");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line6":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#printlnId3").addClass("white");
+		break;
+		case "reStartBtn":
+			
+		break;
+		
+		}
+	});
+	
+	introjs.onafterchange(function(targetElement) {
+		
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		var elementId = targetElement.id;
+		$("#" + elementId).removeClass("hide");
+		introjs.refresh();
+		switch (elementId) {
+		case "startBtn":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#startBtn").click(function() {
+				$(this).addClass('hidden');
+				$('#restartBtn').addClass('visibility-hidden').removeClass('hidden');
+				introjs.nextStep();
+			});
+			
+		break;
+		case "preBody":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			introjs.refresh();
+			$('.introjs-tooltip').removeClass('hide');
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "Below sample code prints three lines to the console.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton').show();
 				});
-
-				$("#reStartBtn").click(function() {
-				//	location.reload();
-		            window.location.href =  "simple-java-program-with-println.jsp?restart=1";
+			});
+		break;
+		case "line1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			introjs.refresh();
+			$('.introjs-tooltip').removeClass('hide');
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "This is the name of the class.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
-
-		$('.introjs-nextbutton').click(function() {
-	                 if(intro._currentStep == 2){
-	                	$("#preBody").removeClass("introjs-showElement introjs-relativePosition introjs-fixParent");
-	                }  
-	                if (intro._currentStep == 4) {
-	                	$("#printlnId1").removeClass("hidden").addClass("opacity00");
-	                }
-					if (intro._currentStep == 5) {
-						setTimeout(function() {
-							$("#printlnId1").fadeTo(1300, 1);
-						}, 1300);
-					}
-					if(intro._currentStep == 6) {
-						$("#printlnId1").css('color','white');
-						$("#printlnId2").removeClass("hidden").addClass("opacity00");
-					}
-					if (intro._currentStep == 7) {
-						setTimeout(function() {
-							$("#printlnId2").fadeTo(1300, 1);   
-						}, 1300);
-					}
-					if(intro._currentStep == 8) {
-						$("#printlnId2").css('color','white');
-						$("#printlnId3").removeClass("hidden").addClass("opacity00");
-					}
-					if (intro._currentStep == 9) {
-						setTimeout(function() {
-							$("#printlnId3").fadeTo(1300, 1); 
-						}, 1300);
-					}
-					if (intro._currentStep == 10) {
-						$("#printlnId3").css('color','white');
-						$("#reStartBtn").removeClass("hidden").addClass("opacity00");
-					}
-
-					if ($("#reStartBtn").hasClass("introjs-showElement")) {
-						$('.introjs-nextbutton').hide();
-						$("#reStartBtn").fadeTo(1300, 1);
-					}
-
+			});
+		break;
+		case "line2":
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		introjs.refresh();
+		$('.introjs-tooltip').removeClass('hide');
+		$(".introjs-helperLayer").one("transitionend", function() {
+			var text = "This is the main method where the program execution starts.";
+			typing($(".introjs-tooltiptext"), text, function() {
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
+			});
+		});
+		break;
+		case "line3":
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		introjs.refresh();
+		$('.introjs-tooltip').removeClass('hide');
+		$(".introjs-helperLayer").one("transitionend", function() {
+			var text = "The statement System.out.println('Hello'); prints <b>Hello</b> and a new-line (" + "'" + "\n" + "'" + ") character after that.";
+			typing($(".introjs-tooltiptext"), text, function() {
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
+			});
+		});
+		break;
+		case "printlnId1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#printlnId1").removeClass("opacity00");
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "<b>Hello</b> is printed to the console.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
+			});
+		break;
+		case "line4":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "This statement prints <b>I am learning Java</b>.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+		break;
+		case "printlnId2":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#printlnId2").removeClass("opacity00");
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "<b>I am learning Java</b> appears on the next line in the console.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+		break;
+		case "line5":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "This statement prints <b>Bye!</b>.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+		break;
+		case "printlnId3":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#printlnId3").removeClass("opacity00");
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "<b>Bye!</b> appears on the next line in the console.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+		break;
+		case "line6":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "This is the end of the main method where the program execution ends.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+		break;
+		case "reStartBtn":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".introjs-tooltip").css({"min-width": "115px"});
+			$('#reStartBtn').removeClass("hide");
+			$(".introjs-helperLayer").one("transitionend", function() {
+				var text = "Click to restart.";
+				typing($(".introjs-tooltiptext"), text, function() {
+				});
+			});
+		break;
+		}
+	});
+	
+	introjs.start();
+	$('.introjs-nextbutton').hide();
+	$('.introjs-prevbutton').hide();
+	$('.introjs-skipbutton').hide();
+	$('.introjs-bullets').hide();
+}
+
+function typing(selector, text, callBackFunction) {
+	$(selector).typewriting(text, {
+		"typing_interval" : typingSpeed,
+		"cursor_color" : 'white',
+	}, function() {
+		$(selector).removeClass("typingCursor");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
+	});
 }

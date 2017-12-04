@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 5;
+var typingSpeed = 1;
 var tl;
 
 var localGlobalVariablesReady = function() {
@@ -119,8 +119,131 @@ function introGuide() {
 			position : "right"
 		} ]
 	});
-	
+	introjs.onbeforechange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		var elementId = targetElement.id;
+		switch (elementId) {
+		
+		case "heading":
+			
+			break;
+			
+		case "codeAnimation":
+			
+			break;
+			
+		case "funcDec":
+			
+			break;
+			
+		case "globalVar":
+			$("#globalVal").removeAttr("style").addClass("opacity00");
+			$("#addressDiv").addClass("opacity00");
+			break;
+			
+		case "startMain":
+		case "mainFunc":
+			
+			break;
+			
+		case "funcDef":
+			
+			break;
+			
+		case "addressDiv":
+			
+				if(introjs._currentStep == 4) {
+					
+					
+				} else if(introjs._currentStep == 9) {
+					
+				} else {
+				}
+			break;
+			
+		case "functionCall":
+			
+			break;
+			
+		case "localVar":
+			$("#boxHeading").removeAttr("style").addClass("opacity00");
+			$("#varBox").removeAttr("style").addClass("opacity00");
+		break;
+		
+		case "mainPf1":
+			$("#consoleId").addClass("opacity00");
+			break;
+		case "mainPf2":
+			//$("#consoleId").addClass("opacity00");
+		break;
+			
+		
+		case "userPrintf":
+			if (introjs._direction == "backward") {
+			$("#gVal").text(50);
+			}
+			break;
+			
+		case "valRes":
+			$("#globalVar").removeClass("blinking-white");
+		break;
+			
+		case "valDec":
+			$("#globalVar").addClass("blinking-white");
+			break;
+			
+		case "valAddition":
+			if (introjs._direction == "backward") {
+				$("#gVal").text(50);
+			}
+			break;
+			
+		case "endFunc":
+			
+			break;
+			
+		case "endMain":
+			
+			break;
+			
+		case "consoleId":
+			
+				if(introjs._currentStep == 11) {
+					$("#runEditor1").empty();
+				} else if(introjs._currentStep == 18) {
+					
+					$("#runEditor2").empty();
+				} else {
+					
+					$("#runEditor3").empty();
+				} 
+			
+			break;
+			
+		
+		}
+	});
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -147,7 +270,7 @@ function introGuide() {
 				var text = "We declare a function <span class='ct-code-b-yellow'>display()</span> with <span class='ct-code-b-yellow'>no" 
 							+ " arguments</span> and with <span class='ct-code-b-yellow'>no</span> return value.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -158,26 +281,31 @@ function introGuide() {
 							+ "<span class='ct-code-b-yellow'>main()</span> method. These variables that are declared out side of any method are" 
 							+ " called <span class='ct-code-b-yellow'>global variables</span>. <br>They are available throughout the program.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
 			
 		case "startMain":
 		case "mainFunc":
-			$("#globalVar").removeClass("blinking-white");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function() {
-					introjs.nextStep();
+			setTimeout(function() {
+				if (introjs._direction == "forward") {
+					$("#globalVar").removeClass("blinking-white");
+					$(".introjs-helperLayer").one("transitionend", function() {
+						introjs.nextStep();
+					});
+					} else {
+						introjs.previousStep()
+						}
 				}, 500);
-			});
+			
 			break;
 			
 		case "funcDef":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "This is the definition of the function <span class='ct-code-b-yellow'>display()</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -200,7 +328,7 @@ function introGuide() {
 							var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated 2 bytes in memory and assigned" 
 										+ " with value <b>50</b>.";
 							typing(".introjs-tooltiptext", text, function() {
-								$(".introjs-nextbutton").show();
+								$(".introjs-nextbutton,.introjs-prevbutton").show();
 							});
 						}});
 					}});
@@ -220,11 +348,12 @@ function introGuide() {
 							var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated 2 bytes in memory and assigned" 
 										+ " with value <b>20</b>."; 
 							typing(".introjs-tooltiptext", text, function() {
-								$(".introjs-nextbutton").show();
+								$(".introjs-nextbutton,.introjs-prevbutton").show();
 							});
 						}});
 					}});
 				} else {
+					
 					$("#valRes").effect( "transfer", { to: $("#gVal"), className: "ui-effects-transfer" }, 1000 , function() {
 						tl.to("#gVal", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 							$("#gVal").text(70);
@@ -233,13 +362,14 @@ function introGuide() {
 								var text = "Now <span class='ct-code-b-yellow'>global</span> variable <span class='ct-code-b-yellow'>a</span>"
 											+ " becomes <b>70</b>.";
 								typing(".introjs-tooltiptext", text, function() {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton,.introjs-prevbutton").show();
 								});
 							}});
 						}});
 					});
 				}
 			});
+			
 			break;
 			
 		case "functionCall":
@@ -247,7 +377,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() { 
 				var text = "Here no local variable declaration of <y>a</y> soit takes the reference from global variable.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -258,7 +388,7 @@ function introGuide() {
 							+ " value <span class='ct-code-b-yellow'>20</span>. This variable is called <span class='ct-code-b-yellow'>local</span>"
 							+ " variable and can be used only inside the <span class='ct-code-b-yellow'>main()</span> method.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 		break;
@@ -268,7 +398,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<y>a</y> is local variable which contained in main(), so it returns <y>20</y>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 		break;
@@ -277,21 +407,31 @@ function introGuide() {
 		case "userPrintf":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				setTimeout(function() {
+					if (introjs._direction == "forward") {
 					introjs.nextStep();
+				} else {
+						introjs.previousStep()
+					}
 				}, 500);
 			});
+				/*typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
+				});
+			});*/
 			break;
 			
 		case "valRes":
+			$("#globalVar").removeClass("blinking-white");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Here, <b>20</b> is added to <span class='ct-code-b-yellow'>a</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 		break;
 			
 		case "valDec":
+			
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "The display() function will first search if any <span class='ct-code-b-yellow'>local variable</span> exists with that"
 							+ " name, if it does not exist, it searches for a <span class='ct-code-b-yellow'>global variable</span> of that name."
@@ -299,7 +439,7 @@ function introGuide() {
 							+ " exist.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#globalVar").addClass("blinking-white");
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -309,7 +449,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() { 
 				var text = "Here, 20 is added to the existing value 50."; 
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -319,7 +459,7 @@ function introGuide() {
 				var text = "When the end of the function is reached, the control is transferred back to the calling method and executes the next" 
 							+ " statement that occurs after this function call.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -328,7 +468,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "End of the program.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -337,14 +477,38 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#consoleId').removeClass("opacity00");
 				if(introjs._currentStep == 11) {
-					$("#runEditor1").append("value in main() before call : <b style='color: green'>20</b>");
-					nextStep();
+					setTimeout(function() {
+						if (introjs._direction == "forward") {
+							$("#runEditor1").append("value in main() before call : <b style='color: yellow'>20</b>");
+							setTimeout(function() {
+						introjs.nextStep();
+							}, 500);
+					} else {
+							introjs.previousStep()
+						}
+					}, 500);
 				} else if(introjs._currentStep == 18) {
-					$("#runEditor2").append("value in display() : <b style='color: green'>70</b>");
-					nextStep();
+					setTimeout(function() {
+						if (introjs._direction == "forward") {
+							$("#runEditor2").append("value in display() : <b style='color: yellow'>70</b>");
+							setTimeout(function() {
+								introjs.nextStep();
+									}, 500);
+					} else {
+						introjs.previousStep()
+						}
+					}, 500);
 				} else {
-					$("#runEditor3").append("value in main() after call : <b style='color: green'>20</b>");
-					nextStep();
+					setTimeout(function() {
+						if (introjs._direction == "forward") {
+							$("#runEditor3").append("value in main() after call : <b style='color: yellow'>20</b>");
+							setTimeout(function() {
+								introjs.nextStep();
+									}, 500);
+					} else {
+							introjs.previousStep()
+						}
+					}, 1000);
 				} 
 			});
 			break;
@@ -370,12 +534,17 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
 
 function nextStep() {
 	setTimeout(function() {
+		if (introjs._direction == "forward") {
 		introjs.nextStep();
+	} else {
+			introjs.previousStep()
+		}
 	}, 1000);
 }

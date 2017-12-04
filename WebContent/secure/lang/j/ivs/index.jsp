@@ -177,13 +177,15 @@ r {
 					<tr>
 						<td>1</td>
 						<td>if else</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of if else', '/secure/lang/j/basics/if-else.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of if else</span></td>
+						<td>Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td>04-12-17</td>
 					</tr>
 					<tr>
 						<td>2</td>
@@ -193,19 +195,21 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Counting</span></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>3</td>
 						<td>Switch case</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of switch case', '/secure/lang/j/basics/switch.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of switch case</span></td>
+						<td>Mahesh <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td></td>
+						<td>04-12-17</td>
 					</tr>
 					<tr>
 						<td>4</td>

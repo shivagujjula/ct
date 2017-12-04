@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 
-<script src="../js-min/lgv.min.js" type="text/javascript"></script>
+<script src="/secure/lang/cpp//js-min/lgv.min.js" type="text/javascript"></script>
 
 <title>Local and Global Variables</title>
 <style type="text/css">

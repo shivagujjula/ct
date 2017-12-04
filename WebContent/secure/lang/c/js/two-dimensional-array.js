@@ -1,4 +1,4 @@
-var typingSpeed = 5;
+var typingSpeed = 1;
 	var intro;
 	var i = -1;
 	var j = 0;
@@ -235,7 +235,7 @@ var twoDimensionalArrayReady = function() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#codeDiv').removeClass('opacity00');
 				$(".introjs-tooltip").removeClass('hide');
-				var text = "Let us learn <span class='ct-code-b-yellow'>two Dimensional Array</span> in " +
+				var text = "Let us learn <span class='ct-code-b-yellow'>two dimensional array</span> in " +
 				"<span class='ct-code-b-yellow'>C</span> using this sample code.";
  				typing(".introjs-tooltiptext", text, function() {
  					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -319,6 +319,7 @@ var twoDimensionalArrayReady = function() {
 			case "restart":
 				$('.zIndex').removeClass('zIndex');
 				$("#restart").removeClass('opacity00');
+				$('.introjs-tooltip').css('min-width', '125px');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Click to restart.";
 	 				typing(".introjs-tooltiptext", text, function() {
@@ -402,7 +403,7 @@ var twoDimensionalArrayReady = function() {
 							$('#secondInput').on("keyup", function(e) {
 								$('.length-error-text,.size-error').remove();
 								if ($(this).val() == "") {
-									$(".introjs-nextbutton").hide();
+									$(".introjs-nextbutton, .introjs-prevbutton").hide();
 									$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 																			"Please enter an row size and column size values each separated by a space.</span>");
 								} 
@@ -437,12 +438,12 @@ var twoDimensionalArrayReady = function() {
 											}
 										}
 									  } else {
-									  	$(".introjs-nextbutton").hide();
+									  	$(".introjs-nextbutton, .introjs-prevbutton").hide();
 									  	$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'> "
 												+"<br/> Please follow the above format.</br>size must be in numbers.</span>");
 									  }
 								} else {
-									$(".introjs-nextbutton").hide();
+									$(".introjs-nextbutton, .introjs-prevbutton").hide();
 								}
 							});
 		 				});

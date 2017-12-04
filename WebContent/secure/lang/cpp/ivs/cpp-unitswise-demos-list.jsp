@@ -892,13 +892,15 @@ r {
 					<tr>
 						<td>15</td>
 						<td>Special Operators</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Special Operators', 'special-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span></td>
-						<td>Live-Demo</td>
+						<td>Live-Demo/ Rajashekar <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td>Same as C</td>
+						<td>04-12-17</td>
 					</tr>
 					
 					<tr>
@@ -921,7 +923,7 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explicit Type Conversion</span></td>
 						<td>Live-Demo</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td>Same as C</td>
 					</tr>
 					
@@ -945,7 +947,7 @@ r {
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Operator Precedence and Associativity Table</span></td>
 						<td>Live-Demo</td>
 						<td></td>
-						<td></td>
+						<td>no need of <r>(back)</r></td>
 						<td>Same as C</td>
 					</tr>
 					
@@ -1158,13 +1160,15 @@ r {
 					<tr>
 						<td>1</td>
 						<td>1-D Arrays</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing One-dimensional arrays', 'accessing-one-dimension-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Accessing One-dimensional arrays</span></td>
-						<td>Shiva</td>
+						<td>Shiva / Shiva <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>02-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1190,7 +1194,7 @@ r {
 						<td>Shiva / Shiva <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>22-11-17</td>
 					</tr>
 					
 					<tr>
@@ -1204,7 +1208,7 @@ r {
 						<td>Shiva / Shiva <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>22-11-17</td>
 					</tr>
 					
 					<tr>
@@ -1587,13 +1591,15 @@ r {
 					<tr>
 						<td>25</td>
 						<td>Inline functions</td>
-						<td><a class='btn btn-xs btn-success'
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Inline Functions', 'inline-functions.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of inline functions</span></td>
-						<td>Rajashekar</td>
+						<td>Rajashekar / Rajashekar <r>(back)</r></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>04-12-17</td>
 					</tr>
 				</tbody>
 			</table>
@@ -1941,38 +1947,12 @@ r {
 				<tbody class='table-striped'>
 					<tr>
 						<td>1</td>
-						<td>Types of Inheritance</td>
+						<td>Single Inheritance</td>
 						<td>
-							<div>
-								<i class="fa fa-check fa-1x"></i>
-								<a class='btn btn-xs btn-success'
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Single Inheritance', 'single-inheritance.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Single Inheritance</span>
-							</div>
-							<div>
-								<i class="fa fa-check fa-1x"></i>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Muliple Inheritance', 'multiple-inheritance.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Muliple Inheritance</span>
-							</div>
-							<div>
-								<i class="fa fa-check fa-1x"></i>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Multilevel Inheritance', 'multi-level-inheritance.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Multilevel Inheritance</span>
-							</div>
-							<div>
-								<i class="fa fa-check fa-1x"></i>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Hierarchical Inheritance', 'hierarchical-inheritance.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hierarchical Inheritance</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Hybrid Inheritance', 'hybrid-inheritance.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hybrid Inheritance</span>
-							</div>
-						</td>
 						<td>Karthik / Karthik <r>(back)</r></td>
 						<td></td>
 						<td></td>
@@ -1980,6 +1960,58 @@ r {
 					</tr>
 					<tr>
 						<td>2</td>
+						<td>Multiple Inheritance</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Multiple Inheritance', 'multiple-inheritance.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Multiple Inheritance</span>
+						<td>Karthik / Karthik <r>(back)</r></td>
+						<td></td>
+						<td></td>
+						<td>01-12-17</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Hierarchical Inheritance</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Hierarchical Inheritance', 'hierarchical-inheritance.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hierarchical Inheritance</span>
+						<td>Karthik / Karthik <r>(back)</r></td>
+						<td></td>
+						<td></td>
+						<td>01-12-17</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Multilevel Inheritance</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Multilevel Inheritance', 'multi-level-inheritance.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Multilevel Inheritance</span>
+						<td>Karthik / Karthik <r>(back)</r></td>
+						<td></td>
+						<td></td>
+						<td>01-12-17</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Hybrid Inheritance</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Hybrid Inheritance', 'hybrid-inheritance.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Hybrid Inheritance</span>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>	
+					<tr>
+						<td>6</td>
 						<td>Virtual base inheritance</td>
 						<td>
 							<i class="fa fa-check fa-1x"></i>
@@ -1991,32 +2023,7 @@ r {
 						<td>Successfully Completed</td>
 						<td>25-10-17</td>
 					</tr>
-					<tr>
-						<td>3</td>
-						<td>Virtual destructor</td>
-						<td>
-							<i class="fa fa-check fa-1x"></i>
-							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Virtual destructor', 'virtual-destructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual destructor</span></td>
-						<td>Karthik / Karthik <r>(back)</r></td>
-						<td></td>
-						<td>Successfully Completed</td>
-						<td>25-10-17</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>Virtual destructor</td>
-						<td>
-							<i class="fa fa-check fa-1x"></i>
-							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Constructor invoke virtual function', 'constructor-invoke-virtual-function.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constructor invoke virtual function</span></td>
-						<td>Karthik / Karthik <r>(back)</r></td>
-						<td></td>
-						<td>Successfully Completed</td>
-						<td>22-11-17</td>
-					</tr>
+					
 					
 				</tbody>
 			</table>
@@ -2048,6 +2055,32 @@ r {
 						<td></td>
 						<td>Successfully Completed</td>
 						<td>04-11-17</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Virtual destructor</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Virtual destructor', 'virtual-destructor.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual destructor</span></td>
+						<td>Karthik / Karthik <r>(back)</r></td>
+						<td></td>
+						<td>Successfully Completed</td>
+						<td>25-10-17</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Virtual functions</td>
+						<td>
+							<i class="fa fa-check fa-1x"></i>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Virtual functions', 'constructor-invoke-virtual-function.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual functions</span></td>
+						<td>Karthik / Karthik <r>(back)</r></td>
+						<td></td>
+						<td>Successfully Completed</td>
+						<td>22-11-17</td>
 					</tr>
 				</tbody>
 			</table>

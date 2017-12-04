@@ -1,10 +1,11 @@
 
-var typingSpeed = 5;
+var typingSpeed = 1;
 var valIndex = 0;
 var index = 1;
 var size = ["1", "2", "3"];
 var print = 0;
 var count = 0;
+var flag = true;
 
 var oneDimesionalArrayReady = function() {
 
@@ -34,16 +35,19 @@ var oneDimesionalArrayReady = function() {
 		},  {
 			element : "#codeDiv",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass : "hide"
 		},  {
 			element : "#variableDeclaraiton",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass : "hide"
 		}, {
 			element : "#tableDiv",
 			intro : "",
 			position : "bottom",
-			action : "arrayCreation"
+			action : "arrayCreation",
+			tooltipClass : "hide"
 		}, {
 			element : "#getRowColumn",
 			intro : "",
@@ -59,20 +63,24 @@ var oneDimesionalArrayReady = function() {
 		}, {
 			element : "#animationDiv",
 			intro : "",
-			position: "left"
+			position: "left",
+			tooltipClass : "hide"
 		}, {
 			element : "#getInputValues",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass : "hide"
 		}, {
 			element : "#animationDiv",
 			intro : "",
-			position : "left"
+			position : "left",
+			tooltipClass : "hide"
 		}, {
 			element : "#tableDiv",
 			intro : "",
 			position : "buttom",
-			action : "placingValues"
+			action : "placingValues",
+			tooltipClass : "hide"
 		}, {
 			element : "#codePrintf",
 			intro : "",
@@ -98,128 +106,220 @@ var oneDimesionalArrayReady = function() {
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-			case "typingDiv":
-			$('.introjs-nextbutton').hide();
-			$("#typingDiv").css({height: $("#typingDiv").outerHeight()});
-			if (intro._currentStep == 1) {
-				dynamicSteps();
-				setTimeout(function() {
-					intro.nextStep();
-				}, 500);
-			};
+		case 'part3':
+			$('#codeDiv').addClass('opacity00');
+			intro.refresh();
 			break;
+		case 'codeDiv':
+			$('#codeDiv').removeClass('opacity00');
+			intro.refresh();
+			break;
+		case "variableDeclaraiton":
+			$('#tableDiv').addClass('opacity00');
+			$("tr").text("");
+			break;
+		case "tableDiv":
+			var action = intro._introItems[intro._currentStep].action;
+			switch(action) {
+				case "placingValues":
+					$('.output-value-circle').removeClass('output-value-circle');
+					break;
+				case "arrayCreation":
+					$('#tableDiv').removeClass('opacity00');
+					$("tr").text("");
+					break;
+			}
+			break;
+		case 'getRowColumn':
+			$('#animationDiv').addClass('opacity00');
+			break;
+		case 'scanf':
+			$('#rowValue').empty();
+			break;
+		case 'getInputValues':
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			var length = $("#rowValue").text();
+			for (var i = 0; i <= length; i++) {
+				$("#value" + i).remove();
+			}
+			valIndex = 0;
+			break;
+		case 'animationDiv':
+			if (intro._currentStep == 11) {
+				$('#rowValue').empty();
+			} else if (intro._currentStep == 13 ) {
+				var length = $("#rowValue").text();
+				for (var i = 0; i <= length; i++) {
+					$("#value" + i).remove();
+				}
+				valIndex = 0;
+				for (var i = 0; i < parseInt(length); i++) {
+					$('#arrayVal' + i).text("");
+				}
+				
+				$(".table-css tr:eq(1) span").not(".output-value-circle").parent().removeClass('background-color');
+				$(".table-css tr:eq(1) span").each(function(ind, val) {
+					if (!$(this).text().trim().length) {
+				    	$(".table-css tr:eq(2) td").eq(ind).find("span").css("opacity", "1");
+				    	$(".table-css tr:eq(0) td").eq(ind).find("span").css("opacity", "1");
+					}
+				});
+			}
+			break;
+		}
+	});
+	
+	intro.onafterchange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			
+			if (intro._currentStep != 2) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+			case "typingDiv":
+				$('.introjs-nextbutton').hide();
+				if (intro._currentStep == 1) {
+					if (flag) {
+						dynamicSteps();
+						flag = !flag;
+					}
+					setTimeout(function() {
+						intro.nextStep();
+					}, 500);
+				};
+				break;
 			
 			case "codeDiv":
-				$('#typingDiv').addClass('bg-info zIndex');
-				$('#codeDiv').removeClass('opacity00').addClass('introjs-showElement');
-				$('.introjs-nextbutton').hide();
+				$('#typingDiv').addClass('zIndex');
+				intro.refresh();
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					$('#codeDiv').removeClass('opacity00');
+					$(".introjs-tooltip").removeClass('hide');
 					var text = "Let us learn <span class='ct-code-b-yellow'>One Dimensional Array</span> in " +
 					"<span class='ct-code-b-yellow'>C++</span> using this sample code.";
 	 				typing(".introjs-tooltiptext", text, function() {
-	 					$('.introjs-nextbutton').show();
+	 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 	 				});
 				});
 				break;
 			
 		 	case "part1":
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>primitive data-type</b> like int,float, etc.";
 						typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton").show();
 		 				});
 				});
 				break;
 				
 			case "part2":
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It refers to the <b class='ct-code-b-yellow'>identifier</b> which represents array name.";
 						typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 		 				});
 				});
 				break;
 				
 			case "part3":
 				intro.refresh();
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "It is an integer constant represents <b class='ct-code-b-yellow'>size</b> of the array.";
 						typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 		 				});
 				});
 				break;
 				
 			case "printForLoop":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Using<b class='ct-code-b-yellow'> for-loop </b>we can display elements of the array .";
 					typing(".introjs-tooltiptext", text, function() {
-	 					$('.introjs-nextbutton').show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 	 				});
 				});
 				break;
 				
 			case "codePrintf":
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function() {
-						intro.nextStep();
-					}, 1000);
+					if (intro._direction == "forward") {
+						setTimeout(function() {
+							intro.nextStep();
+						}, 1000);
+					} else {
+						setTimeToIntroPreviousStep();
+					}
 				});
 				break;
 				
 			case "variableDeclaraiton":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#array").effect("highlight", {color: '#008000'}, 1000, function() {
+						$(".introjs-tooltip").removeClass('hide');
 						var text = "One dimensional integer array <b class='ct-code-b-yellow'>arr[9]</b> and intiger variable <b "
 									+"class='ct-code-b-yellow'>n,i</b> are declared.";
 		 				typing(".introjs-tooltiptext", text, function() {
-		 					$('.introjs-nextbutton').show();
+		 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 		 				});
 					});
 				});
 				break;
 				
 			case "getRowColumn":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function() {
-						intro.nextStep();
-					}, 1000);
+					if (intro._direction == "forward") {
+						setTimeout(function() {
+							intro.nextStep();
+						}, 1000);
+					} else {
+						setTimeToIntroPreviousStep();
+					}
 				});
 				break;
 				
 			case "scanf":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "<b class='ct-code-b-yellow'>cin</b> reads integer value for an "
 					+"<b class='ct-code-b-yellow'>array</b> size.";
 	 				typing(".introjs-tooltiptext", text, function() {
-	 					$('.introjs-nextbutton').show();
+	 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 	 				});
 				});
 				break;
 				
 			case "animationDiv":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (intro._currentStep == 9) {
-						$('#rowValue').attr('contenteditable','false');
-						$('#rowValue').focus();
-						$('#animationDiv').removeClass('opacity00').addClass('introjs-showElement');
-						$('.introjs-nextbutton').hide();
-							$('.introjs-helperLayer ').one('transitionend', function() {
-							$('#animationDivText').removeClass('opacity00');
-							setTimeout(function() {
-									intro.nextStep();
-							}, 1000);
-						});
+						if (intro._direction == "forward") {
+							$('#rowValue').attr('contenteditable','false');
+							$('#rowValue').focus();
+							$('#animationDiv').removeClass('opacity00');
+							$('.introjs-nextbutton').hide();
+								$('.introjs-helperLayer ').one('transitionend', function() {
+								$('#animationDivText').removeClass('opacity00');
+								setTimeout(function() {
+										intro.nextStep();
+								}, 1000);
+							});
+						} else {
+							setTimeToIntroPreviousStep();
+						}
 						
 					} else if (intro._currentStep == 11 ) {
 						$('#rowValue').attr('contenteditable','true');
@@ -227,22 +327,26 @@ var oneDimesionalArrayReady = function() {
 						$('.introjs-nextbutton').hide();
 						$('.matrix').removeClass('opacity00');
 						charAtEnd('rowValue');
-						 /* var text ="Enter number of values you want to read. </br> note: number should be "
-						 			+"</br><b class='ct-code-b-yellow'>(1 - 8) inclusive.</b>"; */
-						 	var text = "Enter how many values you want to read.";
+						$(".introjs-tooltip").removeClass('hide');
+						var text = "Enter how many values you want to read.";
 						typing(".introjs-tooltiptext", text, function() {
 		 				});
 					} else if (intro._currentStep == 16 ) {
-						$('.introjs-helperLayer ').one('transitionend', function() {
-							$("#consoleBodyDiv1").append("<div id='outputTyping'></div>");
-						 	typingId = '#outputTyping';
-						 	typingContent ="The array elements are :";
-						 	typing(typingId, typingContent, function() {
-								setTimeout(function() {
-									intro.nextStep();
-								}, 500);
-							});
-					 	});
+						if (intro._direction == "forward") {
+							$('.introjs-helperLayer ').one('transitionend', function() {
+								$("#consoleBodyDiv1").append("<div id='outputTyping'></div>");
+							 	typingId = '#outputTyping';
+							 	typingContent ="The array elements are :";
+							 	typing(typingId, typingContent, function() {
+									setTimeout(function() {
+										intro.nextStep();
+									}, 500);
+								});
+						 	});
+						} else {
+							$('#outputTyping').remove();
+							setTimeToIntroPreviousStep();
+						}
 					} else if (intro._currentStep == 18) {
 						$('.introjs-helperLayer ').one('transitionend', function() {
 							$(typingId).removeClass('typingCursor');
@@ -253,39 +357,39 @@ var oneDimesionalArrayReady = function() {
 								$('.final').addClass('opacity00');
 								finalPrint();
 							}	
-						 });
+						});
 						
 					} else {
 						
 						$('.introjs-nextbutton').hide();
 						$('.introjs-helperLayer ').one('transitionend', function() {
+							$(".introjs-tooltip").removeClass('hide');
 							var text = "press enter key for next entry.";
 							typing(".introjs-tooltiptext", text, function() {
 								tableIndex(); 
 						 		$("#consoleBodyDiv1").append("<div id='value0'>Enter the value of arr[0] : <div id='blinkCursor0' style='display:inline-block' class='int input-char outline-none a00' placeholder='value' contenteditable='true' maxlength='2'></div></div>");
 						 		$('#blinkCursor0').focus();
 						 		keyDownEvent();
-						 });
+						});
 					 });
 				}
 				});
 			break;
 			
 			case "getInputValues":
-				console.log("getInputValues");
-				$('.introjs-nextbutton').hide();
+				$('#rowValue').attr('contenteditable', 'false');
 				var rowValue = parseInt($('#rowValue').text());
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$(".introjs-tooltip").removeClass('hide');
 					var text ='<ul><li>The size of an array is <b class="ct-code-b-yellow">'+ rowValue +'</b> so user can access '
 								+'<b class="ct-code-b-yellow">'+ rowValue +'</b> values. </li></ul>';
 					typing(".introjs-tooltiptext", text, function() {
-						$('.introjs-nextbutton').show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 	 				});
 				});
 				break;
 				
 			case "tableDiv":
-				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var action = intro._introItems[intro._currentStep].action;
 					switch(action) {
@@ -295,9 +399,10 @@ var oneDimesionalArrayReady = function() {
 							$('#arrayVal' + i).offset({'top': l.top,'left': l.left}).text($('#blinkCursor' + i).text()).addClass('output-value-circle circle-css');
 							TweenMax.to($('#arrayVal' + i), 2, { top: 0, left: 0, onComplete: function () {
 								$('.arrayValue').removeClass('circle-css');
+								$(".introjs-tooltip").removeClass('hide');
 								var text = 'The array values placed into respective memory location of the array.';
 								typing('.introjs-tooltiptext', text, function () {
-									$('.introjs-nextbutton').show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
 							}});
 						}
@@ -312,7 +417,7 @@ var oneDimesionalArrayReady = function() {
 							
 						break;
 					case "arrayCreation":
-						$('#tableDiv').removeClass('opacity00').addClass('introjs-showElement');
+						$('#tableDiv').removeClass('opacity00');
 						$('.introjs-nextbutton').hide();
 						$('.introjs-helperLayer ').one('transitionend', function() {
 							setTimeout(function() {
@@ -320,10 +425,11 @@ var oneDimesionalArrayReady = function() {
 						}, 1000);
 			 				
 							setTimeout(function() {
+								$(".introjs-tooltip").removeClass('hide');
 								var text ='<b class="ct-code-b-yellow">arr[9]</b> this is <b class="ct-code-b-yellow">One</b> dimensional array with '
 									+'maximum size <b class="ct-code-b-yellow">9</b>.';
-								 typing(".introjs-tooltiptext", text, function() {
-									$('.introjs-nextbutton').show();
+								typing(".introjs-tooltiptext", text, function() {
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
 						}, 2000);
 						});
@@ -335,6 +441,7 @@ var oneDimesionalArrayReady = function() {
 				$('.zIndex').removeClass('zIndex');
 				$('.introjs-nextbutton').hide();
 				$("#restart").removeClass('opacity00');
+				$('.introjs-tooltip').css('min-width', '130px');
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Click to restart.";
 	 				typing(".introjs-tooltiptext", text, function() {
@@ -386,6 +493,12 @@ function dynamicSteps(action) {
 	intro.insertOption(intro._currentStep + 3, dynamicStep);
 }
 
+function setTimeToIntroPreviousStep() {
+	setTimeout(function() {
+		intro.previousStep();
+	}, 800);
+}
+
 function typing(selector, text, callBackFunction) {
 	$(selector).typewriting(text, {
 		"typing_interval" : typingSpeed,
@@ -394,6 +507,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -415,10 +529,12 @@ function finalPrint() {
   if (count < arrValueCount ) {
     storingElement("#final"+count,".output-value-circle", count,function() {
       count++;
-      finalPrint()
+      finalPrint();
     });
   } else {
-	  intro.nextStep();
+	  setTimeout(function() {
+		  intro.nextStep();
+	  }, 800);
   }
 }
 
@@ -449,6 +565,7 @@ function valueRestriction() {
 		}
 		
 		if ($('.introjs-nextbutton[style="display: inline-block;"]').length == 1 && e.keyCode == 13 && intro._currentStep == 11) {
+			$('#rowValue').attr('contenteditable', 'false');
 			intro.nextStep();
 		} 
 		
@@ -467,7 +584,7 @@ function valueRestriction() {
 			$(".introjs-nextbutton").hide();
 			$("#rowValue").empty();
 		} else {
-			$(".introjs-nextbutton").show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}
 	});
 }
@@ -495,7 +612,7 @@ function tableCreation() {
 	var str = ["blue","red","green"];
 	var str1 = ["blue-text","red-text","green-text"];
 	var str2 = ["first","second","third"];
-	var count = 1024;
+	var count = 3058;
 	for (var i = 0; i < rows; i++) {
 		var flag = true;
 		for (var j = 0; j < cols; j++) {
@@ -525,7 +642,7 @@ function keyDownEvent(e) {
 	    	$(this).attr("contenteditable", false);
 			if (totalElements == (valIndex + 1)) {
 				e.preventDefault();
-				$('.introjs-nextbutton').show();
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			} else {
 				valIndex++;
 				$("#consoleBodyDiv1").append("<div id='value"+valIndex+"'>Enter the value of arr["+valIndex+"] : <div style='display:inline-block;' id='blinkCursor"+valIndex+"' class='int input-char outline-none a" + stackIndex[index] + "' placeholder='value' contenteditable='true' maxlength='2'></div></div>");

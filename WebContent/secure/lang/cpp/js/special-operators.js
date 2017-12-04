@@ -1,5 +1,5 @@
 var introjs;
-var typing_interval = 10;
+var typing_interval = 1;
 
 var typingId;
 var typingContent;
@@ -27,6 +27,7 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		$(typingId).removeClass('typingCursor');
 		if (typeof typingCallbackFunction === "function") {
 			typingCallbackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -47,7 +48,8 @@ function introJsFunction() {
 		{
 			element : "#preCode",
 			intro : "",
-			position: "right"
+			position: "right",
+			tooltipClass : "hide"
 		},
 		{
 			element : "#line1",
@@ -55,7 +57,8 @@ function introJsFunction() {
 		},
 		{
 			element : "#line5",
-			intro : ""
+			intro : "",
+			tooltipClass : "hide"
 		},
 		{
 			element : "#line6",
@@ -117,8 +120,80 @@ function introJsFunction() {
 			position : "right"
 		}
 		]});
+	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "headingTextBox":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;	
+		case "preCode":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "line1":
+			$('.background-color-pink').removeClass('background-color-pink');
+		break;
+		case "line5":
+			$('#typing1').empty();
+		break;
+		case "line6":
+
+		break;
+		case "outputBox":
+
+		break;
+		case "sizeOfPrintfLines":
+
+		break;
+		case "outputBox":
+
+		break;
+		case "line8":
+
+		break;
+		case "outputBox":
+
+		break;
+		case "line9":
+
+		break;
+		case "outputBox":
+
+		break;
+		case "line10":
+
+		break;
+		case "outputBox":
+
+		break;
+		case "line11":
+
+		break;
+		case "outputBox":
+
+		break;
+		}
+	});
 
 	introjs.onafterchange(function(targetElement) {
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -126,10 +201,12 @@ function introJsFunction() {
 			$('#headingTextBox .opacity00').eq(0).append('<a class="introjs-button introjs-duplicate-nextbutton1" ' + 
 															'onClick="textFunction1()">Next &#8594;</a>');
 			opacityTo100WithTweenMax($('#headingTextBox .opacity00').eq(0));
-			break;
+		break;
 		case "preCode":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#demoDiv').removeClass('visibility-hidden');
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$('.introjs-tooltip').removeClass('hide');
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'This code demonstrate the usage of <span class="ct-code-b-yellow">comma</span> and ' +
 								'<span class="ct-code-b-yellow">sizeof()</span> operators.</span>';
@@ -140,23 +217,27 @@ function introJsFunction() {
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
-			break;
+		break;
 		case "line1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$('.introjs-tooltip').removeClass('hide');
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'Whenever we are declaring multiple variables of the same data type we can use ' +
 								'<span class="ct-code-b-yellow">comma</span> operator as shown above.';
 				typingInterval = typing_interval;
 				cursorColor = 'white';
 				typingCallbackFunction = function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
-			break;
+		break;
 		case "line5":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				typingId = '.introjs-tooltiptext';
+				$('.introjs-tooltip').removeClass('hide');
 				typingContent = '<span class="ct-code-b-yellow">Comma</span> operator can also be used to group multiple expressions as shown above.';			
 				typingInterval = typing_interval;
 				cursorColor = 'white';
@@ -168,18 +249,19 @@ function introJsFunction() {
 			});
 			break;
 		case "sizeOfPrintfLines":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				typingId = '.introjs-tooltiptext';
-				typingContent = 'The below five <span class="ct-code-b-yellow">cout</span> statements demonstrate the usage of ' +
+				typingContent = 'The below five <span class="ct-code-b-yellow">cout()</span> statements demonstrate the usage of ' +
 								'<span class="ct-code-b-yellow">sizeof()</span> operator.';
 				typingInterval = typing_interval;
 				cursorColor = 'white';
 				typingCallbackFunction = function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
-			break;
+		break;
 		case "line6":
 			$('.background-color-pink').removeClass('background-color-pink');
 		case "line7":
@@ -189,31 +271,100 @@ function introJsFunction() {
 		case "line11":
 			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function () {
-				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
-			});
-			break;
-		case "outputBox":
-			$('.introjs-helperLayer').one('transitionend', function () {
-				typingId = $(".output-console-body .visibility-hidden").eq(0);
-				typingContent = $(".output-console-body .visibility-hidden").eq(0).html();
-				$(".output-console-body .visibility-hidden").eq(0).removeClass('visibility-hidden');
-				typingInterval = 30;
-				cursorColor = 'white';
-				typingCallbackFunction = function() {
-					setTimeout(function() {
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
 						introjs.nextStep();
 					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
 				}
-				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
-			break;
+		break;
+		case "outputBox":
+			$('.introjs-helperLayer').one('transitionend', function () {
+				if (introjs._currentStep == 5) {
+					if (introjs._direction == "forward") {
+						$(".output-console-body #firstVal").removeClass('visibility-hidden');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							$(".output-console-body #firstVal").addClass('visibility-hidden');
+							introjs.previousStep();
+						}, 1000);
+					}
+				} else if (introjs._currentStep == 8) {
+					if (introjs._direction == "forward") {
+						$(".output-console-body #secondVal").removeClass('visibility-hidden');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							$(".output-console-body #secondVal").addClass('visibility-hidden');
+							introjs.previousStep();
+						}, 1000);
+					}
+					
+				} else if (introjs._currentStep == 10) {
+					if (introjs._direction == "forward") {
+						$(".output-console-body #thirdVal").removeClass('visibility-hidden');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							$(".output-console-body #thirdVal").addClass('visibility-hidden');
+							introjs.previousStep();
+						}, 1000);
+					}
+				} else if (introjs._currentStep == 12) {
+					if (introjs._direction == "forward") {
+						$(".output-console-body #fourthVal").removeClass('visibility-hidden');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							$(".output-console-body #fourthVal").addClass('visibility-hidden');
+							introjs.previousStep();
+						}, 1000);
+					}
+				} else if (introjs._currentStep == 14) {
+					if (introjs._direction == "forward") {
+						$(".output-console-body #fifthVal").removeClass('visibility-hidden');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							$(".output-console-body #fifthVal").addClass('visibility-hidden');
+							introjs.previousStep();
+						}, 1000);
+					}
+				} else if (introjs._currentStep == 16) {
+					if (introjs._direction == "forward") {
+						$(".output-console-body #sixthVal").removeClass('visibility-hidden');
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							$(".output-console-body #sixthVal").addClass('visibility-hidden');
+							introjs.previousStep();
+						}, 1000);
+					}
+				}
+			});
+		break;
 		case "restartBtn":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
 			});
-			break;
+		break;
 		}
 	});
 	
@@ -259,6 +410,7 @@ function textFunction2() {
 
 function textFunction3() {
 	$('.introjs-duplicate-nextbutton1').remove();
+	$('#headingTextBox').addClass("z-index");
 	introjs.nextStep();
 }
 
@@ -304,7 +456,7 @@ function statementFunction3() {
 	typingInterval = typing_interval;
 	cursorColor = 'white';
 	typingCallbackFunction = function() {
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}
 	typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 }

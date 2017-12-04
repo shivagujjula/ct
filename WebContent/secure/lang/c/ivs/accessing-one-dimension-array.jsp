@@ -19,8 +19,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/aoda.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/accessing-one-dimension-array.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/aoda.min.js" type="text/javascript"></script>
 
 <style type="text/css">
 
@@ -72,7 +71,8 @@ pre {
 }
 
 #typingDiv {
-	height: 40px;
+	min-height: 40px;
+	font-family: monospace;
 }
 
 .back-color {
@@ -214,7 +214,7 @@ $(document).ready(function() {
 		</div>
 
 		<div class="col-xs-12">
-			<div id="typingDiv" class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
+			<div id="typingDiv" class='margin-top20 col-xs-offset-2 col-xs-8 col-xs-offset-2'>
 					<ul><li>Array is used to store a collection similar type of data in continues memory location (Address).</li>
 					<li>General format of one dimension array is as follows 
 					<div id="textAnimate" class="text-bold" style="display:inline-block"> 
@@ -229,13 +229,13 @@ $(document).ready(function() {
 #include <span>&lt;stdio.h&gt;</span>
 void main() {
 	<span id='variableDeclaraiton'><span id='array'>int arr[9]</span>, i, n;</span>
-	<span id='getRowColumn'>printf (" Enter how many values you want to read : ");</span>
+	<span id='getRowColumn'>printf("Enter how many values you want to read : ");</span>
 	<span id='scanf'>scanf ("%d", &n);</span>
 	<span id='getInputValues'>for (i = 0; i &lt; n; i++ ) {
-		<span id='matrixValues'>printf ( " Enter the value of arr[%d] : " , i);</span>
+		<span id='matrixValues'>printf("Enter the value of arr[%d] : " , i);</span>
 		scanf ("%d", &a[i]);
 	} </span>
-	<span id='codePrintf'>printf (" The array elements are : \n");</span>
+	<span id='codePrintf'>printf("The array elements are : \n");</span>
 	<span id='printForLoop'>for( i = 0; i &lt; n; i++ ) {
 		printf ("%d ", a[i]);
 	}</span>

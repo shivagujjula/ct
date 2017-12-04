@@ -15,7 +15,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="../js-min/fold.min.js"></script>
+<script src="/secure/lang/cpp/js-min/fold.min.js"></script>
 
 <title>Function overloading</title>
 <style type="text/css">

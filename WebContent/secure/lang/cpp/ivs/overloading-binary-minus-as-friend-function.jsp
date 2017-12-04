@@ -308,7 +308,7 @@ div, span {
 		 	<li id="list3" class="opacity00">The format of <span class="ct-code-b-green">operator function</span> call is : <br>
 		 		&emsp;<span class="ct-Maroon-color">object3 =  object1 - object2;</span><br>
 		 		User can also write the above statement as : <br>
-		 		&emsp;<span class="ct-Maroon-color">object3 = object1.operator -(object2);</span><br>
+		 		&emsp;<span class="ct-Maroon-color">object3 = operator -(object1, object2);</span><br>
 				<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
 			</li>
 		</ul>

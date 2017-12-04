@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +15,11 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/ifelse.min.js"></script>
+<!-- <script src="/secure/lang/c/js-min/ieic.min.js"></script> -->
+<script src="/secure/lang/j/js/if-else.js"></script>
 
 <style type="text/css">
+
 .introjs-tooltip-custom-width {
 	min-width: -moz-fit-content;
 	width: intrinsic; /* Safari/WebKit uses a non-standard name */
@@ -26,12 +27,28 @@
 	width: -webkit-max-content;
 }
 
+.position-absolute {
+	position: absolute;
+	font-family: monospace;
+}
+
 .allowNumbers {
+	background-color: transparent;
+	border: none;
+	width: 20px;
+}
+
+.allowNumbers:focus {
 	outline: none;
+}
+
+.introjs-tooltip {
+	min-width: 300px; !important;
 }
 
 body {
 	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 #outputDiv {
@@ -49,7 +66,7 @@ body {
 .output-console-body {
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
-	height: 200PX;
+	height: 150px;
 	margin-bottom: 14px;
 	padding: 10px;
 	font-weight: bold;
@@ -86,7 +103,7 @@ body {
 }
 
 #conditionTest {
-	position: absolute;
+	position: relative;
 	font-family: monospace;
 }
 
@@ -116,27 +133,73 @@ body {
 	color: red;
 }
 
-.SENIOR_CITIZEN_AGE {
+.distinction_marks {
 	position: absolute;
+	display: inline-block;
 }
 
 #citizenSpan {
 	position: relative;
 	left: 30px;
 }
+
+.introjs-tooltip-min-width-custom {
+	min-width: 110px;
+}
+
+.introjs-tooltiptext br {
+	content: "";
+	display: block;
+	margin-top: 10px;
+}
+
+.else-css {
+	left: 180px !important;
+}
+
+pre {
+	font-size: 11px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+/* a:focus {
+	outline: none;
+} */
+
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+
+
 </style>
 
-<script type="text/javascript">
-
-
-$(document).ready(function() {
-	ifElseReady();
-});
-
-
-
-
-</script>
 </head>
 <body>
 	<div class="col-xs-12">
@@ -145,19 +208,20 @@ $(document).ready(function() {
 				<span class="label ct-demo-heading">if-else in Action</span>
 			</h4>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-offset-1 col-xs-6">
 			<div>
-				<pre class="creamePreTab4">public class IfElseDemo {
-	public static void main(String[] args) {
-		<span id='citizenAge'>int SENIOR_CITIZEN_AGE = 60;</span>
-		<span id='initialization'>int age = <span id='initializationValue' class='allowNumbers'  maxlength="2" contenteditable=false placeholder=" ">56</span>;</span>
-		<span id='ifElseBlock'>if (<span id='condition'>age > SENIOR_CITIZEN_AGE</span>) {
-			<span id='ifStmt'>System.out.println("Person is a senior citizen");</span>
-		} else {
-			<span id='elseStmt'>System.out.println("Person is not a senior citizen");</span>
-		}</span>
+<pre class="creamePreTab4"><in>public class</in> <ink>IfElseDemo</ink> {
+	<in>public static void main</in>(String[] args) {
+		<span id='citizenAge'><g>int</g> SENIOR_CITIZEN_AGE = <ink>75</ink>;</span>
+		<span id='initialization'><g>int</g> age = <ink><input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="2" value='60'></span></ink>;
+		<span id='ifElseBlock'><span id='ifBlock'><go>if</go> (<span id='condition'>age > SENIOR_CITIZEN_AGE</span>) {
+			<span id='ifStmt'>System.out.println(<ink>"Person is a senior citizen"</ink>);</span>
+		}</span> <span id='elseBlock'><go>else</go> {
+			<span id='elseStmt'>System.out.println("<ink>Person is not a senior citizen</ink>");</span>
+		}</span></span>
 	<span id='mainEnd'>}</span>
-}</pre>
+}
+</pre>
 			</div>
 		</div>
 		<div class="col-xs-4" id="outputDiv">
@@ -169,7 +233,16 @@ $(document).ready(function() {
 		</div>
 	</div><br>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id="restart">Restart</a>
 	</div>
+	
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		ifElseInCReady();	
+	});
+
+</script>
+	
 </body>
 </html>

@@ -26,6 +26,7 @@
 .zIndex {
 	position: relative;
 	z-index: 9999999;
+	background: white;
 }
 
 .input-all {
@@ -70,7 +71,8 @@ pre {
 }
 
 #typingDiv {
-	/* height: 40px; */
+	min-height: 40px;
+	font-family: monospace;
 }
 
 .back-color {
@@ -139,9 +141,9 @@ div, span {
 	position: relative;
 }
 
-pre > span {
+/* pre > span {
 	position: static;
-}
+} */
 
 .table-css {
 	text-align: center;
@@ -211,13 +213,6 @@ $(document).ready(function() {
 			<h1 class='label ct-demo-heading' id="heading">One Dimensional Array</h1>
 		</div>
 
-		<div class='col-xs-12 text-center'>
-			<span id='restart'
-				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
-				&nbsp;<i class='fa fa-refresh'></i>
-			</span>
-		</div>
-
 		<div id="typingDiv"
 			class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
 				<ul><li>Array is used to store a collection similar type of data in continues memory location (Address).</li>
@@ -262,22 +257,29 @@ int main() {
 				</div>
 			</div>
 		</div>
-<div class="col-xs-12"><div id='tableDiv'>
+<div class="col-xs-12">
+	<div id='tableDiv'>
 
-<div class='col-xs-12' id='arrayBox'>
-						<table class='table-css'>
-							<tbody>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-</div></div>
+		<div class='col-xs-12' id='arrayBox'>
+			<table class='table-css'>
+				<tbody>
+					<tr>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
+</div>
+<div class='col-xs-12 text-center'>
+	<span id='restart'
+		class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
+		&nbsp;<i class='fa fa-refresh'></i>
+	</span>
+</div>
 
 </body>
 </html>

@@ -18,7 +18,7 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/spos.min.js"></script>
 
-<title>Insert title here</title>
+<title>special-operators</title>
 
 <style>
 
@@ -62,7 +62,7 @@
 }
 
 .creamPreTab4 {
-	-moz-tab-size: 6;
+	tab-size: 3;
     background-color: #fffae6;
     border-radius: 8px;
     font-size: 11px;
@@ -73,6 +73,17 @@
 
 .output-console {
 	padding: 0;
+}
+
+.output-console-body {
+    background-color: black;
+    padding-left: 20px;
+    color: #f0f0f0;
+    font-family: monospace;
+    font-size: 10px;
+    /* white-space: pre; */
+    overflow-y: auto;
+    line-height: 1.2;
 }
 
 .heading-text-div {
@@ -103,6 +114,11 @@
 	background-color: pink;
 }
 
+.z-index {
+	position: relative;
+	z-index: 9999999;
+	background-color: white;
+}
 </style>
 
 </head>
@@ -146,13 +162,13 @@
 <pre class='creamPreTab4' id='preCode'>
 #include &lt;iostream&gt;
 using namespace std;
-int main() {
+void main() {
 	<span id='line1'>int a, f, g, e[10];</span>
 	<span id='line2'><span>float</span> <span>b</span>;</span>
 	<span id='line3'><span>double</span> <span>c</span>;</span>
 	<span id='line4'><span>char</span> <span>d</span>;</span>
 	<span id='line5'><span>a</span> = (<span>f = 5</span>, <span>g = 4</span>, <span>f + g</span>);</span>
-	<span id='line6'>cout << "Value of a = " << a << "\n";</span>
+	<span id='line6'>cout("Value of a = " << a << "\n";</span>
 <span id='sizeOfPrintfLines'>	<span id='line7'>cout << "Size of int = "<< sizeof(a) << "bytes\n";</span>
 	<span id='line8'>cout << "Size of float = " << sizeof(b) << " bytes\n";</span>
 	<span id='line9'>cout << "Size of double = " << sizeof(c) << " bytes\n", );</span>
@@ -162,18 +178,20 @@ int main() {
 </pre>
 		</div>
 		<div class="output-console col-xs-4" id='outputBox'>
-		<div class="output-console-title-bar">
-			<span>Output</span>
+			<div class="output-console-title-bar">
+				<span>Output</span>
+			</div>
+			<div>
+				<div class="output-console-body">
+					<div id="firstVal" class='visibility-hidden'>Value of a = 9</div>
+					<div id="secondVal" class='visibility-hidden'>Size of int = 4 bytes</div>
+					<div id="thirdVal" class='visibility-hidden'>Size of float = 4 bytes</div>
+					<div id="fourthVal" class='visibility-hidden'>Size of double = 8 bytes</div>
+					<div id="fifthVal" class='visibility-hidden'>Size of char = 1 byte</div>
+					<div id="sixthVal" class='visibility-hidden'>Size of integer type array having 10 elements = 40 bytes</div>
+				</div>
+			</div>
 		</div>
-		<div class="output-console-body">
-<span class='visibility-hidden'>Value of a = 9</span>
-<span class='visibility-hidden'>Size of int = 4 bytes</span>
-<span class='visibility-hidden'>Size of float = 4 bytes</span>
-<span class='visibility-hidden'>Size of double = 8 bytes</span>
-<span class='visibility-hidden'>Size of char = 1 byte</span>
-<span class='visibility-hidden'>Size of integer type array having 10 elements = 40 bytes</span>
-		</div>
-	</div>
 	</div>
 </div>
 

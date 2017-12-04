@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -27,7 +27,8 @@ function introGuide() {
 				},{
 			 		element : "#code",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#main",
 					intro : "",
@@ -35,11 +36,13 @@ function introGuide() {
 				},{
 			 		element : "#addFun1",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#method1",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#outputDiv",
 					intro : "",
@@ -47,11 +50,13 @@ function introGuide() {
 				},{
 			 		element : "#addFun2",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#method2",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#outputDiv",
 					intro : "",
@@ -59,11 +64,13 @@ function introGuide() {
 				},{
 			 		element : "#addFun3",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#method4",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#outputDiv",
 					intro : "",
@@ -71,7 +78,8 @@ function introGuide() {
 				},{
 			 		element : "#addFun4",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#method3",
 					intro : "",
@@ -83,7 +91,8 @@ function introGuide() {
 				},{
 			 		element : "#addFun5",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass:"hide"
 				},{
 			 		element : "#outputDiv",
 					intro : "",
@@ -94,8 +103,81 @@ function introGuide() {
 					position : "right"
 				}
 			]});
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "topDiv":
+		break;
+		case "code":
+			if (introjs._direction == "backward") {
+				$(".color").removeClass("yellow");
+			}
+		break;
+		case "main":
+			$("#addFun1").addClass("hide");
+		break;
+		case "addFun1":
+		break;
+		case "method1":
+			$("#outputDiv").addClass("opacity00")
+			$("#addFun2").addClass("hide")
+		break;
+		case "outputDiv":
+			if (introjs._currentStep == 5) {
+				$("#body").text("");
+			} else if (introjs._currentStep == 8) {
+				
+					$("#float").text("");
+				
+			} else if (introjs._currentStep == 11) {
+					$("#sint").text("");
+			} else if (introjs._currentStep == 14) {
+					$("#sdouble").text("");
+			} else if (introjs._currentStep == 16) {
+			}
+		break;
+		case "addFun2":
+		break;
+		case "method2":
+			$("#addFun3").addClass("hide")
+		break;
+		case "addFun3":
+			//$("#addFun4").addClass("hide")
+		break;
+		case "method4":
+			$("#addFun4").addClass("hide")
+		break;
+		case "addFun4":
+		break;
+		case "method3":
+			$("#addFun5").addClass("hide")
+		break;
+		case "addFun5":
+		break;
+		}
+	});
 	
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
 		introjs.refresh();
@@ -116,6 +198,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
 				var text = "Let us consider sample C++ program.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="codeText()">Next &#8594;</a>');
@@ -124,13 +207,13 @@ function introGuide() {
 		break;
 		case "main":
 			introjs.refresh();
-			$(".color").removeClass("yellow");
+			$(".color").addClass("yellow");
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<y>main()</y> is the starting execution point of <y>c++</y> program.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -138,6 +221,8 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
+				$("#addFun1").removeClass("hide");
 				var text = "The <y>add()</y> is called with one int value <y>10</y> so the call is made to the exact matching function <y>add(int)</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -148,7 +233,8 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<y>add(int, int)</y> called and print the number on the console.<br>";
+				$(".introjs-tooltip").removeClass("hide")
+				var text = "<y>add(int)</y> called and print the number on the console.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append(" <div id='firstAddition' class='display-inline-block relative ct-code-b-yellow'>"
 						+ " <div id='tooltipA1Val' class='display-inline-block relative'>a</div>"
@@ -161,7 +247,7 @@ function introGuide() {
 						TweenMax.to("#tooltipA1Val", 0.5, {rotationX : -90, onComplete:function() {
 							$("#tooltipA1Val").text($("#intVal1").text());
 							TweenMax.to("#tooltipA1Val", 0.5, {rotationX : 0, onComplete:function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							}});
 						}});
 					}});
@@ -172,57 +258,89 @@ function introGuide() {
 			$("#outputDiv").removeClass("opacity00");
 			if (introjs._currentStep == 5) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>The integer value is = 10</div>");
-					setTimeout(function(){
-						introjs.nextStep();
+				setTimeout(function() {
+					if (introjs._direction=="forward") {
+						$('.introjs-nextbutton').hide();
+						$('.introjs-prevbutton').hide();
+						$(".introjs-helperLayer").one("transitionend", function() {
+							$("#body").append("<div>The integer value is = 10</div>");
+							setTimeout(function() {
+							introjs.nextStep()
+							}, 500);
+						});
+					} else {
+							introjs.previousStep()
+							}
 					}, 500);
-				});
+				
 			} else if (introjs._currentStep == 8) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Sum of two float values = 29.1</div>");
-					setTimeout(function(){
-						introjs.nextStep();
+				setTimeout(function() {
+					if (introjs._direction=="forward") {
+						$('.introjs-nextbutton').hide();
+						$('.introjsjs-prevbutton').hide();
+						$(".introjs-helperLayer").one("transitionend", function() {
+							$("#body").append("<div id = 'float'>Sum of two float values = 29.1</div>");
+							setTimeout(function() {
+								introjs.nextStep()
+								}, 500);
+						});
+					} else {
+							introjs.previousStep()
+							}
 					}, 500);
-				});
 			} else if (introjs._currentStep == 11) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Sum of three double values = 180</div>");
-					setTimeout(function(){
-						introjs.nextStep();
+				setTimeout(function() {
+					if (introjs._direction=="forward") {
+						$('.introjs-nextbutton').hide();
+						$('.introjs-prevbutton').hide();
+						$(".introjs-helperLayer").one("transitionend", function() {
+							$("#body").append("<div id = 'sint'>Sum of three integer values = 180</div>");
+							setTimeout(function() {
+								introjs.nextStep()
+								}, 500);
+						});
+					} else {
+							introjs.previousStep()
+							}
 					}, 500);
-				});
 			} else if (introjs._currentStep == 14) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Sum of two double values = 60.8</div>");
-					setTimeout(function(){
-						introjs.nextStep();
+				setTimeout(function() {
+					if (introjs._direction=="forward") {
+						$('.introjs-nextbutton').hide();
+						$('.introjs-prevbutton').hide();
+						$(".introjs-helperLayer").one("transitionend", function() {
+							$("#body").append("<div id= 'sdouble' >Sum of two double values = 60.8</div>");
+							setTimeout(function() {
+								introjs.nextStep()
+								}, 500);
+						});
+					} else {
+							introjs.previousStep()
+						}
 					}, 500);
-				});
 			} else if (introjs._currentStep == 16) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").empty();
-					$("#body").append("<div>overloading.cpp: In function 'main()': <br>"
-							+ " overloading.cpp:20:10: <red><b>error</b></red>: no matching function for call to 'add(int)' "
-							+ " add(8.2)</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 500);
-				});
+					setTimeout(function() {
+						if (introjs._direction=="forward") {
+							$('.introjs-nextbutton').hide();
+							$('.introjs-prevbutton').hide();
+							$(".introjs-helperLayer").one("transitionend", function() {
+								$("#body").empty();
+								$("#body").append("<div>overloading.cpp: In function 'main()': <br>"
+										+ " overloading.cpp:20:10: <red><b>error</b></red>: no matching function for call to 'add(int)' "
+										+ " add(8.2)</div>");
+								setTimeout(function() {
+									introjs.nextStep()
+									}, 500);
+							});	
+						} else {
+									introjs.previousStep()
+								}
+						}, 500);
+				
 			}
 		break;
 		case "addFun2":
@@ -230,9 +348,11 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
+				$("#addFun2").removeClass("hide")
 				var text = "The <y>add()</y> is called with two float values <y>12.4</y>, <y>16.7</y> so the call is made to the exact matching function<br> <y>add(float, float)</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -241,7 +361,8 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "add(float, float) called and print the sum on the console..";
+				$(".introjs-tooltip").removeClass("hide")
+				var text = "<y>add(float, float)</y> called and print the sum on the console..";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append(" <div id='thirdAddition' class='display-inline-block relative ct-code-b-yellow'>"
 						+ " <div id='tooltipA3Val' class='display-inline-block relative'>a</div> + <div id='tooltipB3Val' class='display-inline-block relative'>b</div>"
@@ -259,7 +380,7 @@ function introGuide() {
 									$("#tooltipB3Val").text($("#floatVal2").text());
 									TweenMax.to("#tooltipB3Val", 0.5, {rotationX : 0, onComplete:function() {
 										$("#tooltipC3Val").removeClass("opacity00");
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton,.introjs-prevbutton').show();
 									}});
 								}});
 							}});
@@ -273,9 +394,11 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
+				$("#addFun3").removeClass("hide")
 				var text = "The <y>add()</y> is called with three integer values <y>30</y>, <y>60</y>, <y>90</y> so the call is made to the exact matching function<br> <y>add(int, int, int)</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -284,6 +407,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
 				var text = "<y>add(int, int, int)</y> called and print the sum on the console.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append(" <div id='fourthAddition' class='display-inline-block relative ct-code-b-yellow'>"
@@ -306,7 +430,7 @@ function introGuide() {
 											$("#tooltipC4Val").text($("#intVal113").text());
 											TweenMax.to("#tooltipC4Val", 0.5, {rotationX : 0, onComplete:function() {
 												$("#tooltipD4Val").removeClass("opacity00");
-												$('.introjs-nextbutton').show();
+												$('.introjs-nextbutton,.introjs-prevbutton').show();
 											}});	
 										}});
 									}});
@@ -323,9 +447,11 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
+				$("#addFun4").removeClass("hide")
 				var text = "The <y>add()</y> is called with two double values <y>20.3</y>, <y>40.5</y> so the call is made to the exact matching function<br> <y>add(double, double)</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -334,6 +460,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$("introjs-tooltip").removeClass("hide")
 				var text = "<y>add(double, double)</y> called and print the sum on the console.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append(" <div id='fifthAddition' class='display-inline-block relative ct-code-b-yellow'>"
@@ -352,7 +479,7 @@ function introGuide() {
 									$("#tooltipB5Val").text($("#doubleVal2").text());
 									TweenMax.to("#tooltipB5Val", 0.5, {rotationX : 0, onComplete:function() {
 										$("#tooltipC5Val").removeClass("opacity00");
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton,.introjs-prevbutton').show();
 									}});
 								}});
 							}});
@@ -367,9 +494,11 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide")
+				$("#addFun5").removeClass("hide")
 				var text = "This call gives an error, why because the matching function definition is not available.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -414,6 +543,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }

@@ -4,22 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/tablesorter/jquery-ui.css" rel="stylesheet">
-<link href="/css/introjs.css" rel="stylesheet">
-<link href="/css/introjs-ct.css" rel="stylesheet">
-<script src="/js/jquery-latest.js"></script>
-<script src="/js/bootstrap.js"></script>
-<script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
-<script src="/js/intro.js" type="text/javascript"></script>
-<script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/claia.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/introjs.css">
+<link rel="stylesheet" href="/css/introjs-ct.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
-<title>Command Line Arguments in Action</title>
+<script type="text/javascript" src="/js/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-latest.js"></script>
+<script type="text/javascript" src="/js/intro.js"></script>
+<script type="text/javascript" src="/js/typewriting.min.js"></script>
+<script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+<script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 
+<script src="../js/command-line-arguments-in-action.js" type="text/javascript"></script>
+<title>CMD</title>
 <style>
-
 .box-main {
 	margin: 10px;
 	padding: 10px;
@@ -126,37 +128,23 @@ ol, ul {
     position: relative;
     z-index: 9999999;
 }
-
 </style>
-
+</head>
+<body>
 <script>
 	
-	<%
-	if (request.getParameter("restart") != null) {
-	%>
-	setTimeout(function () {
-		$("#startBtn").click();
-	}, 500);
-	<%
-	}
-	%> 
-
 $(document).ready(function() {
 	commandLineArgumentsInActionReady();
 });
 
 </script>
-
-</head>
-<body>
-
 <div class='box-main'>
 	<div class='text-center'>
 		<h1 class='label ct-demo-heading'>Command Line Arguments in Action</h1>
 	</div>
 	<div class='buttons-div'>
 		<button type="button" class="btn btn-success" id="startBtn">Start</button>
-		<button type="button" class="btn btn-warning hidden" id="restartBtn">Restart</button>
+		<button type="button" class="opacity00 btn btn-warning hidden" id="restartBtn">Restart</button>
 	</div>
 	<div>
 		<div class='row'>
@@ -177,26 +165,26 @@ public class <span id='className'>Example</span> {
 				<div>
 					<span>&gt;&gt; <span id='commandLine'>java <b>Example</b></span> <span id='commandLineValues'><span id='value0'>Ganga</span> <span id='value1'>73</span> <span id='value2'>Gold</span></span></span>
 				</div>
-				<div>
+				<div id=tableDiv>
 					<table align="center">
-						<tr>
+						<tr id="tr0">
 							<td><span id='tdIndex0' class='opacity00 position-relative'>0</span></td>
 							<td><span id='tdIndex1' class='opacity00 position-relative'>1</span></td>
 							<td><span id='tdIndex2' class='opacity00 position-relative'>2</span></td>
 						</tr>
-						<tr>
+						<tr id="tr1">
 							<td id='td0'><span id='tdValue0' class='opacity00 position-relative'>Ganga</span></td>
 							<td id='td1'><span id='tdValue1' class='opacity00 position-relative'>73</span></td>
 							<td id='td2'><span id='tdValue2' class='opacity00 position-relative'>Gold</span></td>
 						</tr>
-						<tr>
+						<tr id="tr2">
 							<td><span id='tdLength0' class='opacity00'>1</span></td>
 							<td><span id='tdLength1' class='opacity00'>2</span></td>
 							<td><span id='tdLength2' class='opacity00'>3</span></td>
 						</tr>
 					</table>
 				</div>
-				<div class="output-console center">
+				<div class="output-console center" id="outputDiv">
 					<div class="output-console-title-bar">
 						<span>Output</span>
 					</div>

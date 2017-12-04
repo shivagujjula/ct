@@ -170,7 +170,7 @@ color : green;
 }
 
 .ui-effects-transfer {
-    border: 2px dashed blue;
+    border: 2px dashed deeppink;
    z-index:10000000 !important;
  }
  
@@ -257,7 +257,7 @@ span {
 					<span>Output</span>
 				</div>
 				<div class="output-console-body " id="body">
-					<span class= "opacity00" id ="inputNumber">Enter a number : <input id='inputChar' maxlength='2' class='input-char'/></span><br>
+					<span class= "opacity00" id ="inputNumber">Enter a number : <input id='inputChar' disabled='disabled' maxlength='2' class='input-char'/></span><br>
 					<span class= "  opacity00" id ="inputNumber1">The cube of a given number : </span><span id="inputNumber2"></span>
 				</div>
 			</div>

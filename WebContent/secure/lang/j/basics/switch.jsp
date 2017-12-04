@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +7,33 @@
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/font-awesome.min.css" rel="stylesheet">
-
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/switch.min.js"></script>
+<script src="/secure/lang/j/js/switch.js"></script>
+
 <style type="text/css">
+
 .allowNumbers {
+	background-color: transparent;
+	border: none;
+	width: 10px;
+}
+
+.allowNumbers:focus {
 	outline: none;
+}
+
+.position-absolute {
+	position: absolute;
+	font-family: monospace;
 }
 
 body {
 	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 [contenteditable=true]:empty:before {
@@ -106,49 +117,77 @@ body {
 .introjs-arrow.left-bottom {
 	bottom: 50% !important;
 }
+
+.introjs-tooltip-min-width-custom {
+	min-width: 110px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+.tooltip-class {
+	
+}
+
+
+
 </style>
 
-<script type="text/javascript">
-	
-	$(document).ready(function() {
-		switchReady();
-	});
-
-</script>
 </head>
 <body>
 	<div class='col-xs-12'>
 		<div class="text-center">
 			<h4>
-				<span class="label ct-demo-heading">switch in Action</span>
+				<span class="label ct-demo-heading">switch-statement in Action</span>
 			</h4>
 		</div>
-		<div class="col-xs-9">
+		<div class="col-xs-offset-1 col-xs-7">
 			<div>
-				<pre class="creamePreTab4">public class SwitchDemo {
-	public static void main(String[] args) {
-		<span id='initialization'>int value = <span id='initializationValue' class='allowNumbers'  maxlength="1" contenteditable=true placeholder=" ">2</span>;</span>
-		<span id='switchBlock'><span id='switchKeyword'>switch (<span id='condition'>value</span>) </span><span id='openBrace'>{</span>
-			<span id='case1Blk'><span id='case1'>case 1:</span>
-				<span id='case1Sop'>System.out.println("One");</span>
-				<span id='case1break'>break;</span></span>
-			<span id='case2Blk'><span id='case2'>case 2:</span>
-				<span id='case2Sop'>System.out.println("Two");</span>
-				<span id='case2break'>break;</span></span>
-			<span id='case34Blk'><span id='case3Blk'><span id='case3'>case 3:</span>
-				<span id='case3Sop'>System.out.println("Three");</span></span>
-			<span id='case4Blk'><span id='case4'>case 4:</span>
-				<span id='case4Sop'>System.out.println("Four");</span>
-				<span id='case4break'>break;</span></span></span>
-			<span id='case56Blk'><span id='case5'>case 5:</span>
-			<span id='case6'>case 6:</span>
-				<span id='case56Sop'>System.out.println("Five or Six");</span>
-				<span id='case56break'>break;</span></span>
-			<span id='defaultBlk'><span id='casedefault'>default:</span>
-				<span id='defaultSop'>System.out.println(value + " did not match any of the existing cases.");</span></span>
-		<span id='endBrace'>}</span></span>
+			<pre class="creamePreTab4"><in>public class</in> <ink>SwithDemo</ink> {
+	<g>public static void</g> main() {
+	   <span id='initialization'><g>int</g> value = <ink><input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="1" value='2'></ink>;</span>
+	   <span id='switchBlock'><span id='switchKeyword'><go>switch</go> (<span id='condition'>value</span>) </span><span id='openBrace'>{</span>
+		 <span id='case1Blk'><span id='case1'><go>case</go> <ink>1</ink>:</span>
+			<span id='case1Sop'>System.out.println(<ink>"One"</ink>);</span>
+			<span id='case1break'><go>break</go>;</span></span>
+		 <span id='case2Blk'><span id='case2'><go>case</go> <ink>2</ink>:</span>
+			<span id='case2Sop'>System.out.println(<ink>"Two"</ink>);</span>
+			<span id='case2break'><go>break</go>;</span></span>
+		 <span id='case34Blk'><span id='case3Blk'><span id='case3'><go>case</go> <ink>3</ink>:</span>
+			<span id='case3Sop'>System.out.println(<ink>"Three"</ink>);</span></span>
+		 <span id='case4Blk'><span id='case4'><go>case</go> <ink>4</ink>:</span>
+			<span id='case4Sop'>System.out.println(<ink>"Four"</ink>);</span>
+			<span id='case4break'><go>break</go>;</span></span></span>
+		 <span id='case56Blk'><span id='case5'><go>case</go> <ink>5</ink>:</span>
+		 <span id='case6'><go>case</go> <ink>6</ink>:</span>
+		 	<span id='case56Sop'>System.out.println(<ink>"Five or Six"</ink>);</span>
+			<span id='case56break'><go>break</go>;</span></span>
+		 <span id='defaultBlk'><span id='casedefault'><go>default</go>:</span>
+			<span id='defaultSop'>System.out.println(<ink> <in>value</in> + " did not match any of the existing cases"</ink>);</span></span>
+	   <span id='endBrace'>}</span></span>
 	<span id='mainEnd'>}</span>
-}</pre>
+}
+</pre>
 			</div>
 		</div>
 		<div class="col-xs-3" id="outputDiv">
@@ -158,6 +197,13 @@ body {
 			<div class="output-console-body"><span id="output"></span>
 			</div>
 		</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		switchStatementInCReady();
+	});
+</script>		
+
 </div>
 </body>
 </html>
