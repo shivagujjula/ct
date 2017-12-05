@@ -61,10 +61,10 @@
 	margin-top: 40px;
 }
 
-.center {
+ .center {
 	margin-left: auto;
 	margin-right: auto;
-}
+} 
 
 #outputDiv {
 	margin-top: 45px;
@@ -167,7 +167,9 @@
     font-size: 12px;
     padding: 4px 10px;
 }
-
+#description {
+font-family:monospace;
+}
 </style>
 
 <script type="text/javascript">
@@ -184,8 +186,8 @@
 </div>
 
 <div class=" margin-top-20 col-xs-12">
-  <div class="col-xs-5 center  box-border" id="description" style="float: unset;">
-  	<div id="desText" style="padding: 7px 0px; line-height: 1.7;"> 
+  <div class="col-xs-8 col-xs-offset-2 box-border" id="description">
+  	<div id="desText" style="padding: 7px 0px; line-height: 1.6;"> 
   		<ul>
   			<li id="desList1" class="opacity00">In the statement <span class="b-black">scanf
 	 			("<span class='ct-code-b-yellow'>%d</span>,<span class='ct-code-b-yellow'>%d</span>", &a,&b);</span> 

@@ -181,7 +181,7 @@
 
 <div class=" margin-top-20 col-xs-12">
   <div class="col-xs-5 center  box-border" id="description" style="float: unset;">
-  	<div id="desText" style="padding: 7px 0px; line-height: 1.7;"> 
+  	<div id="desText" style="padding: 8px 0px; font-family: monospace;"> 
   		<ul>
   			<li id="desList1" class="opacity00">Let us consider a program that reads two values from console. <a class='introjs-button user-btn user-btn2' onclick='nextStep()'>Next &#8594;</a></li>
   		</ul>

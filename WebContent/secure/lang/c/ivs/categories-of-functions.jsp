@@ -128,6 +128,11 @@ div, span {
 .ct-green-color {
 	color: green;
 }
+
+y {
+	font-weight: bold;
+	color: yellow;
+}
 </style>
 </head>
 

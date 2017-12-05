@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,6 +40,7 @@
     min-height: 60px;
     margin-top: 30px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -106,6 +105,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 .color-green {
@@ -144,7 +145,8 @@
 </style>
 <body>
 <div id ='totaldiv' class='totaldivclass col-xs-12 text-center'>
-	<span id='title' class='label ct-demo-heading'>Octal<sub>(<span id="radix8">8</span>)</sub> to Binary<sub>(<span id="radix2">2</span>)</sub> Conversion</span>
+	<span id='title' class='label ct-demo-heading'>Octal<sub>
+	(<span id="radix8">8</span>)</sub> to Binary<sub>(<span id="radix2">2</span>)</sub> Conversion</span>
 </div>
 <div class='col-xs-12'>
 	<div id='informationdiv' class='col-xs-8 col-xs-offset-2 visibility-hidden'>
@@ -198,18 +200,21 @@
 	</div>
 	
 	<div id='combineBinaryNumbers' class='col-xs-12 opacity00' style='margin-top: 20px'>
-		<span style='font-size: 15px;' class='col-xs-7 text-align'><span class='color-lightrose'>Combine binary digits</span> <b>:</b></span>
-		<span id='numbersCombine' class='col-xs-5 opacity00'></span>
+		<span style='font-size: 15px;' class='col-xs-6 text-align'><span class='color-lightrose'>Combine binary digits</span> <b>:</b></span>
+		<span  class='col-xs-6'>
+		<span id='numbersCombine' class="col-xs-6 col-xs-offset-3 opacity00"></span></span>
 	</div>
 	
 	<div id='binaryResult' class='col-xs-12 opacity00' style='margin-top: 20px'>
 		<span class='col-xs-7'><span style="text-align: -moz-left;" class='color-lightrose'>The resultant binary number</span><b>:</b></span>
-		<span id='binaryResultValue' class='col-xs-5 append'></span>
+		<span class='col-xs-5'>
+		<span id='binaryResultValue' class="col-xs-10 col-xs-offset-1 append"></span>
+		</span>
 	</div>
 </div>
 
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
 </div>
 </body>
 <script>

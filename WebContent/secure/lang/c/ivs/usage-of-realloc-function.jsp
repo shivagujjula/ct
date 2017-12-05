@@ -18,7 +18,6 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/c/js-min/uorf.min.js'></script>
-
 <title>Usage of Realloc() function</title>
 
 <style type="text/css">
@@ -26,7 +25,7 @@
 .info-div {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
 	font-family: monospace; 
 }
@@ -168,7 +167,7 @@ div, span {
 
 .animated-border {
 	border-color: rgba(255, 255, 255, 0);
-    animation: 2s ease 0s normal none 1 running animated-border;
+    animation: 0.5s ease 0s normal none 1 running animated-border;
 }
 
 @keyframes animated-border {  
@@ -185,7 +184,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -193,6 +192,7 @@ div, span {
 .value-css {
 	color: blue;
 	font-family: monospace;
+	font-weight: bold;
 }
 </style>
 </head>
@@ -243,7 +243,7 @@ div, span {
 										<tr id="elementId">
 											<%for (int i = 1; i <= 6; i++) {%>
 												<%if (i > 3) {%>
-													<td class="element-box"><span class="opacity00" id="element<%=i%>"><%=(i - 1)%></span></td>
+													<td class="element-box"><span class="opacity00 first-location-hide" id="element<%=i%>"><%=(i - 1)%></span></td>
 												<%} else {%>
 													<td class="element-box"><span class="" id="element<%=i%>"><%=(i - 1)%></span></td>
 												<%}%>
@@ -339,7 +339,7 @@ div, span {
 	</div>
 	<div class="col-xs-12">
 		<div class="text-center margin-top-4" id="restartDiv">
-			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+			<a class="btn btn-warning opacity00" id="restart">Restart</a>
 		</div>
 	</div>
 </div>

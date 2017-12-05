@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 10;
+var typingSpeed = 1;
 var tl;
 var arr;
 var a;
@@ -37,25 +37,72 @@ var nestedIfElseInCReady = function() {
 		},{
 			element : "#consoleId",
 			intro : "",
-			position : "left"
+			position : "left",
+			tooltipClass: "hide"
 		},{
 			element : "#ifCondtn",
 			intro : "",
-			position : "right"
-		},{
-			element : "#restart",
-			intro : "",
-			tooltipClass: "introjs-tooltip-min-width-custom",
-			tooltipClass : "hide"
-		}]
+			position : "right",
+			tooltipClass: "hide"
+		} ]
 	});
 	
+	
+	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+			
+		case "mainScanf":
+			consoleCount = 1;
+			$("#runEditor1").empty();
+			break;
+			
+		case "consoleId":
+			if(introjs._currentStep == 6) {
+				consoleCount = 1;
+				$('#runEditor1').empty();
+			} else {
+				$("#runEditor2").empty();
+			}
+			break;
+			
+		case "ifCondtn":
+			
+			if (introjs._introItems.length > 8) {
+				introjs._introItems.splice(8);
+			}
+			break;
+			
+		}
+	})
+	
+	
+	
 	introjs.onafterchange(function(targetElement) {
+				
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
 		case "nestedIf":
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			var text = "This code demonstrates the working of <span class='ct-code-b-yellow'>nested</span> <b>if-else</b> block.";
 			typing(".introjs-tooltiptext", text, function() {
 				$(".introjs-nextbutton").show();
@@ -63,38 +110,38 @@ var nestedIfElseInCReady = function() {
 			break;
 			
 		case "varInit":
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "It is the declaration of 3 <b>int</b> variables <b>a, b </b> and <b>c</b>. These are declared inside "
 							+ " <span class='ct-code-b-yellow'>main()</span>.";
 							
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 			
 		case "nestedBlock1":
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "If we write an <b>if-else</b> block in an other <b>if-else</b> block like this, " 
 							+ " then this type of constructs are called as can if as " 
 							+ " <span class='ct-code-b-yellow'>nested</span> <b>if-else</b> constructs.";
 							
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 			
 		case "nestedBlock2":
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "This is an other <span class='ct-code-b-yellow'>nested</span> <b>if-else</b> construct " 
 							+ " in <span class='ct-code-b-yellow'>else</span> block.";
 							
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -104,13 +151,13 @@ var nestedIfElseInCReady = function() {
 		case "printfInIf2":
 		case "printfInElse1":
 		case "printfInElse2":
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "This <span class='ct-code-b-yellow'>printf()</span> function will print the message on the standard " 
 					+ " output device (monitor).";
 				
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -120,7 +167,7 @@ var nestedIfElseInCReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Here <span class='ct-code-b-yellow'>scanf()</span> function is used to read <b>integer</b> values.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -134,7 +181,7 @@ var nestedIfElseInCReady = function() {
 					
 					typing("#runEditor1", text, function() {
 						var text2 = "Enter 3 numbers. press <span class='ct-code-b-yellow'>space</span> to enter another number.";
-						
+						$(".introjs-tooltip").removeClass("hide");
 						typing(".introjs-tooltiptext", text2, function() {
 							$("#inputVals").addClass("blinking-orange");
 							$("#inputVals").focus();
@@ -171,9 +218,9 @@ var nestedIfElseInCReady = function() {
 								});
 								
 								if (arr.length < 3) {
-									$(".introjs-nextbutton").hide();
+									$(".introjs-nextbutton, .introjs-prevbutton").hide();
 								} else if (arr.length == 3) {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								}
 								
 								$.each(arr, function(idx, val) {
@@ -181,31 +228,37 @@ var nestedIfElseInCReady = function() {
 										$(".ct-code-b-red").remove();
 										$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 																				"Please limit the number length to 2.</span>");
-										$(".introjs-nextbutton").hide();
+										$(".introjs-nextbutton, .introjs-prevbutton").hide();
 									}
 								});
 							});
 						});
 					});
 				} else if(consoleCount == 2) {
-					var i;
-					if(a > b && a > c) {
-						i = a;
-					} else if(a > b && a < c) {
-						i = c;
-					} else if (a < b && b > c) {
-						i = b;
+					if (introjs._direction == "forward") {
+						var i;
+						if(a > b && a > c) {
+							i = a;
+						} else if(a > b && a < c) {
+							i = c;
+						} else if (a < b && b > c) {
+							i = b;
+						} else {
+							i = c;
+						}
+						
+						var text = i + " is the biggest number";
+						typing("#runEditor2", text, function() {
+							setTimeout(function() {
+								consoleCount++;
+								introjs.nextStep();
+							}, 1000);
+						});
 					} else {
-						i = c;
+						stepNext();
 					}
 					
-					var text = i + " is the biggest number";
-					typing("#runEditor2", text, function() {
-						setTimeout(function() {
-							consoleCount++;
-							introjs.nextStep();
-						}, 1000);
-					});
+					
 				}
 			});
 			break;
@@ -214,6 +267,7 @@ var nestedIfElseInCReady = function() {
 			$(".introjs-nextbutton").hide();
 			$( "#inputVals" ).prop( "disabled", true );
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				a = parseInt( $("#inputVals").val().substring( 0, $("#inputVals").val().indexOf(" ") ) );
 				b = parseInt( $("#inputVals").val().substring( $("#inputVals").val().indexOf(" ") + 1, $("#inputVals").val().lastIndexOf(" ") ) );
 				c = parseInt ( $("#inputVals").val().substring( $("#inputVals").val().lastIndexOf(" ") + 1 ) );
@@ -241,7 +295,7 @@ var nestedIfElseInCReady = function() {
 									} else {
 										elseSteps();
 									}
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
 							});
 						});
@@ -255,7 +309,7 @@ var nestedIfElseInCReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "This  is <span class='ct-code-b-yellow'>else</span> block.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -263,6 +317,7 @@ var nestedIfElseInCReady = function() {
 		case "ifCond1":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text1 = " This is <span class='ct-code-b-yellow'>nested</span> if construct. If the "  
 							+ " condition evaluates to true, the control enters into the if block, " 
 							+ " otherwise the control enters into the <span class='ct-code-b-yellow'>else</span> block. " 
@@ -282,7 +337,7 @@ var nestedIfElseInCReady = function() {
 									var text2 = "evaluates to <span class='ct-code-b-red'>false</span>.";
 								}
 								typing("#result2", text2, function() {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
 							});
 						});
@@ -294,6 +349,7 @@ var nestedIfElseInCReady = function() {
 		case "ifInElse":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text1 = "This is <span class='ct-code-b-yellow'>nested</span> if construct. If the "  
 					+ " condition evaluates to true, the control enters into the if block, " 
 					+ " otherwise the control enters into the <span class='ct-code-b-yellow'>else</span> block."
@@ -313,7 +369,7 @@ var nestedIfElseInCReady = function() {
 									var text2 = "evaluates to <span class='ct-code-b-red'>false</span>.";
 								}
 								typing("#result3", text2, function() {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
 							});
 						});
@@ -325,17 +381,18 @@ var nestedIfElseInCReady = function() {
 		case "endMain":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The <span class='ct-code-b-yellow'>main()</span> ended here.";
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
-				});
+				setTimeout(function() {
+					introjs.nextStep();
+				}, 500);
 			});
 			break;
 		
 		case "restart":
 			$(".introjs-nextbutton").hide();
+			$('.introjs-tooltip').css({'min-width' : '125px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restart").removeClass("opacity00");
+				$('.introjs-tooltiptext').append('Click to restart.');
 				$("#restart").click(function() {
 					location.reload();
 				});
@@ -356,6 +413,18 @@ var nestedIfElseInCReady = function() {
 	$('.introjs-bullets').hide();
 }
 
+function stepNext() {
+	if (introjs._direction == "forward") {
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 800);
+	} else {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 800);
+	}
+}
+
 function typing(selector, text, callBackFunction) {
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
@@ -364,6 +433,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -396,7 +466,8 @@ function ifSteps() {
 	var dynamicStep = {
 			"element" : "#ifCond1",
 			"intro" : "",
-			"position" : "right"
+			"position" : "right",
+			"tooltipClass": "hide"
 	}
 	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
 	
@@ -425,7 +496,16 @@ function ifSteps() {
 	var dynamicStep = {
 			"element" : "#endMain",
 			"intro" : "",
-			"position" : "right"
+			"position" : "right",
+			"tooltipClass": "hide"
+	}
+	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
+	
+	var dynamicStep = {
+			"element" : "#restart",
+			"intro" : "",
+			"position" : "right",
+			"tooltipClass": ""
 	}
 	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
 }
@@ -442,7 +522,8 @@ function elseSteps() {
 	var dynamicStep = {
 			"element" : "#ifInElse",
 			"intro" : "",
-			"position" : "right"
+			"position" : "right",
+			"tooltipClass": "hide"
 	}
 	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
 	
@@ -472,7 +553,16 @@ function elseSteps() {
 	var dynamicStep = {
 			"element" : "#endMain",
 			"intro" : "",
-			"position" : "right"
+			"position" : "right",
+			"tooltipClass" : "hide"
+	}
+	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
+	
+	var dynamicStep = {
+			"element" : "#restart",
+			"intro" : "",
+			"position" : "right",
+			"tooltipClass" : ""
 	}
 	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
 }

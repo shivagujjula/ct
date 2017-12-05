@@ -7,10 +7,12 @@
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
+<link href="/css/animate.css" rel="stylesheet">
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/jquery-ui-latest.js"></script>
+<script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
@@ -185,19 +187,24 @@ div,span {
 	color: green;
 	font-weight: bold;
 }
+
+y {
+	font-weight: bold;
+	color: yellow;
+}
 </style>
 </head>
 
 <body>
 	<div class="col-xs-12">
 		<div class="ct-box-main">
-			<div class="text-center"><h1 class="label ct-demo-heading text-center">Automatic variables</h1></div> 
+			<div class="text-center"><h1 class="label ct-demo-heading text-center">Automatic Variables</h1></div> 
 			<div class='buttons-div'><button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button></div> 
 			<div id="printDefinition" class="col-xs-8 col-xs-offset-2 box-border visibility-hidden padding0 explanation">
 				<ul>
 					<li id=line1 class='opacity00'><span class='ct-code-b-green'>Automatic or local variables</span> are declared inside a function.</li>
 					<li id=line2 class='opacity00'><span class='ct-code-b-green'>Automatic variables</span> are created when a call to the function
-						 is made and destroyed automatically when the function exists.</li>
+						 is made and <span class='ct-code-b-green'>destroyed</span> automatically when the function exists.</li>
 					<li id=line3 class='opacity00'>The <span class='ct-code-b-green'>scope</span> of a local variable is only within the 
 						<span class='ct-code-b-green'>function</span>.
 						<span id=button1><a style="background-color:green" class="introjs-button introjs-duplicate-nextbutton" onclick="animate1()">
@@ -211,7 +218,7 @@ div,span {
 					<pre class='creamPreTab4'>
 	<span id='functionDeclaration'>void ganga();</span>						
 	<span id="mainDeclaration">void <b class='ct-blue-color'>main()</b></span>	{
-	    <span id="automainDeclaration"><span id="autoDeclaration" class='ct-green-color'>auto</span> <span id='autoDeclaration1'>int <span id="value1">a, b;</span></span></span>						
+	    <span id="automainDeclaration"><span id="autoDeclaration" class='ct-green-color'>auto</span> <span id='autoDeclaration1'>int <span id="value1">a;</span></span></span>						
 	    <span id='variableDeclaration1'>a = <span id="number1">10</span>;</span>
 	    <span id='functionDeclaration1'>ganga();</span>
 	    <span id="sopLine1">printf("The local variable value within main() = <span id="percentage1">%d</span>\n"<span id="comma1">, </span><span id="aValue1">a</span>);</span>
@@ -226,15 +233,15 @@ div,span {
 					<div class="col-xs-12 padding0">
 						<div id="mainmemoryheading" class='text-center opacity00'>In main()</div>
 						<div class="col-xs-12 padding0 visibility-hidden" id="mainMemory">
-							<div id="numberDiv1" class="col-xs-4 margin10" style='margin-left:10px;'>
-				    			<div class="panel-primary number-div visibility-hidden"  id="addressDiv1">
+							<div id="numberDiv1" class="col-xs-offset-4 col-xs-4 margin10">
+				    			<div class="panel-primary number-div opacity00"  id="addressDiv1">
     								<div class="panel-heading text-center number-div"><span id="aheading1">a</span></div>
     								<div class="panel panel-body number-body text-center">
     									<span class="text-center" id="addressValue1"></span>
     								</div>
 				    			</div>
 				    		</div>
-				    		<div id="numberDiv2" class="col-xs-offset-2 col-xs-4 margin10"> 
+				    		<!-- <div id="numberDiv2" class="col-xs-offset-2 col-xs-4 margin10"> 
 				    		<span id="bValueAnimation" class=""></span>
 				    			<div class="panel-primary number-div visibility-hidden" id="addressDiv2">
     								<div class="panel-heading text-center number-div">b</div>
@@ -242,7 +249,7 @@ div,span {
     									<span class="text-center" id="addressValue2"></span>
     								</div>
 				    			</div>
-				    		</div>
+				    		</div> -->
 				    	</div>
 			
 				    	<div class="col-xs-12 padding0 visibility-hidden" id="functionMemory">

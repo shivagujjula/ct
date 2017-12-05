@@ -21,6 +21,9 @@
 
 <style>
 
+
+
+
 .introjs-tooltip {
 	min-width: 250px;
 }
@@ -64,7 +67,7 @@
     font-size: 11px;
     margin: 5px;
     padding: 10px;
-    white-space: pre;
+    tab-size : 4;
 }
 
 table {
@@ -93,6 +96,12 @@ ol, ul {
 
 .output-console {
 	width: 300px;
+}
+
+.output-console-body {
+	white-space: nowrap !important;
+	padding : 10px !important;
+	min-height :80px !important;
 }
 
 .opacity00 {
@@ -186,6 +195,8 @@ ol, ul {
  }
 
 }
+
+
 </style>
 
 <script>
@@ -218,66 +229,78 @@ $(document).ready(function() {
 	<span id='sopAgrsOf3'>printf("argv[3] : %d\n",  argv[<span id='args3'>3</span>]);</span>
 <span id='mainMethodCloseBrace'>}</span>
 </pre></div>
-	<div class="col-xs-1 arrow1">
-		<!-- <i class="fa fa-arrow-right faa-passing animated"></i> -->
-	</div>
-			<div class="col-xs-2 text-center margin-top">
-				<div>
-					<span id="dotJavaFileAboveText"></span>
-				</div>
-				<div>
-					<i class="img-responsive dotJavaFile fa fa-file-text-o fa-4x opacity00"></i>
-				</div>
-				<div>
-					<span id="dotJavaFileBelowText"><span id = "className"></span><span id ="extention"></span></span>
-				</div>
-			</div>
-		</div>
-		<div class = "col-xs-5">
-			<div class='col-sm-12 box-border' id='animationBox'>
-				<div>
-				<span>&gt;&gt; <span id='compilation' class = "opacity00">gcc -o example <b>example.c</b></span></span>
-				</div>	
-				<div>
-					<span>&gt;&gt; <span id='commandLineValues' class = "opacity00"><span id='value0'><b>./example</b></span> <span id='value1'>Ganga</span> <span id='value2'>501</span> <span id='value3'>Gold</span></span></span>
-				</div>
-				<div>
-					<table align="center">
-						<tr>
-							<td><span id='tdIndex0' class='opacity00 position-relative'>0</span></td>
-							<td><span id='tdIndex1' class='opacity00 position-relative'>1</span></td>
-							<td><span id='tdIndex2' class='opacity00 position-relative'>2</span></td>
-							<td><span id='tdIndex3' class='opacity00 position-relative'>3</span></td>
-						</tr>
-						<tr>
-							<td id='td0'><span id='tdValue0' class='opacity00 position-relative'>./Example</span></td>
-							<td id='td1'><span id='tdValue1' class='opacity00 position-relative'>Ganga</span></td>
-							<td id='td2'><span id='tdValue2' class='opacity00 position-relative'>501</span></td>
-							<td id='td3'><span id='tdValue3' class='opacity00 position-relative'>Gold</span></td>
-						</tr>
-						<tr>
-							<td><span id='tdLength0' class='opacity00'>1</span></td>
-							<td><span id='tdLength1' class='opacity00'>2</span></td>
-							<td><span id='tdLength2' class='opacity00'>3</span></td>
-							<td><span id='tdLength3' class='opacity00'>4</span></td>
-						</tr>
-					</table>
-				</div>
-				<div class="output-console center">
-					<div class="output-console-title-bar">
-						<span>Output</span>
+					<div class="col-xs-3 padding0" id="totalStep2">
+						<div class="col-xs-4 arrow1"></div>
+						<div class="col-xs-8 text-center margin-top">
+							<div>
+								<span id="dotJavaFileAboveText"></span>
+							</div>
+							<div>
+								<i
+									class="img-responsive dotJavaFile fa fa-file-text-o fa-4x opacity00"></i>
+							</div>
+							<div>
+								<span id="dotJavaFileBelowText"><span id="className"></span><span
+									id="extention"></span></span>
+							</div>
+						</div>
 					</div>
-	        		<div class="output-console-body">
-<span id='outputArgsLength'></span>
-<span id='outputArgsOf0'></span>
-<span id='outputArgsOf1'></span>
-<span id='outputArgsOf2'></span>
-<span id='outputArgsOf3'></span>
-	        		</div>
+				</div>
+				<div class="col-xs-5">
+					<div class='col-sm-12 box-border' id='animationBox'>
+						<div>
+							<span>&gt;&gt; <span id='compilation' class="opacity00">gcc
+									-o example <b>example.c</b>
+							</span></span>
+						</div>
+						<div>
+							<span>&gt;&gt; <span id='commandLineValues'
+								class="opacity00"><span id='value0'><b>./example</b></span>
+									<span id='value1'>Ganga</span> <span id='value2'>501</span> <span
+									id='value3'>Gold</span></span></span>
+						</div>
+						<div>
+							<table align="center">
+								<tr>
+									<td><span id='tdIndex0'
+										class='opacity00 position-relative'>0</span></td>
+									<td><span id='tdIndex1'
+										class='opacity00 position-relative'>1</span></td>
+									<td><span id='tdIndex2'
+										class='opacity00 position-relative'>2</span></td>
+									<td><span id='tdIndex3'
+										class='opacity00 position-relative'>3</span></td>
+								</tr>
+								<tr>
+									<td id='td0'><span id='tdValue0'
+										class='opacity00 position-relative'>./example</span></td>
+									<td id='td1'><span id='tdValue1'
+										class='opacity00 position-relative'>Ganga</span></td>
+									<td id='td2'><span id='tdValue2'
+										class='opacity00 position-relative'>501</span></td>
+									<td id='td3'><span id='tdValue3'
+										class='opacity00 position-relative'>Gold</span></td>
+								</tr>
+								<tr>
+									<td><span id='tdLength0' class='opacity00'>1</span></td>
+									<td><span id='tdLength1' class='opacity00'>2</span></td>
+									<td><span id='tdLength2' class='opacity00'>3</span></td>
+									<td><span id='tdLength3' class='opacity00'>4</span></td>
+								</tr>
+							</table>
+						</div>
+						<div class="output-console center" id="outputConsole">
+							<div class="output-console-title-bar">
+								<span>Output</span>
+							</div>
+							<div class="output-console-body">
+								<span id='outputArgsLength'></span> <span id='outputArgsOf0'></span>
+								<span id='outputArgsOf1'> </span> <span id='outputArgsOf2'></span>
+								<span id='outputArgsOf3'></span>
+							</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		</div>
 	</div>
 	
 </div>

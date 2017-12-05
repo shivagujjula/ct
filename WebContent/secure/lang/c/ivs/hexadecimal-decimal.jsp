@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,7 @@
     margin-left: 10px;
 }
 .box1 {
-    width:35px;
+ /*    width:35px; */
 	height:15px;
 	position:relative;
     display:inline-block;
@@ -89,6 +90,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 .color-green {
@@ -122,10 +125,11 @@
 
 #informationdiv {
     border-radius: 0px;
-   	min-height:140px;
+   	min-height:160px;
     margin-top: 20px;
     color: black;
-    padding: 20px;
+    padding: 8px;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -206,10 +210,6 @@
 
 .ct-code-b-blue {
 	color: blue;
-}
-
-.ct-code-b-yellow {
-	color: yellow;
 }
 
 .ct-code-b-black {
@@ -355,7 +355,7 @@ div, span {
 		
 		<div id='combineBinaryNumbers' class='col-xs-12 opacity00' style='margin-top: 20px'>
 			<span class='col-xs-5 font14 padding0'><span class='color-lightrose'>Binary Result</span> <b>:</b></span>
-			<span id='numbersCombine' class='col-xs-6 padding0 opacity00 ct-demo-green'></span>
+			<span id='numbersCombine' class='col-xs-6 padding0  ct-demo-green'></span>
 		</div>
 		
 		<div id='binaryResult' class='col-xs-12 opacity00' style='margin-top: 5px'>
@@ -386,18 +386,17 @@ div, span {
 			<span class='col-xs-12'><span id="multiply"></span></span>
 		</div>
 		
-		<div class="col-xs-12 visibility-hidden " style='margin-top: 5px;' id="fifthbox">
+		<div class="col-xs-12 visibility-hidden" style='margin-top: 5px;' id="fifthbox">
 			<span class='col-xs-12'><span id="multiplytwonos"></span></span>
 		</div>
-		
 		<div class="col-xs-12 visibility-hidden " style='margin-top: 5px;' id="sixthbox">
-			<span id="get" class="col-xs-4 padding0 font14 color-lightrose">Result<b>:</b></span><span  class ='col-xs-8 padding0'><span id="adding"></span></span>
+			<span id="get" class="col-xs-1 padding0 font14 color-lightrose">Result<b>:</b></span><div class ='col-xs-8 text-center padding0'><span id="adding"></span></span>
 		</div>
 	</div>
 	
 </div>
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
 </div>
 </body>
 <script>

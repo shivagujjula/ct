@@ -167,7 +167,7 @@
 </div>
 
 <div class=" margin-top-20 col-xs-12">
-  <div class="col-xs-5 center  box-border" id="description" style="float: unset;">
+  <div class="col-xs-7 center  box-border" id="description" style="float: unset; font-family: monospace;">
   	<div id="desText" style="padding: 7px 0px; line-height: 1.7;">  
   		<span id="desList1" class="opacity00">Whenever the character * appears between the percent sign(%) and the conversion
 		character of a conversion specification then it is known as suppression character.</span> 

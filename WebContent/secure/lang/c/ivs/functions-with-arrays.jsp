@@ -62,7 +62,7 @@
 }
 
 .blinking-white {
-	animation-name: blink-border-background-white ;
+	animation-name: blink-border-background-white;
 	animation-duration: 1s ;
 	animation-iteration-count: infinite;
 	animation-direction: alternate ;
@@ -106,6 +106,7 @@ table {
 .errMsg {
 	color: red;
 	font-family: monospace;
+	font-weight: bold;
 }
 
 .ui-effects-transfer {

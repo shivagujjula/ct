@@ -93,6 +93,11 @@
 	color: green;
 }
 
+.ct-code-b-red {
+	color: red;
+	font-weight: bold;
+}
+
 .user-btn {
 	background: green;
 	margin: 0 !important;
@@ -119,6 +124,8 @@ td {
 </head>
 <body>
 	<script>
+		/* Modification done by Durga Mahesh (17-08-17)
+		Change the error color form white to red */
 		$(document).ready(function() {
 			processingOfStructureWithDotReady();
 		});
@@ -148,50 +155,48 @@ td {
 	<div class="col-xs-12 margin-top20">
 		<div class="col-xs-5">
 			<pre class="code-div creampretab4 opacity00" id="codeDiv">
-<span id="declaration"><b class="ct-code-b-green">struct</b> employeerecord
-{
+<span id="declaration"><b class="ct-code-b-green">struct</b> employee_record {
 	char name [20];
 	int age;
-	float sal;
+	int sal;
 };</span>
 main() {
-	<span id="variableDefinition"><b class="ct-code-b-green ">struct</b> employeerecord <span
-			id="s1">S1</span>, <span id="s2">S2</span>, <span id="s3">S3</span>;</span>
+	<span id="variableDefinition"><b class="ct-code-b-green ">struct</b> employee_record <span
+			id="emp1">emp1</span>, <span id="emp2">emp2</span>, <span id="emp3">emp3</span>;</span>
 
 	<span id="firstRecord">printf("Enter details of first record name, age and salary \n");</span>
-	<span id="name1">printf("Enter name:\t");</span>
-	<span id="readName1">gets(S1.name);</span>
-	<span id="age1">printf ("\nEnter age:\t");</span>
-	<span id="readAge1">scanf("%d", &S1.age);</span>
-	<span id="salary1">printf("\nEnter salary:\t");</span>
-	<span id="readSalary1">scanf("%f", &S1.sal);</span>
+	<span id="name1">printf("Enter name:");</span>
+	<span id="readName1">gets(emp1.name);</span>
+	<span id="age1">printf("\nEnter age:");</span>
+	<span id="readAge1">scanf("%d", &emp1.age);</span>
+	<span id="salary1">printf("\nEnter salary:");</span>
+	<span id="readSalary1">scanf("%d", &emp1.sal);</span>
 	
 	<span id="secondRecord">printf("Enter details of second record name, age and salary \n");</span>
-	<span id="name2">printf("Enter name:\t");</span>
-	<span id="readName2">gets(S2.name);</span>
-	<span id="age2">printf("\nEnter age:\t");</span>
-	<span id="readAge2">scanf("%d", &S2.age);</span>
-	<Span id="salary2">printf("\nEnter salary:\t");</Span>
-	<span id="readSalary2">scanf("%f", &S2.sal);</span>
+	<span id="name2">printf("Enter name:");</span>
+	<span id="readName2">gets(emp2.name);</span>
+	<span id="age2">printf("\nEnter age:");</span>
+	<span id="readAge2">scanf("%d", &emp2.age);</span>
+	<Span id="salary2">printf("\nEnter salary:");</Span>
+	<span id="readSalary2">scanf("%d", &emp2.sal);</span>
 	
 	<span id="thirdRecord">printf("Enter details of third record name, age and salary \n");</span>
-	<span id="name3">printf("Enter name:\t");</span>
-	<span id="readName3">gets(S3.name);</span>
-	<span id="age3">printf("\nEnter age:\t");</span>
-	<span id="readAge3">scanf("% d", &S3.age);</span>
-	<span id="salary3">printf("\nEnter salary:\t");</span>
-	<span id="readSalary3">scanf("%f", &S3.sal);</span>
+	<span id="name3">printf("Enter name:");</span>
+	<span id="readName3">gets(emp3.name);</span>
+	<span id="age3">printf("\nEnter age:");</span>
+	<span id="readAge3">scanf("%d", &emp3.age);</span>
+	<span id="salary3">printf("\nEnter salary:");</span>
+	<span id="readSalary3">scanf("%d", &emp3.sal);</span>
 	<span id="titles">printf("\n%7s%15s%15s","AGE","Name","SALARY");</span>
-	<span id="printRecord1">printf(“\n%8d%15s%15f”, S1.age, S1. name, S1.sal);</span>
-	<span id="printRecord2">printf(“\n%8d%15s %15f”, S2.age, S2.name, S2.sal);</span>
-	<span id="printRecord3">printf(“\n%8d%15s%15f”, S3.age, S3.name, S3.sal);</span>
+	<span id="printRecord1">printf("\n%8d%15s%15d", emp1.age, emp1. name, emp1.sal);</span>
+	<span id="printRecord2">printf("\n%8d%15s %15d", emp2.age, emp2.name, emp2.sal);</span>
+	<span id="printRecord3">printf("\n%8d%15s%15d", emp3.age, emp3.name, emp3.sal);</span>
 }</pre>
 		</div>
-
 		<div class="col-xs-6">
 			<div class="col-xs-12">
 				<div class="col-xs-offset-3 col-xs-6 border-div opacity00" id="animationDiv1">
-					<div class="text-center" style="color: blue"><b>S1</b></div>
+					<div class="text-center" style="color: blue"><b>emp1</b></div>
 					<table align="center">
 						<tr><td>name</td><td>age</td><td>sal</td></tr>
 						<tr>
@@ -199,14 +204,14 @@ main() {
 							<td class="table-border" id="s1age"></td>
 							<td class="table-border" id="s1sal"></td>
 						</tr>
-						<tr><td class="td-css">1024</td><td class="td-css">1044</td><td class="td-css">1046</td></tr>
+						<tr><td class="td-css">1044</td><td class="td-css">1046</td><td class="td-css">1048</td></tr>
 
 					</table>
 				</div>
 			</div>
 			<div class="col-xs-12 margin-top20">
 				<div id="animationDiv2" class="col-xs-offset-3 col-xs-6 border-div opacity00">
-					<div class="text-center" style="color: blue"><b>S2</b></div>
+					<div class="text-center" style="color: blue"><b>emp2</b></div>
 					<table align="center">
 						<tr><td>name</td><td>age</td><td>sal</td></tr>
 						<tr>
@@ -220,7 +225,7 @@ main() {
 			</div>
 			<div class="col-xs-12 margin-top20">
 				<div id="animationDiv3" class="col-xs-offset-3 col-xs-6 border-div opacity00">
-					<div class="text-center" style="color: blue"><b>S3</b></div>
+					<div class="text-center" style="color: blue"><b>emp3</b></div>
 					<table align="center">
 						<tr><td>name</td><td>age</td><td>sal</td></tr>
 						<tr>
@@ -238,7 +243,7 @@ main() {
 			<div class="output-console-body"><span class="output" id="output"></span></div>
 		</div>
 		<div class="col-xs-6 margin-top20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
+			<span class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i> Restart</span>
 		</div>
 	</div>
 

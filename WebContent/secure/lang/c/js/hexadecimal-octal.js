@@ -5,6 +5,7 @@ var z = 0;
 var input;
 var lenOfInput;
 var intro;
+var temp;
 var hexadecimalOctalReady = function() {
 	intro = introJs();
 	$('#restartBtn').click(function() {
@@ -37,11 +38,13 @@ var hexadecimalOctalReady = function() {
 			element : "#table",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, 
 		{
 			element :'#inputDiv',
 			intro :'',
-			position:"right" 
+			position:"right" ,
+			tooltipClass: 'hide'
 		},{
 			element :'#octalValuesDiv',
 			intro :'',
@@ -61,38 +64,47 @@ var hexadecimalOctalReady = function() {
 			element : "#getValues",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#rowDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : '#positionDiv',
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#squareDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#calculationDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#multiplicationDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#additionDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#resultDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		}, {
 			element : "#finalDiv",
 			intro : '',
 			position : 'right',
+			tooltipClass : 'hide'
 		},
 		{
 			element :'#restartBtn',
@@ -100,9 +112,311 @@ var hexadecimalOctalReady = function() {
 			position:"right"
 		}]
 	});
+	
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "numberconversion":
+		$("#table").addClass("opacity00");
+		break;
+		case 'table':
+			$('#inputDiv').addClass('opacity00');
+			$('#octalValue').val('');
+			$("#octalValue").attr("disabled", true);
+			$("#convert").addClass("disabled").addClass("opacity40");
+		//	$("#convert").attr("disabled", true);
+			$("#octalValue").removeClass("backgroundColor");
+		break;
+		case "inputDiv" :
+			$('#octalValue').val('');
+			$("#convert").addClass("disabled").addClass("opacity40");
+			$('#calculationTable').addClass('visibility-hidden');
+			$('#binaryValuesGet').empty();
+			$('#octalValuesDiv').addClass('opacity00');
+			$('#octalValuesGet').empty().removeAttr('style');
+			$("#numbersCombine").empty();
+			$('#binaryResultValue').empty();
+			$('#numberBox').empty();
+			$('.box-position, .binaryBox2, .binaryBox3').remove();
+			$("#calculationDiv0, #calculationDiv3, #calculationDiv6, #calculationDiv9").empty();
+			$("#multiplicationDiv0, #multiplicationDiv3, #multiplicationDiv6, #multiplicationDiv9").empty()
+			$("#additionDiv0, #additionDiv3, #additionDiv6, #additionDiv9").empty();
+			$("#resultDiv0, #resultDiv3, #resultDiv6, #resultDiv9").empty();
+			$('#lastResult').empty();
+			
+		break;
+		case "octalValuesDiv":
+			$('.box').addClass('opacity00').removeAttr('style');
+			$('#binaryValuesDiv').addClass('opacity00');
+			$('.box4').addClass('opacity00').removeAttr('style');
+		break;
+		case "binaryValuesDiv" :
+			$('#binaryValuesDiv').addClass('opacity00');
+			$('.box4, #binaryDigits0, #binaryDigits1, #binaryDigits2').addClass('opacity00').removeAttr('style');
+			$('#combineBinaryNumbers').addClass('opacity00').removeAttr('style');
+			$('.combine').addClass('opacity00').removeAttr('style');
+		break;
+		case "combineBinaryNumbers" :
+			$('#combineBinaryNumbers').addClass('opacity00').removeAttr('style');
+			$('.combine').addClass('opacity00').removeAttr('style');
+			$('#binaryResult').addClass('opacity00');
+			$("#binaryResultValue").removeAttr('style');
+			$('#getValues').addClass('opacity00');
+			$('.binaryBox1').removeAttr('style');
+		break;
+		case "getValues" :
+			$('#getValues').addClass('opacity00');
+			$('.binaryBox1').removeAttr('style');
+			var inputBinary = $("#numbersCombine").text();
+			if (inputBinary.length % 3 == 2) {
+				$("#columnDiv0 td:nth-child(1)").removeClass("opacity00");
+			} else if(inputBinary.length % 3 == 1) {
+				$("#columnDiv0 td:nth-child(1), #columnDiv0 td:nth-child(2)").removeClass("opacity00");
+			}
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length <= 4) {
+				$("#row6, #row9").show();
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} 
+			else if(inputBinary.length <= 8) {
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3, #row6").addClass("col-xs-3").removeClass('col-xs-3 col-xs-offset-1');
+				$("#row9").show();
+				$("#calculation9").show();
+				$("#square9").show();
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			} else {
+				$("#rowDiv").addClass("opacity00");
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			}
+		break;
+		case 'rowDiv':
+			var inputBinary = $("#numbersCombine").text();
+			if (inputBinary.length % 3 == 2) {
+				$("#columnDiv0 td:nth-child(1)").removeClass("opacity00");
+			} else if(inputBinary.length % 3 == 1) {
+				$("#columnDiv0 td:nth-child(1), #columnDiv0 td:nth-child(2)").removeClass("opacity00");
+			}
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length <= 4) {
+				$("#row6, #row9").show();
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} 
+			else if(inputBinary.length <= 8) {
+				$("#rowDiv").addClass("opacity00");
+				$("#row0, #row3, #row6").addClass("col-xs-3").removeClass('col-xs-3 col-xs-offset-1');
+				$("#row9").show();
+				$("#calculation9").show();
+				$("#square9").show();
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			} else {
+				$("#rowDiv").addClass("opacity00");
+				$("#numberBox", "#columnDiv0").removeAttr('style');
+			}
+			
+			$("#positionDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#position0, #position3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+				$("#positionDiv").addClass("opacity00");
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#position0, #position3, #position6").removeClass('col-xs-offset-1');
+				$("#positionDiv").addClass("opacity00");
+			} else {
+				$("#positionDiv").addClass("opacity00");
+			}
+		break;
+		case 'positionDiv':
+			temp = $("#multiplicationDiv").html();
+			$("#positionDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#position0, #position3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+				$("#positionDiv").addClass("opacity00");
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#position0, #position3, #position6").removeClass('col-xs-offset-1');
+				$("#positionDiv").addClass("opacity00");
+			} else {
+				$("#positionDiv").addClass("opacity00");
+			}
+			
+			$("#squareDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#squareDiv").addClass("opacity00");
+				$("#square0, #square3").addClass("col-xs-3").addClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#squareDiv").addClass("opacity00");
+				$("#square0, #square3, #square6").removeClass('col-xs-offset-1');
+			} else {
+				$("#squareDiv").addClass("opacity00");
+			}
+		break;
+		case 'squareDiv':
+			$("#squareDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#squareDiv").addClass("opacity00");
+				$("#square0, #square3").addClass("col-xs-3").addClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#squareDiv").addClass("opacity00");
+				$("#square0, #square3, #square6").removeClass('col-xs-offset-1');
+			} else {
+				$("#squareDiv").addClass("opacity00");
+			}
+			
+			$("#calculationDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#calculationDiv").addClass("opacity00");
+				$("#calculationDiv0 > span, #calculationDiv3 > span").addClass('opacity00').removeAttr('style');
+				$("#calculation0, #calculation3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#calculationDiv").addClass("opacity00");
+				$("#calculation0, #calculation3, #calculation6").removeClass('col-xs-offset-1');
+				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span").addClass('opacity00').removeAttr('style');
+			} else {
+				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span, #calculationDiv9 > span").addClass('opacity00').removeAttr('style');
+				$("#boxDiv").css("font-family", "");
+				$("#calculationDiv").addClass("opacity00");
+			}
+		break;
+		case 'calculationDiv':
+			$("#calculationDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#calculationDiv").addClass("opacity00");
+				$("#calculation0, #calculation3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+				$("#calculationDiv0 > span, #calculationDiv3 > span").addClass('opacity00').removeAttr('style');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#calculationDiv").addClass("opacity00");
+				$("#calculation0, #calculation3, #calculation6").removeClass('col-xs-offset-1');
+				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span").addClass('opacity00').removeAttr('style');
+			} else {
+				$("#boxDiv").css("font-family", "");
+				$("#calculationDiv0 > span, #calculationDiv3 > span, #calculationDiv6 > span, #calculationDiv9 > span").addClass('opacity00').removeAttr('style');
+				$("#calculationDiv").addClass("opacity00");
+			}
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#equalId4").addClass("visibility-hidden");
+				$("#multiplicationDiv").addClass("opacity00").removeAttr('style');
+				$("#multiply0, #multiply3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#multiplicationDiv").addClass("opacity00");
+				$("#multiply0, #multiply3, #multiply6").removeClass('col-xs-offset-1');
+			} else {
+				$("#multiplicationDiv").addClass("opacity00").removeAttr('style');
+			}
+			if (intro._direction == "backward") {
+				$("#multiplicationDiv").empty().append(temp);
+			}
+		break;
+		case 'multiplicationDiv':
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#equalId4").addClass("visibility-hidden");
+				$("#multiplicationDiv").addClass("opacity00").removeAttr('style');
+				$("#multiply0, #multiply3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#multiplicationDiv").addClass("opacity00");
+				$("#multiply0, #multiply3, #multiply6").removeClass('col-xs-offset-1');
+			} else {
+				$("#multiplicationDiv").addClass("opacity00").removeAttr('style');
+			}
+			
+			if (intro._direction == "backward") {
+				$("#multiplicationDiv").empty().append(temp);
+			}
+			
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#addition0, #addition3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#additionDiv").addClass("opacity00");
+				$("#addition0, #addition3, #addition6").removeClass('col-xs-offset-1');
+			} else {
+				$("#additionDiv").addClass("opacity00");
+			}
+		break;
+		case 'additionDiv':
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#addition0, #addition3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#additionDiv").addClass("opacity00");
+				$("#addition0, #addition3, #addition6").removeClass('col-xs-offset-1');
+			} else {
+				$("#additionDiv").addClass("opacity00");
+			}
+			
+			$("#resultDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#result0, #result3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#result0, #result3, #result6").removeClass('col-xs-offset-1');
+			} else {
+			
+			}
+		break;
+		case 'resultDiv':
+			$("#resultDiv").addClass("opacity00");
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#result0, #result3").addClass("col-xs-3").removeClass('col-xs-4 col-xs-offset-2');
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#result0, #result3, #result6").removeClass('col-xs-offset-1');
+			} else {
+			
+			}
+			
+			
+			var inputBinary = $("#numbersCombine").text();
+			if(inputBinary.length == 4) {
+				$("#finalResult").html("");
+			} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+				$("#finalResult").html("");
+			} else {
+				
+				$("#finalResult").html("");
+			}
+			$("#finalDiv").addClass("opacity00");
+			$('.introjs-tooltip').removeClass('hide');
+			break;
+		case 'finalDiv':
+				var inputBinary = $("#numbersCombine").text();
+				if(inputBinary.length == 4) {
+					$("#finalResult").html("");
+				} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
+					$("#finalResult").html("");
+				} else {
+					
+					$("#finalResult").html("");
+				}
+				$("#finalDiv").addClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
+		break;
+			}
+		});
 	intro.onafterchange(function(targetElement) { 
 		var elementId = targetElement.id;
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0 && intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			} 
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		switch (elementId) {
 		case "informationdiv" :
 			$('.introjs-nextbutton').hide();
@@ -148,18 +462,18 @@ var hexadecimalOctalReady = function() {
 		  		"<br><span class='ct-code-b-yellow'>Note:</span> Enter <span class='ct-code-b-yellow'>hexadecimal</span> value with "+
 		  		"prefix <span class='ct-code-b-yellow'>0X</span> "+
 		  		"or <span class='ct-code-b-yellow'>0x</span>.<br><span class='errorText'></span>";
-		  		typing('.introjs-tooltiptext',text ,function() { 
+		  		$('.introjs-tooltip').removeClass('hide');
+				typing('.introjs-tooltiptext',text ,function() { 
 		  			$("#octalValue").attr("disabled", false);
 					$('#octalValue').focus();  
+					$('.introjs-prevbutton').show();
 		  		});
 			});
 		break; 
 		case "octalValuesDiv" :
-			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#calculationTable').removeClass('visibility-hidden');
 				$('#octalValuesDiv').removeClass('opacity00');
-			//	TweenMax.staggerFrom(".box", 0.95, {opacity:0, top: -20}, -0.1, function() {
 					$('.introjs-tooltip').removeClass("hide");
 					var text = "Let us consider the steps involved in converting a hexadecimal number :<br> "+
 					"<ol><li>Consider each hexadecimal digit as a separate digit.</li><span id='OLtooltipText'></span></ol>";
@@ -177,18 +491,17 @@ var hexadecimalOctalReady = function() {
 									var text = "<li>Then convert each hexadecimal digit into its <span class='ct-code-b-yellow'>four</span> "+
 									"digit binary equivalent.</li>";
 									typing('#OLtooltipText',text, function() {
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									});
 								}});	
 						  	});
 						});
-				//	}); 
 				});
 			});
 		break; 
 		case "numberconversion" :
 			$("#informationdiv").addClass('z-index1000000');
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberconversion').removeClass('visibility-hidden');
 		  		typing('.introjs-tooltiptext',"This table provides the quick reference for converting all the 16 "+
@@ -199,13 +512,14 @@ var hexadecimalOctalReady = function() {
 				});
 		break;
 		case 'table':
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#table").removeClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', "This table provides the quick reference for converting all the <span class='ct-code-b-yellow'>"+
 						"binary</span> equivalent values "+
 		  				"to their <span class='ct-code-b-yellow'>octal</span> numbers.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -232,7 +546,7 @@ var hexadecimalOctalReady = function() {
 									var text = "Combine all the resulting binary groups (of four digit each) into a "+
 									"<span class='color-yellow'>single binary number</span>.";
 						    		typing('.introjs-tooltiptext', text,function() { 
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									});
 						    	}}); 
 						   	}
@@ -247,15 +561,19 @@ var hexadecimalOctalReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#combineBinaryNumbers').removeClass('opacity00');
 				$('#numbersCombine').removeClass('opacity00');
-				$('.introjs-tooltip').removeClass("hide");
-				binary(function() {
-					var text = "This is the result of converting the given hexadecimal value to binary value.<br><br>Now, "+
-					"we will convert the <span class='ct-code-b-yellow'>binary</span> value to its <span class='ct-code-b-yellow'>octal</span> "+
-					"equivalent.<br>Separate each binary digit of the resultant binary value.";
-					typing('.introjs-tooltiptext', text,function() { 
-					$('.introjs-nextbutton').show();	
-					});
-				 });
+				$('.combine').removeClass('opacity00');
+				TweenMax.staggerFrom('.combine', 0.5, {opacity:0, top: -20}, -0.1, function() {
+					var p = $("#inputDiv").length - 1;			
+					binary(function() {
+						var text = "This is the result of converting the given hexadecimal value to binary value.<br><br>Now, "+
+						"we will convert the <span class='ct-code-b-yellow'>binary</span> value to its <span class='ct-code-b-yellow'>octal</span> "+
+						"equivalent.<br>Separate each binary digit of the resultant binary value.";
+						$('.introjs-tooltip').removeClass("hide");
+						typing('.introjs-tooltiptext', text,function() { 
+						$('.introjs-nextbutton, .introjs-prevbutton').show();	
+						});
+					 });
+				});
 			});
 		break; 
 		case 'getValues':
@@ -270,8 +588,9 @@ var hexadecimalOctalReady = function() {
 				
 				$("#getValues").removeClass("opacity00");
 				TweenMax.staggerFrom(".binaryBox1", 0.5, {opacity:0, top: -20}, -0.1, function() {
-				typing('.introjs-tooltiptext', "Separate the binary digits into groups.", function() {
-						$('.introjs-nextbutton').show();
+				$('.introjs-tooltip').removeClass('hide');
+					typing('.introjs-tooltiptext', "Separate the binary digits into groups.", function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			});
@@ -294,6 +613,7 @@ var hexadecimalOctalReady = function() {
 					tweenmaxAnimationFunction("#numberBox td:nth-child(4)", "#columnDiv3", function() {
 						var text = "If length of the last group of the binary value is not equal to 3 then we add " +
 						"<span class='ct-code-b-yellow'>0</span>\'s from left side of the last group.";
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext', text, function() {	
 							zerosAppendDynamically();
 						});
@@ -310,6 +630,7 @@ var hexadecimalOctalReady = function() {
 					tweenmaxAnimationFunction("#numberBox td:nth-child(7)", "#columnDiv6", function() {
 						var text = "If length of the last group of the binary value is not equal to 3 then we add " +
 						"<span class='ct-code-b-yellow'>0</span>\'s from left side of the last group.";
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext', text, function() {	
 							zerosAppendDynamically();
 						});
@@ -320,10 +641,11 @@ var hexadecimalOctalReady = function() {
 					tweenmaxAnimationFunction("#numberBox td:nth-child(4)", "#columnDiv3");
 					tweenmaxAnimationFunction("#numberBox td:nth-child(7)", "#columnDiv6");
 					tweenmaxAnimationFunction("#numberBox td:nth-child(10)", "#columnDiv9", function() {	
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext', "In the binary number system each digit is multiplied by <span class='ct-code-b-yellow'>2</span> "+
 								"raised to the power of its position.<br>For example: The first digit is multiplied by 2 raised to the power of its "+
 								"position which is 0 i.e <span class='ct-code-b-yellow'>2<sup>0</sup></span> and so on.", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				}
@@ -332,6 +654,7 @@ var hexadecimalOctalReady = function() {
 		case 'positionDiv':
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext',"These are the positions for the given bits.", function() {
 					$("#positionDiv").removeClass("opacity00");
 					var inputBinary = $("#numbersCombine").text();
@@ -351,6 +674,7 @@ var hexadecimalOctalReady = function() {
 		case 'squareDiv':
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext',"These are the multiplying factors for the given positions.", function() {
 					$("#squareDiv").removeClass("opacity00");
 					var inputBinary = $("#numbersCombine").text();
@@ -372,6 +696,7 @@ var hexadecimalOctalReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Processing should start from right to left i.e from "+
 				"<span class='ct-code-b-yellow'>2<sup>0</sup></span>."
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', text , function() {
 					$("#calculationDiv").removeClass("opacity00");
 					var inputBinary = $("#numbersCombine").text();
@@ -392,6 +717,7 @@ var hexadecimalOctalReady = function() {
 		case 'multiplicationDiv':
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', "Flip the each multiplied factor.", function() {
 					var inputBinary = $("#numbersCombine").text();
 					if(inputBinary.length == 4) {
@@ -414,6 +740,7 @@ var hexadecimalOctalReady = function() {
 				var text = "By <span class='ct-code-b-yellow'>adding</span> all the decimal values together "+
 				"from <span class='ct-code-b-yellow'>right</span> to <span class='ct-code-b-yellow'>left</span> we get the resultant "+
 				"<span class='ct-code-b-yellow'>octal number</span>."
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', text, function() {
 					var inputBinary = $("#numbersCombine").text();
 					if(inputBinary.length == 4) {
@@ -444,24 +771,27 @@ var hexadecimalOctalReady = function() {
 					$("#result0, #result3").removeClass("col-xs-3").addClass('col-xs-4 col-xs-offset-2');
 					resultFlip(0);
 					resultFlip(3);
+					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", "Combine all the digits together.", function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				} else if(inputBinary.length > 4 && inputBinary.length <= 8) {
 					resultFlip(0);
 					resultFlip(3);
 					resultFlip(6);
 					$("#result0, #result3, #result6").addClass('col-xs-offset-1');
+					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", "Combine all the digits together.", function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				} else {
 					resultFlip(0);
 					resultFlip(3);
 					resultFlip(6);
 					resultFlip(9);
+					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", "Combine all the digits together.", function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				}
 			});
@@ -485,15 +815,17 @@ var hexadecimalOctalReady = function() {
 							"</sub></span>");
 				}
 				$("#finalDiv").removeClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
 				typing(".introjs-tooltiptext", "Hence, <br><span class='ct-code-b-yellow'>("+$("#octalValue").val()+")<sub>16</sub></span>" + 
 						" = <span class='ct-code-b-yellow'>("+ $("#lastResult").text() +")<sub>8</sub></span>.", function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
 		
 		case "restartBtn":
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width', '125px');
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
@@ -558,6 +890,7 @@ var hexadecimalOctalReady = function() {
 	
 		
 	$("#convert").click(function() {
+		//$('#rowDiv').remove();
 		if ($('#convert').hasClass('disabled')) {
 			return;
 		}
@@ -588,7 +921,7 @@ var hexadecimalOctalReady = function() {
 				else if (finalBinaryVal.length == 2) finalBinaryVal = "00" +  finalBinaryVal;
 				else if (finalBinaryVal.length == 3) finalBinaryVal = "0" +  finalBinaryVal;
 			}
-			$("#numbersCombine").append("<span id= combineBinary"+i+ "opacity00 class='text-center ct-code-b-black'>"+
+			$("#numbersCombine").append("<span id= combineBinary"+i+ " class='combine opacity00 text-center ct-code-b-black'>"+
 					"<span class='opacity00' id= combineBinaryDigits"+ i +">"+ finalBinaryVal +"</span></span>");
 		} 
 		for (var i=0; i<valuelength.length; i++) {
@@ -629,6 +962,7 @@ var hexadecimalOctalReady = function() {
 
 	
 function binary(callBackFunction) {
+	
 	if (p >= 0 ) {
 		var s = $("#binaryDigits" + p).offset();
 		$("#combineBinaryDigits" + p).effect('highlight',  {color: "#ff9900"}, 1000);
@@ -647,11 +981,12 @@ function binary(callBackFunction) {
 	
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval":10,
+		"typing_interval":1,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		callbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }
 
@@ -661,7 +996,7 @@ function animationSquare1() {
 	var top = l1.top - l2.top;
 	var left = l1.left - l2.left;
 	TweenMax.from("#positionDiv", 0.5, {top: top, left: left, onComplete: function() {
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}});
 }
 
@@ -680,13 +1015,13 @@ function recursion(index) {
 		if(j > 0) {
 			$("#calculationDiv" + index).append('<span class="opacity00" id="openBrace' + i + '">(</span><span class="opacity00" id="value' + i +
 					'">' + input[i] + "</span><span class='ct-blue-color opacity00' id='multi" + i +"'>x</span>" + 
-					'<span class="opacity00" id="squaring' + i + '">' + "2" + '<sup>' + j + '</sup></span><span>' 
-					+ '<span class="opacity00" id="closeBrace' + i + '">)</span>' + "<span class='plus opacity00' id='plus" + i + "'>+</span>");
+					'<span class="opacity00" id="squaring' + i + '">' + "2" + '<sup>' + j + '</sup></span>' 
+					+ '<span class="close1 opacity00" id="closeBrace' + i + '">)</span>' + "<span class='plus opacity00' id='plus" + i + "'>+</span>");
 		} else {
 			$("#calculationDiv" + index).append('<span class="opacity00" id="openBrace' + i + '">(</span><span class="opacity00" id="value' + i +
 					'">' + input[i] + "</span><span class='ct-blue-color opacity00' id='multi" + i +"'>x</span>" + 
-					'<span class="opacity00" id="squaring' + i + '">' + "2" + '<sup>' + j + '</sup></span><span>' +
-					'<span class="opacity00" id="closeBrace' + i + '">)</span>');
+					'<span class="opacity00" id="squaring' + i + '">' + "2" + '<sup>' + j + '</sup></span>' +
+					'<span class="close1 opacity00" id="closeBrace' + i + '">)</span>');
 		}
 	}
 	for (var i = index, j = 2; i < index + 3, j >= 0; i++, j--) {
@@ -699,7 +1034,7 @@ function recursion(index) {
 		if(j > 0) {
 			$("#multiplicationDiv" + index).append('(<span id="value' + j +'">' + input[i] + "</span><span class='ct-blue-color'>x</span>" + 
 					'<span class="squaring" id="twoSquare' + i + '">' + "2" + '<sup>' + j + '</sup></span>' + ')<span class="plus">+</span>');
-			$("#additionDiv" + index).append('(' + b + ')' + "<span class='plus' id='plus'>+</span>");
+			$("#additionDiv" + index).append('(' + b + ')' + "<span class='plus1' id='plus1'>+</span>");
 		} else {
 			$("#multiplicationDiv" + index).append('(<span id="value' + j +'">' + input[i] + "</span><span class='ct-blue-color'>x</span>" + 
 					'<span class="squaring" id="twoSquare' + i + '">' + "2" + '<sup>' + j + '</sup></span>' + ')');
@@ -750,7 +1085,7 @@ function zerosAppendDynamically() {
 						"raise to the power of its position.<br>For example: The first digit is multiplied by 2 raise to the power of tis position "+
 						"which is 0.";
 						typing(".introjs-tooltiptext", text, function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				}});
@@ -761,7 +1096,7 @@ function zerosAppendDynamically() {
 						typing('.introjs-tooltiptext', "In the binary number system each digit is multiplied by <span class='ct-code-b-yellow'>2</span> "+
 								"raised to the power of its position.<br>For example: The first digit is multiplied by 2 raised to the power of its "+
 								"position which is 0 i.e <span class='ct-code-b-yellow'>2<sup>0</sup></span> and so on.", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				//	$('.introjs-nextbutton').show();
@@ -788,7 +1123,7 @@ function animationSquare() {
 	var top = l1.top - l2.top;
 	var left = l1.left - l2.left;
 	TweenMax.from("#squareDiv", 0.5, {top: top, left: left, onComplete: function() {
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}});
 }
 
@@ -827,7 +1162,7 @@ function collection(index, plusIndex) {
 							if (index > 0) {
 								collection(--index, --plusIndex);
 					     	} else {
-					     		$('.introjs-nextbutton').show();
+					     		$('.introjs-nextbutton, .introjs-prevbutton').show();
 					     	}
 				     	}});
 					}});
@@ -858,7 +1193,7 @@ function squaringFirst(index, p) {
 			squaringFirst(--index, ++p);
 		} else {
 			$(".squaring").css("width", "auto");
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}
 	});
 }
@@ -870,7 +1205,7 @@ function addition(index) {
 	$("#multiplicationDiv" + index).effect( "highlight", {color:"#FFD700"}, 2000);
 	$("#additionDiv").removeClass("opacity00");
 	TweenMax.from("#additionDiv" + index, 2, {top: topLength, onComplete: function() {
-		$(".introjs-nextbutton").show();
+		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	}});
 }
 

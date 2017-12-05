@@ -18,9 +18,17 @@
 <script type="text/javascript" src='/js/jquery-ui-latest.js'></script>
 <script src="/secure/lang/c/js-min/dtb.min.js"></script>
 
-
 <style>
-
+.user-btn1 {
+	width : 46px;
+	border-radius: 3px !important;
+	background-color: green !important;
+}
+.user-btn {
+	width : 46px;
+	border-radius: 3px !important;
+	background-color: #5bc0de !important;
+}
 .ct-demo-heading {
 	background: highlight none repeat scroll 0.0;
 	border-radius: 10px;
@@ -94,15 +102,6 @@ input:focus::-moz-placeholder {
 	width: 0px !important;
 }
 
-/* .introjs-tooltip {
-	min-width: 270px !important;
-}
-
-.introjs-tooltiptext {
-	min-height: 25px !important;
-	font-size: 14px;
-} */
-
 .store-remainder {
 	padding: 6px;
 	font-family: monospace;
@@ -122,7 +121,7 @@ input:focus::-moz-placeholder {
 	min-height: 88px;
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	margin-left: 20.5%;
+	font-family: monospace;
 }
 
 #inputDiv {
@@ -218,7 +217,7 @@ ol, ul {
 			</h3>
 		</div>
 		<div class="row" id="informationDiv" >
-			<div id="infoDiv" class="col-xs-7 col-xs-offset-2 font-size-14 margin-top-1 position-relative set-height" ></div>
+			<div id="infoDiv" class="col-xs-8 col-xs-offset-2 font-size-14 margin-top-1 position-relative set-height" ></div>
 		</div>
 		<div class="row text-center">
 			<div id="inputDiv" class="col-xs-6 col-xs-offset-2 margin-top-1 visibility-hidden">
@@ -234,7 +233,7 @@ ol, ul {
 				<div class="row col-xs-12">
 						<div class="row text-center col-xs-10 font-size-16 margin-top-1" id="remainderValues">
 							<div id="remainders" class="col-xs-offset-2 col-xs-4 opacity00 margin-top-1">Remainders:</div>
-							<div class="col-xs-6 text-left margin-top-1" ><table><tr id="remaindersRow"></tr></table></div>
+							<div class="col-xs-6 text-left margin-top-1" ><table id="finalValues"><tr id="remaindersRow"></tr></table></div>
 						</div>
 				 </div>
 				<div class="row" id="resultDiv" style="margin-left:3%"></div>

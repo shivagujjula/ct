@@ -19,6 +19,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+
 <script type="text/javascript" src="/secure/lang/c/js-min/lo.min.js"></script>
 
 <title>Logical-operators</title>
@@ -26,7 +27,8 @@
 .border {
 	border: 2px solid gray;
 	border-radius: 15px;
-	min-height: 200px;
+	min-height: 195px;
+	padding: 6px;
 }
 
 #animationDiv {
@@ -43,6 +45,7 @@
 
 .background-color {
 	background-color: lavender;
+	font-family: monospace;
 }
 
 .margin-top20 {
@@ -154,6 +157,16 @@ td, th {
 
 .introjs-tooltip {
 	min-width: 300px;
+	font-family: monospace;
+}
+
+y {
+	color: yellow;
+	font-weight: bold;
+}
+
+.tooltip-min-width {
+	min-width: 145px;
 }
 </style>
 <script type="text/javascript">

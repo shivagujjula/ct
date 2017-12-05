@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -15,11 +13,12 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/continue.min.js"></script>
-
+<!-- <script src="/secure/lang/c/js-min/cic.min.js"></script> -->
+<script src="/secure/lang/j/js/continue.js"></script>
 <style type="text/css">
 body {
 	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 .output-console-title-bar {
@@ -32,7 +31,7 @@ body {
 .output-console-body {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    height: 182px;
+    height: 165px	;
     margin-bottom: 14px;
     padding: 10px;
     font-weight: bold;
@@ -60,7 +59,7 @@ body {
 }
 
 .flip-area {
-	position: absolute;
+	position: relative;
 	font-family: monospace;
 }
 
@@ -84,13 +83,57 @@ body {
 .flip-animation-btn {
 	background-color: green !important;
 }
-</style>
-<script type="text/javascript">
 
-$(document).ready(function() {
-	continueReady();
-});
-</script>
+.position-absolute {
+	position: absolute;
+	font-family: monspace;
+}
+
+.display {
+	display: inline-block;
+}
+
+.introjs-tooltip-min-width-custom {
+	min-width: 110px;
+}
+
+.introjs-tooltiptext br {
+	content: "";
+	display: block;
+	margin-top: 10px;
+}
+
+pre {
+	font-size: 12px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+[contenteditable=true] {
+	background: yellow;
+}
+</style>
 </head>
 <body>
 	<div class='col-xs-12'>
@@ -99,22 +142,23 @@ $(document).ready(function() {
 				<span class="label ct-demo-heading">continue in Action</span>
 			</h4>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-offset-1 col-xs-6">
 			<div>
-				<pre class="creamePreTab4">public class ContinueDemo {
-	public static void main(String[] args) {
-		<span id='continueLoop'>for (<span id='initialization'
-						class="position-relative">int i = <span
-							id="initializationValue" class="allowNumbers position-relative"
-							maxlength="1" contenteditable=false placeholder=" ">1</span>;</span> <span
-						id='condition'>i < 10;</span> <span id='update'>i++</span>) {
-			<span id='ifBlk'>if (<span id='ifCondition'>i % 2 == 0</span>) {
-				<span id='continueStmt'>continue;</span>
-			}</span>
-			<span id='sop'>System.out.println("i :" + i);</span>
-		}</span>
+				<pre class="creamePreTab4"><in>public class</in> ContinueDemo {
+	<g>public static void</g> main(String[] args) {
+		<div id='continueLoop' class='display'><go>for</go> (<div id='initialization'
+						class="position-relative display"><g>int</g> i = <ink><span
+							id="initializationValue" class="allowNumbers position-absolute"
+							maxlength="1" contenteditable=false placeholder=" ">1</span></ink>&nbsp;;</div> <span
+					id='condition'>i < <ink>10</ink>;</span> <span id='update'>i++</span>) {
+	<div id='ifBlk' class='display'><go>if</go> (<span id='ifCondition'>i % <ink>2</ink> == <ink>0</ink></span>) {
+	<span id='continueStmt'><go>continue;</go></span>
+}</div>
+	<span id='sop'>System.out.println(<ink>"i : "</ink> + i);</span>
+}</div>
 	<span id='mainEnd'>}</span>
-}</pre></div>
+}
+</pre></div>
 		</div>
 		<div class="col-xs-4" id="outputDiv">
 			<div class="output-console-title-bar">
@@ -125,8 +169,14 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id="restart"><i
-			class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id="restart">Restart</a>
 	</div>
+	
+<script type="text/javascript">
+	$(document).ready(function() {
+		continueInCReady();
+	});
+</script>
+	
 </body>
 </html>

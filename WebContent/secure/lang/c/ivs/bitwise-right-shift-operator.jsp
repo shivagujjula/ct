@@ -30,6 +30,8 @@
 .information-div {
 	min-height: 70px;
 	border-radius: 10px;
+	font-family: monospace;
+	padding: 4px;
 }
 
 .animation-div {
@@ -234,8 +236,9 @@ table {
 				<tr></tr>
 			</table>
 		</div>
-		<div id="resultDiv"
-			class="col-xs-offset-3 col-xs-6 result-div margin-top20"></div>
+		<div id="resultDiv" class="col-xs-offset-3 col-xs-6 result-div margin-top20">
+			<span id="resultText"></span>
+		</div>
 	</div>
 <script>
 	$(document).ready(function() {

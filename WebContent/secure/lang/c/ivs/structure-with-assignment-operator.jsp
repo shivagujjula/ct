@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/css/animate.css"/>
 	<link rel="stylesheet" href="/css/jquery-ui.css"/>
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	
 	<script src="/js/jquery-latest.js"></script>
 	<script src="/js/bootstrap.js"></script>
 	<script src="/js/gs/TweenMax.min.js"></script>
@@ -129,7 +130,7 @@ pre {
 		<div class='col-xs-1'>
 			<div id='aValue' style='margin-top: 36px;' class='opacity00'><span class='color-green'><b>a</b></span>
 				&emsp;<span class='color-red'>&rarr;</span></div>
-			<div id='bValue' style='margin-top: 68px;' class='opacity00'><span class='color-green'><b>b</b></span>
+			<div id='bValue' style='margin-top: 50px;' class='opacity00'><span class='color-green'><b>b</b></span>
 				&emsp;<span class='color-red'>&rarr;</span></div>
 		</div>
 	<div class='col-xs-4'>
@@ -147,7 +148,7 @@ pre {
 				<tbody>
 					<tr>
 			  			<%for (int i = 1; i <= 5; i++)  {%>
-			  				<td  class="memory"><span id='memory<%=(i - 1)%>' class='opacity00'><%=(i * 10)%></span></td>
+			  				<td  class="memory"><span id='memory<%=(i - 1)%>' class='memory-class opacity00'><%=(i * 10)%></span></td>
 			  			<%}%>
   					</tr>
         		</tbody>
@@ -199,8 +200,7 @@ pre {
 <div class='col-xs-12'>
 	<div class='col-xs-8 col-xs-offset-2' style='margin-top: 30px; padding: 0'>
 		<div class='col-xs-6 col-xs-offset-1'>
-<pre id='structureConcept' class='opacity00' style='margin-top: 24px;'><span id='structBook' class=''><span class='color-rose'>struct</span> book
-<span id='membersOfStructBook'>{
+<pre id='structureConcept' class='opacity00' style='margin-top: 24px;'><span id='structBook' class=''><span class='color-rose'>struct</span> book <span id='membersOfStructBook'>{
 	<span class='color-rose'>char</span> name[20];
 	<span class='color-rose'>float</span> price;
 	<span class='color-rose'>int</span> page;
@@ -241,7 +241,7 @@ pre {
   </div>
 </div>
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:4px'><i class="fa fa-refresh"></i> Restart</button>
 </div>
 </body>
 

@@ -27,10 +27,6 @@
 	min-width: 300px;
 }
 
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
-}
-
 .introjs-duplicate-nextbutton {
 	background-color: green;
 	margin: 0 5px !important;
@@ -181,7 +177,13 @@ div,span {
     border-bottom: 1px solid green;
     margin: 0.6px;
 }
+#printfDefinition {
+	font-family:monospace;
+}
 
+.introjs-tooltip-min-width-custom {
+	min-width: 125px;
+}
 </style>
 </head>
 <body>
@@ -194,7 +196,7 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12 margin-top">
-				<div class="col-xs-6 col-xs-offset-3 opacity00" id="printfDefinition">
+				<div class="col-xs-7 col-xs-offset-3 opacity00" id="printfDefinition">
 					The <span class="ct-code-b-green">printf()</span> function with
 					<span class="ct-code-b-green">%d</span> format specifier is used to display 
 					an <span class="ct-code-b-green">integer</span> value.

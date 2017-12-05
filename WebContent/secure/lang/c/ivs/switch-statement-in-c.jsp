@@ -122,6 +122,31 @@ body {
 	min-width: 110px;
 }
 
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+
 </style>
 
 </head>
@@ -134,27 +159,27 @@ body {
 		</div>
 		<div class="col-xs-offset-1 col-xs-7">
 			<div>
-			<pre class="creamePreTab4">#include&lt;stdio.h&gt;
-void main() {
-   <span id='initialization'>int value = <input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="1" value='2'>;</span>
-   <span id='switchBlock'><span id='switchKeyword'>switch (<span id='condition'>value</span>) </span><span id='openBrace'>{</span>
-	 <span id='case1Blk'><span id='case1'>case 1:</span>
-		<span id='case1Sop'>printf("One\n");</span>
-		<span id='case1break'>break;</span></span>
-	 <span id='case2Blk'><span id='case2'>case 2:</span>
-		<span id='case2Sop'>printf("Two\n");</span>
-		<span id='case2break'>break;</span></span>
-	 <span id='case34Blk'><span id='case3Blk'><span id='case3'>case 3:</span>
-		<span id='case3Sop'>printf("Three\n");</span></span>
-	 <span id='case4Blk'><span id='case4'>case 4:</span>
-		<span id='case4Sop'>printf("Four\n");</span>
-		<span id='case4break'>break;</span></span></span>
-	 <span id='case56Blk'><span id='case5'>case 5:</span>
-	 <span id='case6'>case 6:</span>
-	 	<span id='case56Sop'>printf("Five or Six\n");</span>
-		<span id='case56break'>break;</span></span>
-	 <span id='defaultBlk'><span id='casedefault'>default:</span>
-		<span id='defaultSop'>printf("%d did not match any of the existing cases\n",value);</span></span>
+			<pre class="creamePreTab4"><in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>void</g> main() {
+   <span id='initialization'><g>int</g> value = <ink><input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="1" value='2'></ink>;</span>
+   <span id='switchBlock'><span id='switchKeyword'><go>switch</go> (<span id='condition'>value</span>) </span><span id='openBrace'>{</span>
+	 <span id='case1Blk'><span id='case1'><go>case</go> <ink>1</ink>:</span>
+		<span id='case1Sop'>printf(<ink>"One<in>\n</in>"</ink>);</span>
+		<span id='case1break'><go>break</go>;</span></span>
+	 <span id='case2Blk'><span id='case2'><go>case</go> <ink>2</ink>:</span>
+		<span id='case2Sop'>printf(<ink>"Two<in>\n</in>"</ink>);</span>
+		<span id='case2break'><go>break</go>;</span></span>
+	 <span id='case34Blk'><span id='case3Blk'><span id='case3'><go>case</go> <ink>3</ink>:</span>
+		<span id='case3Sop'>printf(<ink>"Three<in>\n</in>"</ink>);</span></span>
+	 <span id='case4Blk'><span id='case4'><go>case</go> <ink>4</ink>:</span>
+		<span id='case4Sop'>printf(<ink>"Four<in>\n</in>"</ink>);</span>
+		<span id='case4break'><go>break</go>;</span></span></span>
+	 <span id='case56Blk'><span id='case5'><go>case</go> <ink>5</ink>:</span>
+	 <span id='case6'><go>case</go> <ink>6</ink>:</span>
+	 	<span id='case56Sop'>printf(<ink>"Five or Six<in>\n</in>"</ink>);</span>
+		<span id='case56break'><go>break</go>;</span></span>
+	 <span id='defaultBlk'><span id='casedefault'><go>default</go>:</span>
+		<span id='defaultSop'>printf(<ink>"<in>%d</in> did not match any of the existing cases<in>\n</in>"</ink>,value);</span></span>
    <span id='endBrace'>}</span></span>
 <span id='mainEnd'>}</span>
 </pre>

@@ -28,10 +28,6 @@
 	min-width: 300px;
 }
 
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
-}
-
 .introjs-duplicate-nextbutton {
 	background-color: green;
 	margin: 0 5px !important;
@@ -71,6 +67,7 @@ div,span {
 #printfDefinition {
 	min-height: 65px;
 	margin-bottom: 12px;
+	font-family: monospace;
 }
 
 [contenteditable="true"] {
@@ -218,7 +215,7 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12">
-				<div id="printfDefinition" class="col-xs-6 col-xs-offset-3">
+				<div id="printfDefinition" class="col-xs-8 col-xs-offset-2">
 				<ul><li id="text1" class="opacity00">We have a formatting character
 					<span class="ct-code-b-green">-</span>(<span class="ct-code-b-green">minus</span>). 
 					 Which can be used along with the 

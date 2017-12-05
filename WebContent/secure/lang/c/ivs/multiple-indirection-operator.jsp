@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -132,7 +133,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -204,7 +205,7 @@ void <b class='ct-blue-color'>main()</b> {
 			<div id="consoleId">
 				<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
 				<div class="output-console-body" id="consoleBodyDiv">
-					<span class='visibility-hidden' id="printText1">value of **q is : <b class='ct-blue-color'>20</b></span>
+					<span class='visibility-hidden' id="printText1">value of **q is : <b class='ct-code-b-yellow'>20</b></span>
 				</div>
 			</div>
 		</div>

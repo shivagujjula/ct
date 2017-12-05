@@ -15,11 +15,11 @@ var ifElseIfInCReady = function() {
 	
 	$('#charInput').keyup(function() {
 		if($('#charInput').val().length > 0) {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 			$('.errorText').empty();
 		} else {
 			$('.errorText').html("Please enter a character.");
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		}
 	});
 	
@@ -44,261 +44,320 @@ var ifElseIfInCReady = function() {
 			intro :''
 		},{
 			element :'#consoleId',
-			intro :''
+			intro :'',
+			tooltipClass:'hide'
 		},{
 			element :'#getCh',
-			intro :''
+			intro :'',
+			tooltipClass: 'hide'
 		},{
 			element :'#enteredCharSpan',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#putChar',
 			intro :''
 		},{
 			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
+			tooltipClass:'hide'
 		},{
 			element :'#ifCondition',
-			intro :''
-		},{
-			element :'#ifConditionForLowerCase',
-			intro :''
-		},{
-			element :'#printF1',
-			intro :''
-		},{
-			element :'#consoleId',
 			intro :'',
-			tooltipClass:'hidden'
-		},{
-			element :'#ifConditionForUpperCase',
-			intro :''
-		},{
-			element :'#printF2',
-			intro :''
-		},{
-			element :'#consoleId',
-			intro :'',
-			tooltipClass:'hidden'
-		},{
-			element :'#printF3',
-			intro :''
-		},{
-			element :'#consoleId',
-			intro :'',
-			tooltipClass:'hidden'
-		},{
-			element :'#printF4',
-			intro :''
-		},{
-			element :'#consoleId',
-			intro :'',
-			tooltipClass:'hidden'
-		},{
-			element :'#restartBtn',
-			intro :'',
-			tooltipClass: "introjs-tooltip-min-width-custom",
-			position:"right"
+			tooltipClass:'hide'
 		}]
 	});
 	
-	intro.onafterchange(function(targetElement) { 
+	
+	intro.onbeforechange(function(targetElement) { 
 		t1 = new TimelineLite();
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "mainFunctions" :
-			$('.introjs-nextbutton').hide();
+	 	case "enterCharSpan" :
+	 		$("#consoleId").addClass("opacity00");
+	 		$("#charInput").removeAttr("disabled");
+	 		$("#charInput").val("");
+		break; 
+		case "consoleId":
+			if (intro._currentStep == 4) {
+				$("#charInput").removeAttr("disabled");
+		 		$("#charInput").val("");
+			} else if (intro._currentStep == 7) {
+				$("#enteredConsole").text('');
+			} else if (intro._currentStep == 9) {
+				$("#valGet").empty();
+			} 
+			break;
+		case "putChar" :
+			$(".user-btn").remove();
+			break;
+		case "ifCondition" :
+			$(".user-btn").remove();
+			checkingFlag = false;
+			intro._introItems[intro._currentStep]["visited"] = undefined;
+			if (intro._introItems.length > 11) {
+				intro._introItems.splice(11);
+			}
+			break;
+		}
+	});
+	
+	intro.onafterchange(function(targetElement) { 
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			
+			if (intro._currentStep != 0 && targetElement.id !== "mainMthd") {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
+		
+		t1 = new TimelineLite();
+		var elementId = targetElement.id;
+		var action = intro._introItems[intro._currentStep].action;
+		switch (elementId) {
+		
+		case "ifElseStatement":
+			$('.introjs-prevbutton').hide();
+		break;
+		
+		case "mainFunctions":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "<ul><li><b class='color-yellow'>main()</b> function is called by the operating system.</li>"+
 						"<li><b class='color-yellow'>main()</b> is execution starting point for any <b class='color-yellow'>C</b> program.</li>"+
 						"</ul>", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break; 
+		
 		case "charCh" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>ch</b> is the variable which is of type char.<ul><li>It allocates 1 byte "+
 		  				"of memory.</li><li>It stores only 1 character.</li></ul>", function() {  
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
+		
 	 	case "enterCharSpan" :
-			$('.introjs-nextbutton').hide();
+	 		$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>printf()</b> is library function, used to display the message specified "+
 		  				"with in double quotes on to the output screen.", function() {  
-		  			$('.introjs-nextbutton').show();	
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();	
 				});
 			});
 		break; 
+		
 		case "consoleId" :
-			$('.introjs-nextbutton').hide();
-			if(intro._currentStep == 4) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$('#consoleId').removeClass('opacity00');
-		  			typing('.introjs-tooltiptext', "Enter a <b class='color-yellow'>character</b>.<br><span class='errorText'></span>", function() {  
-		  				$('#charInput').focus();
-					});
-				 });
-			} else if(intro._currentStep == 7) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					typing('#enteredConsole',"The given character is: " ,function() {
-						setTimeout(function(){
-							intro.nextStep();
-							}, 800);
-					});
-				 });
-			} else if(intro._currentStep == 9) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					typing('#valGet', "<span style='color: #0f0;'>" + $('#charInput').val() + "</span>", function() { 
-						setTimeout(function(){
-							intro.nextStep();
-						}, 800);
-					});
-				 });
-			} else if(intro._currentStep == 13) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and vowel", function() {
-						setTimeout(function(){
-							intro.goToStep(22);
-						}, 1000); 
-					});
-				});
-			}  else if(intro._currentStep == 16) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					 typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and vowel", function() {
-					  setTimeout(function(){
-						  intro.goToStep(22);
-						}, 1000); 
-					});
-				});
-			} else if(intro._currentStep == 18) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					 typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and consonant", function() {
-					  setTimeout(function(){
-						  intro.goToStep(22);
-						}, 1000); 
-					});
-				});
-			} else if(intro._currentStep == 20) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					 typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is not a letter", function() {
-					  setTimeout(function(){
-						  intro.goToStep(22);
-						}, 1000); 
-					});
-				});
-			}
+			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				if (intro._direction == "forward") {
+					if (intro._currentStep == 4) {
+						$(".introjs-tooltip").removeClass("hide");
+
+						$(".introjs-helperLayer").one("transitionend", function() {
+							$('#consoleId').removeClass('opacity00');
+							typing('.introjs-tooltiptext', "Enter a <b class='color-yellow'>character</b>.<br><span class='errorText'></span>", function() {
+								$('#charInput').focus();
+							});
+						});
+						
+					} else if (intro._currentStep == 7) {
+						$(".introjs-helperLayer").one("transitionend", function() {
+							typing('#enteredConsole',"The given character is: " ,function() {
+								setTimeout(function(){
+									intro.nextStep();
+								}, 800);
+							});
+						});
+					} else if (intro._currentStep == 9) {
+						$(".introjs-helperLayer").one("transitionend", function() {
+							typing('#valGet', "<span style='color: #0f0;'>" + $('#charInput').val() + "</span>", function() { 
+								setTimeout(function(){
+									intro.nextStep();
+								}, 800);
+							});
+						});
+					} else if (action == "smallVowel") {
+						$(".introjs-helperLayer").one("transitionend", function() {
+							typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and vowel", function() {
+								setTimeout(function(){
+									intro.nextStep();
+								}, 1000); 
+							});
+						});
+					}  else if(action == "upperVowel") {
+						$(".introjs-helperLayer").one("transitionend", function() {
+							typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and vowel", function() {
+								setTimeout(function(){
+									intro.nextStep();
+								}, 1000); 
+							});
+						});
+					} else if(action == "consonant") {
+						$(".introjs-helperLayer").one("transitionend", function() {
+							typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is a letter and consonant", function() {
+								setTimeout(function(){
+									intro.nextStep();
+								}, 1000); 
+							});
+						});
+					} else if(action == "notALetter") {
+						$(".introjs-helperLayer").one("transitionend", function() {
+							typing('#printInConsole',"<span style='color: #0f0;'>"+ ch + "</span> is not a letter", function() {
+								setTimeout(function(){
+									intro.nextStep();
+								}, 1000); 
+							});
+						});
+					}
+				} else {
+					if (intro._currentStep !== 4) {
+						stepNext();
+					} else {
+						$(".introjs-tooltip").removeClass("hide");
+						$("#charInput").focus();
+					}
+				}
+				
+			})
 			break;
+			
 		case "getCh" :
 			ch = $('#charInput').val();
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#charInput").attr("disabled", true);
+			
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass('hide');
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>getchar()</b> is a library function which reads only single character from "+
 		  				"keyboard and it is assigned to variable <b class='color-yellow'>ch</b>.", function() {  
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 			  		});
 				});
 			break;
+			
 		case "enteredCharSpan" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					intro.nextStep();
-					}, 700);
+				if (intro._direction == "forward") {
+					stepNext();
+				} else {
+					stepNext();
+				}
 				});
 		break; 
+		
 		case "putChar" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".user-btn").remove();
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext', "<b class='color-yellow'>putchar()</b> is used to print the character on to the console.", function() {  
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
+			
 		case "ifCondition" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			checking();
+			$(".introjs-tooltip").removeClass("hide");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				animation();				
 				});
 			break;
+			
 		case "ifConditionForLowerCase":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				animation1();
 			  	 });
 			break;
 		case "printF1":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
 						"<b class='color-yellow'>if</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 		case "ifConditionForUpperCase":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				animation2();
 			  	});
 			break;
 		case "printF1":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
 						"<b class='color-yellow'>if</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 		case "ifConditionForUpperCase":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				animation3();
 			  	});
 			break;
 		case "printF2":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-yellow'>true</b>, the control enters into the "+
 						"<b class='color-yellow'>else if</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 		case "printF3":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-red'>false</b>, the control enters into the "+
 						"<b class='color-yellow'>else</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 		case "printF4":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Since the condition evaluates to <b class='color-red'>false</b>, the control enters into the "+
 						"<b class='color-yellow'>else</b> block.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 		case "restartBtn":
 			$("#charInput").attr("disabled", false);
-			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css({'min-width' : '125px'});
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
 					$("#restartBtn").removeClass("opacity00");
@@ -312,14 +371,28 @@ intro.start();
 $('.introjs-skipbutton').hide();
 $('.introjs-prevbutton').hide();
 $('.introjs-nextbutton').hide();
-typing('.introjs-tooltiptext',"This code demonstrates the working of <b><span class='color-yellow'>if-else-if</span></b> block.",function() {
-	$('#preBox').removeClass('opacity00');
-	$('.introjs-nextbutton').show();
+	typing('.introjs-tooltiptext',"This code demonstrates the working of <b><span class='color-yellow'>if-else-if</span></b> block.",function() {
+		$('#preBox').removeClass('opacity00');
+		$('.introjs-nextbutton').show();
 	});	
 }
 
+
+function stepNext() {
+	if (intro._direction == "forward") {
+		setTimeout(function() {
+			intro.nextStep();
+		},1000);
+	} else {
+		setTimeout(function() {
+			intro.previousStep();
+		},1000);
+	}
+}
+
+
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -328,53 +401,95 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }
 	
 function charcheck() {
+	
+		
 	if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
  	{
-		
 	   if ( ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ) {
-		   $(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-	    	$(".user-btn").click(function() {
-	    		$(".user-btn").remove();
-	    		intro.goToStep(12);
-	        });
+		   
+		   if (intro._introItems[intro._currentStep]["visited"] == undefined) {
+				intro._introItems[intro._currentStep]["visited"] = "true";
+					intro.insertOption(intro._currentStep + 1, insertionIntro("ifConditionForLowerCase", "", "right","hide"));
+					intro.insertOption(intro._currentStep + 2, insertionIntro("printF1", "", "right"));
+					intro.insertOption(intro._currentStep + 3, insertionIntro("consoleId", "", "bottom", "hide", "smallVowel"));
+					intro.insertOption(intro._currentStep + 4, insertionIntro("restartBtn", "", "right", ""));
+		   }
 		   
 	   } else if ( ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' ) {
-	    	$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-	    	$(".user-btn").click(function() {
-	    		$(".user-btn").remove();
-	    	 	intro.goToStep(15);
-	        });
+	    	if (intro._introItems[intro._currentStep]["visited"] == undefined) {
+				intro._introItems[intro._currentStep]["visited"] = "true";
+					intro.insertOption(intro._currentStep + 1, insertionIntro("ifConditionForUpperCase", "", "right","hide"));
+					intro.insertOption(intro._currentStep + 2, insertionIntro("printF2", "", "right"));
+					intro.insertOption(intro._currentStep + 3, insertionIntro("consoleId", "", "bottom", "hide", "upperVowel"));
+					intro.insertOption(intro._currentStep + 4, insertionIntro("restartBtn", "", "right", ""));
+		   }
+	    	
+	    	
 	   } else {
-	    	$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-			$(".user-btn").click(function() {
-				$(".user-btn").remove();
-		    	 intro.goToStep(18);
-		     });
+		   if (intro._introItems[intro._currentStep]["visited"] == undefined) {
+				intro._introItems[intro._currentStep]["visited"] = "true";
+					intro.insertOption(intro._currentStep + 1, insertionIntro("printF3", "", "right"));
+					intro.insertOption(intro._currentStep + 2, insertionIntro("consoleId", "", "right", "hide", "consonant"));
+					intro.insertOption(intro._currentStep + 3, insertionIntro("restartBtn", "", "right", ""));
+		   }
 	  }
    }
    else {
-   	$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-   	$(".user-btn").click(function() {
-	   	$(".user-btn").remove();
-	   	 intro.goToStep(20);
-        });
-	} 
+	   if (intro._introItems[intro._currentStep]["visited"] == undefined) {
+			intro._introItems[intro._currentStep]["visited"] = "true";
+				intro.insertOption(intro._currentStep + 1, insertionIntro("printF4", "", "right"));
+				intro.insertOption(intro._currentStep + 2, insertionIntro("consoleId", "", "right", "hide", "notALetter"));
+				intro.insertOption(intro._currentStep + 3, insertionIntro("restartBtn", "", "right", ""));
+	   }
+	}
+	$(".introjs-prevbutton, .introjs-nextbutton").show();
+
 }
  
  
 function checking() {
-	if ((ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') ) {
+	if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
+ 	{
+		if ((ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')) {
+			
+			checkingFlag = true;
+		} else if((ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')) {
+			
+			checkingFlag = true;
+		}
 		checkingFlag = true;
-	} else if((ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')) {
-		checkingFlag = true;
-	}
+ 	} 	
 }
  
+
+function insertionIntro(element, msg, position, tooltip, action) {
+	
+	var insert = {};
+	if (typeof element != undefined) {
+		insert["element"] = "#"+ element;
+	}
+	if (typeof msg != undefined) {
+		insert["intro"] = msg;
+	}
+	if (typeof position != undefined) {
+		insert["position"] = position;
+	}
+	if (typeof tooltip != undefined) {
+		insert["tooltipClass"] = tooltip;
+	}
+	if (typeof action != undefined) {
+		insert["action"] = action;
+	}
+	return insert;
+}
+
+
 function evaluateCndtn(text) {
 	if (text) {
 		text = "<span class='ct-code-b-yellow'>" + text + "</span>";
@@ -449,7 +564,7 @@ function evaluateCndtn(text) {
 															  	  			        							typing('#checking', evaluateMsg, function() { 
 																  	  			        							  setTimeout(function(){
 																  	  			        								charcheck();
-																	  	  			        							}, 2600); 
+																	  	  			        							}, 2500); 
 															  	  			        							 		});
 													  	  			        	  			        				}});
 								  	  			        	  			        								}});
@@ -536,7 +651,7 @@ function evaluateCndtn(text) {
 																							 		 			        			$("#vowelsmallU").text("117");
 																							 		 		 			        	t1.to("#vowelsmallU", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
 																 		 	  			        										typing('#trueSpan', "evaluates to <b class=color-yellow>true</b>.", function() {
-																					  														$('.introjs-nextbutton').show();
+																					  														$('.introjs-nextbutton, .introjs-prevbutton').show();
 																				 		 	  			        							});
 																								 		 		 			        	}});
 																			 	  			        						 		}});
@@ -636,7 +751,7 @@ function evaluateCndtn(text) {
 																			 				 			 		 			        		$("#vowelUpperU").text("85");
 																			 				 			 		 			        		t1.to("#vowelUpperU", 0.3, {opacity:1, rotationX: 0, onComplete: function() {
 																			 				 			 		 			        			typing('#trueSpan1', "evaluates to <b class=color-yellow>true</b>.", function() {
-																					  															$('.introjs-nextbutton').show();
+																					  															$('.introjs-nextbutton, .introjs-prevbutton').show();
 																				 		 	  			        								});
 																				 				 			 		 			        	 }});
 																		 																  }});

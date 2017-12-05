@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>scanf</title>
+<title>review</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
@@ -19,72 +19,54 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/su.min.js" type="text/javascript"></script>
-
+<script src="/secure/lang/c/js-min/su.min.js"></script>
 <style>
-
-.margin-top20 {
+.margin-top-20 {
 	margin-top: 20px;
 }
 
-#typingDiv {
-	height: 70px;
+.margin-top-40 {
+	margin-top: 40px;
 }
 
-.text-center {
-	text-align: center;
+.box-border {
+	border: 1px solid gray;
+    border-radius: 8px;
 }
 
-.back-color {
-	background-color: #D6C2E7;
+.creampretab4 {
+	-moz-tab-size: 1;
+	tab-size: 1;
+	background-color:#fffae6 !important;
+	line-height: 2.5;
 }
 
-table, th, td {
-    border: 1px solid black;
-    
+.Vertical-text-center {
+    line-height: 20px;
+    text-align: right;
+}
+.padding-col0 {
+	padding: 0px;
 }
 
-div, span {
-    position: relative;
+.border-height-css {
+	border: 1px solid;
+	height: 22px;
+}
+
+.box-height {
+	height: 113px;
+}
+
+.output-console {
+    margin: 0;
 }
 
 .output-console-body {
-	background-color: black;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-	color: #f0f0f0;
-	font-family: monospace;
+	height: 120px;
 	font-size: 14px;
-	margin-bottom: 14px;
-	height: 100px;
-	overflow: auto;
-	padding: 10px;
-	white-space: pre-line;
-}
-
-.input-char {
-  width: 30px;
-  border-width: 0px 0 0 0;
-  background-color: #000;
-  color: #0f0;
-   text-align: center;
-}
-
-.input-char:empty::before {
- 	color: black;
-	content: attr(placeholder);
-}
-
-.left-padding-120 {
-	padding-left: 120px;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.text-color-green {
-	color: green;
+	line-height: 2.5;
+	white-space: nowrap;
 }
 
 .ui-effects-transfer {
@@ -94,47 +76,30 @@ div, span {
 	z-index: 10000000;
 }
 
-/* .zIndex {
+ .z-index {
 	background-color: white;
 	position: relative;
-	z-index: 10000001 !important;
-} */
-
- .zIndex {
-	background-color: white;
-	position: relative;
-	z-index: 10000000 !important;
+	z-index: 10000000 !important;	
 } 
 
-.border {
-	border: 1px solid black;
+.input-char {
+  width: 30px;
+  border-width: 0px 0 0 0;
+  background-color: #000;
+  color: yellow;
+  text-align: center;
 }
 
-.margin-top10 {
-	margin-top: 10px;
+.input-all {
+  width: 100%;
+  border-width: 0px 0 0 0;
+  background-color: #000;
+  color: yellow;
 }
 
-.padding20 {
-	padding:20px;
-}
-
-.col-xs-12 {
-	width: 100%;
-}
-
-.border-height-css {
-	border: 1px solid;
-	height: 22px;
-}
-
-.Vertical-text-center  {
-	height: 62px;
-	line-height: 62px;
-	text-align: right; 
-}
-
-.padding-col0 {
-	padding: 0;
+.error-msg {
+	color: red;
+	font-weight: bold;
 }
 
 .circle-css {
@@ -146,51 +111,37 @@ div, span {
 	background-color: white;
 }
 
-.height-124 {
-	height: 124px;
+.blinking-orange {
+	animation-name: blink-background-orange ;
+	animation-duration: 1s;
+	animation-iteration-count: 1s;
+	animation-direction: alternate;
 }
 
-.user-btn {
-	background-color: green;
+@keyframes blink-background-orange { 
+	50% {
+		background-color: orange;
+	}
 }
 
-.error-msg {
+.ct-code-b-red {
 	color: red;
+	font-family: monospace;
 	font-weight: bold;
 }
-
-.int, .float {
-	outline: none;
+#typingDiv {
+font-family: monospace;
 }
-
-:-moz-placeholder { 
-  color: pink;
-}
-
-#inputInt {
-width : 30px;
-height : 20px;
-}
-
-#consoleBodyDiv1 {
-	height: 100px;
-}
-
-.margin-top150 {
-	margin-top: 142px;
-}
-
-.margin-left10 {
-	margin-left: 10px;
-}
-
 </style>
 </head>
 <body>
 <script>
-	$(document).ready(function() {
-		scanfUsageReady();
-	});
+
+
+$(document).ready(function() {
+	scanfUsageReady();
+});
+
 </script>
 	<div class="ct-box-main">
 		<div class='text-center'>
@@ -199,209 +150,126 @@ height : 20px;
 		
 		<div class='col-xs-12 text-center'>
 			<span id='restart'
-				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
+				class='btn btn-warning btn-sm opacity00 margin-top-20'>Restart
 				&nbsp;<i class='fa fa-refresh'></i>
 			</span>
 		</div>
-		
-		<div id="typingDiv"
-			class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
+
+		<div
+			class="margin-top-20 col-xs-offset-2 col-xs-8">
+			<ol id="typingDiv">
+				<li>The <b class="ct-blue-color">scanf()</b> function is used to read values of different data types from the standard input.</li>
+				<li>The <b class="ct-blue-color">scanf()</b> function is available in  <b class="ct-blue-color">"stdio.h"</b> header file included in the standard library.</li>
+				<li>The general format for using a <b class="ct-blue-color">scanf()</b>
+					function is <b>scanf (“control_string”,
+						argument_list);</b></li>
+			</ol>
+
 		</div>
-		<!-- <div class='col-xs-12 text-center'>
-			<span id='restart'
-				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
-				&nbsp;<i class='fa fa-refresh'></i>
-			</span>
-		</div> -->
-		<div class='col-xs-offset-4  col-xs-8 text-center margin-top20'>
-			<table id='myTable' class='opacity00'>
+		<div class='col-xs-offset-4  col-xs-8 text-center margin-top-20' style="font-family: monospace;">
+			<table id='myTable' class='table-bordered opacity00'>
 				<tr>
 					<th class='text-center'>Conversion character</th>
-					<th class='text-center'>Meaning</th>
+					<th class='text-center'>Represents</th>
 				</tr>
-				<!-- <tr>
-					<td>%c</td>
-					<td>data item is a single character</td>
-				</tr> -->
 				<tr>
 					<td>%d</td>
-					<td>represents  a decimal integer</td>
+					<td>decimal integer</td>
 				</tr>
 				<tr>
 					<td>%c</td>
-					<td>represents a single character</td>
+					<td>single character</td>
 				</tr>
 				<tr>
 					<td>%e,%f,%g</td>
-					<td>represents a floating-point value</td>
+					<td>floating-point value</td>
 				</tr>
 				<tr>
 					<td>%h</td>
-					<td>represents a short integer value</td>
+					<td>short integer value</td>
 				</tr>
 				<tr>
 					<td>%i</td>
-					<td>represents a decimal, hexadecimal or octal</td>
+					<td>a decimal, hexadecimal or octal</td>
 				</tr>
 				<tr>
 					<td>%o</td>
-					<td>represents an octal integer</td>
+					<td>octal integer</td>
 				</tr>
 				<tr>
 					<td>%s</td>
-					<td>represents a string followed by a white space character</td>
+					<td>a string followed by a whitespace character</td>
 				</tr>
 				<tr>
 					<td>%u</td>
-					<td>represents an unsigned decimal integer</td>
+					<td>unsigned decimal integer</td>
 				</tr>
 				<tr>
 					<td>%x</td>
-					<td>represents a hexadecimal integer</td>
+					<td>hexadecimal integer</td>
 				</tr>
-				<!-- <tr>
-					<td>%[ ]</td>
-					<td>data item is a string, may include white space characters</td>
-				</tr> -->
 			</table>
 		</div>
-		<div class='col-xs-12 margin-top20'>
-			<div id='mainExampleDiv' class='col-xs-4'>
-				 <div id='exampleDiv' class='opacity00 col-xs-7'>
-					<!-- <div class='text-color-green text-center'>Example1</div> -->
-					<!-- <div><span id="exampleOneChar">char ch;</span></div>
-					<div>
-						printf("<span id='EnterChar'>Enter a character</span> = ");
-					</div>
-					<div>
-						scanf("<span id='charSpan'><span id='charPercent'>
-								%c</span>", <span id='charAmp'>&ch</span></span>);
-					</div> -->
-					<div id='sampleOne'><span>&nbsp;&nbsp;&nbsp;</span><span><span id="exampleOneChar">char ch;</span></span><br>
-					<span>&nbsp;&nbsp;</span><span>
-					printf("<span id='EnterChar'>Enter a character</span> = ");
-					</span><br>
-					<span>&nbsp;&nbsp;</span><span>
-						scanf("<span id='charSpan'><span id='charPercent'>
-								%c</span>", <span id='charAmp'>&ch</span></span>);
-					</span></div>
-				</div> 
-				<!-- <div id='exampleDiv' class='back-color opacity00'>
-				<pre>
-				char ch;
-				printf("<span id='EnterChar'>Enter a character = </span> ");
-				scanf("<span id='charSpan'><span id='charPercent'>%c</span>",<span id='charAmp'>&ch</span></span>);
-				</pre>
-				</div>
- -->				<div id='exampleDiv1' class='back-color margin-top150 opacity00'>
-					<!-- <div class='text-color-green text-center'>Example2</div> -->
-					<div class='margin-left10'><span id='exampleTwoChar'>char ch;</span></div>
-					<div class='margin-left10'><span id='exampleTwoInt'>int i;</span></div>
-					<div class='margin-left10'><span id='exampleTwoFloat'>float f;</span></div>
-					<div class='margin-left10'>printf("Enter a character, an interger and a float value = \n");</div>
-					<div class='margin-left10'><span id='example2Scanf'>scanf("<span id='charSpan1'>%c</span>
-					 <span id='intSpan'>%d</span><span id='floatSpan'> %f"</span>,<span id='charAmp1'>&ch</span>,<span id='intAmp'>&i</span>,<span id='floatAmp'>&f</span>);</span></div>
-				</div>
+		<div id="mainDiv" class="col-xs-12 margin-top-20">
+		<div class="col-xs-offset-1 col-xs-5">
+				<pre id="codeAnimation" class="creampretab4 box-border opacity00">
+				<span id="exampleOneChar">char ch;</span>
+				<span id="firstPrintf">printf("Enter a character = ");</span>
+				<span id='firstScanf'>scanf("%c", &ch);</span>
+				<span id = "2ndcode">
+				<span id="exampleTwoInt">int i;</span>
+				<span id="exampleTwoFloat">float f;</span>
+				<span id="exampleTwoSecondPrintf">printf("Enter an interger and a float value = \n");</span>
+				<span id="exampleTwoSecondScanf">scanf("%d %f",&i,&f);</span></span></pre>
 			</div>
-			<div id='mainMemoryDiv' class='col-xs-4'>
-				<div id='memoryDiv' class='back-color col-xs-12 opacity00'>
-					<div class='text-color-green text-center' class='col-xs-4'>Memory</div>
-					<div class="col-xs-offset-4 col-xs-4 padding-col0 opacity00"
-						id="charBox">
-						<div class="col-xs-2 Vertical-text-center padding-col0">ch</div>
-						<div class="col-xs-10 text-center ">
-							<div>
-								<span class="color-gray">1 byte</span>
-							</div>
-							<div class="border-height-css">
-								<span id="xValue">3</span>
-							</div>
-							<div>
-								<span id="xAddress">1113</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id='memoryDiv1'
-					class='back-color col-xs-12 margin-top20 opacity00'>
-					<div class='text-color-green text-center' class='col-xs-4'>Memory</div>
-					<div id='charBox1' class='col-xs-4 padding-col0 opacity00'>
+		<div class="col-xs-5">
+		<div class="col-xs-12 box-border box-height opacity00" id="mainMemoryDiv">
+					<div id='memoryDiv1'
+					class='back-color col-xs-12 margin-top-40'>
+					<div id='charBox' class='col-xs-4 padding-col0 opacity00'>
 
-						<div class="col-xs-2 Vertical-text-center padding-col0">ch</div>
-						<div class="col-xs-10 text-center ">
-							<div>
-								<span class="color-gray">1 byte</span>
-							</div>
-							<div class="border-height-css">
-								<span id="xValue1" class='opacity00'></span>
-							</div>
-							<div>
-								<span id="xAddress">1200</span>
+						<div class="col-xs-3 Vertical-text-center padding-col0" id = "c">ch =</div>
+						<div class="col-xs-9 text-center ">
+							<div class="border-height-css" id = "cdiv">
+								<span id="xValue" class=''></span>
 							</div>
 						</div>
 					</div>
 					<div id='intBox' class='col-xs-4 padding-col0 opacity00'>
 
-						<div class="col-xs-2 Vertical-text-center padding-col0">i</div>
-						<div class="col-xs-10 text-center">
-							<div>
-								<span class="color-gray">2 bytes</span>
-							</div>
-							<div class="border-height-css">
-								<span id="xValue2" class='opacity00'></span>
-							</div>
-							<div>
-								<span id="xAddress">1300</span>
+						<div class="col-xs-3 Vertical-text-center padding-col0" id = "i">i &nbsp; = </div>
+						<div class="col-xs-9 text-center">
+							<div class="border-height-css" id = "idiv">
+								<span id="xValue2" class=''></span>
 							</div>
 						</div>
 					</div>
 					<div id='floatBox' class='col-xs-4 padding-col0 opacity00'>
 
-						<div class="col-xs-2 Vertical-text-center padding-col0">f</div>
-						<div class="col-xs-10 text-center ">
-							<div>
-								<span class="color-gray">4 bytes</span>
-							</div>
-							<div class="border-height-css">
-								<span id="xValue3" class='opacity00'></span>
-							</div>
-							<div>
-								<span id="xAddress">1400</span>
+						<div class="col-xs-3 Vertical-text-center padding-col0" id = "f">f &nbsp; = </div>
+						<div class="col-xs-9 text-center">
+							<div class="border-height-css" id = "fdiv">
+								<span id="xValue3" class=''></span>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id='mainOutputDiv' class='col-xs-4'>
-				<div id='outputDiv' class='opacity00'>
-					<div id="consoleId" class="center">
+		</div>
+				<div class="col-xs-12 box-height margin-top-20" id = "outputbody">
+					<div id="consoleId" class="output-console padding0 opacity00">
 						<div class="output-console-title-bar">
-							<span class="title"><b>Console</b></span>
+							<span>Output</span>
 						</div>
-						<div class="output-console-body" id="consoleBodyDiv">
-							<span id="hiddenTypingChar"><span id='enterCharText'
-								class='opacity00'>Enter a character = </span><input
-								id='inputChar' maxlength='1' class='input-char' tabindex='0' /></span>
-						</div>
-					</div>
-				</div>
-				<div id='outputDiv1' class='margin-top20'>
-					<div id="consoleId1" class="center opacity00">
-						<div class="output-console-title-bar">
-							<span class="title"><b>Console</b></span>
-						</div>
-						<div class="output-console-body" id="consoleBodyDiv1">
-							<span id="hiddenTypingChar1"><span id='enterCharText1'
-								class='t'>Enter a character, an interger and float value =
-								<span contenteditable='true' spellcheck='false' class='int input-char empty' id='inputChar1' placeholder='char'
-								maxlength='0'></span> <span contenteditable='true' spellcheck='false' class='int input-char empty' id='inputInt' placeholder='int'
-								maxlength='2'><b></b></span> <span contenteditable='true' spellcheck='false' class='float input-char empty' id='inputFloat' placeholder='float' 
-								maxlength='4'><b></b></span></span></span>
-						</div>
+						<div class="output-console-body" id = "output">
+						<div><span class="opacity00"  id = "input">Enter a character = </span><input id='inputChar' maxlength='1' class='input-char'/></div>
+						<div><span class="opacity00"id = "intfloat">Enter  an interger and a float value = </span></div>
+						<div><span id="inputVal" class='input-all'><input id='secondInput' maxlength='20' class='input-all'/></span></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	</div>
 </body>
 </html>
+

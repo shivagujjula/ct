@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +14,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js-min/otdc.min.js"></script>
+	<script src="/secure/lang/c/js-min/otdc.min.js"></script>  
 	
 	<title>Octal to Decimal Conversion</title>
 <style>
@@ -41,6 +39,7 @@
     min-height: 100px;
     margin-top: 30px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -66,6 +65,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 #calculationTable {
@@ -109,6 +110,8 @@
 
 .color-yellow {
 	color: yellow;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 .color-green {

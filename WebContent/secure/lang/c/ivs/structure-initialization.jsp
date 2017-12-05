@@ -17,7 +17,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TimelineLite.min.js"></script>
 <script src="/secure/lang/c/js-min/si.min.js"></script>
-
 <title>Structure Initialization</title>
 <style type="text/css">
 .padding0 {
@@ -87,12 +86,15 @@ pre {
 }
 
  @keyframes blink {
-    50% { background-color: blue; }
-    99% { background-color: blue; }
+    50% { background-color: yellow; }
+    99% { background-color: yellow; }
   }
  
 .flash {
  	animation: blink 1s 1;
+ 	/* background: white; */
+ 	z-index: 9999999 !important;
+ 	position: relative;
  }
  
  .zIndex {
@@ -121,17 +123,17 @@ pre {
 <script type="text/javascript">
 	$(document).ready(function() {
 		structureIntializationReady();
-	})
+	});
 </script>
 </head>
 <body>
 <div class="col-xs-12 padding0">
 	<h2 class="text-center">
-		<span class="label label-default ct-demo-heading">Structure Initialization</span>
+		<span id="heading" class="label label-default ct-demo-heading">Structure Initialization</span>
 	</h2>
 </div>
 <div class="col-xs-12 margin-top10 text-center">
-		<span class="btn btn-warning opacity00" id="restart">Restart</span>
+		<span class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i> Restart</span>
 </div>
 <div class="col-xs-12 padding0 margin-top30">
 <div id="parentDiv" class="padding0 col-xs-offset-2 col-xs-9">

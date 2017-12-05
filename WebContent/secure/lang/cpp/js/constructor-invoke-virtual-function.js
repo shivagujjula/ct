@@ -133,7 +133,7 @@ function introJsFunction() {
 			break;	
 				
 			case "animate":
-					
+					$("#ddr").removeClass("opacity00");
 				
 					if (animateStep === "obj") {
 						
@@ -189,8 +189,11 @@ function introJsFunction() {
 		
 			case "pre":	
 				$(".introjs-helperLayer").one("transitionend", function() {
+					
 					$("#pre").removeClass("opacity00");
+					
 					var text = "Let us consider a sample program on a <y>virtual</y> function.";
+					
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton").show();
 					});
@@ -199,12 +202,17 @@ function introJsFunction() {
 			break;
 			
 			case "baseClass":	
+				
 				$(".introjs-helperLayer").one("transitionend", function() {
 					
 					$("#baseClass").removeClass("opacity00");
+					
+					
 					var text = "Let us construct a class named <y>Base</y> which contains:<ul>"
 								+"<li>One <y>private</y> data member.</li><li>One parametarized <y>constructor</y>."
 								+"</li><li>One public member function <y>show()</y>.</li></ul>";
+					
+					
 					typing($(".introjs-tooltiptext"), text, function() {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("deriveClass", "", "top"));
 						introjs.insertOption(introjs._currentStep + 2, insertionIntro("main", "", "top"));
@@ -214,8 +222,10 @@ function introJsFunction() {
 						introjs.insertOption(introjs._currentStep + 6, insertionIntro("invokeSecond", "", "top","hide"));/*hide*/
 						introjs.insertOption(introjs._currentStep + 7, insertionIntro("kVal", "", "top", "hide"));/*hide*/
 						$(".introjs-prevbutton, .introjs-nextbutton").show();
-					})
-				});	
+					});
+					
+				});
+				
 			break;
 			
 			case "deriveClass":	
@@ -335,7 +345,7 @@ function introJsFunction() {
 			
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#virtual").addClass("opacity00 displayNone");
-
+					/*$("#show1").removeClass("opacity00");*/
 					$(".introjs-tooltip").removeClass("hide");
 					var text;
 					
@@ -358,6 +368,7 @@ function introJsFunction() {
 							text = "The <y>show()</y> doesn't have a <y>virtual</y> key so it will execute the <y>base</y> class <y>show()</y> "
 								+"even though the <y>p</y> variable holds the address of <y>derived</y> class <y>obj</y>.";
 							typing(".introjs-tooltiptext", text, function() {
+								$("#show1").removeClass("opacity00");
 								$(".introjs-prevbutton, .introjs-nextbutton").show();
 							})
 					}
@@ -395,9 +406,14 @@ function introJsFunction() {
 				
 			case "parentShow":
 				$(".introjs-helperLayer").one("transitionend", function() {
+					
 					setTimeout(function() {
+						
+						$("#show2").removeClass("opacity00");
 						introjs.nextStep();
-					}, 1000)
+						
+					}, 1000);
+					
 				})
 			break;	
 				

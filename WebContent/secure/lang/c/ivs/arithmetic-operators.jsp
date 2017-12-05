@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/css/bootstrap.css">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/animate.css">
-<link rel="stylesheet" href="/css/font-awesome-animation.min.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/font-awesome-animation.min.css">
 
 <script type="text/javascript" src="/js/jquery-latest.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
@@ -19,13 +20,13 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script src="/secure/lang/c/js-min/ao.min.js"></script>
+<script src="../js-min/ao.min.js"></script>
 <title>arithmetic-operators</title>
 <style type="text/css">
 .border {
 	border: 2px solid gray;
 	border-radius: 15px;
-	min-height: 335px;
+	min-height: 370px;
 }
 
 .animation-border {
@@ -50,6 +51,7 @@
 
 .background-color {
 	background-color: lavender;
+	font-family: monospace;
 }
 
 .margin-top20 {

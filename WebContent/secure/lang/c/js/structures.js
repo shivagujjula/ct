@@ -54,10 +54,6 @@ function structuresReady() {
 			intro :'',
 			position:"bottom"
 		},{
-			element :'#enclosedBraces',
-			intro :'',
-			position:"left"
-		},{
 			element :'#semicolon',
 			intro :'',
 			position:"right"
@@ -103,8 +99,61 @@ function structuresReady() {
 			position:"right"
 		}]
 	});
+	
+	intro.onbeforechange(function(targetElement) { 
+		var elementId = targetElement.id;
+		switch (elementId) {
+		
+		case "studentVariables" :
+			$("#storeS1, #storeS2, #storeS3").addClass("opacity00");
+		break;
+		case "tables" :
+			$("#storeS1, #storeS2, #storeS3").removeClass("opacity00");
+			$("#structureDeclaration").addClass("opacity00");
+		break;
+		case "declarationSyntax" :
+			$("#structureDeclaration").removeClass("opacity00");
+		break;
+		case "semicolon" :
+			$('#exampleStructureDeclaration').addClass('opacity00');
+		break;
+		case "exampleStructureDeclaration" :
+			$('#exampleStructureDeclaration').removeClass('opacity00');
+		break;
+		case "long" :
+			$('#definitionSyntax').addClass('opacity00');
+		break;
+		case "definitionSyntax" :
+			$('#definitionSyntax').removeClass('opacity00');
+		break;
+		}
+	});
+	
+	
 	intro.onafterchange(function(targetElement) { 
 		$('.introjs-nextbutton, .introjs-skipbutton, .introjs-prevbutton').hide();
+		
+		
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 2) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
+		
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
@@ -112,7 +161,7 @@ function structuresReady() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#declarationDefination").removeClass("opacity00");
 		  		typing('.introjs-tooltiptext',"Let us consider an example." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -125,10 +174,11 @@ function structuresReady() {
 			});
 		break;
 		case "members" :
-			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#informationdiv").removeClass("opacity00");
-		  		typing('.introjs-tooltiptext',"These are called <span class='ct-code-b-yellow'>members</span> (or)"
+		  		typing('.introjs-tooltiptext'," The variables <span class='ct-code-b-yellow'>number</span>, "
+		  				+"<span class='ct-code-b-yellow'>marks</span>, <span class='ct-code-b-yellow'>section</span> "
+		  				+"are called <span class='ct-code-b-yellow'>members</span> (or)"
 		  				+ " <span class='ct-code-b-yellow'>fields</span>." ,function() {
 		  			$('.introjs-nextbutton').show();
 				});
@@ -138,31 +188,29 @@ function structuresReady() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#informationdiv").removeClass("opacity00");
 		  		typing('.introjs-tooltiptext',"<ul><li><span class='ct-code-b-yellow'>struct</span> keyword is used to define a structure."
-		  				+ "</li><li><span class='ct-code-b-yellow'>struct</span> defines a new user defined datatype.</li></ul>" ,function() {
-		  			$('.introjs-nextbutton').show();
+		  				+ "</li><li>A <span class='ct-code-b-yellow'>structure</span> is used to create a new user defined datatype.</li></ul>" ,function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "studentVariables" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#informationdiv").removeClass("opacity00");
-		  		typing('.introjs-tooltiptext',"<ul><li>This is called structure definition.</li><li>Here structure variables"
+		  		typing('.introjs-tooltiptext',"This is a <span class='ct-code-b-yellow'>s1</span> structure definition <span class='ct-code-b-yellow'>s1</span>.<br><br>The variables"
 		  				+ " <span class='ct-code-b-yellow'>s1</span>, <span class='ct-code-b-yellow'>s2</span> and"
-		  				+ " <span class='ct-code-b-yellow'>s3</span> are created.</li></ul>" ,function() {
-		  			$('.introjs-nextbutton').show();
+		  				+ " <span class='ct-code-b-yellow'>s3</span> are created for user defined datatype <span class='ct-code-b-yellow'>student</span>." ,function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "tables" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#informationdiv, #storeS1, #storeS2, #storeS3").removeClass("opacity00");
-		  		typing('.introjs-tooltiptext',"<ul><li>The members can be accessed by using dot operator like s1.a s1.b s1.c,"
-		  				+ " s2.a s2.b s2.c and s3.a s3.b s3.c</li>",function() {
-		  				/*+ "<li>Here s1.a <span class='ct-code-b-yellow'>&#8800;</span> s2.a"
-		  				+ " <span class='ct-code-b-yellow'>&#8800;</span> s3.a.<br> s1.b <span class='ct-code-b-yellow'>&#8800;</span>"
-		  				+ " s2.b <span class='ct-code-b-yellow'>&#8800;</span> s3.b.<br> s1.c <span class='ct-code-b-yellow'>&#8800;</span>"
-		  				+ " s2.c <span class='ct-code-b-yellow'>&#8800;</span> s3.c.</li></ul>" ,function() {*/
-		  			$('.introjs-nextbutton').show();
+		  		typing('.introjs-tooltiptext',"The members can be accessed by using the <span class='ct-code-b-yellow'>dot</span> operator."
+		  				+ "<br/><b <span class='ct-code-b-yellow'>For example</b><br/>To access the members of student <span class='ct-code-b-yellow'>s1</span> we use <br/><span class='ct-code-b-yellow'>s1.number s1.marks s1.section</span><b></b>"
+		  				+ ".<br/><br/>To access the members of student <span class='ct-code-b-yellow'>s2</span> we use</br> <span class='ct-code-b-yellow'>s2.number s2.marks s2.section</span>."
+		  				+ "</br><br/>To access the  members of student <span class='ct-code-b-yellow'>s3</span> we use </br><span class='ct-code-b-yellow'>s3.number s3.marks s3.section.<span>",function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -170,39 +218,34 @@ function structuresReady() {
 			intro.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#structureDeclaration").removeClass("opacity00");
-		  		typing('.introjs-tooltiptext',"This statement is the <span class='ct-code-b-yellow'>syntax</span> for a structure"
+		  		typing('.introjs-tooltiptext',"The <span class='ct-code-b-yellow'>syntax</span> for a structure is as follows."
 		  					+ " declaration." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "keyWord" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext',"The declaration begins with the keyword <span class='ct-code-b-yellow'>struct</span>." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
+		
 		case "structureName" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext',"<ul><li>The <span class='ct-code-b-yellow'>structure_name</span> is an identifier and is optional" 
-		  				+ ".</li><li>The <span class='ct-code-b-yellow'>structure_name</span> is declared by user.</li><li>Memory is not allocated"
-		  				+ " when a structure is declared.</li></ul>" ,function() {
-		  			$('.introjs-nextbutton').show();
+		  		typing('.introjs-tooltiptext',"<ul><li>The <span class='ct-code-b-yellow'>structure_name</span> is an identifier, which is optional" 
+		  				+ " and is declared by user.</li> <li>When a structure is declared,<span class='ct-code-b-yellow'> memory is not allocated</span> for the structure."
+		  				+ " .</li></ul>" ,function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
-		case "enclosedBraces" :
-			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext',"The members of the structure must be enclosed in braces." ,function() {
-		  			$('.introjs-nextbutton').show();
-		  		});
-			});
-		break;
+		
 		case "semicolon" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext',"A structure declaration ends with a <span class='ct-code-b-yellow'>semicolon(;)</span>." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
@@ -210,7 +253,7 @@ function structuresReady() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#exampleStructureDeclaration').removeClass('opacity00');
 		  		typing('.introjs-tooltiptext',"Let us consider the example of structure declaration." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
@@ -218,16 +261,16 @@ function structuresReady() {
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext',"<ul><li>The declaration begins with the keyword <span class='ct-code-b-yellow'>struct</span>.</li><li>"
-		  				+"The identifier <span class='ct-code-b-yellow'>employee</span> is the structure identifier.</li></ul>", function() {
-		  			$('.introjs-nextbutton').show();
+		  				+"The identifier <span class='ct-code-b-yellow'>employee</span> is the name of the structure.</li></ul>", function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
 		case "name" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext',"The member <span class='ct-code-b-yellow'>name</span> is a 20-element array with"
-		  				+ " <span class='ct-code-b-yellow'>char</span> type.", function() {
-		  			$('.introjs-nextbutton').show();
+		  		typing('.introjs-tooltiptext',"The member <span class='ct-code-b-yellow'>name</span>, is a char array of"
+		  				+ "size <span class='ct-code-b-yellow'>20</span> type.", function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
@@ -235,7 +278,7 @@ function structuresReady() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext',"The member <span class='ct-code-b-yellow'>id</span> is of type"
 		  				+ " <span class='ct-code-b-yellow'>int</span>.", function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
@@ -243,37 +286,37 @@ function structuresReady() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext',"The member <span class='ct-code-b-yellow'>salary</span> is of type"
 		  				+ " <span class='ct-code-b-yellow'>float</span>.", function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
 		case "definitionSyntax" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#definitionSyntax').removeClass('opacity00');
-		  		typing('.introjs-tooltiptext',"This is the <span class='ct-code-b-yellow'>syntax</span> for definition of a structure." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  		typing('.introjs-tooltiptext',"The <span class='ct-code-b-yellow'>syntax</span> of structure <b class='ct-code-b-yellow'>definition</b>." ,function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
 		case "keyWord1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		typing('.introjs-tooltiptext',"The definition begins with the keyword <span class='ct-code-b-yellow'>struct</span>." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
 		case "structureName1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext',"<span class='ct-code-b-yellow'>structure_name</span> is an identifier declared." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  		typing('.introjs-tooltiptext',"<span class='ct-code-b-yellow'>structure_name</span> is an identifier." ,function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
 		case "structureVariables" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext',"These are the structure variables defined. At this point, memory is allocated for all"
-		  				+ " the structure variables." ,function() {
-		  			$('.introjs-nextbutton').show();
+		  		typing('.introjs-tooltiptext',"These are the structure variables that are defined.<br><br> At this point, memory is allocated for all"
+		  				+ " the<b class='ct-code-b-yellow'> structure variables</b>." ,function() {
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break;
@@ -291,14 +334,17 @@ function structuresReady() {
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide();
 	$("#informationdiv").removeClass("visibility-hidden");
-	$("#informationdiv").append("<ul><li id='line1' class='opacity00'>A <b class='color-green'>Structure</b> is a derived datatype to"
-					+ " organize a group of related data items of different datatypes.</li>"
+	$("#informationdiv").append("<ul><li id='line1' class='opacity00'>A <b class='color-green'>structure</b> is a derived datatype. "
+					+ "It is used to organize a group of related data items of different datatypes.</li>"
 					+ "<li id='line2' class='opacity00'>A structure is created using the keyword <b class='color-green'>struct</b>.</li>"
-					+ "<li id='line3' class='opacity00'>Each data item in a structure is called a <b class='color-green'>member</b>."
-					+ " It can also be called a <b class='color-green'>field</b>.</li>"
- 					+ "<li id='line4' class='opacity00'>The advantage of using a structure is the accessibility of the members becomes easier"
- 					+ " since all the members of a structure get allocated in memory as a sequence which minimizes"
+					+ "<li id='line3' class='opacity00'>Each data item in a structure is called a <b class='color-green'>member</b>"
+					+ " or a <b class='color-green'>field</b>.</li>"
+ 					+ "<li id='line4' class='opacity00'>The advantage of using a <b class='color-green'>structure</b> "
+ 					+ "is that the accessibility of the members becomes easier,"
+ 					+ " since all the members of a <b class='color-green'>structure</b> are allocated memory in a "
+ 					+ "<b class='color-green'>sequence</b>, this <b class='color-green'>minimizes</b>"
  					+ " the memory access time.</li></ul>")
+ 					intro.refresh();
  	TweenMax.to($("#line1"), 0.5, {opacity: 1, onComplete: function() {
  		TweenMax.to($("#line2"), 0.5, {opacity: 1, onComplete: function() {
  			TweenMax.to($("#line3"), 0.5, {opacity: 1, onComplete: function() {
@@ -317,7 +363,7 @@ function structuresReady() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -326,6 +372,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }

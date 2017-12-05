@@ -76,9 +76,14 @@ y {
 
 .output-console-body {
 	font-size: 11px;
-	height: 160px; 
+	height: 100px; 
 	padding: 5px 20px;
 	white-space: normal;
+	
+}
+
+.output-console {
+	margin: 0px;
 }
 
 .output-console-title-bar {
@@ -131,6 +136,12 @@ y {
 .zIndex {
 	z-index: 9999999;
 }
+
+
+.panel-body {
+	padding: 6px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -186,15 +197,27 @@ $(document).ready(function() {
 	</span>
 </pre>
 
-<div class="col-xs-6 col-xs-offset-4" style="margin-top: 10px;">
+		<div class="col-xs-12">
+			<div class="col-xs-offset-1 col-xs-11">
+				<div id="outputBox" class="output-console center opacity00">
+					<div class="output-console-title-bar"><span>Output</span></div>
+					<div class="output-console-body"></div>
+				</div>
+			</div>
+		</div>
+
+
+<!-- <div class="col-xs-6 col-xs-offset-4" style="margin-top: 10px;">
 	<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
-</div>
+</div> -->
+
 </div>
 <div id='animate' class="col-xs-6 border1px padding00 opacity00">
 	<div class="col-xs-12 padding00"> <!-- style="height: 650px;" -->
 		<div class="col-xs-12 text-center padding00"  style="margin-top: 4%;"> <!-- style="height:290px;" -->
 			<div class="col-xs-offset-2 col-xs-8 padding00">
 				<div class="panel panel-primary bottomMargin opacity00" id="obj">
+				
 					<div class="panel-heading"><b>obj</b></div>
 					<div class="panel-body">
 					
@@ -210,8 +233,22 @@ $(document).ready(function() {
 							<div class=" col-xs-offset-1 col-xs-6 padding00">
 								<div class="panel panel-primary opacity00" id="k">
 									<div class="panel-heading"><b>(Base : k)<br> k</b></div>
-									<div class="panel-body" > <!-- style="height: 10%; padding: 7%;" -->
+									<div class="panel-body padding00" > <!-- style="height: 10%; padding: 7%;" -->
+										 
 										<span class="opacity00 displayInline zIndex" id="val1">2</span>
+										<div class="col-xs-12 padding00" style="border-top: 2px solid gray;"></div>
+										<div class="col-xs-12 padding00 opacity00" id='show1' ">
+											<div class="panel  panel-primary" style="margin-top:15px;">
+												
+												<div class="panel-heading"><b>sum()</b></div>
+												<div class="panel-body">
+												
+													<span><b>print</b></span>
+													
+												</div>
+											</div>
+										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -250,6 +287,19 @@ $(document).ready(function() {
 											<div class="panel-body"><span class="displayInline opacity00" id="pVal">1264</span></div>
 										</div>
 									</div>
+									
+									<div class="col-xs-12" style="border-top:2px solid gray;"></div>
+									
+									<div class="col-xs-12 opacity00" id="show2">
+									
+									<div id="" class="col-xs-offset-2 col-xs-8 padding00" style="margin-top: 9px;">
+										<div class="panel panel-primary">
+											<div class="panel-heading"><b>show()</b></div>
+											<div class="panel-body"><span><b>print</b></span></div>
+										</div>
+									</div>
+										
+									</div>
 								</div>
 								</div>	
 								</div>
@@ -274,17 +324,14 @@ $(document).ready(function() {
 			
 			
 		</div>
-		<div class="col-xs-12">
-			<div class="col-xs-offset-1 col-xs-11">
-				<div id="outputBox" class="output-console center opacity00">
-					<div class="output-console-title-bar"><span>Output</span></div>
-					<div class="output-console-body"></div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
-
+<div class="col-xs-12" style="margin-top: 10px;">
+	<div class="col-xs-offset-6 col-xs-4">
+		<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
+	</div>
+		
+	</div>
 
 
 </div>

@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/c/js-min/coc.min.js"></script>
-<title>Insert title here</title>
+<title>conditional-operator</title>
 <style type="text/css">
 
 .introjs-tooltiptext br {
@@ -172,7 +172,7 @@
 void main() {
 	<span id='num1Line'>int num1 = <span id='num1value' contenteditable='true', spellcheck='false', maxlength='2'>14</span>;</span>
 	<span id='num2Line'>int num2 = <span id='num2value' contenteditable='true', spellcheck='false', maxlength='2'>12</span>;</span>
-	<span id='maxLine'>int max = (num1 > num2) ? num1 : num2;</span>
+	<span id='maxLine'>int max = (<span id="part1">num1 > num2</span>) <span id="part2">? num1 : num2;</span></span>
 	<span id='printfLine'>printf("The max number is %d", max);</span>
 }
 </pre>
@@ -181,9 +181,9 @@ void main() {
 			<div class='col-xs-12'>
 				<div class='col-xs-12 text-center animation-div1'>
 					<span class='box-padding'>int max</span> = 
-					<span class='box-padding box-css'><span class='statement-css opacity00'>condition</span>num1 > num2</span> ? 
-					<span class='box-padding box-css'><span class='statement-css opacity00'>true</span>num1</span> : 
-					<span class='box-padding box-css'><span class='statement-css opacity00'>false</span>num2</span>;
+					<span id="box1" class='box-padding box-css'><span class='statement-css opacity00'>condition</span>num1 > num2</span> ? 
+					<span id="box2" class='box-padding box-css'><span class='statement-css opacity00'>true</span>num1</span> : 
+					<span id="box3" class='box-padding box-css'><span class='statement-css opacity00'>false</span>num2</span>;
 				</div>
 				<div class="col-xs-12 animation-div2 ">
 					<div class="col-xs-4 max-div">int max =</div>

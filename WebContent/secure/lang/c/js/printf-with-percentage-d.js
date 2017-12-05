@@ -1,12 +1,12 @@
-var introcode;
-var typingInterval = 5;
+var intro;
+var typingInterval = 1;
 var tl = new TimelineLite();
 var sopLineCount = 1;
 var count = 0;
 
 var printfWithPercentageDReady = function() {
-	introcode = introJs();
-	introcode.setOptions({
+	intro = introJs();
+	intro.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
 		showBullets : false,
@@ -19,11 +19,9 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#program',
 				intro :'',
-				tooltipClass : "hide"
 			},{
 				element :'#VariableDeclararion',
 				intro :'',
-				tooltipClass : "hide"
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -31,7 +29,6 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#sopLine1',
 				intro :'',
-				tooltipClass : "hide"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -39,7 +36,6 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#sopLine2',
 				intro :'',
-				tooltipClass : "hide"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -47,7 +43,6 @@ var printfWithPercentageDReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				tooltipClass : "hide"
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -59,14 +54,54 @@ var printfWithPercentageDReady = function() {
 				position : "right"
 			}]
 	});
-	introcode.onafterchange(function(targetElement){
+	intro.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		
+			switch (elementId) {
+				case "VariableDeclararion" :
+					$("#numberDiv1").addClass("opacity00");
+				break;
+				case "sopLine" + sopLineCount  :
+					if (intro._currentStep == 4) {
+						if (intro._direction == "backward") {
+							$("#outputAValue1").text("");
+							}
+					} else if (intro._currentStep == 6 ) {
+						if (intro._direction == "backward") {
+							$("#outputtext2").addClass("opacity00");
+							$("#outputAValue2").text("");	
+						}
+					}
+				break;
+			}
+	});
+	intro.onafterchange(function(targetElement){
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+					intro._introItems[intro._currentStep]["animation"] = "repeat";
+				}
+				
+				if (intro._introItems[intro._currentStep]["isCompleted"]) {
+					if (intro._currentStep != 0 && intro._currentStep != 1) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+					intro._introItems[intro._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		var elementId = targetElement.id;
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch (elementId) {
 				case "program" :
 					$("#printfDefinition").addClass("z-index1000000");
-					$('.introjs-tooltip').removeClass('hide');
 					text = 'Here, we will learn how we can use the '
 							+ '<span class = "ct-code-b-yellow">%d</span> format character in '
 							+ ' <span class = "ct-code-b-yellow">printf()</span> function to '
@@ -83,60 +118,75 @@ var printfWithPercentageDReady = function() {
 							+ '<span class = "ct-code-b-yellow">a</span> to '
 							+ '<span class = "ct-code-b-yellow">34</span>.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
 				break;
 				case "animationDiv" :
-					transferEffect('#VariableDeclararion', '#numberDiv1', function() {
-						introNextStep();
-					});
+					if (intro._direction=="forward") {
+						transferEffect('#VariableDeclararion', '#numberDiv1', function() {
+							setTimeout(function() {
+								intro.nextStep()
+							}, 500);
+						});
+					} else {
+						setTimeout(function() {
+							intro.previousStep()
+						}, 500);
+					}
 				break;
 				case "sopLine" + sopLineCount  :
-					if (introcode._currentStep == 4) {
-						$('.introjs-tooltip').removeClass('hide');
+					if (intro._currentStep == 4) {
 						text = 'The <span class="ct-code-b-yellow">printf()</span> function prints '
 								+ 'the value stored in the variable <span class="ct-code-b-yellow">a</span> '
 								+ 'using the <span class="ct-code-b-yellow">%d</span> format character'
 								+ ' without printing any other text.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
-					} else if (introcode._currentStep == 6 ) {
-						$('.introjs-tooltip').removeClass('hide');
+					} else if (intro._currentStep == 6 ) {
 						text = 'In this example we will learn how we can combain '
 								+ 'text and print the number at the end of the text.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
-					} else  if (introcode._currentStep == 8) {
-						$('.introjs-tooltip').removeClass('hide');
+					} else  if (intro._currentStep == 8) {
 						text = 'In this <span class="ct-code-b-yellow">printf</span> statement '
 								+ 'we will learn how the <span class="ct-code-b-yellow">%d</span>'
 								+ ' format character can be in the middle of a text that is printed.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton,.introjs-prevbutton').show();
 						});
 					}
 				break;
 				case "outputDiv" :
-					if (introcode._currentStep == 5) {
-						printDecimalValue("decimalValueOnly");
-					} else if (introcode._currentStep == 7) {
+					if (intro._currentStep == 5) {
+						printDecimalValue();
+					} else if (intro._currentStep == 7) {
+						if (intro._direction == "backward") {
+					
+							sopLineCount--
+						
+							setTimeout(function(){
+							intro.previousStep();
+							}, 500);
+						} else {
 						$("#text" + sopLineCount).addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 800);
 						$("#outputtext"  + sopLineCount).text("The value of a = ").addClass("visibility-hidden");
 						$("#text" + sopLineCount).effect( "transfer", { to: $("#outputtext"  + sopLineCount), className: "ui-effects-transfer" }, 800 , function(){
 							$("#text" + sopLineCount).removeClass("z-index1000000")
 							$("#outputtext"  + sopLineCount).removeClass("visibility-hidden");
-							printDecimalValue("decimalValueOnly");
+							$("#outputtext2").removeClass("opacity00");
+							printDecimalValue1();
 							
 						});
-					} else if (introcode._currentStep == 9) {
+						}
+					} else if (intro._currentStep == 9) {
 						$("#text" + sopLineCount).addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 800);
 						$("#outputtext"  + sopLineCount).text("The value of a : ").addClass("visibility-hidden");
 						$("#text" + sopLineCount).effect( "transfer", { to: $("#outputtext"  + sopLineCount), className: "ui-effects-transfer" }, 800 , function(){
 							$("#text" + sopLineCount).removeClass("z-index1000000")
 							$("#outputtext"  + sopLineCount).removeClass("visibility-hidden");
-								printDecimalValue("decimalValueOnly1");
+								printDecimalValue2();
 						});
 					}
 				break;
@@ -163,7 +213,7 @@ var printfWithPercentageDReady = function() {
 			}
 		});
 	});
-	introcode.start();
+	intro.start();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide(); 
@@ -173,7 +223,7 @@ var printfWithPercentageDReady = function() {
 			$('.introjs-duplicate-nextbutton').click(function() {
 				$('#bodyOfTheText').removeClass('opacity00');
 				$(".introjs-duplicate-nextbutton").remove();
-				introcode.nextStep();
+				intro.nextStep();
 			});
 		});
 	}});
@@ -183,7 +233,9 @@ var printfWithPercentageDReady = function() {
 	});
 }
 
-function printDecimalValue(text) {
+function printDecimalValue() {
+	setTimeout(function() {
+		if (intro._direction == "forward") {
 	$(".introjs-duplicate-nextbutton").remove();
 	highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
 		highlightFunction("#aValue" + sopLineCount, "z-index1000000", function() {
@@ -193,36 +245,75 @@ function printDecimalValue(text) {
 				$("#persentageD" + sopLineCount).removeClass("z-index1000000");
 	  			$('#addressValue1').addClass('circle-css z-index1000000').effect("highlight", {color: 'yellow'}, 1000, function() {
 	  				$('#addressValue1').removeClass('circle-css z-index1000000');
-	  				if (text == "decimalValueOnly") {
 	  					$("#outputAValue" + sopLineCount).text($("#addressValue1").text());
 				  		fromEffectWithTweenMax("#addressValue1", "#outputAValue" + sopLineCount, false,function() {
-							setTimeout(function() {
-								sopLineCount++;
-								introcode.nextStep();
-							},800);
-						  });
-	  				} else if (text == "decimalValueOnly1") {
-	  					$("#outputAValue" + sopLineCount).text($("#addressValue1").text());
-				  		fromEffectWithTweenMax("#addressValue1", "#outputAValue" + sopLineCount, false, function() {
 				  			sopLineCount++;
-		  					$("#text" + sopLineCount).addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 1000);
-							$("#outputtext"  + (sopLineCount + 1)).text(" can be included in between text. ").addClass("visibility-hidden");
-							$("#text" + sopLineCount).effect( "transfer", { to: $("#outputtext"  + (sopLineCount + 1)), className: "ui-effects-transfer" }, 1500 , function() {
-								$("#text" + sopLineCount).removeClass("z-index1000000")
-								$("#outputtext"  + (sopLineCount + 1)).removeClass("visibility-hidden");
-								setTimeout(function() {
-									sopLineCount++;
-									introcode.nextStep();
-								},800);
+							intro.nextStep();
+			  			});
+	  			});
+		  		});
+		  	});
+		});
+				  		     } else {
+									sopLineCount--;
+									intro.previousStep();
+								}
+						 
+		}, 500);
+}
+	function printDecimalValue1() {
+		setTimeout(function() {
+			if (intro._direction == "forward") {
+			$("#outputAValue" + sopLineCount).text($("#addressValue1").text());
+			fromEffectWithTweenMax("#addressValue1", "#outputAValue" + sopLineCount, false,function() {
+  			
+  			sopLineCount++;
+			intro.nextStep();
+  		});
+  		}/* else {
+  			alert("going 2nd step")
+  			//sopLineCount--;
+			intro.previousStep();
+  		}*/
+  		
+		}, 500);
+	}
+	function printDecimalValue2() {
+		if (intro._direction == "forward") {
+			$(".introjs-duplicate-nextbutton").remove();
+			highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
+				highlightFunction("#aValue" + sopLineCount, "z-index1000000", function() {
+					$("#aValueAnimation").removeClass("visibility-hidden");  
+					fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
+						$("#aValue" + sopLineCount).removeClass("z-index1000000");
+						$("#persentageD" + sopLineCount).removeClass("z-index1000000");
+			  			$('#addressValue1').addClass('circle-css z-index1000000').effect("highlight", {color: 'yellow'}, 1000, function() {
+	  			$("#outputAValue" + sopLineCount).text($("#addressValue1").text());
+				 fromEffectWithTweenMax("#addressValue1", "#outputAValue" + sopLineCount, false, function() {
+					
+				  sopLineCount++;
+		  			$("#text" + sopLineCount).addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 1000);
+					$("#outputtext"  + (sopLineCount + 1)).text(" can be included in between text. ").addClass("visibility-hidden");
+					$("#text" + sopLineCount).effect( "transfer", { to: $("#outputtext"  + (sopLineCount + 1)), className: "ui-effects-transfer" }, 1500 , function() {
+					$("#text" + sopLineCount).removeClass("z-index1000000")
+					$("#outputtext"  + (sopLineCount + 1)).removeClass("visibility-hidden");
+					$("#addressValue1").removeClass("text-center circle-css z-index1000000");
+					setTimeout(function() {
+					sopLineCount++;
+					intro.nextStep();
 							});
-				  		});
-  					} else {
-  						
-  					}
-  				});
-	  		});
-	  	});
-	});
+						});
+				 	});
+				});
+			  });
+			});
+					},800);
+					} else {
+						sopLineCount--;
+						intro.nextStep();
+					}
+			
+  		
 }
 
 //*******Text highlight function*****
@@ -249,7 +340,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 //*****setTimeout function to intro go next step step*****
 function introNextStep() {
 	setTimeout(function() {
-		introcode.nextStep();
+		intro.nextStep();
 	},800);
 }
 
@@ -283,6 +374,7 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		$('.introjs-tooltip').show();
 	});
 } 

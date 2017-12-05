@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>review</title>
+<title>printf-in-c</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
@@ -58,6 +58,7 @@
 
 #typingDiv {
 	min-height: 110px;
+	font-family:monospace;
 }
  
 .left-padding-120 {
@@ -128,6 +129,13 @@
 .outline-none {
 	outline: none;
 }
+
+.introjs-fixParent {
+	position: relative !important;
+}
+#typingDiv{
+font-family:monospace;
+}
 </style>
 </head>
 <body>
@@ -179,9 +187,9 @@
 							<span class="title"><b>Console</b></span>
 						</div>
 						<div class="output-console-body" id="consoleBodyDiv1">
-							<span id="lineOne" class="opacity00">I am learning C.</span>
-							<div id='lineTwo'><span id='line-two-cursor'></span></div>
-							<div id='lineThree'><span></span></div>
+							<span id="lineOne" class="opacity00">I am learning C.</span><br>
+							<span id='line-two-cursor'></span><span id='lineTwo'></span>
+							<div id='lineThree'><span id = "3"></span></span><span id = "31"></span></span></div>
 						</div>
 					</div>
 				</div>

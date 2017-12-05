@@ -11,9 +11,10 @@
 	<link rel="stylesheet" href="/css/introjs-ct.css">
 	<link rel="stylesheet" href="/css/animate.css"/>
 	<link rel="stylesheet" href="/css/jquery-ui.css"/>
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	
 	<script src="/js/gs/TweenMax.min.js"></script>
 	<script src='/js/intro.js'></script>
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
 	<script src="/secure/lang/c/js-min/swp.min.js"></script>
@@ -34,6 +35,7 @@
     color: black;
     font-family: monospace; 
     z-index: 9999999;
+    padding: 10px;
 }
 
 .color-rose {
@@ -106,15 +108,17 @@
     color: #f0f0f0;
     font-family: monospace;
     font-size: 14px;
-    height: 90px;
+    height: 60px;
     margin-bottom: 14px;
     overflow: auto;
     padding: 17px;
-    white-space: pre-line;
+    white-space: nowrap;
 }
 
 .color-palegreen {
-	color: #0f0;
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 .color-maroon {
@@ -140,6 +144,11 @@ pre {
 	tab-size: 3;
 	font-family: monospace;
 }
+
+.memory {
+	position: relative;
+    z-index: 9999999;
+}
 </style>
 <body>
 <div id ='totaldiv' class='totaldivclass col-xs-12 text-center'>
@@ -149,16 +158,15 @@ pre {
 	<div id='informationdiv' class='col-xs-6 col-xs-offset-3'>
 		<ul>
 			<li id="l11" class="opacity00">A pointer pointing to a structure is known as <b class='color-green'>structure pointer</b>.</li>
-		  	<li id="l12" class="opacity00">When we access the structure member, the left hand side of the dot operator should always be a
+		  	<li id="l12" class="opacity00">When we access the structure member, the <b class='color-green'>left hand side of the dot</b> operator should always be a
 		  	 structure variable.</li>
-		  	<li id="l13" class="opacity00">In the same way, the left hand side of the arrow operator must always be a pointer to a structure.</li></ul>
+		  	<li id="l13" class="opacity00">In the same way, the <b class='color-green'>left hand side of the arrow</b> operator must always be a pointer to a structure.</li></ul>
 	</div>
 </div>
 <div id='tableDiv' style='border: 1px solid black; margin-top: 20px' class='col-xs-12 col-xs-offset-1 col-xs-10 visibility-hidden'>
 <div class='col-xs-12 col-xs-7' style="margin-top: 10px; margin-bottom: 10px">
 <pre><span id='voidFunction'><span class='color-rose'>void</span> <span class='color-brown'>main</span>();</span> {
-	<span id='membersOfStructBook'><span class='color-rose'>struct</span> book
-	{
+	<span id='membersOfStructBook'><span class='color-rose'>struct</span> book {
 		<span class='color-rose'>char</span> name[20];
 		<span class='color-rose'>float</span> price;
 		<span class='color-rose'>int</span> page;
@@ -203,7 +211,7 @@ pre {
       	</div>
 		</div>
 	</div>
-	<div class='col-xs-12 col-xs-offset-4 col-xs-4' style='margin-top: 15px;'>
+	<div class='col-xs-offset-3 col-xs-6' style='margin-top: 15px;'>
 			<div id="consoleId" class="center opacity00">
 				<div class="output-console-title-bar">
 					<span class="title"><b>Console</b></span>
@@ -214,7 +222,7 @@ pre {
 			</div>
 		</div>
 	<div class="button col-xs-12 text-center " id="button">
-		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+		<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:4px'><i class="fa fa-refresh"></i> Restart</button>
 	</div>
 </body>
 <script>

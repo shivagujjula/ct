@@ -1,4 +1,4 @@
-var typingInterval = 5;
+var typingInterval = 1;
 var count = 1;
 var result = 1;
 
@@ -108,7 +108,7 @@ function introSteps() {
 			break;
 			case "struct":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					var text="This is a structure declaration of user defined datatype "+
+					var text="This is a <b class='ct-code-b-yellow'>structure</b> declaration of user defined datatype "+
 						"<span class='ct-code-b-yellow'>book</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-nextbutton').show();
@@ -117,7 +117,8 @@ function introSteps() {
 			break;
 			case "structVariable":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					var text = "This is the definition of struct array. Memory is allocated to all the elements of structure array i.e., " 
+					var text = "This is the definition of <b class='ct-code-b-yellow'>struct array</b>. "
+								+"</br></br> Memory is allocated to all the elements of structure array i.e., " 
 						+ "<span class='ct-code-b-yellow'>S[0], S[1], S[2], S[3]</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-nextbutton').show();
@@ -170,7 +171,7 @@ function introSteps() {
 					scrollAtOutput();
 					$("#outputDiv").removeClass("opacity00");
 					if (intro._currentStep == 8) {
-						$("#detailsOfBook").append("Enter details of 4 book : ");
+						$("#detailsOfBook").append("Enter details of 4 books : ");
 						setTimeNxtStep();
 					} else if (intro._currentStep == 14 || intro._currentStep == 32 || intro._currentStep == 50 || intro._currentStep == 68) {
 						$("#detailsOfBook" + count).append("Enter name of book : ")
@@ -209,7 +210,7 @@ function introSteps() {
 			break;
 			case "intial1":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					var text = "Initialize <span class='ct-code-b-yellow'>i</span> to <span class='ct-code-b-yellow'>0</span>.";
+					var text = "Initialize the variable <b class='ct-code-b-yellow'>i</b> to <span class='ct-code-b-yellow'>0</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-nextbutton').show();
 					});
@@ -217,7 +218,7 @@ function introSteps() {
 			break;
 			case "inc1":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					var text = "The value of <span class='ct-code-b-yellow'>i</span> is incremented by 1. It becomes <span class='ct-code-b-yellow'> "
+					var text = "The value of <span class='ct-code-b-yellow'>i</span> is incremented by <span class=''ct-code-b-yellow'>1</span>. It becomes <span class='ct-code-b-yellow'> "
 						+ count + "</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						if (count <= 4) {
@@ -273,7 +274,7 @@ function introSteps() {
 			case "condition1":
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					if (count < 5) {
-						var text = "As <span class='ct-code-b-yellow'>" + count + " < 4</span>, the condition evaluates to"
+						var text = "As <span class='ct-code-b-yellow'>" + $('#ivalue').text() + " < 4</span>, the condition evaluates to"
 									+ " <span class='ct-code-b-yellow'>true</span> and the loop begins.";
 						typing(".introjs-tooltiptext", text, function() {
 							 dynamicSteps(true);
@@ -288,7 +289,7 @@ function introSteps() {
 				$("#editprice" + (count - 1)).attr("contenteditable", false);
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					$("#output").append('<br><span id="detailsOfBook'+ count +'"></span>' 
-							+ '<span class="padding3" contenteditable="true" id="editname'+ count +'" maxlength="4"' 
+							+ '<span class="padding3" contenteditable="true" id="editname'+ count +'" maxlength="8"' 
 							+ ' spellcheck="false"></span>');
 					characters();
 					setTimeToIntroNextStep();
@@ -352,13 +353,13 @@ function introSteps() {
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					if (intro._currentStep == 108) {
 						$('.introjs-nextbutton').hide();
-						var text = "As <span class='ct-code-b-yellow'>" + result + " < 4</span>, the condition evaluates to"
+						var text = "As <span class='ct-code-b-yellow'>" + $('#ivalue').text() + " < 4</span>, the condition evaluates to"
 									+ " <span class='ct-code-b-yellow'>false</span> and loop is exited.";
 						typing(".introjs-tooltiptext", text, function() {
 							$('.introjs-nextbutton').show();
 						});
 					} else {
-						var text = "As <span class='ct-code-b-yellow'>" + result + " < 4</span>, the condition evaluates to"
+						var text = "As <span class='ct-code-b-yellow'>" + $('#ivalue').text() + " < 4</span>, the condition evaluates to"
 								+ " <span class='ct-code-b-yellow'>true</span> and"
 								+ " loop executes.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -369,7 +370,7 @@ function introSteps() {
 			break;
 			case "inc2":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					var text = "The value of <span class='ct-code-b-yellow'>i</span> is incremented by 1. It becomes <span class='ct-code-b-yellow'> "
+					var text = "The value of <span class='ct-code-b-yellow'>i</span> is incremented by <span class='ct-code-b-yellow'>1</span>. It becomes <span class='ct-code-b-yellow'> "
 						+ result + "</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						if (result < 4) {
@@ -388,7 +389,7 @@ function introSteps() {
 				});
 			break;
 			case "restart" :
-				$('.introjs-tooltip').css({"miin-width": "110px"});
+				$('.introjs-tooltip').css({"min-width": "110px"});
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					$("#restart").removeClass("opacity00");
 				});
@@ -444,7 +445,7 @@ function introSteps() {
 			$(".ct-code-b-red").remove();
 			var max = $(this).attr("maxlength");
 			if (($(this).text().length) > max) {
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Please restrict the length of text to 5 characters, " 
+				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Please restrict the length of text to 9 characters, " 
 							+ "because the array variable size is name[5].</div>");
 				if ((e.which == 46) || (e.which == 8) || (e.which == 37) || (e.which == 39)) {
 					return true;
@@ -472,33 +473,42 @@ function introSteps() {
 	}
 	
 	function numbers() {
-		$('.introjs-nextbutton').hide();
-		$("[contenteditable=true]").on("keydown keyup", function(e) {
-			$(".ct-code-b-red").remove();
-			var max = $(this).attr("maxlength");
-			if (($(this).text().length) > max) {
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Please restrict the length of text to 4 characters.</div>");
-				if ((e.which == 46) || (e.which == 8) || (e.which == 37) || (e.which == 39)) {
-					return true;
+		$("[contenteditable=true]").on('keydown', function(e) {
+			$('.ct-code-b-red').remove();
+			var max = $(this).attr('maxlength');
+			if ($.inArray(e.keyCode, [8, 46, 37, 39, 27]) !== -1) {
+				return;
+			}
+			if (e.keyCode == 109 || e.keyCode == 189 || e.keyCode == 173) {
+				if ($(this).text().length < 1) {	
+					return;
 				} else {
 					e.preventDefault();
 				}
 			}
-			if ($("[contenteditable=true]").text().length == 0) {
-				$('.introjs-nextbutton').hide();
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Please enter numbers.</div>");
-			} else {
-				$('.introjs-nextbutton').show();
-			}
-			
-			if (((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))) {
-				return true;
-			} else {
-				if ((e.which == 46) || (e.which == 8) || (e.which == 37) || (e.which == 39)) {
-					return true;
-				}  else {
+			if (((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) || (e.keyCode == 13 || e.keyCode ==9)){
 				e.preventDefault();
+			}
+			if ($(this).text().length > max - 1) {
+				$('.introjs-tooltiptext').append('<div class="ct-code-b-red">Please restrict the maximum length to 3 digits only.</div>')
+				e.preventDefault();
+			}
+		});
+		$("[contenteditable=true]").on('keyup', function(e) {
+			var max = $(this).attr('maxlength');
+			if ($(this).text().length != max ) {
+				$('.ct-code-b-red').remove();
+			}
+			if ($(this).text().length != 0) {
+				$('.introjs-nextbutton').show();
+				if ($('.introjs-nextbutton[style="display: inline-block;"]').length == 1 && e.keyCode == 13) {
+					intro.nextStep();
 				}
+			} else {
+				if ($('ct-code-b-red').length == 0) {
+					$('.introjs-tooltiptext').append('<div class="ct-code-b-red">Please enter any integer.</div>');
+				}
+				$('.introjs-nextbutton').hide();
 			}
 		});
 	}
@@ -632,7 +642,7 @@ function introSteps() {
 	
 	function changeText() {
 		$('.introjs-nextbutton').hide();
-		var text = "As <span class='ct-code-b-yellow'>" + count + " < 4</span>, the condition evaluates to"
+		var text = "As <span class='ct-code-b-yellow'>" + $('#ivalue').text() + " < 4</span>, the condition evaluates to"
 					+ " <span class='ct-code-b-yellow'>false</span> and loop is exited.";
 		typing(".introjs-tooltiptext", text, function() {
 			normalSteps();

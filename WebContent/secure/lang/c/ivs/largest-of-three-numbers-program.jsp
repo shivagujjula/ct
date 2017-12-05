@@ -25,7 +25,9 @@
 .introjs-tooltiptext br {
 	margin: 15px;
 }
-
+.introjs-duplicate-backbutton {
+	background-color:#5bc0de !important
+}
 .introjs.tooltiptext > span{
 	display: inline-block;
 	position: relative;

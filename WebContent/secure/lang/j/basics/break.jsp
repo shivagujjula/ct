@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -15,10 +13,13 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/br.min.js"></script>
+<!-- <script src="/secure/lang/c/js-min/bic.min.js"></script> -->
+<script src="/secure/lang/j/js/break.js"></script>
 <style type="text/css">
+
 body {
 	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 .output-console-title-bar {
@@ -42,6 +43,15 @@ body {
 	z-index: 1000000;
 }
 
+.display {
+	display: inline-block;
+}
+
+.position-absolute {
+	position: absolute;
+	font-family: monospace;
+}
+
 .title {
 	font-size: 12px;
 }
@@ -59,7 +69,7 @@ body {
 }
 
 .flip-area {
-	position: absolute;
+	position: relative;
 	font-family: monospace;
 }
 
@@ -83,13 +93,45 @@ body {
 .flip-animation-btn {
 	background-color: green !important;
 }
-</style>
-<script type="text/javascript">
 
-$(document).ready(function() {
-	breakReady();
-});
-</script>
+.introjs-tooltip-min-width-custom {
+	min-width: 110px;
+}
+
+.introjs-tooltiptext br {
+	content: "";
+	display: block;
+	margin-top: 10px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+[contenteditable=true] {
+	background: yellow;
+}
+
+</style>
 </head>
 <body>
 <div class='col-xs-12'>
@@ -98,18 +140,19 @@ $(document).ready(function() {
 			<span class="label ct-demo-heading">break in Action</span>
 		</h4>
 	</div>
-	<div class="col-xs-8">
+	<div class="col-xs-offset-1 col-xs-6">
 		<div>
-			<pre class="creamePreTab4">public class BreakDemo {
-	public static void main(String[] args) {
-		<span id='brkLoop'>for (<span id='initialization' class="position-relative">int i = <span id="initializationValue" class="allowNumbers position-relative" maxlength="1" contenteditable=false placeholder=" ">1</span>;</span> <span id='condition'>i < 10;</span> <span id='update'>i++</span>) {
-			<span id='ifBlk'>if (<span id='ifCondition'>i % 5 == 0</span>) {
-				<span id='breakStmt'>break;</span>
-			}</span>
-			<span id='sop'>System.out.println("i :" + i);</span>
-		}</span>
+		<pre class="creamePreTab4"><in>public class</in> <ink>BreakDemo</ink> {
+	<g>public static void</g> main(string[] args) {
+		<div id='brkLoop' class='display'><go>for</go> (<span id='initialization' class="position-relative"><g>int</g> i = <ink><span id="initializationValue" class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span></ink>&nbsp;;</span> <span id='condition'>i < <ink>10</ink>;</span> <span id='update'>i++</span>) {
+	<div id='ifBlk' class='display'><go>if</go> (<span id='ifCondition'>i % <ink>5</ink> == <ink>0</ink></span>) {
+	<span id='breakStmt'><go>break;</go></span>
+}</div>
+ 	<span id='sop'>System.out.println(<ink>"i : "</ink> + i);</span>
+}</div>
 	<span id='mainEnd'>}</span>
-}</pre>
+}
+</pre>
 		</div>
 	</div>
 	<div class="col-xs-4" id="outputDiv">
@@ -121,7 +164,16 @@ $(document).ready(function() {
 	</div>
 </div>
 <div class="text-center col-xs-12">
-	<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+	<a class="btn btn-warning opacity00" id="restart">Restart</a>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#restart').click(function() {
+		location.reload();
+	});
+	breakInCReady();
+});
+</script>
 </body>
 </html>

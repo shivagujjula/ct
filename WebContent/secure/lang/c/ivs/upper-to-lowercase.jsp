@@ -14,13 +14,13 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/utl.min.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
+<script src="/secure/lang/c/js-min/utl.min.js" type="text/javascript"></script>
 <title>Upper to Lowercase Convertion</title>
 </head>
 <style>
@@ -156,10 +156,6 @@
     z-index: 9999999;
 }
 
-.creamPreTab4 {
-	height: 180px;
-}
-
 .padding0 {
 	padding: 0px;
 }
@@ -189,9 +185,11 @@
  /* padding: 8px; */
   border-width: 0px 0 0 0;
   background-color: #000;
-  color: #0f0;
+  color: yellow;
 }
-
+.output-console-body {
+    white-space: initial;
+    }
 </style>
 <body>
 <div class="col-xs-12 text-center">
@@ -210,9 +208,9 @@
 <span id='line1'>#include &lt;stdio.h&gt;</span>
 <span id='line2'>main()</span> {
  <span id='line3'>char ch;</span>
- <span id='line4'>printf( “ Enter an uppercase letter : “);</span>
- ch=<span id='line5'>getchar( );</span>
- <span id='line6'>printf (“ \n The lowercase letter of %c is : “, ch);</span>
+ <span id='line4'>printf("Enter an uppercase letter : ");</span>
+ ch = <span id='line5'>getchar();</span>
+ <span id='line6'>printf ("\nThe lowercase letter of %c is : ", ch);</span>
  <span id='line7'>ch = ch + 32;</span>
  <span id='line8'>putchar(ch);</span>
 <span id='line9'>}</span>
@@ -227,7 +225,7 @@
 						<div class="panel-heading">ch</div>
 						<div class="panel-body"><span id="panelBodyUpperCaseId" class="panel-uppercase" style=" position: relative; display: inline-block"></span></div>
 					</div>
-					<span id="addressId" class="visibility-hidden panel-heading">1024</span>
+					<span id="addressId" class="visibility-hidden panel-heading">2046</span>
  				</div>
      	 	</div>
      	 	<div class="col-xs-2">
@@ -251,7 +249,7 @@
 			<div class="output-console-body" id="consoleBodyDiv">
 				<span id="typeChar"></span>
 				 <span id="hiddenTypingChar" class="hidden">Enter an uppercase letter : <input id='inputChar' maxlength='1' class='input-char' tabindex='0'  /></span>
-				<span id="totalEnterChar" ></span>
+				<br><span id="totalEnterChar" ></span>
 				<span id="enterHiddenToltal" class="hidden">The lowercase letter of <span id="upperLetter"></span> is : <input id="hiddenTotalEnterChar" maxlength='1' class='input-char' tabindex='0' /></span>
 			</div>
 		</div>

@@ -119,6 +119,45 @@
 	min-width: 110px !important;
 }
 
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+/* a:focus {
+	outline: none;
+} */
+
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+
+
+
 </style>
 </head>
 <body>
@@ -129,24 +168,24 @@
 	<div id="mainBox" class="col-xs-12 margin-top-20">
 		<div class="col-xs-offset-2 col-xs-5">
 <pre id="codeAnimation" class='creampretab4 box-border'>
-#include&lt;stdio.h&gt;
-void main() {
-	<span id="varInit">int a , b , c ;</span>
-	<span id="mainPrintf">printf("Enter the values of a , b , c : ");</span>
-	<span id="mainScanf">scanf ("%d %d %d ", &a , &b , &c );</span>
-	<div id="nestedIf" class="flip">if (<span id="ifCondtn">a > b</span>) {
-	<div class="flip" id="nestedBlock1">if (<span id="ifCond1">a > c</span>) {
-	<span id="printfInIf1">printf ("%d is the biggest number " , a);</span>
-} else {
-	<span id="printfInIf2">printf ("%d is the biggest number " , c);</span>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<go>void</go> main() {
+	<span id="varInit"><g>int</g> a , b , c ;</span>
+	<span id="mainPrintf">printf(<ink>"Enter the values of a , b , c : "</ink>);</span>
+	<span id="mainScanf">scanf (<ink>"<in>%d %d %d</in> "</ink>, &a , &b , &c );</span>
+	<div id="nestedIf" class="flip"><go>if</go> (<span id="ifCondtn">a > b</span>) {
+	<div class="flip" id="nestedBlock1"><go>if</go> (<span id="ifCond1">a > c</span>) {
+	<span id="printfInIf1">printf(<ink>"<in>%d</in> is the biggest number "</ink> , a);</span>
+} <go>else</go> {
+	<span id="printfInIf2">printf(<ink>"<in>%d</in> is the biggest number "</ink> , c);</span>
 }</div>
 }
-<div id="elseBlock" style = "display: inline-block; position: relative;">else {
-	<div class="flip" id="nestedBlock2">if (<span id="ifInElse">b > c</span>) {
-	<span id="printfInElse1">printf ("%d is the biggest number " , b);</span>
+<div id="elseBlock" style = "display: inline-block; position: relative;"><go>else</go> {
+	<div class="flip" id="nestedBlock2"><go>if</go> (<span id="ifInElse">b > c</span>) {
+	<span id="printfInElse1">printf(<ink>"<in>%d</in> is the biggest number "</ink> , b);</span>
 }
-else {
-	<span id="printfInElse2">printf ("%d is the biggest number " , c);</span>
+<go>else</go> {
+	<span id="printfInElse2">printf(<ink>"<in>%d</in> is the biggest number "</ink> , c);</span>
 }</div>
 }</div></div>
 <span id="endMain">}</span></pre>

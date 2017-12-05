@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,8 +12,8 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<script src="/secure/lang/c/js-min/bth.min.js"></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<script src="/secure/lang/c/js-min/bth.min.js"></script>
 <title>Binary to hexaDecimal</title>
 
 <style>
@@ -49,6 +47,7 @@
 	border-radius: 10px;
 	margin-left: 19.5%;
 	margin-top: 1%;
+	font-family: monospace;
 }
 
 .index-textbox-size {
@@ -110,7 +109,7 @@ ul {
 }
 
 .square-Box {
-	border-spacing: 10px;
+	border-spacing: 8px;
 	border-collapse: separate;
 }
 
@@ -207,8 +206,12 @@ div, span, tr, td {
 	padding: 0 2px;
 }
 
-.introjs-tooltiptext {
+.introjs-tooltip {
 	min-width: 225px;
+}
+
+.display-none {
+	display: none;
 }
 
 </style>
@@ -227,19 +230,18 @@ div, span, tr, td {
 				<li id='list2' class='opacity00'>The numbering system which uses base-<span class='ct-green-color'>16</span>
 					is called <span class='ct-green-color'>hexadecimal system</span>.</li>
 				<li id='list3' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>,
-					<span class='ct-Maroon-color'>1</span>,
-					<span class='ct-Maroon-color'>2</span>,<span class='ct-Maroon-color'>3</span>,<span class='ct-Maroon-color'>4</span>,
-					<span class='ct-Maroon-color'>5</span>,<span class='ct-Maroon-color'>6</span>,<span class='ct-Maroon-color'>7</span>,
-					<span class='ct-Maroon-color'>8</span>,<span class='ct-Maroon-color'>9</span>,<span class='ct-Maroon-color'>A</span>,
-					<span class='ct-Maroon-color'>B</span>,<span class='ct-Maroon-color'>C</span>,<span class='ct-Maroon-color'>D</span>,
-					<span class='ct-Maroon-color'>E</span> and <span class='ct-Maroon-color'>F</span> are
+					 <span class='ct-Maroon-color'>1</span>, <span class='ct-Maroon-color'>2</span>, <span class='ct-Maroon-color'>3</span>,
+					 <span class='ct-Maroon-color'>4</span>, <span class='ct-Maroon-color'>5</span>, <span class='ct-Maroon-color'>6</span>,
+					 <span class='ct-Maroon-color'>7</span>, <span class='ct-Maroon-color'>8</span>, <span class='ct-Maroon-color'>9</span>,
+					 <span class='ct-Maroon-color'>A</span>, <span class='ct-Maroon-color'>B</span>, <span class='ct-Maroon-color'>C</span>,
+					 <span class='ct-Maroon-color'>D</span>, <span class='ct-Maroon-color'>E</span> and <span class='ct-Maroon-color'>F</span> are
 						used to represent a value of any magnitude in <span class='ct-green-color'>hexadecimal system</span>.</li>
 				<li id='list4' class='opacity00'>In the <span class='ct-green-color'>hexadecimal system</span> the values
-						<span class='ct-green-color'>10</span>,
-						<span class='ct-green-color'>11</span>,<span class='ct-green-color'>12</span>,<span class='ct-green-color'>13</span>,
-						<span class='ct-green-color'>14</span> and <span class='ct-green-color'>15</span> are represented as 
-						<span class='ct-green-color'>A</span>,<span class='ct-green-color'>B</span>,<span class='ct-green-color'>C</span>,
-						<span class='ct-green-color'>D</span>,<span class='ct-green-color'>E</span> and <span class='ct-green-color'>F</span>.
+						<span class='ct-green-color'>10</span>, <span class='ct-green-color'>11</span>, <span class='ct-green-color'>12</span>,
+						<span class='ct-green-color'>13</span>,	<span class='ct-green-color'>14</span> and <span class='ct-green-color'>15</span>
+						 are represented as	<span class='ct-green-color'>A</span>, <span class='ct-green-color'>B</span>,
+						 <span class='ct-green-color'>C</span>, <span class='ct-green-color'>D</span>, <span class='ct-green-color'>E</span>
+						  and <span class='ct-green-color'>F</span>.
 				</li>
 				<li id='list5' class='opacity00'>In binary to hexadecimal conversion we will first create groups of four binary digits each
 						and convert them to their equivalent hexadecimal digits to arrive at the final hexadecimal number.
@@ -308,11 +310,11 @@ div, span, tr, td {
 				</table>
 			</div>
 			<div id="supPart" class="col-xs-12">
-				<div class="col-xs-6" id="getDiv1">
+			 <div class="col-xs-6" id="getDiv1">
 					<table class="square-Box visibility-hidden" id="tableDiv1" align="center">
 						<tr id="numberBox2" style="display: inline-block;"></tr>
 					</table>
-				</div>
+				</div> 
 				<div class="col-xs-6" id="getDiv">
 					<table class="square-Box visibility-hidden" id="tableDiv2" align="center">
 						<tr id="numberBox1" style="display: inline-block;"></tr>
@@ -326,7 +328,7 @@ div, span, tr, td {
 				</div>
 			</div>
 			<div class="col-xs-12 visibility-hidden" id="squareDiv">
-				<div class="col-xs-6">
+				<div class="col-xs-6" id="firstPart">
 					<table class="square-Box" id="tableDiv" align="center">
 						<tr id="twoPowerDiv1"></tr>
 					</table>
@@ -338,9 +340,9 @@ div, span, tr, td {
 				</div>
 			</div>
 			<div class="col-xs-12 text-center" id="calculationPart">
-				<div class="col-xs-12 margin-top-1" id="calculationPartDiv1">
+				<div class="col-xs-12 margin-top-1 opacity00" id="calculationPartDiv1">
 					<div class="col-xs-6 opacity00" id="multiplyDiv2">
-						<span>=</span>
+						<span id='equalSpan' class="opacity00">=</span>
 						<span id="multiplySpan"></span>
 					</div>
 					<div class="col-xs-6 opacity00" id="multiplyDiv1">

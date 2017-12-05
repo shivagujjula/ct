@@ -50,7 +50,8 @@ var registerVariableReady = function() {
 		}, {
 			element :'#addressDiv1',
 			tooltipClass : "hide",
-			position : 'right'
+			position : 'right',
+			stepFlag: "false"
 		}, {
 			element :'#closeBrace1',
 			tooltipClass : "hide"
@@ -66,8 +67,57 @@ var registerVariableReady = function() {
 			position:"right",
 		} ]
 	});
+	
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+			case "registermainDeclaration" :
+				$('.introjs-tooltip').css({'min-width' : '300px'}).addClass("hide");
+			break; 
+			case "i1" :
+				$('#addressValue1').text('');
+			break;
+			case "animationDiv" :
+				$('.introjs-tooltip').css({'min-width' : '200px'});
+				$('#mainmemoryheading').css({'opacity':'0'});
+				$('#addressDiv1').addClass('visibility-hidden');
+				$('#mainMemory').addClass("visibility-hidden").removeClass('box-border');
+			break;
+			case "numberDiv1" :
+				$('#addressDiv1').addClass('visibility-hidden');
+			break; 
+			case "addressDiv1" :
+				if(intro._currentStep == 8) {
+					$('#numberDiv1').css({'opacity' : '0'});
+					$("#addressValue1").text('');
+				}
+			break; 
+			case "iCondition" :
+				$('#firstDiv').addClass('opacity00');
+				$('#iCount').text(iValue - 1);
+			break; 
+		}
+	});
+	
 	intro.onafterchange(function(targetElement) { 
-		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		// ********************** start ************back button logic
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		// ********************** end ************back button logic
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "registermainDeclaration" :
@@ -75,26 +125,23 @@ var registerVariableReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		var text = "<ul><li>A <span class='ct-code-b-yellow'>register</span> variable is declared with the keyword"
 		  					+ " <span class='ct-code-b-yellow'>register</span>.</li>"
-		  					+ "<li><span class='ct-code-b-yellow'>Register</span> variables are stored at <span class='ct-code-b-yellow'>"
-		  					+ "registers</span>(A register is one of a small set of data holding places that are a part of the CPU)</li>"
+		  					+ "<li><span class='ct-code-b-yellow'>Register</span> variables are stored in <span class='ct-code-b-yellow'>"
+		  					+ "registers. </span><br/>A register is one of a small set of data holding places that are a part of the CPU</li>"
 		  					+ "<li>Accessing <span class='ct-code-b-yellow'>register</span> variables are <span class='ct-code-b-yellow'>"
-		  					+ "faster</span> than variables stored in memory.</li></ul>";
+		  					+ "faster</span> than variables stored in <y>memory</y>.</li></ul>";
 				typing('.introjs-tooltiptext', text ,function() { 
-					$('#animationDiv').css({'opacity':'1'});
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break; 
-		
 		case "i1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				text = "The variable <span class='ct-code-b-yellow'>i</span> is initialized to <span class='ct-code-b-yellow'>1</span>."; 
 				typing('.introjs-tooltiptext', text, function() { 
-					$('.introjs-nextbutton').show();	
+					$('.introjs-nextbutton, .introjs-prevbutton').show();	
 				});
 			});
 		break;
-		
 		case "forDeclaration" :
 		case "mainDeclaration" :
 		case "closeBrace1" :
@@ -104,28 +151,31 @@ var registerVariableReady = function() {
 			}
 			nextLine();
 		break;
-		
 		case "animationDiv" :
 			$('.introjs-tooltip').css({'min-width' : '200px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('#mainmemoryheading').css({'opacity':'1'});
-				$('#mainMemory').removeClass("visibility-hidden").addClass('box-border');
-		  		setTimeout(function () {
-					intro.nextStep();
-				}, 500);
+				if (intro._direction == 'forward') {
+					$('#mainmemoryheading').css({'opacity':'1'}).removeClass('opacity00');
+					$('#mainMemory').removeClass("visibility-hidden").addClass('box-border');
+			  		setTimeout(function () {
+						intro.nextStep();
+					}, 500);
+				} else {
+			  		setTimeout(function () {
+						intro.previousStep();
+					}, 500);
+				}
 			});
 		break;
-		
 		case "numberDiv1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 	  			$('#addressDiv1').removeClass('visibility-hidden');
 				$('.introjs-tooltip').removeClass("hide");
-				typing('.introjs-tooltiptext', "Variable <span class='ct-code-b-yellow'>i</span> stored at register." ,function() { 
-					$('.introjs-nextbutton').show();
+				typing('.introjs-tooltiptext', "Variable <span class='ct-code-b-yellow'>i</span> stored at <y>register</y>." ,function() { 
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
 			});
 		break; 
-		
 		case "addressDiv1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if(intro._currentStep == 8) {
@@ -136,62 +186,90 @@ var registerVariableReady = function() {
 							fromEffectWithTweenMax('#one', '#addressValue1', function() {
 								$('.introjs-tooltip').removeClass("hide");
 								var text = "The variable <span class='ct-code-b-yellow'>i</span> with value"
-											+ " <span class='ct-code-b-yellow'>1</span> is stored in the register."
+											+ " <span class='ct-code-b-yellow'>1</span> is stored in the <y>register</y>."
 								typing('.introjs-tooltiptext', text,function() { 
-									introNextStep('#iCondition')
-									$('.introjs-nextbutton').show();	
+									if (intro._introItems[intro._currentStep].stepFlag == "false") {
+										intro._introItems[intro._currentStep].stepFlag = true;
+										var t = 1;
+										for (var i = 1; i <= 5; i++) {
+											introNextStep("#iCondition", t++);
+											introNextStep("#sopLine1", t++);
+											introNextStep("#outputDiv", t++);
+											introNextStep("#iIncrement", t++);
+											introNextStep("#addressDiv1", t++);
+										}
+										introNextStep('#iCondition', t);
+									}
+									$('.introjs-nextbutton, .introjs-prevbutton').show();	
 								});	
 							});
 						});
 					}});
 				} else if(intro._currentStep > 12) {
-					$("#addressValue1").text(iValue);
-					introNextStep("#iCondition");
-					setTimeout(function () {
-						intro.nextStep();
-					}, 500);
+					if (intro._direction == 'forward') {
+						$("#addressValue1").text(iValue);
+						setTimeout(function () {
+							intro.nextStep();
+						}, 500);
+					} else {
+						$("#addressValue1").text(iValue - 1);
+						setTimeout(function () {
+							intro.previousStep();
+						}, 500);
+					}
 				}
 			});
 		break; 
-		
 		case "iIncrement" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('.introjs-tooltip').removeClass("hide");
-				typing('.introjs-tooltiptext',"The variable <span class='ct-code-b-yellow'>i(i.e., " + iValue + ")</span> is "
+				if (intro._direction == 'forward') {
+					text = "The variable <span class='ct-code-b-yellow'>i(i.e., " + iValue + ")</span> is "
+								+ "<span class='ct-code-b-yellow'>incremented</span> by <span class='ct-code-b-yellow'>1(i = " 
+								+ (iValue + 1) + ")</span>."; 
+						iValue++;
+				} else {
+					text = "The variable <span class='ct-code-b-yellow'>i(i.e., " + (iValue - 1) + ")</span> is "
 							+ "<span class='ct-code-b-yellow'>incremented</span> by <span class='ct-code-b-yellow'>1(i = " 
-							+ (iValue + 1) + ")</span>.", function() { 
-					iValue++;
-					introNextStep("#addressDiv1");
-					$('.introjs-nextbutton').show();	
+							+ (iValue) + ")</span>."; 
+				}
+				typing('.introjs-tooltiptext', text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();	
 				});
 			});
 		break; 
-		
 		case "outputDiv" :
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$(".output").append('<div id = "outputAValue' + iValue + '"></div>');
-				$('#outputAValue' + iValue).text(iValue);
-				introNextStep("#iIncrement");
-				setTimeout(function () {
-					intro.nextStep();
-				}, 500);
+				if (intro._direction == 'forward') {
+					$(".output").append('<div id = "outputAValue' + iValue + '"></div>');
+					$('#outputAValue' + iValue).text(iValue);
+					setTimeout(function () {
+						intro.nextStep();
+					}, 500);
+				} else {
+					$('.output div:last').remove();
+					setTimeout(function () {
+						intro.previousStep();
+					}, 500);
+				}
 			});
 		break;
-		
 		case "iCondition" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('.introjs-tooltip').removeClass("hide");
-				$('.introjs-tooltiptext').append('<span id= "firstDiv" class="opacity00  ct-code-b-yellow"><span id="iCount" class="position">'
+				$('.introjs-tooltiptext').text('').append('<span id= "firstDiv" class="opacity00  ct-code-b-yellow"><span id="iCount" class="position">'
 						+ 'i</span> <= 5</span><br><div id="itrue"></div>');
+				if (intro._direction != 'forward') {
+					iValue--;
+				}
 				if(iValue <= 5) {
 					$('#firstDiv').removeClass('opacity00');
 					fromEffectWithTweenMax('#iCondition','#firstDiv', function() {
 						flipEffectWithTweenMax("#iCount", iValue, function() {
 							$("#itrue").append("returns <span class='ct-code-b-yellow'>true</span>");
-							$('#itrue').append('<ul><li><span id = gotoloop class = color-white></span></li></ul>');
-							typing('#gotoloop',"The body of the loop is executed." ,function() { 
-								introNextStep("#sopLine1");
-								$('.introjs-nextbutton').show();
+							$('#itrue').append('<span id = gotoloop class = color-white></span>');
+							typing('#gotoloop',"<br><br>The body of the loop is executed." ,function() { 
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});		
 					});
@@ -200,25 +278,21 @@ var registerVariableReady = function() {
 					fromEffectWithTweenMax('#iCondition','#firstDiv', function() {
 						flipEffectWithTweenMax("#iCount", iValue, function() {
 							$("#itrue").append("returns <span class='ct-code-b-yellow'>false</span>");
-							$('#itrue').append('<ul><li><span id = gotoloop class = color-white>The control comes out of the loop.</li></ul>');							
-							$('.introjs-nextbutton').show();
+							$('#itrue').append('<span id = gotoloop class = color-white><br><br>The control comes out of the loop.</spam>');							
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});		
 					});
 				}
 			});
 		break; 
-	 
 		case "sopLine1" :
 			nextLine();
-			introNextStep("#outputDiv");
 			$('#outputDiv').removeClass('opacity00');
 		break; 
-		
 		case "formainDeclaration" :
 			$('#functionMemory').addClass('visibility-hidden');
 			nextLine();
 		break; 
-		
 		case "printDefinition" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#line1').fadeTo(500, 1, function() {
@@ -228,7 +302,6 @@ var registerVariableReady = function() {
 				});
 			});
 		break; 
-		
 		case "restartBtn":
 			$('.introjs-tooltip').css({'min-width' : '120px'});
 			$('.introjs-helperLayer').one('transitionend', function () {
@@ -240,30 +313,30 @@ var registerVariableReady = function() {
 		break;
 		}
 	});
-
 	intro.start();
-	text = "Let us consider an example."	
-		typing('.introjs-tooltiptext', text, function() {
-			$('.introjs-nextbutton').show();
+	typing('.introjs-tooltiptext', "Let us consider an example.", function() {
+		$('.introjs-nextbutton').show();
 	});	
 }
+
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval" : 5,
+		"typing_interval" : 1,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		callbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }
 
-function introNextStep(elementId) {
+function introNextStep(elementId, val) {
 	var dynamicStep = {
 			"element" : elementId,
 		    "intro" : "",
 			"tooltipClass" : "hide",
 		}
-	intro.insertOption(intro._currentStep + 1, dynamicStep); 
+	intro.insertOption(intro._currentStep + val, dynamicStep); 
 }
 
 function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
@@ -306,8 +379,14 @@ function animate1() {
 
 function nextLine() {
 	$(".introjs-helperLayer").one("transitionend", function() {
-		setTimeout(function () {
-			intro.nextStep();
-		}, 500);
+		if (intro._direction == 'forward') {
+			setTimeout(function () {
+				intro.nextStep();
+			}, 500);
+		} else {
+			setTimeout(function () {
+				intro.previousStep();
+			}, 500);
+		}
 	});
 }

@@ -7,7 +7,6 @@ var usageOfDoubleHashReady = function() {
 	});
 	
 	$("#inputChar").keyup(function() {
-		console.log("hello");
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton').hide();
 		} else {
@@ -15,7 +14,6 @@ var usageOfDoubleHashReady = function() {
 		}
 	});
 	
-	console.log();
 	intro = introJs();
 	intro.setOptions({
 		showStepNumbers : false,
@@ -44,12 +42,12 @@ var usageOfDoubleHashReady = function() {
 					position:"bottom"
 				},{
 					element :'#line2',
-					intro :'',
-					position:"bottom"
+					intro :''
 				},{
 					element :'#line3',
 					intro :'',
-					position:"bottom"
+					position:"bottom",
+					tooltipClass:"hide"
 				},{
 					element :'#connectId',
 					intro :'',
@@ -58,6 +56,7 @@ var usageOfDoubleHashReady = function() {
 				},{
 					element :'#consoleId',               
 					intro :'',
+					tooltipClass: 'hide',
 					position:"bottom"
 				},{
 					element :'#restartBtn',               
@@ -66,7 +65,46 @@ var usageOfDoubleHashReady = function() {
 				}]
 	});
 	
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "titleName":
+			$("#preBody").addClass("opacity00");
+		break;
+		case "line3" :
+			$("#consoleId").addClass("opacity00");
+			break;
+			
+		case "connectId" :
+			break;
+			
+		case "consoleId" :
+			$("#consoleId").removeClass("opacity00");
+			break;
+		}
+	});
 	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+					intro._introItems[intro._currentStep]["animation"] = "repeat";
+				}
+				
+				if (intro._introItems[intro._currentStep]["isCompleted"]) {
+					if (intro._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+					intro._introItems[intro._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
+				
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
@@ -75,8 +113,12 @@ var usageOfDoubleHashReady = function() {
 			$("#preBody").removeClass("opacity00");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				setTimeout(function() {
-					intro.nextStep();
-				}, 1000);
+					if (intro._direction=="forward") {
+							intro.nextStep()
+					} else {
+						intro.previousStep()
+					}
+				}, 500);
 			});
 			break;
 			
@@ -85,8 +127,8 @@ var usageOfDoubleHashReady = function() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "Here is a sample code for<span class='ct-code-b-yellow'> ##</span>.<ul><li>Here, <span class='ct-code-b-yellow'>CONNECT(X,Y)</span> is symbol name or macro. And <span class='ct-code-b-yellow'>X##Y</span> is a symbolic constant.</li>" +
 						"<li><span class='ct-code-b-yellow'>##</span> concatenates the X and Y values.</li>" +
-						"<li>Before compilation starts symbolic name will be replaced with symbolic constant value.</li></ul>", 10, "",function() {
-						$('.introjs-nextbutton').show();
+						"<li>Before compilation starts symbolic name will be replaced with symbolic constant value.</li></ul>", 1, "",function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -94,8 +136,8 @@ var usageOfDoubleHashReady = function() {
 		case "line2" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<ul><li><span class='ct-code-b-yellow'>main()</span> is the operating system call.</li><li><span class='ct-code-b-yellow'>main()</span> is the execution starting point for a C program.</li></ul>", 10, "",function() {
-					$('.introjs-nextbutton').show();
+				typing(".introjs-tooltiptext", "<ul><li><span class='ct-code-b-yellow'>main()</span> is the operating system call.</li><li><span class='ct-code-b-yellow'>main()</span> is the execution starting point for a C program.</li></ul>", 1, "",function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -103,8 +145,9 @@ var usageOfDoubleHashReady = function() {
 		case "line3" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is a library function. It prints the message which is in double quotes on the output screen.", 10, "",function() {
-					$('.introjs-nextbutton').show();
+			$('.introjs-tooltip').removeClass("hide");
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is a library function. It prints the message which is in double quotes on the output screen.", 1, "",function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -113,32 +156,47 @@ var usageOfDoubleHashReady = function() {
 			$('.introjs-nextbutton').hide();
 			if(intro._currentStep == 3) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#connectId").text("5##6");
-					}});
-					
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+					if (intro._direction=="forward") {
+						t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#connectId").text("5##6");
+							t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								intro.refresh();
+								setTimeout(function() {
+									intro.nextStep()
+								}, 500);
+							}});
+						}});
+					} else {
+						$("#connectId").text("CONNECT(5, 6)");
 						intro.refresh();
 						setTimeout(function() {
-							intro.nextStep();
-						}, 1500);
-					}});
+							intro.previousStep()
+						}, 500);
+					}
 					
 				});
 				
 			} else if(intro._currentStep == 6) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#connectId").text("56");
-					}});
-					
-					t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+					if (intro._direction=="forward") {
+						t1.to("#connectId", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#connectId").text("56");
+							t1.to("#connectId", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								intro.refresh();
+								setTimeout(function() {
+									intro.nextStep()
+								}, 500);
+							}});
+						}});
+					} else {
+						$("#consoleId").addClass("opacity00");
+						$("#connectId").text("5##6");
+						$('#typeChar').text('');
 						intro.refresh();
-						setTimeout(function(){
-							intro.nextStep();
-						}, 1500);
-					}});
+						setTimeout(function() {
+							intro.previousStep()
+						}, 500);
+					}
 				});
 			}
 			break;
@@ -147,9 +205,10 @@ var usageOfDoubleHashReady = function() {
 			$('.introjs-nextbutton').hide();
 			$("#consoleId").removeClass("opacity00");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing("#typeChar", "result is : <span class='ct-code-b-green'>56</span>", 10, "",function() {
-					typing(".introjs-tooltiptext", "The result <span class='ct-code-b-yellow'>56</span> is printed on to the output screen.", 10, "",function() {
-						$('.introjs-nextbutton').show();
+				typing("#typeChar", "result is : <span class='ct-code-b-yellow'>56</span>", 1, "",function() {
+					$('.introjs-tooltip').removeClass('hide');
+					typing(".introjs-tooltiptext", "The result <span class='ct-code-b-yellow'>56</span> is printed on to the output screen.", 1, "",function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			});
@@ -157,9 +216,10 @@ var usageOfDoubleHashReady = function() {
 			
 		case "restartBtn" :
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css({'min-width' : '125px'});
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {
+				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
 					
 				});
 			});
@@ -171,7 +231,7 @@ var usageOfDoubleHashReady = function() {
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide();
 	
-	typing(".introjs-tooltiptext", "Let us see a sample program on <span class='ct-code-b-yellow'>##</span>.", 10, "",function() {
+	typing(".introjs-tooltiptext", "Let us see a sample program on <span class='ct-code-b-yellow'>##</span>.", 1, "",function() {
 		$('.introjs-nextbutton').show();
 	});
 }
@@ -183,5 +243,6 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }

@@ -1,25 +1,24 @@
-var introcode;
-var typingInterval = 10;
+var intro;
+var typingInterval = 1;
 var tl = new TimelineLite();
 var sopLineCount = 1;
 var count = 0;
 
 var nestedPrintfStatementsReady = function() {
-	introcode = introJs();
-	introcode.setOptions({
+	intro = introJs();
+	intro.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
 		showBullets : false,
 		exitOnEsc : false,
 		keyboardNavigation : false,
 			steps : [{
-				element :'#code',
+				element :'#code', 
 				intro :'',
-				tooltipClass : "hide"
 			},{
-				element :'#VariableDeclararion1',
+				element :'#VariableDeclararion1', 
 				intro :'',
-				tooltipClass : "hide"
+				//tooltipClass : "hide"
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -27,11 +26,12 @@ var nestedPrintfStatementsReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				tooltipClass : "hide",
+				//tooltipClass : "hide",
 				animateStep : "percentageFormatCharacter"
 			},{
 				element :'#innerPrintf3',
 				intro :'',
+				tooltipClass : "hide",
 				animateStep : "percentageFormatCharacter"
 			},{
 				element :'#sopLine3',
@@ -50,7 +50,7 @@ var nestedPrintfStatementsReady = function() {
 			},{
 				element :'#sopLine4',
 				intro :'',
-				tooltipClass : "hide",
+				//tooltipClass : "hide",
 				animateStep : "outerPrintf1"
 			},{
 				element : "#restartBtn",
@@ -59,7 +59,82 @@ var nestedPrintfStatementsReady = function() {
 				position : "right"
 			}]
 	});
-	introcode.onafterchange(function(targetElement){
+	intro.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		
+			switch (elementId) {
+				case "VariableDeclararion" + sopLineCount :
+					$("#numberDiv1").addClass("opacity00");
+					$("#numberDiv2").addClass("opacity00");
+				break;
+				
+				case "animationDiv" :
+					
+				break;
+				
+				case "sopLine" + sopLineCount :
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+						switch(animateStep) {
+						case "percentageFormatCharacter":
+							$("#outputAValue, #outputComma,#outputBValue").text("");
+						break;
+						
+						case "outerPrintf" :
+							$("#outputCountAandBValue").addClass("opacity00");
+						break;
+						
+						case "outerPrintf1" :
+							
+						break;
+						
+						case "printText" :
+							
+						break;
+					}
+				break;
+				
+				case "innerPrintf" + sopLineCount :
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+					switch(animateStep) {
+						case "percentageFormatCharacter":
+							$("#outputAValue").text("");
+							$("#outputComma").text("");
+							$("#outputBValue").text("");
+							$("#outputCountAandBValue").addClass("opacity00");
+							
+						break;
+						
+						case "printText" :
+							$(".introjs-duplicate-backbutton").remove();
+						break;
+					}
+				break;
+				
+				
+			}
+		
+	});
+	intro.onafterchange(function(targetElement){
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+					intro._introItems[intro._currentStep]["animation"] = "repeat";
+				}
+				
+				if (intro._introItems[intro._currentStep]["isCompleted"]) {
+					if (intro._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+					intro._introItems[intro._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		var elementId = targetElement.id;
 		$('.introjs-nextbutton').hide();
 		$('.introjs-helperLayer').one('transitionend', function() {
@@ -72,27 +147,39 @@ var nestedPrintfStatementsReady = function() {
 						+ ' <span class="ct-code-b-yellow">a</span> and'
 						+ ' <span class="ct-code-b-yellow">b</span>.';
 					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
 				break;
 				
 				case "animationDiv" :
-					$("#VariableDeclararion" + sopLineCount).addClass("z-index1000000");
-					$("#addressValue1").text($("#number1").text());
-					$("#addressValue2").text($("#number2").text());
-					transferEffect('#VariableDeclararion' + sopLineCount, '#animationDiv', function() {
-						$("#addressDiv1").removeClass("opacity00");$("#addressDiv2").removeClass("opacity00");
-						sopLineCount += 2;
-						setTimeToIntroGoNextStep();
-					});
+					setTimeout(function() {
+						if (intro._direction=="forward") {
+							$("#VariableDeclararion" + sopLineCount).addClass("z-index1000000");
+							$("#addressValue1").text($("#number1").text());
+							$("#addressValue2").text($("#number2").text());
+								transferEffect('#VariableDeclararion' + sopLineCount, '#animationDiv', function() {
+								$("#numberDiv1").removeClass("opacity00");
+								$("#numberDiv2").removeClass("opacity00");
+								$("#addressDiv1").removeClass("opacity00");$("#addressDiv2").removeClass("opacity00");
+									sopLineCount += 2;
+									setTimeout(function() {
+									intro.nextStep()
+									}, 300);
+							});
+						} else {
+							sopLineCount -= 2;
+							intro.previousStep()
+							}
+							}, 500);
+				
 				break;
 				
 				case "sopLine" + sopLineCount :
 					$("#VariableDeclararion2").removeClass("z-index1000000");
-					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "percentageFormatCharacter":
-							$('.introjs-tooltip').removeClass('hide');
+							//$('.introjs-tooltip').removeClass('hide');
 							text = 'In this statement we will notice that we are calling'
 									+ ' the <span class="ct-code-b-yellow">printf()</span> function inside '
 									+ ' another <span class="ct-code-b-yellow">printf()</span> function call.<br/><br/>'
@@ -102,7 +189,7 @@ var nestedPrintfStatementsReady = function() {
 									+ ' whose return value is substituted in the outter '
 									+ '<span class="ct-code-b-yellow">printf()</span> function.';
 							typing('.introjs-tooltiptext', text, function() {
-								$('.introjs-nextbutton').show();	
+								$('.introjs-nextbutton,.introjs-prevbutton').show();	
 							});
 						break;
 						
@@ -123,8 +210,9 @@ var nestedPrintfStatementsReady = function() {
 							typing('.introjs-tooltiptext', text, function() {
 								$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton'"
 										 + "onclick=nestedPrintfFunction()>Next &#8594;</a>");
+							
 							});
-						break;
+							break;
 						
 						case "outerPrintf1" :
 							$('.introjs-tooltip').removeClass('hide');
@@ -140,9 +228,21 @@ var nestedPrintfStatementsReady = function() {
 						
 						case "printText" :
 							$('.introjs-tooltip').removeClass('hide');
+							$(".introjs-duplicate-backbutton2").remove();
 							text = 'This is another example of nested <span class="ct-code-b-yellow">printf()</span> function calls.';
 							typing('.introjs-tooltiptext', text, function() {
-								$('.introjs-nextbutton').show();	
+								$('.introjs-tooltipbuttons').prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")
+									$('.introjs-nextbutton').show();
+										$(".introjs-duplicate-backbutton").click(function() {
+											$(".introjs-duplicate-backbutton").remove();
+									//alert("dupback clicked")
+											setTimeout(function () {
+												sopLineCount--;
+									//alert(sopLineCount)
+												intro.previousStep()
+											}, 300);
+								});
+								
 							});
 						break;
 					}
@@ -150,9 +250,11 @@ var nestedPrintfStatementsReady = function() {
 				
 				case "innerPrintf" + sopLineCount :
 					$("#VariableDeclararion2").removeClass("z-index1000000");
-					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "percentageFormatCharacter":
+							
+							//alert("entering to the inner loop")
 							$('.introjs-tooltip').removeClass('hide');
 							text = 'The <span class="ct-code-b-yellow">printf()</span> function call returns the '
 									+ 'number of characters it has printed so the inner '
@@ -160,12 +262,17 @@ var nestedPrintfStatementsReady = function() {
 									+ ' <span class="ct-code-b-yellow">14,24</span> totally there are '
 									+ ' <span class="ct-code-b-yellow">5</span> characters.';
 							typing('.introjs-tooltiptext', text, function() {
-								$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton'"
-										 + "onclick=innerPrintfWithNumbers()>Next &#8594;</a>");
+								$('.introjs-tooltipbuttons')/*prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")*/.append("<a class='introjs-button introjs-duplicate-nextbutton'"
+										 + "onclick=innerPrintfWithNumbers()>Next &#8594</a>");
+								/*$('.introjs-duplicate-backbutton').click(function() {
+									$('.introjs-duplicate-backbutton').remove();
+									intro.previousStep();
+								});*/
 							});
 						break;
 						
 						case "printText" :
+							
 							$('.introjs-tooltip').removeClass('hide');
 							text = 'The inner <span class="ct-code-b-yellow">printf()</span> function '
 									+ 'directly prints the string '
@@ -184,16 +291,17 @@ var nestedPrintfStatementsReady = function() {
 				
 				case "restartBtn":
 						$("#restartBtn").removeClass('visibility-hidden');
+						$(".introjs-tooltip").css({"min-width": "115px"});
 				break;
 			}
 		});
 	});
-	introcode.start();
+	intro.start();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide(); 
 	
-	$('.introjs-tooltip').removeClass('hide');
+	//$('.introjs-tooltip').removeClass('hide');
 	text = 'Here, we will learn how the nested <span class="ct-code-b-yellow">printf()</span> function works.';
 	typing('.introjs-tooltiptext', text, function() {
 		$('.introjs-nextbutton').show();
@@ -206,67 +314,96 @@ var nestedPrintfStatementsReady = function() {
 
 function setTimeToIntroGoNextStep() {
 	setTimeout(function() {
-		introcode.nextStep();
+		intro.nextStep();
 	},800);
 }
 
 function outerPrintf() {
-	$(".introjs-duplicate-nextbutton").remove();
-	$("#outputDiv").addClass("z-index1000000");
-	$('.introjs-tooltip').addClass('hide');
-	$("#innerPrintfText").effect("highlight",{color: '#ffff33'}, 500);
-	$("#innerPrintfText").effect("transfer", { to: $("#totalCharacters"), className: "ui-effects-transfer" }, 1000 , function() {
-		$("#totalCharacters").removeClass("opacity00");
-		$("#outputDiv").removeClass("z-index1000000");
-		setTimeToIntroGoNextStep();
-	});
+	setTimeout(function() {
+		if (intro._direction=="forward") {
+			$(".introjs-duplicate-nextbutton").remove();
+			$("#outputDiv").addClass("z-index1000000");
+			$('.introjs-tooltip').addClass('hide');
+			$("#innerPrintfText").effect("highlight",{color: '#ffff33'}, 500);
+			$("#innerPrintfText").effect("transfer", { to: $("#totalCharacters"), className: "ui-effects-transfer" }, 1000 , function() {
+				$("#totalCharacters").removeClass("opacity00");
+				$("#outputDiv").removeClass("z-index1000000");
+					intro.nextStep()
+					});
+		} else {
+				intro.previousStep()
+		}
+	}, 500);
 }
 
 function nestedPrintfFunction() {
-	$('.introjs-tooltip').addClass('hide');
-	$(".introjs-duplicate-nextbutton").remove();
-	$("#outputDiv").addClass("z-index1000000");
-	$("#innerPrintfValue").effect( "highlight",{color: '#ffff33'}, 500);
-	$("#innerPrintfValue").effect( "transfer", { to: $("#outputCountAandBValue"), className: "ui-effects-transfer" }, 1000 , function() {
-		$("#outputCountAandBValue").removeClass("opacity00");
-		$("#outputDiv").removeClass("z-index1000000");
-		sopLineCount++;
-		setTimeToIntroGoNextStep();
-	});
+		setTimeout(function() {
+				$(".introjs-duplicate-nextbutton").remove();
+				$("#outputDiv").addClass("z-index1000000");
+				$("#innerPrintfValue").effect( "highlight",{color: '#ffff33'}, 500);
+				$("#innerPrintfValue").effect( "transfer", { to: $("#outputCountAandBValue"), className: "ui-effects-transfer" }, 1000 , function() {
+					$("#outputCountAandBValue").removeClass("opacity00");
+					$("#outputDiv").removeClass("z-index1000000");
+					sopLineCount++;
+					$(".introjs-nextbutton").show();
+					$('.introjs-tooltipbuttons').prepend("<a class='introjs-button introjs-duplicate-backbutton2'>&#8592 Back</a>")
+						$(".introjs-duplicate-backbutton2").click(function() {
+							$(".introjs-duplicate-backbutton2").remove();
+								setTimeout(function () {
+									sopLineCount--;
+									intro.previousStep()
+									}, 300);
+							});
+				
+					});
+			
+			}, 500);
+		
+	
 }
 
 function innerPrintfWithNumbers() {
-	$(".introjs-duplicate-nextbutton").remove();
-	$('.introjs-tooltip').addClass('hide');
-	$("#outputDiv").addClass("z-index1000000");
-	innerPrintfUsingPercentages("#persentageD1", "#aValue", "#aValueAnimation", "#addressValue1", "#outputAValue", function() {
-		$("#separateOperator").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 500, function() {
-			$("#separateOperator").removeClass("z-index1000000");
-			transferEffect('#separateOperator', '#outputComma', function() {
-				$("#outputComma").text(",");
-				innerPrintfUsingPercentages("#persentageD2", "#bValue", "#bValueAnimation", "#addressValue2", "#outputBValue", function() {
-					$("#outputCountAandBValue").text($("#number1").text().length + $("#number2").text().length+1).addClass("opacity00");
-					$("#innerPrintfValue").effect( "highlight",{color: '#ffff33'}, 500);
-					$("#outputDiv").removeClass("z-index1000000");
-					setTimeToIntroGoNextStep();
+	setTimeout(function() {
+			$(".introjs-duplicate-nextbutton").remove();
+			$("#outputDiv").addClass("z-index1000000");
+				innerPrintfUsingPercentages("#persentageD1", "#aValue", "#aValueAnimation", "#addressValue1", "#outputAValue", function() {
+					$("#separateOperator").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 500, function() {
+					$("#separateOperator").removeClass("z-index1000000");
+						transferEffect('#separateOperator', '#outputComma', function() {
+							$("#outputComma").text(",");
+								innerPrintfUsingPercentages("#persentageD2", "#bValue", "#bValueAnimation", "#addressValue2", "#outputBValue", function() {
+									$("#outputCountAandBValue").text($("#number1").text().length + $("#number2").text().length+1).addClass("opacity00");
+									$("#innerPrintfValue").effect( "highlight",{color: '#ffff33'}, 500);
+									$("#outputDiv").removeClass("z-index1000000");
+									$(".introjs-prevbutton, .introjs-nextbutton").show();
+									});
+						});
+					});
 				});
-			});
-		});
-	});
+		
+		}, 500);
+	
 }
 
 function printCodeTantraText() {
-	$(".introjs-duplicate-nextbutton").remove();
-	$('.introjs-tooltip').addClass('hide');
-	$("#outputDiv").addClass("z-index1000000");
-	$("#innerPrintfText").text("Codetantra").addClass("opacity00");	
-	$("#number4").effect("highlight",{color: '#ffff33'}, 500);
-	$("#number4").effect("transfer", { to: $("#innerPrintfText"), className: "ui-effects-transfer" }, 1000 , function() {
-		$("#innerPrintfText").removeClass("opacity00");	
-		$("#totalCharacters").text($("#innerPrintfText").text().length).addClass("opacity00");
-		$("#outputDiv").removeClass("z-index1000000");
-			setTimeToIntroGoNextStep();
-	});
+	setTimeout(function() {
+		if (intro._direction=="forward") {
+			$(".introjs-duplicate-nextbutton").remove();
+			$('.introjs-tooltip').addClass('hide');
+			$("#outputDiv").addClass("z-index1000000");
+			$("#innerPrintfText").text("Codetantra").addClass("opacity00");	
+			$("#number4").effect("highlight",{color: '#ffff33'}, 500);
+			$("#number4").effect("transfer", { to: $("#innerPrintfText"), className: "ui-effects-transfer" }, 1000 , function() {
+				$("#innerPrintfText").removeClass("opacity00");	
+				$("#totalCharacters").text($("#innerPrintfText").text().length).addClass("opacity00");
+				$("#outputDiv").removeClass("z-index1000000");
+				intro.nextStep()
+				});
+	} else {
+			intro.previousStep()
+			}
+			}, 500);
+	
 }
 
 function innerPrintfUsingPercentages(selector1, selector2, selector3, selector4, selector5, callBackFunction) {
@@ -288,7 +425,6 @@ function innerPrintfUsingPercentages(selector1, selector2, selector3, selector4,
 		});
 	});
 }
-
 //*****From effect animation*****
 function fromEffectWithTweenMax(selector1, selector2, flag, callBackFunction) {
 	var l1 = $(selector1).offset();
@@ -332,6 +468,7 @@ function typing(typingId, typingContent, typingCallbackFunction) {
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		$('.introjs-tooltip').show();
 	});
 } 

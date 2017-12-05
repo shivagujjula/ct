@@ -18,7 +18,7 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/c/js-min/so.min.js"></script>
 
-<title>Insert title here</title>
+<title>special-operators</title>
 
 <style>
 
@@ -62,7 +62,7 @@
 }
 
 .creamPreTab4 {
-	-moz-tab-size: 6;
+	tab-size: 3;
     background-color: #fffae6;
     border-radius: 8px;
     font-size: 11px;
@@ -75,10 +75,22 @@
 	padding: 0;
 }
 
+.output-console-body {
+    background-color: black;
+    padding-left: 20px;
+    color: #f0f0f0;
+    font-family: monospace;
+    font-size: 10px;
+    /* white-space: pre; */
+    overflow-y: auto;
+    line-height: 1.2;
+}
+
 .heading-text-div {
 	border: 1px solid grey;
 	border-radius: 8px;
 	padding: 5px 10px;
+	font-family: monospace;
 }
 
 .ct-code-b-green {
@@ -103,6 +115,11 @@
 	background-color: pink;
 }
 
+.z-index {
+	position: relative;
+	z-index: 9999999;
+	background-color: white;
+}
 </style>
 
 </head>
@@ -161,18 +178,20 @@ void main() {
 </pre>
 		</div>
 		<div class="output-console col-xs-4" id='outputBox'>
-		<div class="output-console-title-bar">
-			<span>Output</span>
+			<div class="output-console-title-bar">
+				<span>Output</span>
+			</div>
+			<div>
+				<div class="output-console-body">
+					<div id="firstVal" class='visibility-hidden'>Value of a = 9</div>
+					<div id="secondVal" class='visibility-hidden'>Size of int = 4 bytes</div>
+					<div id="thirdVal" class='visibility-hidden'>Size of float = 4 bytes</div>
+					<div id="fourthVal" class='visibility-hidden'>Size of double = 8 bytes</div>
+					<div id="fifthVal" class='visibility-hidden'>Size of char = 1 byte</div>
+					<div id="sixthVal" class='visibility-hidden'>Size of integer type array having 10 elements = 40 bytes</div>
+				</div>
+			</div>
 		</div>
-		<div class="output-console-body">
-<span class='visibility-hidden'>Value of a = 9</span>
-<span class='visibility-hidden'>Size of int = 4 bytes</span>
-<span class='visibility-hidden'>Size of float = 4 bytes</span>
-<span class='visibility-hidden'>Size of double = 8 bytes</span>
-<span class='visibility-hidden'>Size of char = 1 byte</span>
-<span class='visibility-hidden'>Size of integer type array having 10 elements = 40 bytes</span>
-		</div>
-	</div>
 	</div>
 </div>
 

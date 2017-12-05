@@ -16,6 +16,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/c/js-min/cdic.min.js"></script>
+
 <style type="text/css">
 
 body {
@@ -34,11 +35,13 @@ body {
 .box-border {
 	min-height: 565px;
 	margin-top: 10px;
+	font-family: monospace;
 }
 
 #expTypingArea {
 	background-color: rgba(255, 255, 255, 0.85);
 	z-index: 9999998; 
+	font-family: monospace;
 }
 
 .continueBtn {
@@ -313,8 +316,7 @@ void main() {
 		<div class="output-console-body" id="outputbody"><span id="output"></span></div>
 	</div>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id='restart'><i
-			class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id='restart'>Restart</a>
 	</div>
 	
 <script type="text/javascript">

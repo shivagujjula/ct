@@ -207,11 +207,6 @@ function introJsFunction() {
 		case "variablesBox":
 			$('#pBox').addClass('opacity00');
 			break;
-		case "printf1":
-		case "printf2":
-		case "printf3":
-			
-			break;
 		case "outputBox":
 				var outputStep = introjs._introItems[introjs._currentStep].outputStep;
 			switch (outputStep) {
@@ -222,9 +217,6 @@ function introJsFunction() {
 				$('.arrayValue').text('');
 				$("#outputScanfLine2").text('');
 				$(".introjs-nextbutton").hide();
-				break;
-			case "forPrintf":
-				
 				break;
 			}
 			break;
@@ -288,7 +280,7 @@ function introJsFunction() {
 		
 		switch (elementId) {
 		case "preCode":
-				var typingContent = 'Let us learn <span class="ct-code-b-yellow">Pointers with Two Dimensional Array</span>.';
+				var typingContent = 'Let us learn <span class="ct-code-b-yellow">pointers with two dimensional array</span>.';
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$('.introjs-nextbutton').show();
 				});
@@ -297,14 +289,16 @@ function introJsFunction() {
 			
 		case "line1":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				var typingContent = 'Here, a <span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span> and ' +
-						'<span class="ct-code-b-yellow">4 int</span> variables <span class="ct-code-b-yellow">m</span>, ' +
-						'<span class="ct-code-b-yellow">n</span>, <span class="ct-code-b-yellow">i</span>, ' +
-						'<span class="ct-code-b-yellow">j</span> are declared.<br><br> The demo shows the memory allocation of only the ' +
-						'<span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span>.';
-				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				
+					var typingContent = 'Here, a <span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span> and ' +
+										'<span class="ct-code-b-yellow">4 int</span> variables <span class="ct-code-b-yellow">m</span>, ' +
+										'<span class="ct-code-b-yellow">n</span>, <span class="ct-code-b-yellow">i</span>, ' +
+										'<span class="ct-code-b-yellow">j</span> are declared.<br><br> The demo shows the memory allocation of only the ' +
+										'<span class="ct-code-b-yellow">pointer</span> variable <span class="ct-code-b-yellow">p</span>.';
+					typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+					});
+				
 			});
 		break;
 			

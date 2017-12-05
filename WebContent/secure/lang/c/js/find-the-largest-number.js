@@ -1,4 +1,4 @@
-var typingInterval = 10;
+var typingInterval = 1;
 
 var findTheLargestNumberReady = function() {
 	introjs = introJs();
@@ -47,6 +47,12 @@ var findTheLargestNumberReady = function() {
 		}]
 	});
 	
+	introjs.onbeforechange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		var elementId = targetElement.id;
+		switch(elementId) {
+		}
+	});
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 		var elementId = targetElement.id;
@@ -55,12 +61,12 @@ var findTheLargestNumberReady = function() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#inputSpan1").removeClass("opacity00");
 				var text = "Here <span  class='tooltip-text-edit-1 ct-code-b-yellow'>" + $("#input1").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num1 </span>.<br><br>You can also change the number.<br>";
+							"</span> is stored in variable <span class='ct-code-b-yellow'> num1</span>.<br><br>You can also change the number.<br>";
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$("#input1").attr({contenteditable: 'true'});
 					$("#input1").addClass("blinking-once");
 					charAtEnd('input1');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -68,25 +74,26 @@ var findTheLargestNumberReady = function() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#inputSpan2").removeClass("opacity00");
 				var text = "Here <span  class='tooltip-text-edit-2 ct-code-b-yellow'>" + $("#input2").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num2 </span>.<br><br>You can also change the number.<br>";
+							"</span> is stored in variable <span class='ct-code-b-yellow'> num2</span>.<br><br>You can also change the number.<br>";
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$("#input2").attr({contenteditable: 'true'});
 					$("#input2").addClass("blinking-once");
 					charAtEnd('input2');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case 'inputSpan3':
+			$(".user-btn").remove();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#inputSpan3").removeClass("opacity00");
 				var text = "Here <span  class='tooltip-text-edit-3 ct-code-b-yellow'>" + $("#input3").text() + 
-							"</span> is stored in variable <span class='ct-code-b-yellow'> num3 </span>.<br><br>You can also change the number.<br>";
+							"</span> is stored in variable <span class='ct-code-b-yellow'> num3</span>.<br><br>You can also change the number.<br>";
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$("#input3").attr({contenteditable: 'true'});
 					$("#input3").addClass("blinking-once");
 					charAtEnd('input3');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -95,10 +102,10 @@ var findTheLargestNumberReady = function() {
 			switch(animateStep) {
 			case 'declaration':
 				var text = "Let us try to understand how to write code that can find the largest number among three given numbers using "+
-				"<span class='ct-code-b-yellow'>Nested if</span> and <span class='ct-code-b-yellow'>if-else</span> statements.";	
+				"<span class='ct-code-b-yellow'>nested if</span> and <span class='ct-code-b-yellow'>if-else</span> statements.";	
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					TweenMax.to($("#preCode, #consoleId"), 1, {opacity: 1, onComplete: function() {
-						$(".introjs-nextbutton").show();
+						$('.introjs-nextbutton').show();
 					}});
 				});
 				break;
@@ -142,7 +149,7 @@ var findTheLargestNumberReady = function() {
 																					typing('#resultText2', text, typingInterval, 'white', function() {
 																						transferEffect("#preLine2", "#preLine3", function() {
 																							$("#preLine3").addClass("blinking");
-																							$('.introjs-nextbutton').show();
+																							$('.introjs-nextbutton, .introjs-prevbutton').show();
 																						});
 																					});
 																				});
@@ -157,7 +164,7 @@ var findTheLargestNumberReady = function() {
 																					typing('#resultText2', text, typingInterval, 'white', function() {
 																						transferEffect("#preLine2", "#preLine4", function() {
 																							$("#preLine4").addClass("blinking");
-																							$('.introjs-nextbutton').show();
+																							$('.introjs-nextbutton, .introjs-prevbutton').show();
 																						});
 																					});
 																				});
@@ -197,7 +204,7 @@ var findTheLargestNumberReady = function() {
 																				typing('#resultText2', text, typingInterval, 'white', function() {
 																					transferEffect("#preLine5", "#preLine6", function() {
 																						$("#preLine6").addClass("blinking");
-																						$('.introjs-nextbutton').show();
+																						$('.introjs-nextbutton, .introjs-prevbutton').show();
 																					});
 																				});
 																			});
@@ -212,7 +219,7 @@ var findTheLargestNumberReady = function() {
 																				typing('#resultText2', text, typingInterval, 'white', function() {
 																					transferEffect("#preLine5", "#preLine7", function() {
 																						$("#preLine7").addClass("blinking");
-																						$('.introjs-nextbutton').show();
+																						$('.introjs-nextbutton, .introjs-prevbutton').show();
 																					});
 																				});
 																			});
@@ -293,7 +300,9 @@ function tweenmaxValueAnimation(selector1, selector2, callBackFunction) {
 
 function nextButtonFucntion(callBackFunction) {
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
+	$(".introjs-prevbutton").show();
 	$(".user-btn").click(function() {
+		$(".introjs-prevbutton").hide();
 		$(".user-btn").remove();
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
@@ -365,9 +374,9 @@ function charAtEnd(elementId) {
 		$(".tooltip-text-edit-3").text($("#input3").text());
 		if ($(this).text() == "") {
 			$('.introjs-tooltiptext').append("<span class='ct-color-red length-error-text'><b>Please enter number.</b></span>");
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		} else {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}
 	});
 }

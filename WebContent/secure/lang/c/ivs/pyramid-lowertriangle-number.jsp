@@ -21,7 +21,6 @@ pageEncoding="UTF-8"%>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/secure/lang/c/js-min/pln.min.js" type="text/javascript"></script>
-
 <style>
 
 .margin-top20 {
@@ -52,6 +51,7 @@ pageEncoding="UTF-8"%>
 
 pre {
 	border:medium none;
+	font-size: 12px;
 }
 
 #codeDiv pre {
@@ -126,7 +126,29 @@ pre {
 
 .space {
 	color : yellow;
-	
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
 }
 
 </style>
@@ -147,7 +169,7 @@ pre {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -168,16 +190,16 @@ pre {
 	<div class='col-xs-12 center'>
 	<div class='col-xs-offset-2 col-xs-4' ><div id="codeDiv" class='opacity00'>
 	<pre class='bg-info'>
-#include &lt;stdio.h&gt;
-<span id='mainMethod'>void <span id='main'>main()</span> {
-	<span id='variableDeclaration'>int rows, i, j;</span>
-	<span id='getPrintf'>printf("Enter number of rows: ");</span>
-	<span id='getScanf'>scanf("%d", &rows);</span>
-	<span id="totalForLoop"><span class='outer'>for (i = 1; i &lt;= rows; i++) {</span>
-		<span id="jForLoop" class="inner-one">for ( j = 1; j &lt;= i; j++) {</span>
-			<span id='printNumber' class="inner-one">printf("%d ", j);</span>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<span id='mainMethod'><g>void</g> <span id='main'>main()</span> {
+	<span id='variableDeclaration'><g>int</g> rows, i, j;</span>
+	<span id='getPrintf'>printf(<ink>"Enter number of rows: "</ink>);</span>
+	<span id='getScanf'>scanf(<ink>"<in>%d</in>"</ink>, &rows);</span>
+	<span id="totalForLoop"><span class='outer'><go>for</go> (i = <ink>1</ink>; i &lt;= rows; i++) {</span>
+		<span id="jForLoop" class="inner-one"><go>for</go> ( j = <ink>1</ink>; j &lt;= i; j++) {</span>
+			<span id='printNumber' class="inner-one">printf(<ink>"<in>%d</in> "</ink>, j);</span>
 		<span class="inner-one">}</span>
-		<span id="codeNextLine" class='outer'>printf("\n");</span>
+		<span id="codeNextLine" class='outer'>printf(<ink>"<in>\n</in>"</ink>);</span>
 	<span class='outer'>}</span></span>
 }</span>	</pre>
 	</div></div>

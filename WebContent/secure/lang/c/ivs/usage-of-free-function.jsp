@@ -18,7 +18,6 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/c/js-min/uoff.min.js'></script>
-
 <title>Usage of Free() function</title>
 
 <style type="text/css">
@@ -26,7 +25,7 @@
 .info-div {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
 	font-family: monospace;
 }
@@ -228,7 +227,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -250,9 +249,9 @@ div, span {
 				 the <span class='ct-code-b-green'>free()</span> function.</li>
 			<li id="list2" class="opacity00">The <span class='ct-code-b-green'>free()</span> function releases the memory pointed by the 
 				pointer variable.</li>
-			<li id="list3" class="opacity00">After freeing the memory <b>NULL</b> value is stored in the pointer.</li></ul>
-			<div id="list4" class="opacity00"> &emsp;  &emsp; Syntax : <span class="ct-code-b-green">free(pointerVariable);</span>
-				<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></div>
+			<li id="list3" class="opacity00">After freeing the memory,a <b>NULL</b> value is stored in the pointer.</li></ul>
+			<span id="list4" class="opacity00"> &emsp;  &emsp; Syntax : <span class="ct-code-b-green">free(pointerVariable);</span>
+				<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span></span>
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-11">
@@ -319,7 +318,7 @@ void main() {
 	<span id="codeLine3">q = (int*)<span class='ct-code-b-green'>malloc(sizeof(int))</span>;</span>
 	<span id="codeLine4">printf("Enter two integer values : \n");</span>
 	<span id="codeLine5">scanf("%d %d", p, q);</span>
-	<span id="codeLine6">printf("Sum is :%d",<span id="sumCondition">*p+*q</span>);</span>
+	<span id="codeLine6">printf("Sum is : %d", <span id="sumCondition">*p + *q</span>);</span>
 	<span id="codeLine7" class="ct-code-b-green">free(p);</span>
 	<span id="codeLine8" class="ct-code-b-green">free(q);</span>
 }
@@ -381,7 +380,7 @@ void main() {
 						<div class="output-console-body" id="consoleBodyDiv">
 							<div class='visibility-hidden' id="printText1">Enter two integer values :</div>
 							<span class="console-input-line" id="consoleInputLine"></span>
-							<div class='visibility-hidden' id="printText2">Sum is :<span id="result" class="ct-blue-color"></span></div>
+							<div class='visibility-hidden' id="printText2">Sum is : <span id="result" class="ct-code-b-yellow"></span></div>
 						</div>
 					</div>
 				</div>

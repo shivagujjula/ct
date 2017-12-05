@@ -36,7 +36,7 @@ var oneDimesionalArrayReady = function() {
 			element : "#codeDiv",
 			intro : "",
 			position : "bottom",
-			tooltipClass : "hide"
+			tooltipClass : "hide" 
 		},  {
 			element : "#variableDeclaraiton",
 			intro : "",

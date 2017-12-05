@@ -18,6 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+
 <script src="/secure/lang/c/js-min/pio.min.js"></script>
 
 <title>post-increment-operator.jsp</title> 
@@ -87,10 +88,6 @@
     outline: medium none;
 }
 
-div,span {
-	position: relative;
-}
-
 .position {
 	display: inline-block;
 	position: relative;
@@ -130,7 +127,7 @@ div,span {
 }
 
 .panel-body {
-    min-height: 70px;
+    min-height: 145px;
     padding: 15px 0 0;
 }
 
@@ -214,6 +211,10 @@ div,span {
 	font-family: monospace;
 	color: black;
 }
+
+.introcode-tooltip-min-width-custom {
+	min-width: 125px;
+}
 </style>
 </head>
 <body>
@@ -224,17 +225,17 @@ div,span {
 		</div> 
 		<div class = 'buttons-div col-xs-12'>
 				<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
-			</div> 
+		</div> 
 		<div class = "col-xs-10 col-xs-offset-2">
 			<div class = "col-xs-4">
 				<div id = "codeDiv"  class = "box-border margin-top">
 					<pre class = 'creamPreTab4' id = "program">
 <div id = 'xVariableDeclararionLine' style="display: inline-block;">int <span id = "xVariable">x</span> = <div style="display:inline-block" id='xvalue' contenteditable='true' spellcheck='false' maxlength='2'>14</div>;</div>
 <span id = 'yVariableDeclararionLine'>int <span id = "yVariable">y</span> = x++;</span>
-<span id = 'sopLine1'>printf("x value: %d", x);</span>
-<span id = 'sopLine2'>printf("y value: %d", y);</span>
+<span id = 'sopLine1'>printf("x value : %d", x);</span>
+<span id = 'sopLine2'>printf("y value : %d", y);</span>
 <span id = 'singleStatement'>x++;</span>
-<span id = 'sopLine3'>printf("x value: %d", x);</span>
+<span id = 'sopLine3'>printf("x value : %d", x);</span>
 </pre>
 				</div>
 				<div class = "col-xs-10 col-xs-offset-1">
@@ -264,14 +265,14 @@ div,span {
 							</svg>
 						</div>
 					<div class = "col-xs-12 padding0">
-						<div class = "col-xs-12 padding0 text-center animation-div2 box-padding" id = "animationDiv2" style = "opacity: 0;">
+						<div class = "col-xs-12 padding0 text-center animation-div2 box-padding opacity00" id = "animationDiv2">
 	  						<span class = "box-padding">y</span>
 							<span>=</span>
 							<span class = "box-padding" id = "assignment">x;</span>
 						</div>
 					</div>
 					<div class = "col-xs-12 padding0">
-						<div class = "col-xs-12 padding0 text-center animation-div3 box-padding padding0" id = "animationDiv3" style = "opacity: 0;">
+						<div class = "col-xs-12 padding0 text-center animation-div3 box-padding padding0 opacity00" id = "animationDiv3">
 	  						<span class="box-padding">x</span>
 							<span>=</span>
 							<span id  = "postIncrement">
@@ -296,7 +297,7 @@ div,span {
 	  				</div>
 				</div>
 				<div class = "col-xs-12 padding0">
-					<div class = "col-xs-12 text-center box-padding animation-div5 padding0"  style = "opacity: 0;">
+					<div class = "col-xs-12 text-center box-padding animation-div5 padding0 opacity00">
 						<div id = "yvalueassignment" class = "box-padding">
 		  					int<span class = "box-padding">y</span>
 							<span class = "box-padding">=</span>
@@ -309,7 +310,7 @@ div,span {
 				</div>
 				<div class="col-xs-12 padding0">
 					<div class = "col-xs-8 col-xs-offset-2 padding0"  id="animationDiv5">
-						<div class="col-xs-12 text-center box-padding animation-div6 padding0" style = "opacity: 0;">
+						<div class="col-xs-12 text-center box-padding animation-div6 padding0 opacity00">
 							<div id="singleStatementDiv">x++;</div>
 						</div>
 					</div>

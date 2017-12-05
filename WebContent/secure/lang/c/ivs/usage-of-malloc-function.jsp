@@ -26,7 +26,7 @@
 .info-div {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
 	font-family: monospace;
 }
@@ -197,7 +197,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -263,7 +263,7 @@ div, span {
 							<div id="consoleId" class="center"  style="margin-top: 8%">
 								<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
 								<div class="output-console-body" id="consoleBodyDiv">
-									<span class='visibility-hidden' id="printText">The value of *p = <span class='ct-blue-color'>20</span></span>
+									<span class='visibility-hidden' id="printText">The value of *p = <span class='ct-code-b-yellow'>20</span></span>
 								</div>
 							</div>
 						</div>
@@ -328,10 +328,11 @@ div, span {
 		<div class="text-center margin-top-5" id="restartDiv"><a class="btn btn-warning opacity00" id="restart">Restart</a></div>
 	</div>
 </div>
-</body>
 <script type="text/javascript">
 $(document).ready(function() {
 	usageOfmallocFunctionReady();
 });
 </script>
+</body>
+
 </html>

@@ -21,7 +21,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
 <script src="/secure/lang/c/js-min/tc.min.js"></script>
-
 <title>Two's complement</title>
 <style>
 .input-text {
@@ -47,7 +46,10 @@
 	position: relative;
 	width: 30px;
 }
-
+.prevButton {
+	 background-color: #5bc0de !important;
+    border-radius: 3px !important;
+}
 .box-yellow {
 	background-color: #f0e68c;
 	border-radius: 2px;
@@ -189,8 +191,7 @@ table {
 	<h2 class="text-center">
 		<span class="label label-default ct-demo-heading">Two's Complement</span>
 	</h2>
-	<div id="informationDiv"
-		class="col-xs-offset-2 col-xs-9 information-div margin-top20">
+	<div id="informationDiv" class="col-xs-offset-2 col-xs-9 information-div margin-top20" style="font-family: monospace;">
 		<div class="col-xs-8 margin-top20" id="text">
 			<ul>
 				<li class="opacity00" id ="li1"><b>Two's complement</b> form can be performed on both <span

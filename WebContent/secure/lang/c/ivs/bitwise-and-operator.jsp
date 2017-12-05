@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +30,8 @@
 	border: 2px solid gray;
 	border-radius: 15px;
 	min-height: 150px;
+	font-family: monospace;
+	padding: 4px;
 }
 
 .animation-div-border {
@@ -184,6 +184,6 @@ $(document).ready(function() {
 		</div>
 		<div class="col-xs-8" id ="animationProcessDiv"></div>
 	</div>
-	<div class="col-xs-offset-5 col-xs-4 opacity00" id="display" style="display: block;"></div>
+	<div class="col-xs-offset-5 col-xs-4 opacity00" id="display" style="display: block; font-family: monospace;"></div>
 </body>
 </html>

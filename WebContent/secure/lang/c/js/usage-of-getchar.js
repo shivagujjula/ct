@@ -1,6 +1,6 @@
 var asciiVal;
 var binaryVal;
-var typingInterval = 50;
+var typingInterval = 1;
 
 var usageOfGetcharReady = function() {
 	introGuide();
@@ -32,39 +32,18 @@ function introGuide() {
 			element :"#preTableDiv",
 			intro : "",
 			position : 'right',
-		}/* , {
-			element :"#line2",
-			intro : "",
-			position : 'left',
 		}, {
-			element :"#line3",
-			intro : "",
-			position : 'right',
-		} *//* , {
-			element :"#animationBox",
-			intro : "",
-			position : 'right',
-			animateStep : 'memoryZooming',
-		} */, {
 			element :"#line4",
 			intro : "",
 			position : 'right',
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
 			position : 'right',
 			animateStep : 'checking',
-		}, {
-			element :"#consoleId",
-			intro : "",
-			position : 'right',
-			animateStep : 'animation'
-		}/* , {
-			element :"#animationBox",
-			intro : "",
-			position : 'right',
-			animateStep : 'animationPart',
-		} */,{
+			tooltipClass :"hide"
+		},{
 			element : '#line5',
 			intro : '',
 			tooltipClass : 'hide'
@@ -77,6 +56,7 @@ function introGuide() {
 		}, {
 			element : '#preTableDiv2',
 			intro : '',
+			tooltipClass: "hide"
 		}, {
 			element : '#preline1',
 			intro : '',
@@ -85,6 +65,7 @@ function introGuide() {
 			intro : "",
 			position : 'bottom',
 			animateStep : 'checking',
+			tooltipClass :"hide"
 		}, {
 			element : '#preline2',
 			intro : '',
@@ -109,8 +90,83 @@ function introGuide() {
 			position : 'right',
 		}]
 	});
-	
+	introjs.onbeforechange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
+		var elementId = targetElement.id;
+		if (elementId == "line5") {
+			$("#line5").addClass('z-index9999999');
+		}
+		switch (elementId) {
+		
+		case 'line4':
+			$("#consoleId").addClass("opacity00");
+			$("#inputChar").val('');
+			$('.user-btn').remove();
+			break;
+		
+		case 'consoleId':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'checking':
+				$("#printLineInConsole").addClass("opacity00");
+				$("#inputChar").val('');
+				break;
+			case 'printLine':
+				$("#preTableDiv2").removeAttr("style")
+				break;
+			}
+			break;
+		case 'preline1':
+			$("#consoleId2").addClass("opacity00");
+			break;
+		case 'preline2':
+			$("#printpreLine1").addClass("opacity00");
+			break;
+		case 'preline3':
+		
+			var text = "This statement prints the character represented by <span class='ct-greenyellow-color'>ASCII</span> code using "+
+			"<span class='ct-code-b-yellow'>%c</span> format."
+		typing(".introjs-tooltiptext", text, function() {
+			
+		});
+			
+			break;
+		case 'consoleId2':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			
+			switch(animateStep) {
+			
+			
+			case 'checking':
+				$("#inputChar2").val('');
+				$("#printpreLine1").addClass("opacity00");
+				break;
+			}
+			break;
+		}
+	});
+
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
 		if (elementId == "line5") {
@@ -118,7 +174,7 @@ function introGuide() {
 		}
 		switch (elementId) {
 		case 'infoDiv':
-/*** The general format is: variable=getchar ( ); ***/			
+             /*** The general format is: variable=getchar ( ); ***/			
 			$("#infoDiv").removeClass("opacity00");
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list1").fadeTo(300, 1, function() {
@@ -127,9 +183,16 @@ function introGuide() {
 						$("#list4").fadeTo(300, 1, function() {
 						//	$("#infoDiv").addClass('z-index9999999');
 							$('#nextButton').removeClass("opacity00");
+							//$(".introjs-tooltip").removeClass("hide");
 							$('.user-btn').click(function() {
 								$('.user-btn').remove();
-									introjs.nextStep();
+								setTimeout(function() {
+									if (introjs._direction=="forward") {
+										introjs.nextStep()
+										} else {
+											introjs.previousStep()
+											}
+									}, 500);
 							});
 						});
 					});
@@ -139,7 +202,9 @@ function introGuide() {
 		case 'preTableDiv':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preTableDiv").removeClass("opacity00");
+			
 				typing('.introjs-tooltiptext', "Let us consider an example using <span class='ct-code-b-yellow'>getchar()</span> function.", function() {
+					$(".introjs-prevbutton").hide();
 					$(".introjs-nextbutton").show();
 				});
 			});
@@ -165,15 +230,20 @@ function introGuide() {
 				var text = "The <span class='ct-code-b-yellow'>ch</span> is initialized with the character that is return by the "+
 					"<span class='ct-code-b-yellow'>getchar()</span> function.";
 				typing('.introjs-tooltiptext', text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-tooltip").removeClass("hide");
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'line5':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#line5").removeClass("opacity00");
-				setTimeout(function () {
-					introjs.nextStep();
+				setTimeout(function() {
+					if (introjs._direction=="forward") {
+							introjs.nextStep()
+					} else {
+						introjs.previousStep()
+					}
 				}, 500);
 			});
 			break;
@@ -181,44 +251,42 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'checking':
+				
 				$("#inputChar").attr("disabled", false);
 				$("#consoleId").removeClass("opacity00");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text ="The <span class='ct-code-b-yellow'>getchar()</span> tries to read an input from the console."+
 					"<br><br> Please type a character now.";
+					$(".introjs-tooltip").removeClass("hide");
 					typing('.introjs-tooltiptext', text, function() {
 						$("#inputChar").addClass("blinking");
 						$("#inputChar").focus();
-						checking("#inputChar");
+						checking("#inputChar", 1);
+						
 					});
 				});
 				break;
 			case 'animation':
-				var givenInput = $("#inputChar").val();
-				$("#inputChar").attr("disabled", "disabled");
-				asciiVal = givenInput.charCodeAt(0);
-				binaryVal = Number(asciiVal).toString(2);
-				convertToBinary(asciiVal);
-				
-				$("#line5").focus();
-				var text = '<ul><li>The given input character <span id="getvalue" class="ct-code-b-yellow">'+ ""
-					+ $("#inputChar").val() + '</span> is read from the input stream and stored in the value '+
-					'<span class="ct-code-b-yellow">ch</span>.</li><span id="lines"></span></ul>';
-				typing('.introjs-tooltiptext', text, function() {
-					$(".introjs-nextbutton").show();
-				});
 				break;
 			case 'printLine':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#line5").effect( "transfer", { to: $("#printLineInConsole"), className: "ui-effects-transfer" }, 1500 , function() {
-						$("#printLineInConsole").removeClass("opacity00");
-						var text = $("#printLineInConsole").text() + $("#inputChar").val();
-						typing("#printLineInConsole", text, function() {
-							setTimeout(function () {
-								introjs.nextStep();
-							}, 1000);
-						});
-					});
+						         setTimeout(function() {
+								if (introjs._direction=="forward") {
+									$("#line5").effect( "transfer", { to: $("#printLineInConsole"), className: "ui-effects-transfer" }, 1500 , function() {
+										$("#printLineInConsole").removeClass("opacity00");
+										var text = "The given input character is :" + $("#inputChar").val();
+									typing("#printLineInConsole", text, function() {
+										 setTimeout(function() {
+										introjs.nextStep()
+										 }, 1000);
+									});	
+									});
+								} else {
+									introjs.previousStep()
+								}
+							}, 500);
+						
+					
 				});
 				break;
 			}
@@ -264,10 +332,11 @@ function introGuide() {
 			break;
 		case 'preTableDiv2':
 			$('.introjs-helperLayer').one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "Let us consider one more example using <span class='ct-code-b-yellow'>getchar()</span>."
 				typing(".introjs-tooltiptext", text, function() {
 					TweenMax.to($("#preTableDiv2"), 1, {opacity: 1, onComplete: function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					}});
 				});
 			});
@@ -278,7 +347,7 @@ function introGuide() {
 				"is stored as an <span class='ct-code-b-yellow'>int</span>. Which means the character ASCII code will be stored in the "+
 				"<span class='ct-code-b-yellow'>ascii_code</span> variable.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -287,7 +356,7 @@ function introGuide() {
 				var text = "This statement prints the <span class='ct-greenyellow-color'>ASCII</span> code using "+
 					"<span class='ct-code-b-yellow'>%d</span> format."
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -296,8 +365,9 @@ function introGuide() {
 				var text = "This statement prints the character represented by <span class='ct-greenyellow-color'>ASCII</span> code using "+
 					"<span class='ct-code-b-yellow'>%c</span> format."
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
+				 
 			});
 			break;
 		case 'consoleId2':
@@ -308,27 +378,38 @@ function introGuide() {
 				$("#consoleId2").removeClass("opacity00");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text ="Please provide a character.";
+					$(".introjs-tooltip").removeClass("hide");
 					typing('.introjs-tooltiptext', text, function() {
 						$("#inputChar2").addClass("blinking");
 						$("#inputChar2").focus();
-						checking("#inputChar2");
+						checking("#inputChar2", 2);
+						//$(".introjs-nextbutton,.introjs-prevbutton").show();
+						
 					});
 				});
 				break;
 			case 'printPreline1':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#preline2").effect( "transfer", { to: $("#printpreLine1"), className: "ui-effects-transfer" }, 1500 , function() {
-						$("#printpreLine1").removeClass("opacity00");
 						var givenInput = $("#inputChar2").val();
-						asciiVal = givenInput.charCodeAt(0);
-						var text = $("#printpreLine1").text() + asciiVal;
-						typing("#printpreLine1", text, function() {
-							setTimeout(function () {
-								introjs.nextStep();
-							}, 1000);
+							setTimeout(function() {
+								if (introjs._direction=="forward") {
+										$("#preline2").effect( "transfer", { to: $("#printpreLine1"), className: "ui-effects-transfer" }, 1500 , function() {
+											$("#printpreLine1").removeClass("opacity00");
+											var text = "The character represented by ascii_code is :" + asciiVal;
+											asciiVal = givenInput.charCodeAt(0);
+											typing("#printpreLine1", text, function() {
+												setTimeout(function() {
+										introjs.nextStep()
+												}, 500);
+									});
+									});
+								} else {
+									introjs.previousStep()
+								}
+							}, 500);
 						});
-					});
-				});
+					
+				
 				break;
 			case 'printPreline2':
 				$('.introjs-helperLayer ').one('transitionend', function() {
@@ -336,9 +417,15 @@ function introGuide() {
 						$("#printpreLine2").removeClass("opacity00");
 						var text = $("#printpreLine2").text() + $("#inputChar2").val();
 						typing("#printpreLine2", text, function() {
-							setTimeout(function () {
-								introjs.nextStep();
-							}, 1000);
+							setTimeout(function() {
+								if (introjs._direction=="forward") {
+									setTimeout(function() {
+										introjs.nextStep()
+									}, 500);
+								} else {
+									introjs.previousStep()
+								}
+							}, 500);
 						});
 					});
 				});
@@ -363,13 +450,11 @@ function introGuide() {
 
 	
 function convertToBinary(asciiVal) {
-//	console.log(asciiVal);
 	binaryVal = Number(asciiVal).toString(2);
-//	console.log("binaryVal = " + binaryVal);
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -378,20 +463,48 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }
 
-function checking(selector) {
-	$(selector).on("click keyup keydown", function(){
+function checking(selector, value) {
+	$(selector).on("keydown keyup", function(){
 		if($(selector).val() == "") {
-			$(".introjs-nextbutton").hide();
+			$('.user-btn').remove();
+		
+			$(".introjs-nextbutton,.introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			if (value == 1) {
+				$('.user-btn').remove();
+				$('.introjs-tooltipbuttons').append('<a class="introjs-button user-btn" onclick="checking1Anim()">Next &#8594;</a>');
+			} else {
+				$(".introjs-nextbutton,.introjs-prevbutton").show();
+				
+			}
+			$(".introjs-prevbutton").show();
 		}
 	});
 }
 
+function checking1Anim() {
+	$('.user-btn').remove();
+	$(".introjs-prevbutton").hide();
+	var givenInput = $("#inputChar").val();
+	$("#inputChar").attr("disabled", "disabled");
+	asciiVal = givenInput.charCodeAt(0);
+	binaryVal = Number(asciiVal).toString(2);
+	convertToBinary(asciiVal);
+	$("#consoleId").removeClass("opacity00");
+	$("#line5").focus();
+	var text = '<ul><li>The given input character <span id="getvalue" class="ct-code-b-yellow">'+ ""
+		+ $("#inputChar").val() + '</span> is read from the input stream and stored in the value '+
+		'<span class="ct-code-b-yellow">ch</span>.</li><span id="lines"></span></ul>';
+	
+	typing('.introjs-tooltiptext', text, function() {
+		$(".introjs-nextbutton,.introjs-prevbutton").show();
+	});
+}
 function animation() {
 	var l3 = $("#inputChar").offset();
 	var l4 = $("#getvalue").offset();

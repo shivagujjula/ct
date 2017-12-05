@@ -12,7 +12,7 @@ var bitwiseLeftShiftOperatorReady = function() {
 				if ($('#shiftNum').val() < 8) {
 					$('.introjs-nextbutton').show();
 				} else {
-					$('.introjs-nextbutton').hide();
+					$('.introjs-nextbutton, .introjs-prevbutton').hide();
 					$(".introjs-tooltiptext").append("<div class='ct-code-b-red'></br>Since you have selected short int and the maximum size of short int is only 8 bits, please select a value for positions which is lesser than or equal to 7 (<= 7).</div>");
 				}
 			}
@@ -101,27 +101,117 @@ var bitwiseLeftShiftOperatorReady = function() {
 			},{
 				element : "#inputDiv",
 				intro : "",
-				position:"bottom" 
+				position:"bottom",
+				tooltipClass: "hide"
 			},{
 				element : "#binaryValueDiv",
 				intro : "",
-				position:"right"
+				position:"right",
+				tooltipClass: "hide"
 			},{
 				element : "#animationDiv",
 				intro : "",
 				position : "left",
+				tooltipClass: "hide"
 			},{
 				element : "#resultDiv",
 				intro : "",
-				position : "left"
+				position : "left",
+				tooltipClass: "hide"
 			},{
 				element : "#restart",
 				intro : "",
 				position:"right"
 			}
 		]});
+		
+		intro.onbeforechange(function(targetElement) {
+
+			
+			var elementId = targetElement.id;
+			switch (elementId) {
+			case "informationDiv":
+				
+			break;	
+			case "inputDiv":
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#firstNum").val("");
+				$("#shiftNum").val("");
+				$("#originalValue span").remove();
+				$("#complementValue span").remove();
+				$("#appendNum, #arrow1").empty();
+				$("#complementValue span").remove();
+				$("#complementValue span, #twosComplementResult").empty();
+				binaryNumber = "";
+				zeros1 = "";
+				$("#aSpan, #line, #addOne").css({"opacity":0});
+				$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+				$("#addOne2 span").remove();
+				//$("#aSpan, #line, #addOne").addClass("opacity00");
+			break;
+			case "binaryValueDiv":
+				$("#originalValue span").remove();
+				$("#appendNum, #arrow1").empty();
+				$("#complementValue span").remove();
+				$("#complementValue span, #twosComplementResult").empty();
+				$("#aSpan, #line, #addOne").css({"opacity":0});
+				
+				$("#complementValue span, #twosComplementResult").empty();
+				$("#aSpan, #line, #addOne").css({"opacity":0});
+				$("#originalValue span, #appendNum, #arrow1").empty();
+				$("#twosComplementResult").empty().css({"margin-top":"20px"});
+				binaryNumber = "";
+				zeros1 = "";
+				//$("#originalValue span, #appendNum, #arrow1").empty();
+				$("#valueDiv").empty();
+				$("#table tr").eq(0).empty();
+				$("#table tr").eq(1).empty();
+				$("#resultAfterShift, #reComplementValue").empty();
+				$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+				
+				$("#originalResult > span").empty();
+				$("#originalResult span").remove();
+			break;
+			case "animationDiv":
+				$("#originalResult > span").empty();
+				$("#originalResult span").remove();
+				
+				$("#resultAfterShift, #reComplementValue").empty();
+				$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+				$("#originalResult span").empty();
+				
+				
+				$("#valueDiv").empty();
+				$("#table tr").eq(0).empty();
+				$("#table tr").eq(1).empty();
+				$("#resultText").empty();
+			break;
+			case "resultDiv":
+				$("#resultText").empty();
+			break;
+			}
+		});
 	
 		intro.onafterchange(function(targetElement) {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+				intro._introItems[intro._currentStep]["animation"] = "repeat";
+			}
+			
+			if (intro._introItems[intro._currentStep]["isCompleted"]) {
+				
+				if (intro._currentStep != 0) {
+					$('.introjs-prevbutton').show();
+				}
+
+				$('.introjs-nextbutton').show();
+				return;
+			}
+			
+			if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+				intro._introItems[intro._currentStep]["isCompleted"] = true;
+			}
+			
 			var elementId = targetElement.id;
 			switch (elementId) {
 			case "informationDiv":
@@ -135,11 +225,15 @@ var bitwiseLeftShiftOperatorReady = function() {
 				});
 			break;
 			case "inputDiv":
-				$('.introjs-nextbutton').hide();
 				$(".introjs-helperLayer ").one('transitionend', function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').hide();
+					$("#firstNum").val("");
+					$("#shiftNum").val("");
+					
 					TweenMax.to("#inputDiv", 1, {"opacity" : "1"});
 					TweenMax.to("#firstNum", 1, {"opacity" : "1"});
 					TweenMax.to("#shiftNum", 1, {"opacity" : "1", onComplete:function() {
+						$('.introjs-tooltip').removeClass('hide');
 						var text = "Select a qualifier, data type and enter the values to understand how a " 
 							+ "bitwise <span class='ct-code-b-yellow'>left shift</span> operator works.";
 						typing(".introjs-tooltiptext", text, function() {
@@ -149,8 +243,9 @@ var bitwiseLeftShiftOperatorReady = function() {
 					}});
 				});
 			break;
-			case "binaryValueDiv" : 
-				$('.introjs-nextbutton').hide();
+			case "binaryValueDiv" :
+				$("#line2, #addOne2").addClass("opacity00").css({"opacity":0});
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var value = $('#firstNum').val();
 				if (value.startsWith("-")) {
 					n = (value.substring(1));
@@ -170,7 +265,7 @@ var bitwiseLeftShiftOperatorReady = function() {
 				} else if ($("#type").val() == "short int" && ($("#typeQualifiers").val() == "unsigned" || $("#typeQualifiers").val() == "signed")) {
 					for(var i=num1.length; i < 8; i++) {
 						zeros1 = 0 + zeros1;
-					}	
+					}
 					$.each((zeros1+num1).split(""), function(ind, val) {
 						number = number + " " + val;
 						binaryNumber =  binaryNumber + " " + '<span id="index' + ind + '" class="val" >' + val + '</span>';
@@ -186,6 +281,7 @@ var bitwiseLeftShiftOperatorReady = function() {
 				}
 				
 				$(".introjs-helperLayer ").one('transitionend', function() {
+					$('.introjs-tooltip').removeClass('hide');
 					if ($("#type").val() == "short int") {
 						var text = "This is the <span class='ct-code-b-yellow'>8</span> bit <span class='ct-code-b-yellow'>binary</span> representation " 
 									+ "of the given number <span class='ct-code-b-yellow'>" + n + ".";
@@ -196,9 +292,10 @@ var bitwiseLeftShiftOperatorReady = function() {
 						var text = "This is the <span class='ct-code-b-yellow'>32</span> bit <span class='ct-code-b-yellow'>binary</span> representation " 
 							+ "of the given number <span class='ct-code-b-yellow'>" + n + ".";
 					}
+					$('.introjs-tooltip').removeClass('hide');
 					typing(".introjs-tooltiptext", text, function() {
 						TweenMax.to("#aSpan", 1, {"opacity" : "1", onComplete:function() {
-							$("#values").append("<span>" + $("#firstNum").val() + "&emsp;</span>");
+							$("#values").append("<span id='appendNum'>" + $("#firstNum").val() + "&emsp;</span>");
 							$("#values").append("<span id='arrow1' class='arrow' align='center'><i style='margin-left:10px;' class='fa fa-arrow-right'></i></span>");
 							$('#originalValue').append(binaryNumber);
 							intro.refresh();
@@ -209,7 +306,7 @@ var bitwiseLeftShiftOperatorReady = function() {
 									$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'negativeValues();'>Next &#8594;</a>");
 								}
 								else {
-									$('.introjs-nextbutton').show();
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								}
 							});
 						}});
@@ -217,8 +314,9 @@ var bitwiseLeftShiftOperatorReady = function() {
 				});
 			break;
 			case "animationDiv":
-				$('.introjs-nextbutton').hide();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer ").one('transitionend', function() {
+					$('.introjs-tooltip').removeClass('hide');
 					var text = "Let us see the <span class='ct-code-b-yellow'>left shift</span> operator in action.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('#valueDiv').append('<span id = "full"><span class = "opacity00" id="number2">' + binaryNumber + '&emsp;</span><span class="opacity00" id="shift2"><<&emsp;</span><span class="opacity00" id="shiftVal2">' + parseInt($("#shiftNum").val()) + '</span></span>');
@@ -274,6 +372,7 @@ var bitwiseLeftShiftOperatorReady = function() {
 											TweenMax.to(".td-border", 1, {"opacity" : "1", onComplete:function() {
 												for (var i = 0; i < $("#originalValue > span").text().length ; i++) {
 													var tdoffset = $("#valueDiv #index" + i).offset();
+													
 													$('#cell' + i).text($("#valueDiv #index" + i).text()).offset({
 														"top": tdoffset.top,
 														"left": tdoffset.left
@@ -314,25 +413,29 @@ var bitwiseLeftShiftOperatorReady = function() {
 					var n = parseInt(num1, 2).toString(10);
 					intro.refresh();
 					if ($("#firstNum").val() >= 0) {
+						$('.introjs-tooltip').removeClass('hide');
 						var text="Result for " + $("#firstNum").val() + "<span class='ct-code-b-blue'><b> &lt;&lt;</b></span> " 
 							+ parseInt($("#shiftNum").val()) + " is = (" + num1 + ")<sub>2</sub> ="
 							+ " <span class='ct-code-b-green'>(" + n + ")<sub>10</sub></span> or simply <span class='ct-code-b-green'>" + n + "</span>.";
 					} else {
+						$('.introjs-tooltip').removeClass('hide');
 						var text="Result for " + $("#firstNum").val() + "<span class='ct-code-b-blue'><b> &lt;&lt;</b></span> " 
 						+ parseInt($("#shiftNum").val()) + " is = (" + num1 + ")<sub>2</sub> ="
 						+ " <span class='ct-code-b-green'>(-" + n + ")<sub>10</sub></span> or simply <span class='ct-code-b-green'>-" + n + "</span>.";
 					}
-					typing(".result-div", text, function() {
+					typing(".result-div #resultText", text, function() {
 						intro.refresh();
 						if ($("#firstNum").val() >= 0) {
+							$('.introjs-tooltip').removeClass('hide');
 							var text1 = "Finally, the decimal value we get after applying <span class='ct-code-b-yellow'>left shift</span> by <span class='ct-code-b-yellow'>" + parseInt($('#shiftNum').val()) + "</span> positions"
 								+ " on <span class='ct-code-b-yellow'>" + parseInt($("#firstNum").val()) + "</span> is : (" + num1 + ")<sub>2</sub> = <span class='ct-code-b-yellow'>" + n + "</span>.";
 						} else {
+							$('.introjs-tooltip').removeClass('hide');
 							var text1 = "Finally, the decimal value we get after applying <span class='ct-code-b-yellow'>left shift</span> by <span class='ct-code-b-yellow'>" + parseInt($('#shiftNum').val()) + "</span> positions"
 							+ " on <span class='ct-code-b-yellow'>" + parseInt($("#firstNum").val()) + "</span> is : (" + num1 + ")<sub>2</sub> = <span class='ct-code-b-yellow'>-" + n + "</span>.";
 						}
 						typing(".introjs-tooltiptext", text1, function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
@@ -366,6 +469,7 @@ function typing(typingId, typingContent,callBackFunction) {
 		$(typingId).removeClass('typingCursor');
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -384,22 +488,23 @@ function flipEffect(selector, val, callBackFunction) {
 function negativeValues() {
 	$(".nextButton").remove();
 	intro.refresh();
+	$('.introjs-tooltip').removeClass('hide');
 	var text ="As the given value is <span class='ct-code-b-yellow'>negative</span> value it will be " 
 		+ "converted into <span class='ct-code-b-yellow'>two's complement</span> value."
 	typing(".introjs-tooltiptext", text, function() {
 		if ($("#type").val() == "int" &&  $("#typeQualifiers").val() == "signed") {
 			for(var i = 0; i < 16; i++) {
-				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span>&nbsp;');
+				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span><span>&nbsp;</span>');
 			}
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'onesComplement(15);'>Next &#8594;</a>");
 		} else if ($("#type").val() == "short int" && $("#typeQualifiers").val() == "signed") {
 			for(var i = 0; i < 8; i++) {
-				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span>&nbsp;');
+				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span><span>&nbsp;</span>');
 			}
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'onesComplement(7);'>Next &#8594;</a>");
 		} else if ($("#type").val() == "long int" && $("#typeQualifiers").val() == "signed") {
 			for(var i = 0; i < 32; i++) {
-				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span>&nbsp;');
+				$("#complementValue").append('<span class="result opacity00" style="display:inline-block;" id="result'+ i + '">0</span><span>&nbsp;</span>');
 			}
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'onesComplement(31);'>Next &#8594;</a>");
 		}
@@ -444,6 +549,7 @@ function flip(id) {
 			});
 	  	} 
 	} else {
+		$('.introjs-tooltip').removeClass('hide');
   		var text = "This is the <span class='ct-code-b-yellow'>one's complement</span> value of the given number.";
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'lineAndOne();'>Next &#8594;</a>");
@@ -454,6 +560,7 @@ function flip(id) {
 function lineAndOne() {
 	$(".nextButton").remove();
 	intro.refresh();
+	$('.introjs-tooltip').removeClass('hide');
 	var text = "Now we will add <span class='ct-code-b-yellow'>1</span> to the <span class='ct-code-b-yellow'>one's complement</span>" 
 		+ " value to get two's complement value.";
 	typing(".introjs-tooltiptext", text, function() {
@@ -480,9 +587,11 @@ function twosComplement() {
 		intro.refresh();
 		twosComplementWithOne(len);
 	}
+	$('.introjs-tooltip').removeClass('hide');
 	var text ="This is the binary value of <span class='ct-code-b-yellow'>" + $('#firstNum').val() + "</span>."
 	typing(".introjs-tooltiptext", text, function() {	
-		$('.introjs-nextbutton').show();
+		//$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	});
 }
 
@@ -563,11 +672,13 @@ function twosComplementWithoutOne(i) {
 function matter() {
 	$(".nextButton").remove();
 	if (parseInt($("#shiftNum").val()) == 0) {
+		$('.introjs-tooltip').removeClass('hide');
 		var text = "As you entered <span class='ct-code-b-yellow'>0</span> it will not shift any value. So, the value remains same.";
 		typing(".introjs-tooltiptext", text, function() {
 			$('.introjs-nextbutton').show();
 		});
 	} else {
+		$('.introjs-tooltip').removeClass('hide');
 		var text ="Since we have choosen to shift the bits by <span class='ct-code-b-yellow'>" + parseInt($("#shiftNum").val()) + "</span> positions" 
 			+ " we are removing the <span class='ct-code-b-yellow'>left</span> most " 
 			+ "<span class='ct-code-b-yellow'>" + parseInt($("#shiftNum").val()) + "</span> bits and we will be " 
@@ -583,7 +694,7 @@ function removeZeros() {
 	intro.refresh();
 	for (i = 0;i < parseInt($("#shiftNum").val()); i++) {
 		$("#tdBorder" + i).effect("highlight",{color: 'red'}, 1000)
-			TweenMax.to(('#cell' + i), 1, {top: -100, opacity: 0});
+			TweenMax.to(('#cell' + i), 1, {top: -100, opacity: 1});
 	}
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'movingElements();'>Next &#8594;</a>");
 	//movingElements();
@@ -616,6 +727,7 @@ function movingElements() {
 		$('#cell' + i).text(0);
 	}
 	if ($("#firstNum").val() > 0) {
+		$('.introjs-tooltip').removeClass('hide');
 		var text = "The newly created <span class='ct-code-b-yellow'>" + parseInt($("#shiftNum").val()) + "</span>" 
 			+ " vacant positions to the <span class='ct-code-b-yellow'>right</span> will be filled" 
 			+ " with <span class='ct-code-b-yellow'>zeros</span>.";
@@ -624,6 +736,7 @@ function movingElements() {
 		});
 	}
 	else {
+		$('.introjs-tooltip').removeClass('hide');
 		var text="As the given number is a negative number, the left most bit will be <span class='ct-code-b-yellow'>1</span>."
 		typing(".introjs-tooltiptext", text, function() {
 			$(".nextButton").remove();
@@ -640,10 +753,12 @@ function matter2() {
 		$("#cell0").text(1);
 	}
 	if (parseInt($("#shiftNum").val()) == 1) {
+		$('.introjs-tooltip').removeClass('hide');
 		var text = "The newly created <span class='ct-code-b-yellow'>" + parseInt($("#shiftNum").val()) + "</span>" 
 			+ " vacant positions to the <span class='ct-code-b-yellow'>right</span> will be filled" 
 			+ " with <span class='ct-code-b-yellow'>zeros</span>.";
 	} else {
+		$('.introjs-tooltip').removeClass('hide');
 		var text = "The newly created <span class='ct-code-b-yellow'>" + parseInt($("#shiftNum").val()) + "</span>" 
 		+ " vacant positions to the <span class='ct-code-b-yellow'>right</span> will be filled" 
 		+ " with <span class='ct-code-b-yellow'>zeros</span>.";
@@ -659,8 +774,9 @@ function addZeros() {
 	var shiftLength = parseInt($("#table tr td").length/2)-parseInt($("#shiftNum").val());
     TweenMax.fromTo($("table  tr:eq(1)  td:nth-child(n+"+(shiftLength+1)+") span"),0.5,{top:'-100px'},{opacity:1,top:'0px'});
 	if ($("#firstNum").val() >= 0) {
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	} else { 
+		$('.introjs-tooltip').removeClass('hide');
 		var text = "Now, let us reconvert the binary number in two's complement form to get a decimal number to arrive at the final result."
 		typing(".introjs-tooltiptext", text, function() {		
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'negativeNumberResult();'>Next &#8594;</a>");
@@ -674,7 +790,7 @@ function negativeNumberResult() {
 	$("#resultDiv").before("<div id='reComplement' class='col-xs-offset-3 col-xs-9 re-complement' style='text-align:center;width:-moz-fit-content;width:initial;'>"
 		+ "<div id='resultAfterShift' style='text-align=center;width=-moz-fit-content;'></div>"
 		+ "<div id='reComplementValue' class ='margin-top20'></div>"
-		+ "<div id='addOne2' style='float:right;' class='opacity00'>1&nbsp;</div>"
+		+ "<div id='addOne2' style='float:right;' class='opacity00'>1<span>&nbsp;</span></div>"
 		+ "<div id='line2' class='col-xs-12 line padding0 opacity00'></div>"
 		+ "<div id='originalResult'></div>"
 		+ "</div>");
@@ -685,7 +801,7 @@ function negativeNumberResult() {
 		$("#reComplementValue").append('<span class="opacity00" id="reComplementValue' + i + '">0</span>&nbsp;');
 	}
 	for (var i = 0 ; i < $("#originalValue > span").text().length; i++) {
-		$("#originalResult").append('<span class="opacity00" id="originalResult' + i + '">0</span>&nbsp;');
+		$("#originalResult").append('<span class="opacity00" id="originalResult' + i + '">0</span><span>&nbsp;</span>');
 	}
 	for(var i = 0; i < $("#originalValue > span").text().length; i++) {
 		var l1 = $("#cell" + i).offset();
@@ -695,6 +811,7 @@ function negativeNumberResult() {
 		});
 		TweenMax.to('#resultAfterShiftValue' + i,1 ,{opacity:1, top :0, left : 0});
 	}
+	$('.introjs-tooltip').removeClass('hide');
 	var text ="This is the value after performing <span class='ct-code-b-yellow'>left shift</span> operation.";
 	typing(".introjs-tooltiptext", text, function() {	
 		$(".introjs-tooltipbuttons").append("<a class='introjs-button nextButton' onclick = 'reComplement();'>Next &#8594;</a>");
@@ -743,9 +860,10 @@ function originalResult() {
 		intro.refresh();
 		twosReComplementWithOne(len);
 	}
+	$('.introjs-tooltip').removeClass('hide');
 	var text ="This is the result value.";
 	typing(".introjs-tooltiptext", text, function() {	
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	});
 }
 

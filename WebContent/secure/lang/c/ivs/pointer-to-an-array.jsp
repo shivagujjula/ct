@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,10 +21,6 @@
 <title>Pointer to An Array</title>
 
 <style>
-
-.introjs-tooltiptext br {
-	margin: 15px;
-}
 
 .introjs-tooltip {
 	min-width: 300px;
@@ -193,12 +189,18 @@ td, th {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
 .ct-blue-color {
 	font-weight: bold;
+}
+
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+border:none;
+outline:none;
 }
 </style>
 
@@ -238,20 +240,20 @@ void <b class='ct-blue-color'>main()</b> {
 			<div class='col-xs-12 box-border'>
 				<div class='col-xs-12 vertical-align-center animation-box text-center' id='animationBox'>
 					<div class='col-xs-4' id='pArrayBox'>
-						<table align='center' class='visibility-hidden' id='pTable'>
+						<table align='center' class='opacity00' id='pTable'>
 							<tbody>
-								<tr><td colspan='2'><span class='variable-color'>p</span></td></tr>
+								<tr><td></td><td><span class='variable-color'>p</span></td></tr>
 								<tr class='pTable-tr-css' id='pTableTr1'>
 									<td><span class='ct-lime-color'>1000</span></td>
-									<td class='td-value-css'><span id='pValue0' class='ct-blue-color'></span></td>
+									<td class='td-value-css'><span id='pValue0' class='ct-blue-color p-value'></span></td>
 								</tr>
 								<tr class='pTable-tr-css' id='pTableTr2'>
 									<td><span class='ct-lime-color'>1002</span></td>
-									<td class='td-value-css'><span id='pValue1' class='ct-blue-color'></span></td>
+									<td class='td-value-css'><span id='pValue1' class='ct-blue-color p-value'></span></td>
 								</tr>
 								<tr class='pTable-tr-css' id='pTableTr3'>
 									<td><span class='ct-lime-color'>1004</span></td>
-									<td class='td-value-css'><span id='pValue2' class='ct-blue-color'></span></td>
+									<td class='td-value-css'><span id='pValue2' class='ct-blue-color p-value'></span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -268,7 +270,7 @@ void <b class='ct-blue-color'>main()</b> {
 <span class="visibility-hidden">Enter the matrix elements : </span>
 <span class='output-scanf-line' id='outputScanfLine2'></span>
 <span class="visibility-hidden">The given matrix is : </span>
-<span id='outputPrintfLine' class='ct-blue-color'></span>
+<span id='outputPrintfLine' class='ct-code-b-yellow'></span>
 </div>
 				</div>
 			</div>

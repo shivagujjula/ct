@@ -7,6 +7,7 @@ var quotient;
 var remainder;
 var divisionStep  = 1;
 var rightDec;
+var typingSpeed = 1;
 
 var doubleDataTypeReady = function() {
 	introcode = introJs();
@@ -25,13 +26,14 @@ var doubleDataTypeReady = function() {
 	        },
 	        {
 				element : "#restartBtn",
-				intro : "Click to Restart",
+				intro : "Click to restart",
 				tooltipClass: "introjs-tooltip-min-width-custom",
 				position : "right"
 			}
 	        ]
 	});
-	introcode.onbeforechange(function(targetElement) {
+	introcode.onafterchange(function(targetElement) {
+		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "mainDiv":
@@ -67,63 +69,15 @@ var doubleDataTypeReady = function() {
 							$('#first1Div').css({'opacity' : '1'});
 							$("#box0").effect( "highlight",{color: 'yellow'}, 500,function() {
 							$('.introjs-tooltip').removeClass("hide");
-							typingContent = '<span class = color-yellow>Sign bit</span> stores the sign of a given double in 1 bit.'
-							typing('.introjs-tooltiptext',typingContent,function() {
-								$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button animation-nextbtn'>Next &#8594;</a>"); 
-								$('.animation-nextbtn').click(function() { 
-									$('.introjs-tooltip').addClass("hide");
-									$('.animation-nextbtn').remove();	
-									$('.color-pink').fadeTo(1000,1);
-									$('#secondDiv').css({'opacity' : '1'});
-									$('#second2Div').css({'opacity' : '1'});
-									$('.introjs-tooltip').removeClass("hide");
-									typingContent = '<span class = color-yellow>Exponent bit</span> of the scientific notation is achieved by shifting the radix or decimal point to number of positions.It occupies 11 bits.</li>'
-									typing('.introjs-tooltiptext',typingContent,function() {
-										$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button animation-nextbtn'>Next &#8594;</a>"); 
-										$('.animation-nextbtn').click(function() { 
-											$('.introjs-tooltip').addClass('hide');
-											$('.animation-nextbtn').remove();
-											$('.color-blue').fadeTo(1000,1);
-											$('#thirdDiv').css({'opacity':'1'});
-											$('#third3Div').css({'opacity':'1'});
-											$('.introjs-tooltip').removeClass("hide");
-											typingContent = '<span class = color-yellow>Mantissa</span> is the right side of radix or decimal point after exponent is achieved.It occupies 52 bits.'
-											typing('.introjs-tooltiptext',typingContent,function() {
-												$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button animation-nextbtn'>Next &#8594;</a>"); 
-												$('.animation-nextbtn').click(function() { 
-													$('.animation-nextbtn').remove();	
-													$('.introjs-tooltip').addClass('hide');
-													$('#floatdec').css({'opacity':'1'});
-													$('#inputDiv').fadeTo(1000,1,function() {
-														setTimeout(function() { 
-															$('#floatVar').fadeTo(1000,1,function() {
-																$('#floatBox').fadeTo(1000,1,function() {
-																	$('.byte-div').fadeTo(1000,1,function() {
-																		$('#addDiv').fadeTo(1000,1,function() {
-																			$('.introjs-tooltip').removeClass('hide');
-																			typingContent = 'The double variable is converted to binary and stored in the memory.'
-																			typing('.introjs-tooltiptext',typingContent,function() { 
-																				$('.introjs-nextbutton').show();
-																			 });
-																		});
-																	});
-																});
-															});
-														 },1000); 
-													});
-												});
-											});
-										}); 
-									}); 
-								});
-							});
-						});
+							texttyping();
+						}); 
 					});
-		 		});
+				});
 			});
 		});
 		break;
 		case "restartBtn":
+			$(".nextBtn2").remove();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
@@ -135,17 +89,123 @@ var doubleDataTypeReady = function() {
 		} 
 	});
 	introcode.start();
-	$('.introjs-skipbutton').hide();
-	$('.introjs-prevbutton').hide();
-	$('.introjs-nextbutton').hide();
+	$('').hide();
+	$('.introjs-nextbutton,.introjs-skipbutton,.introjs-prevbutton').hide();
 }
 
 function typing(typingId,typingContent,callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval":0.05,
+		"typing_interval":typingSpeed,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		callbackFunction();
 	});
+}
+function animationbtn1() {
+	$('.animation-nextbtn').remove();	
+	$('.introjs-tooltip').addClass("hide");
+	setTimeout(function() {
+		$('.color-pink').fadeTo(1000,1);
+		$('#second2Div, #secondDiv').css({'opacity' : '1'});
+		for(var i = 1; i < 12; i++) {
+			$("#box" + i).show();
+		}
+		for(var i = 13; i < 64; i++) {
+			$("#box" + i).hide();
+		}
+		$('.introjs-tooltip').removeClass("hide");
+		texttyping2();
+	},1000);
+}
+function texttyping2() {
+	typingContent = '<span class = color-yellow>Exponent</span> of the scientific notation is achieved by shifting the '+
+			'<span class = color-yellow>radix</span> or decimal point to number of positions. '+
+				'It occupies <span class = color-yellow>11</span> bits.</li>'
+	typing('.introjs-tooltiptext',typingContent,function() {
+		$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn'>&#8592; Back</a>"); 
+		$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button animation-nextbtn'>"+
+			"Next &#8594;</a>"); 
+		$('.user-btn').click(function() {
+			$('.user-btn, .animation-nextbtn').remove();	
+			$('.introjs-tooltip').addClass('hide');
+			for(var i = 1; i < 12; i++) {
+				$("#box" + i).hide();
+			}
+			for(var i = 13; i < 64; i++) {
+				$("#box" + i).hide();
+			}
+			$("#secondDiv, #second2Div").css("opacity", 0);
+			$("#thirdDiv, #third3Div").css("opacity", 0);
+			$('.introjs-tooltip').removeClass("hide");
+			texttyping();
+		});
+		$('.animation-nextbtn').click(function() { 
+			$('.user-btn, .animation-nextbtn').remove();
+			$('.introjs-tooltip').addClass('hide');
+			$('.color-blue').fadeTo(1000,1);
+			$('#thirdDiv').css({'opacity':'1'});
+			$('#third3Div').css({'opacity':'1'});
+			$('.introjs-tooltip').removeClass("hide");
+			texttyping1();
+		}); 
+	}); 
+}
+function backbtn2() {
+	$(".user-btn, .animation-nextbtn").remove();
+	for(var i = 13; i < 64; i++) {
+		$("#box" + i).hide();
+	}
+	$("#third3Div,#thirdDiv").css("opacity", 0);
+	texttyping2();
+}
+function animationbtn2() {
+	$(".user-btn, .animation-nextbtn").remove();	
+	$('.introjs-tooltip').addClass('hide');
+	$('#floatdec').css({'opacity':'1'});
+	$('#inputDiv').fadeTo(1000,1,function() {
+		setTimeout(function() { 
+			$('#floatVar').fadeTo(1000,1,function() {
+				$('#floatBox').fadeTo(1000,1,function() {
+					$('.byte-div').fadeTo(1000,1,function() {
+						$('#addDiv').fadeTo(1000,1,function() {
+							$('.introjs-tooltip').removeClass('hide');
+							typingContent = 'The double variable can be converted to binary and stored in the memory.'
+							typing('.introjs-tooltiptext',typingContent,function() { 
+								$('.introjs-tooltipbuttons').prepend("<a  class='introjs-button nextBtn2' onclick = 'myfunction1()'>&#8592; Back</a>");
+								$('.introjs-nextbutton').show();
+							 });
+						});
+					});
+				});
+			});
+		 },1000); 
+	});
+}
+function myfunction1() {
+	$('.introjs-nextbutton').hide();
+	$(".nextBtn2").remove();
+	$('.introjs-tooltip').addClass('hide');
+	$('#floatdec').css({'opacity':'0'});
+	$('#addDiv,.byte-div,#floatBox,#inputDiv,#floatVar').fadeTo(10,0);
+	$('.introjs-tooltip').removeClass('hide');
+	texttyping1();
+}
+function texttyping1() {
+	typingContent = '<span class = color-yellow>Mantissa</span> is the right side of radix or decimal '+
+			'point after exponent is achieved. It occupies <span class = color-yellow>52</span> bits.'
+	typing('.introjs-tooltiptext',typingContent,function() {
+		$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn' "+
+			"onclick = 'backbtn2()'>&#8592; Back</a>");		
+		$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button animation-nextbtn' "+
+			"onClick = 'animationbtn2()'>Next &#8594;</a>");
+	});
+}
+function texttyping() {
+	var typingContent = '<span class = color-yellow>Sign bit</span> stores the sign of a given double in <span class = color-yellow>1</span> bit.';
+	typing('.introjs-tooltiptext',typingContent,function() {
+		$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button animation-nextbtn' "+
+		"onClick = 'animationbtn1()'>Next &#8594;</a>"); 
+	});
+	$(".animation-nextbtn, .user-btn").remove();
 }

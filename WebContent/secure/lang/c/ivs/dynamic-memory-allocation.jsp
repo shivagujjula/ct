@@ -178,7 +178,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 }
 
@@ -192,6 +192,14 @@ div, span {
 
 .ct-green-color {
 	color: green;
+}
+.circle-css {
+	border: 1px solid;
+	border-radius: 50%;
+	padding: 2px;
+	position: relative;
+	z-index: 9999999;
+	background: white;
 }
 </style>
 
@@ -296,15 +304,15 @@ div, span {
 	</div>
 	<div class="col-xs-12">
 		<div class="col-xs-8 col-xs-offset-2 final-div opacity00" id="finalDiv">
-			<span id="finalLine1" class="opacity00">The problems are :</span>
+			<span id="finalLine1" class="opacity00">The problems we encountered are :</span>
 			<ul>
-				<li id="list1" class="opacity00">Without knowing the variable the value can be accessed or changed by it's 
-					<b class='ct-green-color'>pointer variable</b>.</li>
-				<li id="list2" class="opacity00">If an array is declared once with some size it can't be modified throughout the program since 
-					once memory is allocated at compile time or run time we can't modify the memory.</li>
+				<li id="list1" class="opacity00">A <b class='ct-green-color'>variable's value</b> can be accessed or changed by another <b class='ct-green-color'>pointer variable</b> 
+					and the actual variable has no knowledge about the change. </li>
+				<li id="list2" class="opacity00">If an array is declared once with some size, it cannot be modified anywhere else in the program.The 
+					 memory can be <b class='ct-green-color'>allocated only once</b> at compile time or run time.</li>
 			</ul><br>
-			<span id="finalLine2" class="opacity00">So these problems can be solved by <span class='ct-green-color'><b>DMA</b> 
-				(Dynamic memory allocation)</span> with	<span class='ct-green-color'>heap memory</span>.
+			<span id="finalLine2" class="opacity00"> The above problems can be solved by <span class='ct-green-color'><b>DMA</b> 
+				(Dynamic memory allocation)</span> using the <span class='ct-green-color'>heap memory</span>.
 			</span>
 		</div>
 	</div>

@@ -36,7 +36,8 @@ var explicitTypeConversion = function() {
 		steps :	[{
 					element :'#informationdiv',
 					intro :'',
-					position:"bottom"
+					position:"bottom",
+					tooltipClass: "hide",
 				},{
 					element :'#textInTable',
 					intro :'',
@@ -260,12 +261,14 @@ var explicitTypeConversion = function() {
   			"<li id='list2' class='opacity00'>When the Type conversion is performed explicitly by the programmer by using type casting operator "+
   			"i.e. parenthesis or <b class='color-green' >()</b>, it is called <b class='color-green'>type casting</b> or <b class='color-green'>"+
   			"explicit type conversion</b>.</li></ul>");
-  		typing('.introjs-tooltiptext', "Let us consider an example on type casting in detail.", function() {  
+  		typing('.introjs-tooltiptext', "Let us consider an example on type casting in detail.", function() { 
 		});
 		setTimeout(function () {
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
-					$('.introjs-nextbutton').show();
+					//$('.introjs-nextbutton').show();
+					intro.nextStep();
+					$('#informationdiv').addClass("z-index");
 				});
 			});	
 		})

@@ -1,5 +1,5 @@
 var functionDeclarationReady = function() {
-	intro = introJs();
+	introjs = introJs();
 	$('#restartBtn').click(function() {
 		location.reload();
 		});
@@ -8,7 +8,7 @@ var functionDeclarationReady = function() {
 			 e.preventDefault();
 			}
 	});
-	intro.setOptions({
+	introjs.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
 		showBullets : false,
@@ -18,35 +18,35 @@ var functionDeclarationReady = function() {
 		steps :	[{
 			element :'#informationdiv',
 			intro :'',
-			tooltipClass: "hide"
+			tooltipClass: "hide",
 		},{
 			element :'#format',
 			intro :'',
-			tooltipClass: "hide"
+			tooltipClass: "hide",
 		},{
 			element :'#returnType3',
-			intro :''
+			intro :'',
 		},{
 			element :'#functionName3',
-			intro :''
+			intro :'',
 		},{
 			element :'#argument3',
-			intro :''
+			intro :'',
 		},{
 			element :'#semicolon3',
-			intro :''
+			intro :'',
 		},{
 			element :'#declaration1',
-			intro :''
+			intro :'',
 		},{
 			element :'#example1',
-			intro :''
+			intro :'',
 		},{
 			element :'#example2',
-			intro :''
+			intro :'',
 		},{
 			element :'#example3',
-			intro :''
+			intro :'',
 	 	},{
 			element :'#restartBtn',
 			intro :'Click to restart.',
@@ -54,8 +54,31 @@ var functionDeclarationReady = function() {
 		}]
 	});
 	
-	intro.onafterchange(function(targetElement) { 
+	introjs.onafterchange(function(targetElement) { 
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			
+			
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
+		
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
@@ -66,9 +89,9 @@ var functionDeclarationReady = function() {
 						+ " name of the function, the argument types and the return datatype that would be returned by the function.</li>"
 						+ "<li id='li2' class='opacity00'>Function declarations must end with a <span class='color-green'>"
 						+ "semicolon (;)</span>.</li>"
-						+ "<li id='li3' class='opacity00'>A function needs to be declared before a function is defined, and a call to that function"
+						+ "<li id='li3' class='opacity00'>A function needs to be declared <span class='color-green'>before</span> a function is defined, and a call to that function"
 						+ " is made.</li>"
-						+ "<li id='li4' class='opacity00'>If a function call is made before the function is declared, it throws an"
+						+ "<li id='li4' class='opacity00'>If a function call is made <span class='color-green'>before</span> the function is declared, it throws an"
 						+ " <b style='color: red'>error</b>.</li></ul>");  
 				TweenMax.to($("#li11"), 0.5, {opacity: 1, onComplete: function() {
 					TweenMax.to($("#li1"), 0.5, {opacity: 1, onComplete: function() {
@@ -76,7 +99,7 @@ var functionDeclarationReady = function() {
 							TweenMax.to($("#li3"), 0.5, {opacity: 1, onComplete: function() {
 								TweenMax.to($("#li4"), 0.5, {opacity: 1, onComplete: function() {
 									$('.introjs-tooltip').removeClass("hide"); 	
-									typing('.introjs-tooltiptext',"Let us consider the syntax of a function declaration." ,function() {
+									typing('.introjs-tooltiptext',"Let us consider the syntax of a <y>function declaration</y>." ,function() {
 										$('.introjs-nextbutton').show();
 									});
 								}});
@@ -86,12 +109,20 @@ var functionDeclarationReady = function() {
 				}});
 			break;
 			case "format" :
-				$("#informationdiv").addClass("zindex10")
+				$("#informationdiv").addClass("zindex10");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#format").removeClass("opacity00");
-					setTimeout(function() {
-						intro.nextStep();
-					}, 500);
+					if ((introjs._introItems[introjs._currentStep]["animation"] == "repeat") && (introjs._direction == "backward")) {
+						$("#informationdiv").removeClass("zindex10").addClass("opacity00").empty();
+						$("#format").addClass("opacity00");
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 400);
+					} else {
+						$("#format").removeClass("opacity00");
+						setTimeout(function() {
+							introjs.nextStep();
+						}, 500);
+					}
 				});
 			break;
 			case "returnType3" :
@@ -99,16 +130,16 @@ var functionDeclarationReady = function() {
 					typing('.introjs-tooltiptext', "<ul><li><span class='ct-code-b-yellow'>return_type</span> is the data type of the value that is "
 							+ "returned by the function.</li>"
 							+ "<li>For example : If the return type is <span class='ct-code-b-yellow'>void</span>, this function"
-							+ " returns nothing.</li></ul>", function() {  
-						$('.introjs-nextbutton').show();
+							+ " returns <y>nothing</y>.</li></ul>", function() {  
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "functionName3" :
 				$(".introjs-helperLayer").one("transitionend", function() {
-					typing('.introjs-tooltiptext', "Any valid identifier can be used as a <span class='ct-code-b-yellow'>function_name</span>.",
+					typing('.introjs-tooltiptext', "Any valid <y>identifier</y> can be used as a <span class='ct-code-b-yellow'>function_name</span>.",
 							 function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -118,22 +149,22 @@ var functionDeclarationReady = function() {
 							+ " types that will be used by the function definition.</li><li><span class='ct-code-b-yellow'>"
 							+ "parameter_types</span> are <span class='ct-code-b-yellow'>optional</span>.</li></ul>", 
 							 function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "semicolon3" :
 				$(".introjs-helperLayer").one("transitionend", function() {
 					typing('.introjs-tooltiptext', "Function declaration must end with a <span class='ct-code-b-yellow'>semicolon(;)</span>.", function() {  
-			  			$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "declaration1" :
 				$(".introjs-helperLayer").one("transitionend", function() {
-					typing('.introjs-tooltiptext', "Let us consider three different types of function declarations.", function() {  
+					typing('.introjs-tooltiptext', "Let us consider three different types of <y>function declarations</y>.", function() {  
 						$("#declaration1").removeClass("visibility-hidden");
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -142,16 +173,16 @@ var functionDeclarationReady = function() {
 					typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>sum</span>, it takes two"
 							+ " <span class='ct-code-b-yellow'>int</span> arguments and it will return a value of"
 							+ " <span class='ct-code-b-yellow'>int</span> data type.", function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "example2" :
 				$(".introjs-helperLayer").one("transitionend", function() {
-			  	typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>display</span>, it takes"
-			  			+ " <span class='ct-code-b-yellow'>void</span>(no argument) and it will return a <span class='ct-code-b-yellow'>void</span>"
-			  			+ " (i.e., nothing).", function() {  
-					$('.introjs-nextbutton').show();
+					typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>display</span>, it takes"
+		  			+ " <span class='ct-code-b-yellow'>void</span>(no argument) and it will return a <span class='ct-code-b-yellow'>void</span>"
+		  			+ " (i.e., nothing).", function() {  
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -160,7 +191,7 @@ var functionDeclarationReady = function() {
 					typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>gettime</span>, it takes"
 							+ " <span class='ct-code-b-yellow'>void</span>(no argument) as parameter and it will return a value of"
 							+ " <span class='ct-code-b-yellow'>int</span> data type.", function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 			  		});
 				});
 			break;
@@ -173,11 +204,11 @@ var functionDeclarationReady = function() {
 		}
 	});
 	
-	intro.start();
+	introjs.start();
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 5;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -186,6 +217,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }

@@ -26,96 +26,141 @@ var automaticVarReady=function() {
 		}, {
 			element :'#automainDeclaration',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#animationDiv',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#numberDiv1',
 			intro :'',
-			position:"right" 
-		}, {
-			element :'#numberDiv2',
-			intro :'',
-			position:"right" 
+			position:"right",
+			tooltipClass : "hide",
 		}, {
 			element :'#mainMemory',
 			intro :'',
-			position:"right" 
+			position:"left",
 		}, {
 			element :'#variableDeclaration1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#addressDiv1',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#functionDeclaration1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#mainfunctionDeclaration',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#variableDeclaration2',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#numberDiv3',
 			intro :'',
-			position:"right" 
+			position:"right",
+			tooltipClass : "hide",
 		}, {
 			element :'#sopLine2',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#outputDiv',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#closeBrace1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#sopLine1',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#outputDiv',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element :'#printDefinition',
 			intro :'',
 			position:"right",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		}, {
 			element : "#restartBtn",
 			intro : "Click to restart.",
 			position : "right"
 		}]
 	});
-	intro.onafterchange(function(targetElement) { 
-		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+	
+	intro.onbeforechange(function(targetElement) {
 		var elementId=targetElement.id;
 		switch (elementId) {
 		case "automainDeclaration" :
+			$('#animationDiv').css({'opacity':'1'});
+		break;
+		
+		case "variableDeclaration1" :
+		case "addressDiv1" :
+			intro.refresh();
+			$("#addressValue1").empty();
+		break;
+		
+		case "variableDeclaration2" :
+		case "numberDiv3" :
+			intro.refresh();
+			$("#addressValue3").empty();
+			$('#numberDiv3').removeClass('box-border');
+			$('#addressDiv3, #functionMemory').addClass('visibility-hidden');
+		break; 
+		}
+	});
+	
+	intro.onafterchange(function(targetElement) { 
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		// ********************** start ************back button logic
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
+		// ********************** end ************back button logic
+		
+		var elementId=targetElement.id;
+		switch (elementId) {
+		case "automainDeclaration" :
+			$('.introjs-tooltip').css({'min-width' : '250px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
 		  		$('.introjs-tooltip').removeClass("hide");
 				typing('.introjs-tooltiptext', "An <span class='ct-code-b-yellow'>automatic</span> or <span class='ct-code-b-yellow'>local</span>"
-							+ " variable is declared with the keyword <span class='ct-code-b-yellow'>auto</span> and is not mandatory.", function() { 
+							+ " variable is declared with the keyword <span class='ct-code-b-yellow'>auto</span>.<br><br>Using the keyword "
+							+"<span class='ct-code-b-yellow'>auto</span> is <y>optional</y>.", function() { 
 					$('#animationDiv').css({'opacity':'1'});
-					$('.introjs-nextbutton').show();	
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -123,45 +168,56 @@ var automaticVarReady=function() {
 		case "mainfunctionDeclaration" :
 		case "mainDeclaration" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function() {
-					intro.nextStep();
-				}, 500);
+				if (intro._direction == "forward") {
+					setTimeout(function() {
+						intro.nextStep();
+					}, 500);
+				} else {
+					if (elementId == "mainDeclaration") {
+						$('#animationDiv').css({'opacity':'0'});
+					}
+					intro.previousStep();
+				}
 			});
 		break;
 		
 		case "animationDiv" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('#mainmemoryheading').css({'opacity':'1'});
-				$('#mainMemory').removeClass("visibility-hidden").addClass('box-border');
-		  		setTimeout(function () {
-					intro.nextStep();
-				}, 1000);
+				if (intro._direction == "forward") {
+					$('#mainmemoryheading').css({'opacity':'1'});
+					$('#mainMemory').removeClass("visibility-hidden").addClass('box-border');
+			  		setTimeout(function () {
+						intro.nextStep();
+					}, 500);
+				} else {
+					$('#mainmemoryheading').css({'opacity':'0'});
+					$('#addressDiv1').addClass('opacity00');
+					$('#mainMemory').addClass("visibility-hidden").removeClass('box-border');
+					intro.previousStep();
+				}
+				
 			});
 		break; 
 		
 		case "numberDiv1" :
+			$('#addressDiv1').addClass('opacity00');
 			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext', "Variable <span class='ct-code-b-yellow'>a</span> is allocated some memory.", function() { 
-					$('#aValueAnimation, #addressDiv1, #address1').removeClass('visibility-hidden');
-					$('.introjs-nextbutton').show();
-		  		});
+				$('#addressDiv1').removeClass('opacity00').addClass('animated zoomIn').one('animationend', function() {
+					$("#addressDiv1").removeClass('animated zoomIn');
+					$('.introjs-tooltip').removeClass("hide");
+					typing('.introjs-tooltiptext', "An <y>int</y> variable <span class='ct-code-b-yellow'>a</span> is allocated  2 bytes in <y>memory</y>.", function() { 
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+			  		});
+				});
 			});
 		break;
 		
-		case "numberDiv2" :
-			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext', "Variable <span class='ct-code-b-yellow'>b</span> is allocated some memory.", function() { 
-		  			$('#address2, #addressDiv2').removeClass('visibility-hidden');
-		  			$('.introjs-nextbutton').show();
-		  		});
-			});
-		break; 
 		
 		case "variableDeclaration1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "Here, the variable <span class='ct-code-b-yellow'>a</span> is initialized to"
 						+ " <span class='ct-code-b-yellow'>10</span>.", function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -177,7 +233,7 @@ var automaticVarReady=function() {
 							$('.introjs-tooltip').removeClass("hide");
 							typing('.introjs-tooltiptext', "The value <span class='ct-code-b-yellow'>10</span> is stored in the memory allocated"
 										+ " for variable <span class='ct-code-b-yellow'>a</span>.", function() { 
-								$('.introjs-nextbutton').show();	
+								$('.introjs-nextbutton, .introjs-prevbutton').show();	
 							});	
 						});
 					});
@@ -187,9 +243,9 @@ var automaticVarReady=function() {
 		
 		case "mainMemory" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-				typing('.introjs-tooltiptext', "The default values of automatic variables <span class='ct-code-b-yellow'>a</span>"
-							+ " and <span class='ct-code-b-yellow'>b</span> are some garbage values.", function() { 
-					$('.introjs-nextbutton').show();
+				typing('.introjs-tooltiptext', "The default value of the <y>automatic</y> variable <span class='ct-code-b-yellow'>a</span>"
+							+ "  is some <y>garbage value</y>.", function() { 
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 	  		 	});
 			});
 		break;
@@ -197,73 +253,89 @@ var automaticVarReady=function() {
 		case "functionDeclaration1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "When a call to the function <span class='ct-code-b-yellow'>ganga()</span> is made, the control"
-								+ " is transferred from the function <span class='ct-code-b-yellow'>main() to ganga()</span>.", function() { 
-					$('.introjs-nextbutton').show();
+								+ " is <y>transferred</y> from the function <span class='ct-code-b-yellow'>main() to ganga()</span>.", function() { 
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 	  		 	});
 			});
 		break;
 		
 		case "variableDeclaration2" :
-			$('.introjs-tooltip').css({'min-width' : '300px'});
+			//$('.introjs-tooltip').css({'min-width' : '300px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				text = "A variable <span class='ct-code-b-yellow'>a</span> is declared and initialized.<br/> This variable is treated as a" +
-						" different variable from the one declared in main method. The scope of this variable <span class='ct-code-b-yellow'>a" +
+				text = "Another <y>int</y> variable <span class='ct-code-b-yellow'>a</span> is declared and initialized.<br/><br/> This variable is treated as a" +
+						" <b class='ct-code-b-yellow'>different</b> variable from the one declared in <y>main method</y>.<br/><br/> The <y>scope</y> of this variable <span class='ct-code-b-yellow'>a" +
 						"</span> is within the function <span class='ct-code-b-yellow'>ganga()</span>, so it is treated as "+
-						"<span class='ct-code-b-yellow'>local / automatic</span> variable.<br><br>Note : Here, " +
+						"<span class='ct-code-b-yellow'>local / automatic</span> variable.<br><br>Note :<br> Here, " +
 						"<b>keyword</b> <span class='ct-code-b-yellow'>auto</span> is not used.";
 				typing('.introjs-tooltiptext',text ,function() { 
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		 });
 			});
 		break; 
 		
 		case "numberDiv3" :
 			intro.refresh();
-			$('.introjs-tooltip').css({'min-width' : '200px'});
+			//$('.introjs-tooltip').css({'min-width' : '200px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberDiv3').addClass('box-border');
 				$('#addressDiv3, #functionMemory').removeClass('visibility-hidden');
-	  			$('.introjs-tooltip').removeClass("hide");
-				typing('.introjs-tooltiptext', "Memory is allocated to variable <span class='ct-code-b-yellow'>a</span> and will exist till"
-									+ " the  end of function <span class='ct-code-b-yellow'>ganga()</span>.", function() { 
-		  			TweenMax.to('#numberDiv3', 1, {opacity: 1, onComplete: function() {
-						$('#number3').addClass('circle-css').effect("highlight", {color: 'yellow'}, 1000, function() {
-							$('#number3').removeClass('circle-css');
-							$("#addressValue3").text($("#number3").text());
-							fromEffectWithTweenMax('#number3', '#addressValue3', function() {
-								$('.introjs-nextbutton').show();
+	  			TweenMax.to('#numberDiv3', 1, {opacity: 1, onComplete: function() {
+					$('#number3').addClass('circle-css').effect("highlight", {color: 'yellow'}, 1000, function() {
+						$('#number3').removeClass('circle-css');
+						$("#addressValue3").text($("#number3").text());
+						fromEffectWithTweenMax('#number3', '#addressValue3', function() {
+							$('.introjs-tooltip').removeClass("hide");
+							typing('.introjs-tooltiptext', "Memory is allocated to the variable <span class='ct-code-b-yellow'>a</span> and this will <y>exist</y> till"
+							+ " the function <span class='ct-code-b-yellow'>ganga()</span> ends.", function() { 
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
-					}}); 
-				});
+					});
+				}}); 
 			});
 		break; 
 		
 		case "sopLine2" :
 			$('#outputDiv').css({'opacity':'1'});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function () {
-					intro.nextStep();
-				}, 1000);
+				if (intro._direction == "forward") {
+					$('#outputDiv').css({'opacity':'1'});
+					setTimeout(function () {
+						intro.nextStep();
+					}, 1000);
+				} else {
+					$('#outputDiv').css({'opacity':'0'});
+					intro.previousStep();
+				}
 			});
 		break;
 		
 		case "outputDiv" :
 			$('.introjs-helperLayer').one('transitionend', function() {
-				 if (intro._currentStep == 14) {
-					printDecimalValue();
+				 if (intro._currentStep == 13) {
+					 if (intro._direction == "forward") {
+						 printDecimalValue();
+					 } else {
+						 $("#outputAValue1").text("");
+						 intro.previousStep();
+					 }
 				 }
-				 else if (intro._currentStep == 17) {
-					printDecimalValue2();
+				 else if (intro._currentStep == 16) {
+					 if (intro._direction == "forward") {
+						 printDecimalValue2();
+					 } else {
+						 $("#outputAValue2").text("");
+						 intro.previousStep();
+					 }
 				} 
 			});
 		break;
 		
 		case "closeBrace1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-				typing('.introjs-tooltiptext', "When the function <span class='ct-code-b-yellow'>ganga()</span> ends, the local variables"
-							+ " are destroyed." ,function() { 
-					$('.introjs-nextbutton').show();
+				typing('.introjs-tooltiptext', "When the function <span class='ct-code-b-yellow'>ganga()</span> ends, the <y>local variables</y>"
+							+ " are <y>destroyed</y>." ,function() { 
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break; 
@@ -307,11 +379,12 @@ var automaticVarReady=function() {
 
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval":5,
+		"typing_interval":1,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		callbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }
 
@@ -347,7 +420,7 @@ function printDecimalValue() {
   				$("#aheading").removeClass("z-index1000000")
   				$('#addressValue3').addClass('circle-css z-index1000000').effect("highlight", {color: 'yellow'}, 500, function() {
   					$('#addressValue3').removeClass('circle-css z-index1000000');
-  					$("#outputAValue1").append("<span id='output1' class='ct-blue-color'>"+ $("#addressValue3").text()+"</span>");
+  					$("#outputAValue1").append("<span id='output1' class='ct-code-b-yellow'>"+ $("#addressValue3").text()+"</span>");
   					fromEffectWithTweenMax("#addressValue3", "#output1", function() { 
 			  			setTimeout(function () {
 			  				intro.nextStep();
@@ -369,7 +442,7 @@ function printDecimalValue2() {
 				$("#aheading1").removeClass("z-index1000000")
 		  		$('#addressValue1').addClass('circle-css z-index1000000').effect("highlight", {color: 'yellow'}, 500, function() {
 	  				$('#addressValue1').removeClass('circle-css z-index1000000');
-	  				$("#outputAValue2").append("<span id='output2' class='ct-blue-color'>"+ $("#addressValue1").text()+"</span>");
+	  				$("#outputAValue2").append("<span id='output2' class='ct-code-b-yellow'>"+ $("#addressValue1").text()+"</span>");
 			  	 	fromEffectWithTweenMax("#addressValue1", "#output2", function() {
 			  			setTimeout(function () {
 							$('#printDefinition').removeClass('visibility-hidden');
@@ -386,3 +459,4 @@ function animate1() {
 	$('.introjs-duplicate-nextbutton').remove();	
 	intro.nextStep();
 }
+

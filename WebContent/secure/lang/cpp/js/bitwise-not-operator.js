@@ -54,11 +54,13 @@ introSteps();
 			},{
 				element : "#inputDiv",
 				intro : "",
-				position:"bottom" 
+				position:"bottom",
+				tooltipClass: "hide"
 			},{
 				element : "#binaryValueDiv",
 				intro : "",
-				position:"right"
+				position:"right",
+				tooltipClass: "hide"
 			},{
 				element : "#restart",
 				intro : "",
@@ -66,7 +68,44 @@ introSteps();
 			}
 		]});
 		
+		intro.onbeforechange(function(targetElement) {
+			var elementId = targetElement.id;
+			switch (elementId) {
+			case "informationDiv":
+				
+			break;	
+			case "inputDiv":
+				$("#values > span").remove();
+				$("#onesComplementValue > span").remove();
+			break;
+			case "binaryValueDiv":
+				$("#values > span").remove();
+				$("#onesComplementValue > span").remove();
+			break;		
+			}
+		});
+		
 		intro.onafterchange(function(targetElement) {
+			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+				intro._introItems[intro._currentStep]["animation"] = "repeat";
+			}
+			
+			if (intro._introItems[intro._currentStep]["isCompleted"]) {
+				
+				if (intro._currentStep != 0) {
+					$('.introjs-prevbutton').show();
+				}
+
+				$('.introjs-nextbutton').show();
+				return;
+			}
+			
+			if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+				intro._introItems[intro._currentStep]["isCompleted"] = true;
+			}
+			
 			var elementId = targetElement.id;
 			switch (elementId) {
 			case "informationDiv":
@@ -80,11 +119,13 @@ introSteps();
 				});
 			break;
 			case "inputDiv":
-				$('.introjs-nextbutton').hide();
 				$(".introjs-helperLayer ").one('transitionend', function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').hide();
+					$("#firstNum").val("");
 					TweenMax.to("#inputDiv", 1, {"opacity" : "1"});
 					TweenMax.to("#firstNum", 1, {"opacity" : "1"});
 					TweenMax.to("#shiftNum", 1, {"opacity" : "1", onComplete:function() {
+						$('.introjs-tooltip').removeClass('hide');
 						var text = "Enter value to arrive at the <span class='ct-code-b-yellow'>complement (~)</span> of that value.";
 						typing(".introjs-tooltiptext", text, function() {
 							$("#firstNum, #shiftNum").effect( "highlight",{color: 'yellow'}, 1500 );
@@ -94,7 +135,8 @@ introSteps();
 				});
 			break;
 			case "binaryValueDiv" :
-				$('.introjs-nextbutton').hide();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				zeros1 = "";
 				var value = $('#firstNum').val();
 				var positiveNumber = Math.abs(value);
 				var num1 = parseInt(positiveNumber, 10).toString(2);
@@ -111,6 +153,7 @@ introSteps();
 					});
 				intro.refresh();				
 				$(".introjs-helperLayer ").one('transitionend', function() {
+					$('.introjs-tooltip').removeClass('hide');
 					/* var text = "The given number <span class='ct-code-b-yellow'>" + $('#firstNum').val() + "</span> is represented in its <span class='ct-code-b-yellow'>binary</span> representation form."; */
 					var text = "The given number <span class='ct-code-b-yellow'>" + $('#firstNum').val() + "</span> will be converted to its binary form."
 					typing(".introjs-tooltiptext", text, function() {
@@ -148,6 +191,7 @@ function typing(typingId, typingContent,callBackFunction) {
 		$(typingId).removeClass('typingCursor');
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -174,6 +218,7 @@ function showBinaryDigits() {
 }
 
 function matter() {
+	$('.introjs-tooltip').removeClass('hide');
 	var text = "Now, let us convert the given number <span class='ct-code-b-yellow'>" + $("#firstNum").val() + "</span>" 
 		+ " into its binary representation";
 	$(".introjs-tooltiptext > ul").append("<li></li>");
@@ -207,6 +252,7 @@ function createComplementBoxes() {
 		$("#complementValueSpan" + i).text($("#binaryBox" + i).text());
 	}
 	var length = $("#onesComplementValue > span").length;
+	$('.introjs-tooltip').removeClass('hide');
 	var text = "The <span class='ct-code-b-yellow'>one's complement</span> form involves converting <span class='ct-code-b-yellow'>1's</span> to <span class='ct-code-b-yellow'>0's</span>" 
 		+ " and <span class='ct-code-b-yellow'>0's</span> to <span class='ct-code-b-yellow'>1's</span>."
 	typing(".introjs-tooltiptext", text, function() {
@@ -249,7 +295,7 @@ function flipToComplement(id) {
 			+ "<span class='ct-code-b-yellow'>" + $("#firstNum").val() + "</span> is represented" 
 			+ " as <span class='ct-code-b-yellow'> ~" + $("#firstNum").val() + "</span>."
 		typing(".introjs-tooltiptext", text, function() {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		});
 	}
 }

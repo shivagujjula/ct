@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 10;
+var typingSpeed = 1;
 var tl;
 var arr;
 
@@ -19,7 +19,8 @@ function introGuide() {
 		},{
 			element : "#codeAnimation",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass:"hide"
 		},{
 			element : "#addressDiv",
 			intro : "",
@@ -35,23 +36,17 @@ function introGuide() {
 		},{
 			element : "#scanf",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass :"hide"
 		},{
 			element : "#consoleId",
 			intro : "",
-			position : "right"
+			position : "right",
 		},{
 			element : "#consoleId",
 			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#consoleId",
-			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#scanf",
-			intro : "",
-			position : "bottom"
+			tooltipClass: "hide",
+			
 		},{
 			element : "#consoleId",
 			intro : "",
@@ -59,11 +54,22 @@ function introGuide() {
 		},{
 			element : "#scanf",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass :"hide"
 		},{
 			element : "#consoleId",
 			intro : "",
-			position : "right"
+			tooltipClass: "hide"
+		},{
+			element : "#scanf",
+			intro : "",
+			position : "bottom",
+			tooltipClass :"hide"
+		},{
+			element : "#consoleId",
+			intro : "",
+			position : "right",
+			tooltipClass :"hide"
 		},{
 			element : "#finalPrintf",
 			intro : "",
@@ -78,8 +84,91 @@ function introGuide() {
 			position : "right",
 		}]
 	});
-	
+	introjs.onbeforechange(function(targetElement) {
+		introjs.refresh();
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "description":
+			$("#codeAnimation").addClass("opacity00");
+			break;
+			
+		case "codeAnimation":
+			$("#addressDiv").addClass("opacity00");
+			break;
+			
+		case "printf":
+			$("#consoleId").removeAttr("style").addClass("opacity00");
+			$("#runEditor1").addClass("opacity00");
+			break;
+			
+			
+		case "consoleId":
+				if (introjs._currentStep == 6) {
+						$("#inputVal").text("");
+						//$(".introjs-tooltip").removeClass("hide");
+					
+				} else if (introjs._currentStep == 7) {
+					$(".introjs-helperLayer").one("transitionend", function() {
+						if (introjs._direction == "backward") {
+							introjs._introItems.splice(8, 1);	//only one element at index 8
+						}
+					});
+					
+				} else if (introjs._currentStep == 9) {
+					$('#val0').css('border', '');
+					
+				} else if (introjs._currentStep == 11) {
+					$('#val1').css('border', '');
+				}
+			break;
+			
+		case "scanf":
+			
+				if (introjs._currentStep == 5) {
+					$("#inputVal").text("");
+					$("[data-toggle='popover']").popover("hide");	
+				} else if (introjs._currentStep == 10) {
+					$("[data-toggle='popover']").popover("hide");	
+					$("#givenNum2").removeClass("zIndex");
+					$("#givenNum1").removeClass("zIndex");
+					$("#val0, #val1").css('border', '');
+					$("#percentId").css('border', '1px solid black');
+				} else if (introjs._currentStep == 12){
+					$("#percentId").css('border', '1px solid black');
+					$("#scanNum2").popover("hide");
+				}
+			break;
+			
+		case "rsId":
+			$("#givenNum1").text("");
+			$('#rsId').css('border', '1px solid black');
+			$('#rsId').css('color', 'black');
+			break;
+			
+		
+		}
+	});	
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		introjs.refresh();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -101,6 +190,7 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 			$("#codeAnimation").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "In this program we will learn how <span class='ct-code-b-yellow'>scanf()</span> function behaves when " 
 					+ " formatting characters are mixed with special characters."		
 				typing(".introjs-tooltiptext", text, function() {
@@ -112,19 +202,31 @@ function introGuide() {
 		case "printf":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				//$(".introjs-tooltip").removeClass("hide");
 				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
+					if (introjs._direction=="forward") {
+							introjs.nextStep()
+					} else {
+						introjs.previousStep()
+					}
+				}, 500);
 			});
 			break;
 			
 		case "addressDiv":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				//$(".introjs-tooltip").removeClass("hide");
 				$("#addressDiv").removeClass("opacity00");
 				tl.to("#addressLocation", 1, {opacity: 1, onComplete: function() {
 					$("#addressLocation").removeClass("opacity00");
-					introjs.nextStep();
+					setTimeout(function() {
+						if (introjs._direction=="forward") {
+								introjs.nextStep()
+						} else {
+							introjs.previousStep()
+						}
+					}, 500);
 				}});
 			});
 			break;
@@ -133,19 +235,28 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 				if (introjs._currentStep == 4) {
 					$(".introjs-helperLayer").one("transitionend", function() {
-						tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
-							$("#consoleId").removeClass("opacity00");
-							var text = "Enter ammount and interest: <span id='inputVal'></span>"
-							typing("#runEditor1", text, function() {
-								setTimeout(function() {
-									introjs.nextStep();
-								}, 1000);
-							});
-						}});
+						if (introjs._direction=="forward") {
+							//$(".introjs-tooltip").removeClass("hide");
+							tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
+								$("#consoleId").removeClass("opacity00");
+								$("#runEditor1").removeClass("opacity00");
+								var text = "Enter ammount and interest: <span id='inputVal'></span>"
+									typing("#runEditor1", text, function() {
+										setTimeout(function() {			
+											introjs.nextStep()
+										}, 500);
+									});
+							}});
+						} else {
+							setTimeout(function() {	
+								introjs.previousStep()
+							}, 500);
+						}
 					});
-					
 				} else if (introjs._currentStep == 6) {
 					$(".introjs-helperLayer").one("transitionend", function() {
+						introjs._introItems[introjs._currentStep]["isCompleted"] = false;
+						//$(".introjs-tooltip").removeClass("hide");
 						var text = "Rs.<input id='num1' class='int-num'/>%";
 						typing("#inputVal", text, function() {
 							var text2 = "Enter <span class='ct-code-b-yellow'>ammount</span> and <span class='ct-code-b-yellow'>interest</span>.<br/><br/> " 
@@ -159,8 +270,13 @@ function introGuide() {
 								$("#num1").focus();
 								arr = [];
 								$('#num1').on("keydown", function(e) {
-									if (arr.length == 2) {
-										if (e.keyCode == 32) {
+									if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+										e.preventDefault();
+									}
+									if (arr.length == 1) {
+										var flag = false;
+										flag = $('#num1').val().indexOf(' ') >= 0;
+										if (e.keyCode == 32 && flag) {
 											e.preventDefault();
 										}
 									}
@@ -189,9 +305,10 @@ function introGuide() {
 									});
 									
 									if (arr.length < 2) {
-										$(".introjs-nextbutton").hide();
+										$(".introjs-nextbutton,.introjs-prevbutton").hide();
 									} else if (arr.length == 2) {
-										$(".introjs-nextbutton").show();
+										var animTag = $('#inputVal').html(); 
+										$(".introjs-nextbutton,.introjs-prevbutton").show();
 									}
 									
 									$.each(arr, function(idx, val) {
@@ -207,30 +324,34 @@ function introGuide() {
 					});
 					
 				} else if (introjs._currentStep == 7) {
-					var text = $("#num1").val();
-					var i = 0;
-					$("#inputVal").empty();
-					$.each(text.split(" "), function(index, val) {
-						$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
-					    if(i == 1) {
-						  $("#space1").remove();
-						  $("#val0").before("<span id='rsId'>Rs.</span>");
-						  $("#val1").after("<span id='percentId'>%</span>");
-					    }
-					  	i++;
-					});
-					
-					$('#rsId').css("border", "1px solid yellow");
-					
-					var newStep = {
-						"element" : "#rsId",
-						"intro" : "",
-						"position" : "right"
-					}
-					introjs.insertOption(introjs._currentStep + 1, newStep);
-					setTimeout(function() {
-						introjs.nextStep();
-					},1000);
+						if (introjs._direction == "forward") {
+							var numText = $("#num1").val();
+							var i = 0;
+							$("#inputVal").empty();
+							$.each(numText.split(" "), function(index, val) {
+								$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
+							    if(i == 1) {
+								  $("#space1").remove();
+								  $("#val0").before("<span id='rsId'>Rs.</span>");
+								  $("#val1").after("<span id='percentId'>%</span>");
+							    }
+							  	    i++;
+							});
+							$('#rsId').css("border", "1px solid yellow");
+								var newStep = {
+									"element" : "#rsId",
+									"intro" : "",
+									"position" : "right"
+								}
+								introjs.insertOption(introjs._currentStep + 1, newStep);
+							setTimeout(function() {
+								introjs.nextStep();
+							},1000);
+						} else {
+							setTimeout(function() {
+								introjs.previousStep();
+							}, 500);
+						}
 					
 				} else if (introjs._currentStep == 9) {
 					$("#popoverContent1").text($("#val0").text());
@@ -238,28 +359,39 @@ function introGuide() {
 					$('#rsId').css('border', 'none');
 					$('#rsId').css('color', 'white');
 					$(".introjs-helperLayer").one("transitionend", function() {
+						//$(".introjs-tooltip").removeClass("hide");
 						$('#rsId').css("border", "none");
-						$('#rsId').effect( "transfer", { to: $("#val0"), className: "ui-effects-transfer" }, 1000, function() {
+						if (introjs._direction=="forward") {
+							$('#rsId').effect( "transfer", { to: $("#val0"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#val0').css('border', '1px solid yellow');
+								setTimeout(function() {
+									introjs.nextStep()
+								}, 500);
+							});
+						} else {
 							setTimeout(function() {
-								introjs.nextStep();
-							},1000);
-						});
+								introjs.previousStep()
+							}, 500);
+						}
 					});
-					
 				} else if (introjs._currentStep == 11) {
 					$("#scanNum1").popover("show");
 					$("#popoverContent1").text($("#val0").text());
 					$("#popoverContent2").text($("#val1").text());
 					$(".introjs-helperLayer").one("transitionend", function() {
-						$('#val0').css('border', 'none');
-						$('#val0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
-							$('#val1').css('border', '1px solid yellow');
-							
+						if (introjs._direction=="forward") {
+							$('#val0').css('border', 'none');
+							$('#val0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
+								$('#val1').css('border', '1px solid yellow');
+								setTimeout(function() {
+									introjs.nextStep()
+								}, 500);
+							});
+						} else {
 							setTimeout(function() {
-								introjs.nextStep();
-							},1000);
-						});
+								introjs.previousStep()
+							}, 500);
+						}
 					});
 				} else if (introjs._currentStep == 13) {
 					$("[data-toggle='popover']").popover("show");
@@ -269,9 +401,10 @@ function introGuide() {
 						$('#val1').css('border', 'none');
 						$('#val1').effect( "transfer", { to: $("#percentId"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#percentId').css('border', '1px solid yellow');
+							$(".introjs-tooltip").removeClass("hide");
 							var text = "Here, the character <span class='ct-code-b-yellow'>%</span> is not assigned to the arguments.";
 							typing(".introjs-tooltiptext", text, function() {
-								$(".introjs-nextbutton").show();
+								$(".introjs-nextbutton,.introjs-prevbutton").show();
 							});
 						});
 					});
@@ -281,11 +414,16 @@ function introGuide() {
 					$("#popoverContent2").text($("#val1").text());
 					$("#inputVal").removeClass("zIndex");
 					$(".introjs-helperLayer").one("transitionend", function() {
+						//$(".introjs-tooltip").removeClass("hide");
 						var text = "ammount = "+$("#givenNum1").text()+" interest = "+$("#givenNum2").text()+"";
 						typing("#runEditor2", text, function() {
 							setTimeout(function() {
-								$(".introjs-nextbutton").click();
-							},1000);
+								if (introjs._direction=="forward") {
+										$(".introjs-nextbutton").click();
+								} else {
+									introjs.previousStep()
+								}
+							}, 500);
 						});
 					});
 				}
@@ -295,10 +433,11 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 				if (introjs._currentStep == 5) {
 					$(".introjs-helperLayer").one("transitionend", function() {
+						$(".introjs-tooltip").removeClass("hide");
 						var text = "Here we are implementing the <span class='ct-code-b-yellow'>scanf()</span> function with " 
 							+ "<span class='ct-code-b-yellow'>%d</span> preceded by <span class='ct-code-b-yellow'>Rs.</span>";
 						typing(".introjs-tooltiptext", text, function() {
-							$(".introjs-nextbutton").show();
+							$(".introjs-nextbutton,.introjs-prevbutton").show();
 						});
 					});
 				} else if (introjs._currentStep == 10) {
@@ -309,8 +448,8 @@ function introGuide() {
 						$("#givenNum1").offset({"top": l1.top, "left": l1.left});
 						$("#givenNum2").offset({"top": l2.top, "left": l2.left});
 						
-						$("#givenNum1").text( $('#val0').text() );
-						$("#givenNum2").text( $('#val1').text() );
+						$("#givenNum1").text( $('#val0').text() ).css('opacity', '0');
+						$("#givenNum2").text( $('#val1').text() ).css('opacity', '0');
 						
 						$('#val0').css('border', '1px solid yellow');
 						$("#inputVal").addClass("zIndex");
@@ -319,6 +458,7 @@ function introGuide() {
 							$("#dBlink1").addClass("blinking-orange");
 							$("#scanNum1").popover("show");
 							$("#popoverContent1").text($("#val0").text());
+							$(".introjs-tooltip").removeClass("hide");
 							var text1 = "The <span class='ct-code-b-yellow'>scanf()</span> function reads " 
 								+ "<span class='ct-code-b-yellow'>"+$("#val0").text()+"</span> into " 
 								+ "<span class='ct-code-b-yellow'>&a</span> using the first <span class='ct-code-b-yellow'>%d</span>"
@@ -331,6 +471,9 @@ function introGuide() {
 					$("#scanNum1").popover("show");
 					$("#popoverContent1").text( $("#val0").text() );
 					$("#popoverContent2").text( $("#val1").text() );
+					var l2 = $("#scanNum2").offset();
+					$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+					$("#givenNum2").text( $('#val1').text()).css('opacity', '0');
 					$(".introjs-helperLayer").one("transitionend", function() {
 						$('#val1').effect( "transfer", { to: $("#dBlink2"), className: "ui-effects-transfer" }, 1000, function() {
 							$("#val1").addClass("blinking-orange");
@@ -349,8 +492,9 @@ function introGuide() {
 								var text = "The <span class='ct-code-b-yellow'>scanf()</span> function reads " 
 								+ "<span class='ct-code-b-yellow'>"+$("#val1").text()+"</span> into " 
 								+ "<span class='ct-code-b-yellow'>&b</span> using the second <span class='ct-code-b-yellow'>%d</span>"
+								$(".introjs-tooltip").removeClass("hide");
 								typing(".introjs-tooltiptext", text, function() {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton,.introjs-prevbutton").show();
 								});
 							}});
 						});
@@ -366,9 +510,14 @@ function introGuide() {
 			$('#val1').css('border', 'none');
 			$('#percentId').css('border', 'none');
 			$(".introjs-helperLayer").one("transitionend", function() {
+				//$(".introjs-tooltip").removeClass("hide");
 				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
+					if (introjs._direction=="forward") {
+							introjs.nextStep()
+					} else {
+						introjs.previousStep()
+					}
+				}, 500);
 			});
 			break;
 			
@@ -377,9 +526,10 @@ function introGuide() {
 			$('#rsId').css('border', '1px solid black');
 			$('#rsId').css('color', 'black');
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "Here, characters <span class='ct-code-b-yellow'>Rs.</span> are not assigned to the arguments.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -389,8 +539,9 @@ function introGuide() {
 			$("[data-toggle='popover']").popover("show");
 			$("#popoverContent1").text( $("#val0").text() );
 			$("#popoverContent2").text( $("#val1").text() );
+			$('.introjs-tooltip').css('min-width', '128px');
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
+				var text = "Click to restart." 
 				typing(".introjs-tooltiptext", text, function() {
 					$("#restart").removeClass("opacity00");
 					$("#restart").click(function() {
@@ -420,6 +571,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -444,7 +596,7 @@ function valTransfer1() {
 		$("#givenNum1").addClass("blinking-orange");
 		$("#givenNum1").removeClass("opacity00");
 		$("#scanNum1").removeClass("blinking-orange");
-		$(".introjs-nextbutton").show();
+		$(".introjs-nextbutton,.introjs-prevbutton").show();
 	}});
 }
 

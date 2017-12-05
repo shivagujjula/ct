@@ -1,6 +1,7 @@
-var typingInterval = 10;
+var typingInterval = 1;
 var intro;
 var indexCount = 0;
+var temp;
 
 function introFunction() {
 	intro = introJs();
@@ -13,34 +14,34 @@ function introFunction() {
 		steps : [{
 			element : "#program",
 			intro	: "",
-			position : "bottom"
+			position : "bottom",
 		},{
 			element : "#savingFileStep",
+			tooltipClass: "hide",
 			intro:'Let us save the file to <span class="ct-code-b-yellow">example.c</span>.',
-			position : "bottom"
+			position : "bottom",
 		},{
 			element : "#compilation",
 			intro	: '',
 			position : "bottom",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		},{
 			element : "#commandLineValues",
 			intro	: '',
 			position : "bottom",
-			tooltipClass : "hide"
+			tooltipClass : "hide",
 		},{
 			element : "#mainMethod",
 			intro	: '',
 			position : "bottom",
-			tooltipClass : "hide"
 		},{
 			element : "#argcCount",
 			intro 	: "",
-			position : "bottom"
+			position : "bottom",
 		},{
 			element : "#argsLine",
 			intro :"",
-			position : "bottom"
+			position : "bottom",
 		},{
 			element : "#animationBox",
 			tooltipClass : "hide",
@@ -49,95 +50,168 @@ function introFunction() {
 			element : "#sopArgsLength",
 			intro	: "",
 			position : "bottom",
-			tooltipClass : "hide"
 		},{
 			element : "#animationBox",
 			tooltipClass : "hide",
 			animateStep: "arrayLength"
 		},{
-			element : ".output-console",
+			element : "#outputConsole",
 			tooltipClass : "hide"
 		},{
 			element : "#sopAgrsOf0",
 			intro : "",
 			position : "bottom",
-			tooltipClass : "hide",
+			//tooltipClass : "hide",
 			animateStep: "sopArgsZero"
 		},{
 			element : "#animationBox",
 			tooltipClass : "hide",
 			animateStep: "indexZero"
 		},{
-			element : ".output-console",
+			element : "#outputConsole",
 			tooltipClass : "hide"
 		},{
 			element : "#sopAgrsOf1",
 			intro : "",
 			position : "bottom",
-			tooltipClass : "hide",
 			animateStep: "sopAgrs"
 		},{
 			element : "#animationBox",
 			tooltipClass : "hide",
 			animateStep: "indexZero"
 		},{
-			element : ".output-console",
+			element : "#outputConsole",
 			tooltipClass : "hide"
 		},{
 			element : "#sopAgrsOf2",
 			intro : "",
 			position : "bottom",
-			tooltipClass : "hide",
 			animateStep: "sopAgrs"
 		},{
 			element : "#animationBox",
 			tooltipClass : "hide",
 			animateStep: "indexZero"
 		},{
-			element : ".output-console",
+			element : "#outputConsole",
 			tooltipClass : "hide"
 		},{
 			element : "#sopAgrsOf3",
 			intro : "",
 			position : "bottom",
-			tooltipClass : "hide",
 			animateStep: "sopAgrs"
 		},{
 			element : "#animationBox",
 			tooltipClass : "hide",
 			animateStep: "indexZero"
 		},{
-			element : ".output-console",
+			element : "#outputConsole",
 			tooltipClass : "hide"
 		},{
 			element : "#restartBtn",
-			intro : "Click to Restart",
+			intro : "Click to restart",
 			position : "right"
 		}]
 	});
-	intro.onafterchange(function(targetElement) {
+	
+	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "program" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+				if (intro._direction == "backward") {
+					$('#totalStep2').empty().append(temp);
+				}
+				
+			break;
+			case "savingFileStep" :
+				$('#totalStep2').empty().append(temp);
+				$('#compilation').addClass('opacity00');
+			break;
+			case"compilation" :
+				$('#compilation').addClass('opacity00');
+				$('#commandLineValues').addClass('opacity00');
+				break;
+			case "commandLineValues" :
+				$('#commandLineValues').addClass('opacity00');
+			break;
+			case "argsLine" :
+				$('tbody > tr:eq(1) > *').removeClass('td-border');
+				$('tbody > tr:eq(1) span').addClass('opacity00');
+			break;
+			case "animationBox" :
+				var animateStep = intro._introItems[intro._currentStep].animateStep;
+				switch(animateStep) {
+					case "arraySize" :
+						$('tbody > tr:eq(1) > *').removeClass('td-border');
+						$('tbody > tr:eq(1) span').addClass('opacity00');
+					break;
+				}
+			break;
+		}
+	});
+	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton, .introjs-bullets').hide();
+		
+		// ********************** start ************back button logic
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
+		// ********************** end ************back button logic
+		
+		
+		
+		
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+			case "program" :
+				temp = $('#totalStep2').html();
 				$('.introjs-tooltip').removeClass('hide');
-				text = 'Here we will learn how the <span class="ct-code-b-yellow">command line arguments</span> work.';
+				text = 'Let us learn how <span class="ct-code-b-yellow">command line arguments</span> work.';
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$('.introjs-nextbutton').show();
 				});	
 			break;
+			
+			case "outputConsole" :
+				if (intro._direction == "backward") {
+					intro.previousStep();
+				}
+				
+				if (intro._direction == "backward" && indexCount != 0) {
+					indexCount--;
+					intro.previousStep();
+					if (indexCount == 0) {
+						$('#outputArgsOf0').empty();
+					} else {
+						$('.final-div > span:not(:empty):last').empty();
+					}
+				}
+			break;
+				
 			case "savingFileStep" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					setTimeout(function() {
+						$('.introjs-tooltip').removeClass('hide');
 						saveFile();
-					},200);
+					},100);
 				});
 			break;
 			case"compilation" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$('.introjs-tooltip').removeClass('hide');
 					$("#compilation").removeClass("opacity00");
 					text = $("#compilation").html();
 					typing('#compilation', text, typingInterval, 'white', function() {
@@ -146,37 +220,38 @@ function introFunction() {
 								"executable file which is created only when <span class='ct-code-b-yellow'>example.c</span>"+
 								" is successfully compiled.</li><li><span class='ct-code-b-yellow'>example.c</span>"+
 								" is our file name.</li>";
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							intro._introItems[intro._currentStep].intro = "";
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
 				break;
 			case "commandLineValues" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$('.introjs-tooltip').removeClass('hide');
 					$("#commandLineValues").removeClass("opacity00");
 					text = $("#commandLineValues").html();
 					typing('#commandLineValues', text, typingInterval, 'white', function() {
-						text = "<ul><li>When we successfully compile the <span class='ct-code-b-yellow'>example.c</span> file, we get a "
-								+"<span class='ct-code-b-yellow'>./example</span> file which is an executable file. "+
-								"</li><li>The arguments that are passed to the program from the command line those are "+
+						text = "<ul><li>When we successfully compile the <span class='ct-code-b-yellow'>example.c</span> file, an "
+								+"executable <span class='ct-code-b-yellow'>./example</span> file is created. "+
+								"</li><li>The arguments that are passed to the program from the command line are "+
 								"called <span class='ct-code-b-yellow'>command line arguments"+
 								"</span>.</li><li>Each argument "+
-								"must be separated by a space.</li><li>In c <span class='ct-code-b-yellow'>./example</span>"+
-								" is also take it as one argument.</li></ul>";
+								"must be separated by a space.</li><li>In c, <span class='ct-code-b-yellow'>./example</span>"+
+								" is also taken as one argument.</li></ul>";
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-							$('.introjs-nextbutton').show();
+							intro._introItems[intro._currentStep].intro = "";
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
 			break;
 			case "mainMethod" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
-					text = "This is the main method, its reads the command line arguments.<ul><li>"
+					text = "This is the main method, it reads the command line arguments.<ul><li>"
 							+ "The <span class='ct-code-b-yellow'>argc</span> is the count of"
 							+ " the total number of arguments that"
 							+ " are passed to the command line.</li>"
@@ -184,43 +259,50 @@ function introFunction() {
 							+ " is a vector which contains the "
 							+ "commad line arguments.</li></ul>";
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "argcCount" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
-					text = "<ul><li><span class='ct-code-b-yellow'>argc</span> is the argument count which store the"+
+					text = "<ul><li><span class='ct-code-b-yellow'>argc</span> is the argument count which stores the"+
 							" total number of arguments passed to the main method.</li><li>"+
-							"That can be accessed using the reference <span class='ct-code-b-yellow'>argc</span>.</li></ul>";
+							"It can be accessed using the reference <span class='ct-code-b-yellow'>argc</span>.</li></ul>";
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "argsLine" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
 					text = "<ul><li><span class='ct-code-b-yellow'>argv</span> is a vector which contain all the commad line arguments.</li><li>"+
 							"They can be accessed using the reference <span class='ct-code-b-yellow'>argv</span>.</li></ul>";
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "animationBox" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "arraySize" :
-							animateArrayWith(0);
+							if (intro._direction == "forward") {
+								animateArrayWith(0);
+							} else {
+								intro.previousStep();
+							}
+							
 						break;
 						case "arrayLength" :
-							animateLengthWith(0);
+							if (intro._direction == "forward") {
+								animateLengthWith(0);
+							} else {
+								$('#outputArgsLength').empty();
+								intro.previousStep();
+							}
 						break;
 						case "indexZero" :
 							animateArrayIndexWith(indexCount);
@@ -229,37 +311,39 @@ function introFunction() {
 				});
 			break;
 			case "sopArgsLength" :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
-				$('.introjs-helperLayer').one('transitionend', function() {
-					$('.introjs-tooltip').removeClass('hide');
+				$('.introjs-helperLayer').one('transitionend', function() { 
 					text = "<ul><li>This statement prints the length of the array "+
 							"<span class='ct-code-b-yellow'>argc</span>.</li></ul>";
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
+			case "restartBtn" :
+				$('.introjs-tooltip').css('min-width','125px');
+				$('.introjs-helperLayer').one('transitionend', function() { 
+					$('#restartBtn').removeClass('visibility-hidden');
+				});
+			break;
 			case "sopAgrsOf"+indexCount :
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "sopArgsZero" :
-							text = "<ul><li>In C, array elements are stored depending on <span class='ct-code-b-yellow'>subscript</span> or "+
+							text = "<ul><li>In C, array elements are accessed using a <span class='ct-code-b-yellow'>subscript</span> or "+
 									"<span class='ct-code-b-yellow'>index</span>."+
 									"<li>The above statement accesses the element present at index <span class='ct-code-b-yellow'>0</span>"+
-									" in the Character array <span class='ct-code-b-yellow'>argv</span> i.e(argv[0]).</li></ul>";
+									" in the character array <span class='ct-code-b-yellow'>argv</span> i.e (argv[0]).</li></ul>";
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						break;
 						case "sopAgrs" :
-							$('.introjs-tooltip').removeClass('hide');
 							text = "The above statement accesses the element present at index <span class='ct-code-b-yellow'>"+ indexCount +"</span>"+
-									" in the Character array <span class='ct-code-b-yellow'>argv</span> i.e(argv["+ indexCount +"]).";
+									" in the character array <span class='ct-code-b-yellow'>argv</span> i.e (argv["+ indexCount +"]).";
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						break;
 					}
@@ -268,11 +352,8 @@ function introFunction() {
 		}
 	});
 	intro.start();
-	$('.introjs-nextbutton').hide();
-	$('.introjs-prevbutton').hide();
-	$('.introjs-skipbutton').hide();
-	$('.introjs-bullets').hide();
-
+	$( ".output-console-body > * " ).wrap( "<div class='final-div'></div>" );
+	
 	$('body').keypress(function(e) {
 		if (e.which == 13) {
 			e.preventDefault();
@@ -287,14 +368,14 @@ function introFunction() {
 
 //save file animation
 function saveFile() {
-	$('.arrow1').append('<i class="fa fa-arrow-right faa-passing animated"></i>');
+	$('.arrow1').append('<i class="fa fa-arrow-right faa-passing animated remove-arrow"></i>');
 	$('#dotJavaFileAboveText').show(1000).text('Saving').addClass('loading');
-	$('.dotJavaFile').fadeTo(3000,1,function() {
-		$('.arrow1 i').removeClass('faa-passing')
+	$('.dotJavaFile').fadeTo(2000,1,function() {
+		$('.arrow1 i').removeClass('faa-passing');
 		$('#dotJavaFileAboveText').text('Saved').removeClass('loading');
 		$("#className").text('example'),$("#extention").text('.c'),
 		$('#dotJavaFileBelowText').addClass('pulse').on('animationend',function() {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		});
 	});
 }
@@ -327,12 +408,11 @@ function animateValueWith(index) {
 	var l2 = $('#tdValue' + index).offset();
 	var topLength = l1.top-l2.top;
 	var leftLength = l1.left-l2.left;
-	TweenLite.from($('#tdValue' + index), 1.5, {top: topLength, left: leftLength, onComplete: function() {
+	TweenLite.from($('#tdValue' + index), 1.0, {top: topLength, left: leftLength, onComplete: function() {
 		if (index < 3) {
 			animateValueWith(index + 1);
 		} else {
-				intro.nextStep();
-				$('.introjs-nextbutton').show();
+			intro.nextStep();
 		}
 	}});
 }
@@ -344,20 +424,19 @@ function animateLengthWith(index) {
 		if (index < 3) {
 			animateLengthWith(index + 1);
 		} else {
-			intro.nextStep();
-			setTimeout(function() {
-				$('#outputArgsLength').typewriting("length of the arguments : 4", {
-					"typing_interval": 100,
-					"cursor_color": 'white'
-					}, function() {
-						$('#outputArgsLength').removeClass('typingCursor');
-						setTimeout(function() {
-							intro.nextStep();
-							$('.introjs-nextbutton').show();
-							$('#tdLength0, #tdLength1, #tdLength2, #tdLength3').addClass('visibility-hidden');
-						}, 1300);
-					});
-			}, 1300);
+		intro.nextStep();
+		setTimeout(function() {
+			$('#outputArgsLength').typewriting("length of the arguments : 4", {
+				"typing_interval": 100,
+				"cursor_color": 'white'
+				}, function() {
+				$('#outputArgsLength').removeClass('typingCursor');
+					setTimeout(function() {
+						intro.nextStep();
+						$('tbody > tr:eq(2) span').removeAttr('style').addClass('opacity00');
+					}, 1300);
+				});
+		}, 1300);
 		}
 	});
 }
@@ -373,7 +452,7 @@ function animateArrayIndexWith(index) {
 		$('#tdIndex' + index).removeClass('opacity00');
 		TweenLite.from($('#tdIndex' + index), 1.5, {top: topLength, left: leftLength, onComplete: function() {
 			$('#td' + index).effect("highlight", {color: '#003399'}, 1300, function() {
-				intro.nextStep();
+				intro.nextStep(); 
 				setTimeout(function() {
 					$('#outputArgsOf' + index).typewriting("argv[" + index + "] : " + $('#tdValue' + index).text(), {
 						"typing_interval": 100,
@@ -382,15 +461,8 @@ function animateArrayIndexWith(index) {
 							$('#outputArgsOf' + index).removeClass('typingCursor');
 							indexCount++;
 							setTimeout(function() {
-								intro.nextStep();
+								intro.nextStep(); 
 								$('#tdIndex' + index).addClass('opacity00');
-								if (intro._currentStep == 23) {
-									setTimeout(function() {
-										$('#restartBtn').removeClass('visibility-hidden');
-									},800);
-								} else {
-									$('.introjs-nextbutton').show();
-								}
 							}, 1300);
 						});
 				}, 1300);
@@ -400,7 +472,6 @@ function animateArrayIndexWith(index) {
 	});
 }
 
-//typing function
 function typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction) {
 	$(typingId).typewriting(typingContent, {
 		"typing_interval" : typingInterval,
@@ -408,6 +479,6 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
-		$('.introjs-tooltip').show();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }

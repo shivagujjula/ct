@@ -17,7 +17,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/secure/lang/c/js-min/fina.min.js" type="text/javascript"></script>
-
 <title>float data-type</title>
 <style>
 .td-border {
@@ -242,6 +241,13 @@ td {
 #intpart {
 	min-height : 180px;
 }
+.user-btn, #user-btn1, .user-btn2 {
+	width : 46px;
+	background-color:#5bc0de
+}
+.nextBtn2 {
+	background-color: #5bc0de !important;
+}
 #fractpart {
 	min-height : 180px;
 }
@@ -279,6 +285,7 @@ td {
 
 .color-yellow {
 	color : yellow;	
+	font-weight: bold;
 }
 
 #fspan31 {
@@ -300,35 +307,51 @@ td {
 	<div class = 'text-center'>
 		<h1 class = 'label ct-demo-heading first-heading'>float data type</h1>	
 	</div>
+</div>
 	<div class='buttons-div text-center margin10'>
 		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 	</div>
-		<div class = 'col-xs-offset-2 col-xs-8 main-div margin10 padding10' id = 'mainDiv'>
+		<div class = 'col-xs-offset-2 col-xs-8 main-div margin10 padding10' id = 'mainDiv' style="font-family: monospace;">
 			<span id = 'typing1' class = 'padding10'></span>
 			<div class = 'box-div col-xs-12 ' id = 'boxDiv'>
 				<div class = "border-box opacity00 padding2" id = "box0"></div>
 			</div>
 			<div class = 'floatsign-div col-xs-12 opacity00 margin4' id = 'floatsignDiv'>
-				<span id = 'firstDiv' class = 'opacity00 margin10'>sign bit</span><span id = 'secondDiv' class = 'opacity00 margin10'>exponent bits</span><span id = 'thirdDiv' class = 'opacity00 margin10'>mantissa</span>
+				<span id = 'firstDiv' class = 'opacity00 margin10'>sign bit</span>
+				<span id = 'secondDiv' class = 'opacity00 margin10'>exponent bits</span>
+				<span id = 'thirdDiv' class = 'opacity00 margin10'>mantissa</span>
 			</div>
 			<div class = 'floatnum-div col-xs-12 opacity00 margin4' id = 'floatnumDiv'>
-				<span id = 'first1Div' class = 'opacity00 margin10'>1 bit</span><span id = 'second2Div' class = 'opacity00 margin10'>8 bits</span><span id = 'third3Div' class = 'opacity00 margin10'>23 bits</span>
+				<span id = 'first1Div' class = 'opacity00 margin10'>1 bit</span>
+				<span id = 'second2Div' class = 'opacity00 margin10'>8 bits</span>
+				<span id = 'third3Div' class = 'opacity00 margin10'>23 bits</span>
 			</div>
 			<div class = "input-main-div col-xs-12" id = 'inputmainDiv'>
 			 	<br><span id = 'floatdec' class = 'opacity00 margin10'>A <b>float</b> is declared and initialised as</span>
-				<br><div id="inputDiv" class="col-xs-offset-2 col-xs-7 opacity00 margin10">float&nbsp;&nbsp;&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp<b>2.5</b>;
-						<br><br><span id = "floatVar" class = 'opacity00 margin10'> f <span class ="fa fa-arrow-right marginleft4"></span>&nbsp;&nbsp;&nbsp;variable</span>
-						<br><div id = 'fdec'><div id = 'floatBox' class = 'opacity00 margin10'>2.5</div><span class = 'opacity00 byte-div margin4 marginleft4'><span class ="fa fa-arrow-right margin4 marginleft4"></span>&nbsp;&nbsp;4 bytes</span></div>
-						<div id = 'addDiv' class = 'opacity00 margin10'>1024 <span class ="fa fa-arrow-right marginleft4"></span>&nbsp;&nbsp;&nbsp;address</div>
+				<br><div id="inputDiv" class="col-xs-offset-2 col-xs-7 opacity00 margin10">float&nbsp;&nbsp;&nbsp;&nbsp; 
+							f&nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp<b>2.5</b>;
+						<br><br><span id = "floatVar" class = 'opacity00 margin10'> f <span class ="fa fa-arrow-right marginleft4">
+						</span>&nbsp;&nbsp;&nbsp;variable</span>
+						<br><div id = 'fdec'><div id = 'floatBox' class = 'opacity00 margin10'>2.5
+						</div>
+							<span class = 'opacity00 byte-div margin4 marginleft4'>
+							<span class ="fa fa-arrow-right margin4 marginleft4">
+							</span>&nbsp;&nbsp;4 bytes</span></div>
+						<div id = 'addDiv' class = 'opacity00 margin10'>1024 <span class ="fa fa-arrow-right marginleft4">
+							</span>&nbsp;&nbsp;&nbsp;address</div>
 					</div>
 			</div>
 		</div>
 		<div class = 'col-xs-11 animation-div margin10' id = 'animationDiv'>
 			<div class = 'row'>
-				<div class = 'col-xs-offset-4 col-xs-6' id = 'mainnumDiv'><span id = 'numDiv' class = 'opacity00'>Consider a float <span id = 'intnumDiv'>12</span><span id = 'fractnumDiv'>.625</span> in which <b>12</b> is the integral part and <b>.625</b> is the fractional part.</span></div>
+				<div class = 'col-xs-offset-3 col-xs-8' id = 'mainnumDiv' style="font-family: monospace;">
+					<span id = 'numDiv' class = 'opacity00'>Consider a float <span id = 'intnumDiv'>12</span>
+					<span id = 'fractnumDiv'>.625</span> in which <b>12</b> is the integral part and <b>.625</b> is the fractional part.</span>
+				</div>
 				<div class = 'row'>
+				<div class="col-xs-12" style="margin-top:20px;">
 				<div class = 'col-xs-6 int-part padding0' id = 'intpart' style = "font-size : 13px">
-					<div class = 'col-xs-5 padding0'>
+					<div class = 'col-xs-5 padding0' style="font-family: monospace;">
 						<div class = 'panel panel-default opacity00' id = 'int1Div'>
 			    			<div class="panel-heading text-center"><b>Decimal To Binary Steps</b></b></div>
 			    			<div class="panel-body panel-text"></div>
@@ -337,7 +360,7 @@ td {
 						<div class = 'col-xs-6 padding0 int-div box-border opacity00' id = 'int2Div'>
 						</div>
 				</div>
-				<div class = 'col-xs-6 fract-part margin4 padding0' id = 'fractpart' style = "font-size : 13px">
+				<div class = 'col-xs-6 fract-part margin4 padding0' id = 'fractpart' style = "font-size : 13px; font-family: monospace;">
 					<div class = 'col-xs-6 padding0'>
 						<div class = 'panel panel-default opacity00' id = 'int3Div'>
 			    			<div class="panel-heading text-center"><b>Fraction To Binary Steps</b></b></div>
@@ -348,9 +371,10 @@ td {
 					</div>
 				</div>
 				</div>
+				</div>
 			
 			<div class = 'col-xs-12 padding0'>
-				<div class = 'col-xs-offset-3 col-xs-6  padding0 final-div opacity00 margin10' id = 'finalDiv'>
+				<div class = 'col-xs-offset-3 col-xs-6  padding0 final-div opacity00 margin10' id = 'finalDiv' style="font-family: monospace;">
 				<div id = 'finalDivtext' class= "marginleft5"></div>
 					<div id = 'shiftdotDiv'></div>
 					<br>

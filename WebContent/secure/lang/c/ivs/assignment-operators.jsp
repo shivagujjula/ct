@@ -17,7 +17,9 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+
 <script src="/secure/lang/c/js-min/asio.min.js"></script>
+
 <title>assignment-operators</title>
 <style type="text/css">
 .border {
@@ -62,6 +64,7 @@
 
 .background-color {
 	background-color: lavender;
+	font-family: monospace;
 }
 
 .margin-top20 {
@@ -211,6 +214,11 @@
 
 .ct-code-b-green {
 	color: green;
+}
+
+y {
+	color: yellow;
+	font-weight: bold;
 }
 </style>
 <script type="text/javascript">

@@ -39,6 +39,7 @@
 .information-div {
 	min-height: 70px;
 	border-radius: 10px;
+	font-family: monospace;
 }
 
 .animation-div {
@@ -212,20 +213,19 @@ table {
 	</div>
 	<div class="col-xs-offset-3 col-xs-6 binary-value-div margin-top20" id="binaryValueDiv">
 		<div class="col-xs-2 padding0" id ="values">
-			<span id="aSpan" class="opacity00">x = </span><div id="binaryNum" style="display:inline;" class="binary-num"></div>
+			<span id="aSpan" class="opacity00">x = </span><span id="binaryNum" class="binary-num"></span>
 		</div>
-		<div class="col-xs-9 padding0" style="width:-moz-fit-content;width:initial;">
-		<div id="originalValue"></div>
-		<div id="complementValue" class="margin-top20"></div>
-		<div id="addOne" style="float:right;" class="opacity00">1&nbsp;</div>
-		<div id="line" class="col-xs-12 line padding0 opacity00"></div>
-		<div id="twosComplementResult"></div>
+		<div class="col-xs-9 padding0" style="width:-moz-fit-content;width:initial;" id="">
+			<div id="originalValue"></div>
+			<div id="complementValue" class="margin-top20"></div>
+			<div id="addOne" style="float:right;" class="opacity00">1&nbsp;</div>
+			<div id="line" class="col-xs-12 line padding0 opacity00"></div>
+			<div id="twosComplementResult"></div>
 		</div>
 	</div>
 	<div id="animationDiv"
 		class="col-xs-offset-2 col-xs-8 animation-div margin-top20">
-		<div id="valueDiv"
-			class="col-xs-offset-4 col-xs-7 value-div margin-top20"></div>
+		<div id="valueDiv" class="col-xs-offset-4 col-xs-7 value-div margin-top20"></div>
 		<div class="table-div margin-top20" id="tableDiv">
 			<table id="table" align="center" class="table">
 				<tr></tr>
@@ -233,8 +233,9 @@ table {
 				<tr></tr>
 			</table>
 		</div>
-		<div id="resultDiv"
-			class="col-xs-offset-3 col-xs-6 result-div margin-top20"></div>
+		<div id="resultDiv" class="col-xs-offset-3 col-xs-6 result-div margin-top20">
+			<span id="resultText"></span>	
+		</div>
 	</div>
 </body>
 </html>

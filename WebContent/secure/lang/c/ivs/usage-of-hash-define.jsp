@@ -14,13 +14,13 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script>
-
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
+
+<script src="/secure/lang/c/js-min/uohd.min.js" type="text/javascript"></script>
 <title>Usage of #define</title>
 </head>
 <style>
@@ -28,10 +28,10 @@
 	background-color: rgb(243, 235, 235);
 	border-radius: 2px;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-	height: 80px;
 	margin-top: 20px;
 	/*   color: green; */
 	padding: 10px;
+	font-family: monospace;
 }
 
 .introjs-tooltip {
@@ -98,7 +98,7 @@
 
 .output-console-body {
 	background-color: black;
-	border-bottom-left-radius:						 8px;
+	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	color: #f0f0f0;
 	font-family: monospace;
@@ -108,6 +108,7 @@
 	overflow: auto;
 	padding: 10px;
 	white-space: inherit;
+	font-weight: bold;
 }
 
 .preJavaBoxCodeDiv1 {
@@ -154,15 +155,20 @@
 .enter-values {
 	border-width: 0px 0 0 0;
 	background-color: #000;
-	color: #0f0;
 	border: 1px solid grey;
 	border-radius: 4px;
+	color: yellow;
+	font-weight: bold;
 }
 
 .next-btn {
 	border-radius: 3px !important;
 	background-color: green !important;
 	margin: 0 5px !important;
+}
+y {
+	color: yellow;
+	font-weight: bold;
 }
 </style>
 <body>
@@ -258,9 +264,9 @@ void <span id="line3"><b>main()</b></span> {
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
 								<span id="typeRadiusId" class=""></span> <span
-									id="enterRadiusValue" class="hidden">Enter the radius :
-									<input id='inputChar' maxlength='3' class='enter-values'
-									tabindex='0' />
+									id="enterRadiusValue" class="opacity00">Enter the radius :
+									<y><input id='inputChar' maxlength='3' class='enter-values'
+									tabindex='0' /></y>
 								</span> <span id="finalAreaValue"></span><br /> <span id="finalCircumferenceValue"></span>
 							</div>
 						</div>
@@ -317,7 +323,7 @@ void <span id="line13"><b>main()</b></span> {
 		</div>
 	</div>
 	<div>
-		<button type="button" class="col-sm-1 col-sm-offset-6 btn btn-warning opacity00" id="restartBtn" style="margin-top: 10px;">Restart</button>
+		<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top : 15px;">Restart</button></div>
 	</div>
 <script type="text/javascript">
 $(document).ready(function() {

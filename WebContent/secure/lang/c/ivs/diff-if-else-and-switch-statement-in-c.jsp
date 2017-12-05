@@ -147,6 +147,34 @@ td,th {
 	min-width: 110px !important;
 }
 
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+
+
+
 </style>
 </head>
 
@@ -156,7 +184,7 @@ td,th {
 		<h1 class="label ct-demo-heading text-center">Difference between if-else-if and switch-statement</h1>
 	</div> 
 	
-	<div class='typing-box col-xs-offset-2 col-xs-8 margin20' id="typingBox">
+	<div class='typing-box col-xs-offset-2 col-xs-8 margin20' id="typingBox" style="font-family: monospace;">
 		<div id="typingBox1" class=opacity00>Let us consider a sample problem which reads 
 		<span class="color-green">country_id</span> and prints the <span class="color-green">country_name.</span>
 		</div>
@@ -189,19 +217,19 @@ td,th {
 <div class="col-xs-12" id=mainDiv>
 		<div class="col-xs-4 mleft opacity00 padding0" id=ifelseDiv>
 		<pre id=pre1 class='creamPreTab4'>
-<span id='dirDeclaration'>#include&ltstdio.h&gt</span>						
-<span id="mainDeclaration">void main()</span> <span id="openBrace">{</span>					
-   <span id='variableDeclaration1'>int <span id="number1">country_id</span>;</span>
-   <span id="enterLine1">printf("Enter a country_id\n");</span>
-   <span id="enterLine2">scanf("%d",&country_id);</span>
-   <div id="ifelseblock" class="display"><span id="elseifline1">if (country_id == 1)</span> <span id="openBrace1">{</span>
-    <span id="sopLine1">printf("United States\n");</span>
-<span id="closeBrace1">}</span> <span id="elseifline2">else if (country_id == 2)</span> <span id="openBrace2">{</span>
-    <span id="sopLine2">printf("Spain\n");</span>
-<span id="closeBrace2">}</span> <span id="elseifline3">else if (country_id == 3)</span> <span id="openBrace3">{</span>
-    <span id="sopLine3">printf("India\n");</span>
-<span id="closeBrace3">}</span> <span id="elseifline4">else</span> <span id="openBrace4">{</span>
-    <span id="sopLine4">printf("Wrong Entry\n");</span>
+<span id='dirDeclaration'><in>#include</in> <ink>&ltstdio.h&gt</ink></span>						
+<span id="mainDeclaration"><g>void</g> main()</span> <span id="openBrace">{</span>					
+   <span id='variableDeclaration1'><g>int</g> <span id="number1">country_id</span>;</span>
+   <span id="total"><span id="enterLine1">printf(<ink>"Enter a country_id<in>\n</in>"</ink>);</span>
+   <span id="enterLine2">scanf(<ink>"<in>%d</in>"</ink>,&country_id);</span></span>
+   <div id="ifelseblock" class="display"><span id="elseifline1"><go>if</go> (country_id == <ink>1</ink>)</span> <span id="openBrace1">{</span>
+    <span id="sopLine1">printf(<ink>"United States<in>\n</in>"</ink>);</span>
+<span id="closeBrace1">}</span> <span id="elseifline2"><go>else if</go> (country_id == <ink>2</ink>)</span> <span id="openBrace2">{</span>
+    <span id="sopLine2">printf(<ink>"Spain<in>\n</in>"</ink>);</span>
+<span id="closeBrace2">}</span> <span id="elseifline3"><go>else if</go> (country_id == <ink>3</ink>)</span> <span id="openBrace3">{</span>
+    <span id="sopLine3">printf(<ink>"India<in>\n</in>"</ink>);</span>
+<span id="closeBrace3">}</span> <span id="elseifline4"><go>else</go></span> <span id="openBrace4">{</span>
+    <span id="sopLine4">printf(<ink>"Wrong Entry<in>\n</in>"</ink>);</span>
 <span id="closeBrace4">}</span></div>
 <span id="closeBrace">}</span></pre>
 		</div>
@@ -231,9 +259,9 @@ td,th {
 					<div class="panel-heading text-center" id="outputDiv">console</div>
 					<div class="panel panel-body" id='output'>
 						<div class="output col-xs-12">
-							<div id="appendDiv1"><div id="outputAValue1" class="opacity00">Enter a country_id : <span spellcheck="false" id="firstNum" class="first-Num entered-element" maxlength="2" contentEditable="true">&nbsp;</span></span></div>
+							<div id="appendDiv1"><div id="outputAValue1" class="opacity00">Enter a country_id : <div spellcheck="false" id="firstNum" class="first-Num entered-element" maxlength="2" contentEditable="true"  style="width:5px;height:20px;display:inline-block;"></div></span></div>
 							<div id="appendDiv2"><span id="outputAValue2"></span></div>
-							<div id="appendDiv3"><span id="outputAValue3" class="opacity00">Enter a country_id : <span spellcheck="false" id="firstNum1" class="first-Num entered-element" maxlength="2" contentEditable="true">&nbsp;</span></span></div>
+							<div id="appendDiv3"><span id="outputAValue3" class="opacity00">Enter a country_id : <div spellcheck="false" id="firstNum1" class="first-Num entered-element" maxlength="2" contentEditable="true" style="width:5px;height:20px;display:inline-block;"></div></span></div>
 							<div id="appendDiv4"><span id="outputAValue4"></span></div>
 						</div>
 					</div>
@@ -243,23 +271,23 @@ td,th {
 </div>
 		<div class="col-xs-4 opacity00 mleft position-fixed" id=switchcaseDiv>
 		<pre id=pre2 class='creamPreTab4'>
-<span id='sdirDeclaration'>#include&ltstdio.h&gt</span>						
-<span id="smainDeclaration">void main()</span><span id="sopenBrace"> {</span>						
-   <span id='svariableDeclaration1'>int<span id="number1"> country_id</span>;</span>
-   <span id="senterLine1">printf("Enter a country_id\n");</span>
-   <span id="senterLine2">scanf("%d",&country_id);</span>
-   <div id="switchline1" class='display'>switch(<span id="switchnum">country_id</span>) <span id="sopenBrace1">{</span></div> 
-	<div id="cas1" class='display'><span id="caseline1">case <span id='n1'>1</span>:</span>
-    <span id="ssopLine1">printf("United States\n");</span>
-    <span id="breakline1">break;</span></div>
-	<div id="cas2" class='display'><span id="caseline2">case <span id='n2'>2</span>:</span>
-    <span id="ssopLine2">printf("Spain\n");</span>
-    <span id="breakline2">break;</span></div>
-	<div id="cas3" class = 'display'><span id="caseline3">case <span id='n3'>3</span>:</span>
-    <span id="ssopLine3">printf("India\n");</span>
-    <span id="breakline3">break;</span></div>
-	<div id="cas4" class='display'><span id="defaultline"><span id='n4'>default</span>:</span>
-    <span id="ssopLine4">printf("Wrong Entry\n");</span></div>
+<span id='sdirDeclaration'><in>#include</in> <ink>&ltstdio.h&gt</ink></span>						
+<span id="smainDeclaration"><g>void</g> main()</span><span id="sopenBrace"> {</span>						
+   <span id='svariableDeclaration1'><g>int</g><span id="number1"> country_id</span>;</span>
+   <span id="senterLine1">printf(<ink>"Enter a country_id<in>\n</in>"</ink>);</span>
+   <span id="senterLine2">scanf(<ink>"<in>%d</in>"</ink>, &country_id);</span>
+   <div id="switchline1" class='display'><go>switch</go>(<span id="switchnum">country_id</span>) <span id="sopenBrace1">{</span></div> 
+	<div id="cas1" class='display'><span id="caseline1"><go>case</go> <ink><span id='n1'>1</span></ink>:</span>
+    <span id="ssopLine1">printf(<ink>"United States<in>\n</in>"</ink>);</span>
+    <span id="breakline1"><go>break</go>;</span></div>
+	<div id="cas2" class='display'><span id="caseline2"><go>case</go> <ink><span id='n2'>2</span></ink>:</span>
+    <span id="ssopLine2">printf(<ink>"Spain<in>\n</in>"</ink>);</span>
+    <span id="breakline2"><go>break</go>;</span></div>
+	<div id="cas3" class = 'display'><span id="caseline3"><go>case</go> <ink><span id='n3'>3</span></ink>:</span>
+    <span id="ssopLine3">printf(<ink>"India<in>\n</in>"</ink>);</span>
+    <span id="breakline3"><go>break</go>;</span></div>
+	<div id="cas4" class='display'><span id="defaultline"><span id='n4'><go>default</go></span>:</span>
+    <span id="ssopLine4">printf(<ink>"Wrong Entry<in>\n</in>"</ink>);</span></div>
    <span id="scloseBrace1">}</span>
 <span id="scloseBrace">}</span></pre>
 		</div>

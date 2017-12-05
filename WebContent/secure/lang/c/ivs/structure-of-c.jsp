@@ -105,9 +105,8 @@
 <span id="defSection" class="opacity00">Definition section</span>
 <span id="globalDef" class="opacity00">Global definition section</span>
 <span id="usrDefFun" class="opacity00">User define function declaration</span>
-<span id="totalMainFun" class="opacity00">main()
-<span id="totalMainSec">{
-  <span id="dclrPart">Declaration part</span>
+<span id="totalMainFun" class="opacity00">main() {
+  <span id="totalMainSec"><span id="dclrPart">Declaration part</span>
   <span id="excPart">Execution part</span>	
 }</span></span>
 <span id="subPro" class="opacity00">Sub program section having user defined functions

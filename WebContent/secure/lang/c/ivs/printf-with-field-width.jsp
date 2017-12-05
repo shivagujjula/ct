@@ -18,7 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js-min/pwfw.min.js"></script>
+<script src="/secure/lang/c/js-min/pwfw.min.js""></script>
 
 <title>printf.jsp</title>
 
@@ -26,10 +26,6 @@
 
 .introjs-tooltip {
 	min-width: 300px;
-}
-
-.introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
 }
 
 .introjs-duplicate-nextbutton {
@@ -199,6 +195,15 @@ div,span {
 .introjs-fixParent {
 	position: relative !important;
 }
+#printfDefinition{
+    font-family:monospace;
+}
+
+.val-enter {
+    min-width: 10px;
+    text-align: center;
+	display: inline-block;
+}
 </style>
 </head>
 <body>
@@ -239,7 +244,7 @@ div,span {
 <span id='VariableDeclararion'>int <span id="value1">a</span> = <span id='number1'>14</span>;</span>
 <span id="sopLine1">printf("<span id="persentageD1" >%d</span>", <span id="aValue1">a</span>);</span>
 <span id="sopLine2">printf("\n<span id="persentageD2" >%2d</span>", <span id="aValue2">999</span>);</span>
-<span id="sopLine3">printf("\n<span id="persentageD3" >%<div style="display: inline-block" id='number3' contenteditable='true', spellcheck='false', maxlength='1'>6</div>d</span>",<span id="aValue3">a</span>);</span></pre>
+<span id="sopLine3">printf("\n<span id="persentageD3" >%<div class="val-enter" id='number3' contenteditable='true', spellcheck='false', maxlength='1'>6</div>d</span>",<span id="aValue3">a</span>);</span></pre>
 					</div>
 				</div>
 				<div class="col-xs-2 col-xs-offset-1">

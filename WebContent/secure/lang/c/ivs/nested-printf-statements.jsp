@@ -35,7 +35,12 @@
 .introjs-duplicate-nextbutton {
 	background-color: green;
 }
-
+.introjs-duplicate-backbutton {
+	background-color:#5bc0de !important
+}
+.introjs-duplicate-backbutton2 {
+	background-color:#5bc0de !important
+}
 .box-border {
 	border-radius: 8px;
 	border: 2px solid gray;

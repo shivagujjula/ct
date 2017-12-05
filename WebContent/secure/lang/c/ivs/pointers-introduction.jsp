@@ -21,10 +21,6 @@
 <title>Pointers Introduction</title>
 <style>
 
-.introjs-tooltiptext br {
-	margin: 15px;
-}
-
 .introjs-tooltip {
 	min-width: 300px;
 }
@@ -104,11 +100,12 @@ div, span {
 }
 
 .output-console-body {
-	padding: 5px 20px;
+	padding: 8px 20px;
+	font-size: 12px;
 }
 
 .color-gray {
-	color: gray;
+	color: rgb();
 }
 
 .blinking-border-background-blue {
@@ -142,7 +139,7 @@ div, span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
@@ -181,7 +178,7 @@ div, span {
 						<div class="col-xs-12 padding10">
 							<div class='col-xs-6'>
 								<div class='center width200'>
-									<div class='col-xs-12 visibility-hidden' id='xBox'>
+									<div class='col-xs-12 opacity00' id='xBox'>
 										<div class='col-xs-4 Vertical-text-center'>x =</div>
 										<div class="col-xs-6 text-center">
 											<div><span class='color-gray'>2 bytes</span></div>
@@ -193,7 +190,7 @@ div, span {
 							</div>
 							<div class='col-xs-6'>
 								<div class='center width200'>
-									<div class='col-xs-12 visibility-hidden' id='yBox'>
+									<div class='col-xs-12 opacity00' id='yBox'>
 										<div class='col-xs-4 Vertical-text-center'>y =</div>
 										<div class="col-xs-6 text-center">
 											<div><span class='color-gray'>2 bytes</span></div>
@@ -206,7 +203,7 @@ div, span {
 						</div>
 						<div class="col-xs-12 padding10">
 							<div class='center width200'>
-								<div class='col-xs-12 visibility-hidden' id='zBox'>
+								<div class='col-xs-12 opacity00' id='zBox'>
 									<div class='col-xs-4 Vertical-text-center'>z =</div>
 									<div class="col-xs-6 text-center">
 										<div><span class='color-gray'>2 bytes</span></div>
@@ -220,19 +217,19 @@ div, span {
 							<marker id="arrowEnd" refX="4" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: gray;">
 								<path d="M0,0 L5,2.5 L0,5 Z"/>
 							</marker>
-							<line class="svg-line" x1="47.7%" y1="73%" x2="47.6%" y2="73%"/>
+							<line class="svg-line" x1="47.7%" y1="73%" x2="47.7%" y2="73%"/>
 						</svg>
 					</div>
 					<div class='col-xs-12 margin-top30'>
 						<div class="output-console center" id='outputBox'>
 							<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><span class='visibility-hidden'>The value of x = <span class='ct-blue-color'>3</span></span>
-<span class='visibility-hidden'>The address of x = <span class='ct-blue-color'>1111</span></span>
-<span class='visibility-hidden'>The value of y = <span class='ct-blue-color'>3</span></span>
-<span class='visibility-hidden'>The address of y = <span class='ct-blue-color'>1234</span></span>
-<span class='visibility-hidden'>The value of z = <span class='ct-blue-color'>1111</span></span>
-<span class='visibility-hidden'>The address of z = <span class='ct-blue-color'>2222</span></span>
-<span class='visibility-hidden'>The value of *z = <span class='ct-blue-color'>3</span></span>
+<div class="output-console-body"><span class='visibility-hidden'>The value of x = <span class='ct-code-b-yellow'>3</span></span>
+<span class='visibility-hidden'>The address of x = <span class='ct-code-b-yellow'>1111</span></span>
+<span class='visibility-hidden'>The value of y = <span class='ct-code-b-yellow'>3</span></span>
+<span class='visibility-hidden'>The address of y = <span class='ct-code-b-yellow'>1234</span></span>
+<span class='visibility-hidden'>The value of z = <span class='ct-code-b-yellow'>1111</span></span>
+<span class='visibility-hidden'>The address of z = <span class='ct-code-b-yellow'>2222</span></span>
+<span class='visibility-hidden'>The value of *z = <span class='ct-code-b-yellow'>3</span></span>
 </div>
 						</div>
 					</div>

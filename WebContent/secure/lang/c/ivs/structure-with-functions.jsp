@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="/css/introjs-ct.css">
 	<link rel="stylesheet" href="/css/animate.css"/>
 	<link rel="stylesheet" href="/css/jquery-ui.css"/>
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	
 	<script src="/js/gs/TweenMax.min.js"></script>
 	<script src='/js/intro.js'></script>
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
@@ -32,6 +34,8 @@
     color: black;
     font-family: monospace;
     padding: 4px; 
+    background: white;
+    z-index: 9999999;
 }
 
 .color-rose {
@@ -127,18 +131,20 @@ td {
     color: #f0f0f0;
     font-family: monospace;
     font-size: 14px;
-    height: 90px;
+    height: 60px;
     padding: 17px;
     white-space: pre-line;
 }
 
 .color-palegreen {
-	color: #0f0;
+	color: yellow;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 pre {
-	-moz-tab-size: 3;
-	tab-size: 3;
+	-moz-tab-size: 4;
+	tab-size: 4;
 	font-family: monospace; 
 }
 
@@ -149,7 +155,8 @@ pre {
 
 .zindex {
 	z-index: 9999999;
-	background: white; 
+	background: white;
+	position: relative;
 }
 </style>
 <body>
@@ -168,8 +175,7 @@ pre {
 <div id='tableDiv' style='border: 1px solid black; margin-top: 20px; padding: 0' class='col-xs-offset-1 col-xs-10 visibility-hidden'>
 	<div class='col-xs-8' style="margin-top: 13px;">
  <pre id="preId"><span id='errorVoidDisplay'> <span class='color-rose'>void</span> <span class='color-brown'>display</span>(<span class='color-rose'>struct</span> book);</span>
- <span id='structBook' class=''><span class='color-rose'>struct</span> book
- {
+ <span id='structBook' class=''><span class='color-rose'>struct</span> book {
  	<span class='color-rose'>char</span> name[20];
  	<span class='color-rose'>float</span> price;
  	<span class='color-rose'>int</span> page;
@@ -220,14 +226,14 @@ pre {
 </div>
 </div>
 <div class='col-xs-12' style='margin-top: 15px;'>
-	<div id="consoleId" class="opacity00 col-xs-offset-4 col-xs-4" style='padding: 0'>
+	<div id="consoleId" class="opacity00 col-xs-offset-3 col-xs-6" style='padding: 0'>
 		<div class="output-console-title-bar"><span class="title"><b>Console</b></span></div>
 		<div class="output-console-body" id="consoleBodyDiv"><span id='outPut'></span> </div>
 	</div>
 </div>
 		
-<div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+<div class="button col-xs-12 text-center " id="button" style='margin-top: 10px;'>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:4px'><i class="fa fa-refresh"></i> Restart</button>
 </div>
 
 </body>

@@ -1,12 +1,13 @@
 var introcode;
-var typingInterval = 10;
+var typingInterval = 1;
 var fpAddress;
 var enterText;
 var addressCount = 1;
 var characterCount = 1;
 var  ctrlText;
 var arr = [];
-
+var secondInput;
+var fileSpan
 function randomNumbers() {
 	var x = Math.floor((Math.random() * 1104) + 5125);
 	$("#address1").text(x);
@@ -36,7 +37,7 @@ function introGuide() {
 				element :'#code',
 				intro :'',
 				tooltipClass : "hide",
-				position: "right"
+				position: "right",
 			},{
 				element :'#filePointer',
 				intro :'',
@@ -81,12 +82,12 @@ function introGuide() {
 				element :'#codetantraFile',
 				intro :'',
 				tooltipClass : "hide",
-				animateStep: "location"
+				animateStep: "location",
 			},{
 				element :'#printLine1',
 				intro :'',
 				tooltipClass : "hide",
-				animateStep: "printflocation"
+				animateStep: "printflocation",
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -106,7 +107,6 @@ function introGuide() {
 				element :'#memoryVal',
 				intro :'',
 				tooltipClass : "hide",
-				animateStep: "readvaluesfromkeyboard1"
 			},{
 				element :'#fprintf',
 				intro :'',
@@ -120,7 +120,6 @@ function introGuide() {
 				element :'#closeFile1',
 				intro :'',
 				tooltipClass : "hide",
-				animateStep: "readValues"
 			},{
 				element :'#codetantraFile',
 				intro :'',
@@ -130,7 +129,6 @@ function introGuide() {
 				element :'#fileOpen1',
 				intro :'',
 				tooltipClass : "hide",
-				animateStep: "closeFile"
 			},{
 				element :'#codetantraFile',
 				intro :'',
@@ -140,7 +138,7 @@ function introGuide() {
 				element :'#printLine2',
 				intro :'',
 				tooltipClass : "hide",
-				animateStep: "printflocation"
+				animateStep: "printflocation",
 			},{
 				element :'#outputDiv',
 				intro :'',
@@ -190,7 +188,88 @@ function introGuide() {
 				position : "right"
 			}]
 	});
+	introcode.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "filePointer":
+			$("#addressDiv1").addClass("opacity00")
+			break;
+		case "idDeclaration":
+			 $("#addressDiv2").addClass("opacity00");
+			break;
+		case "nameDeclaration":
+			 $("#addressDiv3").addClass("opacity00");
+			break;
+		case "salaryDeclaration":
+			 $("#addressDiv4").addClass("opacity00");
+			break;
+		case "fileOpen":
+			if (introcode._direction == "backward") {
+				$(".fa").remove();
+				$("#line1, #line2,#line3").css("opacity", "0");
+				$("#line2").attr("y2", "75.5%");
+				$("#line3").attr("x2", "5.7%");
+				$("#line1").attr("x2", "8.6%");
+				$("#addressValue1").text("");
+				$("#codetantraFile").addClass("opacity00");
+				$("#textFile").addClass("opacity00");
+				$("#text").addClass("opacity00");
+				$("#textFile > i").remove();
+				$("#textFile br").remove();
+			}
+			break;
+		case "codetantraFile" :
+			$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+			var animateStep = introcode._introItems[introcode._currentStep].animateStep;
+				switch(animateStep) {
+				case "location" :
+					if (introcode._direction == "backward") {
+						$("#codetantraFile").addClass("opacity00");
+						$("#textFile").addClass("opacity00");
+						$("#text").addClass("opacity00");
+						$("#textFile i").remove();
+						$("#textFile br").remove();
+						$("#line1, #line2,#line3").css("opacity", "0");
+						$("#line2").attr("y2", "75.5%");
+						$("#line3").attr("x2", "5.7%");
+						$("#line1").attr("x2", "8.6%");
+					}
+					break;
+				case "closeFile":
+					if (introcode._direction == "backward") {
+						$("#codetantraFile").removeClass("opacity00");
+					}
+					break;
+				}
+				break;
+		case "outputDiv":
+			var animateStep = introcode._introItems[introcode._currentStep].animateStep;
+			switch(animateStep) {
+			case "readvaluesfromkeyboard1":
+				if (introcode._direction == "backward") {
+					$("#inputVal").empty().append(secondInput);
+				}
+			break;
+			}
+			break;
+		case "fileOpen1" :
+			if (introcode._direction == "backward") {
+				$("#codetantraFile, #addressValue1").addClass("opacity00");
+				$("#addressText").remove();
+			}
+			break;
+		case "printLine3" :
+			if (introcode._direction == "backward") {
+				$("#idText, #nameText, #salaryText").empty();
+				$("#idvalue, #namevalue, #salaryvalue").removeAttr('style').empty();
+			}
+			break;
+		}
+	});
 	introcode.onafterchange(function(targetElement){
+		if (introcode._introItems[introcode._currentStep]["tooltipClass"] == "hide") {
+			introcode._introItems[introcode._currentStep]["animation"] = "repeat";
+		}
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "fileText" :
@@ -209,12 +288,13 @@ function introGuide() {
 			break;
 			
 			case "code":
+				$('.introjs-prevbutton').hide();
 				$("#fileText").addClass("z-index1000000");
-					$('.introjs-helperLayer').one('transitionend', function() {
+				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 					$('.introjs-tooltip').removeClass('hide');
-					text = 'Here we will learn how the <span class="ct-code-b-yellow">fprintf()</span> '+
-							' and <span class="ct-code-b-yellow">fscanf()</span> methods work on a file.';
+					text = 'Let us learn how the functions <span class="ct-code-b-yellow">fprintf()</span> '+
+							' and <span class="ct-code-b-yellow">fscanf()</span> work.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 						$('.introjs-nextbutton').show();
 					});
@@ -226,9 +306,9 @@ function introGuide() {
 					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 					$('.introjs-tooltip').removeClass('hide');
 					var text = '<span class="ct-code-b-yellow">FILE</span> is a data structure defined in the standard I/O functions '
-						+ 'and points to the internal structure that describes the file.';
+						+ '.<br/><br/>It points to the internal structure that describes the file.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -239,45 +319,51 @@ function introGuide() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
 					 case "fptrlocation" :
-						 zoomInEffect("#addressDiv1",function() {
-							 setTimeoutToIntroGoNextStep();
-						 });
+						 if (introcode._direction == "backward") {
+							setTimeout(function() {
+								introcode.previousStep();
+							}, 800); 
+						 } else {
+							 zoomInEffect("#addressDiv1",function() {
+								 setTimeoutToIntroGoNextStep();
+							 });
+						}
 					break;
 					}
 				});
 			break;
 			
 			case "idDeclaration" :
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 					$('.introjs-tooltip').removeClass('hide');
-					text = 'The <span class="ct-code-b-yellow">int</span> data type is used to store the employee id.';
+					text = 'The <span class="ct-code-b-yellow">int</span> data type is used to store the employee <span class="ct-code-b-yellow">id</span>.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			
 			case "memoryVal" :
-				console.log("Hai");	
-				$('.introjs-nextbutton').hide();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				if (introcode._direction == "forward") {
 				var text = $('#secondInput').val();
 				var i = 0;
 				$('#inputVal').empty();
 				
 				var intIndexOfMatch = text.indexOf("  ");
 				while (intIndexOfMatch != -1) {
-					console.log(text);
 				  text = text.replace( "  ", " " )
-				  intIndexOfMatch = text.indexOf( "  " );
+				  intIndexOfMatch = text.indexOf( "  ");
 				}
 				
 				$.each(text.split(' '), function (index, val) {
 					$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
 					console.log($("#val" + i).text());
-					if(i == 1) {
+					/*if(i == 1) {
 						  $("#space1").remove();
-					  }
+					  }*/
 						i++ 
 					});
 				
@@ -301,6 +387,12 @@ function introGuide() {
 					});
 					
 				});
+				} else {
+					setTimeout(function() {
+						$("#addressValue2, #addressValue4, #addressValue3").text("");
+						introcode.previousStep();
+					}, 1000);
+				}
 			 
 				
 			break;
@@ -311,11 +403,27 @@ function introGuide() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
 					 case "idlocation" :
+						 if (introcode._direction == "backward") {
+							setTimeout(function() {
+								introcode.previousStep();
+							}, 800); 
+						 } else {
 						 zoomInEffect("#addressDiv2",function() {
 							 setTimeoutToIntroGoNextStep();
 						 });
+						 }
 					 break;
 					 case "idValueStore" :
+						 if (introcode._direction == "backward") {
+							 var l1 = $("#appendSpan1").offset();
+							 var l2 = $(".arrow-up").offset({top:l1.top - 10, left:l1.left});
+							 $("#addressValue2").addClass("opacity00");
+							 rotationFunctionMinus(function() {
+								 setTimeout(function() {
+									introcode.previousStep(); 
+								 }, 500);
+							 });
+						 } else {
 						 $(".arrow-up").removeClass("z-index1000000");
 						 $("#id").addClass("z-index1000000").effect("highlight", {color: 'green'}, 1000, function() {
 						 	$("#addressValue2").text($("#id").text());
@@ -326,21 +434,25 @@ function introGuide() {
 								rotationFunction(function() {
 									var l1 = $("#appendSpan2").offset();
 									var l2 = $(".arrow-up").offset({top:l1.top - 10, left:l1.left});
-									setTimeoutToIntroGoNextStep();
+									setTimeout(function() {
+										introcode.nextStep(); 
+									 }, 500);
 								});
 							});
 						 });
+						 }
 					break;
 					}
 				});
 			break;
 			case "nameDeclaration" :
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 					$('.introjs-tooltip').removeClass('hide');
-					text = 'The <span class="ct-code-b-yellow">char</span> array is used to store the employee name.';
+					text = 'The <span class="ct-code-b-yellow">char</span> array is used to store the employee <span class="ct-code-b-yellow">name</span>.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -351,9 +463,15 @@ function introGuide() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
 					 case "namelocation" :
-						 zoomInEffect("#addressDiv3",function() {
-							 setTimeoutToIntroGoNextStep();
-						 });
+						 if (introcode._direction == "backward") {
+							setTimeout(function() {
+								introcode.previousStep();
+							}, 800); 
+						 } else {
+							 zoomInEffect("#addressDiv3",function() {
+								 setTimeoutToIntroGoNextStep();
+							 });
+						 }
 					break;
 					 case "nameValue" :
 						 $('.scanfValue1').addClass('output-value-circle circle-css').effect("highlight", {color: '#FFFFFF'}, 1000, function() {
@@ -365,6 +483,16 @@ function introGuide() {
 						 });
 					break;
 					 case "nameValueStore" :
+						 if (introcode._direction == "backward") {
+							 var l1 = $("#appendSpan2").offset();
+							 var l2 = $(".arrow-up").offset({top:l1.top - 10, left:l1.left});
+							 $("#addressValue3").addClass("opacity00");
+							 rotationFunctionMinus(function() {
+								 setTimeout(function() {
+									introcode.previousStep(); 
+								 }, 500);
+							 });
+						 } else {
 						 $("#name").addClass("z-index1000000").effect("highlight", {color: 'green'}, 1000, function() {
 							 $("#addressValue3").text($("#name").text()).removeClass("opacity00");
 							 fromEffectWithTweenMax("#name", "#addressValue3", function(){
@@ -377,6 +505,7 @@ function introGuide() {
 									});
 							 });
 						 });
+						 }
 					break;
 						 
 					}
@@ -386,9 +515,9 @@ function introGuide() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 					$('.introjs-tooltip').removeClass('hide');
-					text = 'The <span class="ct-code-b-yellow">float</span> data type is used to store the employee salary.';
+					text = 'The <span class="ct-code-b-yellow">float</span> data type is used to store the employee <span class="ct-code-b-yellow">salary</span>.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -399,11 +528,27 @@ function introGuide() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
 					 case "salarylocation" :
-						 zoomInEffect("#addressDiv4",function() {
-							 setTimeoutToIntroGoNextStep()	
-						 });
+						 if (introcode._direction == "backward") {
+							setTimeout(function() {
+								introcode.previousStep();
+							}, 800); 
+						} else {
+							zoomInEffect("#addressDiv4",function() {
+								setTimeoutToIntroGoNextStep()	
+							});
+						}
 					break;
 					 case "salaryValueStore" :
+						 if (introcode._direction == "backward") {
+							 var l1 = $("#appendSpan3").offset();
+							 var l2 = $(".arrow-up").offset({top:l1.top - 10, left:l1.left});
+							 $("#addressValue4").addClass("opacity00");
+							 rotationFunctionMinus(function() {
+								 setTimeout(function() {
+									introcode.previousStep(); 
+								 }, 500);
+							 });
+						 } else {
 						 $("#salary").addClass("z-index1000000").effect("highlight", {color: 'green'}, 1000, function() {
 							 $("#addressValue4").text($("#salary").text()).removeClass("opacity00");
 							 fromEffectWithTweenMax("#salary", "#addressValue4", function() {
@@ -416,6 +561,7 @@ function introGuide() {
 									});
 							 });
 						 });
+						 }
 					break;
 					}
 				});
@@ -426,13 +572,13 @@ function introGuide() {
 					$('.introjs-tooltip').removeClass('hide');
 					text = 'The function <span class="ct-code-b-yellow">fopen()</span> opens a file with '
 						+ '<span class="ct-code-b-yellow">w</span>(writing)'
-						+ " mode. <br/><span class='ct-code-b-yellow'>w</span> stands "
-						+ "for <span class='ct-code-b-yellow'>write</span> mode.<br>"
+						+ " mode. <br/><br/><span class='ct-code-b-yellow'>w</span> stands "
+						+ "for <span class='ct-code-b-yellow'>write</span> mode.<br><br/>"
 						+ " In <span class='ct-code-b-yellow'>write</span> mode, if the file <b>does not exist</b>"
-						+ ", a file with the specified name is created.<br> If the file <b>exists</b>"
-						+ " with the same name, the contents of the file are deleted.";
+						+ ", a file with the specified name is <span class='ct-code-b-yellow'>created</span>.<br><br> If the file <b>exists</b>"
+						+ " with the <span class='ct-code-b-yellow'>same name</span>, the contents of the file are <span class='ct-code-b-yellow'>deleted</span>.";
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -447,10 +593,11 @@ function introGuide() {
 								$("#textFile").removeClass("animated zoomIn");
 								$("#text").removeClass("opacity00");
 								$("#fileSpan").append('<span id ="appendSpan'+ characterCount+'"><span id="putcharacter'+ characterCount+'" class = "opacity00"></span> <span id = "id"></span></span>');
+								fileSpan = $("#fileSpan").html();
 								$('#textFile').append('<br><i class="fa fa-arrow-up arrow-up"><div id="address5" class="address-text text-center"></div></i>');
 								$("#address5").text(fpAddress);
 								$('.introjs-tooltip').removeClass('hide');
-								var text = "Here, the file structure base address is stored in the "
+								var text = "Here, the file structure's base address is stored in the "
 									+ "<span class='ct-code-b-yellow'>file pointer(fp)</span>.";
 								typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 									$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton' " +
@@ -460,6 +607,17 @@ function introGuide() {
 						break;
 						
 						case "readValues" :
+							if (introcode._direction == "backward") {
+								setTimeout(function() {
+									$(".arrow-up").removeAttr('style')
+									characterCount = 1;
+									$("#addressValue1").text(parseInt($("#addressValue1").text()) - 3);
+									$("#textFile br").remove();
+									$("#fileSpan").empty().append(fileSpan);
+									$("#fileSpan").after("<br>");
+									introcode.previousStep();
+								}, 300);
+							} else {
 							printValue("#putcharacter" +characterCount , "#idStore", "#id", "#addressValue2", "id", "readValue",function() {
 								$("#fileSpan").append('<br><span id ="appendSpan'+ characterCount +'"><span id="putcharacter'+ characterCount+'" class = "opacity00"></span> <span id = "name"></span></span>');
 								printValue("#putcharacter" + characterCount, "#nameStore", "#name", "#addressValue3", "name","readValue", function() {
@@ -470,45 +628,73 @@ function introGuide() {
 									});
 								});
 							});
+							}
 						break;
 						
 						case "closeFile" :
-							$('.introjs-tooltip').removeClass('hide');
-							text = 'Before closing a file the file pointer puts an <span class="ct-code-b-yellow">EOF</span>.';
-							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-								$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-								$(".introjs-duplicate-nextbutton").click(function() {
-									$(".introjs-duplicate-nextbutton").remove();
-									$('.introjs-tooltip').addClass('hide');
-									$("#putcharacter" + characterCount).text("EOF").removeClass("opacity00").addClass("ct-code-b-red");
+							if (introcode._direction == "forward") {
+								$('.introjs-tooltip').removeClass('hide');
+								text = 'Before closing a file the file pointer puts an <span class="ct-code-b-yellow">EOF</span>.';
+								typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 									setTimeout(function() {
-										$("#addressValue1, #addressValue2, #addressValue3, #addressValue4").addClass("opacity00");
-										$("#codetantraFile").removeClass("opacity00").addClass("animated zoomOut").one('animationend', function() {
-											$(".fa-arrow-up").addClass("opacity00");
-											$("#codetantraFile").removeClass("animated zoomOut").addClass("opacity00");
-											setTimeout(function() {
-												introcode.nextStep();
-											},800);
-										});								
+										$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
+										$(".introjs-duplicate-nextbutton").click(function() {
+											$(".introjs-duplicate-nextbutton").remove();
+											$('.introjs-tooltip').addClass('hide');
+											$("#putcharacter" + characterCount).text("EOF").addClass("ct-code-b-red").removeClass("opacity00"	, function() {
+												$("#addressValue1, #addressValue2, #addressValue3, #addressValue4").addClass("opacity00");
+												$("#codetantraFile").removeClass("opacity00").addClass("animated zoomOut").one('animationend', function() {
+													$(".fa-arrow-up").addClass("opacity00");
+													$("#codetantraFile").removeClass("animated zoomOut").addClass("opacity00");
+													setTimeout(function() {
+														introcode.nextStep();
+													},800);
+												});			
+											});
+										});
 									},800);
 								});
-							});
+							} else {
+								setTimeout(function() {
+									$("#putcharacter" + characterCount).addClass("opacity00", function() {
+										$(".fa-arrow-up").removeClass("opacity00");
+										$("#addressValue1, #addressValue2, #addressValue3, #addressValue4").removeClass("opacity00");
+										introcode.previousStep();
+									});
+								},800);
+							}
 						break;
-						
 						case "openFileWithReadMode" :
 							$(".introjs-duplicate-nextbutton").remove();
 							$('.introjs-tooltip').addClass('hide');
-							$("#codetantraFile").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-								$("#codetantraFile").removeClass("animated zoomIn opacity00");
-								$(".arrow-up").remove("fa-arrow-up").addClass("fa-arrow-down").removeClass("opacity00");
-								var l1 = $("#appendSpan1").offset();
+							if (introcode._direction == "backward") {
+								$("#addressText").show();
+								$(".arrow-up").removeClass("fa-arrow-down").addClass("fa-arrow-up").addClass("opacity00");
+								var l1 = $("#appendSpan4").offset();
 								var l2 = $(".arrow-up").offset({top:l1.top-10, left:l1.left});
-								$(".arrow-up").append('<span id = "addressText" class = "position">'+fpAddress +'</span>');
-								$("#addressText").css({top:-16, left: -21})
-								setTimeout(function(){
-									svgArrowRevil();
-								},500);
+										setTimeout(function() {
+											$("#arrow111, #arrow11").css({"opacity": "0"});
+											$("#arrow1").css({"opacity": "1"});
+											$("#line13, #line12, #line11").css("opacity", "0");
+											$("#line13").attr("x2", "10.9%");
+											$("#line11").attr("x2", "8.7%");
+											$("#line12").attr("y2", "61.8%")
+											introcode.previousStep();
+										},500);
+									} else {
+							$("#codetantraFile").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+								
+									$("#codetantraFile").removeClass("animated zoomIn");
+									$(".arrow-up").removeClass("fa-arrow-up").addClass("fa-arrow-down").removeClass("opacity00");
+									var l1 = $("#appendSpan1").offset();
+									var l2 = $(".arrow-up").offset({top:l1.top-10, left:l1.left});
+									$(".arrow-up").append('<span id = "addressText" class = "position">'+fpAddress +'</span>');
+									$("#addressText").css({top:-16, left: -21})
+									setTimeout(function(){
+										svgArrowRevil();
+									},500);
 							});	
+									}
 						break;
 						
 						case "fileClose":
@@ -526,6 +712,7 @@ function introGuide() {
 			break;
 			
 			case "printLine1" :
+				secondInput = $("#inputVal").html();
 				$("#line1, #line2, #line3").css({opacity: 0});
 				$("#addressDiv1").removeClass("z-index1000000");
 				$("#address5").remove();
@@ -546,18 +733,25 @@ function introGuide() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
 					switch(animateStep) {
 						case "readvaluesfromkeyboard" :
+							if (introcode._direction == "forward") {
 							$("#outputText, #enterValuesOfEmployee").removeClass("opacity00");
 							setTimeout(function() {
 								introcode.nextStep();
 							},800);
+						} else {
+							$("#outputText, #enterValuesOfEmployee").addClass("opacity00");
+							setTimeout(function() {
+								introcode.previousStep();
+							},800);
+						}
 						break;
 						case "readvaluesfromkeyboard1" :
 							$('.introjs-tooltip').removeClass('hide');
 							text ="Please enter an integer, string and a float value each separated by a"
-								+" <b class='ct-code-b-yellow'>space</b>.<br/>For example,"
-								+" if your integer is <b class='ct-code-b-yellow'>24</b>, string value is "
+								+" <b class='ct-code-b-yellow'>space</b>.<br/><br/>For example:<br/>"
+								+" If your integer is <b class='ct-code-b-yellow'>24</b>, string value is "
 								+" <b class='ct-code-b-yellow'>ramana</b> and the float value is" 
-								+" <b class='ct-code-b-yellow'>25000.0</b> respectively enter"
+								+" <b class='ct-code-b-yellow'>25000.0</b> respectively, enter"
 								+" them as <b class='ct-code-b-yellow'>24 ramana 25000.0</b>";
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 								arr = [];
@@ -595,25 +789,38 @@ function introGuide() {
 										var dot = arr[2].indexOf(".") !== -1;
 										var dot1 = arr[0].indexOf(".") == -1;
 										if (a0 && a1 && a2 && dot && dot1) {
-										    $(".introjs-nextbutton").show();
+											$('.introjs-nextbutton, .introjs-prevbutton').show();
 										  } else {
-										    $(".introjs-nextbutton").hide();
+											  $('.introjs-nextbutton, .introjs-prevbutton').hide();
 										    $('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'> "
 													+"<br/> Please follow the above format.</span>");
 										  }
 									} else {
-										$(".introjs-nextbutton").hide();
+										$('.introjs-nextbutton, .introjs-prevbutton').hide();
 									}
 								});
 							}); 
 						break;
 							
 						case "printText":
-							$("#outputText1").removeClass("opacity00");
-							setTimeoutToIntroGoNextStep();
+							if (introcode._direction == "backward") {
+								$("#outputText1").addClass("opacity00");
+								setTimeout(function() {
+									introcode.previousStep();
+								}, 800);
+							} else {
+								$("#outputText1").removeClass("opacity00");
+								setTimeout(function() {
+									introcode.nextStep();
+								}, 800);
+							}
 						break;
 						case "printTextValue" :
-							$("#svgDiv1").remove();
+							if (introcode._direction == "backward") {
+								setTimeout(function() {
+									introcode.previousStep();
+								}, 1000);
+							} else {
 							printValue("#idText" , "#idprint", "#idvalue", "#addressValue2", "id", "printValue",function() {
 								printValue("#nameText", "#nameprint", "#namevalue", "#addressValue3", "name","printValue", function() {
 									printValue("#salaryText", "#salaryprint", "#salaryvalue", "#addressValue4", "salary","printValue", function() {
@@ -621,11 +828,14 @@ function introGuide() {
 									});
 								});
 							});
+							}
 							break;
 					}
 				});
 				break;
 			case "scanfLine1" :
+				$("#secondInput").val("");
+				$("#secondInput").attr('disabled', true);
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
@@ -642,13 +852,13 @@ function introGuide() {
 					$('.introjs-tooltip').removeClass('hide');
 					text = 'The <span class="ct-code-b-yellow">fprintf()</span> function is used to'+
 							' <span class="ct-code-b-yellow">write</span> the <span class="ct-code-b-yellow">data</span> '+
-							'into a <span class="ct-code-b-yellow">file</span>.<br>'+
+							'into a <span class="ct-code-b-yellow">file</span>.<br><br>'+
 							'The <span class="ct-code-b-yellow">fp</span> will automatically be incremented'
-							+' by <span class="ct-code-b-yellow">one</span>.<br>'+
-							'Note: <span class="ct-code-b-yellow">\/n</span> is used for the '+
-							'cursor to points to the next line.';
+							+' by <span class="ct-code-b-yellow">one</span>.<br><br>'+
+							'<b>Note:</b> <span class="ct-code-b-yellow">&#92;n</span> is used by the '+
+							'cursor to point to the next line.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -660,7 +870,7 @@ function introGuide() {
 					text = 'The function <span class="ct-code-b-yellow">fclose(fp)</span> '+
 							' is used to close the file.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -668,16 +878,16 @@ function introGuide() {
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
-					text = 'The file <span class="ct-code-b-yellow">codetantra.txt</span> is opened in read mode. '
+					text = 'The file <span class="ct-code-b-yellow">codetantra.txt</span> is opened in <span class="ct-code-b-yellow">read mode</span>. '
 						+ "In <span class='ct-code-b-yellow'>read</span> mode, "
-						+ "the file data can only be read.";
+						+ "the data in the file can only be read.";
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "printLine2" :
-				$("#svgDiv1").remove();$("#addressText").remove();
+				$("#addressText").hide();
 				$("#addressDiv1").removeClass("z-index1000000");
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
@@ -692,14 +902,26 @@ function introGuide() {
 			case "fscanf" :
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					setTimeoutToIntroGoNextStep();
+					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$('.introjs-tooltip').removeClass('hide');
+						text = 'The <span class="ct-code-b-yellow">fscanf</span> is used to read the data from the '+
+								'file.'
+						typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						});
+					});
 				});
 			break;
 			case "printLine3" :
 				$(".arrow-up").removeClass("z-index1000000");
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					setTimeoutToIntroGoNextStep();
+					$('.introjs-tooltip').removeClass('hide');
+					text = 'The <span class="ct-code-b-yellow">printf()</span> prints the data to the output console.';
+					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+					});
 			});
 			break;
 			case "restartBtn":
@@ -752,6 +974,19 @@ function rotationFunction(callBackFunction) {
 	      }});
 	    });
 }
+function rotationFunctionMinus(callBackFunction) {
+	$('#addressValue1').addClass("z-index1000000").effect( "highlight",{color: 'yellow'}, 800, function() {
+		TweenMax.to("#addressValue1", 1, {rotationX: -90, onComplete:function() {
+			$("#addressValue1").text(parseInt($("#addressValue1").text()) - 1);
+			TweenMax.to("#addressValue1", 1, {rotationX: 0, onComplete:function() {
+	     		$('#addressValue1').removeClass("z-index1000000");
+	           	if (typeof callBackFunction === "function") {
+					callBackFunction();
+				}
+	        }});
+	      }});
+	    });
+}
 
 function svgArrowRevil() {
 	$(".introjs-duplicate-nextbutton").remove();
@@ -768,7 +1003,10 @@ function svgArrowRevil() {
 				setTimeout(function() {
 					$("#addressValue1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 			  			$("#addressValue1").removeClass("animated zoomIn");
-			  			setTimeoutToIntroGoNextStep();
+			  			setTimeout(function() {
+			  				introcode.nextStep();
+			  				$("#line13, #line12, #line11").css("opacity", "0");
+			  			}, 500);
 			  		});
 				},500);
 			}});
@@ -779,16 +1017,19 @@ function svgArrowRevil() {
 function svgRevilLine() {
 	$(".introjs-duplicate-nextbutton").remove();
 		$("#addressValue1").text(fpAddress).addClass("opacity00");
+		$("#arrow111").css({"opacity": "1"});
 	TweenMax.to("#line1", 1, {attr:{x2: "5.6%", y2: "75.8%" }, opacity: 1, onComplete:function() {
 		$("#arrow111").css({"opacity": "0"});
+		$("#arrow11").css({"opacity": "1"});
 		TweenMax.to("#line2", 1, {attr:{x2: "5.8%", y2: "39.6%" }, opacity: 1, onComplete:function() {
 			$("#arrow11").css({"opacity": "0"});
+			$("#arrow1").css({"opacity": "1"});
 			TweenMax.to("#line3", 1, {attr:{x2: "17.1%", y2: "39.8%" }, opacity: 1, onComplete:function() {
 				$("#addressDiv1").addClass("z-index1000000");
 				setTimeout(function() {
 					$("#addressValue1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 			  			$("#addressValue1").removeClass("animated zoomIn");
-			  			$('.introjs-nextbutton').show();
+			  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 			  		});
 				},500);
 			}});
@@ -797,9 +1038,15 @@ function svgRevilLine() {
 }
 
 function setTimeoutToIntroGoNextStep() {
-	setTimeout(function(){
-		introcode.nextStep();
-	},800);
+	if (introcode._direction == "backward") {
+		setTimeout(function(){
+			introcode.previousStep();
+		},800); 
+	} else {
+		setTimeout(function() {
+			introcode.nextStep();
+		},800);
+	}
 }
 
 function zoomInEffect(selector1, callBackFunction) {
@@ -859,5 +1106,6 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
 		$('.introjs-tooltip').show();
+		introcode._introItems[introcode._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 } 

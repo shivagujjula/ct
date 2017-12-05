@@ -166,6 +166,35 @@ body {
 	min-width: 110px;
 }
 
+.oneStepBackBtn {
+	background-color: #5bc0de !important
+}
+
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
 </style>
 </head>
 <body>
@@ -177,13 +206,13 @@ body {
 		</div>
 		<div class="col-xs-offset-1 col-xs-6">
 			<div>
-				<pre class="creamePreTab4">#include&lt;stdio.h&gt;
-void main() {
-	<span id='initialization' class='position-relative'>int value = <span id='initializationValue' class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>value</b></span>= <h6 id="cupValue"></h6></h5></span></span>
-	<span id='doWhile'><span id ="docondition">do {</span>
-		<span id='statement'>printf("value : %d\n",value);</span>
+				<pre class="creamePreTab4"><in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>void</g> main() {
+	<span id='initialization' class='position-relative'><g>int</g> value = <span id='initializationValue' class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>value</b></span>= <h6 id="cupValue"></h6></h5></span></span>
+	<span id='doWhile'><span id ="docondition"><go>do</go> {</span>
+		<span id='statement'>printf(<ink>"value : <in>%d\n</in>"</ink>,value);</span>
 		<span id='update'>value++;</span>
-	} while (<span id='condition'>value <= <span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="true" placeholder=" ">5</span></span>);</span>
+	} <go>while</go> (<span id='condition'>value <= <span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="true" placeholder=" "><ink>5</ink></span></span>);</span>
 <span id='mainEnd'>}</span>
 </pre>
 			</div>

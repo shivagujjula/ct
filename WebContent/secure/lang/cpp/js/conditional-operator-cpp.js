@@ -1,5 +1,5 @@
 var introjs;
-var typing_interval = 5;
+var typing_interval = 1;
 
 var typingId;
 var typingContent;
@@ -8,6 +8,8 @@ var cursorColor;
 var typingCallbackFunction;
 
 var conditionalOperatorReady = function() {
+	$(".introjs-duplicate-nextbutton").remove();
+	$('.introjs-nextbutton, .introjs-prevbutton').hide();
 	$('.introjs-nextbutton').keydown(function(e) {
 		if (e.which == 13) {
 			e.preventDefault();
@@ -46,47 +48,12 @@ var conditionalOperatorReady = function() {
 		introjs.refresh();
 		
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 	});
 }
-function typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction) {
-	$(typingId).typewriting(typingContent, {
-		"typing_interval": typingInterval,
-		"cursor_color": cursorColor
-	}, function() {
-		$(typingId).removeClass('typingCursor');
-		if (typeof typingCallbackFunction === "function") {
-			typingCallbackFunction();
-		}
-	});
-}
-
-function caretAtEnd(element) {
-	element.focus();
-	if (typeof window.getSelection != "undefined"&& typeof document.createRange != "undefined") {
-		var range = document.createRange();
-		range.selectNodeContents(element);
-		range.collapse(false);
-		var sel = window.getSelection();
-		sel.removeAllRanges();
-		sel.addRange(range);
-	}    	   
-}
-
-function flipEffectWithTweenMax(selector, val, callBackFunction) {
-	TweenMax.to($(selector), 0.5, {rotationX : -90, onComplete:function() {
-		$(selector).text(val);
-		TweenMax.to($(selector), 0.5, {rotationX : 0, onComplete:function() {
-			if (typeof callBackFunction === "function") {
-				callBackFunction();
-			}
-		}});
-	}});
-}
-
 
 function introJsFunction() {
 	introjs = introJs();
@@ -107,7 +74,8 @@ function introJsFunction() {
 		},
 		{
 			element : "#num1Line",
-			intro : ""
+			intro : "",
+			tooltipClass : "hide"
 		},
 		{
 			element : "#num2Line",
@@ -141,13 +109,87 @@ function introJsFunction() {
 		}
 		]});
 
-	introjs.onafterchange(function(targetElement) {
-		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+	
+	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "maxLine":
-			switch (introjs._currentStep) {
-				case 0:
+			if (introjs._currentStep == 0) {
+				$(".introjs-duplicate-nextbutton").remove();
+				$(".animation-div1").css({"opacity":0});
+				/*$("#condition").addClass("opacity00");
+				$("#svgLine1").hide();
+				$("#qMark, #true").addClass("opacity00");
+				$("#svgLine2").hide();
+				$("#collan, #false").addClass("opacity00");
+				$("#svgLine3").hide();*/
+			} else if (introjs._currentStep == 4) {
+				$(".introjs-duplicate-nextbutton").remove()
+			}
+	break;
+	case "animationBox":
+		if (introjs._currentStep == 1) {
+			$(".introjs-duplicate-nextbutton").remove()
+			$(".animation-div1").css({"opacity":1});
+			$("#box1, #box2, #box3, .statement-css").addClass("opacity00");
+			$('#svgId').remove();
+			$('.statement-css').removeAttr('style');
+			$('.box-css').css({'border-color' : 'transparent'});
+			
+			//$("#svgLine1, #svgLine2, #svgLine3").hide();
+			/*$("#condition, #num1-num2").removeClass("opacity00");
+			$("#svgLine1").show();*/
+		} else if (introjs._currentStep == 5) {
+			$(".introjs-duplicate-nextbutton").remove()
+		}
+	break;
+	case "num1Line":
+		caretAtEnd('num1value');
+		$("#num1value").focus();
+		$(".introjs-duplicate-nextbutton").remove();
+		
+	break;
+	case "num2Line":
+		$(".introjs-duplicate-nextbutton").remove();
+		
+	break;
+	case "printfLine":
+		
+	break;
+	case "outputBox":
+		
+	break;
+		}
+	});
+	
+	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "maxLine":
+				if (introjs._currentStep == 0) {
+					$(".introjs-duplicate-nextbutton").remove();
+					 $('.introjs-nextbutton, .introjs-prevbutton').hide();
 					typingId = '.introjs-tooltiptext';
 					typingContent = 'In the above statement <span class="ct-code-b-yellow">(</span><b>num1 > num2</b>' +
 									'<span class="ct-code-b-yellow">)</span>' +
@@ -162,24 +204,37 @@ function introJsFunction() {
 						$('.introjs-nextbutton').show();
 					}
 					typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
-					break;
-				case 4:
+					
+				} else if (introjs._currentStep == 4) {
+					$(".introjs-duplicate-nextbutton").remove()
+					 $('.introjs-nextbutton, .introjs-prevbutton').hide();
+					$('.introjs-helperLayer').one('transitionend', function() {
 					$('[contenteditable="true"]').attr('contenteditable', 'false');
 					$('.introjs-helperLayer').one('transitionend', function () {
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
-					break;
-			}
-			break;
+					});
+				}
+		break;
 		case "animationBox":
-			switch (introjs._currentStep) {
-			case 1:
 				$('.introjs-helperLayer').one('transitionend', function () {
+					$('.introjs-nextbutton, .introjs-prevbutton').hide();
+					$(".introjs-duplicate-nextbutton").remove();
+					if (introjs._currentStep == 1) {
+						//$("#condition, #num1-num2").removeClass("opacity00");
 					TweenMax.to('.animation-div1', 1, {opacity: 1, onComplete: function() {
 						svgAppend($('.animation-div1'), 'svgId');
 						svgMarkerAppend($('#svgId'), 'markerEnd');
+						$("#box1").removeClass("opacity00");
+						//$("#svgLine1").show();
 						svgBoxAnimation(1, function() {
 							$('.introjs-tooltip').removeClass('hide');
 							typingId = '.introjs-tooltiptext';
@@ -195,10 +250,11 @@ function introJsFunction() {
 							typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 						});
 					}});
-				});
-				break;
-			case 5:
-				$('.introjs-helperLayer').one('transitionend', function () {
+				}
+		 else if (introjs._currentStep == 5) {
+			 $(".introjs-duplicate-nextbutton").remove()
+			 $('.introjs-nextbutton, .introjs-prevbutton').hide();
+			 $('.introjs-nextbutton, .introjs-prevbutton').hide();
 					TweenMax.to('.animation-div2', 1, {opacity: 1, onComplete: function() {
 						flipEffectWithTweenMax('#num1', $('#num1value').text(), function() {
 							flipEffectWithTweenMax('#num2', $('#num2value').text(), function() {
@@ -225,41 +281,53 @@ function introJsFunction() {
 							});
 						});
 					}});
-				});
-				break;
-			}
-			break;
+				}
+			});
+		break;
 		case "num1Line":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".introjs-duplicate-nextbutton").remove()
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'We can change the value of <span class="ct-code-b-yellow">num1</span>.';
 				typingInterval = typing_interval;
 				cursorColor = 'white';
+				$('.introjs-tooltip').removeClass('hide');
 				typingCallbackFunction = function() {
-					caretAtEnd(document.getElementById('num1value'));
-					$('.introjs-nextbutton').show();
+					caretAtEnd('num1value');
+					$("#num1value").focus();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
 			break;
 		case "num2Line":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".introjs-duplicate-nextbutton").remove();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				typingId = '.introjs-tooltiptext';
 				typingContent = 'We can change the value of <span class="ct-code-b-yellow">num2</span>.';
 				typingInterval = typing_interval;
 				cursorColor = 'white';
 				typingCallbackFunction = function() {
-					caretAtEnd(document.getElementById('num2value'));
-					$('.introjs-nextbutton').show();
+					caretAtEnd('num2value');
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
 			break;
 		case "printfLine":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 			break;
 		case "outputBox":
@@ -269,24 +337,32 @@ function introJsFunction() {
 				typingInterval = 30;
 				cursorColor = 'white';
 				typingCallbackFunction = function() {
-					setTimeout(function() {
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
-			break;
+		break;
 		case "restartBtn":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
 			});
-			break;
+		break;
 		}
-	});
-	
-	introjs.start();
+});
+introjs.start();
+	$('.introjs-nextbutton').hide();
+	$('.introjs-prevbutton').hide();
+	$('.introjs-skipbutton').hide();
+	$('.introjs-bullets').hide();
 }
-
 function svgAppend(selector, svgId) {
 	var code = '<svg class="svg-css" id="' + svgId + '"></svg>';
 	$(selector).append(code);
@@ -358,8 +434,13 @@ function svgBoxAnimation(index, callBackFunction) {
 }
 
 function animationStep2() {
+	/*$("#qMark, #num1, #true").removeClass("opacity00");
+	$("#svgLine2").show();*/
 	$('.introjs-duplicate-nextbutton').remove();
+	$('.introjs-prevbutton').hide();
 	$('.introjs-tooltip').addClass('hide');
+	$("#box2").removeClass("opacity00");
+	$("#svgLine2").show();
 	svgBoxAnimation(2, function() {
 		$('.introjs-tooltip').removeClass('hide');
 		typingId = '.introjs-tooltiptext';
@@ -376,8 +457,13 @@ function animationStep2() {
 }
 
 function animationStep3() {
+	/*$("#collan, #num2").removeClass("opacity00");
+	$("#svgLine3").show();*/
+	$('.introjs-prevbutton').hide();
 	$('.introjs-duplicate-nextbutton').remove();
 	$('.introjs-tooltip').addClass('hide');
+	$("#box3").removeClass("opacity00");
+	$("#svgLine3").show();
 	svgBoxAnimation(3, function() {
 		$('.introjs-tooltip').removeClass('hide');
 		typingId = '.introjs-tooltiptext';
@@ -386,7 +472,7 @@ function animationStep3() {
 		typingInterval = typing_interval;
 		cursorColor = 'white';
 		typingCallbackFunction = function() {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}
 		typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 	});
@@ -408,6 +494,41 @@ function animatingMax(id) {
 			setTimeout(function() {
 				introjs.nextStep();
 			}, 1000);
+		}});
+	}});
+}
+
+function typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction) {
+	$(typingId).typewriting(typingContent, {
+		"typing_interval": typingInterval,
+		"cursor_color": cursorColor
+	}, function() {
+		$(typingId).removeClass('typingCursor');
+		if (typeof typingCallbackFunction === "function") {
+			typingCallbackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
+	});
+}
+
+function caretAtEnd(element) {
+	var element = document.getElementById(element);
+	element.focus();
+	var range = document.createRange();
+	range.selectNodeContents(element);
+	range.collapse(false);
+	var sel = window.getSelection();
+	sel.removeAllRanges();
+	sel.addRange(range);
+}
+
+function flipEffectWithTweenMax(selector, val, callBackFunction) {
+	TweenMax.to($(selector), 0.5, {rotationX : -90, onComplete:function() {
+		$(selector).text(val);
+		TweenMax.to($(selector), 0.5, {rotationX : 0, onComplete:function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
 		}});
 	}});
 }

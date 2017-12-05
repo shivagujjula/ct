@@ -26,8 +26,9 @@
 #totalDiv {
 	border: 1px solid gray;
 	border-radius: 8px;
-	height: 303px;
+	min-height: 303px;
 	padding: 10px;
+	font-family: monospace;
 }
 
 .creampretab {
@@ -116,6 +117,42 @@
 .margin-left {
 	margin-left: 367px;
 }
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+/* a:focus {
+	outline: none;
+} */
+
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
 </style>
 </head>
 <body>
@@ -175,7 +212,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="typingDiv2" class="col-xs-12 margin-top-20">
+			<div id="typingDiv2" class="col-xs-12">
 				<ul>
 					<li id="li5" class="opacity00">
 						The mentioned two disadvantages can be solved by using if-condition with <b style='color:green'>goto</b>.
@@ -187,14 +224,14 @@
 	<div class="col-xs-12">
 		<div class="col-xs-offset-1 col-xs-5 margin-top-20">
 			<div id="code" class="opacity00">
-				<pre class="creampretab"><span id="link">#include&lt;stdio.h&gt;</span>
-<span id="main">void main() {</span>
- 	<span id="char">char ch;</span>
+				<pre class="creampretab"><span id="link"><in>#include</in> <ink>&lt;stdio.h&gt;</ink></span>
+<span id="main"><g>void</g> main() {</span>
+ 	<span id="char"><g>char</g> ch;</span>
  	<span id="label">start:</span>
-		<span id="printf1">printf("Enter a character : ");
-		scanf ("%c", &ch);</span>
-  		<span id="ifCondition"><span id="ifCnd">if (ch != '#')</span> {
-			<span id="gotoL1">goto start;</span>
+		<span id="printf1">printf(<ink>"Enter a character : "</ink>);
+		scanf (<ink>"<in>%c</in>"</ink>, &ch);</span>
+  		<span id="ifCondition"><span id="ifCnd"><go>if</go> (ch != <ink>'#'</ink>)</span> {
+			<span id="gotoL1"><go>goto</go> start;</span>
 		}</span>
 }</pre>
 			</div>

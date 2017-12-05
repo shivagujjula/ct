@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -52,6 +52,7 @@ pageEncoding="UTF-8"%>
 
 pre {
 	border:medium none;
+	font-size: 12px;
 }
 
 #codeDiv pre {
@@ -130,6 +131,31 @@ pre {
 	
 }
 
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
 </style>
 </head>
 
@@ -148,7 +174,7 @@ pre {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace;">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -171,23 +197,23 @@ pre {
 	<div class='col-xs-12 center'>
 	<div class='col-xs-offset-2 col-xs-4' ><div id="codeDiv" class='opacity00'>
 <pre class='bg-info'>
-#include&lt;stdio.h&gt;
-<span id='mainMethod'>void main() {
-	<span id='variableDeclaration'>int rows, i, j, k;</span>
-	<span id='getPrintf'>printf("Enter number of rows: ");</span>
-	<span id='getScanf'>scanf("%d", &rows);</span>
-	<span id="totalForLoop"><span class='outer'>for (i = 0; i &lt; rows; i++) {</span>
-		<span id='firstInnerForLoop'><span class='inner-one'>for ( j = 0; j < rows - i; j++) {</span>
-			<span class='inner-one'><span id='printfSpace'>printf(" ")</span>;</span>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<span id='mainMethod'><g>void</g> main() {
+	<span id='variableDeclaration'><g>int</g> rows, i, j, k;</span>
+	<span id='getPrintf'>printf(<ink>"Enter number of rows: "</ink>);</span>
+	<span id='getScanf'>scanf(<ink>"<in>%d</in>"</ink>, &rows);</span>
+	<span id="totalForLoop"><span class='outer'><go>for</go> (i = <ink>0</ink>; i &lt; rows; i++) {</span>
+		<span id='firstInnerForLoop'><span class='inner-one'><go>for</go> (j = <ink>0</ink>; j < rows - i; j++) {</span>
+			<span class='inner-one'><span id='printfSpace'>printf(<ink>" "</ink>)</span>;</span>
 		<span class='inner-one'>}</span></span>
-		<span id='secondInnerForLoop'><span class='inner-two'>for (k = 0; k <= i; k++) {</span>
-			<span class='inner-two'><span id='codeIfCondition'>if (k+1 <= i) </span>{</span>
-				<span class='inner-two'><span id='codeAlphabetPrint'>printf("*A")</span>;</span>
-			<span class='inner-two'>} else {</span>
-				<span  class='inner-two' id='codeStarPrint'>printf("*");</span>
+		<span id='secondInnerForLoop'><span class='inner-two'><go>for</go> (k = <ink>0</ink>; k <= i; k++) {</span>
+			<span class='inner-two'><span id='codeIfCondition'><go>if</go> (k +<ink>1</ink> <= i) </span>{</span>
+				<span class='inner-two'><span id='codeAlphabetPrint'>printf(<ink>"*A"</ink>)</span>;</span>
+			<span class='inner-two'>} <go>else</go> {</span>
+				<span  class='inner-two' id='codeStarPrint'>printf(<ink>"*"</ink>);</span>
 			<span class='inner-two'>}</span>
 		<span class='inner-two'>}</span></span>
-		<span class='outer' id="codeNextLine">printf("\n");</span>
+		<span class='outer' id="codeNextLine">printf(<ink>"<in>\n</in>"</ink>);</span>
 	<span class='outer'>}</span></span>
 }</span></pre>
 	</div></div>

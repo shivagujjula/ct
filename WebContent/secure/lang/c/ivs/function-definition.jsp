@@ -62,6 +62,11 @@ pre {
 	z-index: 9999999;
 	position: relative;
 }
+
+y {
+	font-weight: bold;
+	color: yellow;
+}
 </style>
 </head>
 <body>

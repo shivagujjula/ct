@@ -30,19 +30,19 @@ function initIntroJS() {
 		}, {
 			element :'#globalDeclaration',
 			intro :'',
-			position:"right"
+			position:"right",
 		}, {
 			element :'#numberDiv1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#funDeclaration',
 			intro :'',
-			position : "right"
+			position : "right",
 		}, {
 			element :'#variableDeclaration1',
 			intro :'',
-			position:"bottom" 
+			position:"bottom",
 		}, {
 			element :'#globalDeclaration',
 			intro :'',
@@ -50,7 +50,7 @@ function initIntroJS() {
 			tooltipClass: "hide"
 		}, {
 			element :'#numberDiv1',
-			tooltipClass :'hide'
+			tooltipClass :'hide',
 		}, {
 			element :'#sopLine1',
 			tooltipClass :'hide'
@@ -76,12 +76,13 @@ function initIntroJS() {
 		}, {
 			element :'#globalDeclaration',
 			intro :'',
-			position :"right" 
+			position :"right",
+			tooltipClass :'hide'
 		}, {
 			element :'#numberDiv1',
 			intro :'',
 			position:"right",
-			tooltipClass: 'hide'
+			tooltipClass: 'hide',
 		}, {
 			element :'#return1',
 			tooltipClass :'hide'
@@ -106,18 +107,19 @@ function initIntroJS() {
 		}, {
 			element :'#variableDeclaration3',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#numberDiv4',
 			intro :'',
-			position:"right" 
+			position:"right",
+			
 		}, {
 			element :'#initialize1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#numberDiv4',
-			tooltipClass:'hide'
+			tooltipClass:'hide',
 		}, {
 			element :'#return2',
 			intro :'',
@@ -158,7 +160,7 @@ function initIntroJS() {
 		}, {
 			element :'#numberDiv1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#variableDeclaration1',
 			tooltipClass:'hide'
@@ -195,7 +197,7 @@ function initIntroJS() {
 			tooltipClass:'hide'
 		}, {
 			element :'#globalDeclaration1',
-			tooltipClass:'hide'
+			tooltipClass:'hide',
 		}, {
 			element :'#variableDeclaration2',
 			tooltipClass:'hide'
@@ -228,23 +230,23 @@ function initIntroJS() {
 		}, {
 			element :'#variableDeclaration3',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#numberDiv4',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#initialize1',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#numberDiv4',
 			intro :'',
-			position:"right" 
+			position:"right",
 		}, {
 			element :'#return2',
 			intro :'',
-			position:"right", 
+			position:"right",
 		}, {
 			element :'#sopLine3',
 			tooltipClass :'hide'
@@ -274,7 +276,7 @@ function initIntroJS() {
 						});	
 					});
 				} else {
-					var text = "Let us consider an example."	
+					var text = "Let us consider an example."
 					typing('.introjs-tooltiptext', text, function() {
 						$('.introjs-nextbutton').show();
 					});	
@@ -282,21 +284,20 @@ function initIntroJS() {
 			break;
 			
 			case "globalDeclaration" :
+				$('.introjs-tooltip').addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					if(introjs._currentStep == 1) {
 						$('.introjs-tooltip').removeClass("hide");
-						var text = "The variables that are declared outside of <span class='ct-code-b-yellow'>any function</span>(including"
-									+ " main( )) are called <span class='ct-code-b-yellow'>extern variables</span>.";
+						var text = "The <y>variables</y> that are declared outside of <span class='ct-code-b-yellow'>any function</span> (including"
+									+ " <b class='ct-code-b-yellow'>main()</b> ) are called <span class='ct-code-b-yellow'>extern variables</span>.";
 						typing('.introjs-tooltiptext', text, function() { 
-							$('.introjs-nextbutton').show();	
+							$('.introjs-nextbutton').show();
 						});
 					} else if(introjs._currentStep == 5) {
-						$('.introjs-tooltip').addClass("hide");
 						setTimeout(function () {
 							introjs.nextStep();
 						},1000);
 					} else if(introjs._currentStep == 14) {
-						$('.introjs-tooltip').addClass("hide");
 						setTimeout(function () {
 							introjs.nextStep();
 						},1000);
@@ -312,16 +313,15 @@ function initIntroJS() {
 						var text = "The <span class='ct-code-b-yellow'>extern</span> variable <span class='ct-code-b-yellow'>x</span> of type "
 								+ "<span class='ct-code-b-yellow'>int</span> is allocated <span class='ct-code-b-yellow'>2 bytes</span> in memory.";
 						typing('.introjs-tooltiptext', text, function() { 
-							$('.introjs-nextbutton').show();	
+							$('.introjs-nextbutton').show();
 						});
-					}
-					else if(introjs._currentStep == 6 || introjs._currentStep == 40) {
+					} else if(introjs._currentStep == 6 || introjs._currentStep == 40) {
 						$("#addressValue1").removeClass("opacity00").text($("#number1").text());
 						fromEffectWithTweenMax('#number1', '#addressValue1', function() {
 							$('.introjs-tooltip').removeClass("hide");
 							$('#number1').removeClass("z-index1000000");
 							var text = "When the <span class='ct-code-b-yellow'>main()</span> method finds <span class='ct-code-b-yellow'>x</span>"
-										+ " declared as a <span class='ct-code-b-yellow'>global</span> variable, it stores the value 10 in the"
+										+ " declared as a <span class='ct-code-b-yellow'>global</span> variable.<br><br> It stores the value <span class='ct-code-b-yellow'>10 </span> in the"
 										+ " memory allocated for <span class='ct-code-b-yellow'>x</span>.";
 							typing('.introjs-tooltiptext', text, function() { 
 								$('.introjs-nextbutton').show();
@@ -336,27 +336,10 @@ function initIntroJS() {
 					$(".introjs-helperLayer").one("transitionend", function() {
 						var text = "These are <span class='ct-code-b-yellow'>function declarations</span>.";
 						typing('.introjs-tooltiptext', text, function() { 
-							$('.introjs-nextbutton').show();	
+							$('.introjs-nextbutton').show();
 						});
 					});
 			break; 
-			
-			case "mainDeclaration" :
-				$(".introjs-helperLayer").one("transitionend", function() {
-					if(introjs._currentStep == 4) {
-						var text = "<ul><li><span class='ct-code-b-yellow'>main()</span> is called by the operating system.</li>"
-									+ "<li><span class='ct-code-b-yellow'>main()</span> is the execution starting point of a"
-									+ " <span class='ct-code-b-yellow'>C</span> program.";
-					typing('.introjs-tooltiptext', text, function() { 
-						$('.introjs-nextbutton').show();	
-					});
-					} else if(introjs._currentStep == 32) {
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 1000);
-					}
-				});
-			break;
 			
 			case "return1":
 			case "openspace":
@@ -377,18 +360,18 @@ function initIntroJS() {
 			introjs.refresh();
 				$(".introjs-helperLayer").one("transitionend", function() {
 				if(introjs._currentStep == 4) {
-					text = "In this statement the <span class='ct-code-b-yellow'>main()</span> method first checks for the declaration of "
-							+ "<span class='ct-code-b-yellow'>x</span> with in the <span class='ct-code-b-yellow'>main()</span> method.<br>"
-							+" If it is not declared, it checks the <span class='ct-code-b-yellow'>global</span> variable declaration.";
+					text = "In this statement the <span class='ct-code-b-yellow'>main()</span> method <y>first</y> checks for the declaration of "
+							+ "<span class='ct-code-b-yellow'>x</span> with in the <span class='ct-code-b-yellow'>main()</span> method.<br><br>"
+							+" If it is <y>not</y> declared, it checks the <span class='ct-code-b-yellow'>global</span> variable declaration.";
 					typing('.introjs-tooltiptext',text,function() { 
 						$('.introjs-nextbutton').show();
 					});
 				} else if(introjs._currentStep == 33) {
 					$('.fa').remove();
-					$("#globalDeclaration1").text('int x');
-					text = "The variable <span class='ct-code-b-yellow'>x</span> is not declared as local/global variable. So, an "
-							+ " <span class='ct-code-b-yellow'>error</span> is thrown.<br> So, declaring an <span class='ct-code-b-yellow'>"
-							+ "extern int</span> variable x(which means an extern variable x is declared) avoids the error.";
+					$("#globalDeclaration1").text('int x;');
+					text = "The variable <span class='ct-code-b-yellow'>x</span> is <y>not</y> declared as <y>local/global</y> variable. So, an "
+							+ " <span class='ct-code-b-yellow'>error</span> is thrown.<br><br> So, declaring an <span class='ct-code-b-yellow'>"
+							+ "int</span> variable <y>x</y> (which means using an <y>extern</y> keyword to the  variable <y>x</y>) avoids this <y>error</y>.";
 					typing('.introjs-tooltiptext',text ,function() {
 						$('.introjs-tooltipbuttons').append("<a class='introjs-button animation-nextbtn'>Next &#8594;</a>"); 
 						$('.animation-nextbtn').click(function() { 
@@ -407,11 +390,11 @@ function initIntroJS() {
 			break; 
 		
 			case "mainMemory" :
-				$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-helperLayer").one("transitionend", function() { 
 					$('#mainmemoryheading').css({'opacity':'1'});
 					$('#mainMemory').addClass('box-border');
 					$('.introjs-tooltip').removeClass("hide");
-					var text = "The main() memory is checked for variable <span class='ct-code-b-yellow'>x</span>. As it is not declared here,"
+					var text = "The main() method is checked for variable <span class='ct-code-b-yellow'>x</span>. As it is not declared here,"
 								+ " it checks globally.";
 					typing('.introjs-tooltiptext', text, function() { 
 						$('.introjs-nextbutton').show();	
@@ -434,7 +417,6 @@ function initIntroJS() {
 					} else if (introjs._currentStep == 29 || introjs._currentStep == 66) {
 						count++;
 						index = 4;
-						console.log(index + " @@451");
 						printDecimalValue1();
 					} 
 				});
@@ -443,16 +425,17 @@ function initIntroJS() {
 			case "variableDeclaration2" :
 				$(".introjs-helperLayer").one("transitionend", function() {
 				 if (introjs._currentStep == 13) {
-					text = "This function checks for the declaration of <span class='ct-code-b-yellow'>x</span> with in the"
-							+ " function.<br> If it is not declared, it checks for the <span class='ct-code-b-yellow'>global</span> declaration of"
+					text = "This <y>function</y> checks for the declaration of <span class='ct-code-b-yellow'>x</span> within the"
+							+ " function.<br><br> If it is not declared, it checks for the <span class='ct-code-b-yellow'>global</span> declaration of"
 							+ " <span class='ct-code-b-yellow'>x</span>.";
 					typing('.introjs-tooltiptext',text,function() {
 						$('.introjs-nextbutton').show();	
 					});
 				} else if (introjs._currentStep == 47) {
-					text = "The variable x is not declared as local/global variable. So, an <span class='color-red'>error</span> is thrown."
-							+ " <br>So, declaring an <span class='ct-code-b-yellow'>extern int</span> variable x(which means an extern"
-							+ " variable x is declared) avoids the error.";
+					text = "The variable <span class='ct-code-b-yellow'>x</span> is <y>not</y> declared as "
+							+"<span class='ct-code-b-yellow'>local/global</span> variable. So, an <span class='color-red'>error</span> is thrown."
+							+ " <br><br>So, declaring an <span class='ct-code-b-yellow'>extern int</span> variable <y>x</y> (which means an <y>extern"
+							+ " variable x</y> is declared) avoids the <y>error</y>.";
 					typing('.introjs-tooltiptext',text ,function() { 
 						$('#openBrace1').append('<br>\t\t\t<span id = "extDeclaration1"><span class="ct-green-color">extern</span> int x;</span>');
 						introjs.refresh(); 
@@ -470,7 +453,7 @@ function initIntroJS() {
 			case "globalDeclaration1" :
 				$(".introjs-helperLayer").one("transitionend", function() {
 				if (introjs._currentStep == 37) {
-					var text = "The global variable <span class='ct-code-b-yellow'>x</span> is declared and the memory is allocated to"
+					var text = "The <y>global</y> variable <span class='ct-code-b-yellow'>x</span> is declared and the memory is allocated to"
 								+ " <span class='ct-code-b-yellow'>x</span>.";
 					typing('.introjs-tooltiptext', text, function() {
 						$("#extDeclaration").removeClass("z-index1000000");
@@ -504,7 +487,7 @@ function initIntroJS() {
 								+ " <span class='ct-code-b-yellow'>1</span>.";
 					typing('.introjs-tooltiptext', text, function() { 
 						$('.introjs-nextbutton').show();	
-					});	
+					});
 				});
 			break;
 			
@@ -534,7 +517,7 @@ function initIntroJS() {
 						$('#numberDiv4').addClass('box-border');
 						$('.introjs-tooltip').removeClass("hide");
 						var text = "The <span class='ct-code-b-yellow'>local</span> variable <span class='ct-code-b-yellow'>x</span> of type"
-									+ " <b>int</b> is allocated 2 bytes in memory.";
+									+ " <b class='ct-code-b-yellow'>int</b> is allocated <b class='ct-code-b-yellow'>2</b> bytes in memory.";
 						typing('.introjs-tooltiptext', text, function() { 
 							$('.introjs-nextbutton').show();
 						});
@@ -545,11 +528,13 @@ function initIntroJS() {
 							$("#addressValue4").text($("#number4").text());
 							$("#addressValue4").removeClass("opacity00");
 							fromEffectWithTweenMax('#number4', '#addressValue4', function() {
+								$('#number4').removeClass("z-index1000000");
 								$('.introjs-tooltip').removeClass("hide");
-								var text = "The value 1 is assigned to the local variable <span class='ct-code-b-yellow'>x</span> and is stored"
-											+ " in the memory allocated for the same.";
+								var text = "The value <span class='ct-code-b-yellow'>1</span> is assigned to the "
+									+"local variable <span class='ct-code-b-yellow'>x</span> and is stored"
+											+ " in the <y>memory</y> allocated for the <y>same</y>.";
 								typing('.introjs-tooltiptext', text, function() { 
-									$('.introjs-nextbutton').show();	
+									$('.introjs-nextbutton').show();
 								});	
 							});
 						});
@@ -560,10 +545,11 @@ function initIntroJS() {
 			case "initialize1" :
 				$('.introjs-tooltip').css({'min-width' : '320px'});
 				$(".introjs-helperLayer").one("transitionend", function() {
-					text = "Two variables with the same name <span class='ct-code-b-yellow'>x</span>, have been declared here, one as local and the"
-							+ " other as global.<br> Inside any function, local variables will have the highest precedence because the control"
-							+ " is within the function. <br>Here, in the function <span class='ct-code-b-yellow'>yamuna()</span> the local"
-							+ " variable <span class='ct-code-b-yellow'>x</span> will have precedence over the global variable.";
+					text = "Two variables with the same name <span class='ct-code-b-yellow'>x</span>, have been declared here, one as <b class='ct-code-b-yellow'>local</b> and the"
+							+ " other as <b class='ct-code-b-yellow'>global</b>.<br><br> Inside any <b class='ct-code-b-yellow'>function</b>, <b class='ct-code-b-yellow'>local</b> "
+							+"variables will have the <b class='ct-code-b-yellow'>highest precedence</b> because the control"
+							+ " is <y>within</y> the function. <br><br>Here, in the function <span class='ct-code-b-yellow'>yamuna()</span> the local"
+							+ " variable <span class='ct-code-b-yellow'>x</span> will have <y>precedence</y> over the global variable.";
 					typing('.introjs-tooltiptext',text,function() { 
 						$('.introjs-nextbutton').show();
 					});
@@ -596,7 +582,7 @@ function initIntroJS() {
 			 	$('#extDeclaration').addClass('introjs-showElement'); 
 				$(".introjs-helperLayer").one("transitionend", function() {
 					text = "<span class='ct-code-b-yellow'>extern</span> means the variable is declared as <span class='ct-code-b-yellow'>global"
-							+ " variable</span>, so the control checks the global declaration which could be at the end of the program.";  
+							+ " variable</span>, so the control checks the <y>global declaration</y> which could be at the <y>end</y> of the program.";  
 					typing('.introjs-tooltiptext',text,function() { 
 						$('.introjs-nextbutton').show();
 					});
@@ -621,11 +607,12 @@ function initIntroJS() {
 
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval" : 5,
+		"typing_interval" : 1,
 		"cursor_color": "white"
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		callbackFunction();
+		introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }
 
@@ -643,6 +630,7 @@ function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
 	var l2 = $(selector2).offset();
 	var topLength = l1.top - l2.top;
 	var leftLength = l1.left - l2.left;
+	$(selector1).addClass('z-index1000000').effect('highlight', {'color' : 'yellow'}, 1000);
 	TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
@@ -660,7 +648,7 @@ function arrowAnimation(callBackFunction) {
 		$("#globalDeclaration").addClass("opacity00");
 		$("#globalDeclaration1").removeClass("opacity00");
 		TweenMax.from($("#globalDeclaration1"), 1, {top: topLength, left: leftLength, onComplete: function() {
-			typing('.introjs-tooltiptext',"Let us see how this program is executed.", function() {
+			typing('.introjs-tooltiptext',"Let us see how this program is <y>executed</y>.", function() {
 				$('.introjs-nextbutton').show();
 			});
 		}});
@@ -672,6 +660,7 @@ function printDecimalValue() {
 		$("#xValue" + count).removeClass("z-index1000000");
 		$('.output-console-body').append('<div id="outputAValue' + count + '">' + $("#addressValue" + index).text() + '</div>\n')
 		fromEffectWithTweenMax("#xValue" + index, "#outputAValue" + count, function() {
+			$("#xValue" + index).removeClass("z-index1000000");
 			setTimeout(function () {
 				introjs.nextStep();	
 			}, 500);
@@ -684,6 +673,7 @@ function printDecimalValue1() {
 		$("#xValue" + count).removeClass("z-index1000000");
 		$('.output-console-body').append('<div id="outputAValue' + count + '">' + $("#addressValue" + index).text() + '</div>\n')
   		fromEffectWithTweenMax("#xValue" + count, "#outputAValue" + count, function() {
+  			$("#xValue" + count).removeClass("z-index1000000");
   			setTimeout(function () {
   				introjs.nextStep();	
 			}, 500);
@@ -701,7 +691,7 @@ function addition() {
 				$('.introjs-tooltip').removeClass("hide");
 				typing('.introjs-tooltiptext', "When the <span class='ct-code-b-yellow'>ganga()</span> method finds <span class='ct-code-b-yellow'>"
 										+ "x</span> declared as a <span class='ct-code-b-yellow'>global variable</span>, it <span class"
-										+ "='ct-code-b-yellow'>increases</span> the value by 10 and stores it in the memory allocated.", function() {
+										+ "='ct-code-b-yellow'>increases</span> the value by <span class='ct-code-b-yellow'>10</span> and stores it in the memory allocated.", function() {
 					$('.introjs-nextbutton').show();	
 				});
 			}}); 

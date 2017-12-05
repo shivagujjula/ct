@@ -387,6 +387,7 @@ function introJsFunction() {
 				} else 	if (visit === "third_visit") {
 					
 				} else if (visit === "second_visit") {
+					$("#inheritA").addClass("hide");
 					text = "<ul><li><y>obj1</y> is object of derived <y>class B</y>.</li><li>The <y>obj1</y> can access the"
 							+" public member function <y>display()</y> of <y>class A</y>.</li><li>It gives an <y>error</y>"
 							+" message, why because <y>class A</y> is <y>privately</y> inherited.so convert it to <y>public</y>.</li></ul>";
@@ -606,8 +607,8 @@ function flowSteps(elementId, visit) {
 	typing($(".introjs-tooltiptext"), text, function() {
 		
 		if (visit === "second_visit") {
-			$("#inheritA").removeClass("hide");
 			setTimeout(function() {
+				$("#inheritA").removeClass("hide");
 				TweenMax.fromTo("#inheritA", 1, {top : "-39px"}, {top: "0px", opacity:1})
 			},150);
 		}

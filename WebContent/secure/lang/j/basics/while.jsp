@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +7,14 @@
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/font-awesome.min.css" rel="stylesheet">
-
-
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/while.min.js"></script>
+<!-- <script src="/secure/lang/c/js-min/wlic.min.js"></script> -->
+<script src="/secure/lang/j/js/while.js"></script>
+
 <style type="text/css">
 
 .introjs-tooltip-custom-width {
@@ -25,8 +23,10 @@
 	width: -moz-max-content; /* Firefox/Gecko */
 	width: -webkit-max-content;
 }
+
 body {
 	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 #outputDiv {
@@ -44,7 +44,7 @@ body {
 .output-console-body {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    height: 165px !important;
+    height: 160px !important;
     margin-bottom: 14px;
     padding: 10px;
     font-weight: bold;
@@ -75,14 +75,14 @@ body {
     height: 35px;
     position: fixed;
     transition: all 1.3s ease-out 0s;
-    width: 60px;
+    width: 85px;
     z-index: 9999998 !important;
     left: 200px;
 }
 
 .cup {
 	display: inline-block;
-    left: 19px;
+    left: 46px;
     position: relative;
 }
 
@@ -98,7 +98,7 @@ body {
     font-family: monospace;
     font-size: 14px;
     position: relative;
-    right: 15px;
+    right: 45px;
 }
 
 .fa-inverse {
@@ -132,6 +132,10 @@ body {
 	font-family: monospace;
 }
 
+#initializationValue {
+	font-family: monospace;
+}
+
 .flip {
     animation: flip 1s linear 1;
 }
@@ -160,6 +164,10 @@ body {
     outline: none;
 }
 
+.position-absolute {
+ 	position: absolute;
+}
+
 .color-red {
 	color: red;
 }
@@ -168,16 +176,45 @@ body {
   content: attr(placeholder);
   color: #B8B8A0;
 }
+
+.introjs-tooltip-min-width-custom {
+	min-width: 110px;
+}
+
+
+.oneStepBackBtn {
+	background-color: #5bc0de !important
+}
+
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+[contenteditable=true] {
+	background: yellow;
+}
+
 </style>
-
-<script type="text/javascript">
-	
-	
-	$(document).ready(function() {
-		whileReady();
-	});
-</script>
-
 
 </head>
 <body>
@@ -187,17 +224,18 @@ body {
 			<span class="label ct-demo-heading">while-loop in Action</span>
 		</h4>
 	</div>
-	<div class="col-xs-8">
+	<div class="col-xs-offset-1 col-xs-6">
 		<div>
-					<pre class="creamePreTab4">public class WhileDemo {
-	public static void main(String[] args) {
-		<span id='initialization' class="position-relative">int n = <span id="initializationValue" class="allowNumbers position-relative" maxlength="1" contenteditable=false placeholder=" ">1</span>;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>n</b></span>= <h6 id="cupValue"></h6></h5></span></span>
-		<span id='whileLoop'>while (<span id='condition'>n <= <span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="false" placeholder=" ">5</span></span>) {
-			<span id='statement'>System.out.println("n : " + n);</span>
-			<span id='update'>n++;</span>
+				<pre class="creamePreTab4"><in>public class</in> <ink>WhileDemo</ink> {
+	<g>public static void</g> main(String[] args) {
+		<span id='initialization' class="position-relative"><g>int</g> value = <span id="initializationValue" class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>value</b></span>= <h6 id="cupValue"></h6></h5></span></span>
+		<span id='whileLoop'><go>while</go> (<span id='condition'>value <= <ink><span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="false" placeholder=" ">5</span></ink></span>) {
+			<span id='statement'>System.out.println(<ink>"value : "</ink> + value);</span>
+			<span id='update'>value++;</span>
 		<span id='whileEnd'>}</span></span>
 	<span id='mainEnd'>}</span>
-}</pre>
+}
+</pre>
 		</div>
 	</div>
 	<div class="col-xs-4" id="outputDiv">
@@ -209,7 +247,19 @@ body {
 	</div>
 </div>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id="restart">Restart</a>
 	</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	whileLoopInCReady();
+});
+
+
+	
+</script>
+
 </body>
 </html>

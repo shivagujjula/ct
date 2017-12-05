@@ -108,7 +108,7 @@
 
 .span-box {
     height: 17px;
-    width: 3%;
+    width: 30%;
 }
 
 [contenteditable=true] {
@@ -142,9 +142,13 @@
 	z-index: 9999999;
 }
 
+
+
+
 </style>
 </head>
 <body>
+	<div id='mainBox'>
 	<div class="text-center margin-top-20">
 		<h1 id="heading" class="label ct-demo-heading text-center">Formal and Actual Arguments</h1>
 	</div>
@@ -216,7 +220,7 @@
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-20 text-center"><span id="restart" class="btn btn-warning opacity00">Restart</span></div>
-	
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			differentArgumentVariableReady();

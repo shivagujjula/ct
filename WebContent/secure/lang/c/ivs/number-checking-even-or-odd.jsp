@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,8 +24,9 @@
 .infoDiv {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
+	font-family: monospace;
 }
 
 .margin-top-1 {
@@ -184,6 +185,31 @@ td {
 	background-color: #e99211;
 }
 
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
 </style>
 
 </head>
@@ -294,10 +320,10 @@ td {
 					<div class="ct-color-teal integer-number display-inline" id="integerNumber" MaxLength="4" contenteditable="false">254</div>;
 				</div>
 <pre id="preCode" class="cream-color-gold">
-<span id="ifLine" class="opacity00">if (<span id="ifCondition"><span class='display-inline' id="remainderValue">number % 2</span> == 0</span>) {</span>
-	<span id="print1" class="opacity00">printf("%d is even number.", number);</span>
-<span id="elseLine" class="opacity00">} else {</span>
-	<span id="print2" class="opacity00">printf("%d is odd number.", number);</span>
+<span id="ifLine" class="opacity00"><go>if</go> (<span id="ifCondition"><span class='display-inline' id="remainderValue">number % <ink>2</ink></span> == <ink>0</ink></span>) {</span>
+	<span id="print1" class="opacity00">printf(<ink>"<in>%d</in> is even number."</ink>, number);</span>
+<span id="elseLine" class="opacity00">} <go>else</go> {</span>
+	<span id="print2" class="opacity00">printf(<ink>"<in>%d</in> is odd number."</ink>, number);</span>
 <span id="closeCurlyBrace" class="opacity00">}</span>
 </pre>
 			</div>

@@ -1,11 +1,11 @@
-var introcode;
+var intro;
 var typingInterval = 1;
 var tl = new TimelineLite();
 var numberCount = 1;
 
 var largestOfThreeNumbersProgramReady = function() {
-	introcode = introJs();
-	introcode.setOptions({
+	intro = introJs();
+	intro.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
 		showBullets : false,
@@ -14,7 +14,7 @@ var largestOfThreeNumbersProgramReady = function() {
 			steps : [{
 						element :'#programForLargestNumber',
 						intro :'',
-						tooltipClass : "hide"
+						//tooltipClass : "hide"
 					},{
 						element :'#numberDeclaration1',
 						intro :'',
@@ -52,12 +52,63 @@ var largestOfThreeNumbersProgramReady = function() {
 						position : "right"
 					}]
 	});
-	introcode.onafterchange(function(targetElement) {
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+			switch (elementId) {
+				case "programForLargestNumber" :
+					numberCount = 1;
+				break;
+				case "numberDeclaration" + numberCount :
+				$(".introjs-duplicate-backbutton").remove();	
+				break;
+				
+				case "numberDiv" + numberCount :
+						if(intro._currentStep == 3 || intro._currentStep == 5 || intro._currentStep == 7) {
+						
+						} else if(intro._currentStep == 10) {
+						}
+				break;
+				case "condition" :
+					numberCount = 3
+				break;
+				case "conditionAimation" :
+					
+				break;
+				case "printStatement" :
+					
+				break;
+				case "outputDiv" :
+					
+				break;
+				
+			}
+		});
+	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+					intro._introItems[intro._currentStep]["animation"] = "repeat";
+				}
+				
+				if (intro._introItems[intro._currentStep]["isCompleted"]) {
+					if (intro._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+					intro._introItems[intro._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 	var elementId = targetElement.id;
 		switch (elementId) {
 			case "programForLargestNumber" :
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
-				$('.introjs-tooltip').removeClass('hide');
+				//$('.introjs-tooltip').removeClass('hide');
 				text = 'This program demonstrates the usage of the <span class="ct-code-b-yellow">ternary operator</span>.'+
 						'<br/><br/>In this program tries to find the <span class="ct-code-b-yellow">largest</span>'+
 						' of <span class="ct-code-b-yellow">three</span> numbers.';
@@ -78,16 +129,29 @@ var largestOfThreeNumbersProgramReady = function() {
 						$("#number" + numberCount).effect( "highlight",{color: 'yellow'});
 						caretAtEnd(document.getElementById('number' + numberCount));
 						numberCount++;
-						$('.introjs-nextbutton').show();
+						$(".introjs-nextbutton").show();
+						$(".introjs-duplicate-backbutton").remove();
+						$(".introjs-tooltipbuttons").prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")
+						$(".introjs-duplicate-backbutton").click(function() {
+							numberCount = numberCount - 2;
+							$(".introjs-duplicate-backbutton").remove();
+							setTimeout(function () {
+								intro.previousStep()
+							}, 300);
+						});
+						
 					});
 				});
 			break;
 			
 			case "numberDiv" + numberCount :
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+			
 				$('.introjs-helperLayer').one('transitionend', function() {
+					
 					$('[contenteditable="true"]').attr('contenteditable', 'false');
-					if(introcode._currentStep == 3 || introcode._currentStep == 5 || introcode._currentStep == 7) {
+					if(intro._currentStep == 3 || intro._currentStep == 5 || intro._currentStep == 7) {
+						
 					$("#value" + numberCount).text($("#number" + numberCount).text());
 					TweenMax.to('#numberDiv' +numberCount, 1, {opacity: 1, onComplete: function() {
 						$('.introjs-tooltip').removeClass('hide');
@@ -96,11 +160,13 @@ var largestOfThreeNumbersProgramReady = function() {
 								$('#declaration' +numberCount).text() + '</span>.';
 						typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 							$("#number" + numberCount).effect( "highlight",{color: 'yellow'});
+							caretAtEnd(document.getElementById('number' + numberCount));
 							numberCount++;
 							$('.introjs-nextbutton').show();
 						});
 					}});
-					} else if(introcode._currentStep == 10) {
+						
+					} else if(intro._currentStep == 10) {
 						$("#value4").text($('.max-value-div').children().text());
 						TweenMax.to('#numberDiv4', 1, {opacity: 1, onComplete: function() {
 							$('.introjs-tooltip').removeClass('hide');
@@ -113,8 +179,10 @@ var largestOfThreeNumbersProgramReady = function() {
 						}});
 					}
 				});
+		
 			break;
 			case "condition" :
+				$(".introjs-duplicate-backbutton").remove();
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
@@ -124,7 +192,7 @@ var largestOfThreeNumbersProgramReady = function() {
 							'<span class="ct-code-b-yellow">condition ? true : false</span><br/><br/>'+
 							'Let us subsuite the values in the statement for evaluation to proceed.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -158,7 +226,7 @@ var largestOfThreeNumbersProgramReady = function() {
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					setTimeout(function() {
-						introcode.nextStep();
+						intro.nextStep();
 					},500);
 				});
 			break;
@@ -169,7 +237,7 @@ var largestOfThreeNumbersProgramReady = function() {
 					text = 'The largest number is : ' + $('.max-value-div').children().text();
 					typing('#outputText', text, typingInterval, 'white', function(){
 						setTimeout(function() {
-							introcode.nextStep();
+							intro.nextStep();
 						},800);
 					});
 					
@@ -178,11 +246,12 @@ var largestOfThreeNumbersProgramReady = function() {
 			case "restartBtn":
 				$('.introjs-helperLayer').one('transitionend', function () {
 					$("#restartBtn").removeClass('visibility-hidden');
+					$(".introjs-tooltip").css({"min-width": "125px"});
 				});
 			break;
 		}
 	});
-	introcode.start();
+	intro.start();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide(); 
@@ -307,7 +376,7 @@ function animatingMax(id, id1, num) {
 				typingCallbackFunction = function() { */
 					$("#" +id).css({"background": ""});
 				setTimeout(function() {
-					introcode.nextStep();
+					intro.nextStep();
 				},800);
 				//	$('.introjs-nextbutton').show();
 				/* }
@@ -354,7 +423,9 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
+		
 		$('.introjs-tooltip').show();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 } 
 
@@ -385,12 +456,25 @@ function changeValue() {
 		} else {
 			$(this).removeClass("empty");
 		}
-		introcode.refresh();
+		intro.refresh();
 		
 		if ($(".empty").length > 0) {
 			$(".introjs-nextbutton").hide();
+			$(".introjs-duplicate-backbutton").remove();
 		} else {
 			$(".introjs-nextbutton").show();
+			$(".introjs-duplicate-backbutton").remove();
+			$(".introjs-tooltipbuttons").prepend("<a class='introjs-button introjs-duplicate-backbutton'>&#8592 Back</a>")
+			$(".introjs-duplicate-backbutton").click(function() {
+				//console.log("in key up back before" +number);
+				numberCount = numberCount - 2;
+				//console.log("in key up back after" +number);
+				//alert("2nd time click")
+				$(".introjs-duplicate-backbutton").remove();
+				setTimeout(function () {
+					intro.previousStep()
+				}, 300);
+			});
 		}
 	});
 } 

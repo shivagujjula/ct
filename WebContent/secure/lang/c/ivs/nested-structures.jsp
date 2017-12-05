@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/css/animate.css"/>
 	<link rel="stylesheet" href="/css/jquery-ui.css"/>
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	
 	<script src="/js/jquery-latest.js"></script>
 	<script src="/js/bootstrap.js"></script>
 	<script src="/js/gs/TweenMax.min.js"></script>
@@ -90,8 +91,9 @@ th, td {
 .input {
 	background-color: #000;
     border-width: 0;
-    color: #0f0;
+    color: yellow;
     width: 200px;
+    font-weight: bold;
  }
  
  #nameBox {
@@ -130,10 +132,10 @@ th, td {
 	height: 20px !important;
 }
 
-#outPut {
+/* #outPut {
 	color: #0f0;
 }
-
+ */
 .user-btn {
 	background: green;
 	margin: 0!important;
@@ -141,6 +143,12 @@ th, td {
 
 .introjs-tooltip {
 	min-width: 300px;
+}
+
+.z-index {
+	z-index: 9999999 !important;
+	position: relative;
+	background: white
 }
 </style>
 </head>
@@ -156,14 +164,12 @@ th, td {
 	<div id='tableDiv' style='border: 1px solid black; border-radius: 10px;' class='col-xs-offset-2 col-xs-8 visibility-hidden'>
 	<div class='col-xs-12'>
 		<div class='col-xs-5' style='margin-top: 10px;'>
-<pre><span id='structDate' class='opacity00'><span class='color-rose'>struct</span> date
-<span id='structureDateMembers' class=''><span id='openBracket'>{</span>
+<pre><span id='structDate' class='opacity00'><span class='color-rose'>struct</span> date <span id='structureDateMembers' class=''><span id='openBracket'>{</span>
 	<span id='intDay'><span class='color-rose'>int</span> day;</span>	
 	<span id='intMonth'><span class='color-rose'>int</span> month;</span>	
 	<span id='intYear'><span class='color-rose'>int</span> year;</span>	
 <span id='closedBracket'>};</span></span></span>
-<span id='structAccount' class='opacity00'><span class='color-rose'>struct</span> account
-<span id='strucutreAccountMembers' class=''><span id='openBracket1'>{</span>
+<span id='structAccount' class='opacity00'><span class='color-rose'>struct</span> account <span id='strucutreAccountMembers' class=''><span id='openBracket1'>{</span>
 	<span id='intAccount'><span class='color-rose'>int</span> accno;</span>
 	<span id='charAccountType'><span class='color-rose'>char</span> acctype;</span>
 	<span id='structLastPayment'><span class='color-rose'>struct</span> date lastpayment;</span>  
@@ -193,26 +199,23 @@ th, td {
 </div>
 <div class='col-xs-12 col-xs-offset-1 col-xs-10 visibility-hidden' id='tableDiv1' style='border: 1px solid black; margin-top: 15px; border-radius: 10px;'>
 	<div class='col-xs-6' style="margin-top: 10px">
-<pre id='structEmployee'><span id='structEmployeeE'><span class='color-rose'>struct</span> employee
-<span>{</span>
+<pre id='structEmployee'><span id='structEmployeeE'><span class='color-rose'>struct</span> employee <span>{</span>
 	<span id='subStructOfEmployee'><span class='color-rose'>char</span> name[20];
-	<span class='color-rose'>struct</span> address
-	{
+	<span class='color-rose'>struct</span> address {
 		<span class='color-rose'>char</span> city[25];
 		<span class='color-rose'>char</span> phone[10];
 		<span class='color-rose'>int</span> pin;
-	}<span class='color-rose'>a</span>;</span>
-}<span class='color-rose'>e</span>;</span>
-	<span id='printf1'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee name"</span>);</span>
-	<span id='scanf1'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles1'>"%s"</span></span>, <span id='name1'>e.name</span>);</span>
-	<span id='printf2'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee city"</span>);</span>
-	<span id='scanf2'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles2'>"%s"</span></span>, <span id='city1'>e.a.city</span>);</span>
-	<span id='printf3'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee phoneNo."</span>);</span>
-	<span  id='scanf3'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles3'>"%s"</span></span>, <span id='phone1'>e.a.phone</span>);</span>
-	<span id='printf4'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee pinNo."</span>);</span>
-	<span id='scanf4'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiled'>"%d"</span></span>, <span id='pin'>&e.a.pin</span>);</span>
-	<div id='printf5' style="display: inline-block"><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"%s %s %s %d"</span>, e.name, e.a.city, e.a.phone,
-	 		e.a.pin);</div></pre>
+	}<span class='color-rose'> a</span>;</span>
+}<span class='color-rose'> e</span>;</span>
+<span id='printf1'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee name"</span>);</span>
+<span id='scanf1'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles1'>"%s"</span></span>, <span id='name1'>e.name</span>);</span>
+<span id='printf2'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee city"</span>);</span>
+<span id='scanf2'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles2'>"%s"</span></span>, <span id='city1'>e.a.city</span>);</span>
+<span id='printf3'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee phoneNo."</span>);</span>
+<span  id='scanf3'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiles3'>"%s"</span></span>, <span id='phone1'>e.a.phone</span>);</span>
+<span id='printf4'><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"enter employee pinNo."</span>);</span>
+<span id='scanf4'><span class='color-maroon'>scanf</span>(<span class='color-lightblue'><span id='percentiled'>"%d"</span></span>, <span id='pin'>&e.a.pin</span>);</span>
+<div id='printf5' style="display: inline-block"><span class='color-maroon'>printf</span>(<span class='color-lightblue'>"%s %s %s %d"</span>, e.name, e.a.city, e.a.phone, e.a.pin);</div></pre>
 </div>
 	<div class='col-xs-6' >
 		<div style='margin-left: 183px; color: green' ><span id='divE' class='opacity00 color-rose' style='position: relative; z-index: 9999999;'>
@@ -257,18 +260,18 @@ th, td {
 					<div class='opacity00 inputDiv' id='pinNumberSpan'>Enter employee pinNo. : <span id='pinNoEnterspan'>
 						<input class="index-textbox-size input"  type="text" id='pinNumberInput' Maxlength='4'></span>
 					</div>
-					<div class='opacity00' id='outPut'></div>
+					<div class='opacity00 ct-code-b-yellow' id='outPut'></div>
 				</div>
 		</div>
 	</div>
 </div>
 
 <div style='margin-top: 8px' id='tableDiv1' class='col-xs-12 col-xs-offset-3 col-xs-6 text-center'>
-	<pre id='embeddedFormat' class='opacity00'>external_<span class='color-rose'>struct</span>_variable . internal_<span class='color-rose'>struct</span>_variable . member</pre>
+	<pre id='embeddedFormat' class='opacity00'>external_<span class='color-rose'>struct</span>_variable.internal_<span class='color-rose'>struct</span>_variable.member</pre>
 </div>
 </div>
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:4px'><i class="fa fa-refresh"></i> Restart</button>
 </div>
 </body>
 <script>

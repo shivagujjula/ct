@@ -1,4 +1,4 @@
-var typingInterval = 5;
+var typingInterval = 1;
 var multiplyAction;
 var coefficent;
 var subtraction;
@@ -46,11 +46,13 @@ var leapYearProgramReady = function() {
 		}, {
 			element : '#consoleId',
 			intro : '',
-			animateStep : 'enterNumber'
+			animateStep : 'enterNumber',
+			tooltipClass: 'hide'
 		}, {
 			element : '#preCode',
 			intro : '',
 			position : 'right',
+			tooltipClass: 'hide',
 			animateStep : 'firstConditionCheck'
 		}, {
 			element : '#consoleId',
@@ -64,22 +66,67 @@ var leapYearProgramReady = function() {
 		}]
 	});
 	
-	introjs.onafterchange(function(targetElement) {
+	introjs.onbeforechange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case 'scanfLine1':
+				if (introjs._direction == "backward") {
+					$("#inputYear").val('');
+					$("#inputYear").removeAttr("contenteditable");
+					$("#inputYear").removeClass("blinking-once");
+				}
+			break;
+		case 'consoleId':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'showFirstLine':
+				if (introjs._direction == "backward") {
+					$("#printText1").addClass("opacity00");
+				}
+				break;
+			case 'enterNumber':
+				if (introjs._direction == "backward") {
+					$("#inputYear").val('');
+					$("#inputYear").removeAttr("contenteditable");
+					$("#inputYear").removeClass("blinking-once");
+				}
+				break;
+			}
+			break;
+		}
+	});
+	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'infoDiv':
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list1").fadeTo(300, 1, function() {
 				$("#list2").fadeTo(300, 1, function() {
-				//	$("#list3").fadeTo(300, 1, function() {
 						$("#infoDiv").addClass('z-index9999999');
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
+						stepNext();
 					});
 				});
-			//});
 			break;
 		case 'preCode':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
@@ -97,6 +144,7 @@ var leapYearProgramReady = function() {
 				break;
 			case 'firstConditionCheck':
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$(".introjs-tooltip").removeClass("hide");
 					var text = "Now check the condition for given <span class='ct-code-b-yellow'>" + $("#inputYear").val() + "</span> is a leap year"+
 						" or not.<br><div id='div1'><ul class='dispaly-inline'>"+
 							"<li><span id='firstIf' class='opacity00 ct-code-b-yellow'>"+
@@ -113,15 +161,19 @@ var leapYearProgramReady = function() {
 											"<span class='ct-code-b-yellow'>true</span> the control enters into the next "+
 											"<span class='ct-code-b-yellow'>if</span> block.");
 									var text = $("#evaluationSpan1").html();
+									
 									typing('#evaluationSpan1', text, typingInterval, 'white', function() {
+										$(".introjs-prevbutton").show();
 										$("#div1").after("<div id='div2'><ul class='dispaly-inline'><li class='opacity00' id='line2'></li></ul>"+
 												"<br><span class='opacity00' id='line3'></span></div>");
+										
 										nextButtonFucntion(function() {
 /** (year % 100) **/						yearDevideWithHundred(function() {
 												secondIfElseConditionAnimation();
 											});
 										});
 									});
+									
 								});
 							} else {
 								$("#line1").append("<span class='ct-color-red' id='falseSpan3'> false</span>");
@@ -131,12 +183,12 @@ var leapYearProgramReady = function() {
 											"the <span class='ct-code-b-yellow'>else</span> block.");
 									var text = $("#evaluationSpan6").html();
 									typing('#evaluationSpan6', text, typingInterval, 'white', function() {
+										$(".introjs-prevbutton").show();
 										nextButtonFucntion(function() {
+											$(".introjs-prevbutton").hide();
 											transferEffect("#ifStatement1", "#printLine4", function() {
 												$("#elseSpan3").effect( "highlight", {color:"turquoise"}, 1000, function() {
-													setTimeout(function() {
-														introjs.nextStep();
-													}, 1000);
+													stepNext();
 												});
 											});
 										});
@@ -149,36 +201,51 @@ var leapYearProgramReady = function() {
 				break;
 			}
 			break;
+			
 		case 'printfLine1':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTimeout(function() {
+				
+				/*setTimeout(function() {
 					introjs.nextStep();
-				}, 200);
+				}, 200);*/
+				
+				stepNext();
+				
 			});
 			break;
+			
 		case 'scanfLine1':
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTimeout(function() {
+				/*setTimeout(function() {
 					introjs.nextStep();
-				}, 200);
+				}, 200);*/
+				stepNext();
 			});
 			break;
+			
 		case 'consoleId':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'showFirstLine':
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#printText1").removeClass("opacity00");
-					var text = $("#printText1").html();
-					typing('#printText1', text, typingInterval, 'white', function() {
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 200);
-					});
+					
+					if (introjs._direction == "forward") {
+						$("#printText1").removeClass("opacity00");
+						var text = $("#printText1").html();
+						typing('#printText1', text, typingInterval, 'white', function() {
+							stepNext();
+						});
+					} else {
+						stepNext();
+					}
+					
 				});
 				break;
+				
 			case 'enterNumber':
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$(".user-btn").remove();
+					$(".introjs-tooltip").removeClass("hide");
 					var text = "Please enter a value for variable year.<br>"
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 						$("#inputYear").attr({contenteditable: 'true'});
@@ -190,6 +257,7 @@ var leapYearProgramReady = function() {
 			case 'finalResult':
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if ($("#inputYear").val() % 4 == 0) {
+						
 						if ($("#inputYear").val() % 100 == 0) {
 							if ($("#inputYear").val() % 400 == 0) {
 								$("#printText2").text($("#inputYear").val() + " is a leap year.");
@@ -199,14 +267,18 @@ var leapYearProgramReady = function() {
 						} else {
 							$("#printText2").text($("#inputYear").val() + " is a leap year.");
 						}
+						
 					} else {
 						$("#printText2").text($("#inputYear").val() + " is not a leap year.");
 					}
 					var text = $("#printText2").html();
 					typing('#printText2', text, 20, 'white', function() {
-						setTimeout(function() {
+						/*setTimeout(function() {
 							introjs.nextStep();
-						}, 500);
+						}, 500);*/
+						
+						stepNext();
+						
 					});
 				});
 				break;
@@ -233,11 +305,25 @@ function typing(typingId, text, typingInterval, cursorColor, typingCallbackFunct
 		$(typingId).removeClass('typingCursor');
 		if (typeof typingCallbackFunction === "function") {
 			typingCallbackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
 
+function stepNext() {
+	if (introjs._direction == "forward") {
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 800)
+	} else {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 800)
+	}
+}
+
 function nextButtonFucntion(callBackFunction) {
+	//$(".introjs-prevbutton").hide();
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
 	$(".user-btn").click(function() {
 		$(".user-btn").remove();
@@ -313,9 +399,9 @@ function charAtEnd(elementId) {
 		$(".tooltip-text-edit").text($("#inputYear").val());
 		if ($(this).val() == "") {
 			$('.introjs-tooltiptext').append("<span class='ct-color-red length-error-text'>Please enter number.</span>");
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 			if ($('.introjs-nextbutton[style="display: inline-block;"]').length == 1 && e.keyCode == 13) {
 				introjs.nextStep();
 			}
@@ -351,6 +437,7 @@ function yearDevideWithFour(callBackFunction) {
 }
 
 function yearDevideWithHundred(callBackFunction) {
+	$(".introjs-prevbutton").hide();
 	transferEffect("#ifStatement1", "#ifStatement2", function() {
 		$("#line2").append("<span id='secondIf' class='opacity00 ct-code-b-yellow'>"+
 		"<span id='variable2' class='display-inline'>year</span> % 100 == 0</span>");
@@ -376,6 +463,7 @@ function yearDevideWithHundred(callBackFunction) {
 }
 
 function yearDevideWithFourHundred(callBackFunction) {
+	$(".introjs-prevbutton").hide();
 	transferEffect("#ifStatement2", "#ifStatement3", function() {
 		$("#line4").append("<span id='thirdIf' class='opacity00 ct-code-b-yellow'>"+
 		"<span id='variable3' class='display-inline'>year</span> % 400 == 0</span>");
@@ -401,6 +489,7 @@ function yearDevideWithFourHundred(callBackFunction) {
 }
 
 function secondIfElseConditionAnimation() {
+	$(".introjs-prevbutton").hide();
 	var remainderResult2 = $("#inputYear").val() % 100;
 	if(remainderResult2 == 0) {
 		$("#calculationSpan2").append("<span class='ct-code-b-turquoise' id='trueSpan2'> true</span>");
@@ -411,6 +500,7 @@ function secondIfElseConditionAnimation() {
 			"control enters into next <span class='ct-code-b-yellow'>if</span> block.");
 			var text = $("#evaluationSpan2").html();
 			typing('#evaluationSpan2', text, typingInterval, 'white', function() {
+				$(".introjs-prevbutton").show();
 				nextButtonFucntion(function() {
 		/** (year % 400) **/
 					yearDevideWithFourHundred(function() {
@@ -424,7 +514,9 @@ function secondIfElseConditionAnimation() {
 										"<span class='ct-code-b-yellow'>if</span> block.");
 								var text = $("#evaluationSpan3").html();
 								typing('#evaluationSpan3', text, typingInterval, 'white', function() {
+									$(".introjs-prevbutton").show();
 									nextButtonFucntion(function() {
+										
 										transferEffect("#ifStatement3", "#printLine1", function() {
 											setTimeout(function() {
 												introjs.nextStep();
@@ -441,7 +533,9 @@ function secondIfElseConditionAnimation() {
 										"<span class='ct-code-b-yellow'>else</span> block.");
 								var text = $("#evaluationSpan4").html();
 								typing('#evaluationSpan4', text, typingInterval, 'white', function() {
+									$(".introjs-prevbutton").show();
 									nextButtonFucntion(function() {
+										$(".introjs-prevbutton").hide();
 										transferEffect("#ifStatement3", "#printLine2", function() {
 											$("#elseSpan1").effect( "highlight", {color:"turquoise"}, 1000, function() {
 												setTimeout(function() {
@@ -464,7 +558,9 @@ function secondIfElseConditionAnimation() {
 			"control prints the statement in the <span class='ct-code-b-yellow'>else</span> block.");
 			var text = $("#evaluationSpan5").html();
 			typing('#evaluationSpan5', text, typingInterval, 'white', function() {
+				$(".introjs-prevbutton").show();
 				nextButtonFucntion(function() {
+					$(".introjs-prevbutton").hide();
 					transferEffect("#ifStatement2", "#printLine3", function() {
 						$("#elseSpan2").effect( "highlight", {color:"turquoise"}, 1000, function() {
 							setTimeout(function() {

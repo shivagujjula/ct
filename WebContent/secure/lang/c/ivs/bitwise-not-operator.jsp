@@ -33,6 +33,8 @@
 .information-div {
 	min-height: 70px;
 	border-radius: 10px;
+	font-family: monospace;
+	padding: 4px;
 }
 
 .animation-div {

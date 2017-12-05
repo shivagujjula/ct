@@ -102,6 +102,33 @@ body {
 	margin-top: 10px;
 }
 
+pre {
+	font-size: 12px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
 </style>
 </head>
 <body>
@@ -113,18 +140,18 @@ body {
 		</div>
 		<div class="col-xs-offset-1 col-xs-6">
 			<div>
-				<pre class="creamePreTab4">#include&lt;stdio.h&gt;
-void main() {
-	int i;
-	<div id='continueLoop' class='display'>for (<div id='initialization'
-					class="position-relative display">i = <span
+				<pre class="creamePreTab4"><in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>void</g> main() {
+	<g>int</g> i;
+	<div id='continueLoop' class='display'><go>for</go> (<div id='initialization'
+					class="position-relative display">i = <ink><span
 						id="initializationValue" class="allowNumbers position-absolute"
-						maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</div> <span
-					id='condition'>i < 10;</span> <span id='update'>i++</span>) {
-	<div id='ifBlk' class='display'>if (<span id='ifCondition'>i % 2 == 0</span>) {
-	<span id='continueStmt'>continue;</span>
+						maxlength="1" contenteditable=false placeholder=" ">1</span></ink>&nbsp;;</div> <span
+					id='condition'>i < <ink>10</ink>;</span> <span id='update'>i++</span>) {
+	<div id='ifBlk' class='display'><go>if</go> (<span id='ifCondition'>i % <ink>2</ink> == <ink>0</ink></span>) {
+	<span id='continueStmt'><go>continue;</go></span>
 }</div>
-	<span id='sop'>printf("i : %d\n",i);</span>
+	<span id='sop'>printf(<ink>"i : <in>%d\n</in>"</ink>,i);</span>
  }</div>
 <span id='mainEnd'>}</span>
 </pre></div>
@@ -138,8 +165,7 @@ void main() {
 		</div>
 	</div>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id="restart"><i
-			class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id="restart">Restart</a>
 	</div>
 	
 <script type="text/javascript">

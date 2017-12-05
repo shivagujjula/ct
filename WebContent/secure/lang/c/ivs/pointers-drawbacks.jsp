@@ -21,10 +21,6 @@
 
 <style>
 
-.introjs-tooltiptext br {
-	margin: 15px;
-}
-
 .introjs-tooltip {
 	min-width: 300px;
 }
@@ -90,7 +86,7 @@ div, span {
 }
 
 .color-gray {
-	color: gray;
+	color: rgb();
 }
 
 .output-console {
@@ -141,7 +137,7 @@ div, span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
@@ -157,7 +153,7 @@ div, span {
 	<div class='text-center heading-css'><h1 class='label ct-demo-heading'>Pointers Drawbacks</h1></div>
 	<div class='buttons-div'><button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button></div>
 	<div class="col-xs-12">
-		<div class='col-xs-offset-2 col-xs-8'>
+		<div class='col-xs-offset-1 col-xs-10'>
 			<div class='col-xs-12'>
 				<div class='col-xs-5'>
 					<div class='col-xs-12 box-border'>
@@ -176,7 +172,7 @@ div, span {
 						<div class="col-xs-12 padding10">
 							<div class='col-xs-6'>
 								<div class='center width200'>
-									<div class='col-xs-12 visibility-hidden' id='xBox'>
+									<div class='col-xs-12 opacity00' id='xBox'>
 										<div class='col-xs-4 Vertical-text-center'>x =</div>
 										<div class="col-xs-6 text-center">
 											<div><span class='color-gray'>2 bytes</span></div>
@@ -188,7 +184,7 @@ div, span {
 							</div>
 							<div class='col-xs-6'>
 								<div class='center width200'>
-									<div class='col-xs-12 visibility-hidden' id='pBox'>
+									<div class='col-xs-12 opacity00' id='pBox'>
 										<div class='col-xs-4 Vertical-text-center padding-col0'><span class='padding10'>p =</span></div>
 										<div class="col-xs-6 text-center">
 											<div><span class='color-gray'>2 bytes</span></div>
@@ -203,8 +199,8 @@ div, span {
 					<div class='col-xs-12 margin-top30'>
 						<div class="output-console center" id='outputBox'>
 							<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><span class='visibility-hidden'>The value of x = <span class='ct-blue-color'>20</span></span>
-<span class='visibility-hidden'>The value of *p = <span class='ct-blue-color'>20</span></span>
+<div class="output-console-body"><span class='visibility-hidden'>The value of x = <span class='ct-code-b-yellow'>20</span></span>
+<span class='visibility-hidden'>The value of *p = <span class='ct-code-b-yellow'>20</span></span>
 </div>
 						</div>
 					</div>

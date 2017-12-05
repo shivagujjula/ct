@@ -1,8 +1,3 @@
-/**
- * 
- */
-
-
 var initializationOfOneDimensionalArraysReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
@@ -110,7 +105,7 @@ function introGuide() {
 			$(".smallBox4").css("border-color", "white");
 			$("#valuesId1, #valuesId2, #valuesId3").addClass("opacity00");
 			$("#address4").addClass("opacity00").removeClass("animated zoomIn");
-			$("#exampleDiv5").addClass("opacity00");
+			$("#exampleDiv5, #preCode").addClass("opacity00");
 			break;
 		case 'exampleDiv5':
 			$("#exampleDiv5").addClass("opacity00");
@@ -479,7 +474,7 @@ function sixthExampleElementRecursion(i) {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 0.1;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

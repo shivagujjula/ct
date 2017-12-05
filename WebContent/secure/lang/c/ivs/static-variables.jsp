@@ -98,6 +98,11 @@
 	color: green;
 }
 
+y {
+	font-weight: bold;
+	color: yellow;
+}
+
 
 </style>
 </head>
@@ -138,7 +143,7 @@
 		<div style="margin-top: 40px;" class="col-xs-12">
 			<div id="consoleId" class="padding0 opacity00 col-xs-4 col-xs-offset-4">
 				<div class="output-console-title-bar"><span class="title">Output</span></div>
-				<div style="color: blue; font-weight: bold;ss" class="output-console-body">
+				<div style="color: yellow; font-weight: bold;ss" class="output-console-body">
 				</div>
 			</div>
 		</div>

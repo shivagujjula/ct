@@ -21,10 +21,6 @@
 
 <style>
 
-.introjs-tooltiptext br {
-	margin: 15px;
-}
-
 .introjs-tooltip {
 	min-width: 300px;
 }
@@ -35,6 +31,7 @@
 
 .introjs-duplicate-nextbutton {
 	background-color: green;
+	color : red;
 }
 
 .buttons-div {
@@ -113,8 +110,9 @@ pre > span {
 }
 
 .output-console-body {
-	padding: 5px 20px;
+	padding: 8px 20px;
 	white-space: initial;
+	font-size: 12px;
 }
 
 .method-box-css {
@@ -139,7 +137,7 @@ pre > span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
@@ -186,7 +184,7 @@ pre > span {
 								<div class="col-xs-12 padding10">
 									<div class='col-xs-6'>
 										<div class='center width200'>
-											<div class='col-xs-12 visibility-hidden' id='aBox'>
+											<div class='col-xs-12 opacity00' id='aBox'>
 												<div class='col-xs-4 Vertical-text-center'>a</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
@@ -198,7 +196,7 @@ pre > span {
 									</div>
 									<div class='col-xs-6'>
 										<div class='center width200'>
-											<div class='col-xs-12 visibility-hidden' id='bBox'>
+											<div class='col-xs-12 opacity00' id='bBox'>
 												<div class='col-xs-4 Vertical-text-center'>b</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
@@ -217,7 +215,7 @@ pre > span {
 								<div class="col-xs-12 padding10" id='swapAnimationDiv'>
 									<div class='col-xs-6'>
 										<div class='center width200'>
-											<div class='col-xs-12 visibility-hidden' id='xBox'>
+											<div class='col-xs-12 opacity00' id='xBox'>
 												<div class='col-xs-4 Vertical-text-center'>x</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
@@ -229,7 +227,7 @@ pre > span {
 									</div>
 									<div class='col-xs-6'>
 										<div class='center width200'>
-											<div class='col-xs-12 visibility-hidden' id='yBox'>
+											<div class='col-xs-12 opacity00' id='yBox'>
 												<div class='col-xs-4 Vertical-text-center'>y</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
@@ -243,7 +241,7 @@ pre > span {
 								<div class="col-xs-12 padding10">
 									<div class='col-xs-12'>
 										<div class='center width200'>
-											<div class='col-xs-12 visibility-hidden' id='tBox'>
+											<div class='col-xs-12 opacity00' id='tBox'>
 												<div class='col-xs-4 Vertical-text-center'>t</div>
 												<div class="col-xs-6 text-center">
 													<div><span class='color-gray'>2 bytes</span></div>
@@ -261,10 +259,10 @@ pre > span {
 					<div class="col-xs-12 margin-top30">
 						<div id="outputBox" class="output-console center">
 							<div class="output-console-title-bar"><span>Output</span></div>
-<div class="output-console-body"><div class="visibility-hidden">Before swapping in main : a = <span class='ct-blue-color'>5</span>   
-		b = <span class='ct-blue-color'>10</span></div>
-<div class="visibility-hidden">After swapping in swap : x = <span class='ct-blue-color'>10</span>   y = <span class='ct-blue-color'>5</span></div>
-<div class="visibility-hidden">After swapping in main : a = <span class='ct-blue-color'>5</span>   b = <span class='ct-blue-color'>10</span></div>
+<div class="output-console-body"><div class="visibility-hidden">Before swapping in main : a = <span class='ct-code-b-yellow'>5</span>   
+		b = <span class='ct-code-b-yellow'>10</span></div>
+<div class="visibility-hidden">After swapping in swap : x = <span class='ct-code-b-yellow'>10</span>   y = <span class='ct-code-b-yellow'>5</span></div>
+<div class="visibility-hidden">After swapping in main : a = <span class='ct-code-b-yellow'>5</span>   b = <span class='ct-code-b-yellow'>10</span></div>
 </div>
 						</div>
 					</div>

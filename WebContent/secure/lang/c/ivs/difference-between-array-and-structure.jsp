@@ -17,7 +17,6 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="js/difference-between-array-and-structure.js"></script>
 <script src="/secure/lang/c/js-min/dbaas.min.js"></script>
 <title>Difference between array and structure</title>
 <style>
@@ -95,6 +94,11 @@ keyframes blink { 50% {
 	min-width: 110px;
 }
 
+#mainDiv {
+	font-family: monospace;
+	font-size: initial;
+}
+
 </style>
 </head>
 <body>
@@ -106,10 +110,10 @@ $(document).ready(function() {
 
 	<h2 class="text-center">
 		<span class="label label-default ct-demo-heading" id="heading">Difference
-			between arrays and structures</span>
+			between Arrays and Structures</span>
 	</h2>
 	<div class="margin-top20 text-center">
-		<span class="btn btn-warning opacity00" id="restart">Restart</span>
+		<span class="btn btn-warning opacity00" id="restart"><i class='fa fa-refresh'></i> Restart</span>
 	</div>
 	<div class="col-xs-offset-1 col-xs-10 margin-top20" id="mainDiv">
 		<div class="col-xs-5 div-border opacity00" id="array">
@@ -162,8 +166,7 @@ $(document).ready(function() {
 			</div>
 			<div class="col-xs-12 margin-top20 margin-bottom20 opacity00"
 				id="memoryOfArray">
-				<div class="col-xs-offset-2 col-xs-10 animated zoomIn"
-					id="memoerypoint">
+				<div class="col-xs-offset-2 col-xs-10" id="memoerypoint">
 					<span>4. </span> <span>int a[5];</span> <span class="margin-left20">
 						<i class="fa fa-arrow-right red-color"></i>
 					</span> <span class="green-color margin-left20">memory is allocated
@@ -174,32 +177,21 @@ $(document).ready(function() {
 						<tbody>
 							<tr>
 								<th></th>
-								<td style="text-align: center;"><span id="a0ofTable">a[0]</span></td>
-								<td style="text-align: center;"><span id="a1ofTable">a[1]</span></td>
-								<td style="text-align: center;"><span id="a2ofTable">a[2]</span></td>
-								<td style="text-align: center;"><span id="a3ofTable">a[3]</span></td>
-								<td style="text-align: center;"><span id="a4ofTable">a[4]</span></td>
+								<% for(int i = 0; i < 5; i++) {%>
+									<td style="text-align: center;"><span id="a<%=i%>ofTable">a[<%=i%>]</span></td>
+								<% } %>
 							</tr>
 							<tr>
 								<th style="text-align: center;">a[5] =&emsp;</th>
-								<td class="table-border"><span id="a0value"></span></td>
-								<td class="table-border"><span id="a1value"></span></td>
-								<td class="table-border"><span id="a2value"></span></td>
-								<td class="table-border"><span id="a3value"></span></td>
-								<td class="table-border"><span id="a4value"></span></td>
+								<% for(int i = 0; i < 5; i++) {%>
+									<td class="table-border"><span id="a<%=i%>value"></span></td>
+								<% } %>
 							</tr>
 							<tr>
 								<th></th>
-								<td style="text-align: center; color: violet;"><span
-									id="arrayAddress1">2024</span></td>
-								<td style="text-align: center; color: violet;"><span
-									id="arrayAddress2">2026</span></td>
-								<td style="text-align: center; color: violet;"><span
-									id="arrayAddress3">2028</span></td>
-								<td style="text-align: center; color: violet;"><span
-									id="arrayAddress4">2030</span></td>
-								<td style="text-align: center; color: violet;"><span
-									id="arrayAddress5">2032</span></td>
+									<% for(int i = 1; i < 6; i++) {%>
+									<td style="text-align: center; color: green;"><span id="arrayAddress<%=i%>"><%=2022+(i*2)%></span></td>
+								<% } %>
 							</tr>
 						</tbody>
 					</table>
@@ -242,7 +234,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-xs-12" id="totalInitializationOfStructure">
 					<div class="opacity00" id="initializationOfStructure">3.
-						struct book a={“C Language”, 450, 300.00};</div>
+						struct book a={"C Language", 450, 300.00};</div>
 					<div class="opacity00" id="anotherInitializationOfStructure">
 						<div class="text-center">
 							<span class="ct-code-b-red"
@@ -289,9 +281,9 @@ $(document).ready(function() {
 								<td class="table-border" id="pprice"></td>
 							</tr>
 							<tr>
-								<td style="text-align: center; color: violet" id="address1">1024</td>
-								<td style="text-align: center; color: violet;">1044</td>
-								<td style="text-align: center; color: violet;">1046</td>
+								<td style="text-align: center; color: green" id="address1">4048</td>
+								<td style="text-align: center; color: green;">4068</td>
+								<td style="text-align: center; color: green;">4070</td>
 							</tr>
 						</tbody>
 					</table>

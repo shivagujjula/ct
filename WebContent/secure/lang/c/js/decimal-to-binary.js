@@ -13,6 +13,9 @@ var quotientValue;
 var	l = console.log.bind(console);
 var typing_interval = 5;
 var typingFlag = true;
+var tempProduct = [];
+var tempRemainder = [];
+
 var decimalToBinaryReady = function() {
 	introGuide();
 	//Block special characters from entering in textboxes
@@ -51,13 +54,15 @@ var decimalToBinaryReady = function() {
 			return true;
 		}
 		count = 0;
+		introStepIndex = 1;
 		$("#remaindersRow").empty();
 		$("#resultDiv").empty();
 		binaryValues = [];
 		if (!isNaN( $("#decimalValue").val() ) && $("#decimalValue").val() >= base ) {
 			givenValue = $("#decimalValue").val();
 			for (var index = 0; index < Number(givenValue).toString(base).length;index++) {
-				$("#remaindersRow").append("<td class='storeRemainderValues' id='storeRemainderTd" + index + "'> <span id='storeRemainder" + index + "' class='text-center opacity00 position-relative store-remainder'> </span> </td");
+				$("#remaindersRow").append("<td class='storeRemainderValues' id='storeRemainderTd" + index + 
+						"'> <span id='storeRemainder" + index + "' class='text-center opacity00 position-relative store-remainder'> </span> </td");
 			}
 			converter(givenValue,base);
 			var resultDivWidth = $("#resultDiv").width();
@@ -86,7 +91,9 @@ var decimalToBinaryReady = function() {
 				+ '</li><li><span class="ct-code-b-yellow">Binary</span> representation of the number will be <b>same</b>' + "" 
 				+ ' as that number.</li></ul>';
 			typingCallbackFunction = function () {
-				$('.introjs-nextbutton').show();
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$(".introjs-tooltipbuttons").append("<a  class='introjs-button user-btn' onclick='backfirststep()'>&#8592; Back</a>");
+				$(".introjs-tooltipbuttons").append("<a  class='introjs-button user-btn1' onclick='lastStep()'>Next &#8594;</a>");
 			}
 			typing(typingId, typingContent, typingCallbackFunction);
 		}
@@ -102,14 +109,20 @@ function converter(decimal,base) {
 	while(givenValue > 0) {
 		binaryValues[index] = givenValue % base;
 		if (givenValue >= base) {
-			$("#resultDiv").append("<div class='col-xs-3 box-border opacity00'  id='box" + index +"' style='margin-top: 2%' > <table class='font-size-16 text-center table-margin-left'>" +
-					"<tr><td><span id='divider" + index +"' class='opacity00 position-relative'>"+ base +"</span><span id='openParenthesis"+ index + "' style='font-size:33px;' class='opacity00'>)&nbsp;&nbsp;</span></td>" + ''
-					+ "<td style='padding-top: 13px;' id='dividend" + index + "' class='opacity00 position-relative'><span id='dividendSpan" + index + "'>"+ givenValue +"</span></td>" +
-					"<td><span style='font-size:33px' class='opacity00' id='closeParenthesis"+ index +"'>&nbsp;&nbsp;(</span><span id='quotient" + index +"' class='opacity00 position-relative'>"+ parseInt( givenValue / base ) +"</span></td></tr>" +
+			$("#resultDiv").append("<div class='col-xs-3 box-border opacity00'  id='box" + index +
+					"' style='margin-top: 2%' > <table class='font-size-16 text-center table-margin-left'>" +
+					"<tr><td><span id='divider" + index +"' class='opacity00 position-relative'>"+ base +"</span><span id='openParenthesis"+ index +
+					"' style='font-size:33px;' class='opacity00'>)&nbsp;&nbsp;</span></td>" + ''
+					+ "<td style='padding-top: 13px;' id='dividend" + index + "' class='opacity00 position-relative'><span id='dividendSpan" + index + 
+					"'>"+ givenValue +"</span></td>" +
+					"<td><span style='font-size:33px' class='opacity00' id='closeParenthesis"+ index +"'>&nbsp;&nbsp;(</span><span id='quotient" + index +
+					"' class='opacity00 position-relative'>"+ parseInt( givenValue / base ) +"</span></td></tr>" +
 					"<tr><td></td><td id='product" + index +"' class='position-relative'><span id='productSpan" + index + "'>" + '' 
-					+ "<span id='firstValue" + index + "' class='opacity00 position-relative display-inlineblock'>"+ base +"</span> <span id='mulOperator" + index + "' class='opacity00 display-inlineblock' style='color:red'>x</span>" + ''
+					+ "<span id='firstValue" + index + "' class='opacity00 position-relative display-inlineblock'>"+ base +"</span> <span id='mulOperator" + index + 
+					"' class='opacity00 display-inlineblock' style='color:red'>x</span>" + ''
 					+ " <span id='secondValue" + index + "' class='opacity00 position-relative display-inlineblock'> " + parseInt( givenValue / base ) + " </span></span></td><td></td></tr>" +
-					"<tr><td></td><td class='text-center' style='padding-top:3px;'id='remainder" + index +"'><span id='remainderSpan" + index + "'>" + '' 
+					"<tr><td></td><td class='text-center' style='padding-top:3px;'id='remainder" + index +"'><span id='remainderSpan" +
+					index + "'>" + '' 
 					+ "<span id='firstNumber" + index + "' class='opacity00 position-relative display-inlineblock'>"+ givenValue +"</span>" + '' 
 					+ " <span id='minusOperator" + index + "' class='opacity00 display-inlineblock'  style='color:red'><b>-</b></span>" + ''
 					+ " <span id='secondNumber" + index + "' class='opacity00 position-relative display-inlineblock'> " + ( parseInt( givenValue / base ) ) * base + " </span></span> </td><td></td></tr>" +
@@ -189,7 +202,11 @@ function converter(decimal,base) {
 		index++;
 	}
 		currentIndex = count;
-}
+		for (index = 0; index < count; index++) {
+			tempProduct[index] = $("#productSpan" + index).html();
+			tempRemainder[index] = $("#remainderSpan" + index).html();
+		}
+ }
 
 	function introGuide() {
 		introguide = introJs();
@@ -211,6 +228,10 @@ function converter(decimal,base) {
 				    	intro: '',
 				    	position: 'right'
 				    }, {
+				    	element: '#finalValues',
+				    	intro: '',
+				    	position: 'right'
+				    },{
 				    	element: '#binaryValueDiv',
 				    	tooltipClass: 'hide'
 				    }, {
@@ -220,14 +241,96 @@ function converter(decimal,base) {
 				    }
 				]
 	});
-	
 	introguide.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		if (elementId == "inputDiv") {
+			$("#convert").addClass("disabled").addClass("opacity40")
+			$('.introjs-helperLayer').one('transitionend', function() {
+				if (introguide._direction == "backward") {
+					quotientFlag = false;
+					introguide._introItems.splice(2, introguide._introItems.length - 5);
+					$("#remaindersRow, #binary-value-prop, #resultDiv").empty();
+				}
+			});
+		}
+		if (elementId.indexOf("box") > -1) {
+			var index = elementId.substring("box".length);
+			if (introguide._direction == "backward") {
+				$("#dividend" + index).addClass("opacity00");
+				$("#openParenthesis" + index).fadeTo(500, 0);
+				$("#closeParenthesis" + index).fadeTo(500, 0);
+				quotientFlag = true;
+				if (index > 1) {
+					currentIndex++;
+					$("#storeRemainderTd" + currentIndex).removeClass("store-remainder-border");
+					$("#storeRemainder"+ currentIndex).addClass("opacity00").removeClass("z-index9999999").removeAttr('style');
+					
+					$("#productSpan" + index).empty().append(tempProduct[index]);
+					$("#remainderSpan" + index).empty().append(tempRemainder[index]);
+					$("#divider" + index).addClass("opacity00");
+					$("#quotient" + index).addClass("opacity00").removeAttr('style');
+					$("#product" + index).css('border-bottom','0px solid black');
+					$("#box" + index).fadeTo(500, 0, function() {
+						setTimeout(function() {
+							introguide.previousStep();
+						}, 1000);
+					});
+				}
+			}
+			
+		} else if(elementId.indexOf("dividend") > -1) {
+			var index = elementId.substring("dividend".length);
+			$("#divider" + index).addClass("opacity00").removeAttr('style');
+		} else if (elementId.indexOf("divider") > -1) {
+			var index = elementId.substring("divider".length);
+			$("#quotient" + index).addClass("opacity00").removeAttr('style');
+			$("#quotient" + index).fadeTo(500, 0);
+		} else if (elementId.indexOf("quotient") > -1) {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			var index = elementId.substring("quotient".length);
+			if (!quotientFlag) {
+				if (introguide._direction == "backward") {
+					$("#productSpan" + index).empty().append(tempProduct[index]);
+				} 
+			} else {
+				if (count - 1 == index) {
+					$("#storeRemainderTd"+currentIndex).removeClass("store-remainder-border");
+					$("#storeRemainder"+currentIndex).addClass("opacity00").removeClass("z-index9999999").removeAttr('style');
+				}
+			}
+		} else if (elementId.indexOf("product") > -1) {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			var index = elementId.substring("product".length);
+			if (introguide._direction == "backward") {
+				$("#productSpan" + index).empty().append(tempProduct[index]);
+				$("#remainderSpan" + index).empty().append(tempRemainder[index]);
+			}
+		} else if (elementId.indexOf("remainder") > -1) {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			var index = elementId.substring("remainder".length) ;
+			if (introguide._direction == "backward") {
+				$("#remainderSpan"+index).empty().append(tempRemainder[index]);
+				if (index == 0) {
+					$("#remainders").fadeTo(500, 0);
+				}
+				currentIndex++;
+				var value = currentIndex;
+				if (index < 2) {
+					$("#storeRemainderTd" + value).removeClass("store-remainder-border");
+					$("#storeRemainder"+ value).addClass("opacity00").removeClass("z-index9999999").removeAttr('style');
+				}
+			}
+		}
+	});
+	introguide.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		if (elementId.indexOf("box") > -1) {
 			var index = elementId.substring("box".length);
 			if (index > 1) {
+				if (introguide._direction == "forward") {
 					boxAnimation(index);
-			} else{
+				}
+			} else {
 					boxAnimationForFirstIndex(index);
 			}
 		}
@@ -237,52 +340,53 @@ function converter(decimal,base) {
 			$("#openParenthesis" + index).fadeTo(500, 1);
 			$("#closeParenthesis" + index).fadeTo(500, 1);
 		} else if (elementId.indexOf("divider") > -1) {
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			var index = elementId.substring("divider".length);
 			$('.introjs-helperLayer').one('transitionend', function() {
 				dividerAnimation(index);
 			});
 		} else if (elementId.indexOf("quotient") > -1) {
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			var index = elementId.substring("quotient".length);
 			$('.introjs-helperLayer').one('transitionend', function() {
 				quotientAnimationForFirstTime(index);
 			});
 		} else if (elementId.indexOf("product") > -1) {
-			$('.introjs-nextbutton').hide();
+			quotientFlag = false;
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			var index = elementId.substring("product".length);
 			$('.introjs-helperLayer').one('transitionend', function() {
 				productAnimation(index);
 			});
 		} else if (elementId.indexOf("remainderValues") > -1) {
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
+				quotientFlag = true;
 				remainderAnimation();
-			 });
+			});
 		} else if (elementId.indexOf("remainder") > -1) {
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			var index = elementId.substring("remainder".length);
 			$('.introjs-helperLayer').one('transitionend', function() {
 				remainderAnimationForFirstTime(index);
 			 });
 		}
-		if (elementId.indexOf("quotient") > -1) {
-			var index = elementId.substring("quotient".length)
-			quotientAnimation(index);
-		}			
 		if (elementId == "binaryValueDiv") {
 			binaryValueAnimation();
 			$('#restartBtn').removeClass('hidden').addClass('opacity00');
 		}
 		if (elementId === "infoDiv") {
-			  $("#infoDiv").html('<ul><li id="list1" class="opacity00">The numbering system which uses <span class="ct-code-b-green">base-2</span> is called' + ""
-					+ ' <span class="ct-code-b-green">Binary System</span>.</li> <li id="list2" class="opacity00"> Only combinations of <span class="ct-code-b-green">1</span>' + "" 
+			  $("#infoDiv").html('<ul><li id="list1" class="opacity00">The numbering system which uses '+
+					  '<span class="ct-code-b-green">base-2</span> is called' + ""
+					+ ' <span class="ct-code-b-green">Binary System</span>.</li> <li id="list2" '+
+					'class="opacity00"> Only combinations of <span class="ct-code-b-green">1</span>' + "" 
 					+ ' and <span class="ct-code-b-green">0</span> are used to represent a value of any magnitude in ' + "" 
-					+ '<span class="ct-code-b-green">Binary System</span>.</li> <li id="list3" class="opacity00">Hence, if <b>a number greater' + "" 
+					+ '<span class="ct-code-b-green">Binary System</span>.</li> <li id="list3" '+
+					'class="opacity00">Hence, if <b>a number greater' + "" 
 					+ ' than '+ (base - 1) + '</b> is provided, we try to decrease its magnitude by <b>dividing by' + "" 
-					+ ' <span class="ct-code-b-green">' + base + '</span></b> and <b> keep collecting the remainders until the' + "" 
+					+ ' <span class="ct-code-b-green">' + base 
+					+ '</span></b> and <b> keep collecting the remainders until the' + "" 
 					+ ' quotient is less than  <span class="ct-code-b-green">' + base + '</span></b>.</li></ul>');
-			 //setTimeout(function () {
 				$("#list1").fadeTo(500, 1, function() {
 					$("#list2").fadeTo(300, 1, function() {
 						$("#list3").fadeTo(300, 1, function() {
@@ -293,27 +397,45 @@ function converter(decimal,base) {
 						});
 					});
 				});
-			//}, 500);  
 		}
 		if (elementId == "inputDiv") {
+			$("#decimalValue").val("");
+			$("#decimalValue").attr("disabled", true);
 			$("#inputDiv").removeClass('visibility-hidden');
-			$('.introjs-nextbutton').hide();
-			typingId = '.introjs-tooltiptext';
-			typingContent = '<span id="inputText">Enter a decimal value and click the <span class="btn btn-success btn-xs" style="cursor: default;">Convert to Binary</span> button to see how the Decimal to Binary' + "" 
-					+ ' conversion is done.<br><span class="ct-code-b-yellow">Note</span>:&nbsp;Enter a value of maximum length <b>3</b>.</span>' + ""
-					+ '<span id="appendInputText"></span>';
-			typingCallbackFunction = function () {
-				$("#decimalValue").attr("disabled", false);
-				$("#decimalValue").effect('highlight',{color:'yellow'}, 500);
-				$("#decimalValue").focus();
-			}
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				typing(typingId, typingContent, typingCallbackFunction);
+				inputStep();
 			});
 		}
 		if (elementId == "restartBtn") {
 			 $('#restartBtn').fadeTo(1300,1.0);
 			$(".introjs-tooltipbuttons").hide();
+		}
+		if (elementId == "finalValues") {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-helperLayer').one('transitionend', function() {
+				l1 = $("#quotient" + (count - 1 )).offset();
+				$("#quotient" + (count - 1 )).addClass('background-effect').addClass('z-index9999999');
+				l2 = $("#storeRemainder" + currentIndex).offset();
+				topLength  = l1.top - l2.top;
+				leftLength = l1.left - l2.left;
+				$("#storeRemainderTd" + currentIndex).addClass("store-remainder-border");
+				typingContent = '<span id="quotientText">Collecting the quotient.</span><span id="outputText"></span>';
+				typingCallbackFunction = function () {
+					$("#storeRemainder" + currentIndex).removeClass("opacity00").addClass("z-index9999999");
+					TweenLite.from($("#storeRemainder" + currentIndex), 1, {top: topLength, left:leftLength, onComplete: function() {
+						$("#quotient" + (count - 1)).removeClass('background-effect').removeClass('z-index9999999');
+						$('#quotientText').empty();
+						typingContent = 'This is the binary representation of <span class="ct-code-b-yellow">' + $("#decimalValue").val() + '</span>.';
+						typingCallbackFunction = function () {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						}
+						typing($('.introjs-tooltiptext'), typingContent, typingCallbackFunction);
+					}});
+				}
+				typing($('#outputText'), typingContent, typingCallbackFunction);
+			});
+			
 		}
 	});
 	
@@ -326,13 +448,24 @@ function converter(decimal,base) {
 
 function boxAnimationForFirstIndex(index) {
 	$("#box" + index).fadeTo(500, 1, function() {
-		introguide.nextStep();					
+		if (introguide._direction == "backward") {
+			$("#box" + index ).fadeTo(500, 0);
+			$("#openParenthesis" + index).fadeTo(500, 0);
+			$("#closeParenthesis" + index).fadeTo(500, 0);
+			setTimeout(function() {
+				introguide.previousStep();
+			}, 400);
+		} else {
+			$("#box" + index).fadeTo(500, 1, function() {
+				introguide.nextStep();					
+			});
+		}
 	});
 }
 
 function dividendAnimation(index) {
 	var message;
-	$('.introjs-nextbutton').hide();
+	$('.introjs-nextbutton, .introjs-prevbutton').hide();
 	if (index == '0' ) {
 		l1 = $("#decimalValue").offset();
 	} else {
@@ -352,11 +485,11 @@ function dividendAnimation(index) {
 		typingId = '.introjs-tooltiptext';
 		typingContent = message;
 		typingCallbackFunction = function () {
-			$('.introjs-nextbutton').show().css("visibility", "hidden");
+			$('.introjs-nextbutton, .introjs-prevbutton').show().css("visibility", "hidden");
 			$("#dividend" + index).addClass("z-index9999999").removeClass("opacity00");
 			TweenLite.from($("#dividend" + index), 1, {top: topLength, left: leftLength, onComplete : function(){
 				$("#quotient" + (index - 1)).removeClass('background-effect').removeClass("z-index9999999");
-				$('.introjs-nextbutton').css("visibility", "visible");
+				$('.introjs-nextbutton, .introjs-prevbutton').css("visibility", "visible");
 			}});
 		}
 		typing(typingId, typingContent, typingCallbackFunction);
@@ -374,11 +507,11 @@ function dividerAnimation(index) {
 						+ ' we divide the given number by <span class="ct-code-b-yellow">' + base + '</span>.';
 		typingCallbackFunction = function () {
 			$("#radix").addClass('background-effect').addClass("z-index9999999"); 
-			$('.introjs-nextbutton').show().css("visibility", "hidden");
+			$('.introjs-nextbutton, .introjs-prevbutton').show().css("visibility", "hidden");
 			$("#divider" + index).removeClass("opacity00");
 			TweenLite.from($("#divider" + index), 1, {top: topLength, left:leftLength, onComplete: function() {
 				$("#radix").removeClass('background-effect').removeClass("z-index9999999"); 
-				$('.introjs-nextbutton').css("visibility", "visible");
+				$('.introjs-nextbutton, .introjs-prevbutton').css("visibility", "visible");
 			}});
 		}
 		typing(typingId, typingContent, typingCallbackFunction);
@@ -390,22 +523,36 @@ function quotientAnimationForFirstTime(index) {
 				typingContent = 'quotient msg';
 				typingCallbackFunction = function () {
 					$("#quotient" + index).fadeTo(500, 1, function() {
-						quotientFlag = true;
-						introguide.nextStep();
+						if (introguide._direction == "backward") {
+							setTimeout(function() {
+							quotientFlag = false;
+							$("#productSpan" + index).empty().append(tempProduct[index]);
+							introguide.previousStep();
+							}, 400);
+						} else {
+							setTimeout(function() {
+								quotientFlag = true;
+								introguide.nextStep();
+							}, 500);
+						}
 					});
 				}
 				typing(typingId, typingContent, typingCallbackFunction);
 		} else {
-			var msg =  'Since <span class="ct-code-b-yellow">' + quotientValue +  ' &gt;= ' + base + '</span>, we will repeat the process considering <span class="ct-code-b-yellow">' + quotientValue + '</span>.';
+			quotientValue = $( '#quotient' + index).text();
+			var msg =  'Since <span class="ct-code-b-yellow">' + quotientValue +  ' &gt;= ' + base +
+						'</span>, we will repeat the process considering <span class="ct-code-b-yellow">' + quotientValue + '</span>.';
 			if (quotientValue < base) {
 				msg =  '<ul><li>Since <span class="ct-code-b-yellow">' + quotientValue + ' &lt; ' + base 
-				+ '</span>, we can\'t divide <span class="ct-code-b-yellow">' + quotientValue + '</span> any further by <span class="ct-code-b-yellow">' + base + '</span>.</li>' + ""
-				+ '<li>Hence we will collect the quotient <span class="ct-code-b-yellow">' + quotientValue + '</span> along with the previous remainders that were collected.</li></ul>'; 
+				+ '</span>, we can\'t divide <span class="ct-code-b-yellow">' + quotientValue + 
+				'</span> any further by <span class="ct-code-b-yellow">' + base + '</span>.</li>' + ""
+				+ '<li>Hence we will collect the quotient <span class="ct-code-b-yellow">' + quotientValue + 
+				'</span> along with the previous remainders that were collected.</li></ul>'; 
 			}
 			typingId = '.introjs-tooltiptext';
 			typingContent = msg;
 			typingCallbackFunction = function () {
-				$('.introjs-nextbutton').show();
+				$('.introjs-nextbutton, .introjs-prevbutton').show();
 				if (index == 0) {
 					quotientFlag = false;
 				}
@@ -434,7 +581,7 @@ function productAnimation(index) {
 	typingId = '.introjs-tooltiptext';
 	typingContent = 'product msg';
 	typingCallbackFunction = function () {
-		$('.introjs-nextbutton').show().css("visibility", "hidden");
+		$('.introjs-nextbutton, .introjs-prevbutton').show().css("visibility", "hidden");
 		$("#firstValue" + index).removeClass('opacity00');
 		TweenLite.from("#firstValue" + index, 1, {top: topLength, left: leftLength, onComplete: function(){
 			$("#divider" + index).removeClass('background-effect').removeClass('z-index9999999');
@@ -451,8 +598,17 @@ function productAnimation(index) {
 					if (index > 1) {
 							remainderAnimationForFirstTime(index);
 					} else {
-						$('.introjs-nextbutton').css("visibility", "visible");
-						introguide.nextStep();
+						$('.introjs-nextbutton,.introjs-prevbutton').css("visibility", "visible");
+						if(introguide._direction == "backward") {
+							setTimeout(function() {
+								$("#product" + index).css('border-bottom','0px solid black');
+								introguide.previousStep();
+							}, 500);
+						} else {
+							setTimeout(function() {
+								introguide.nextStep();
+							}, 1500);
+						}
 					}
 				});
 			}});
@@ -477,7 +633,7 @@ function remainderAnimationForFirstTime(index) {
 	typingId = '.introjs-tooltiptext';
 	typingContent = 'remainder msg';
 	typingCallbackFunction = function () {
-		$('.introjs-nextbutton').show().css("visibility", "hidden");
+		$('.introjs-nextbutton, .introjs-prevbutton').show().css("visibility", "hidden");
 		$("#firstNumber" + index).removeClass('opacity00');
 		$("#product" + index).css('border-bottom','2px solid black');
 		TweenLite.from("#firstNumber" + index, 0.5, {top: topLength, left: leftLength, onComplete: function(){
@@ -495,11 +651,19 @@ function remainderAnimationForFirstTime(index) {
 					introguide.nextStep();
 				});
 			} else {
-				$('#remainderSpan' + index).fadeTo(200, 1, function() {
-					$('.introjs-nextbutton').css("visibility", "visible");
-					introguide.nextStep();
-				});
-			}
+				$('#remainderSpan' + index).fadeTo(400, 1, function() {
+					$('.introjs-nextbutton,.introjs-prevbutton').css("visibility", "visible");
+					if(introguide._direction == "backward") {
+						setTimeout(function() {
+							introguide.previousStep();
+						}, 500);
+					} else {
+						setTimeout(function() {
+							introguide.nextStep();
+						}, 500);
+					}
+					});
+				}
 		}});
 	}});
 	}
@@ -543,31 +707,6 @@ function boxAnimation(index) {
 function remainderAnimation() {
 	var index = currentIndex;
 	currentIndex--;
-		if (index == 0) {
-			l1 = $("#quotient" + (count - ( index + 1 ))).offset();
-			$("#quotient" + (count - ( index + 1 ))).addClass('background-effect').addClass('z-index9999999');
-			l2 = $("#storeRemainder" + index).offset();
-			topLength  = l1.top - l2.top;
-			leftLength = l1.left - l2.left;
-			$("#storeRemainderTd" + index).addClass("store-remainder-border");
-			typingId = '.introjs-tooltiptext';
-			typingContent = '<span id="quotientText">Collecting the quotient.</span><span id="outputText"></span>';
-			typingCallbackFunction = function () {
-				$("#storeRemainder" + index).removeClass("opacity00").addClass("z-index9999999");
-				TweenLite.from($("#storeRemainder" + index), 1, {top: topLength, left:leftLength, onComplete: function() {
-					$("#quotient" + (count - ( index + 1 ))).removeClass('background-effect').removeClass('z-index9999999');
-					$('#quotientText').empty();
-					typingId = '#outputText';
-					typingContent = 'This is the binary representation of <span class="ct-code-b-yellow">' + $("#decimalValue").val() + '</span>.';
-					typingCallbackFunction = function () {
-						$('.introjs-nextbutton').show();
-					}
-					typing(typingId, typingContent, typingCallbackFunction);
-				}});
-			}
-			typing(typingId, typingContent, typingCallbackFunction);
-			
-		} else {
 			$("#remainderSpan" + (count - index)).addClass('position-relative').addClass('background-effect').addClass("z-index9999999");
 			l1 = $("#remainderSpan" + (count - index)).offset();
 			l2 = $("#storeRemainder" + index).offset();
@@ -582,34 +721,21 @@ function remainderAnimation() {
 			typingId = '.introjs-tooltiptext';
 			typingContent = 'Collecting the remainder.';
 			typingCallbackFunction = function () {
-				$('.introjs-nextbutton').show().css("visibility", "hidden");
+				$('.introjs-nextbutton, .introjs-prevbutton').show().css("visibility", "hidden");
 				$("#storeRemainder" + index).removeClass("opacity00").addClass("z-index9999999");
 				TweenLite.from($("#storeRemainder" + index), 0.5, { top: topLength, left:leftLength, onComplete: function() {
 					$("#remainderSpan" + (count - index)).removeClass('background-effect').removeClass('z-index9999999');
-					$('.introjs-nextbutton').css("visibility", "visible");
+					$('.introjs-nextbutton, .introjs-prevbutton').css("visibility", "visible");
 				}});
 			}
 			typing(typingId, typingContent, typingCallbackFunction);
-		}
 	} 
-
-function quotientAnimation(index) {
-	quotientValue = $( '#quotient' + index).text();
-	if (quotientValue < base && quotientValueFlag){
-		quotientValueFlag = false;
-		var options = {
-				element : '#remainderValues',
-				intro : '',
-				position: 'top'
-		}
-		introguide.insertOption(++introStepIndex, options);	
-	}
-}
 
 function binaryValueAnimation() {
 	setTimeout(function(){
 		typingId = '#binaryValueDiv';
-		typingContent = "Binary representation of the given number <span style='font-family: monospace' class='ct-code-b-yellow'>" + $("#decimalValue").val() + "</span>" + ''
+		typingContent = "Binary representation of the given number <span style='font-family: monospace; color:black' >" +
+						$("#decimalValue").val() + "</span>" + ''
 		+ " is: <span style='font-family: monospace'>(" + Number($("#decimalValue").val()).toString(base) + ")<sub>" + base + "</sub>" + ''
 		+ "</span>" + "\t\tor\t\t<span style='font-family: monospace'>(0B" + Number($("#decimalValue").val()).toString(base) + ")</span>";
 		typingCallbackFunction = function () {
@@ -634,4 +760,29 @@ function typing(typingId, typingContent, typingCallbackFunction) {
 			$(typingId).html(typingContent);
 			typingCallbackFunction();
 	} 
+}
+
+function backfirststep() {
+	$(".user-btn1, .user-btn").remove();
+	$("#decimalValue").val("");
+	$("#decimalValue").removeAttr("disabled");
+	inputStep();
+}
+
+function inputStep() {
+	typingId = '.introjs-tooltiptext';
+	typingContent = '<span id="inputText">Enter a decimal value and click the <span class="btn btn-success btn-xs" '+
+					'style="cursor: default;">Convert to Binary</span> button to see how the Decimal to Binary' + "" 
+				+ ' conversion is done.<br><span class="ct-code-b-yellow">Note</span>:&nbsp;Enter a value of maximum length <b>3</b>.</span>' + ""
+				+ '<span id="appendInputText"></span>';
+	typingCallbackFunction = function () {
+		$("#decimalValue").attr("disabled", false);
+		$("#decimalValue").effect('highlight',{color:'yellow'}, 500);
+		$("#decimalValue").focus();
+	}
+	typing(typingId, typingContent, typingCallbackFunction);
+}
+function lastStep() {
+	$(".user-btn1, .user-btn").remove();
+	introguide.goToStep(introguide._introItems.length - 1);
 }

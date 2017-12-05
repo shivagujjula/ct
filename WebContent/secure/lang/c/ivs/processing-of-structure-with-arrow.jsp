@@ -11,7 +11,7 @@
 <link href="/css/animate.css" rel="stylesheet">
 
 <link href="/css/introjs-ct.css" rel="stylesheet">
-<link href="/css/data-structures-css.css" rel="stylesheet">
+
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
@@ -43,9 +43,9 @@
 }
 
 .creampretab4 {
-	tab-size: 1;
+	tab-size: 2;
 	font-size: 11px;
-	-moz-tab-size: 1;
+	-moz-tab-size: 2;
 	line-height: 1.5;
 	overflow-y: auto;
 	white-space: pre;
@@ -123,6 +123,14 @@
 	font-weight: bold;
 }
 
+ul {
+	font-family: monospace;
+}
+
+#text {
+	padding: 8px;
+}
+
 </style>
 </head>
 <body>
@@ -134,19 +142,19 @@ $(document).ready(function() {
 
 </script>
 <h2 class="text-center">
-		<span class="label label-default ct-demo-heading" id = "heading">Processing of structure using arrow(->) operator</span>
+		<span class="label label-default ct-demo-heading" id = "heading">Processing of Structure using Arrow(->) Operator</span>
 	</h2>
 	<div id="informationDiv"
 		class="col-xs-offset-2 col-xs-8 information-div margin-top20">
-		<div class="col-xs-12 margin-top20" id="text">
+		<div class="col-xs-12" id="text">
 			<ul>
 				
 				<li id="li1" class="opacity00">A pointer to a
-					structure is known as a structure pointer.</li>
+					structure is known as a <b class='ct-code-b-green'>structure pointer</b>.</li>
 				<li id="li2" class="opacity00">If a pointer to the structure is declared,  
-					 the members of structure are accessed using the arrow operator.</li>
-				<li id="li3" class="opacity00">The left hand
-					side of the arrow operator should be a pointer to a structure.</li>
+					 the members of structure are accessed using the <b class='ct-code-b-green'>arrow operator</b>.</li>
+				<li id="li3" class="opacity00">The <b class='ct-code-b-green'>left hand
+					side</b> of the arrow operator should be a pointer to a structure.</li>
 			</ul>
 		</div>
 	</div>
@@ -154,9 +162,9 @@ $(document).ready(function() {
 		<div class="col-xs-5 padding0">
 			<pre class="code-div creampretab4 opacity00" id="codeDiv">
 <span id="declaration">struct book {
-  char name[20];
-  int pages;
-  float price;
+	char name[20];
+	int pages;
+	int price;
 };</span>
 main() {
 	<span id="pointerVariable">struct book *p;</span>
@@ -166,7 +174,7 @@ main() {
 	<span id="enterPages">printf("Enter pages : ");</span>
 	<span id="readPages">scanf("%d",&(p->pages));</span>
 	<span id="enterPrice">printf("Enter price : ");</span>
-	<span id="readprice">scanf("%f",&(p->price));</span>
+	<span id="readprice">scanf("%d",&(p->price));</span>
 	<span id="printDetails">printf("Name : ",(p->name),"\tpages : ",(p->pages),"\tprice : ",(p->price));</span>
 <span id="termination">}</span>
 	</pre>
@@ -188,7 +196,7 @@ main() {
 						<table align="center" class="margin-top20 opacity00" id="tableOfp">
 							<tbody>
 								<tr>
-									<td id="pvalue" class="table-border"><span id="address"	class="position opacity00">1024</span></td>
+									<td id="pvalue" class="table-border"><span id="address"	class="position opacity00">4024</span></td>
 								</tr>
 								<tr>
 									<td class="text-center" id="p">p</td>
@@ -212,9 +220,9 @@ main() {
 									<td class="table-border" id="pprice"></td>
 								</tr>
 								<tr>
-									<td style="text-align: center; color: violet"><span id="address1">4024</span></td>
-									<td style="text-align: center; color: violet;">4044</td>
-									<td style="text-align: center; color: violet;">4046</td>
+									<td style="text-align: center; color: green"><span id="address1">4024</span></td>
+									<td style="text-align: center; color: green;">4044</td>
+									<td style="text-align: center; color: green;">4046</td>
 								</tr>
 
 							</tbody>
@@ -223,7 +231,7 @@ main() {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-6 margin-top20 output-div padding0 opacity00" id="outputDiv">
+		<div class="col-xs-6 margin-top20 output-div padding0 opacity00" id="outputDiv" style="margin-left: 10px;">
 			<div class="output-console-title-bar">
 				<span class="title">Output</span>
 			</div>
@@ -232,7 +240,7 @@ main() {
 			</div>
 		</div>
 		<div class="col-xs-6 margin-top20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
+			<span class="btn btn-warning opacity00" id="restart"> <i class='fa fa-refresh'></i> Restart</span>
 		</div>
 		</div>
 		</body>

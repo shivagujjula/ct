@@ -144,6 +144,11 @@ td, tr {
 	background: green;
 	margin: 0 !important;
 }
+
+.ct-code-b-red {
+	color: red;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -152,21 +157,21 @@ td, tr {
 	</h2>
 	<div id="informationDiv"
 		class="col-xs-offset-2 col-xs-9 information-div margin-top20">
-		<div class="col-xs-6" id="text">
+		<div class="col-xs-7" id="text">
 			<ul>
-				<li id="li1" class="opacity00">Structure variables can also be declared as an array of structures.</li>
+				<li id="li1" class="opacity00">structure variables can also be declared as an array of structures.</li>
 				&emsp; &emsp; <span  id="li2" class="opacity00 col-xs-offset-1 ct-code-b-green">Syntax : struct
 							tagname variable[size];</span>
 				<li id="li3" class="opacity00">For example,
 					<div class="col-xs-offset-1">
-						struct example {<br> &emsp;int a;<br>
-						&emsp;float b;<br> };<br> struct example e[3];
+						struct example {<br> &emsp;&emsp;int a;<br>
+						&emsp;&emsp;float b;<br> };<br> struct example e[3];
 					</div>
 				</li>
 			</ul>
 		</div>
 
-		<div style="margin-top: 50px;" class="col-xs-6 opacity00" id="example-table">
+		<div style="margin-top: 50px;" class="col-xs-5 opacity00" id="example-table">
 			<table id="table" class="" style="margin: 20px 0px; width: 100%;">
 				<tbody>
 					<tr style="border-top: none;">
@@ -198,7 +203,7 @@ td, tr {
 <span id="mainMethod">main() {</span>
 	<span id="structVariable"><b class="pink-color">struct</b> book s[4];</span>
 	<span id="normalVariable">int i;</span>
-	<span id="printDetailsStmt">printf ("\nEnter details of book : ");</span>
+	<span id="printDetailsStmt">printf ("\nEnter details of 4 books : ");</span>
 	<div id="forLoop1" style="display: inline-block;">for (<span
 					id="intial1">i = 0;</span> <span id="condition1">i < 4;</span> <span
 					id="inc1">i++</span>)</div> {
@@ -215,7 +220,7 @@ td, tr {
 		<div id="display" style="display: inline-block">printf("Name: %s \t Price: %d \t Pages: %d",
 		s[i].name, s[i].price, s[i].pages);</div>
  	}
-<span id="termination">}</span></pre>
+<span id="termination">}</span></pre>	
 	</div>
 	<div>
 		<div class='col-xs-8 margin-top20'>
@@ -302,7 +307,7 @@ td, tr {
 			<div class="output-console-body"><span class="output" id="output"></span></div>
 		</div>
 		<div class="col-xs-6 margin-top20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
+			<span class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i> Restart</span>
 		</div>
 	</div>
 <script>

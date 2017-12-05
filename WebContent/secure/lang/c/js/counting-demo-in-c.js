@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 5;
+var typingSpeed = 1;
 var continueBtnCount = 0;
 var introjsNextBtnCount = 0;
 var passCount = 0;
@@ -41,9 +41,9 @@ var countingDemoInCReady = function() {
 		
 		if (introjsNextBtnCount == 1) {
 			if ($("#mathsMarks").text().length > 0 && $("#scienceMarks").text().length > 0 && $("#socialMarks").text().length > 0 && 
-				$("#internalmathsMarks").text().length > 0 && $("#internalmathsMarks").text() < 30 &&  
-				$("#internalscienceMarks").text() < 30 && $("#internalsocialMarks").text() < 30 && 
-				$("#scienceMarks").text() < 70 && $("#mathsMarks").text() < 70 && $("#socialMarks").text() < 70 &&
+				$("#internalmathsMarks").text().length > 0 && $("#internalmathsMarks").text() < 31 &&  
+				$("#internalscienceMarks").text() < 31 && $("#internalsocialMarks").text() < 31 && 
+				$("#scienceMarks").text() < 71 && $("#mathsMarks").text() < 71 && $("#socialMarks").text() < 71 &&
 				$("#internalscienceMarks").text().length > 0 && $("#internalsocialMarks").text().length > 0) {
 				
 				$('.allowNumbers').attr('contenteditable', false);
@@ -114,28 +114,28 @@ var countingDemoInCReady = function() {
 				}   else if ($("#internalmathsMarks").text().length == 0) {
 					$(".errorMsg").text("Please enter valid marks for maths internals.");
 					charAtEnd("internalmathsMarks");
-				} else if ( $("#internalmathsMarks").text() > 30) {
+				} else if ( $("#internalmathsMarks").text() > 31) {
 					$(".errorMsg").text("Please enter valid marks for maths internals which should be less than or equal to 30.");
 					charAtEnd("internalmathsMarks");
 				}   else if ($("#internalscienceMarks").text().length == 0) {
 					$(".errorMsg").text("Please enter valid marks for science internals.");
 					charAtEnd("internalscienceMarks");
-				} else if ( $("#internalscienceMarks").text() > 30) {
+				} else if ( $("#internalscienceMarks").text() > 31) {
 					$(".errorMsg").text("Please enter valid marks for science internals which should be less than or equal to 30.");
 					charAtEnd("internalscienceMarks");
 				}   else if ($("#internalsocialMarks").text().length == 0) {
 					$(".errorMsg").text("Please enter valid marks for social internals.");
 					charAtEnd("internalsocialMarks");
-				} else if ( $("#internalsocialMarks").text() > 30) {
+				} else if ( $("#internalsocialMarks").text() > 31) {
 					$(".errorMsg").text("Please enter valid marks for social internals which should be less than or equal to 30.");
 					charAtEnd("internalsocialMarks");
-				} else if ( $("#mathsMarks").text() > 70) {
+				} else if ( $("#mathsMarks").text() > 71) {
 					$(".errorMsg").text("Please enter valid marks for maths externals which should be less than or equal to 70.");
 					charAtEnd("mathsMarks");
-				} else if ( $("#socialMarks").text() > 70) {
+				} else if ( $("#socialMarks").text() > 71) {
 					$(".errorMsg").text("Please enter valid marks for social externals which should be less than or equal to 70.");
 					charAtEnd("socialMarks");
-				} else if ( $("#internalscienceMarks").text() > 70) {
+				} else if ( $("#internalscienceMarks").text() > 71) {
 					$(".errorMsg").text("Please enter valid marks for science externals which should be less than or equal to 70.");
 					charAtEnd("internalscienceMarks");
 				} 
@@ -247,7 +247,8 @@ function introJsGuide() {
 		}, {
 			element : '#javaCodeDiv',
 			intro : '',
-			position : 'left'
+			position : 'left',
+			tooltipClass: "hide"
 		}, {
 			element : '#outputDiv',
 			tooltipClass : 'hide'
@@ -258,6 +259,123 @@ function introJsGuide() {
 			position: "right"
 		}]
 	});
+	
+	
+	introjs.onbeforechange(function(targetElement) {
+		switch (targetElement.id) {
+		case "expTypingArea":
+			
+			/*$('#expTypingArea').fadeTo(1000,1,function() {
+			});*/
+			
+		break;
+			
+		case "animationDiv":
+			/*$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer').one("transitionend", function() {
+				
+				var text = "Here, we can see a program on counting variable.<br>The external and internal marks in 3 subjects are ";
+				typing(".introjs-tooltiptext", text, function() {
+					
+					var text = $(".mathsMarksDiv").removeClass("opacity00").html();
+					typing(".mathsMarksDiv", text, function() {
+						var text = $(".scienceMarksDiv").removeClass("opacity00").html();
+						typing(".scienceMarksDiv", text, function() {
+							var text = $(".socialMarksDiv").removeClass("opacity00").html();
+							typing(".socialMarksDiv", text, function() {
+								var text = $(".internalmathsMarks").removeClass("opacity00").html();
+								typing(".internalmathsMarks", text, function() {
+									var text = $(".internalscienceMarks").removeClass("opacity00").html();
+									typing(".internalscienceMarks", text, function() {
+										var text = $(".internalsocialMarks").removeClass("opacity00").html();
+										typing(".internalsocialMarks", text, function() {
+											$(".introjs-tooltiptext").append("<div></div>");
+											var text = "You can also edit the marks."
+											typing(".introjs-tooltiptext > div:last-child", text, function() {
+												$(".introjs-tooltiptext").append("<div class='errorMsg'></div>");
+												charAtEnd("mathsMarks");
+												charAtEnd("scienceMarks");
+												charAtEnd("socialMarks");
+												charAtEnd("internalmathsMarks");
+												charAtEnd("internalscienceMarks");
+												charAtEnd("internalsocialMarks");
+												$(".introjsNextBtn").removeClass("hidden");
+											});
+										});
+									});
+								});
+							});
+						});
+					});	
+				});
+			});*/
+		break;
+			
+		case "animationDivArea":
+			/*$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer').one("transitionend", function() {
+				$('.introjs-tooltip').css("min-width", "500px");
+				var text = "Let us compare <b class='ct-code-b-yellow'>external_maths_marks</b> with <b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_maths_marks</b> with <b class='ct-code-b-yellow'>total_pass_mark</b>."
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-tooltiptext").append("<div></div>");
+					var text = "A student is considered as <b class='ct-code-b-yellow'>pass</b> in maths, only when the following two conditions are satisfied.<ul><li><b class='ct-code-b-yellow'>external_maths_marks</b> >= <b class='ct-code-b-yellow'>26</b></li><li><b class='ct-code-b-yellow'>total_maths_marks</b> >= <b class='ct-code-b-yellow'> 40</b></li></ul>"
+					typing(".introjs-tooltiptext > div:last-child", text, function() {
+					$(".introjsNextBtn").removeClass("hidden");
+					});
+				});
+			});*/
+		break;
+			
+		case "javaCodeDiv":
+			/*$('.introjs-tooltip').css("min-width", "120px");
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer').one("transitionend", function() {
+				$("#output").append("<div class='opacity00 dynamic-tag'>Number of subjects passed = " + passCount + "</div>");
+				$("#javaCodeDiv").fadeTo(800, 1, function() {
+					$(this).css("opacity", "");
+					$("#javaCodeDiv").removeClass("opacity00").addClass("focus");
+					
+					var text = "The code for C program."
+					typing(".introjs-tooltiptext", text, function() {
+						$('.introjs-nextbutton').show();
+					});
+				});
+			});*/
+		break;
+			
+		case "outputDiv":
+			/*$('.introjs-helperLayer').one("transitionend", function() {
+				$("#outputDiv").removeClass("opacity00");
+				$("#output > div").fadeTo(1000,1, function() {
+					setTimeout(function() {
+						introjs.nextStep();
+					}, 500);
+				});
+			});*/
+		break;
+			
+		case "restart":
+			/*$('.introjs-tooltipbuttons').hide();
+			$('.introjs-tooltiptext').css("min-width", "100px");
+			$('.introjs-helperLayer').one('transitionend', function () {
+				$("#restart").fadeTo(1000, 1, function() {
+					$(this).css("opacity", "");
+				});
+				$("#restart").removeClass("opacity00");
+				var text = "Click to restart."
+				typing(".introjs-tooltiptext", text, function() {
+					
+				});
+			});*/
+		break;
+		}
+	});
+	
+	
+	
+	
+	
+	
 	
 	introjs.onafterchange(function(targetElement) {
 		switch (targetElement.id) {
@@ -331,7 +449,7 @@ function introJsGuide() {
 				$("#javaCodeDiv").fadeTo(800, 1, function() {
 					$(this).css("opacity", "");
 					$("#javaCodeDiv").removeClass("opacity00").addClass("focus");
-					
+					$('.introjs-tooltip').removeClass("hide");
 					var text = "The code for C program."
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-nextbutton').show();

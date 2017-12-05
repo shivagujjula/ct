@@ -73,7 +73,6 @@
 }
 
 .creampretab4 {
-	font-size: 11px;
 	-moz-tab-size: 2;
 	line-height: 1.5;
 	overflow-y: auto;
@@ -137,6 +136,11 @@ th, td {
 	display: inline-block;
 }
 
+#text {
+	font-family: monospace;
+	padding: 8px;
+}
+
 </style>
 </head>
 <body>
@@ -151,18 +155,18 @@ $(document).ready(function() {
 		<span class="label label-default ct-demo-heading" id="heading">Self	Referential Structure</span>
 	</h2>
 	<div class="col-xs-offset-5 col-xs-3 margin-top20" id="animation1">
-		<pre class="code-div creampretab4" id="codeDiv1"><b><span>struct student {</span>
-	<span id="intType">int a;</span>
-	<span id="floatType">float b;</span>
+		<pre class="code-div creampretab4" id="codeDiv1"><span>struct student {</span>
+	<span id="intType">int number;</span>
+	<span id="floatType">float marks;</span>
 	<span id="innerStruct">struct student <span class="s-value"
 				id="sValue">s</span>;</span>
-};<!-- </div> --></b>
+};
 </pre>
 	</div>
 	<div id="informationDiv" class="col-xs-offset-2 col-xs-8 border-div margin-top20 visibility-hidden">
-		<div class="col-xs-12 margin-top20" id="text">
+		<div class="col-xs-12" id="text">
 			<ul>
-				<li id="li1" class="opacity00">A self referential structure is a structure which contains a pointer to itself.</li>
+				<li id="li1" class="opacity00">A <b class='ct-code-b-green'>self referential</b> structure is a structure which contains a <b class='ct-code-b-green'>pointer to itself</b>.</li>
 				<li id="li2" class="opacity00"><b>Syntax</b> : <br> <span class="ct-code-b-green col-xs-offset-2">struct
 						tagname {<br><span class="col-xs-offset-3">datatype1 var1;</span><br> <span class="col-xs-offset-3">datatype2 var2;</span><br>
 						<span class="col-xs-offset-3">struct tagname *p;</span><br> <span class="col-xs-offset-2">};</span>
@@ -199,8 +203,7 @@ $(document).ready(function() {
 							orient="auto" style="fill: gray;" id="arrow"> 
 								<path d="M0,0 L5,2.5 L0,5 Z" class="arrow" /> 
 							</marker> 
-							<line id="arrowMark1" class="line" x1="44.5%" y1="64%" x2="44.9%"
-							y2="64%"
+							<line id="arrowMark1" class="line" x1="44.5%" y1="64%" x2="44.5%" y2="64%"
 							style="marker-end: url(#arrow); stroke: gray; stroke-width: 2; display: inline;" />
 					</svg>
 					<div class="col-xs-12" style="padding: 5px 15px;">
@@ -217,11 +220,11 @@ $(document).ready(function() {
 									</tr>
 									<tr>
 										<td class="table-border" id="data1"></td>
-										<td class="table-border"><span class="opacity00 position" id="p1">1054</span></td>
+										<td class="table-border"><span class="opacity00 position" id="p1">1080</span></td>
 									</tr>
 									<tr>
-										<td style="text-align: center; color: violet" id="address1">1024</td>
-										<td style="text-align: center; color: violet;">1026</td>
+										<td style="text-align: center; color: green" id="address1">1056</td>
+										<td style="text-align: center; color: green;">1058</td>
 									</tr>
 
 								</tbody>
@@ -241,8 +244,8 @@ $(document).ready(function() {
 										<td class="table-border"><span class="opacity00 position" id="p2">NULL</span></td>
 									</tr>
 									<tr>
-										<td style="text-align: center; color: violet"><span class="position" id="address2">1054</span></td>
-										<td style="text-align: center; color: violet;">1056</td>
+										<td style="text-align: center; color: green"><span class="position" id="address2">1080</span></td>
+										<td style="text-align: center; color: green;">1082</td>
 									</tr>
 
 								</tbody>
@@ -263,7 +266,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<div class="col-xs-4 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
+			<span class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i> Restart</span>
 		</div>
 	</div>
 </body>

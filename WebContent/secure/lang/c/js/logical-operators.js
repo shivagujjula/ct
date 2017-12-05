@@ -60,6 +60,7 @@ var logicalOperatorsReady = function() {
 						element : "#restart",
 						intro : "Click to restart.",
 						position : "right",
+						tooltipClass: 'tooltip-min-width'
 						
 					}
 				]
@@ -72,7 +73,7 @@ var logicalOperatorsReady = function() {
 			$("#" + ElementId).removeClass("visibility-hidden");
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Enter <span class='ct-code-b-green'>integer</span> values in both the boxes."
+				var text = "Enter <y>integer</y> values in both the boxes."
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").hide();
 				});
@@ -86,7 +87,7 @@ var logicalOperatorsReady = function() {
 			$(".introjs-nextbutton").addClass("visibility-hidden");
 			$(".introjs-tooltipbuttons").append('<span class="btn visibility-hidden next-button">Next →</span>');
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<span id='first'>Here, we can see different <span class='ct-code-b-green'>logical operators</span> with expressions.</span><ul><span id='amperson'></span></ul>";
+				var text = "<span id='first'>Here, we can see different <y>logical operators</y> with expressions.</span><ul><span id='amperson'></span></ul>";
 				typing(".introjs-tooltiptext", text, function() {
 					nextClick();
 					$(".next-button").removeClass("visibility-hidden");
@@ -220,7 +221,7 @@ function nextClick() {
 	}
 
 function typing(selector, text, callBackFunction) {
-		var typingSpeed = 0.05;
+		var typingSpeed = 1;
 		$(selector).typewriting( text , {
 			"typing_interval": typingSpeed,
 			"cursor_color": 'white',

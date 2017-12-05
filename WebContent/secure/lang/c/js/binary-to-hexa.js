@@ -5,8 +5,10 @@ var sum2 = 0;
 var value1;
 var value2;
 var x;
-var typingInterval = 50;
-
+var typingInterval = 1;
+var p;
+var z, s;
+var temp;
 var binaryToHexaReady = function() {
 	introGuide();
 	if ($("#binaryValue").val().length == 0) {
@@ -22,7 +24,7 @@ var binaryToHexaReady = function() {
 	});
 	
 	$("#binaryValue").keyup(function() {
-		$("#convert").attr("disabled", false);
+		$("#convert").attr("disabled", true);
 		if ($("#binaryValue").val().length == 0) {
 			 $("#convert").attr("disabled", true);
 		}
@@ -35,9 +37,11 @@ var binaryToHexaReady = function() {
 		}
 		if ($("#binaryValue").val().length > 0) {
 			$("#convert").removeClass("disabled").removeClass("opacity40");
+			$("#convert").attr("disabled", false);
 			$("#binaryValue").removeClass("backgroundColor");
 			$('.errorText').empty();
 		} else {
+			$("#convert").attr("disabled", true);
 			$('.errorText').html("<b>Since a binary number can have 0's and 1's, use only 0's and 1's</b>.");
 			$("#binaryValue").addClass("backgroundColor");
 			$("#convert").addClass("disabled").addClass("opacity40");
@@ -46,18 +50,23 @@ var binaryToHexaReady = function() {
 	
 	
 	$("#convert").click(function() {
+		$("#convert").attr("disabled", true);
+		$("#positionSpan1 > .box5").remove();
+		$('#twoPowerDiv1 > td').remove();
 		var input = $("#binaryValue").val();
 		$("body").keydown(function(e) {
 			if (e.keyCode == 13) {
 				e.preventDefault();
 			}
 		});
+		$("#numberBox").empty();
 		for (var i = 0; i < input.length; i++) {
 			$("#numberBox").append("<td class='binaryBox' id='box"+ i +"'><span id='text"+ i +"'>" + input[i] + "</span></td>");
 			//$("#box" + i).text(input.charAt(i));
 		}
 	/* if given input length <= 4 */	
 		if (input.length <= 4) {
+			$("#firstPart").hide();
 			var count = 0;
 			if (input.length != 4) {
 				for (var i = input.length; i < 4; i++) {
@@ -65,7 +74,7 @@ var binaryToHexaReady = function() {
 					count++;
 				}
 			}
-			
+			$("#numberBox1").empty();
 			for (var i = 0; i < input.length; i++) {
 				$("#numberBox1").append("<td class='squareDivBox' id='sup'><span id='a"+ i +"'>" + input[i] + "</span></td>");
 			}
@@ -73,7 +82,13 @@ var binaryToHexaReady = function() {
 			for (var i = 0; i < count; i++) {
 				$("#numberBox1 td:nth-child(" + (i + 1) + ")").addClass('visibility-hidden zeros');
 			}
-			
+			//$("#power2" + i).empty();
+			sum1 = sum2 = 0;
+			$("#positionSpan2").empty();
+			$('#twoPowerDiv2').empty();
+			$("#result2").empty();
+			$("#result1").empty();
+			$("#result2").empty();
 			for (var i = input.length-1, j = 0; i >= 0; i--, j++) {
 				$('#twoPowerDiv2').append('<td class="supBox" id="power2' + i + '"></td>');
 				$("#power2" + i).append('<span class="square" id="twoPower' + j + '">' + "2" + '<sup>' + i + '</sup></span>');
@@ -86,27 +101,27 @@ var binaryToHexaReady = function() {
 				if(i > 0) {
 					$("#multiplySpan").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
 							"<span class='opacity00' id='valueHalf" + j +"'>" + input[j] + "</span>" +
-							"<span class='ct-blue-color opacity00' id='multi" + j + "'>x</span>" + 
+							"<span class='ct-blue-color multi opacity00' id='multi" + j + "'>x</span>" + 
 							"<span class='opacity00' id='twoSecondHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
 							"<span class='closedBracket opacity00' id='closedBracket" + j + "'>)</span>" +
 							"<span class='opacity00 plus2' id='plus2" + i + "'>+</span>");
 					
 					$("#multiDiv2").append("<span id='openBracket" + j + "'>(</span><span id='valueHalf" + j +"'>" + input[j] + "</span>" +
-							"<span class='ct-blue-color ' id='multi" + j + "'>x</span>" + 
+							"<span class='ct-blue-color multi1' id='multi" + j + "'>x</span>" + 
 							"<span class='twoHalf' id='twoHalf" + i + "'>" + "2" + "<sup>" + i + "</sup></span>" +
 							"<span class='closedBracket' id='closedBracket" + j + "'>)</span>" +
-							"<span class=' plus2' id='plus2" + i + "'>+</span>");
+							"<span class=' plus3' id='plus2" + i + "'>+</span>");
 				} else {
-					$("#multiplySpan").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
+					$("#multiplySpan").append("<span class='openBracket1 opacity00' id='openBracket" + j + "'>(</span>" +
 							"<span class='opacity00' id='valueHalf" + j +"'>" + input[j] + "</span>" +
-							"<span class='ct-blue-color opacity00' id='multi" + j + "'>x</span>" + 
+							"<span class='ct-blue-color multi2 opacity00' id='multi" + j + "'>x</span>" + 
 							"<span class='opacity00' id='twoSecondHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
-							"<span class='closedBracket opacity00' id='closedBracket" + j + "'>)</span>");
+							"<span class='closedBracket1 opacity00' id='closedBracket" + j + "'>)</span>");
 					
-					$("#multiDiv2").append("<span class='openBracket' id='openBracket" + j + "'>(</span>" +
-							"<span id='valueHalf" + j +"'>" + input[j] + "</span><span class='ct-blue-color' id='multi" + j + "'>x</span>" + 
+					$("#multiDiv2").append("<span class='openBracket2' id='openBracket" + j + "'>(</span>" +
+							"<span id='valueHalf" + j +"'>" + input[j] + "</span><span class='ct-blue-color multi3' id='multi" + j + "'>x</span>" + 
 							"<span class='twoHalf' id='twoHalf" + i + "'>" + "2" + "<sup>" + i + "</sup></span>" +
-							"<span class='closedBracket' id='closedBracket" + j + "'>)</span>");
+							"<span class='closedBracket' id='closedBracket2" + j + "'>)</span>");
 				}
 			}
 		
@@ -116,15 +131,17 @@ var binaryToHexaReady = function() {
 				var b = input[j] * c;
 				sum2 += b;
 				if(i > 0) {
-					$("#addition2").append('(' + b + ')' + "<span class='plus2' id='plus'>+</span>");
+					$("#addition2").append('(' + b + ')' + "<span class='plus4' id='plus'>+</span>");
 				} else {
 					$("#addition2").append('(' + b + ')');
 				}
 			}
 			$("#result2").append(sum2);
+			
 		}
 	
 		if (input.length > 4) {
+			$("#firstPart").show();
 				x = input.substring(input.length-4, input.length);
 				input = input.substring(0, input.length-4);
 			
@@ -135,17 +152,21 @@ var binaryToHexaReady = function() {
 					count++;
 				}
 			}
-			
+			$("#numberBox1").empty();
 			for (var i = 0; i < x.length; i++) {
 				$("#numberBox1").append("<td class='squareDivBox' id='sup'><span class='position-relative' id='a"+ i +"'>" + x[i] + "</span></td>");
 			}
+			$("#numberBox2").empty();
 			for (var i = 0; i < input.length; i++) {
 				$("#numberBox2").append("<td class='squareDivBox' id='sup'><span class='position-relative' id='d"+ i +"'>" + input[i] + "</span></td>");
 			}
 			for (var i = 0; i < count; i++) {
 				$("#numberBox2 td:nth-child(" + (i + 1) + ")").addClass('visibility-hidden zeros');
 			}
-			
+			$("#positionSpan2").empty();
+			$("#positionSpan1").empty();
+			$('#twoPowerDiv1').empty();
+			$('#twoPowerDiv2').empty();
 			for (var i = x.length-1, j = 0; i >= 0; i--, j++) {
 				$('#twoPowerDiv1').append('<td class="supBox" id="power1' + i + '"></td>');
 				$("#power1" + i).append('<span class="square" id="twoPower' + j + '">' + "2" + '<sup>' + i + '</sup></span>');
@@ -158,6 +179,8 @@ var binaryToHexaReady = function() {
 			}
 		// Collection of elements
 			for (var i = x.length-1, j = 0; i >= 0; i--, j++) {
+				/*$("#multiplyDiv1").empty();
+				$("#multiplyDiv2").empty();*/
 				if(i > 0) {
 					$("#multiplyDiv1").append("<span class='openBrace opacity00' id='openBrace" + j + "'>(</span>" +
 							"<span class='value opacity00' id='value" + j +"'>" + x[j] + "</span>" +
@@ -172,17 +195,18 @@ var binaryToHexaReady = function() {
 					$("#multiplyDiv1").append("<span class='openBrace opacity00' id='openBrace" + j + "'>(</span>" +
 							"<span class='value opacity00' id='value" + j +"'>" + x[j] + "</span>" +
 							"<span class='ct-blue-color opacity00' id='mSymbol" + j + "'>x</span>" + 
-							"<span class='opacity00' id='twoFirstHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span><span>" +
-							"<span class='closeBrace opacity00' id='closeBrace" + j + "'>)</span>");
+							"<span class='opacity00' id='twoFirstHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
+							"<span class='closeBrace opacity00' id='closeBrace" + j + "'>)</span></span>");
 					
 					$("#multiDiv2").append("(" + x[j] + "<span class='ct-blue-color' id='mSymbol" + j + "'>x</span>" + 
 							"<span class='firstHalf' id='firstHalf" + i + "'>" + 2 + '<sup>' + i + "</sup></span>" + ")");
 				}
 			}
-		
 			for (var i = input.length-1, j = 0; i >= 0; i--, j++) {
+				/*$("#multiplyDiv1").empty();
+				$("#multiplyDiv2").empty();*/
 				if(i > 0) {
-					$("#multiplyDiv2").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
+					$("#multiplySpan").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
 							"<span class='opacity00' id='valueHalf" + j +"'>" + input[j] + "</span>" +
 							"<span class='ct-blue-color opacity00' id='multi" + j + "'>x</span>" + 
 							"<span class='opacity00' id='twoSecondHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
@@ -190,9 +214,9 @@ var binaryToHexaReady = function() {
 							"<span class='opacity00 plus2' id='plus2" + i + "'>+</span>");
 					
 					$("#multiDiv1").append("(" + input[j] + "<span class='ct-blue-color' id='multi" + j + "'>x</span>" + 
-							"<span class='twoHalf' id='twoHalf"+ i + "'>" + "2" + "<sup>" + i + "</sup></span>" + ")<span class='plus2'>+</span>");
+							"<span class='twoHalf' id='twoHalf"+ i + "'>" + "2" + "<sup>" + i + "</sup></span>" + ")<span class='plus3'>+</span>");
 				} else {
-					$("#multiplyDiv2").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
+					$("#multiplySpan").append("<span class='openBracket opacity00' id='openBracket" + j + "'>(</span>" +
 							"<span class='opacity00' id='valueHalf" + j +"'>" + input[j] + "</span>" +
 							"<span class='ct-blue-color opacity00' id='multi" + j + "'>x</span>" + 
 							"<span class='opacity00' id='twoSecondHalf" + j + "'>" + "2" + "<sup>" + i + "</sup></span>" +
@@ -203,19 +227,20 @@ var binaryToHexaReady = function() {
 				}
 			} 
 		// Calculatiion part start here..
+			sum2 = 0;
 			for (var i = x.length-1, j = 0; i >= 0; i--, j++) {
 				var c = Math.pow(2, i);
 				var b = x[j] * c;
 				sum2 += b;
 				
 				if(i > 0) {
-					$("#addition2").append('(' + b + ')' + "<span class='plus2' id='plus'>+</span>");
+					$("#addition2").append('(' + b + ')' + "<span class='plus4' id='plus'>+</span>");
 				} else {
 					$("#addition2").append('(' + b + ')');
 				}
 			} 
 			$("#result2").append(sum2);
-			
+			sum1 = 0;
 			for (var i = input.length-1, j = 0; i >= 0; i--, j++) {
 				var c = Math.pow(2, i);
 				var b = input[j] * c;
@@ -252,26 +277,32 @@ function introGuide() {
 			element : "#input",
 			intro :"",
 			position : 'right',
+			tooltipClass: 'hide'
 		}, {
 			element :"#boxDiv",
 			intro : "",
 			position : 'right',
+			tooltipClass: 'hide'
 		}, {
 			element : "#supPart",
 			intro : '',
 			position : 'right',
+			tooltipClass: 'hide'
 		}, {
 			element : '#positionDiv',
 			intro : '',
 			position : 'right',
+			tooltipClass: 'hide'
 		}, {
 			element :"#squareDiv",
 			intro : "",
 			position : 'right',
+			tooltipClass: 'hide'
 		}, {
 			element :"#calculationPartDiv1",
 			intro : "",
 			position : 'right',
+			tooltipClass: 'hide'
 			
 		}, {
 			element :"#calculationPartDiv2",
@@ -289,7 +320,8 @@ function introGuide() {
 			element :"#calculationPartDiv4",
 			intro : "",
 			position : 'right',
-			animateStep : 'firstStep'
+			animateStep : 'firstStep',
+			tooltipClass : 'hide'
 		
 		}, {
 			element :"#calculationPartDiv4",
@@ -307,10 +339,172 @@ function introGuide() {
 			position : 'right',
 		}]
 	});
-
+	introjs.onbeforechange(function(targetElement) {	
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "table":
+			$("#input").addClass("visibility-hidden");
+			$("#binarylValue").val("").removeClass("backgroundColor");
+			break;
+		case 'input':
+			$("#convert").addClass("disabled").attr("disabled", true);
+			$('#binaryValue').val('');
+			$("#numberBox, #numberBox1").empty();
+			$("#boxDiv, #numberBox").addClass("visibility-hidden").removeAttr('style');
+			$("#binaryDiv").addClass("opacity00");
+			
+			$("#positionSpan1 > .box5").remove();
+			$('#twoPowerDiv1 > td').remove();
+			$("#multiplySpan").empty();
+			$("#multiplyDiv2 #multiplySpan").nextAll().empty();
+			$('#multiDiv1').empty();
+			$('#multiDiv2').empty();
+			$('#addition1').empty();
+			$('#addition2').empty();
+			$("#result2").empty();
+			$('#result1').empty();
+			$("#multiplyDiv1").empty();
+			
+		break;
+		case 'boxDiv':
+			temp = $("#calculationPartDiv2").html();
+			$('#getDiv1, #getDiv').addClass('col-xs-6').show();
+			$("#getDiv").removeClass("col-xs-offset-3");
+			$('#supPart').removeAttr('style');
+			$('#tableDiv2').addClass("visibility-hidden");
+			$("#getDiv").removeAttr('style');
+			$("#numberBox1 td").removeAttr('style');
+			$("#tableDiv1").addClass("visibility-hidden");
+			$("#numberBox2 td").removeAttr('style');
+		break;
+		case 'supPart':
+			$("#positionDiv").addClass("opacity00");
+			$("#positionSpan2").removeClass("col-xs-offset-3");
+			$('#supPart .zeros, #tableDiv1, #tableDiv2').addClass('visibility-hidden');
+			$("#numberBox1 td, #supPart").removeAttr('style');
+		break;
+		case 'positionDiv':
+			$("#square").removeClass("col-xs-offset-3");
+			$("#multiplyDiv2, #multiplyDiv1").removeAttr('class').addClass("col-xs-6 opacity00");
+			$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").removeClass('display-none');
+			$('#squareDiv').addClass('visibility-hidden');
+			$("#square").removeAttr('style');
+		break;
+		case 'squareDiv':
+			$('#calculationPartDiv1').addClass('opacity00');
+			/*$('#multiplyDiv1, #multiplyDiv2').addClass('opacity00');*/
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+			 	$("#multiplySpan span").addClass('opacity00').removeAttr('style');
+			 	 //$('.plus1').addClass('opacity00');
+			 	 $('.plus1, .plus2').removeAttr('style');
+			 	$('.plus2').addClass('opacity00');
+			 	 $('#multiplyDiv2').addClass('opacity00');
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('.plus1, .plus2').removeAttr('style');
+				$('.plus2').addClass('opacity00');
+				$('#multiplyDiv1 > span , #multiplyDiv2 > span').addClass('opacity00').removeAttr('style');
+				$("#multiplySpan").removeClass("opacity00");
+				$('#multiplyDiv1 > span').removeAttr('style');
+				$('#multiplyDiv2 > span').removeAttr('style');
+			}
+		 	
+		break;
+		case 'calculationPartDiv1':
+			/*$('#multiplyDiv1, #multiplyDiv2').addClass('opacity00');*/
+			$('#calculationPartDiv1, #equalSpan').addClass('opacity00');
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+			 	$("#multiplySpan span").addClass("opacity00").removeAttr('style');
+			 	 /*$('.plus1').addClass('opacity00');
+			 	 $('.plus2').css('opacity', 0).removeAttr('style');*/
+			 	$('.plus1, .plus2').removeAttr('style');
+				$('.plus2').addClass('opacity00');
+			 	$('#multiplyDiv2').addClass('opacity00');
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('.plus1, .plus2').removeAttr('style');
+				$('.plus2').addClass('opacity00');
+				$('#multiplyDiv1 > span , #multiplySpan > span').addClass('opacity00').removeAttr('style');
+				$("#multiplySpan").removeClass("opacity00");
+				
+			}
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+				 $('#multiDiv2 > span').removeAttr('style');
+				 $("#equalSpan2").addClass("opacity00")
+				 $('.plus3').removeAttr('style');;
+				 $("#multiplicationDiv2").removeClass("col-xs-offset-3").addClass("opacity00");
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('#multiDiv1 > span, #multiDiv2 > span').removeAttr('style');
+				$('.plus3').removeAttr('style');
+			 	$("#multiplicationDiv2").removeClass("col-xs-offset-3").addClass("opacity00");
+			 	$("#multiplicationDiv1").addClass('opacity00');
+			 	$("#equalSpan5").addClass("opacity00");
+			}
+			
+		break;	
+		case 'calculationPartDiv2':
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+				 $('#multiDiv2 > span').removeAttr('style');
+				 $("#equalSpan2").addClass("opacity00")
+				 $('.plus3').removeAttr('style');;
+				 $("#multiplicationDiv2").removeClass("col-xs-offset-3").addClass("opacity00");
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('#multiDiv1 > span, #multiDiv2 > span').removeAttr('style');
+				$('.plus3').removeAttr('style');
+			 	$("#multiplicationDiv2").removeClass("col-xs-offset-3").addClass("opacity00");
+			 	$("#multiplicationDiv1").addClass('opacity00');
+			 	$("#equalSpan5").addClass("opacity00");
+			}
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+				$('#plus').removeAttr('style');
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('#plus').removeAttr('style');
+				$('#additionDiv2').removeClass('col-xs-offset-3').addClass('col-xs-6');
+			}
+			if (introjs._direction == "backward") {
+				$("#calculationPartDiv2").empty().append(temp);
+			}
+		break;
+		case 'calculationPartDiv3':
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+				$('#plus').removeAttr('style');
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('#plus').removeAttr('style');
+				$('#additionDiv2').removeClass('col-xs-offset-3').addClass('col-xs-6');
+			}
+			
+			$('#total1, #total2, #equalSpan5').addClass('opacity00');
+		break;
+		case 'calculationPartDiv4':
+			var input = $("#binaryValue").val();
+			if (input.length <= 4) {
+				
+			} else if (input.length >= 5 && input.length <= 8 ) {
+				$('#total2').removeClass('col-xs-offset-3').addClass('col-xs-6');
+			}
+		break;
+		}
+	});
 	introjs.onafterchange(function(targetElement) {	
 		var elementId = targetElement.id;
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			} 
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
 		if (elementId == "infoDiv") {
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list1").fadeTo(300, 1, function() {
@@ -350,6 +544,8 @@ function introGuide() {
 		}
 		switch (elementId) {
 		case 'table':
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
+			$("#binarylValue").attr("disabled", true);
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#table").removeClass("visibility-hidden");
 				var text = "This chart shows the conversion table for four digit <span class='ct-code-b-yellow'>binary</span> groups to "+ 
@@ -360,6 +556,7 @@ function introGuide() {
 			});
 			break;
 		case 'input':
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 			$("#input").removeClass("visibility-hidden");
@@ -368,18 +565,22 @@ function introGuide() {
 			" button to understand how a <span class='ct-code-b-yellow'>binary</span> number is converted to "+
 			"<span class='ct-code-b-yellow'>hexadecimal</span>.<br>"+
 			"<span class='ct-code-b-yellow'>Note:</span> Enter a value of maximum length 8.<br><span class='errorText'></span>";
+			$('.introjs-tooltip').removeClass('hide');
 			typing('.introjs-tooltiptext', text, function() {
 						$("#binaryValue").attr("disabled", false);
 						$("#binaryValue").effect('highlight',{color:'#2F4F4F'}, 1000);
 						$("#binaryValue").focus();
-						});
+						$('.introjs-prevbutton').show();
+					});
 			
 				$("#convert").click(function() {
-					introjs.nextStep();
+					$("#multiplyDiv2, #multiplyDiv1").removeAttr('class').addClass("col-xs-6 opacity00");
+					introjs.goToStep(4);
 				});
 			});
 			break;
 		case 'numberBox':
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-nextbutton").show();
 				$("#boxDiv").removeClass("visibility-hidden");
@@ -387,7 +588,7 @@ function introGuide() {
 			});
 			break;
 		case 'boxDiv':
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			//$("#boxDiv").css({height: $("#boxDiv").outerHeight()});
 			var input = $("#binaryValue").val();
 			$('.introjs-helperLayer ').one('transitionend', function() {
@@ -396,8 +597,9 @@ function introGuide() {
 				var l = $("#binaryValue").offset();
 				$(".binaryBox").offset({"top": l.top,"left": l.left});
 				TweenMax.to(".binaryBox", 1.3, {top: 0, left:0 , onComplete:function() { 
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', "The given binary number will be divided into groups of four binary digit each.", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				}});
 			});
@@ -416,11 +618,12 @@ function introGuide() {
 					var topLen = l3.top - l4.top;
 					var leftLen = l3.left - l4.left - ($("#numberBox1").width() - $("#numberBox").width());
 					TweenMax.from("#numberBox1", 2, {top: topLen, left: leftLen, onComplete: function() {
-	            		typing('.introjs-tooltiptext', "If length of the left most group is less than 4 then we will left pad with 0's to "+
+						$('.introjs-tooltip').removeClass('hide');
+						typing('.introjs-tooltiptext', "If length of the left most group is less than 4 then we will left pad with 0's to "+
 	            				"make the total digits as three in the left most last group.", function() {
 							$("#numberBox1 td").removeClass("visibility-hidden");
 							$(".zeros").effect( "highlight", {color:"#FFA3A3"}, 2000);
-							$(".introjs-nextbutton").show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
             			});
 					}}); 
 				}
@@ -437,11 +640,12 @@ function introGuide() {
 					var topLen = l3.top - l4.top;
 					var leftLen = (l3.left + $("#numberBox td:nth-child(" + (input.length - 4) + ")").outerWidth()) - l4.left - $("#numberBox2").width();
 					TweenMax.from("#numberBox2", 2, {top: topLen, left: leftLen, onComplete: function() {
+						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext', "If length of the left most group is less than 4 then we will left pad with 0's to "+
 	            				"make the total digits as three in the left most last group.", function() {
 									$("#numberBox2 td").removeClass("visibility-hidden");
 									$(".zeros").effect( "highlight", {color:"#FFA3A3"}, 2000);
-									$(".introjs-nextbutton").show();
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					}});
 				}
@@ -458,8 +662,9 @@ function introGuide() {
 					$("#positionDiv").removeClass("opacity00");
 				}
 				TweenMax.staggerFrom(".box5", 0.1, {opacity:0, top: -60}, -0.3, function() {
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', "These are the positions for the given bits.", function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					}); 
 				});
 			});
@@ -477,96 +682,142 @@ function introGuide() {
 				var topLength = l1.top - l2.top;
 				var leftLength = l1.left-l2.left;
 				TweenMax.from('#squareDiv', 1, {top: topLength, left: leftLength, onComplete: function() {
+					introjs.refresh();
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext',"These are the multiplying factors for the given positions.", function() {
-						$(".introjs-nextbutton").show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				}});
 			});
 			break;
 		case 'calculationPartDiv1':
+			$('#calculationPartDiv1').removeClass('opacity00');
 			var input = $("#binaryValue").val();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-nextbutton").hide();
 				var input = $("#binaryValue").val();
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', "We will start the processing from right to left i.e starting from "+
 						"<span class='ct-code-b-yellow'>2<sup>0</sup></span> and so on.", function() {
 					if (input.length <= 4) {
-						$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
+						z = 1;
+						//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
+						$("#multiplyDiv1").removeClass('col-xs-6');
+						$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").addClass('display-none');
 						$("#multiplyDiv2").addClass("col-xs-6 col-xs-offset-3").removeClass("opacity00", function() {
 							lowerCalculation(3);
 						});
 					} else {
+						p = 1;
+						s = 1;
 						$("#multiplyDiv1").removeClass("opacity00");
 					 	$("#multiplyDiv2").removeClass("opacity00");
 						collFirstHalf(3);
 					}
+					$('#equalSpan').removeClass('opacity00');
 				});
 			});
 			break;
 		case 'calculationPartDiv2':
-			var input = $("#binaryValue").val();
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing('.introjs-tooltiptext', "Multiplying with powers.", function() {
-					if (input.length <= 4) {
-						$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
-						$("#equalSpan2").removeClass("opacity00");
-					 	$("#multiplicationDiv2").addClass("col-xs-6 col-xs-offset-3").removeClass("opacity00");
-					 	$("#equalSpan5").removeClass("opacity00");
-					 	resultFirstStep();
-					} else {
-						var l3 = $("#multiplyDiv1").offset();
-						var l4 = $("#multiplicationDiv2").offset();
-						var topLength = l3.top - l4.top;
-					 	var leftLength = l3.left-l4.left;
-					 	var l1 = $("#multiplyDiv2").offset();
-						var l2 = $("#multiplicationDiv1").offset();
-						var topLen = l1.top - l2.top;
-					 	var leftLen = l1.left-l2.left;
-						$("#multiplicationDiv2").removeClass("opacity00");
-						$("#multiplicationDiv1").removeClass("opacity00");
-						$("#equalSpan1").removeClass("opacity00");
-						TweenMax.from("#multiplicationDiv2", 1, {top: topLength, left: leftLength, onComplete: function() {
-						}});
-						TweenMax.from("#multiplicationDiv1", 1, {top: topLen, left: leftLen, onComplete: function() {
-							squaringSecond(0);
-						}});
-					}
+			
+			
+			if (introjs._direction == "forward") {
+				var input = $("#binaryValue").val();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					typing('.introjs-tooltiptext', "Multiplying with powers.", function() {
+						if (input.length <= 4) {
+							//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
+							$("#equalSpan2").removeClass("opacity00");
+						 	$("#multiplicationDiv2").addClass("col-xs-6 col-xs-offset-3").removeClass("opacity00");
+						 	$("#equalSpan5").removeClass("opacity00");
+						 	resultFirstStep();
+						} else {
+							var l3 = $("#multiplyDiv1").offset();
+							var l4 = $("#multiplicationDiv2").offset();
+							var topLength = l3.top - l4.top;
+						 	var leftLength = l3.left-l4.left;
+						 	var l1 = $("#multiplyDiv2").offset();
+							var l2 = $("#multiplicationDiv1").offset();
+							var topLen = l1.top - l2.top;
+						 	var leftLen = l1.left-l2.left;
+							$("#multiplicationDiv2").removeClass("opacity00");
+							$("#multiplicationDiv1").removeClass("opacity00");
+							$("#equalSpan1").removeClass("opacity00");
+							
+							
+							TweenMax.from("#multiplicationDiv2", 1, {top: topLength, left: leftLength, onComplete: function() {
+							}});
+							
+							
+							
+							TweenMax.from("#multiplicationDiv1", 1, {top: topLen, left: leftLen, onComplete: function() {
+								squaringSecond(0);
+							}});
+						}
+					});
 				});
-			});
+			} else {
+				setTimeout(function() {
+					introjs.previousStep();
+				}, 500);
+			}
+			
 			break;
 		case 'calculationPartDiv3':
-			var input = $("#binaryValue").val();
-			$('.introjs-helperLayer ').one('transitionend', function() {
-					if (input.length <= 4) {
-						$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
-							lowInputAddition();
-					} else {
-						addition();
-					}
-			});
+			if (introjs._direction == 'forward') {
+				var input = $("#binaryValue").val();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+						if (input.length <= 4) {
+							//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
+								lowInputAddition();
+						} else {
+							addition();
+						}
+				});
+			} else {
+				$("#additionDiv1").addClass("opacity00");
+				$("#additionDiv2").addClass("opacity00");
+				$("#equalSpan4").addClass("opacity00");
+				setTimeout(function() {
+					introjs.previousStep();
+				}, 500);
+			}
+			
 			break;
 		case 'calculationPartDiv4':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'firstStep':
+				if(introjs._direction == 'forward') {
 				var input = $("#binaryValue").val();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					var text = "Now bringing all the decimal values together will we arrive at the final "+
 					"<span class='ct-code-b-yellow'>hexadecimal</span> number.";
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', text, function() {
 						if (input.length <= 4) {
-							$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
+							//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
 							lowInputResultStep();
 						} else {
 								resultStep();
 						}
 					});
 				});
+				} else {
+					$('#result2').remove();
+					$("#total1").addClass("opacity00");
+					$("#equalSpan5").addClass("opacity00");
+					$("#total2").addClass("opacity00");
+					$("#equalSpan6").addClass("opacity00");
+					setTimeout(function() {
+						introjs.previousStep();
+					}, 500);
+				}
 				break;
 			case 'secondStep':
 				var input = $("#binaryValue").val();
 				if(input.length <=4) {
-					$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
+					//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").remove();
 					$("#result2").effect( "highlight", {color:"#FFD700"}, 2000);
 					flipValue($("#result2"), parseInt($("#result2").text()).toString(16).toUpperCase());
 					setTimeout(function () {
@@ -594,8 +845,7 @@ function introGuide() {
 			break;
 		case "restart":
 			$('.introjs-tooltipbuttons').addClass("hide");
-			$(".introjs-tooltip").css("min-width", "-moz-max-content");
-			$(".introjs-tooltip").css("min-width", "max-content");
+			$(".introjs-tooltip").css("min-width", "125px");
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$("#restart").fadeTo(1000, 1);
 				$("#restart").removeClass("opacity00");
@@ -610,7 +860,7 @@ function introGuide() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -619,6 +869,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }
@@ -645,7 +896,7 @@ function flipValue(selector, val, callBackFunction) {
 	}});
 }
 
-var p = 1;
+p = 1;
 function collFirstHalf(index) {
 	TweenMax.to("#closeBrace" + index, 0.1,{opacity: 1, onComplete: function() {
 		var l3 = $("#twoPowerId" + index).offset();
@@ -677,7 +928,7 @@ function collFirstHalf(index) {
 	}});
 }
 
-var s = 1;
+s = 1;
 function collSecondHalf(index) {
 	TweenMax.to("#closedBracket" + index, 0.1,{opacity: 1, onComplete: function() {
 		var l3 = $("#twoPower" + index).offset();
@@ -695,11 +946,12 @@ function collSecondHalf(index) {
 				TweenMax.from("#valueHalf" + index, 0.1, {top: topLen, left: leftLen, onComplete: function() {
 					TweenMax.to("#openBracket" + index, 0.1, {opacity: 1, onComplete: function() {
 						TweenMax.to("#plus2" + s, 0.1,{opacity: 1, onComplete: function() {
+							$('#plus2' + s).removeClass('opacity00');
 							s++;
 							if (index > 0) {
 								collSecondHalf(--index);
 					     	} else {
-					     		$(".introjs-nextbutton").show();
+					     		$(".introjs-nextbutton, .introjs-prevbutton").show();
 					     	}
 						}});
 					}});
@@ -709,7 +961,7 @@ function collSecondHalf(index) {
 	}});
 }
 
-var z = 1;
+z = 1;
 function lowerCalculation(index) {
 	TweenMax.to("#closedBracket" + index, 0.1,{opacity: 1, onComplete: function() {
 		var l3 = $("#twoPower" + index).offset();
@@ -727,13 +979,14 @@ function lowerCalculation(index) {
 				TweenMax.from("#valueHalf" + index, 0.1, {top: topLen, left: leftLen, onComplete: function() {
 					TweenMax.to("#openBracket" + index, 0.1, {opacity: 1, onComplete: function() {
 						TweenMax.to("#plus2"+ z, 0.1,{opacity: 1, onComplete: function() {
+							$('#plus2' +z).removeClass('opacity00');
 							z++;
 							if (index > 0) {
 								lowerCalculation(--index);
 					     	} else {
-					     		$(".introjs-nextbutton").show();
 					     		$(".twoHalf").css("width", "auto");
 								halfCalculation();
+								$(".introjs-nextbutton, .introjs-prevbutton").show();
 					     	}
 				     	}});
 					}});
@@ -801,7 +1054,7 @@ function lowInputResultStep() {
 	$("#total2").removeClass("opacity00");
 	$("#equalSpan6").removeClass("opacity00");
 	TweenMax.from("#total2", 2, {top: topLen, left: leftLen, onComplete: function() {
-		$(".introjs-nextbutton").show();
+		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	}});
 }
 
@@ -821,7 +1074,7 @@ function resultStep() {
 	TweenMax.from("#total1", 1, {top: topLength, left: leftLength, onComplete: function() {
 	}});
 	TweenMax.from("#total2", 1, {top: topLen, left: leftLen, onComplete: function() {
-		$(".introjs-nextbutton").show();
+		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	}});
 }
 
@@ -865,7 +1118,7 @@ function addition() {
 }
 
 function halfCalculation() {
-	$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").removeClass("col-xs-6").remove();
+	//$("#multiplyDiv1, #multiplicationDiv1, #additionDiv1, #total1").removeClass("col-xs-6").remove();
 	$("#additionDiv2").removeClass("col-xs-6").addClass("col-xs-6 col-xs-offset-3");
 	$("#total2").removeClass("col-xs-6").addClass("col-xs-6 col-xs-offset-3");
 	$(".introjs-nextbutton").show();

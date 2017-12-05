@@ -261,7 +261,8 @@ int main() {
 	
 <script>
 
-$(document).ready(function() {
+//$(document).ready(function() {
+$(function() {
 	usageOfFputsAndFgets();
 });
 </script>

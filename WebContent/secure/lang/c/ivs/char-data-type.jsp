@@ -16,6 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
+<script src="/js/jquery.scrollTo.js"></script>
 <script src="/secure/lang/c/js-min/cdt.min.js"></script>
 <title>char data type</title>
 <style>
@@ -88,12 +89,16 @@
 	margin-top: 10px ;
 	margin-bottom: 10px;
 	padding: 5px 15px;
+	min-height: 280px;
 }
 
 .array-div-css {
 	margin: 10px 0;
 }
-
+.user-btn {
+	background-color: orange;
+	width : 35px; 
+}
 .creamPreTab4 {
 	-moz-tab-size: 4;
 	background-color: #fffae6;
@@ -113,12 +118,14 @@
 }
 
 .output-console {
-	margin: 10px;
+	margin-bottom: 0;
+	margin-top: 0;
 }
 
 .output-console-body {
+	overflow-y: auto;
+	height: 80px; 
 	padding: 5px 20px;
-	min-height: 60px;
 }
 
 .ct-code-b-red {
@@ -151,7 +158,7 @@
 		</div>
 		
 		<div class="col-xs-12">
-			<div class='col-xs-offset-2 col-xs-8 heading-text-div box-border' id='headingTextBox'>
+			<div class='col-xs-offset-2 col-xs-8 heading-text-div box-border' id='headingTextBox' style="font-family: monospace;">
 				<ul>
 					<li class='opacity00'><span class='ct-code-b-green'>char</span> data type is used to store only one character.</li>
 					<li class='opacity00'>In the memory, a single <span class='ct-code-b-green'>char</span> bit occupies <b>1</b> byte (8 bits).</li>
@@ -187,7 +194,7 @@
 		</div>
 		
 		<div class='col-xs-12'>
-			<div class='col-xs-offset-2 col-xs-8 margin-padding box-border opacity00' id='charDiv'>
+			<div class='col-xs-offset-2 col-xs-8 margin-padding box-border opacity00' id='charDiv' style="font-family: monospace;">
 				<h4 class="text-center">
 					<span class="label label-default">char data type</span>
 				</h4>
@@ -235,7 +242,7 @@
 			<div class='col-xs-offset-2 col-xs-8 padding-col0 opacity00' id='preCodeDiv'>
 				<div class='col-xs-6 box-border padding10'>
 <pre class='creamPreTab4' id='preCode'>
-<span id='charLine'>char ch = <input type="text" name="lname" id='chValue' class='input-text-editor' maxlength="1" value='A'>';</span>
+<span id='charLine'>char ch = '<input type="text" name="lname" id='chValue' class='input-text-editor' maxlength="1" value='A'>';</span>
 <span id='printf1'>printf("The value of ch in character : %c\n", ch);</span>
 <span id='printf2'>printf("The value of ch in ASCII : %d\n", ch);</span>
 </pre>

@@ -26,7 +26,7 @@
 .border {
 	border: 2px solid gray;
 	border-radius: 15px;
-	min-height: 165px;
+	min-height: 180px;
 }
 
 .animation-div-border {
@@ -41,6 +41,7 @@
 
 .background-color {
 	background-color: lavender;
+	font-family: monospace;
 }
 
 .margin-top20 {
@@ -178,6 +179,11 @@ ul {
 
 .padding3 {
 	padding: 3px;
+}
+
+y {
+	color: yellow;
+	font-weight: bold;
 }
 </style>
 <script type="text/javascript">

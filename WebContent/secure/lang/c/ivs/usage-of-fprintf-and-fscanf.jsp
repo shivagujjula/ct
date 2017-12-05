@@ -22,20 +22,20 @@
 
 <title>fprintf and fscanf.jsp</title>
 <style type="text/css">
-.introjs-tooltiptext br {
+/* .introjs-tooltiptext br {
 	margin: 15px;
-}
+} */
 
 .introjs-tooltip {
 	min-width: 300px;
 }
 
 .introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
+	min-width: 125px;
 }
 
 .introjs-duplicate-nextbutton {
-	background-color: green;
+	background-color: green;  /*green*/
 }
 
 .box-border {
@@ -71,16 +71,16 @@ div,span {
 }
 
 #fileText {
-	height: 108px;	
+	padding: 10px;
 }
 
 .creamPreTab4 {
-	tab-size: 1;
+	tab-size: 2;
     margin: 8px;
     padding: 10px;
     font-size: 13px;
     white-space: pre;
-	-moz-tab-size: 3;
+	-moz-tab-size: 2;
     border-radius: 8px;
     background-color: #fffae6;
 }
@@ -120,7 +120,7 @@ div,span {
 
 .output-console {  
 	border-radius: 10px;
-	margin: 135px 0 0 0 ;
+	margin: 90px 0 0 0 ;
 }
 
 .output-console-title-bar {
@@ -148,7 +148,9 @@ div,span {
   width: 100%;
   border-width: 0px 0 0 0;
   background-color: #000;
-  color: #0f0;
+  color: yellow;
+  font-family: monospace;
+  font-weight: bold;
 }
 
 
@@ -245,10 +247,10 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div> 
 			<div class="col-xs-12">
-				<div class="col-xs-8 col-xs-offset-2 box-border margin-top" id="fileText">
+				<div class="col-xs-8 col-xs-offset-2 box-border margin-top" id="fileText" style="font-family: monospace;">
 					<ul><li id="text1" class="opacity00">The <span class="ct-code-b-green">fprintf()</span> function is used to write data into a file.<br/>
 							Syntax:  <span class="ct-code-b-green">fprintf(FILE *fp, char *controlstring, variables);</span></li>
-							<li id="text2" class="opacity00">The <span class="ct-code-b-green">fscanf</span> function is used to read data from a file.<br/>
+							<li id="text2" class="opacity00">The <span class="ct-code-b-green">fscanf()</span> function is used to read data from a file.<br/>
 							Syntax:  <span class="ct-code-b-green">fscanf(FILE *fp, char *controlstring, &variables);</span>
 							 <a class="introjs-button introjs-duplicate-nextbutton opacity00">Next &#8594;</a></li></ul>
 				</div>

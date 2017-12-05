@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,9 +89,10 @@
 }
 #informationdiv {
     border-radius: 0px;
-    height:85px;
+    min-height:105px;
     margin-top: 20px;
     color: black;
+    font-family: monospace;
 }
 
 #numberconversion {
@@ -419,13 +418,6 @@ div, span, tr, td {
 		<span class='col-xs-offset-3 col-xs-3 padding0' style='font-size: 14px;'><span  class='color-lightrose'>Binary Result</span><b>:</b></span>
 		<span id='binaryResultValue' class='col-xs-6 col-xs-offset-2 append padding0 marginleft10'></span>
 	</div>
-
-		<!-- <div id="binaryDiv" class="col-xs-12 opacity00">
-			<span class='col-xs-3 padding0' style='font-size: 14px;'><span  class='color-lightrose'>Binary Digits</span><b>:</b></span>
-			<table  class="square-Box">
-				<tr id="givenBox" class = ""></tr>
-			</table>
-		</div> -->
 		<div id="getValues" class="col-xs-12 opacity00">
 			<span class='col-xs-offset-2 col-xs-1 padding0' style='font-size: 14px;'></span>
 			<table  class="square-Box">
@@ -581,7 +573,7 @@ div, span, tr, td {
 
 
 <div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-success glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
 </div>
 </body>
 <script>

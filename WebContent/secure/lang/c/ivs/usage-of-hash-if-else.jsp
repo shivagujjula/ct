@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/css/font-awesome.min.css" />
+<link href="/css/introjs.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/introjs-ct.css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/animate.css" />
 
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
@@ -16,11 +21,6 @@
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
 <script src="/secure/lang/c/js-min/uohie.min.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="/css/font-awesome.min.css" />
-<link href="/css/introjs.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/introjs-ct.css" />
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/css/animate.css" />
 <title>Usage of if-else</title>
 </head>
 <style>
@@ -45,17 +45,17 @@
 	height: 143px;
 	overflow: auto;
 	padding: 10px;
-	white-space: pre-line;
+	white-space: initial;
 }
 
 #informationdiv {
 	background-color: rgb(243, 235, 235);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    height: 192px;
-    margin-top: 20px;
-  /*   color: green; */
+    min-height: 220px;
+    margin-top: 10px;
     padding: 10px;
+    font-family: monospace;
 }
 
 .introjs-tooltiptext br {
@@ -185,6 +185,9 @@
   border-width: 0px 0 0 0;
   background-color: #000;
   color: #0f0;
+} 
+y {
+ color:yellow;
 }
 
 </style>
@@ -228,7 +231,7 @@
 				<span class="title"><b>Console</b></span>
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
-				<span id="typeChar"></span>
+				<span id="typeChar"></span><br>
 				<span id="typeChar1"></span>
 			</div>
 		</div>

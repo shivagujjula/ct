@@ -21,15 +21,18 @@ function introGuide() {
 		steps : [{
 			element : "#codeAnimation",
 			intro : "",
-			position : "right"
+			position : "right",
+			isCompleted : "false"
 		},{
 			element : "#functionDec1",
 			intro : "",
-			position : "right"
+			position : "right",
+			isCompleted : "false"
 		},{
 			element : "#functionDec2",
 			intro : "",
-			position : "right"
+			position : "right",
+			isCompleted : "false"
 		},{
 			element : "#mainFunction",
 			intro : "",
@@ -37,11 +40,13 @@ function introGuide() {
 		},{
 			element : "#funcDef1",
 			intro : "",
-			position : "right"
+			position : "right",
+			isCompleted : "false"
 		},{
 			element : "#funcDef2",
 			intro : "",
-			position : "right"
+			position : "right",
+			isCompleted : "false"
 		},{
 			element : "#startMain",
 			intro : "",
@@ -168,31 +173,44 @@ function introGuide() {
 		switch (elementId) {
 		
 		case "codeAnimation":
-			var text = "Let us consider an example to understand how arrays work within <span class='ct-code-b-yellow'>function calls</span>."; 
-			typing(".introjs-tooltiptext", text, function() {
+			if (introjs._introItems[introjs._currentStep].isCompleted == "false") {
+				var text = "Let us consider an example to understand how <span class='ct-code-b-yellow'>arrays</span> work within "
+							+"<span class='ct-code-b-yellow'>function calls</span>."; 
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton").show();
+				});
+			} else {
 				$(".introjs-nextbutton").show();
-			});
+			}
 			break;
 			
 		case "functionDec1":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is a declaration of the function <span class='ct-code-b-yellow'>read(int[], int)</span> with one argument of type"
-							+ "<span class='ct-code-b-yellow'>int[ ]</span> array and the other of type <span class='ct-code-b-yellow'>int</span>."
-							+ " <br><br>This function returns <span class='ct-code-b-yellow'>void</span>.";
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
-				});
+				if (introjs._introItems[introjs._currentStep].isCompleted == "false") {
+					var text = "This is a declaration of the function <span class='ct-code-b-yellow'>read(int[], int)</span> with one argument of type"
+								+ "<span class='ct-code-b-yellow'> int[]</span> array and the other of type <span class='ct-code-b-yellow'>int</span>."
+								+ " <br><br>This function returns <span class='ct-code-b-yellow'>void</span>.";
+					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
+				} else {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				}
 			});
 			break;
 			
 		case "functionDec2":
 			$(".introjs-helperLayer").one("transitionend", function() {
+				if (introjs._introItems[introjs._currentStep].isCompleted == "false") {
 				var text = "This is a declaration of the function <span class='ct-code-b-yellow'>display(int[], int)</span>  with one argument of" 
-					+ " type <span class='ct-code-b-yellow'>int[ ]</span> array and the other of type <span class='ct-code-b-yellow'>int</span>."
-					+ "<br><br>This function returns <span class='ct-code-b-yellow'>void</span>.";
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
-				});
+						+ " type <span class='ct-code-b-yellow'>int[] array</span> and the other of type <span class='ct-code-b-yellow'>int</span>."
+						+ "<br><br>This function returns <span class='ct-code-b-yellow'>void</span>.";
+					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
+				} else {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				}
 			});
 			break;
 			
@@ -209,19 +227,27 @@ function introGuide() {
 			
 		case "funcDef1":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is the definition of the function <span class='ct-code-b-yellow'>read(int[], int)</span>.";
-				typing(".introjs-tooltiptext", text, function() {
+				if (introjs._introItems[introjs._currentStep].isCompleted == "false") {
+					var text = "This is the definition of the function <span class='ct-code-b-yellow'>read(int[], int)</span>.";
+					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-nextbutton").show();
+					});
+				} else {
 					$(".introjs-nextbutton").show();
-				});
+				}
 			});
 			break;
 			
 		case "funcDef2":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is the definition of the function <span class='ct-code-b-yellow'>display(int[], int)</span>.";
-				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
-				});
+				if (introjs._introItems[introjs._currentStep].isCompleted == "false") {
+					var text = "This is the definition of the function <span class='ct-code-b-yellow'>display(int[], int)</span>.";
+					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
+				} else {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				}
 			});
 			break;
 			
@@ -229,7 +255,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "We declare an <span class='ct-code-b-yellow'>int array</span> variable of size <span class='ct-code-b-yellow'>"
 							+ "4(a[4])</span> and a variable <span class='ct-code-b-yellow'>n</span> of type "
-							+ "<span class='ct-code-b-yellow'>int</span>. These are called <span class='ct-code-b-yellow'>local variables</span>.";
+							+ "<span class='ct-code-b-yellow'>int</span>.</br></br> These are called <span class='ct-code-b-yellow'>local variables</span>.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#mainVar").addClass("check");
 					$(".introjs-nextbutton").show();
@@ -274,7 +300,8 @@ function introGuide() {
 			$("#num1").prop("disabled", true);
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "When a function call is made to <span class='ct-code-b-yellow'>read(a, n)</span> , the"
-							+ " control is transferred from <b>main()</b> to the <span class='ct-code-b-yellow'>read()</span> function.";
+							+ " control is transferred from <b class='ct-code-b-yellow'>main()</b> to the <span c"
+							+ "lass='ct-code-b-yellow'>read()</span> function.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").show();
 				});
@@ -288,7 +315,7 @@ function introGuide() {
 			i = 2;
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "When a function call is made to <br><span class='ct-code-b-yellow'>display(a, n)</span>, the"
-							+ " control is transferred from <b>main()</b> to the <span class='ct-code-b-yellow'>display()</span>.";
+							+ " control is transferred from <b class='ct-code-b-yellow'>main()</b> to the <span class='ct-code-b-yellow'>display()</span>.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").show();
 				});
@@ -303,8 +330,9 @@ function introGuide() {
 						var text = "The <span class='ct-code-b-yellow'>base</span> address of array <span class='ct-code-b-yellow'>a[4]</span>"
 									+ " is copied to array <span class='ct-code-b-yellow'>x[4]</span>. "
 									+ "So, both the arrays <span class='ct-code-b-yellow'>x[4]</span> and <span class='ct-code-b-yellow'>a[4]</span>"
-									+ " point to the same memory.<br> The value of <span class='ct-code-b-yellow'>n</span>. from main() is copied "
-									+ "into a variable <span class='ct-code-b-yellow'>n</span> of <span class='ct-code-b-yellow'>read().</span>";
+									+ " point to the same memory.<br><br> The value of <span class='ct-code-b-yellow'>n</span> from "
+									+ "<span class='ct-code-b-yellow'>main()</span> is copied "
+									+ "into a variable <span class='ct-code-b-yellow'>n</span> of <span class='ct-code-b-yellow'>read()</span>";
 						typing(".introjs-tooltiptext", text, function() {
 							$(".introjs-nextbutton").show();
 						});
@@ -321,7 +349,8 @@ function introGuide() {
 						var text = "The <span class='ct-code-b-yellow'>base</span> address of array <span class='ct-code-b-yellow'>a[4]</span>"
 									+ " is copied to array <span class='ct-code-b-yellow'>y[4]</span>. "
 									+ "So, both the arrays <span class='ct-code-b-yellow'>y[4]</span> and <span class='ct-code-b-yellow'>a[4]</span>"
-									+ " point to the same memory.<br> The value of <span class='ct-code-b-yellow'>n</span> from main() is copied "
+									+ " point to the same memory.<br><br> The value of <span class='ct-code-b-yellow'>n</span> from "
+									+ "<span class='ct-code-b-yellow'>main()</span> is copied "
 									+ "into a variable <span class='ct-code-b-yellow'>n</span> of <span class='ct-code-b-yellow'>display()</span>."; 
 						typing(".introjs-tooltiptext", text, function() {
 							$(".introjs-nextbutton").show();
@@ -430,7 +459,7 @@ function introGuide() {
 				} else {
 					$("#displayVal1").text(iCount);
 				}
-				var text = "The for-loop ends here.";
+				var text = "The <span class='ct-code-b-yellow'>for-loop</span> ends here.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").show();
 				});
@@ -439,8 +468,9 @@ function introGuide() {
 			
 		case "endFunc" + i:
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "When the function ends, all the local variables get destroyed and the control"
-						+ " is transferred to <span class='ct-code-b-yellow'>main()</span>.";
+				var text = "When the function <span class='ct-code-b-yellow'>ends</span>, all the local variables get "
+							+ "<span class='ct-code-b-yellow'>destroyed</span> and the control"
+							+ " is transferred to <span class='ct-code-b-yellow'>main()</span>.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#mainHeading1").text("In main()");
 					$("#arrText").text("a[4]");
@@ -491,9 +521,10 @@ function introGuide() {
 					tl.to("#mainVarBox", 0.5, {opacity: 1, onComplete: function() {
 						$("#mainVarBox").removeClass("opacity00");
 						$('.introjs-tooltip').removeClass("hide");
-						var text = "Here, 8 (2 * 4) bytes of memory is allocated to the array <span class='ct-code-b-yellow'>a</span>"
-							+ " at some address. The address of the first element in the array is known as <span class='ct-code-b-yellow'>"
-							+ "base address</span>.<br> 2 bytes of memory will be allocated for variable <span class='ct-code-b-yellow'>n</span>.";
+						var text = "Here, <span class='ct-code-b-yellow'>8</span> (2 * 4) bytes of memory is allocated to the array "
+							+"<span class='ct-code-b-yellow'>a</span> at some address.<br><br> The address of the first element in the array "
+							+"is known as <span class='ct-code-b-yellow'> base address</span>.<br><br> <span class='ct-code-b-yellow'>2 bytes</span>"
+							+" of memory will be allocated for variable <span class='ct-code-b-yellow'>n</span>.";
 						typing(".introjs-tooltiptext", text, function() {
 							animationCount++;
 							$(".introjs-nextbutton").show();
@@ -533,12 +564,12 @@ function introGuide() {
 						$('.introjs-tooltip').removeClass("hide");
 						var text1 = "<ul><li>The value of <span class='ct-code-b-yellow'>n</span> from <span class='ct-code-b-yellow'>main()</span>" 
 									+ " method will be copied into the variable <span class='ct-code-b-yellow'>n</span> of "
-									+ " <span class='ct-code-b-yellow'>read()</span>. This variable <span class='ct-code-b-yellow'>n</span> occupies"
+									+ " <span class='ct-code-b-yellow'>read()</span>.</li><li> This variable <span class='ct-code-b-yellow'>n</span> occupies"
 									+ " 2 bytes of memory at some address.</li><li id='tText'></li></ul>"
 						typing(".introjs-tooltiptext", text1, function() {
 							$("#readArg1").removeClass("blinking-white");
 							var text2 = "The array name <span class='ct-code-b-yellow'>a</span> holds the base address of the array elements" 
-										+ " in memory. In this function call this base address is copied into <span class='ct-code-b-yellow'>x</span>"
+										+ " in memory.</li><li> In this function call this base address is copied into <span class='ct-code-b-yellow'>x</span>"
 										+ " which now points to <span class='ct-code-b-yellow'>a[4]</span>.</li> " 
 										+ " <li>Here, array <span class='ct-code-b-yellow'>x</span> and array <span class='ct-code-b-yellow'>a</span>"
 										+ " are allocated the same memory.</li>";
@@ -569,7 +600,8 @@ function introGuide() {
 						$("#iBox1").removeClass("opacity00");
 						$("#readVar").addClass("blinking-white");
 						$('.introjs-tooltip').removeClass("hide");
-						var text = "Here 2 bytes of memory is allocated to variable <span class='ct-code-b-yellow'>i</span> of"
+						var text = "Here <span class='ct-code-b-yellow'>2 bytes</span> of memory is allocated to variable "
+									+ "<span class='ct-code-b-yellow'>i</span> of"
 									+ " <span class='ct-code-b-yellow'>read()</span>.";
 						typing(".introjs-tooltiptext", text, function() {
 							animationCount++;
@@ -685,7 +717,7 @@ function introGuide() {
 					var text1 = "<input id='num1' class='int-num elements' type='text'  maxlength='1'/><br>";
 					$("#num1").addClass("int-num");
 					typing("#scanfVal1", text1, function() {
-						var text2 = "Enter an integer number."
+						var text2 = "Enter an <span class='ct-code-b-yellow'>integer</span> number."
 						typing(".introjs-tooltiptext", text2, function() {
 							$("#num1").addClass("blinking-orange").focus();
 							consoleCount++;
@@ -707,8 +739,13 @@ function introGuide() {
 							});
 							
 							$(".elements").on("keyup", function(e) {
-								$(".errMsg").remove();
 								var max = $(this).attr("maxlength");
+								
+								if ($(this).val().length != max) {
+									$(".errMsg").remove();
+								}
+								
+								
 								if ($(this).val() == "") {
 									$(".introjs-nextbutton").hide();
 									$(".introjs-tooltiptext").append("<div class='errMsg'>Please enter a number betwen 1 and 4.</div>");
@@ -727,13 +764,13 @@ function introGuide() {
 						consoleCountIncStep();
 					});
 				} else if(consoleCount == 4) {
-					var text = "Enter a number between 1 and 9.";
+					var text = "Enter a number between <span class='ct-code-b-yellow'>1</span> to <span class='ct-code-b-yellow'>9</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						 enterValues();
 					});
 				} else if(consoleCount == 5) {
 					$("#element" + (parseInt($("#num1").val()) - 1) + " br").remove()
-					var text = "The elements in array are : <br><span id='disOutput"+iCount+"'class='ct-green-color' style='font-weight: blod'></span>";
+					var text = "The elements in array are : <br><span id='disOutput"+iCount+"'class='ct-code-b-yellow' style='font-weight: blod'></span>";
 					typing("#runEditor3", text, function() {
 						consoleCountIncStep();
 					});
@@ -758,12 +795,15 @@ function introGuide() {
 
 function typing(selector, text, callBackFunction) {
 	$(selector).typewriting( text , {
-		"typing_interval": '5',
+		"typing_interval": '1',
 		"cursor_color": 'white',
 	}, function() {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
+			introjs._introItems[introjs._currentStep].tooltipClass = "";
+			introjs._introItems[introjs._currentStep].isCompleted = "true";
 		}
 	});
 }
@@ -831,14 +871,18 @@ function enterValues() {
 			}
 			
 			if ($(this).val().length >= max) {
-				$(".introjs-tooltiptext").append("<div class='errMsg'>Please restrict the  maximum length to 1 digit only</div>");
+				$(".introjs-tooltiptext").append("<div class='errMsg'>Please restrict the  maximum length to 1 digit only.</div>");
 				e.preventDefault();
 			}
 			
 		});
 		
 		$('#edit'+(iCount+1)+'').on("keyup", function(e) {
-			$(".errMsg").remove();
+			
+			if ($(this).val().length != 1) {
+				$(".errMsg").remove();
+			}
+			
 			var max = $(this).attr("maxlength");
 			
 			if ($(this).val() == "") {

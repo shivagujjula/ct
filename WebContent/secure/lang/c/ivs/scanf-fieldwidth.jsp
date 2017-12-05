@@ -60,11 +60,6 @@
 	margin-top: 40px;
 }
 
-.center {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 #outputDiv {
 	margin-top: 45px;
 }
@@ -130,7 +125,9 @@
 .user-btn {
 	background-color: green;
 }
-
+.user-btn1 {
+	background-color: skyblue;
+}
 .ui-effects-transfer {
 	border: 2px solid #003399;
 	border-radius: 6px;
@@ -166,7 +163,9 @@
     background-color: green;
     margin-top: 4px !important;
 }
-
+#description {
+font-family:monospace;
+}
 </style>
 
 <script type="text/javascript">
@@ -183,7 +182,7 @@
 </div>
 
 <div class=" margin-top-20 col-xs-12">
-  <div class="col-xs-5 center  box-border" id="description" style="float: unset;">
+  <div class="col-xs-8 col-xs-offset-2 box-border" id="description">
   	<div id="desText" style="padding: 7px 0px; line-height: 1.6;">  
 		<ul>
 			<li id="desList1" class="opacity00"><span class="b-green">scanf()</span> also provides a way to read number of a particular 

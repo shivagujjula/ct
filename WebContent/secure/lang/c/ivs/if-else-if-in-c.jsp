@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -93,12 +93,13 @@
 
 .color-yellow {
 	color: yellow;
-	font-size: bold;
+	font-weight: bold;
+	font-family: monospace;
 }
 
 .introjs-tooltip {
-	max-width: 500px !important;
-	min-width: 315px !important;
+	max-width: 500px;
+	min-width: 315px;
 }
 
 .errorText {
@@ -196,8 +197,7 @@ pre {
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center " id="button">
-		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00"
-			type="button" id='restartBtn' style='margin-top: 4px'>Restart</button>
+		<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top: 4px'>Restart</button>
 	</div>
 
 <script>

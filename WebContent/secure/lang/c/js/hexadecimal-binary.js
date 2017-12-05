@@ -31,11 +31,13 @@ var hexadecimalBinaryReady = function() {
 		},{
 			element :'#inputDiv',
 			intro :'',
-			position:"right" 
+			position:"right" ,
+			tooltipClass : 'hide',
 		},{
 			element :'#octalValuesDiv',
 			intro :'',
 			position:"right",
+			tooltipClass : 'hide',
 		},{
 			element :'#binaryValuesDiv',
 			intro :'',
@@ -50,10 +52,72 @@ var hexadecimalBinaryReady = function() {
 		{
 			element :'#restartBtn',
 			intro :'',
+			tooltipClass: 'hide',
 			position:"right"
 		}]
 	});
+	
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "numberconversion":
+		$('#inputDiv').addClass('opacity00');
+		$("#octalValue").attr("disabled", true);
+		$("#octalValue").removeClass("backgroundColor");
+		break;
+		case "inputDiv" :
+			$("#octalValue").attr("disabled", true);
+			$("#convert").addClass("disabled").attr("disabled", "disabled");
+			$('#octalValue').val('');
+			$('#calculationTable').addClass('visibility-hidden');
+			$('.box').addClass('opacity00').removeAttr('style');
+			$('.box').remove();
+			$('.box1').remove();
+			$('.box2').remove();
+			
+		break;
+		case "octalValuesDiv" :
+			$("#convert").addClass("disabled").attr("disabled", "disabled");
+			$('.box').addClass('opacity00').removeAttr('style');
+			$('#binaryValuesDiv').addClass('opacity00');
+			$('.box1').addClass('opacity00').removeAttr('style');
+			$('.box1 span').addClass('opacity00').removeAttr('style');
+			$('#octalValuesDiv').addClass('opacity00');
+		break;
+		case "binaryValuesDiv" :
+			$('#binaryValuesDiv').addClass('opacity00');
+			$('.box1').addClass('opacity00').removeAttr('style');
+			$('.box1 span').addClass('opacity00').removeAttr('style');
+			$('#combineBinaryNumbers').addClass('opacity00');
+			$('#numbersCombine').addClass('opacity00');
+			$('.box2').addClass('opacity00').removeAttr('style');
+		break;
+		case "combineBinaryNumbers" :
+				$('#combineBinaryNumbers').addClass('opacity00');
+				$('#numbersCombine').addClass('opacity00');
+				$('.box2').addClass('opacity00').removeAttr('style');
+				$("#restartBtn").addClass("opacity00");
+		break;
+		case "restartBtn":
+			$("#restartBtn").addClass("opacity00");
+		break;
+		}
+	});
 	intro.onafterchange(function(targetElement) { 
+		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 0 && intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			} 
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "informationdiv" :
@@ -92,7 +156,7 @@ var hexadecimalBinaryReady = function() {
 			});
 		break;
 		case "numberconversion" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#numberconversion').removeClass('visibility-hidden');
 		  		var text = "This table provides the quick reference for converting all the 16 hexadecimal numbers to their binary equivalent values."
@@ -102,26 +166,30 @@ var hexadecimalBinaryReady = function() {
 				});
 		break;
 		case "inputDiv" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#inputDiv').removeClass('opacity00');
 				var text = "Enter a hexadecimal value and click on the <span style='background-color: green; border-radius: 3px; padding: 0 2px;'>"+
 		  		"Convert to Binary</span> button to see how the hexadecimal to binary conversion is done</span>."+
 		  		"<br><span class='color-yellow'>Note:</span> Enter hexadecimal value with prefix <span class='ct-code-b-yellow'>0X</span> "+
 		  		"or <span class='ct-code-b-yellow'>0x</span>.<br><span class='errorText'></span>";
-		  		typing('.introjs-tooltiptext',text ,function() { 
+		  		$('.introjs-tooltip').removeClass('hide');
+				typing('.introjs-tooltiptext',text ,function() { 
+					$("#octalValue").attr("disabled", false);
 					$('#octalValue').focus();  
+					$('.introjs-prevbutton').show();
 		  		});
 			});
 		break; 
 		case "octalValuesDiv" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#calculationTable').removeClass('visibility-hidden');
 				$('.introjs-tooltip').css({"min-width": "250px"});
 				var text = "Let us consider the steps involved in converting a hexadecimal number :<br> "+
 					"<ol><li>Consider each hexadecimal digit as a separate digit.</li>"+
 					"<li>Then convert each hexadecimal digit into its <span class='ct-code-b-yellow'>four</span> digit binary equivalent.</li></ol>";
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext',text, function() { 
 					$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
 					$('.user-btn').click(function() {
@@ -132,7 +200,7 @@ var hexadecimalBinaryReady = function() {
 							$('.box').removeClass('opacity00');
 							$('#octalValuesDiv').removeClass('opacity00');
 							TweenMax.to(".box", 1.3, {top: 0, left:0 , onComplete:function() { 
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							}});	
 					  	});
 					});
@@ -161,7 +229,7 @@ var hexadecimalBinaryReady = function() {
 						    		$('.introjs-tooltip').removeClass("hide");
 									typing('.introjs-tooltiptext',"Combine all the resulting binary groups (of four digit each) into a "+
 											"<span class='color-yellow'>single binary number</span>." ,function() { 
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									});
 						    	}}); 
 						   	}
@@ -175,7 +243,10 @@ var hexadecimalBinaryReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#combineBinaryNumbers').removeClass('opacity00');
 				$('#numbersCombine').removeClass('opacity00');
-				binary();
+				$('.box2').removeClass('opacity00');
+				TweenMax.staggerFrom(".box2", 0.5, {opacity:0, top: -60}, -0.5, function() {
+					binary();
+				});
 				
 			});
 		break; 
@@ -185,10 +256,9 @@ var hexadecimalBinaryReady = function() {
 			$(".introjs-tooltip").css("min-width", "125px");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#restartBtn").removeClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', "Click to restart.", function() {
 					});
-					$('.introjs-nextbutton').hide();
-					$('#octalValue').val("");
 				});
 		break;
 		}
@@ -230,7 +300,7 @@ intro.start();
 			$("#octalValue").removeClass("backgroundColor");
 			
 			if ($("#octalValue").val().length > 2 && $("#octalValue").val().startsWith("0X")) {
-				$("#convert").removeClass("disabled").removeClass("opacity40");
+				$("#convert").removeClass("disabled opacity40").removeAttr("disabled");
 				$("#octalValue").removeClass("backgroundColor");
 				$('.errorText').empty();
 			} else {
@@ -278,7 +348,7 @@ intro.start();
 				else if (finalBinaryVal.length == 2) finalBinaryVal = "00" +  finalBinaryVal;
 				else if (finalBinaryVal.length == 3) finalBinaryVal = "0" +  finalBinaryVal;
 			}
-			$("#numbersCombine").append("<span id= combineBinary"+ i + " class='text-center ct-code-b-black'><span class='opacity00' "+
+			$("#numbersCombine").append("<span id= combineBinary"+ i + " class='box2 opacity00 text-center ct-code-b-black'><span class='opacity00' "+
 					"id= combineBinaryDigits"+ i +">"+ finalBinaryVal +"</span></span>");
 		}
 		
@@ -322,16 +392,17 @@ function binary(callBackFunction) {
 		var text = "Hence,<br> <span class='ct-code-b-yellow'>(" + $("#octalValue").val() + 
 		")<sub>16</sub></span> = <span class='ct-code-b-yellow'>(" + $("#numbersCombine").text() + ")<sub>2</sub></span>.";
 		typing('.introjs-tooltiptext',text, function() { 
-			$('.introjs-nextbutton').show();	
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		 });
   	}
 }
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval":10,
+		"typing_interval":1,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');
 		callbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 	});
 }

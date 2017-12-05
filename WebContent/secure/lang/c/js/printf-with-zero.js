@@ -1,12 +1,12 @@
-var introcode;
-var typingInterval = 10;
+var intro;
+var typingInterval = 1;
 var tl = new TimelineLite();
 var sopLineCount = 1;
 var count = 0;
-
+var printVal = $('#number3').text();
 var printfWithZeroReady = function() {
-	introcode = introJs();
-	introcode.setOptions({
+	intro = introJs();
+	intro.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
 		showBullets : false,
@@ -23,7 +23,7 @@ var printfWithZeroReady = function() {
 			},{
 				element :'#VariableDeclararion',
 				intro :'',
-				tooltipClass : "hide"
+				//tooltipClass : "hide"
 			},{
 				element :'#animationDiv',
 				intro :'',
@@ -31,7 +31,7 @@ var printfWithZeroReady = function() {
 			},{
 				element :'#sopLine1',
 				intro :'',
-				tooltipClass : "hide",
+				//tooltipClass : "hide",
 				animateStep: "printAvalue"
 			},{
 				element :'#outputDiv',
@@ -42,7 +42,7 @@ var printfWithZeroReady = function() {
 			},{
 				element :'#sopLine2',
 				intro :'',
-				tooltipClass : "hide",
+				//tooltipClass : "hide",
 				animateStep: "printAvalueWithOutLoss"
 			},{
 				element :'#outputDiv',
@@ -53,7 +53,7 @@ var printfWithZeroReady = function() {
 			},{
 				element :'#sopLine3',
 				intro :'',
-				tooltipClass : "hide",
+				//tooltipClass : "hide",
 				animateStep: "printAvalueWithLoss"
 			},{
 				element :'#outputDiv',
@@ -68,7 +68,81 @@ var printfWithZeroReady = function() {
 				position : "right"
 			}]
 	});
-	introcode.onafterchange(function(targetElement){
+	intro.onbeforechange(function(targetElement){
+		var elementId = targetElement.id;
+		switch (elementId) {
+			case "printfDefinition" :
+				
+			break;
+			case "program" :
+				
+			break;
+			case "VariableDeclararion" :
+				$("#numberDiv1").addClass("opacity00");
+			break;
+			case "animationDiv" :
+				
+			break;
+			case "sopLine" + sopLineCount  :
+				
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+					switch(animateStep) {
+						case "printAvalue" :
+							$("#outputAValue1").text("");
+						break;
+						
+						case "printAvalueWithOutLoss" :
+							$(".introjs-duplicate-nextbutton").remove();
+							
+						break;
+						
+						case"printAvalueWithLoss" :
+							
+						break;
+					}
+
+			break;
+			case "outputDiv" :
+				
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+					switch(animateStep) {
+						case "printAvalue" :
+							
+						break;
+						case "printAvalueWithOutLoss" :
+							$("#outputAValue2").text("");
+						break;
+						
+						case"printAvalueWithLoss" :
+							
+						break;
+					}
+				
+			break;
+			
+		}
+	});
+	intro.onafterchange(function(targetElement){
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+					intro._introItems[intro._currentStep]["animation"] = "repeat";
+				}
+				
+				if (intro._introItems[intro._currentStep]["isCompleted"]) {
+					if (intro._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+					intro._introItems[intro._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "printfDefinition" :
@@ -78,7 +152,7 @@ var printfWithZeroReady = function() {
 						$('.introjs-duplicate-nextbutton').removeClass('opacity00').addClass("animated zoomIn").one('animationend', function() {
 							$('.introjs-duplicate-nextbutton').click(function() {
 								$(".introjs-duplicate-nextbutton").remove();
-								introcode.nextStep();
+								intro.nextStep();
 							});
 						});
 					}});
@@ -101,63 +175,73 @@ var printfWithZeroReady = function() {
 				$("#VariableDeclararion").removeClass("z-index1000000");
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$('.introjs-tooltip').removeClass('hide');
+					//$('.introjs-tooltip').removeClass('hide');
 					text = 'Here, we are declaring and initializing an integer variable '+
 							'<span class = "ct-code-b-yellow">a</span> to '+
 							'<span class = "ct-code-b-yellow">54</span>.';
 					typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "animationDiv" :
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					transferEffect('#VariableDeclararion', '#numberDiv1', function() {
-						introNextStep();
-					});
+					
+					if (intro._direction=="forward") {
+						 transferEffect('#VariableDeclararion', '#numberDiv1', function() {
+						  	setTimeout(function() {
+						  		intro.nextStep()
+						  		}, 500);
+						  });
+						 } else {
+							 	setTimeout(function() {
+						  intro.previousStep()
+							 	}, 500);
+						 }
 				});
 			break;
 			case "sopLine" + sopLineCount  :
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "printAvalue" :
-							$('.introjs-tooltip').removeClass('hide');
+							//$('.introjs-tooltip').removeClass('hide');
 							text = 'Here, the <span class="ct-code-b-yellow">printf()</span> function'+
 									' uses <span class="ct-code-b-yellow">%d</span> format character '+
 									' to print the value strored in the variable <span class="ct-code-b-yellow">a</span>.';
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
 						break;
 						
 						case "printAvalueWithOutLoss" :
-							$('.introjs-tooltip').removeClass('hide');
+							//$('.introjs-tooltip').removeClass('hide');
 							text = 'Here, the <span class="ct-code-b-yellow">printf</span> statement is trying to print the'+
 									' value <span class="ct-code-b-yellow">999</span> using '+
 									'the format character <span class="ct-code-b-yellow">%02d</span>.';
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
 						break;
 						
 						case"printAvalueWithLoss" :
-							$('.introjs-tooltip').removeClass('hide');
+						//	$('.introjs-tooltip').removeClass('hide');
+							printVal = $('#number3').text();
 							$('[contenteditable = "false"]').attr('contenteditable', 'true');
 							text = 'The <span class="ct-code-b-yellow">printf</span> statement is trying to '+
 									' print the value <span class="ct-code-b-yellow">54</span> stored in '+
 									'the variable <span class="ct-code-b-yellow">a</span>,'+
-									' using <span class = "ct-code-b-yellow">%0<span class = "keyValue">6</span>d</span>.'+
+									' using <span class = "ct-code-b-yellow">%0<span class = "keyValue">' + printVal+ '</span>d</span>.'+
 									'<br/><br/> You can also change the value of field width'+
-									' <span class="ct-code-b-yellow keyValue">6</span> to any other value.';
+									' <span class="ct-code-b-yellow keyValue">' + printVal+ '</span> to any other value.';
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 								$("#number" + sopLineCount).effect( "highlight",{color: 'yellow'});
 								caretAtEnd(document.getElementById('number' + sopLineCount));
 								changeValue('#number' + sopLineCount, 1);
 								clickToFocus("#sopLine"+sopLineCount ,"#number" + sopLineCount);
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton,.introjs-prevbutton').show();
 							});
 						break;
 					}
@@ -166,7 +250,7 @@ var printfWithZeroReady = function() {
 			case "outputDiv" :
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var animateStep = introcode._introItems[introcode._currentStep].animateStep;
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
 					switch(animateStep) {
 						case "printAvalue" :
 							printDecimalValue();
@@ -235,7 +319,7 @@ var printfWithZeroReady = function() {
 			break;
 		}
 	});
-	introcode.start();
+	intro.start();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').hide(); 
@@ -265,73 +349,98 @@ function outputReservedPositions(text) {
 }
 
 function printOutputWithSpaces() {
-	$('.introjs-tooltip').addClass('hide');
-	$(".introjs-duplicate-nextbutton").remove();
-	var length = $("#addressValue1").text().length;
-	var number = parseInt($("#number" + sopLineCount).text());
-	for (var i = (length - 1), j = 0; i >= 0, j < length; i--, j++) {
-		var text = $("#outputSpan" + i).text($("#addressValue1").text().charAt(j)).addClass("move-values visibility-hidden");
-	}
-	highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
-		highlightFunction("#aValue" + sopLineCount, "z-index1000000", function() {
-			fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
-				$('#persentageD' + sopLineCount).removeClass('z-index1000000');
-				$('#aValue' + sopLineCount).removeClass('z-index1000000');
-				highlightFunction("#addressValue1", "circle-css z-index1000000", function() {
-					$(".move-values").removeClass("circle-css visibility-hidden");
-					fromEffectWithTweenMax("#addressValue1", ".move-values", false, function() {
-						$('#addressValue1').removeClass('circle-css z-index1000000');
-						$('.zeros').removeClass("visibility-hidden");
-						setTimeout(function() {
-							sopLineCount++;
-							introcode.nextStep();
-						},500);
+	setTimeout(function() {
+		if (intro._direction=="forward") {	
+			
+			$('.introjs-tooltip').addClass('hide');
+			$(".introjs-duplicate-nextbutton").remove();
+			var length = $("#addressValue1").text().length;
+			var number = parseInt($("#number" + sopLineCount).text());
+			for (var i = (length - 1), j = 0; i >= 0, j < length; i--, j++) {
+				var text = $("#outputSpan" + i).text($("#addressValue1").text().charAt(j)).addClass("move-values visibility-hidden");
+			}
+			highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
+				highlightFunction("#aValue" + sopLineCount, "z-index1000000", function() {
+					fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation", true, function() {
+						$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+						$('#aValue' + sopLineCount).removeClass('z-index1000000');
+						highlightFunction("#addressValue1", "circle-css z-index1000000", function() {
+							$(".move-values").removeClass("circle-css visibility-hidden");
+							fromEffectWithTweenMax("#addressValue1", ".move-values", false, function() {
+								$('#addressValue1').removeClass('circle-css z-index1000000');
+								$('.zeros').removeClass("visibility-hidden");
+								sopLineCount++;
+								setTimeout(function() {
+									intro.nextStep();
+									},500);
 					});
 				});
 			});
 		});
 	});
+		} else {
+			sopLineCount--;
+			intro.previousStep()
+		}
+	}, 500);
+		
 }
 
 function printDecimalValue() {
-	$('.introjs-tooltip').addClass('hide');
-	$(".introjs-duplicate-nextbutton").remove();
-	highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
-		highlightFunction("#aValue" + sopLineCount, "z-index1000000", function() {
-			fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation",true, function() {
-		  		$('#persentageD' + sopLineCount).removeClass('z-index1000000');
-				$('#aValue' + sopLineCount).removeClass('z-index1000000');
-				highlightFunction("#addressValue1", "circle-css z-index1000000", function() {
-					$("#outputAValue" + sopLineCount).text($("#addressValue1").text());
-				  	fromEffectWithTweenMax("#addressValue1", "#outputAValue" + sopLineCount, false, function() {
-				  		$('#addressValue1').removeClass('circle-css z-index1000000');
-						setTimeout(function(){
-							sopLineCount++;
-							introcode.nextStep();
-						},800);
+	setTimeout(function() {
+		if (intro._direction=="forward") {	
+			$('.introjs-tooltip').addClass('hide');
+			$(".introjs-duplicate-nextbutton").remove();
+			highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
+				highlightFunction("#aValue" + sopLineCount, "z-index1000000", function() {
+					fromEffectWithTweenMax("#aValue" + sopLineCount, "#aValueAnimation",true, function() {
+				  		$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+						$('#aValue' + sopLineCount).removeClass('z-index1000000');
+						highlightFunction("#addressValue1", "circle-css z-index1000000", function() {
+							$("#outputAValue" + sopLineCount).text($("#addressValue1").text());
+						  	fromEffectWithTweenMax("#addressValue1", "#outputAValue" + sopLineCount, false, function() {
+						  		$('#addressValue1').removeClass('circle-css z-index1000000');
+						  		sopLineCount++;
+						  		setTimeout(function(){
+						  			intro.nextStep();
+						  			},800);
 					 });
 				});
 			});
 		});
 	});
+		} else {
+			sopLineCount--;
+			intro.previousStep()
+		}
+	}, 500);
 }	
 
 function printnineValue() {
-	$('.introjs-tooltip').addClass('hide');
-	$(".introjs-duplicate-nextbutton").remove();
-	highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
-		highlightFunction("#aValue" + sopLineCount, "circle-css z-index1000000", function() {
-			$("#outputAValue" + sopLineCount).text($('#aValue'+sopLineCount).text());
-		  	fromEffectWithTweenMax('#aValue'+sopLineCount, "#outputAValue" + sopLineCount, false, function() {
-		  		$('#aValue' + sopLineCount).removeClass('circle-css z-index1000000');
-		  		$('#persentageD' + sopLineCount).removeClass('z-index1000000');
-				setTimeout(function(){
-					sopLineCount++;
-					introcode.nextStep();
-				},800);
-			 });
-		});
-	});
+		setTimeout(function(){
+			if (intro._direction=="forward") {
+			$('.introjs-tooltip').addClass('hide');
+			$(".introjs-duplicate-nextbutton").remove();
+			highlightFunction("#persentageD" + sopLineCount, "z-index1000000", function() {
+				highlightFunction("#aValue" + sopLineCount, "circle-css z-index1000000", function() {
+					$("#outputAValue" + sopLineCount).text($('#aValue'+sopLineCount).text());
+						fromEffectWithTweenMax('#aValue'+sopLineCount, "#outputAValue" + sopLineCount, false, function() {
+							$('#aValue' + sopLineCount).removeClass('circle-css z-index1000000');
+							$('#persentageD' + sopLineCount).removeClass('z-index1000000');
+							sopLineCount++;
+							setTimeout(function() {
+								intro.nextStep()
+							}, 500);
+						});
+				});
+			});
+				} else {
+				sopLineCount--;
+			intro.previousStep()
+			}
+	}, 500);
+			
+	
 }
 
 //*******Text highlight function*****
@@ -346,7 +455,7 @@ function highlightFunction(selector1, selector2, callBackFunction) {
 //*****setTimeout function to intro go next step step*****
 function introNextStep() {
 	setTimeout(function() {
-		introcode.nextStep();
+		intro.nextStep();
 	},800);
 }
 
@@ -406,6 +515,7 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 	}, function() {
 		$(typingId).removeClass("typingCursor");
 		typingCallbackFunction();
+		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		$('.introjs-tooltip').show();
 	});
 } 
@@ -440,11 +550,11 @@ function changeValue(id1, id2) {
 		} else {
 			$(this).removeClass("empty");
 		}
-		introcode.refresh();
+		intro.refresh();
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 	});
 } 

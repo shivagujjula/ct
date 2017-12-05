@@ -65,7 +65,7 @@ body {
 .output-console-body {
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
-	height: 200PX;
+	height: 150px;
 	margin-bottom: 14px;
 	padding: 10px;
 	font-weight: bold;
@@ -156,6 +156,47 @@ body {
 	left: 180px !important;
 }
 
+pre {
+	font-size: 11px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+/* a:focus {
+	outline: none;
+} */
+
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+
+
 </style>
 
 </head>
@@ -168,14 +209,14 @@ body {
 		</div>
 		<div class="col-xs-offset-1 col-xs-6">
 			<div>
-<pre class="creamePreTab4">#include &lt;stdio.h&gt;
-void main() {
-	<span id='citizenAge'>int distinction_marks = 75;</span>
-	<span id='initialization'>int marks = <input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="2" value='60'>;</span>
-	<span id='ifElseBlock'><span id='ifBlock'>if (<span id='condition'>marks > distinction_marks</span>) {
-		<span id='ifStmt'>printf("User got distinction.");</span>
-	}</span> <span id='elseBlock'>else {
-		<span id='elseStmt'>printf("User did not get distinction.");</span>
+<pre class="creamePreTab4"><in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>void</g> main() {
+	<span id='citizenAge'><g>int</g> distinction_marks = <ink>75</ink>;</span>
+	<span id='initialization'><g>int</g> marks = <ink><input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="2" value='60'></span></ink>;
+	<span id='ifElseBlock'><span id='ifBlock'><go>if</go> (<span id='condition'>marks > distinction_marks</span>) {
+		<span id='ifStmt'>printf(<ink>"User got distinction."</ink>);</span>
+	}</span> <span id='elseBlock'><go>else</go> {
+		<span id='elseStmt'>printf(<ink>"User did not get distinction."</ink>);</span>
 	}</span></span>
 <span id='mainEnd'>}</span>
 </pre>
@@ -190,7 +231,7 @@ void main() {
 		</div>
 	</div><br>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id="restart">Restart</a>
 	</div>
 	
 <script type="text/javascript">

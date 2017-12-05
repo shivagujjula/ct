@@ -31,7 +31,7 @@
 }
 
 .introjs-tooltip-min-width-custom {
-	min-width: -moz-max-content;
+	min-width: 125px;;
 }
 
 .introjs-duplicate-nextbutton {
@@ -72,6 +72,7 @@ div,span {
 
 #printfDefinition {
 	link-height: 1.5;
+	font-family: monospace;
 }
 
 [contenteditable="true"] {

@@ -91,7 +91,12 @@
 	line-height: 62px;
 	text-align: right; 
 }
-
+ .output-console-title-bar {
+	padding: 2px 0;
+	background-color: whitesmoke;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+} 
 .output-console-body {
 	background-color: black;
 	border-bottom-left-radius: 8px;
@@ -231,7 +236,7 @@ void main () {
 	<span id="line5">length = strlen(a);</span>
 	<span id="line6">printf("The length of the string %s is %d \n",a, length);</span>
 	<span id="line7">strcpy(b, a);</span>
-	<span id="line8">printf ("The copied string = %s \n", b);</span>
+	<span id="line8">printf("The copied string = %s \n", b);</span>
 	<span id="line9">printf("Enter the second string :");</span>
 	<span id="line10">scanf("%s", c);</span>
 	<span id="line11">strcat(a, c);</span>
@@ -244,7 +249,7 @@ void main () {
 	} <span id="line16">else {
 		printf("The string %s is higher than the string %s \n", c, b);</span>
 	}
-}
+<span id="end">}</span>
 </pre>
 		</div>
 		<div class="col-xs-7 border" id="arrayDiv">
@@ -274,7 +279,7 @@ void main () {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-5 col-xs-offset-1 border margin-top-2" id="functionDiv">
+		<div class="col-xs-5 col-xs-offset-1 border margin-top-2 border border-light" id="functionDiv">
 			<div class="col-xs-12">
 				<div class="function-class opacity00">Length of given string <b>length</b> =  <span id="countLength" class="opacity00 count-length">0</span></div>
 				<div id="concateId" class="opacity00">Concatenating given two strings = <span id="adding" class="add-strings"></span></div>

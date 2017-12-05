@@ -164,7 +164,7 @@ r {
 		<div class="col-xs-offset-1 col-xs-7">
 			<div>
 			<pre class="creamePreTab4"><in>public class</in> <ink>SwithDemo</ink> {
-	<g>public static void</g> main() {
+	<g>public static void</g> main(String[] args) {
 	   <span id='initialization'><g>int</g> value = <ink><input type="text" name="lname" id='initializationValue' class='allowNumbers'  maxlength="1" value='2'></ink>;</span>
 	   <span id='switchBlock'><span id='switchKeyword'><go>switch</go> (<span id='condition'>value</span>) </span><span id='openBrace'>{</span>
 		 <span id='case1Blk'><span id='case1'><go>case</go> <ink>1</ink>:</span>

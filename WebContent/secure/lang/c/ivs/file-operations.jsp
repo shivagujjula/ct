@@ -149,6 +149,11 @@ pre {
 	font-weight: bold;
 	font-family: monospace;
 }
+
+.error-text {
+	font-weight: bold;
+}
+
 </style>
 </head>
 <body>

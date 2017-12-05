@@ -57,8 +57,7 @@ function introJsFunction() {
 		},
 		{
 			element : "#line5",
-			intro : "",
-			tooltipClass : "hide"
+			intro : ""
 		},
 		{
 			element : "#line6",
@@ -134,7 +133,7 @@ function introJsFunction() {
 			$('.background-color-pink').removeClass('background-color-pink');
 		break;
 		case "line5":
-			$('#typing1').empty();
+
 		break;
 		case "line6":
 
@@ -177,6 +176,7 @@ function introJsFunction() {
 
 	introjs.onafterchange(function(targetElement) {
 		
+		$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
 		}
@@ -237,7 +237,6 @@ function introJsFunction() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				typingId = '.introjs-tooltiptext';
-				$('.introjs-tooltip').removeClass('hide');
 				typingContent = '<span class="ct-code-b-yellow">Comma</span> operator can also be used to group multiple expressions as shown above.';			
 				typingInterval = typing_interval;
 				cursorColor = 'white';
@@ -252,7 +251,7 @@ function introJsFunction() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				typingId = '.introjs-tooltiptext';
-				typingContent = 'The below five <span class="ct-code-b-yellow">cout()</span> statements demonstrate the usage of ' +
+				typingContent = 'The below five <span class="ct-code-b-yellow">printf()</span> statements demonstrate the usage of ' +
 								'<span class="ct-code-b-yellow">sizeof()</span> operator.';
 				typingInterval = typing_interval;
 				cursorColor = 'white';

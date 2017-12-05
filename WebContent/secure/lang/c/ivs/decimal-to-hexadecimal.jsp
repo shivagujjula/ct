@@ -16,10 +16,18 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src='/js/intro.js'></script>
 <script type="text/javascript" src='/js/jquery-ui-latest.js'></script>
-<script src="/secure/lang/c/js-min/dth.min.js"></script>
+<script src="/secure/lang/c/js-min/dth.min.js"></script> 
 
 <style>
-.ct-demo-heading {
+.user-btn {
+	width : 46px;
+	background-color:#5bc0de
+}
+.user-btn1 {
+	width : 46px;
+	background-color:green !important;
+}
+ct-demo-heading {
 	background: highlight none repeat scroll 0.0;
 	border-radius: 10px;
 	font-size: 18px;
@@ -88,18 +96,9 @@ input:focus::-moz-placeholder {
 	width: 0px !important;
 }
 
-/* .introjs-tooltip {
-	min-width: 270px !important;
-}
- */
  .introjs-tooltiptext br {
 	margin-bottom: 15px;
 }
-
-/* .introjs-tooltiptext {
-	min-height: 25px !important;
-	font-size: 14px;
-} */
 
 .store-remainder {
 	padding: 6px;
@@ -121,6 +120,8 @@ input:focus::-moz-placeholder {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
 	margin-left: 19.5%;
+	padding: 2px;
+	font-family: monospace;
 }
 
 #inputDiv {
@@ -233,8 +234,8 @@ ol, ul {
 			<div class="col-sm-8 col-sm-offset-2" id="animationDiv">
 				<div class="row col-sm-12">
 						<div class="row text-center col-sm-10 font-size-16 margin-top-1" id="remainderValues">
-							<div id="remainders" class="col-sm-offset-2 col-sm-4 opacity00 margin-top-1">Remainders:</div>
-							<div class="col-sm-6 text-left margin-top-1" ><table><tr id="remaindersRow"></tr></table></div>
+								<div id="remainders" class="col-sm-offset-2 col-sm-4 opacity00 margin-top-1">Remainders:</div>
+								<div class="col-sm-6 text-left margin-top-1"><table  id="finalRemainderValues"><tr id="remaindersRow"></tr></table></div>
 						</div>
 				 </div>
 				<div class="row" id="resultDiv"></div>

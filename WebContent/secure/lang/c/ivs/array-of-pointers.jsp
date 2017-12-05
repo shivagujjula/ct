@@ -9,7 +9,7 @@
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/animate.css" rel="stylesheet">
-s
+
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
@@ -20,10 +20,6 @@ s
 <title>Array of Pointers</title>
 
 <style>
-
-.introjs-tooltiptext br {
-	margin: 15px;
-}
 
 .introjs-tooltip {
 	min-width: 300px;
@@ -140,7 +136,7 @@ pre > span {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
@@ -162,7 +158,7 @@ pre > span {
 					<span class='cream-span-css' id='array1'>int a[3];</span>
 				</div>
 				<div class='col-xs-12 padding10 vertical-align-center'>
-					<table align='center' class='visibility-hidden' id='table1'>
+					<table align='center' class='opacity00' id='table1'>
 						<tbody>
 							<tr>
 								<td><span class='variable-color'>a[0]</span></td>
@@ -188,7 +184,7 @@ pre > span {
 				</div>
 				<div class='col-xs-12 padding10 vertical-align-center' id='table2Box'>
 					<div class='col-xs-4'>
-						<table align='center' class='visibility-hidden' id='table2'>
+						<table align='center' class='opacity00' id='table2'>
 							<tbody>
 								<tr>
 									<td><span class='variable-color'>a[0]</span></td>
@@ -207,7 +203,7 @@ pre > span {
 					</div>
 					<div class='col-xs-offset-2 col-xs-6'>
 						<div class='col-xs-12 padding-top-bottom'>
-							<table align='center' class='visibility-hidden' id='table21'>
+							<table align='center' class='opacity00' id='table21'>
 								<tbody>
 									<tr><td class='td-value-css'></td><td class='td-value-css'></td><td class='td-value-css'></td></tr>
 									<tr>
@@ -218,7 +214,7 @@ pre > span {
 							</table>
 						</div>
 						<div class='col-xs-12 padding-top-bottom'>
-							<table align='center' class='visibility-hidden' id='table22'>
+							<table align='center' class='opacity00' id='table22'>
 								<tbody>
 									<tr><td class='td-value-css'></td><td class='td-value-css'></td></tr>
 									<tr>
@@ -229,7 +225,7 @@ pre > span {
 							</table>
 						</div>
 						<div class='col-xs-12 padding-top-bottom'>
-							<table align='center' class='visibility-hidden' id='table23'>
+							<table align='center' class='opacity00' id='table23'>
 								<tbody>
 									<tr>
 										<td class='td-value-css'></td><td class='td-value-css'></td>
@@ -269,7 +265,7 @@ void <b class='ct-blue-color'>main()</b> {
 		</div>
 		<div class='col-xs-6'>
 			<div class='col-xs-offset-1 col-xs-9 box-border text-center'>
-				<div class='col-xs-12 padding10 vertical-align-center visibility-hidden' id='animationBox'>
+				<div class='col-xs-12 padding10 vertical-align-center opacity00' id='animationBox'>
 					<div class='col-xs-4'>
 						<table align='center' id='aTable'>
 							<tbody>

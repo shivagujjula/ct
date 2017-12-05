@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 10;
+var typingSpeed = 1;
 var tl;
 var arr;
 
@@ -19,7 +19,8 @@ function introGuide() {
 		},{
 			element : "#codeAnimation",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass:"hide"
 		},{
 			element : "#addressDiv",
 			intro : "",
@@ -35,15 +36,18 @@ function introGuide() {
 		},{
 			element : "#scanf",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass:"hide"
 		},{
 			element : "#consoleId",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass:"hide"
 		},{
 			element : "#addressDiv",
 			intro : "",
-			position : "top"
+			position : "top",
+			tooltipClass:"hide"
 		},{
 			element : "#finalPrintf",
 			intro : "",
@@ -58,8 +62,73 @@ function introGuide() {
 			position : "right"
 		}]
 	});
-	
+
+	introjs.onbeforechange(function(targetElement) {
+		introjs.refresh();
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "description":		
+			$("#codeAnimation").addClass("opacity00");
+			break;
+			
+		case "codeAnimation":
+			$("#addressDiv").addClass("opacity00");
+			$("#consoleId").removeAttr("style");
+			break;
+			
+		case "printf":
+			$("#consoleId").removeAttr("style").addClass("opacity00");
+			$("#runEditor1").addClass("opacity00");
+		
+			break;
+			
+		case "finalPrintf":
+			$("[data-toggle='popover']").popover("hide");
+			break;
+			
+		case "addressDiv":
+		case "consoleId":
+				if (introjs._currentStep == 4) {
+				
+				} else if (introjs._currentStep == 6 || introjs._currentStep == 7) {
+					$("#givenNum1").text("");
+					$("#givenNum2").text("");
+					$("[data-toggle='popover']").popover("hide");
+					
+				} else {
+					
+				}
+			
+			break;
+			
+		case "scanf":
+			$("#inputVal").text("");
+			
+			break;
+		}
+	});
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
+	
 		introjs.refresh();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -81,6 +150,7 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 			$("#codeAnimation").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "In this program we will learn how <span class='ct-code-b-yellow'>scanf()</span> function behaves when " 
 							+ " formatting characters are mixed with <span class='ct-code-b-yellow'>field width</span>."
 				typing(".introjs-tooltiptext", text, function() {
@@ -93,8 +163,12 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
+					if (introjs._direction=="forward") {
+							introjs.nextStep()
+					} else {
+						introjs.previousStep()
+					}
+				}, 500);
 			});
 			break;
 			
@@ -105,7 +179,7 @@ function introGuide() {
 				var text = "The <span class='ct-code-b-yellow'>printf()</span> statement will print the values stored in " 
 							+ " <span class='ct-code-b-yellow'>a</span> and <span class='ct-code-b-yellow'>b</span> respectively.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -118,7 +192,13 @@ function introGuide() {
 					$("#addressDiv").removeClass("opacity00");
 					tl.to("#addressLocation", 1, {opacity: 1, onComplete: function() {
 						$("#addressLocation").removeClass("opacity00");
-						introjs.nextStep();
+						setTimeout(function() {
+							if (introjs._direction=="forward") {
+									introjs.nextStep()
+							} else {
+								introjs.previousStep()
+							}
+						}, 500);
 					}});
 				} else {
 					$('#num1').effect( "transfer", { to: $("#scanNum1"), className: "ui-effects-transfer" }, 1000, function() {
@@ -146,12 +226,12 @@ function introGuide() {
 							var l1 = $("#scanNum1").offset();
 							var l2 = $("#scanNum2").offset();
 							
-							$("#givenNum1").offset({"top": l1.top, "left": l1.left});
-							$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+							$("#givenNum1").offset({"top": l1.top, "left": l1.left}).css('opacity', '0');
+							$("#givenNum2").offset({"top": l2.top, "left": l2.left}).css('opacity', '0');
 							$("#dBlink1").addClass("blinking-white");
 							$("#dBlink1").addClass("zIndex");
 							
-							$("#scanNum1").delay(1000).queue(function() {
+							//$("#scanNum1").delay(1000).queue(function() {
 								$("#dBlink1").removeClass("blinking-white");
 								$("#dBlink1").removeClass("zIndex");
 								$("#scanNum1").addClass("blinking-white");
@@ -176,12 +256,13 @@ function introGuide() {
 										var text1 = "<ul><li>The given input value asssigned to <span class='ct-code-b-yellow'>a</span>.</li>"+
 										" <li id='appendTxt1' class='opacity00'></li></ul>";
 									}
-												
+									$(".introjs-tooltip").removeClass("hide");
 									typing(".introjs-tooltiptext", text1, function() {
 										$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn' onclick='ignoreVals()'>Next &#8594;</a>");
+										//$(".introjs-prevbutton").show();
 									});
 								}});
-							});
+							//});
 						});
 					});
 				}
@@ -192,16 +273,26 @@ function introGuide() {
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if (introjs._currentStep == 4) {
-					tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
-						$("#consoleId").removeClass("opacity00");
-						var text = "Enter two numbers: <span id='inputVal'></span>"
-						typing("#runEditor1", text, function() {
 							setTimeout(function() {
-								introjs.nextStep();
-							}, 1000);
-						});
-					}});
+								if (introjs._direction=="forward") {
+									tl.to("#consoleId", 1, {opacity: 1, onComplete: function() {
+										$("#consoleId").removeClass("opacity00");
+										$("#runEditor1").removeClass("opacity00");
+										var text = "Enter two numbers: <span id='inputVal'></span>"
+											
+											typing("#runEditor1", text, function() {
+												setTimeout(function() {
+										introjs.nextStep()
+												}, 500);
+											});
+									}});
+								} else {
+									introjs.previousStep()
+								}
+							}, 500);
+					
 				} else if (introjs._currentStep == 6) {
+					$(".introjs-tooltip").removeClass("hide");
 					var text = "<input id='num1' spellcheck='false' class='int-num'>";
 					typing("#inputVal", text, function() {
 						var text2 = "Enter two numbers. press <br><br>"
@@ -213,8 +304,13 @@ function introGuide() {
 							$("#num1").focus();
 							arr = [];
 							$('#num1').on("keydown", function(e) {
-								if (arr.length == 2) {
-									if (e.keyCode == 32) {
+								if ((arr.length == 2 || arr.length == 0) && e.keyCode == 32) {
+									e.preventDefault();
+								}
+								if (arr.length == 1) {
+									var flag = false;
+									flag = $('#num1').val().indexOf(' ') >= 0;
+									if (e.keyCode == 32 && flag) {
 										e.preventDefault();
 									}
 								}
@@ -243,9 +339,9 @@ function introGuide() {
 								});
 								
 								if (arr.length < 2) {
-									$(".introjs-nextbutton").hide();
+									$(".introjs-nextbutton,.introjs-prevbutton").hide();
 								} else if (arr.length == 2) {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton,.introjs-prevbutton").show();
 								}
 								
 								$.each(arr, function(idx, val) {
@@ -253,6 +349,7 @@ function introGuide() {
 										$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 																				"Please limit the number length to 5.</span>");
 										$(".introjs-nextbutton").hide();
+										
 									}
 								});
 							});
@@ -273,20 +370,23 @@ function introGuide() {
 			break;
 			
 		case "scanf":
+			
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "Here we are implementing the <span class='ct-code-b-yellow'>scanf()</span> function with " 
 							+ "<span class='ct-code-b-yellow'>%d</span> with <span class='ct-code-b-yellow'>field width</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
 			
 		case "restart":
 			$(".introjs-nextbutton").hide();
+			$('.introjs-tooltip').css({'min-width' : '125px'});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
+				var text = "Click to restart." 
 				typing(".introjs-tooltiptext", text, function() {
 					$("#restart").removeClass("opacity00");
 					$("#restart").click(function() {
@@ -316,6 +416,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -339,7 +440,7 @@ function ignoreVals() {
 	$("#dBlink2").addClass("blinking-white");
 	$("#dBlink2").addClass("zIndex");
 	
-	$("#scanNum2").delay(1000).queue(function() {
+	//$("#scanNum2").delay(1000).queue(function() {
 		$("#dBlink2").removeClass("blinking-white");
 		$("#dBlink2").removeClass("zIndex");
 		$("#scanNum2").addClass("blinking-white");
@@ -370,8 +471,8 @@ function ignoreVals() {
 			}
 			
 			typing("#appendTxt1", text2, function() {
-				$(".introjs-nextbutton").show();
+				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			});
 		}});
-	});
+	//});
 }

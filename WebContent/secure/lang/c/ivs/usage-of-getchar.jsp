@@ -15,8 +15,8 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<script src='/secure/lang/c/js-min/uog.min.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<script src='/secure/lang/c/js-min/uog.min.js'></script>
 
 <title>usage of getchar()</title>
 </head>
@@ -28,6 +28,7 @@
 	border-radius: 10px;
 	font-size: 15px;
 	padding: 9px 14px;
+	font-family:monospace;
 }
 
 #introduction {
@@ -101,7 +102,7 @@
 	width: 30px;
 	border-width: 0px 0 0 0;
 	background-color: #000;
-	color: #0f0;
+	color: yellow;
 }
 
 div, span {
@@ -208,7 +209,9 @@ div, span {
 	top:0px;
 	}
 }
-
+y {
+color:yellow;
+}
 
 </style>
 
@@ -219,7 +222,7 @@ div, span {
 			<span>Usage of getchar( )</span>
 		</h3>
 	</div>
-	<div class="col-xs-8 col-sm-offset-2 margin-top-2 infoDiv" id="infoDiv">
+	<div class="col-xs-8 col-sm-offset-2 margin-top-2 infoDiv"  id="infoDiv">
 		<ul>
 		 	<li id="list1" class="opacity00">The function <span class="ct-code-b-teal">getchar( )</span> reads a single character from the 
 		 		console.</li> 
@@ -237,7 +240,7 @@ div, span {
 	<div class="col-xs-offset-1 col-xs-6">
 	<pre id="preTableDiv" class="creamPreTab4 opacity00">
 #include &lt;stdio.h&gt;
-void main () {
+void main() {
 	<span id="line2">char</span><span id="line3"> ch</span>;
 	<span id="line4">ch = getchar();</span>
 	<span id="line5">printf("The given input character is : %c", ch);</span>
@@ -260,7 +263,7 @@ void main () {
 		<div class="col-xs-offset-1 col-xs-6">
 	<pre id="preTableDiv2" class="creamPreTable2 opacity00">
 #include &lt;stdio.h&gt;
-void main () {
+void main() {
 	<span id="preline1">int ascii_code = getchar();</span>
 	<span id="preline2">printf("The ascii_code read from input is : %d \n", ascii_code);</span>
 	<span id="preline3">printf("The character represented by ascii_code is : %c \n", ascii_code);</span>

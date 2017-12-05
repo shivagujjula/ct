@@ -21,10 +21,6 @@
 
 <style>
 
-.introjs-tooltiptext br {
-	margin: 15px;
-}
-
 .introjs-tooltip {
 	min-width: 300px;
 }
@@ -169,7 +165,7 @@ td, th {
 }
 
 .ct-lime-color {
-	color: lime;
+	color: green;
 	font-weight: bold;
 }
 
@@ -222,19 +218,19 @@ void <b class='ct-blue-color'>main()</b> {
 			<div class='col-xs-12 box-border'>
 				<div class='col-xs-12 vertical-align-center animation-box text-center' id='animationBox'>
 					<div class='col-xs-4' id='pArrayBox'>
-						<table align='center' class='visibility-hidden' id='pTable'>
+						<table align='center' class='opacity00' id='pTable'>
 							<tbody>
 								<tr>
 									<td><span class='variable-color'>p[0]</span></td>
-									<td class='td-value-css'><span id='pValue1' class='ct-blue-color'></span></td>
+									<td class='td-value-css'><span id='pValue1' class='ct-blue-color p-value'></span></td>
 								</tr>
 								<tr>
 									<td><span class='variable-color'>p[1]</span></td>
-									<td class='td-value-css'><span id='pValue2' class='ct-blue-color'></span></td>
+									<td class='td-value-css'><span id='pValue2' class='ct-blue-color p-value'></span></td>
 								</tr>
 								<tr>
 									<td><span class='variable-color'>p[2]</span></td>
-									<td class='td-value-css'><span id='pValue3' class='ct-blue-color'></span></td>
+									<td class='td-value-css'><span id='pValue3' class='ct-blue-color p-value'></span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -251,7 +247,7 @@ void <b class='ct-blue-color'>main()</b> {
 <span class="visibility-hidden">Enter the matrix elements : </span>
 <span class='output-scanf-line' id='outputScanfLine2'></span>
 <span class="visibility-hidden">The given matrix is : </span>
-<span id='outputPrintfLine' class='ct-blue-color'></span>
+<span id='outputPrintfLine' class='ct-code-b-yellow'></span>
 </div>
 				</div>
 			</div>

@@ -30,7 +30,7 @@
 .info-div {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
+	font-size: 14px;
 	padding: 11px 12px;
 	font-family: monospace;
 }
@@ -188,7 +188,7 @@ div, span {
 }
 
 .address-css {
-	color: lime;
+	color: green;
 	font-family: monospace;
 	font-weight: bold;
 }
@@ -330,10 +330,10 @@ div, span {
 		<div class="text-center margin-top-5" id="restartDiv"><a class="btn btn-warning opacity00" id="restart">Restart</a></div>
 	</div>
 </div>
-</body>
 <script>
 $(document).ready(function() {
 	usageOfcallocFunctionReady();
 });
 </script>
+</body>
 </html>

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +8,19 @@
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 
-
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/dw.min.js"></script>
+<!-- <script src="/secure/lang/c/js-min/dwlic.min.js"></script> -->
+<script src="/secure/lang/j/js/do-while.js"></script>
 
 <style type="text/css">
+
 body {
 	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 #outputDiv {
@@ -69,14 +69,14 @@ body {
     height: 35px;
     position: fixed;
     transition: all 1.3s ease-out 0s;
-    width: 60px;
+    width:85px;
     z-index: 9999998 !important;
     left: 200px;
 }
 
 .cup {
 	display: inline-block;
-    left: 19px;
+    left: 46px;
     position: relative;
 }
 
@@ -92,7 +92,7 @@ body {
     font-family: monospace;
     font-size: 14px;
     position: relative;
-    right: 15px;
+    right: 45px;
 }
 
 .fa-inverse {
@@ -130,7 +130,7 @@ body {
     animation: flip 1s linear 1;
 }
 
-@keyframes flip {
+@keyframes flip { 
 	100% { 
 	 	transform:rotateX(360deg);
 	}
@@ -155,7 +155,6 @@ body {
 	font-weight: bold;
 }
 
-
 .color-red {
 	color: red;
 }
@@ -163,32 +162,64 @@ body {
 .allowNumbers {
     outline: none;
 }
+
+.introjs-tooltip-min-width-custom {
+	min-width: 110px;
+}
+
+.oneStepBackBtn {
+	background-color: #5bc0de !important
+}
+
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+[contenteditable=true] {
+	background: yellow;
+}
+
 </style>
-<script type="text/javascript">
-	
-	$(document).ready(function() {
-		doWhileReady();
-	});
-</script>
 </head>
 <body>
 <div class='col-xs-12'>
 		<div class="text-center">
 			<h4>
-				<span class="label ct-demo-heading">do-while in Action</span>
+				<span class="label ct-demo-heading">do-while-loop in Action</span>
 			</h4>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-offset-1 col-xs-6">
 			<div>
-				<pre class="creamePreTab4">public class DoWhileDemo {
-	public static void main(String[] args) {
-		<span id='initialization'>int n = <span id='initializationValue' class="allowNumbers position-relative" maxlength="1" contenteditable=false placeholder=" ">1</span>;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>n</b></span>= <h6 id="cupValue"></h6></h5></span></span>
-		<span id='doWhile'>do {
-			<span id='statement'>System.out.println("n : " + n);</span>
-			<span id='update'>n++;</span>
-		} while (<span id='condition'>n <= <span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="true" placeholder=" ">5</span></span>);</span>
+				<pre class="creamePreTab4"><in>public class</in> <ink>DoWhileDemo</ink> {
+	<g>public static void</g> main(String[] args) {
+		<span id='initialization' class='position-relative'><g>int</g> value = <span id='initializationValue' class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>value</b></span>= <h6 id="cupValue"></h6></h5></span></span>
+		<span id='doWhile'><span id ="docondition"><go>do</go> {</span>
+			<span id='statement'>System.out.println(<ink>"value : "</ink> + value);</span>
+			<span id='update'>value++;</span>
+		} <go>while</go> (<span id='condition'>value <= <span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="true" placeholder=" "><ink>5</ink></span></span>);</span>
 	<span id='mainEnd'>}</span>
-}</pre>
+}
+</pre>
 			</div>
 		</div>
 		<div class="col-xs-4" id="outputDiv">
@@ -198,9 +229,15 @@ body {
 			<div class="output-console-body"><span id="output"></span>
 			</div>
 		</div>
-	</div>
+</div>
 	<div class="text-center col-xs-12">
 		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
 	</div>
+	
+<script type="text/javascript">
+$(document).ready(function() {
+	doWhileLoopInCReady();
+});
+</script>
 </body>
 </html>

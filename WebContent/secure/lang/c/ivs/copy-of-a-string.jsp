@@ -21,7 +21,6 @@
 <script src="/secure/lang/c/js-min/coas.min.js"></script>
 
 <title>Copy of a string</title>
-</head>
 <style>
 
 .margin-top-25 {
@@ -36,23 +35,24 @@
 	margin: 0px;
 }
 
+.padding0 {
+	padding: 0;
+}
+
 pre {
-    padding: 10px;
-    font-size: 13px;
-    white-space: pre;
-	tab-size: 3;
-    border-radius: 8px;
-    background-color: lavander;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	font-family: monospace;
 }
 
 .memory-css {
 	border: 1px solid lightgray;
 	border-radius: 8px;
-	height: 175px;
+	height: 130px;
 }
 
 table {
-	margin-top: 20px;
+	margin-top: 10px;
 	width: 100%;
 	text-align: center;
 	table-layout: fixed;
@@ -61,47 +61,32 @@ table {
 .td-border {
 	padding: 4px;
 	text-align: center;
-	border: 1px solid lightgray;
+	border: 1px solid black;
 }
 
-.output-css {
-	height: 129px;
-	border-radius: 15px;
-	border: 1px solid lightgray;
-}
-
-.padding0 {
-	padding: 0;
-}
-
-.panel-heading {
+.output-console-title-bar {
 	padding: 3px;
 	letter-spacing: 1px;
 	font-family: monospace;
 	font-weight: bold;
-	background-image: -moz-linear-gradient(center top, #e8e8e8, #bcbbbc);
+	background-color: whitesmoke;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 }
 
-.panel {
-	border-radius: 0px;
-}
-
-.panel-body {
-	padding: 15px;
-	letter-spacing: 1px;
-	background-color: black;
-	color: white;
-	height: 100px;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
+.output-console-body {
+	height: 70px;
+	padding: 10px;
+	white-space: initial;
+	font-size: 14px;
 }
 
 .input {
+	color: yellow;
 	background-color: black;
 	border: medium none;
-	letter-spacing: 1px;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 .style-css {
@@ -168,31 +153,79 @@ b {
 .ct-green {
 	color: green;
 }
+
+#iSpan, .position-css {
+	display: inline-block;
+	position: relative;
+}
+
+.usr-btn {
+	background-color: green;
+}
+.back-button {
+    background-color: #5bc0de !important;
+	display: inline-block;
+    border-radius: 3px !important;
+}
+.ct-green {
+	color: green;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+g {
+	color: 	green;
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+.displayInline {
+	position: relative;
+	display: inline-block;
+}
+
+
 </style>
-<script>
-	$(document).ready(function() {
-		copyOfStringReady();
-	});
-</script>
+</head>
+
 <body>
 	<div class="demo-heading text-center margin-top-25">
-		<h4 class="label ct-demo-heading" id="heading">Sample program on Strings</h4>
+		<h4 class="label ct-demo-heading" id="heading">Sample Program on Strings</h4>
 	</div>
 	<div class="col-xs-12 margin-top-40">
 		<div class="col-xs-12">
 			<div class="col-xs-5 padding0" id="program">
-<pre class="margin0"><span id="cup" class="opacity00 cup-css"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="value opacity00"><span id="iSpan"></span></span></span>#include&lt;stdio.h&gt;
-int main() {
-	<span id="intDec">int i;</span>
-	<span id="charDec">char a[20], b[20];</span>
-	<span id="enterString">printf ("Enter a string : ");</span>
-	<span id="scanf">scanf ("%s", a);</span>
-	<span id="forLoop">for (<span id="iInitialization">i = <span class="zero">0</span></span>; <span id="condition">a[i] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="increment">i++</span>) {</span>
+<pre class="margin0"><span id="cup" class="opacity00 cup-css"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="value opacity00"><span id="iSpan"></span></span></span><in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>int</g> main() {
+	<span id="intDec"><g>int</g> i;</span>
+	<span id="charDec"><g>char</g> a[<ink>20</ink>], b[<ink>20</ink>];</span>
+	<span id="enterString">printf(<ink>"Enter a string :"</ink>);</span>
+	<span id="scanf">scanf("%s", a);</span>
+	<span id="forLoop">for (<span id="iInitialization">i = <ink><span class="zero">0</span></ink></span>; <span id="condition">a[i] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="increment">i++</span>) {</span>
 		<span id="line1">b[i] = a[i];</span>
 	}
-	<span id="delimeter">b[i] = '\0';</span>
-	<span id="stringLength">printf ("The copied string = %s\n", b);</span>
-}</pre>
+	<span id="delimeter">b[i] = <ink>'\0'</ink>;</span>
+	<span id="stringLength">printf(<ink>"The copied string = %s\n", b</ink>);</span>
+<span id="end">}</span></pre>
 			</div>
 			<div class="col-xs-7">
 				<div class="col-xs-12 opacity00 memory-css" id="memory">
@@ -200,26 +233,9 @@ int main() {
 						<tbody>
 							<tr id="addres1Id">
 								<td><b class="ct-blue-color">a</b></td>
-								<td>0</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
-								<td>7</td>
-								<td>8</td>
-								<td>9</td>
-								<td>10</td>
-								<td>11</td>
-								<td>12</td>
-								<td>13</td>
-								<td>14</td>
-								<td>15</td>
-								<td>16</td>
-								<td>17</td>
-								<td>18</td>
-								<td>19</td>
+								<%for (int i = 0; i < 20; i++) {%>
+									<td><%=i%></td>
+								<%}%>
 							</tr>
 							<tr id="userString" class="style-css">
 								<td><div class="td-border opacity00">00</div></td>
@@ -231,26 +247,9 @@ int main() {
 						<tbody>
 							<tr id="addres2Id">
 								<td><b class="ct-blue-color">b</b></td>
-								<td>0</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
-								<td>7</td>
-								<td>8</td>
-								<td>9</td>
-								<td>10</td>
-								<td>11</td>
-								<td>12</td>
-								<td>13</td>
-								<td>14</td>
-								<td>15</td>
-								<td>16</td>
-								<td>17</td>
-								<td>18</td>
-								<td>19</td>
+								<%for (int i = 0; i < 20; i++) {%>
+									<td><%=i%></td>
+								<%}%>
 							</tr>
 							<tr id="copyString" class="style-css">
 								<td><div class="td-border opacity00">00</div></td>
@@ -259,18 +258,26 @@ int main() {
 					</table>
 				</div>
 			</div>
-		
-		<div class="col-xs-5 col-xs-offset-1 margin-top-25 padding0 output-css opacity00" id="output">
-			<div class="panel-heading text-center">Output</div>
-			<div class="panel panel-body">
-				<div class="firstLine"></div>
-				<div class="secondLine"></div>
-				<div class="thirdLine"></div>
+			<div class="col-xs-5 col-xs-offset-1 margin-top-25 padding0 output-css opacity00" id="output">
+				<div class="output-console-title-bar">Output</div>
+				<div class="output-console-body">
+					<div class="firstLine"></div>
+					<div class="secondLine"></div>
+					<div class="thirdLine"></div>
+				</div>
 			</div>
-		</div></div>
+		</div>
 		<div class="col-xs-12 text-center margin-top-40">
 			<span id="restart" class="opacity00 btn btn-warning">Restart</span>
 		</div>
 	</div>
+	
+<script>
+
+$(document).ready(function() {
+	copyOfStringReady();
+});
+
+</script>
 </body>
 </html>

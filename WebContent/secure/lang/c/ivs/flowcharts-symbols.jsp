@@ -181,9 +181,9 @@ table {
 			<tbody>
 				<tr id="terminal">
 					<td class=""><div id="oval"  class="display-inline-block margin-top-bottom20 opacity00"></div></td>
-					<td class=""><span class="text-line-height opacity00">Terminal</span></td>
+					<td class=""><span class="text-line-height opacity00" id = "2-c0l">Terminal</span></td>
 					<td >
-						<div class="opacity00">
+						<div class="opacity00" id = "3-col">
 							<span>Is used to indicate the start or end of the program, process, or sub-process.</span>
 							<div  class="margin-top-bottom20"><span class="">ex :</span>&emsp;<span id="ovalExample" class="display-inline-block">start / end</span></div>
 						</div>
@@ -191,9 +191,9 @@ table {
 				</tr>
 				<tr id="process">
 					<td><div id="rectangle"  class="display-inline-block margin-top-bottom20 opacity00"></div></td>
-					<td><span class="text-line-height opacity00">Process</span></td>
+					<td><span class="text-line-height opacity00" id = "c22">Process</span></td>
 					<td>
-					<div class="opacity00">
+					<div class="opacity00 " id = "c23">
 					<span>Is used to indicate any type of internal operation.</span>
 					<div  class="margin-top-bottom20"><span>ex :</span>&emsp;<span id="rectExample" class="display-inline-block"><span id="rectText">sum = num1 * num2;</span></span></div>
 					</div>
@@ -201,19 +201,19 @@ table {
 				</tr>
 				<tr id="ioLine">
 					<td><div id="parallelogram"  class="display-inline-block margin-top-bottom20 opacity00"></div></td>
-					<td><span class="text-line-height opacity00">input/output</span></td>
+					<td><span class="text-line-height opacity00" id = "c32">input/output</span></td>
 					<td>
-					<div class="opacity00">
+					<div class="opacity00" id = "c33">
 						<span>Is used to indicate any input / output(I/O) operation.</span>
 						<div class="margin-top-bottom20"><span>eg :</span>&emsp;<span id="pargmExample" class="display-inline-block"><span id="pargmText">read / print</span></span></div>
 					</div>
 					</td>
 				</tr>
 				<tr id="decision">
-					<td><div class="opacity00" style="display:inline-block;"><div id="rhombus" class="display-inline-block margin-top-bottom20"></div></div></td>
-					<td><span class="text-line-height opacity00">Decision</span></td>
+					<td><div id="rhombus" class="display-inline-block margin-top-bottom20 opacity00"></div></td>
+					<td><span class="text-line-height opacity00" id = "c42">Decision</span></td>
 					<td>
-					<div class="opacity00">
+					<div class="opacity00" id = "c43">
 						<span>Is used to indicate a decision that is answered in a binary format(Yes/No, True/False)</span>
 						<div class="margin-top-bottom20"><span>eg :</span>&emsp;<span id="rmbsExample" class="display-inline-block"><span id="rmbsText"><b>if (i < n)</b></span></span></span></div>
 					</div>
@@ -221,13 +221,13 @@ table {
 				</tr>
 				<tr id="flowLines">
 					<td>
-						<div class="opacity00">
+						<div class="opacity00" id = "flow">
 							<span><i class="fa fa-exchange fa-color fa-3x fa-rotate-90" aria-hidden="true"></i></span>
 							<div><i class="fa fa-exchange fa-color fa-3x" aria-hidden="true"></i></div>
 						</div>
 					</td>
-					<td><span class="text-line-height opacity00">Flow Lines</span></td>
-					<td><span class="opacity00">Is used to indicate the direction of flow.</span></td>
+					<td><span class="text-line-height opacity00" id = "flowc">Flow Lines</span></td>
+					<td><span class="opacity00" id = "flowcc">Is used to indicate the direction of flow.</span></td>
 				</tr>
 				
 			</tbody>

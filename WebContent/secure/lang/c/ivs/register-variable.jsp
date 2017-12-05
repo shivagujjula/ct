@@ -160,6 +160,15 @@ div,span {
 	font-family: monospace;
 	font-weight: bold;
 }
+
+y {
+	font-weight: bold;
+	color: yellow;
+}
+
+.introjs-fixParent {
+	position: relative !important;
+}
 </style>
 </head>
 
@@ -178,7 +187,7 @@ div,span {
 					<ul>
 						<li id=line1 class='opacity00'><span class='ct-code-b-green'>The register variables</span> are stored in the 
 							CPU registers for faster access and retrieval.</li>
-						<li id=line2 class='opacity00'>The register variables follow the same rules of scope as automatic variables.</li>
+						<li id=line2 class='opacity00'>The register variables follow the same rules of scope as <span class='ct-code-b-green'>automatic variables</span>.</li>
 						<li id=line3 class='opacity00'>The register variables are marked with <span class='ct-code-b-green'>register</span> 
 							 keyword. <span id=button1><a style="background-color:green" class="introjs-button introjs-duplicate-nextbutton"
 								 onclick="animate1()">Next &#8594;</a></span></li>
@@ -199,7 +208,7 @@ div,span {
 	<span id="closeBrace">}</span><br>
 </pre>
 					</div>
-					<div class=" col-xs-offset-1 col-xs-10 opacity00 margin20" id="animationDiv">
+					<div class=" col-xs-offset-1 col-xs-10  margin20" id="animationDiv">
 						<div class="col-xs-12 padding0">
 							<div id="mainmemoryheading" class='text-center opacity00'>In register</div>
 							<div class="col-xs-offset-2 col-xs-8 padding0 visibility-hidden" id="mainMemory">
@@ -218,10 +227,10 @@ div,span {
 				<div class="col-xs-5">
 					<div class="col-xs-12 padding0">
 						<div class="col-xs-offset-2 col-xs-8">
-				  		<div class="panel-primary output-div margin-left opacity00" id="outputDiv">
+				  		<div class="panel-primary output-div margin-left" id="outputDiv">
 		    				<div class="panel-heading text-center" id="outputDiv">Output</div>
 		    				<div class="panel panel-body">
-			    					<div class="output col-xs-12 ct-blue-color" style="font-weight: bold">
+			    					<div class="output col-xs-12 ct-code-b-yellow" style="font-weight: bold">
 			    					</div>
 			    				</div>
 			  				</div>

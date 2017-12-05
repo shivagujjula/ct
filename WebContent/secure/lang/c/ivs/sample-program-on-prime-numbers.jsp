@@ -43,7 +43,8 @@
 pre {
 	margin: 0;
 	tab-size: 4;
-	font-family: monospace;
+	/* font-family: monospace; */
+	font-size: 12px; 
 }
 
 .description {
@@ -158,6 +159,30 @@ b {
 input {
 	width: 65px;
 }
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
 </style>
 </head>
 <body>
@@ -178,23 +203,23 @@ input {
 		<div class="col-xs-12 margin-top-25 padding0">
 			<div class="col-xs-6 padding0 opacity00" id="program">
 <pre>
-#include&lt;stdio.h&gt;
-<div id="wholeLogic" style="display: inline-block;">void main() {
-	<span id="intDec">int num, count = <span id='zero'>0</span>;</span>
-	<span id ="iInit">int i = <span id='one'>2</span>;</span>
-	<span id="printfEnter">printf("Enter any number : ");</span>
-	<span id="scanf">scanf("%d", &num);</span>
-	<span id="whileLoop">while (i <= (num / 2)) {</span>
-		<span id="whileCode"><span id="ifCond">if ((num % i) == 0) {</span>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<div id="wholeLogic" style="display: inline-block;"><g>void</g> main() {
+	<span id="intDec"><g>int</g> num, count = <ink><span id='zero'>0</span></ink>;</span>
+	<span id ="iInit"><g>int</g> i = <ink><span id='one'>2</span></ink>;</span>
+	<span id="printfEnter">printf(<ink>"Enter any number : "</ink>);</span>
+	<span id="scanf">scanf(<ink>"<in>%d</in>"</ink>, &num);</span>
+	<span id="whileLoop"><go>while</go> (i <= (num / <ink>2</ink>)) {</span>
+		<span id="whileCode"><span id="ifCond"><go>if</go> ((num % i) == <ink>0</ink>) {</span>
 			<span id="cInc">count++;</span>
-			<span id="breakSpan">break;</span>
+			<span id="breakSpan"><go>break</go>;</span>
 		}
 		<span id="iInc">i++;</span></span>
 	}
-	<span id="ifLogic"><span id="outerIf">if ((count <b class="green">==</b> 0) <b class="ct-blue-color">&&</b> (num <b class="green">!=</b> 1)) {</span>
-		<span id="truePrint">printf("The given number %d is a prime number\n", num);</span>
+	<span id="ifLogic"><span id="outerIf"><go>if</go> ((count <b class="green">==</b> <ink>0</ink>) <b class="ct-blue-color">&&</b> (num <b class="green">!=</b> <ink>1</ink>)) {</span>
+		<span id="truePrint">printf(<ink>"The given number <in>%d</in> is a prime number<in>\n</in>"</ink>, num);</span>
 	} else {
-		<span id="falsePrint">printf("The given number %d is not a prime number\n", num);</span>
+		<span id="falsePrint">printf(<ink>"The given number <in>%d</in> is not a prime number<in>\n</in>"</ink>, num);</span>
 	}</span>
 }</div>
 </pre>
@@ -222,7 +247,7 @@ input {
 						<div class="col-xs-8 col-xs-offset-2 margin-top-25 padding0 opacity00" id="console">
 							<div class="output-console-title-bar">Output</div>
 							<div class="output-console-body margin-0">
-								<div><span class="console-text ">Enter any number : </span></div>
+								<div><span class="console-text">Enter any number : </span></div>
 								<div id="printing"></div>
 							</div>
 						</div>

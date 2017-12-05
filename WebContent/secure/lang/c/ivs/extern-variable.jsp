@@ -76,7 +76,7 @@ pre {
 	min-height: 85px;
 	padding: 15px;
 	white-space: initial;
-	color: blue;
+	color: yellow;
 	font-weight: bold;
 }
 
@@ -108,6 +108,12 @@ pre {
 	position: relative;
 }
 
+y {
+	font-weight: bold;
+	color: yellow;
+}
+
+
 </style>
 </head>
 <body>
@@ -118,7 +124,7 @@ pre {
 		<div class="col-xs-12">
 			<div class="col-xs-8 col-xs-offset-2 explanation opacity00" id="printDefinition">
 				<ul>
-					<li id='line1' class="opacity00">The variables that are declare outside of any function are known as  
+					<li id='line1' class="opacity00">The variables that are declared <span class='ct-green'>outside</span> and not a part of any function are known as  
 							<span class='ct-green'>extern </span> or <span class='ct-green'>global variables</span>.</li>
 					<li id='line2' class="opacity00">The scope of <span class='ct-green'>extern variables</span> is throughout the program.</li>
 				</ul>

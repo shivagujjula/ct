@@ -104,6 +104,11 @@
 	z-index: 9999999;
 	position: relative;
 }
+
+y {
+	font-weight: bold;
+	color: yellow;
+}
 </style>
 
 </head>
@@ -119,7 +124,7 @@
 				<div class='padding10 text-div' id='textDiv'>
 					A <b class='ct-green-color'>Storage Class</b> defines the <b class='ct-green-color'>scope</b> (visibility) and 
 					<b class='ct-green-color'>life-time</b> of variables and/or functions within a '<b>C</b>' 
-					Program. There are four types of <b class='ct-green-color'>Storage Classes</b>.
+					program. There are four types of <b class='ct-green-color'>Storage Classes</b>.
 				</div>
 				<div class="col-xs-12">
 					<div class='col-xs-12 padding-col0 text-center'>

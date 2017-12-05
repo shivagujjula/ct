@@ -13,13 +13,8 @@
 <script src="/js/jquery-ui-all.js"></script>
 
 <style type="text/css">
-r {
-	color: red;
-	font-weight: bold;
-}
-
 .fa-check {
-	color: #8B0000;
+	color: green;
 }
 </style>
 
@@ -71,10 +66,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -95,8 +90,8 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Command line arguments', '/secure/lang/j/basics/command-line-arguments-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Command line arguments</span></td>
-						<td></td>
-						<td></td>
+						<td>In progress</td>
+						<td>Anil</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -106,8 +101,8 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Java program with println', '/secure/lang/j/basics/simple-java-program-with-println.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Java program with println</span></td>
-						<td></td>
-						<td></td>
+						<td>In progress</td>
+						<td>Anil</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -117,8 +112,8 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Difference between print and println', '/secure/lang/j/basics/difference-between-print-n-println.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Difference between print and println</span></td>
-						<td></td>
-						<td></td>
+						<td>In progress</td>
+						<td>Anil</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -167,10 +162,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -178,12 +173,11 @@ r {
 						<td>1</td>
 						<td>if else</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of if else', '/secure/lang/j/basics/if-else.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of if else</span></td>
-						<td>Mahesh <r>(back)</r></td>
-						<td></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
 						<td>04-12-17</td>
 					</tr>
@@ -193,21 +187,20 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Counting', '/secure/lang/j/basics/counting.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Counting</span></td>
+						<td>No need</td>
 						<td></td>
 						<td></td>
-						<td>no need of <r>(back)</r></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>3</td>
 						<td>Switch case</td>
 						<td>
-							<i class="fa fa-check fa-1x"></i>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of switch case', '/secure/lang/j/basics/switch.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of switch case</span></td>
-						<td>Mahesh <r>(back)</r></td>
-						<td></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
 						<td>04-12-17</td>
 					</tr>
@@ -217,10 +210,10 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of for each loop', '/secure/lang/j/basics/for-each-loop.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of for each loop</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>05-12-17</td>
 					</tr>
 					<tr>
 						<td>5</td>
@@ -239,10 +232,10 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of while', '/secure/lang/j/basics/while.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of while</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>05-12-17</td>
 					</tr>
 					<tr>
 						<td>7</td>
@@ -250,10 +243,10 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of do while', '/secure/lang/j/basics/do-while.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of do while</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>05-12-17</td>
 					</tr>
 					<tr>
 						<td>8</td>
@@ -261,10 +254,10 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of break statement', '/secure/lang/j/basics/break.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of break statement</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>05-12-17</td>
 					</tr>
 					<tr>
 						<td>9</td>
@@ -272,10 +265,10 @@ r {
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of continue statement', '/secure/lang/j/basics/continue.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of continue statement</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>05-12-17</td>
 					</tr>
 				</tbody>
 			</table>
@@ -289,10 +282,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -318,10 +311,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -410,10 +403,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -439,10 +432,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -479,10 +472,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -519,10 +512,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -560,10 +553,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>
@@ -600,10 +593,10 @@ r {
 				<tr>
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
-					<th class="col-xs-4">Details</th>
+					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
-					<th class="col-xs-2">Status</th>
 					<th class="col-xs-1">Submit Date</th>
 				</tr>
 				<tbody class='table-striped'>

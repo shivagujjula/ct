@@ -10,14 +10,12 @@
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<script src="/secure/lang/c/js-min/bto.min.js"></script> 
-
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<script src="/secure/lang/c/js-min/bto.min.js"></script>  
 <title>Binary to Octal</title>
 </head>
 
@@ -47,10 +45,10 @@
 	background-color: seashell;
 	border: 1px solid grey;
 	margin-top: 0.7%;
-	margin-left: 20%;
+	margin-left: 220px;
 	border-radius: 10px;
 	font-family: monospace;
-	
+	height : 294px;
 }
 
 .square-Box {
@@ -76,6 +74,7 @@
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
 	margin-left: 19.5%;
+	font-family: monospace;
 	margin-top: 1%;
 }
 
@@ -108,10 +107,11 @@ div, span, tr, td {
 }
 
 .font-size {
-	font-size: 17px;
+	font-size: 15px;
 }
 
 #finalDiv {
+    padding: 4px;
 	border: 1px solid grey;
 	height: 30px;
 	margin-top: 1%;
@@ -205,9 +205,9 @@ div, span, tr, td {
 				<span class='ct-green-color'>1's</span> to represent a value of any magnitude.</li>
 			<li id='list2' class='opacity00'>The numbering system which uses base-<span class='ct-green-color'>8</span> 
 				is called <span class='ct-Maroon-color'>octal system</span>.</li>
-			<li id='list3' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>,<span class='ct-Maroon-color'>1</span>, 
-				<span class='ct-Maroon-color'>2</span>,<span class='ct-Maroon-color'>3</span>,<span class='ct-Maroon-color'>4</span>, 
-				<span class='ct-Maroon-color'>5</span>,<span class='ct-Maroon-color'>6</span> and <span class='ct-Maroon-color'>7</span> 
+			<li id='list3' class='opacity00'>Only combinations of <span class='ct-Maroon-color'>0</span>, <span class='ct-Maroon-color'>1</span>, 
+				 <span class='ct-Maroon-color'>2</span>, <span class='ct-Maroon-color'>3</span>, <span class='ct-Maroon-color'>4</span>, 
+				 <span class='ct-Maroon-color'>5</span>, <span class='ct-Maroon-color'>6</span> and <span class='ct-Maroon-color'>7</span> 
 				are used to represent a value of any magnitude in <span class='ct-Maroon-color'>octal system</span>.</li>
 			<li id='list4' class='opacity00'>In binary to octal conversion we will first create groups of three binary digits each and convert 
 				them to their equivalent octal digits to arrive at the final octal number.</li>
@@ -249,7 +249,7 @@ div, span, tr, td {
 			</button>
 		</div>
 	</div>
-	<div id="boxDiv" class="col-xs-7 col-xs-offset-2 opacity00 text-center margin-top-1">
+	<div id="boxDiv" class="col-xs-8 col-xs-offset-2 opacity00 text-center margin-top-1">
 		<div id="binaryDiv" class="col-xs-12 opacity00">
 			<table  class="square-Box" align="center">
 				<tr id="givenBox"></tr>
@@ -277,7 +277,7 @@ div, span, tr, td {
 			</div>
 			<div class="col-xs-4" id="positionSpan3">
 			</div>
-			<div class="col-xs-4" id="positionSpan6">
+			<div class="col-xs-4" id="positionSpan6">15px
 			</div>
 		</div>
 		<div class="col-xs-12 opacity00" id="squareDiv">

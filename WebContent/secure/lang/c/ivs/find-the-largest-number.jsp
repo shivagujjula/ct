@@ -73,7 +73,6 @@
 
 #infoDiv {
 	border: 1px solid;
-	/* height: 70px; */
 	padding : 10px;
 }
 
@@ -94,12 +93,6 @@
 	border-radius: 10px;
 }
 
-/* .code-condition {
-	border: 1px solid #ccc;
-	border-radius: 10px;
-	padding: 12px;
-} */
-
 .outline-css {
 	outline: medium none navy;
 }
@@ -117,9 +110,6 @@
 	color: mediumblue;
 }
 
-/* .ct-code-b-turquoise {
-	background-color: turquoise;
-} */
 
 .ct-demo-green {
 	color: green;
@@ -204,6 +194,28 @@ div, span {
 	font-weight: bold;
 }
 
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
 </style>
 
 </head>
@@ -219,22 +231,22 @@ div, span {
 		<div class="col-xs-12">
 			<div class="col-xs-7">
 <pre id="preCode" class="opacity00 code-condition margin-top-5">
-#include &lt;stdio.h&gt;
-void main() {
-    <div id="inputSpan1" class="display-inline">int num1 = <div class="outline-css display-inline" id="input1" MaxLength="3">56</div>;</div>
-	<div id="inputSpan2" class="display-inline">int num2 = <div class="outline-css display-inline" id="input2" MaxLength="3">48</div>;</div>
-	<div id="inputSpan3" class="display-inline">int num3 = <div class="outline-css display-inline" id="input3" MaxLength="3">65</div>;</div>
-	<span id='preLine1'>if (<span id='ifCondition1'>num1 > num2</span>)</span> {
-		<span id='preLine2'>if (<span id='ifCondition2'>num1 > num3</span>)</span> {
-			<span id='preLine3'>printf("%d is the largest number.", num1);</span>
-		} else {
-			<span id='preLine4'>printf("%d is the largest number.", num3);</span>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>void</g> main() {
+    <div id="inputSpan1" class="display-inline"><g>int</g> num1 = <ink><div class="outline-css display-inline" id="input1" MaxLength="3">56</div></ink>;</div>
+	<div id="inputSpan2" class="display-inline"><g>int</g> num2 = <ink><div class="outline-css display-inline" id="input2" MaxLength="3">48</div></ink>;</div>
+	<div id="inputSpan3" class="display-inline"><g>int</g> num3 = <ink><div class="outline-css display-inline" id="input3" MaxLength="3">65</div></ink>;</div>
+	<span id='preLine1'><go>if</go> (<span id='ifCondition1'>num1 > num2</span>)</span> {
+		<span id='preLine2'><go>if</go> (<span id='ifCondition2'>num1 > num3</span>)</span> {
+			<span id='preLine3'>printf(<ink>"<in>%d</in> is the largest number."</ink>, num1);</span>
+		} <go>else</go> {
+			<span id='preLine4'>printf(<ink>"<in>%d</in> is the largest number."</ink>, num3);</span>
 		}
-	} else {
-		<span id='preLine5'>if (<span id='ifCondition3'>num2 > num3</span>)</span> {
-			<span id='preLine6'>printf("%d is the largest number.", num2);</span>
-		} else {
-			<span id='preLine7'>printf("%d is the largest number.",num3);</span>
+	} <go>else</go> {
+		<span id='preLine5'><go>if</go> (<span id='ifCondition3'>num2 > num3</span>)</span> {
+			<span id='preLine6'>printf(<ink>"<in>%d</in> is the largest number."</ink>, num2);</span>
+		} <go>else</go> {
+			<span id='preLine7'>printf(<ink>"<in>%d</in> is the largest number."</ink>, num3);</span>
 		}
 	}
 }

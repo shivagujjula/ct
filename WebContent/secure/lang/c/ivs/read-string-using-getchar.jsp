@@ -25,13 +25,13 @@
 </head>
 <style>
 .output-console-title-bar {
-	background-image: -moz-linear-gradient(center top, #e8e8e8, #bcbbbc);
+	padding: 3px;
+	letter-spacing: 1px;
+	font-family: monospace;
+	font-weight: bold;
+	background-color: whitesmoke;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	font-size: 0.75em;
- 	/* margin-top: 20px;  */
-	padding: 2px 0;
-	text-align: center;
 }
 
 .output-console-body {
@@ -45,7 +45,7 @@
 	height: 100px;
 	overflow: auto;
 	padding: 10px;
-	white-space: pre-line;
+	white-space: inherit;
 }
 
 .introjs-tooltiptext br {
@@ -99,6 +99,12 @@
 	color: blue;
 }
 
+.ct-code-b-yellow {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
 .ct-code-b-brown {
 	font-family: monospace;
 	font-weight: bold;
@@ -111,18 +117,20 @@
 	color: green;
 }
 
-.ct-code-b-yellow {
-	font-family: monospace;
-	font-weight: bold;
-	color: yellow;
-}
-
 #typewritingId {
 	height: 167px; 
 }
 
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+	100% { opacity: 0.0; }
+}
+
 .address-box {
-	height: 254px;
+	height: 169px;
 	border: 1px solid lightgray;
 	border-radius: 4px;
 }
@@ -134,11 +142,6 @@
     position: relative;
     z-index: 9999999;
 }
-
-.creamPreTab4 {
-	height: 254px;
-}
-
 .padding0 {
 	padding: 0px;
 }
@@ -148,20 +151,58 @@
 }
 
 #in, .input-char {
-	width: 150px;
+	width: 170px;
  /* padding: 8px; */
 	border-width: 0px 0 0 0;
 	background-color: #000;
-	color: #0f0;
+	color: yellow;
+	font-weight: bold;
 }
 
 .base-address {
 	font-size: 12px;
     height: 37px;
-    margin-left: 39px;
+    margin-left: 50px;
     margin-top: -15px;
     padding: 2px;
     width: 40px;
+}
+
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+.table-bordered {
+	border: 1px solid black !important;
 }
 
 </style>
@@ -169,7 +210,7 @@
 <div class="col-sm-12 text-center">
 	<div class="margin-padding-css text-center" >
 		<div class="col-sm-1"></div>
-		<div class="col-sm-offset-3 col-sm-3">
+		<div class="col-sm-12">
 			<h3><span class="ct-demo-heading label label-default" id="titleName">getchar() for reading a String</span></h3>
 		</div>
 	</div>
@@ -197,69 +238,33 @@
 <div class="col-xs-8">
 	<div class="address-box opacity00" id="addressBox">
   		<div class="col-xs-11" id="animationBox">
-  			<table id="tableId" class="table visibility-hidden" style="margin-top: -1px;">
-				
+  			<table id="tableId" class="table opacity00" style="margin-top: -1px;">
 				<tbody>
 					<tr>
-				        <td><b class="ct-code-b-blue">ch</b></td>
-				        <td>0</td>
-				        <td>1</td>
-				        <td>2</td>
-				        <td>3</td>
-				        <td>4</td>
-				        <td>5</td>
-				        <td>6</td>
-				        <td>7</td>
-				        <td>8</td>
-				        <td>9</td>
-				        <td>10</td>
-				        <td>11</td>
-				        <td>12</td>
-				        <td>13</td>
-				        <td>14</td>
-				        <td>15</td>
-				        <td>16</td>
-				        <td>17</td>
-				        <td>18</td>
-				        <td>19</td>
+				        <td></td>
+				        <%for (int i = 0; i < 20; i++) {%>
+				        	<td><%=i %></td>
+				        <%} %>
 					</tr>
-			  
-			      <tr id="tableRowId" class="hidden">
-				     	<td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td class="td-css visibility-hidden"></td>
-				        <td id="lastTdPosition" class="td-css visibility-hidden"></td> 
+			      <tr id="tableRowId">
+				     	<td style="border-top: none;"><b class="ct-code-b-blue">ch </b>=</td>
+				       <%for (int i = 0; i < 20; i++) {%>
+				        	 <td class="td-css table-bordered opacity00"></td>
+				        <%} %>
 			      	</tr>
 				</tbody>
   			</table>
-  			<div id="baseAddresssId" class="base-address visibility-hidden"><span><b>4515</b><i aria-hidden="true" class="fa fa-arrow-down" style="color: red; margin-left: 7px;"></i><span style="color: blue; margin-left: 5px;">Base Address</span></span></div>
+  			<div id="baseAddresssId" class="base-address opacity00"><span><b style="color: green; font-family: monospace;">4515</b><i aria-hidden="true" class="fa fa-arrow-down" style="color: red; margin-left: 7px;"></i><span style="color: blue; margin-left: 5px;  font-family: monospace;"><b>Base Address</b></span></span></div>
 		</div>
 		<div class="col-xs-1" >
-			<div class="panel-group visibility-hidden text-center" id="panelIntBox" style="margin-top: 5px;">
+			<div class="panel-group opacity00 text-center" id="panelIntBox" style="margin-top: 5px;">
 				<div class="panel panel-info">
 					<div class="panel-heading" style="padding: 1px 15px;">i</div>
 					<div class="panel-body">
-						<span id="panelIntBody" class="position-relative display-inline"><span id="iValue" class="ct-code-b-green visibility-hidden">0</span></span>
+						<span id="panelIntBody" class="position-relative display-inline"><span id="iValue" class="ct-code-b-green opacity00">0</span></span>
 					</div>
 				</div>
-				<span id="addressId" class="ab-adress-css">1024</span>
+				<span id="addressId" class="ab-adress-css">1056</span>
  			</div>
 		</div>
 	</div>
@@ -271,10 +276,10 @@
 				<span class="title"><b>Console</b></span>
 			</div>
 			<div class="output-console-body" id="consoleBodyDiv">
-				<span id="typeChar"></span>
-					<span id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' tabindex='0' /></span>
-				<span id="totalEnterChar" ></span>
-				<span id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></span>
+				<div id="typeChar"></div>
+				<div id="hiddenTypingChar" class="hidden">Enter a String : <input id='inputChar' class='input-char' tabindex='0' maxlength="20"/></div>
+				<div id="totalEnterChar" ></div>
+				<div id="enterHiddenTotal" class="hidden">The entered string is : <input id="hiddenTotalEnterChar" maxlength='20' class='input-char' tabindex='0' /></div>
 			</div>
 		</div>
 	</div>

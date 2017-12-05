@@ -66,7 +66,13 @@ table {
 }
 
 .output-console-title-bar {
+	padding: 3px;
+	letter-spacing: 1px;
+	font-family: monospace;
 	font-weight: bold;
+	background-color: whitesmoke;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 }
 
 .output-console-body {
@@ -77,6 +83,7 @@ table {
 }
 
 .input {
+	color : yellow; 
 	background-color: black;
 	border: medium none;
 	font-family: monospace;
@@ -88,7 +95,14 @@ table {
 	color: green;
 	font-size: 14px;
 }
-
+#stringTd1, #stringTd2 {
+	width : 60px;
+	height : 26px;
+}
+#stringTd3 {
+	min-width : 31px;
+	min-height : 26px;
+}
 .ct-red {
 	font-family: monospace;
 	color: red;
@@ -154,11 +168,52 @@ table {
 .ct-green {
 	color: green;
 }
-
+.usr-btn {
+	background-color: green;
+}
+.back-button {
+    background-color: #5bc0de !important;
+	display: inline-block;
+    border-radius: 3px !important;
+}
 b {
 	font-family: monospace;
 }
+.position-css {
+	display: inline-block;
+	position: relative;
+}
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
 
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+g {
+	color: 	green;
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+.displayInline {
+	position: relative;
+	display: inline-block;
+}
 </style>
 <body>
 	<div class="demo-heading text-center margin-top-25">
@@ -168,24 +223,24 @@ b {
 		<div class="col-xs-12">
 			<div class="col-xs-5 padding0" id="program">
 <pre>
-#include&lt;stdio.h&gt;
-int main() {
-   <span id="charDec">char <span id="charA">a[10]</span>, <span id="charB">b[10]</span>, <span id="charC">c[20]</span>;</span>
-   <span id="intDec">int <span id="iInit">i</span>, <span id="jInit">j</span>;</span>
-   <span id="firstString">printf("Enter the first string : ");</span>
+<in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>int</g> main() {
+   <span id="charDec"><g>char</g> <span id="charA">a[<ink>10</ink>]</span>, <span id="charB">b[<ink>10</ink>]</span>, <span id="charC">c[<ink>20</ink>]</span>;</span>
+   <span id="intDec"><g>int</g> <span id="iInit">i</span>, <span id="jInit">j</span>;</span>
+   <span id="firstString">printf(<ink>"Enter the first string : "</ink>);</span>
    <span id="scanA">scanf("%s", a);</span>
-   <span id="secondString">printf("Enter the second string : ");</span><span id="cupI" class="cup-css i-left opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="i-value"><span id="iSpan"></span></span></span>
+   <span id="secondString">printf(<ink>"Enter the second string : "</ink>);</span><span id="cupI" class="cup-css i-left opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="i-value"><span id="iSpan"></span></span></span>
    <span id="scanB">scanf("%s", b);</span>
-   <span id="loopA">for (<span id="iInitialization">i = <span class="zero">0</span></span>; <span id="condition1">a[i] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="iIncrement">i++</span>) {</span>
+   <span id="loopA">for (<span id="iInitialization">i = <ink><span class="zero">0</span></ink></span>; <span id="condition1">a[i] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="iIncrement">i++</span>) {</span>
        <span id="line1">c[i] = a[i];</span></span><span id="cupJ" class="cup-css j-left opacity00"><span class="j-position">j=</span><i class="fa fa-coffee fa-2x sm"></i><span class="j-value"><span id="jSpan"></span></span></span>
    }
-   <span id="loopB">for (<span id="jInitialization">j = <span class="j-zero">0</span></span>; <span id="condition2">b[j] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="jIncrement">j++</span>) {</span>
+   <span id="loopB">for (<span id="jInitialization">j = <ink><span class="j-zero">0</span></ink></span>; <span id="condition2">b[j] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="jIncrement">j++</span>) {</span>
        <span id="line2">c[i] = b[j];</span>
        <span id="secondIIncrement">i++;</span>
    }
-   <span id="delimeter">c[i] = '\0';</span>
-   <span id="concatenatedString">printf("The concatenated string = %s\n", c);</span>
-}
+   <span id="delimeter">c[i] = <ink>'\0'</ink>;</span>
+   <span id="concatenatedString">printf(<ink>"The concatenated string = %s\n", c</ink>);</span>
+<span id="end">}</span>
 </pre>
 			</div>
 			<div class="col-xs-7">

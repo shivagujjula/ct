@@ -10,8 +10,8 @@ var flowchartSymbolsReady = function() {
 					{
 						element : "#flowChart",
 						intro : '',
-						position : 'right',
-						tooltipClass: 'hide'
+						position : 'right'
+						
 					},
 					{
 						element : "#terminal",
@@ -54,35 +54,125 @@ var flowchartSymbolsReady = function() {
 						tooltipClass: 'hide'
 					} 
 				]
-	})
+	});
+	intro.onbeforechange(function(targetElement) {
+		var ElementId = targetElement.id;
+		var text = intro._introItems[intro._currentStep].intro;
+		switch (ElementId) {
+
+			case 'mainTitle' :
+				 
+			break;
+				
+			case 'flowChart' :
+				if (intro._direction == "backward") {
+				if (intro._currentStep == 0) {
+					
+					//$("#terminal").addClass("opacity00");
+					$("#oval").addClass("opacity00");
+					$("#2-c0l").addClass("opacity00");
+					$("#3-col").addClass("opacity00");
+				}
+				
+				}
+			break;
+			
+			break;
+			 case ElementId:
+				 if (intro._direction == "backward") {
+					 	if (ElementId = "terminal") {
+					 		if (intro._currentStep == 1) {
+					 	$("#rectangle").addClass("opacity00");
+					 	$("#c22").addClass("opacity00");
+					 	$("#c23").addClass("opacity00");
+					 	}
+					 }
+					 	if (ElementId = "process") {
+					 		if (intro._currentStep == 2) {
+					 	$("#rectangle").removeClass("opacity00");
+					 	$("#c22").removeClass("opacity00");
+					 	$("#c23").removeClass("opacity00");
+					 	$("#parallelogram").addClass("opacity00");
+						$("#c32").addClass("opacity00");
+						$("#c33").addClass("opacity00");
+			    	}
+			    }
+					 	if (ElementId = "ioLine") {
+			    			if (intro._currentStep == 3) {
+						$("#parallelogram").removeClass("opacity00");
+						$("#c32").removeClass("opacity00");
+						$("#c33").removeClass("opacity00");
+						$("#rhombus").addClass("opacity00");
+						$("#c42").addClass("opacity00");
+						$("#c43").addClass("opacity00");
+			    			}
+					}
+					 	if (ElementId = "decision") {
+					 		if (intro._currentStep == 4) {
+					 			$("#flow").addClass("opacity00");
+								$("#flowc").addClass("opacity00");
+								$("#flowcc").addClass("opacity00");
+					 		}
+					 	}
+				 }
+			    /*if (ElementId = "parallelogram") {
+			    	$("#parallelogram").addClass("opacity00");
+					$("#c32").addClass("opacity00");
+					$("#c33").addClass("opacity00");
+			    }*/
+				 
+				break; 
+		}
+	});
 	
 	intro.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+					intro._introItems[intro._currentStep]["animation"] = "repeat";
+				}
+				
+				if (intro._introItems[intro._currentStep]["isCompleted"]) {
+					if (intro._currentStep != 0) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+					intro._introItems[intro._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		var ElementId = targetElement.id;
 		var text = intro._introItems[intro._currentStep].intro;
 		console.log(ElementId);
 		$('.introjs-nextbutton').hide();
 		switch (ElementId) {
-
 			case 'mainTitle' :
 				$('.introjs-nextbutton').hide();
-					$(".introjs-tooltip").removeClass("hide");
-					text = 'Let us understand the different symbols in a flow chart and what they represent.'; 
-					typing(".introjs-tooltiptext", text, function() {
+					
 						$('.introjs-nextbutton').show();
-					}); 
+					
 			break;
 				
 			case 'flowChart' :
-				//$(".introjs-helperLayer").one("transitionend", function() {
-					$(".introjs-tooltip").removeClass("hide");
+				 
+					intro._introItems[intro._currentStep]["isCompleted"] = false;
 					text = 'Let us understand the different symbols in a flow chart and what they represent.'
 					typing(".introjs-tooltiptext", text, function() {
+						if (intro._direction == "forward") {
 						 $("#flowChart").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-							 $("#flowChart").removeClass("animated zoomIn");	
-							 $('.introjs-nextbutton').show();
+							 $("#flowChart").removeClass("animated zoomIn");
+						 
+							 
 						 });
+						} 
 					}); 
-				//});	 
+					$('.introjs-nextbutton').show();
+				 
 			break;
 			
 			case 'restart':
@@ -90,86 +180,25 @@ var flowchartSymbolsReady = function() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$(".introjs-tooltip").removeClass("hide");
 					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-tooltip").css({"min-width": "115px"});
 					})
 				});
 			break;
 			 case ElementId:
+				 				
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$(".introjs-tooltip").removeClass("hide");
-					 typing(".introjs-tooltiptext", text, function() {
-						 animateTR(0);
-					 });
 					
+					 typing(".introjs-tooltiptext", text, function() {
+						
+						 animateTR(0);
+						
+					 });
+					 
 				});
+				
 				break; 
-			
-		/* 	case 'flowChart' :
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "this is table..";
-					 typing(".introjs-tooltiptext", text, function() {
-						 $("#flowChart").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-								$('.introjs-nextbutton').show();
-						 });
-					}); 
-				});	 
-			break;*/
-			
-			/* case 'terminal' :
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "In the termianl line..";
-					 typing(".introjs-tooltiptext", text, function() {
-						 $("#terminal td:eq(0)").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-							 $("#terminal td:eq(1)").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-								 $("#terminal td:eq(2)").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-										$('.introjs-nextbutton').show();
-								 })
-							 })
-						 });
-					}); 
-				});
-			break;
-			
-			case 'process' :
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "In the process...";
-					 typing(".introjs-tooltiptext", text, function() {
-						$('.introjs-nextbutton').show();
-					}); 
-				});
-			break;
-			
-			case 'ioLine' :
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "In the ioLine...";
-					 typing(".introjs-tooltiptext", text, function() {
-						$('.introjs-nextbutton').show();
-					}); 
-				});
-			break;
-			
-			case 'decision' :
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "In the decision..";
-					 typing(".introjs-tooltiptext", text, function() {
-						$('.introjs-nextbutton').show();
-					}); 
-				});
-			break;
-			
-			case 'flowLines' :
-				$('.introjs-nextbutton').hide();
-				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "We are initializing array with two elements and converting array to arraylist.";
-					 typing(".introjs-tooltiptext", text, function() {
-						$('.introjs-nextbutton').show();
-					}); 
-				});
-			break;  */
+		
 			
 		}
 	})
@@ -181,39 +210,39 @@ var flowchartSymbolsReady = function() {
 	$("#restart").click(function() {
 		location.reload(true);
 	})
-	 /* function animateTR(id) {
-		 $("#"+ id + "td:eq(0)").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-			 $("#"+ id +" td:eq(0)").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-				 $("#terminal td:eq(0)").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-					 
-				 })
-			 })
-		 })
-		 
-	 } */
+	 
 }
 
 function animateTR(index) {
-	var selector = $('.introjs-showElement.introjs-relativePosition > td > *');
-	selector.eq(index).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+	
+	 	var selector = $('.introjs-showElement.introjs-relativePosition > td > *');
+	 	$(".introjs-tooltip").removeClass("hide");
+	 	 if (intro._direction == "forward") {
+	 		
+	 	selector.eq(index).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 		selector.eq(index).removeClass("animated zoomIn");
 		++index;
 		if (index < selector.length) {
-			animateTR(index);
+		animateTR(index);
 		} else {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton,.introjs-prevbutton').show();
 		}
-	 });
+		});
+	 	 }
+	 if (intro._direction == "backward") {
+		 $('.introjs-nextbutton,.introjs-prevbutton').show();
+	}
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(".introjs-nextbutton").addClass("opacity00");
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
 		}, function() {
 			$(selector).removeClass("typingCursor");
+			//intro._introItems[intro._currentStep].intro = $(".intro-tooltiptext").html();
 			$(".introjs-nextbutton").removeClass("opacity00");
 			if (typeof callBackFunction === "function") {
 				callBackFunction();

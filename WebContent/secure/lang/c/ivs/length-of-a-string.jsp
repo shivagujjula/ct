@@ -19,9 +19,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/c/js-min/loas.min.js"></script>
-
 <title>Length of a string</title>
-</head>
 <style>
 
 .margin-top-25 {
@@ -37,12 +35,9 @@
 }
 
 pre {
-    padding: 10px;
-    font-size: 13px;
-    white-space: pre;
-	tab-size: 3;
-    border-radius: 8px;
-    background-color: lavander;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	/* font-family: monospace; */
 }
 
 .memory {
@@ -61,25 +56,20 @@ table {
 .td-border {
 	padding: 4px;
 	text-align: center;
-	border: 1px solid lightgray;
-}
-
-.output {
-	height: 129px;
-	border-radius: 8px;
-	border: 1px solid lightgray;
+	border: 1px solid black;
+	min-width: 31px;
+    min-height: 25px;
 }
 
 .padding0 {
 	padding: 0;
 }
-
 .panel-heading {
 	padding: 3px;
 	letter-spacing: 1px;
 	font-family: monospace;
 	font-weight: bold;
-	background-image: -moz-linear-gradient(center top, #e8e8e8, #bcbbbc);
+	background-color: whitesmoke;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 }
@@ -98,10 +88,30 @@ table {
 	border-bottom-right-radius: 8px;
 }
 
+
+.output-console-title-bar {
+	padding: 3px;
+	letter-spacing: 1px;
+	font-family: monospace;
+	font-weight: bold;
+	background-cole: whitesmoke;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.output-console-body {
+	height: 100px;
+	padding: 10px;
+	white-space: initial;
+	font-size: 14px;
+}
+
 .input {
+	color: yellow;
 	background-color: black;
 	border: medium none;
-	letter-spacing: 1px;
+	font-family: monospace;
+	font-weight: bold;
 }
 
 .user-string {
@@ -113,8 +123,8 @@ table {
 
 .ct-red {
 	font-family: monospace;
-	font-weight: bold;
 	color: red;
+	font-weight: bold;
 }
 
 .fa {
@@ -156,11 +166,6 @@ table {
 	z-index: 9999999;
 }
 
-.z-index999999 {
-	z-index: 9999999;
-	background: white;
-}
-
 .ui-effects-transfer {
 	z-index: 999999;
 	border: 1px solid #003399;
@@ -171,32 +176,89 @@ table {
 	color: green;
 }
 
+#iSpan, .position-css {
+	display: inline-block;
+	position: relative;
+}
+
+.usr-btn {
+	background-color: green;
+}
+
+.skip-button {
+	background: orange;
+	margin-right: 15px !important;
+}
+.back-button {
+    background-color: #5bc0de !important;
+	display: inline-block;
+    border-radius: 3px !important;
+}
+
+in {
+	color: rgb(62, 50, 173);
+}
+
+ink {
+	color: 	rgb(255, 0, 191)
+}
+
+go {
+	color: rgb(134, 19, 19);
+}
+
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+pi {
+	color: fuchsia;
+}
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+.usr-btn {
+	background-color: green;
+	border: 1px solid white;
+	border-radius: 3px;
+	color: grenn;
+	font: 11px sans-serif;
+	padding: 4px;
+	cursor: pointer;
+	margin-bottom: 2px;
+	display:inline-block;
+}
 </style>
-<script>
+</head>
 
-	$(document).ready(function() {
-		lengthOfAStringReady();
-	});
-
-</script>
 <body>
 	<div class="demo-heading text-center margin-top-25">
-		<h4 class="label ct-demo-heading" id="heading">Sample program on Strings</h4>
+		<h4 class="label ct-demo-heading" id="heading">Sample Program on Strings</h4>
 	</div>
 	<div class="col-xs-12 margin-top-40">
 		<div class="col-xs-12">
 			<div class="col-xs-5 padding0" id="program">
-<pre class="margin0"><span id="cup" class="cup-css opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="cup-value opacity00"><span id="iSpan"></span></span></span>#include&lt;stdio.h&gt;
-int main() {
-	<span id="charDec">char ch[20];</span>
-	<span id="intDec">int i = <span class="zero">0</span>;</span>
-	<span id="enterString">printf("Enter a string : ");</span>
-	<span id="scanf">scanf ("%s", ch );</span>
-	<span id="stringIs">printf("The entered string is : %s\n", ch);</span>
-	<span id="whileCond">while (ch[i] <b class="ct-green">!=</b> <b class="ct-blue-color">'\0'</b>)</span> {
+<pre class="margin0"><span id="cup" class="cup-css opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="cup-value opacity00"><span id="iSpan"></span></span></span><in>#include</in> <ink>&lt;stdio.h&gt;</ink>
+<g>int</g> main() {
+	<span id="charDec"><g>char</g> ch[<ink>20</ink>];</span>
+	<span id="intDec"><g>int</g> i = <ink><span class="zero">0</span></ink>;</span>
+	<span id="enterString">printf(<ink>"Enter a string : "</ink>);</span>
+	<span id="scanf">scanf("%s", ch);</span>
+	<span id="stringIs">printf(<ink>"The entered string is : " %s\n", ch</ink>);</span>
+	<span id="whileCond"><go><b>while</b></go> (<span id="chIsNotZero">ch[i] <b class="ct-green">!=</b> <ink><b class="ct-blue-color">'\0'</b></ink></span>)</span> {
 		<span id="increment">i++;</span>
 	}
-	<span id="stringLength">printf("The length of the string :  %s is %d\n", ch, i);</span>
+	<span id="stringLength">printf(<ink>"The length of the string</ink> %s <ink>is : </ink>%d<g>\n</g>", ch, i);</span>
 }
 </pre>
 			</div>
@@ -206,28 +268,10 @@ int main() {
 						<tbody>
 							<tr class="address-one" id="addresId">
 								<td><b class="ct-blue-color">ch</b></td>
-								<td>0</td>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
-								<td>7</td>
-								<td>8</td>
-								<td>9</td>
-								<td>10</td>
-								<td>11</td>
-								<td>12</td>
-								<td>13</td>
-								<td>14</td>
-								<td>15</td>
-								<td>16</td>
-								<td>17</td>
-								<td>18</td>
-								<td>19</td>
+								<%for (int i = 0; i < 20; i++) {%>
+									<td><%=i%></td>
+								<%}%>
 							</tr>
-								
 							<tr id="userString" class="hide user-string">
 								<td><div class="td-border opacity00">00</div></td>
 							</tr>
@@ -248,5 +292,14 @@ int main() {
 			<span id="restart" class="opacity00 btn btn-warning">Restart</span>
 		</div>
 	</div>
+<script>
+
+$(document).ready(function() {
+	lengthOfAStringReady();
+});
+
+
+</script>
+
 </body>
 </html>
