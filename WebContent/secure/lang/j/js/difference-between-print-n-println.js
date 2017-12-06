@@ -137,8 +137,9 @@ function introGuide() {
 			$("#printlnId12").addClass("opacity00");
 		break;
 		case "printlnId12":
-			$("#printlnId12").removeClass("opacity00");
 			$("#printlnId12").addClass("green");
+			$("#printlnId12").removeClass("white");
+			$("#printlnId12").removeClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "line5":
@@ -151,35 +152,42 @@ function introGuide() {
 			$("#printlnId2").addClass("opacity00");
 		break;
 		case "printlnId2":
-			$("#printlnId2").removeClass("opacity00");
 			$("#printlnId2").addClass("green");
+			$("#printlnId2").removeClass("white");
+			$("#printlnId2").removeClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "line7":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#printlnId2").addClass("white");
+			$("#printlnId3").addClass("opacity00");
 		break;
 		case "printlnId3":
-			$("#printlnId3").removeClass("opacity00");
 			$("#printlnId3").addClass("green");
+			$("#printlnId3").removeClass("white");
+			$("#printlnId3").removeClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "line8":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#printlnId3").addClass("white");
+			$("#printlnId41").addClass("opacity00");
 		break;
 		case "printlnId41":
-			$("#printlnId41").removeClass("opacity00");
 			$("#printlnId41").addClass("green");
+			$("#printlnId41").removeClass("white");
+			$("#printlnId41").removeClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "line9":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#printlnId41").addClass("white");
+			$("#printlnId42").addClass("opacity00");
 		break;
 		case "printlnId42":
-			$("#printlnId42").removeClass("opacity00");
 			$("#printlnId42").addClass("green");
+			$("#printlnId42").removeClass("white");
+			$("#printlnId42").removeClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "line10":

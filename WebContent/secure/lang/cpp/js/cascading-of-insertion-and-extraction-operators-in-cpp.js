@@ -2,7 +2,7 @@ var typingInterval = 5;
 var arr = [];
 var count = 0;
 var flag = true;
-var usageOfGetcharReady = function() {
+var cascadingOfInsertionAndExtractionOperatorsReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
 		if (e.keyCode == 13) {
@@ -416,8 +416,9 @@ function introGuide() {
 				break;
 			case 'class':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "This is a class <span class='ct-code-b-yellow'>Student</span>, which consists of a private members" +
-					   " <span class='ct-code-b-yellow'>name,no and marks</span> and different friend functions in public section.";
+					var text = "This is a class <span class='ct-code-b-yellow'>Student</span>, which " +
+								"consists of a private members <span class='ct-code-b-yellow'>name,no " +
+								"and marks</span> and different friend functions in public section.";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -426,9 +427,8 @@ function introGuide() {
 			case 'main':
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#main").removeClass("opacity00");
-					typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is"+
-							" the operating system call.<ul><li><span class='ct-code-b-yellow'>main()"+
-							"</span> is execution starting point for any C++ program.</li></ul>", function() {
+					var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.";
+					typing(".introjs-tooltiptext", text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
@@ -470,12 +470,22 @@ function introGuide() {
 				break;
 			case 'friendFunction':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					var text = "The <span class='ct-code-b-yellow position'> operator function << </span> "+
+							   "is written as <span class='ct-code-b-yellow'>friend function</span> " +
+							   "in class <span class='ct-code-b-yellow'>Student</span>."; 
+					typing(".introjs-tooltiptext",text, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 				});
 				break;
 			case 'friendFunction1':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					var text = "The <span class='ct-code-b-yellow position'> operator function >> </span> "+
+							   "is written as <span class='ct-code-b-yellow'>friend function</span> " +
+							   "in class <span class='ct-code-b-yellow'>Student</span>."; 
+					typing(".introjs-tooltiptext",text, function() {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					});
 				});
 				break;
 			case 'eSd':
@@ -1101,7 +1111,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 1;
+	var typingSpeed = 10;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

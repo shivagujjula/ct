@@ -16,15 +16,17 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/asp.min.js"></script> 
+<script type="text/javascript" src="/secure/lang/cpp/js-min/asp.min.js"></script>  
 
 <style>
 .warning-color {
 	color: red;
 }
-
+#box4 {
+	top: 8px;
+}
 .input-char {
-	width: 46px;
+	width: 125px;
 	background-color: #fefefe;
 	color: #260681 !important;
 	border: 2px #0b0ebf solid;
@@ -400,7 +402,7 @@ using namespace std;
 				<div class="col-xs-12">
 					<div id="five" class="text-center opacity00"><b style="color : maroon">area</b>
 						<div class="box-border1 text-center opacity00" style="margin-left : 102px;" id="boxParent4">
-							<div id="box4" style="top: 8px;" class="text-center position arrayValue2"></div>
+							<div id="box4" class="text-center position arrayValue2"></div>
 						</div>
 					</div>
 				</div>

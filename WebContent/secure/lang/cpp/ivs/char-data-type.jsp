@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html">
 <html>
 <head>
@@ -16,8 +14,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/cpp/js-min/cdt.min.js"></script> 
-
+<script src="/js/jquery.scrollTo.js"></script>
+<script src="/secure/lang/cpp/js-min/cdt.min.js"></script>  
 
 <title>char data type</title>
 <style>
@@ -124,7 +122,8 @@
 }
 .output-console-body {
 	padding: 5px 20px;
-	min-height: 60px;
+	overflow-y: auto;
+	height: 80px; 
 }
 
 .ct-code-b-red {

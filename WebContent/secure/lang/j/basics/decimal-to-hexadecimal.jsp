@@ -1,23 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Decimal to hexaDecimal</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/jquery-latest.js"></script>
-<script src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
-<script src="/js/gs/TweenMax.min.js"></script>
-<script src="/js/typewriting.min.js"></script>
-<script src='/js/intro.js'></script>
-<script src='/js/jquery-ui-latest.js'></script>
-<script src='../js-min/dth.min.js'></script>
-
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
+<script type="text/javascript" src="/js/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+<script type="text/javascript" src="/js/typewriting.min.js"></script>
+<script type="text/javascript" src='/js/intro.js'></script>
+<script type="text/javascript" src='/js/jquery-ui-latest.js'></script>
+<!-- <script src="/secure/lang/c/js-min/dth.min.js"></script>  -->
+<script src="/secure/lang/j/js/decimal-to-hexadecimal.js"></script> 
+
 <style>
-.ct-demo-heading {
+.user-btn {
+	width : 46px;
+	background-color:#5bc0de
+}
+.user-btn1 {
+	width : 46px;
+	background-color:green !important;
+}
+ct-demo-heading {
 	background: highlight none repeat scroll 0.0;
 	border-radius: 10px;
 	font-size: 18px;
@@ -42,7 +53,7 @@ input:focus::-moz-placeholder {
 
 .index-textbox-size {
 	width: 18%;
-	height: 30px !important;
+	min-height: 30px !important;
 	border: 1px solid gold;
 	display: inline !important;
 	border-radius: 4px;
@@ -86,17 +97,8 @@ input:focus::-moz-placeholder {
 	width: 0px !important;
 }
 
-.introjs-tooltip {
-	min-width: 270px !important;
-}
-
  .introjs-tooltiptext br {
 	margin-bottom: 15px;
-}
-
-.introjs-tooltiptext {
-	min-height: 25px !important;
-	font-size: 14px;
 }
 
 .store-remainder {
@@ -115,10 +117,12 @@ input:focus::-moz-placeholder {
 }
 
 #infoDiv {
-	height: 133px;
+	min-height: 133px;
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
 	margin-left: 19.5%;
+	padding: 2px;
+	font-family: monospace;
 }
 
 #inputDiv {
@@ -127,7 +131,7 @@ input:focus::-moz-placeholder {
 
 #remainderValues {
 	margin-left: 6%;	
-	height: 35px;
+	min-height: 35px;
 }
 
 .font-size-14 {
@@ -140,7 +144,7 @@ input:focus::-moz-placeholder {
 
 #resultDiv > .col-sm-3 {
 	width: 26% !important;
-	height: 115px !important;
+	min-height: 115px !important;
 	border: 1px solid lightblue;
 }
 
@@ -181,19 +185,19 @@ ol, ul {
 
 @media (min-width: 768px) {
   .set-height {
-		height: 233px !important;
+		min-height: 233px !important;
 	}
 }
 
 @media (min-width: 992px) {
   .set-height {
-		height: 172px !important;
+		min-height: 172px !important;
 	}
 }
  
 @media (min-width: 1200px) {
   .set-height {
-		height: 133px !important;
+		min-height: 133px !important;
 	}
 } 
 
@@ -222,7 +226,7 @@ ol, ul {
 			<div id="inputDiv" class="col-sm-6 col-sm-offset-2 margin-top-1 visibility-hidden">
 				<span class='font-size-16'>Decimal Value:</span>&nbsp;&nbsp;&nbsp;<input
 				class="index-textbox-size" type="text" name="decimalValue"
-				id="decimalValue" placeholder="Decimal Value" Maxlength='4' disabled="false">&nbsp;&nbsp;&nbsp;
+				id="decimalValue" placeholder="e.g. 32" Maxlength='4' disabled="false">&nbsp;&nbsp;&nbsp;
 			<button type="button" class="btn btn-success disabled opacity40" id="convert">
 				<i class="fa fa-arrow-right"></i> Convert to Hexadecimal </button>
 			</div>
@@ -231,14 +235,14 @@ ol, ul {
 			<div class="col-sm-8 col-sm-offset-2" id="animationDiv">
 				<div class="row col-sm-12">
 						<div class="row text-center col-sm-10 font-size-16 margin-top-1" id="remainderValues">
-							<div id="remainders" class="col-sm-offset-2 col-sm-4 opacity00 margin-top-1">Remainders:</div>
-							<div class="col-sm-6 text-left margin-top-1" ><table><tr id="remaindersRow"></tr></table></div>
+								<div id="remainders" class="col-sm-offset-2 col-sm-4 opacity00 margin-top-1">Remainders:</div>
+								<div class="col-sm-6 text-left margin-top-1"><table  id="finalRemainderValues"><tr id="remaindersRow"></tr></table></div>
 						</div>
 				 </div>
 				<div class="row" id="resultDiv"></div>
 				<div class="row hexaDecimal-value-prop">
 					<div>
-						<span id="hexaDecimalValueDiv" class="font-size-18 col-sm-12" style="height: 30px"></span>
+						<span id="hexaDecimalValueDiv" class="font-size-18 col-sm-12" style="min-height: 30px"></span>
 					</div>
 				</div>
 				<div class="row" style="margin-top: 3%; margin-left: 14.5%">
@@ -248,18 +252,9 @@ ol, ul {
 		</div>
 	</div>
 	<script>
-		
-		<% 
-		if (request.getParameter("restart") != null) {
-	%>
-			typingFlag = false;
-	<%
-		}
-	%> 
 		$(document).ready(function(){
 			decimalToHexaDecimalReady();
 		});
-			
 	</script>
 </body>
 </html>

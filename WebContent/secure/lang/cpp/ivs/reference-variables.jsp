@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +18,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script type="text/javascript" src="../js-min/rfv.min.js"></script>
+<script src="/secure/lang/cpp/js-min/rev.min.js" type="text/javascript"></script> 
 
 <style type="text/css">
 .margin-top-10 {
@@ -148,12 +147,12 @@ $(document).ready(function() {
 	<h4 class='label ct-demo-heading' id='demoTitle'>Reference variables</h4>
 </div>
 <div class="col-xs-12  margin-top-20">
-	<div class="col-xs-offset-2 col-xs-4">
+	<div class="col-xs-offset-1 col-xs-6">
 		<div id="leftDiv1" class="opacity00"><pre class="creampretab"><span id="intA"><red>int</red> num1 = <span id="aVal">10</span>;</span>
 <span id="intB"><red>int</red> num2;</span>
 <span id="aIntoB"><span id="init">num2 = num1</span>;</span>
 <span id="initB"><span id="b20">num2 = <span id="bVal">20</span></span>;</span>
-<span id="cout1">cout << <red>"The values of a, b : "</red>;</span></pre>
+<span id="cout1">cout << <red>"The values of a, b : "</red> << num1 << " " << num2;</span></pre>
 		</div>
 	</div>
 	<div class="col-xs-4">
@@ -193,10 +192,10 @@ $(document).ready(function() {
 </div>	
 
 <div class="col-xs-12  margin-top-20">
-	<div class="col-xs-offset-2 col-xs-4">
+	<div class="col-xs-offset-1 col-xs-6">
 		<div id="leftDiv2" class="opacity00"><pre class="creampretab"><span id="intRefA">int num1 = <span id="aRefVal">10</span>;</span>
 <span id="aIntoRefB">int &<span id="initRef">num2 = num1</span>;</span>
-<span id="cout2">cout << <red>"The values of a, b : "</red>;</span></pre>
+<span id="cout2">cout << <red>"The values of a, b : "</red> << num1 << " " << num2;</span></pre>
 		</div>
 	</div>
 	<div class="col-xs-4">

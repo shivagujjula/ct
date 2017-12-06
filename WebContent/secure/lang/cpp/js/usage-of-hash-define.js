@@ -1,9 +1,9 @@
 var t1;
 var TweenMax;
 var tl = new TimelineLite();
-var typingSpeed = 10;
+var typingSpeed = 1;
 var executeBtnCount = 1;
-
+var cubeFunc;
 var usageOfHashDefineReady = function() {
 
 	t1 = new TimelineLite();
@@ -46,43 +46,30 @@ var usageOfHashDefineReady = function() {
 		var max = $(this).attr("maxlength");
 		
 		if ($(this).val() == "") {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton , .introjs-prevbutton").hide();
 			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Please enter a float number.</div>");
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
-		if ($("#inputChar").val().length < 1) {
-			$(".introjs-nextbutton").hide();
+		if ($("#inputChar").val().length <= 1) {
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		}
 		if ($("#inputChar").val().startsWith('.') || $("#inputChar").val().endsWith('.')) {
-			//$('.ct-code-b-red').remove();
-			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't end with dot.</div>");
-			$(".introjs-nextbutton").hide();
-			//e.preventDefault();
+			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't start or end with dot.</div>");
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			return false;
-		} /* else {
-			$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't end with dot</div>");
-			//$(".introjs-nextbutton").show();
-		} */
-		/* if (($("#num2").val().charAt(0) == ".") || ($("#num2").val().charAt($(".float-num").val().length - 1) == ".")) {
-			$(".introjs-nextbutton").hide();
-			if (($("#num2").val().charAt(0) == ".")) {
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Enter number first</div>");
-			} else {
-				$(".introjs-tooltiptext").append("<div class='ct-code-b-red'>Number can't end with dot</div>");
-			}
-		} */
+		} 
 	});
 	introjsGuide();
 	$("#nextBtn").click(function() {
 		$('.introjs-nextbutton').click();
+		$("#nextBtn").remove();
 	});
 }
 
 function introjsGuide() {
 	introjs = introJs();
 	introjs.setOptions({
-		
 		steps : [{
 					element :'#informationdiv',
 					intro :'',
@@ -91,6 +78,7 @@ function introjsGuide() {
 				},{
 					element :'#line2',
 					intro :'',
+					tooltipClass: "hide",
 					position:"bottom"
 				},{
 					element :'#piValue1',
@@ -130,6 +118,7 @@ function introjsGuide() {
 				},{
 					element :'#inputChar',
 					intro :'',
+					tooltipClass: "hide",
 					position:"bottom"
 				},{
 					element :'#radiusId',
@@ -139,6 +128,7 @@ function introjsGuide() {
 				},{
 					element :'#line7',
 					intro :'',
+					tooltipClass: "hide",
 					position:"bottom"
 				},{
 					element :'#areaId',
@@ -148,6 +138,7 @@ function introjsGuide() {
 				},{
 					element :'#line8',
 					intro :'',
+					tooltipClass: "hide",
 					position:"bottom"
 				},{
 					element :'#circumferenceId',
@@ -182,6 +173,7 @@ function introjsGuide() {
 				},{
 					element :'#line12',
 					intro :'',
+					tooltipClass: "hide",
 					position:"bottom"
 				},{
 					element :'#cubeAId',
@@ -243,11 +235,63 @@ function introjsGuide() {
 					position: "right"
 			}]
 	});
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "inputChar":
+			$('#inputChar').val("");
+			$('#radiusValue,#panelAreaBody, #panelCircumferenceBody').text("");
+			break;
+		case "line4":
+			$("#animationDiv").addClass("opacity00");
+			$("#radiusId, #circumferenceId, #areaId").addClass("opacity00").removeAttr('style');
+			break;
+		case "line5":
+			$('#typeRadiusId').addClass("hidden");
+			$("#consoleId").addClass("opacity00");
+			break;
+		case "line6":
+			$('#inputChar').addClass("opacity00");
+			break;
+		case "radiusId":
+			$("#panelAreaBody, #panelCircumferenceBody").text("");
+			break;
+		case "line8": 
+			$("#panelCircumferenceBody").addClass("visibility-hidden")
+			break;
+		case "line9":
+			$("#finalAreaValue").empty();
+			break;
+		case "line10":
+			$("#finalCircumferenceValue").empty();
+			break;
+		case "line15":
+			$('#typeNumberId').addClass("hidden");
+			$("#consoleId1").addClass("opacity00");
+			break;
+		case "line16":
+			$('#inputChar1').addClass("opacity00");
+			break;
+		case "inputChar1":
+			$('#inputChar1').val("");
+			break;
+		case "line14":
+			$("#aValue").addClass("visibility-hidden")
+			break;
+		case "consoleId":
+			if (introjs._currentStep == 18) {
+			if (introjs._direction == "backward") {
+				$("#preBody1, #animationDiv1").addClass("opacity00");
+				}
+			}
+			break;
+		}
+	});
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "informationdiv" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#informationdiv").removeClass("opacity00");
 			$("#defination").removeClass("opacity00");
 			TweenMax.to("#list1", 0.2, {opacity: 1, onComplete: function() {
@@ -260,9 +304,11 @@ function introjsGuide() {
 			break;
 			
 		case "line2" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#preBody").removeClass("introjs-fixParent");
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#preBody").removeClass("opacity00");
+				$("#preBody").removeClass("opacity00").removeClass("introjs-fixParent");
+				$(".introjs-tooltip").removeClass("hide");
 				typing(".introjs-tooltiptext", "In this statement we are declaring a symbolic constant <span class='ct-code-b-yellow'>PI</span> "+
 						"with its value <span class='ct-code-b-yellow'>3.141</span> using <span class='ct-code-b-yellow'>#define</span>.<br/>" +
 						"So, whenever the compilation starts all the occurrences of <span class='ct-code-b-yellow'>PI</span> is replaced "+
@@ -273,125 +319,174 @@ function introjsGuide() {
 			break;
 			
 		case "piValue1" :
-			$(".introjs-tooltip").hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				t1.to("#piValue1", 0.4, {opacity: 1, rotationX: -90, onComplete: function() {
-					$("#piValue1").text("3.141");
-					introjs.refresh();
-				}});
-				
-				t1.to("#piValue1", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
-					setTime();
-				}});
+			if (introjs._direction == "backward") {
+				$("#piValue1").text("PI");
+				setTimeout(function() {
+					introjs.previousStep();
+				}, 500);
+			} else {
+				TweenMax.to("#piValue1", 0.4, {opacity: 1, rotationX: -90, onComplete: function() {
+						$("#piValue1").text("3.141");
+						introjs.refresh();
+						TweenMax.to("#piValue1", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
+								introjs.nextStep();
+							}, 1500);
+						}});
+					}});
+				}
 			});
 			break;
 			
 		case "piValue2" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				t1.to("#piValue2", 0.4, {opacity:1, rotationX: -90, onComplete: function() {
+				if (introjs._direction == "backward") {
+					$("#piValue2").text("PI");
+					setTimeout(function() {
+						introjs.previousStep();
+					}, 500);
+				} else {
+				TweenMax.to("#piValue2", 0.4, {opacity:1, rotationX: -90, onComplete: function() {
 					$("#piValue2").text("3.141");
 					introjs.refresh();
+					TweenMax.to("#piValue2", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
+						setTimeout(function() {
+							introjs.nextStep();
+						}, 1000);
+					}});
 				}});
-				
-				t1.to("#piValue2", 0.4, {opacity:1, rotationX: 0, onComplete: function() {
-					setTime();
-				}});
+				}
 			});
 			break;
 			
 		case "line4" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTime();
+				var text =  "we are declaring <span class='ct-code-b-yellow'>3</span> float variables "+
+					"<span class='ct-code-b-yellow'>radius</span>, <span class='ct-code-b-yellow'>area</span>, "+
+					"<span class='ct-code-b-yellow'>circumferences</span>.";
+				$(".introjs-tooltip").removeClass("hide");
+				typing(".introjs-tooltiptext",text, function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				}, 500);
 			});
 			break;
 			
 		case "animationDiv" :
-			$('.introjs-nextbutton').hide();
-			$("#animationDiv").removeClass("opacity00");
-			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#radiusId").removeClass("opacity00");
-				TweenMax.staggerFrom("#radiusId", 0.6, {opacity:0, top: -100}, -0.5, function() {
-					$("#areaId").removeClass("opacity00");
-					TweenMax.staggerFrom("#areaId", 0.6, {opacity:0, top: -100}, -0.5, function() {
-						$("#circumferenceId").removeClass("opacity00");
-						TweenMax.staggerFrom("#circumferenceId", 0.6, {opacity:0, top: -100}, -0.5, function() {
-							setTime();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			if (introjs._direction == "forward") {
+				$("#animationDiv").removeClass("opacity00");
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$("#radiusId").removeClass("opacity00");
+					TweenMax.staggerFrom("#radiusId", 0.6, {opacity:0, top: -100}, -0.5, function() {
+						$("#areaId").removeClass("opacity00");
+						TweenMax.staggerFrom("#areaId", 0.6, {opacity:0, top: -100}, -0.5, function() {
+							$("#circumferenceId").removeClass("opacity00");
+							TweenMax.staggerFrom("#circumferenceId", 0.6, {opacity:0, top: -100}, -0.5, function() {
+								setTimeout(function() {
+									introjs.nextStep();
+								}, 1000);
+							});
 						});
 					});
+				});
+			} else {
+				setTimeout(function() {
+					introjs.previousStep();
+				}, 1000);
+			}
+			break;
+			
+		case "line5" :
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-helperLayer').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass("hide");
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>cout</span> object displays the "+
+						"string <span class='ct-code-b-yellow'>\"Enter the radius : \"</span> on output.", function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 			
-		case "line5" :
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function() {
-				setTime();
-			});
-			break;
-			
 		case "line6" :
-			$('.introjs-nextbutton').hide();
-			$("#typeInputChar").addClass("hidden");
-			$("#enterRadiusValue").removeClass("hidden");
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-			//	$("#scanPercent").effect("highlight", {color: '#008000'}, 1000, function() {
 					$("#scanAmpPercentId").effect("highlight",{color: '#008000'}, 1000, function() {
-						introjs.nextStep();
+						$(".introjs-tooltip").removeClass("hide");
+						typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>cin</span> object is used to read the input data "+
+								"and store it in variable.", function() {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
 					});
-			//	});
 			});
 			break;
 			
 		case "line7" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in area.</br>" +
 						"<span><span class='ct-code-b-yellow'>area</span> = "+
 						"<span id='totalRadius' class='ct-code-b-yellow position-relative display-inline'>3.141 * "+
 						"<span  id='radiusOne' class='ct-code-b-yellow position-relative display-inline'>r</span> * "+
-						"<span id='radiusTwo' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>"+
-						" <span id='tooltipAreaNextBtn' class='introjs-button next-btn opacity00' onclick='tooltipFlipArea()'>Next &#8594;</span>", function() {
-					$('#tooltipAreaNextBtn').removeClass("opacity00");
+						"<span id='radiusTwo' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>", function() {
+					$('.introjs-tooltipbuttons').append("<span class='introjs-button next-btn' onclick='tooltipFlipArea()'>Next &#8594;</span>");
 				});
 			});
 			break;
 			
 		case "line8" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in circumference.</br>" +
 						"<span><span class='ct-code-b-yellow'>circumference</span> = "+
 						"<span id='totalCircumference' class='ct-code-b-yellow position-relative display-inline'>2 * "+
 						"<span  id='circumPiValue' class='ct-code-b-yellow position-relative display-inline'>3.141</span> * "+
-						"<span id='circumRadius' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>" +
-						"<span id='tooltipCircumNextBtn' class='introjs-button next-btn opacity00' onclick='tooltipFlipCircum()'>Next &#8594;</span>", function() {
-						$('#tooltipCircumNextBtn').removeClass("opacity00");
+						"<span id='circumRadius' class='ct-code-b-yellow position-relative display-inline'>r</span></span></span>", function() {
+					$('.introjs-tooltipbuttons').append("<span class='introjs-button next-btn' onclick='tooltipFlipCircum()'>Next &#8594;</span>");
 				});
 			});
 			break;
 			
 		case "line9" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTime();
+				if (introjs._direction == "forward") {
+					setTimeout(function() {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function() {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 			break;
 			
 		case "line10" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTime();
+				$(".introjs-tooltip").removeClass("hide");
+				typing(".introjs-tooltiptext", "Here <span class='ct-code-b-yellow'>\"Circumference of the circle\"</span> is displayed on output.", function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
 			});
 			break;
 			
 		case "inputChar" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
+				$("#inputChar").removeClass("opacity00");
+				$("#inputChar").removeAttr('disabled');
 				$("#inputChar").addClass("blinking-orange");	
 				$("#inputChar").focus();
+				$(".introjs-tooltip").removeClass("hide");
 				typing(".introjs-tooltiptext", "Enter the radius.</br>" +
 						"<span id='errorTextBox1' class='ct-code-b-red'></span>", function() {
 				});
@@ -399,39 +494,69 @@ function introjsGuide() {
 			break;
 			
 		case "radiusId" :
+			if (introjs._direction == "forward") {
 			if($('#inputChar').val().includes(".")) {
 				$("#radiusValue").text($('#inputChar').val() + '00000');
 			} else {
 				$("#radiusValue").text($('#inputChar').val() + '.000000');
 			}
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#inputChar").attr("disabled", true);
+			$("#panelRadiusBody").addClass("visibility-hidden")
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				introjs.refresh();
 				$("#panelRadiusBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#panelRadiusBody").removeClass('animated zoomIn');
-					setTime();
+					if (introjs._direction == "forward") {
+						setTimeout(function() {
+							introjs.nextStep();
+						}, 1000);
+					} 
 				});
 			});
+			} else {
+				setTimeout(function() {
+					introjs.previousStep();
+					$("#radiusValue").text("");
+				}, 1000);
+			}
 			break;
 			
 		case "areaId" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				if (introjs._direction == "forward") {
 				$("#panelAreaBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#panelAreaBody").removeClass('animated zoomIn');
-					setTime();
+					setTimeout(function() {
+						introjs.nextStep();
+					}, 1000);
 				});
+				} else {
+					setTimeout(function() {
+						introjs.previousStep();
+						$("#panelAreaBody").addClass("visibility-hidden");
+					}, 1000);
+				}
 			});
 			break;
 			
 		case "circumferenceId" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				if (introjs._direction == "forward") {
 				$("#panelCircumferenceBody").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 					$("#panelCircumferenceBody").removeClass('animated zoomIn');
-					setTime();
+					setTimeout(function() {
+						introjs.nextStep();
+					}, 1000);
 				});
+				} else {
+					setTimeout(function() {
+						introjs.previousStep();
+						$("#panelCircumferenceBody").text("");
+					}, 1000);
+				}
 			});
 			break;
 			
@@ -439,35 +564,51 @@ function introjsGuide() {
 			$('.introjs-nextbutton').hide();
 			if(introjs._currentStep == 7) {
 				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#consoleId").removeClass("opacity00");
-					typing("#typeRadiusId", " <span id='typeInputChar'>Enter the radius : </span>", function() {
-						$("#typeRadiusId").removeClass("typingCursor");						
+					if (introjs._direction == "forward") {
+						$("#consoleId").removeClass("opacity00");
+						$("#typeRadiusId").removeClass("hidden");	
 						setTimeout(function() {
 							introjs.nextStep();
 						}, 1000);
-					});
+					} else {
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if(introjs._currentStep == 16) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (introjs._direction == "forward") {
 					typing("#finalAreaValue", "<br /> Area of circle is : <span class='ct-code-b-green'>"+ $("#panelAreaBody").text() +"</span>", function() {
 						setTimeout(function() {
 							introjs.nextStep();
 						}, 1000);
 					});
+					} else {
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if(introjs._currentStep == 18) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					typing("#finalCircumferenceValue", "Circumference of circle : <span class='ct-code-b-green'>"+ $("#panelCircumferenceBody").text() +"</span>", function() {
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
+					if (introjs._direction == "forward") {
+						typing("#finalCircumferenceValue", "Circumference of circle : <span class='ct-code-b-green'>"+ $("#panelCircumferenceBody").text() +"</span>", function() {
+							setTimeout(function() {
+								introjs.nextStep();
+							}, 1000);
+						});
+						} else {
+							setTimeout(function() {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
-				});
 			}
 			break;
 			
 		case "preBody1" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#preBody1").removeClass("opacity00");
 				$("#animationDiv1").removeClass("opacity00");
@@ -477,59 +618,80 @@ function introjsGuide() {
 			break;
 			
 		case "line12" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass("hide");
 				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>CUBE(num)</span> is a symbolic function.<br/>It is replaced "+
 						"with the formula <span class='ct-code-b-yellow'>num * num * num</span> before compilation starts.", function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 			
 		case "line14" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTime();
+				if (introjs._direction == "forward") {
+					setTimeout(function() {
+						introjs.nextStep();
+					}, 1000);
+			} else {
+				setTimeout(function() {
+					introjs.previousStep();
+				}, 1000);
+			}
 			});
 			break;
 			
 		case "line15" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				setTime();
+				$(".introjs-tooltip").removeClass("hide");
+				typing(".introjs-tooltiptext", "Here <span class='ct-code-b-yellow'>cout</span> object displays the "+
+						"string <span class='ct-code-b-yellow'>\"Enter a number : \"</span> on output console.", function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
 			});
 			break;
 			
 		case "line16" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#typeInputChar1").addClass("hidden");
 			$("#enterNumberId").removeClass("hidden");
 			$('.introjs-helperLayer').one('transitionend', function() {
-			//	$("#scanPercent1").effect("highlight", {color: '#008000'}, 1000, function() {
-					$("#scanAmpPercentId1").effect("highlight",{color: '#008000'}, 1000, function() {
-						setTime();
+				$("#scanAmpPercentId1").effect("highlight",{color: '#008000'}, 1000, function() {
+					$(".introjs-tooltip").removeClass("hide");
+					typing(".introjs-tooltiptext", "Here <span class='ct-code-b-yellow'>cin</span> object is used to store the number "+
+							"entered into variable <span class='ct-code-b-yellow'>a</span>.", function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
-			//	});
+				});
 			});
 			break;
 			
 		case "line17" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				setTime();
 			});
 			break;
 			
 		case "aValue" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			if(introjs._currentStep == 23) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (introjs._direction == "forward") {
 					$("#aValue").removeClass("visibility-hidden").addClass("animated zoomIn").one('animationend', function() {
 						$("#aValue").removeClass('animated zoomIn');
 						setTimeout(function() {
 							introjs.nextStep();
 						}, 1000);
 					});
+				} else {
+					setTimeout(function() {
+						introjs.previousStep();
+					}, 1000);
+				}
 				});
 			} else if(introjs._currentStep == 28) {
 				$("#aNumber").text($('#inputChar1').val());
@@ -547,77 +709,80 @@ function introjsGuide() {
 			break;
 			
 		case "cubeAId" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			if (introjs._currentStep == 21) {
 				$('.introjs-helperLayer').one('transitionend', function() {
-					t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+					if (introjs._direction == "backward") {
+						$("#aCubeValue").removeAttr('style');
+						$("#aCubeValue").empty().text(cubeFunc);
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					} else {
+					TweenMax.to("#aCubeValue", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 						$("#aCubeValue").html('<span id="a1" class="position-relative display-inline">a</span> * <span id="a2" class="position-relative display-inline">a</span> * <span id="a3" class="position-relative display-inline">a</span>');
 						introjs.refresh();
-					}});
-	
-					t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
-					}});
+						TweenMax.to("#aCubeValue", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+							setTimeout(function() {
+								introjs.nextStep();
+							}, 1000);
+						}});
+						}});
+					}
 				}); // 36
 			} else if (introjs._currentStep == 30) {
 				introjs.refresh();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					
-					t1.to("#a1", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+					TweenMax.to("#a1", 1.5, {opacity:1, rotationX: -90, onComplete: function() {
 						$("#a1").text($('#inputChar1').val());
-					}});
-					
-					t1.to("#a1", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-					//	introjs.refresh();
-					}});
-					
-					t1.to("#a2", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+					TweenMax.to("#a1", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+					TweenMax.to("#a2", 1.0, {opacity:1, rotationX: -90, onComplete: function() {
 						$("#a2").text($('#inputChar1').val());
-					}});
-					
-				    t1.to("#a2", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+				    TweenMax.to("#a2", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 				    	introjs.refresh();
-				    }});
-				    
-					t1.to("#a3", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+					TweenMax.to("#a3", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 						$("#a3").text($('#inputChar1').val());
-					}});
-					
-					t1.to("#a3", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+					TweenMax.to("#a3", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
 						introjs.refresh();
-					}});
-					
-					var l1 = parseInt($('#inputChar1').val());
-					var result = l1 * l1 * l1;
-					
-					t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
-						$("#aCubeValue").text(result);
-						introjs.refresh();
-						t1.to("#aCubeValue", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-							setTimeout(function() {
-								introjs.nextStep();
-							}, 2000);
+						var l1 = parseInt($('#inputChar1').val());
+						var result = l1 * l1 * l1;
+						
+						TweenMax.to("#aCubeValue", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
+							$("#aCubeValue").text(result);
+							introjs.refresh();
+							TweenMax.to("#aCubeValue", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
+								setTimeout(function() {
+									introjs.nextStep();
+								}, 2000);
+							}});
 						}});
-					}});
 
+					}});
+					 }});
+					}});
+					}});
+					}});
+					}});
+					
+					
 				});
 			}
 			break;
 			
 		case "inputChar1" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
+				$("#inputChar1").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Enter a number.</br>" +
 				"<span id='errorTextBox2' class='ct-code-b-red'></span>", function() {
 					$("#inputChar1").addClass("blinking-orange");
 					$("#inputChar1").focus();
 					$("#inputChar1").keyup(function() {
 						if ($("#inputChar1").val().length == '') {
-							$('.introjs-nextbutton').hide();
+							$('.introjs-nextbutton, .introjs-prevbutton').hide();
 						} else {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						}
 					});
 				});
@@ -625,14 +790,21 @@ function introjsGuide() {
 			break;
 			
 		case "consoleId1" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			if(introjs._currentStep == 25) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#consoleId1").removeClass("opacity00");
-					typing("#typeNumberId","<span id='typeInputChar1'>Enter a number : </span>", function() {
-						$("#typeNumberId").removeClass("typingCursor");
-						setTime();
-					});
+					if (introjs._direction == "forward") {
+						$("#consoleId1").removeClass("opacity00");
+						$("#typeNumberId").removeClass("hidden");
+						setTimeout(function() {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					}
+						
 				});
 			} else if(introjs._currentStep == 31) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
@@ -644,7 +816,7 @@ function introjsGuide() {
 			break;
 			
 		case "restartBtn" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
 			$('.introjs-helperLayer ').one('transitionend', function() {
@@ -668,12 +840,19 @@ function introjsGuide() {
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
 	$('.introjs-nextbutton').addClass('opacity00');
+	cubeFunc = $("#aCubeValue").html();
 }
 
 function setTime() {
-	setTimeout(function() {
-		introjs.nextStep();
-	}, 500);
+	if (introjs._direction == "backward") {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 500);
+	} else {
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 500);
+	}
 }
 
 function isNumber(evt) {
@@ -717,15 +896,12 @@ function tooltipFlipArea() {
 	if($('#inputChar').val().includes(".")) {
 		l1 = parseFloat($('#inputChar').val() + '00000');
 		result = 3.141 * l1 * l1;
-		console.log("final result with dot = " + result);
 	} else {
 		l1 = parseFloat($('#inputChar').val() + '.000000');
 		result = 3.141 * l1 * l1;
-		console.log("final result without dot = " + result);
 	}
 	
 	var givenString = result.toString();
-	console.log("resulted givenString is = " + givenString);
 	var indexOfDot = givenString.indexOf(".");
 	var index;
 	if (indexOfDot == -1) {
@@ -744,7 +920,6 @@ function tooltipFlipArea() {
 			givenString = givenString.concat("0");
 		}
 	}
-	console.log("givenString = " + givenString);
 	
 	t1.to("#totalRadius", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 		$("#totalRadius").text(givenString);
@@ -753,7 +928,7 @@ function tooltipFlipArea() {
 	}});
 	
 	t1.to("#totalRadius", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}});
 }
 
@@ -780,7 +955,6 @@ function tooltipFlipCircum() {
 	
 	
 	var givenString = result.toString();
-	console.log("resulted givenString is = " + givenString);
 	var indexOfDot = givenString.indexOf(".");
 	var index;
 	if (indexOfDot == -1) {
@@ -799,7 +973,6 @@ function tooltipFlipCircum() {
 			givenString = givenString.concat("0");
 		}
 	}
-	console.log("givenString = " + givenString);
 	t1.to("#totalCircumference", 0.5, {opacity:1, rotationX: -90, onComplete: function() {
 		$("#totalCircumference").text(givenString);
 		$("#panelCircumferenceBody").text(givenString);
@@ -807,19 +980,10 @@ function tooltipFlipCircum() {
 	}});
 	
 	t1.to("#totalCircumference", 0.5, {opacity:1, rotationX: 0, onComplete: function() {
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}});
 }
 
-/* function typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction) {
-	$(typingId).typewriting(typingContent, {
-		"typing_interval": typingInterval,
-		"cursor_color": cursorColor
-	}, function() {
-		$(typingId).removeClass('typingCursor');
-		typingCallbackFunction();
-	});
-} */
 function typing(id, text, callBackFunction) {
 	$(id).typewriting(text, {
 		"typing_interval" : typingSpeed,
@@ -827,6 +991,7 @@ function typing(id, text, callBackFunction) {
 	}, function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro= $(".introjs-tooltiptext").html();
 		}
 	});
 }

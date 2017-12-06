@@ -1,6 +1,7 @@
 var introjs;
 var typingSpeed = 10;
 var arr = [];
+var spaceCount;
 
 var accessSpecifier = function() {
 	introGuide();
@@ -244,7 +245,10 @@ function introGuide() {
 		case "end1":
 			$("#outputBody, #preBody1, #animationBox2").removeClass("opacity00");
 			break;
-		case "console5":
+		case "console5" :
+			introjs.refresh();
+			$('.introjs-nextbutton').hide();
+			$('.introjs-prevbutton').hide();
 			$("#value1").addClass("opacity00")
 			break;
 		case "area":
@@ -314,7 +318,7 @@ function introGuide() {
 					$("#s1, #borderBox").addClass("opacity00");
 					break;
 				case "second":
-					$("#one").addClass("opacity00") 
+					$("#one").addClass("opacity00") ;
 					break;
 			}
 			break;
@@ -329,7 +333,7 @@ function introGuide() {
 					$("#box4").text("");
 				}
 				if (animateStep == "out5") {
-					$("#value1, #li5").addClass("opacity00");
+					$("#li5").addClass("opacity00");
 					$("#box4").removeAttr("style");
 				}
 				break;
@@ -617,14 +621,12 @@ function introGuide() {
 					nextStep();
 				}
 				if (animateStep =="out3") {
-					$('#inputChar').attr({contenteditable: 'true', placeholder: 'Enter 2 values'});
-					$("#outDiv").append('<span id="outputPrintfLine"><div  id="inputChar" '+
-							'contenteditable="true" maxlength="2" class="position input-char"></div></span>');
+					$("#outDiv").append('<span id="outputPrintfLine"><input id="inputChar" maxlength="5" placeholder="Enter 2 values" class="position input-char"></span>');
 					$("#borderBox1").addClass("z-index1000000");
-					$('#inputChar').removeAttr('disabled').focus();
+					$('#inputChar').focus();
 					$(".introjs-tooltip").removeClass("hide");
+					spaceCount = 0;
 					enterTwoValues('#inputChar');
-					charAtEnd("inputChar");
 					$("#borderBox1").removeClass("z-index1000000");
 					typing(".introjs-tooltiptext","<span id='please1'><span id='please'>Please enter two values<span></span>", 10, "",function() {
 					});
@@ -632,24 +634,29 @@ function introGuide() {
 				if (animateStep == "out4") {
 					if (introjs._direction == "backward") {
 						$("#outputNumber").remove();
+						$("#outDiv > br").remove();
 					} else {
-						$("#outDiv").append(' <span id ="outputNumber">The area of rectangle is : <span class="border opacity00 position" id="value1">'
+						$("#outDiv").append('<br><span id ="outputNumber">The area of rectangle is : <span class="opacity00 position" id="value1">'
 								+ $('#box4').text() + '</span></span>');
 					}
 					nextStep();
 				}
 				if (animateStep == "out5") {
 					if (introjs._direction == "backward") {
-						$("#value1").addClass("opacity00");
+						setTimeout(function() {
+							introjs.previousStep();
+						},1500);
 					} else {
 						$("#box4").css("zIndex","1000080").effect( "highlight",{color: 'red'}, 200);
 						transferEffect("#box4","#value1", function() {
 							$("#value1").removeClass("opacity00");
 							$("#box4").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 200);
 						 	$("#box4").removeClass("z-index1000000");
+							setTimeout(function() {
+								introjs.nextStep();
+							},1500);
 						});
 					}
-					nextStep();
 				}
 			});
 			break;
@@ -1036,6 +1043,12 @@ function enterTwoValues(selector) {
 				e.preventDefault();
 			}
 		}
+		if ((arr.length == 0) && e.keyCode == 32) {
+			e.preventDefault();
+		}
+		if (arr.length == 1 && spaceCount >= 1 && e.keyCode == 32) {
+			e.preventDefault();
+		} 
 		if ($.inArray(e.keyCode, [46, 8, 9, 27, 32, 35, 36, 37, 39]) !== -1) {
 			return;
 		}
@@ -1048,31 +1061,35 @@ function enterTwoValues(selector) {
 		maxNumberOfInputs = 2;
 		maxLengthOfInput = 1;
 		$('.length-error-text').remove();
-		if ($(this).text() == "") {
+		if ($(this).val() == "") {
 			$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 				"Please enter " + maxNumberOfInputs + " number and separate each with space.</span>");
 			$('.user-btn').hide();
 		}
-		var givenText = $(this).text();
+		var givenText = $(this).val();
+		spaceCount = givenText.split(" ").length - 1;
 		var splittedText = givenText.split(" ");
 		arr = [];
-		
 		$.each(splittedText, function(idx, val) {
 			if (val != '' ) {
 				arr.push(val);
 			}
 		});
+		if ((arr.length == 2) && e.keyCode == 32) {
+			e.preventDefault();
+		}
 		
 		if (arr.length < 2 ) {
+			$("#please").show();
+			$('.user-btn').hide();
 			$(".introjs-nextbutton").hide();
 			
 		} else if (arr.length == 2) {
 			$('.user-btn').remove();
-			$("#please").hide();
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="storeVal3()">Next&rarr;</a>');
 		}
 		$.each(arr, function(idx, val) {
-			if (val < 0 || val > 100 ) {
+			if (val < 0 || val > 100  ) {
 				$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 						"<ul><li>Please limit the index " + idx + " number in between 0 and 99.</li></ul></span>");
 				$('.user-btn').remove();
@@ -1082,18 +1099,18 @@ function enterTwoValues(selector) {
 }
 
 function storeVal3() {
+	$("#please").hide();
 	$("#please1").append("you entered values of <span class='ct-code-b-yellow'>length</span> and "+
 						"<span class='ct-code-b-yellow'>breadth</span>.");
 	$('.user-btn').remove();
-	var splittedText = $('#inputChar').text().split(" ");
+	var splittedText = $('#inputChar').val().split(" ");
 	$('#inputChar').html('');
+	$('#inputChar').remove();
 	$.each(splittedText, function(idx, val) {
 		if (val != '') {
-			$('#inputChar').append('<span class="scanfValue">' + val + '</span> ');
-			$('#outputPrintfLine').append('<span class="printfValue visibility-hidden">' + val + '</span> ');
-			$('#outputPrintfLine').append('<br/>');
+			$('#outputPrintfLine').append('<span class="scanfValue">' + val + '</span> ');
 		} else {
-			$('#inputChar').append(' ');
+			$('#outputPrintfLine').append(' ');
 		}
 	});
 	$('.scanfValue').addClass('output-value-circle circle-css');
@@ -1109,6 +1126,7 @@ function storeVal3() {
 			}
 		}
 		$('.scanfValue').removeClass('output-value-circle circle-css');
+		$(".scanfValue").removeAttr('style');
 		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	}});
 }

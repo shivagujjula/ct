@@ -17,7 +17,7 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<script src='/secure/lang/cpp/js-min/obmaff.min.js'></script>
+<script src='/secure/lang/cpp/js-min/obmaff.min.js'></script> 
 <title>Overloading binary minus as member function</title>
 </head>
 <style>
@@ -102,7 +102,6 @@ ul.expl {
 	color: #e5ec07;
 	font-family: monospace;
 	font-size: 13px;
-	min-height: 128px; 
 	overflow: auto;
 	padding: 10px;
 	white-space: nowrap;
@@ -252,10 +251,20 @@ div, span {
 	display: inline-block;
 	position: relative;
 }
-[contenteditable="true"] {
+/* [contenteditable="true"] {
 	font-weight: normal;
 	outline: medium none;
+} */
+[contenteditable="true"] {
+	outline: none;
 }
+
+[contenteditable=true]:empty:before, [contenteditable=false]:empty:before {
+	content: attr(placeholder);
+	color: #B8B8A0;
+	font-family: monospace;
+}
+
 .box-border {
 	border: 1px solid gray;
 	border-radius: 8px;
@@ -344,17 +353,16 @@ div, span {
 		<span id="s3Sub" class="opacity00">s3 = s1 - s2;</span>
 		<span id="printSub" class="opacity00">cout << "\nsubtraction of complex no's is : ";</span>
 		<span id="s3PutData" class="opacity00">s3.putdata();</span>
-}</span></pre>
+<span id="end">}</span></span></pre>
 			</div>
 			<div class="col-xs-6 col-xs-offset-1  margin-top-25">
 				<div class="col-xs-12 box-border opacity00" id="addressDiv">
 					<div class="col-xs-12" style="margin-top: 10px;">
-						<div class="col-xs-12 box-Heading text-center opacity00" style="font-weight: bold; color: rgb(47, 79, 79);">
-							<div id="boxHeading1" class="col-xs-4 col-xs-offset-1 opacity00" style="margin-left: 55px;">S1</div>
-							<div id="boxHeading2" class="col-xs-4 col-xs-offset-1 opacity00" style="margin-left: 100px;">S2</div>
-						</div>
-						<div class="col-xs-5  col-xs-offset-1 box-border opacity00" id="s1Box">
-							<div class="col-xs-12 opacity00" id="s1AnimationDiv">
+						<div class="col-xs-5  opacity00" id="s1Box">
+							<div class="col-xs-12 box-Heading text-center opacity00" style="font-weight: bold; color: rgb(47, 79, 79);">
+								<div id="boxHeading1" class="col-xs-4 col-xs-offset-4 opacity00" >S1</div>
+							</div>
+							<div class="col-xs-12 box-border opacity00" id="s1AnimationDiv">
 								<div id="s1RealBox" class="col-xs-6  text-center opacity00">
 									<div><b style="color: maroon;">real</b></div>
 									<div class="box-border" style="line-height: 25px; height: 50px;">
@@ -373,8 +381,11 @@ div, span {
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-5 box-border col-xs-offset-1 opacity00" id="s2Box">
-							<div class="col-xs-12 opacity00" id="s2AnimationDiv">
+						<div class="col-xs-5 col-xs-offset-2 opacity00" id="s2Box">
+							<div class="col-xs-12 box-Heading text-center opacity00" style="font-weight: bold; color: rgb(47, 79, 79);">
+								<div id="boxHeading2" class="col-xs-4 col-xs-offset-4 opacity00" >S2</div>
+							</div>
+							<div class="col-xs-12 box-border opacity00" id="s2AnimationDiv">
 								<div id="s2RealBox" class="col-xs-6  opacity00 text-center">
 									<div><b style="color: maroon;">real</b></div>
 									<div class="box-border" style="line-height: 25px; height: 50px;">
@@ -385,7 +396,7 @@ div, span {
 								<div id="s2ImagBox" class="col-xs-6  opacity00 text-center">
 									<!-- <div id="localVal" class="col-xs-7 col-xs-offset-2"> -->
 										<div><b style="color: maroon;">imag</b></div>
-										<div style="height: 50px;" class="box-border">
+										<div style="line-height: 25px; height: 50px;" class="box-border">
 											<span id="s2ImagVal" class=" arrayValue1 ct-green-color text-center"></span>
 										</div>
 										<!-- <div class='opacity00'>2323</div> -->
@@ -429,8 +440,8 @@ div, span {
 								<span class="title"><b>Console</b></span>
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
-								<span id="typeChar"></span>
-									<div id="hiddenTypingChar" class="opacity00">Enter the  real and imaginary parts : <span id="outputPrintfLine"><span id="inputChar" contenteditable="true" maxlength="2" class="position input-char"></span></span></div>
+								<!-- <span id="typeChar"></span> -->
+									<div id="hiddenTypingChar" class="opacity00">Enter the  real and imaginary parts : <span id="outputPrintfLine"><div id="inputChar" contenteditable="true" maxlength="2" class="position input-char"></div></span></div>
 									<div id="hiddenTypingChar1" class="opacity00" >Enter the  real and imaginary parts : <span id="outputPrintfLine1" class="opacity00"><div id="inputChar1" contenteditable="true" maxlength="2" class="opacity00 position input-char"></div></span></div>
 								<div id="printLineInConsole" class="opacity00">subtraction of complex no's is : <span id="printpreLine2" class="opacity00"></span></div><br>
 							</div>

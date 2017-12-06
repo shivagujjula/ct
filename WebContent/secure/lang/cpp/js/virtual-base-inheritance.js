@@ -842,7 +842,7 @@ function flowSteps() {
 		});
 	 } else if (userNext == 2) {
 		 text = "<ul><li>The <y>Parent1</y> class contains one public data members <y>p1Age</y>.</li>"
-			 	+"<li>In the class <y>Patent1 gpAge</y> is also available because <y>Parent1</y> is inherited from <y>GrandParent</y>.</li></ul>";
+			 	+"<li>In the class <y>Parent1 gpAge</y> is also available because <y>Parent1</y> is inherited from <y>GrandParent</y>.</li></ul>";
 		 $("#p1").removeClass("opacity00");
 		 typing('.introjs-tooltiptext', text, function() {//callWrite
 			 fromEffectAnimation("#one", "#two", function() {
@@ -865,7 +865,7 @@ function flowSteps() {
 		});
 	 } else if (userNext == 3) {
 		 text = "<ul><li>The <y>Parent2</y> class contains one public data members <y>p2Age</y>.</li>"
-			 	+"<li>In the class <y>Patent2 gpAge</y> is also available because <y>Parent2</y> is inherited from <y>GrandParent</y>.</li></ul>";
+			 	+"<li>In the class <y>Parent2 gpAge</y> is also available because <y>Parent2</y> is inherited from <y>GrandParent</y>.</li></ul>";
 		 $("#p2").removeClass("opacity00");
 		 typing('.introjs-tooltiptext', text, function() {//callWrite
 			 fromEffectAnimation("#one", "#three", function() {

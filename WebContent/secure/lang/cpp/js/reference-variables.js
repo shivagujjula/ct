@@ -1,3 +1,4 @@
+
 var introjs;
 var tl = new TimelineLite();	
 var typingSpeed = 5;
@@ -91,7 +92,58 @@ function introGuide() {
 					position : "right"
 				}
 			]});
-	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		introjs.refresh();
+		switch(elementId) {
+		case "intA":
+			$("#rightDiv1, #aPanel, #aPanelVal").addClass("opacity00");
+			$("#aPanelVal").removeAttr('style');
+			break;
+		case "intB":
+			$("#bPanel").addClass("opacity00");
+			break;
+		case "rightDiv1":
+			if (introjs._currentStep == 3) {
+				$("#rightDiv1, #aPanel, #aPanelVal").addClass("opacity00");
+				$("#aPanelVal").removeAttr('style');
+			} else if(introjs._currentStep == 5) {
+				$("#bPanel").addClass("opacity00");
+				$("#bPanelVal").addClass("opacity00");
+			} 
+			break;
+		case "aIntoB":
+			$("#bPanelVal").addClass("opacity00");
+			$("#bPanelVal").text("10");
+			break;
+		case "cout1":
+			$("#outputDiv").addClass("opacity00");
+			$("#body").empty();
+			break;
+		case "outputDiv":
+			if (introjs._currentStep == 9) {
+				$("#leftDiv2, #outputDiv").addClass("opacity00");
+				$("#body").empty();
+			}
+			break;
+		case "intRefA":
+			$("#rightDiv2, #aRefPanel, #aRefPanelVal").addClass("opacity00");
+			break;
+		case "leftDiv2":
+			$("#rightDiv2, #aRefPanel, #aRefPanelVal").addClass("opacity00");
+			break;
+		case "aIntoRefB":
+			$("#line, #refB").addClass("hide");
+			break;
+		case "rightDiv2":
+			if (introjs._currentStep == 12) {
+				$("#rightDiv2, #aRefPanel, #aRefPanelVal").addClass("opacity00");
+			}  else if (introjs._currentStep == 14) {
+				$("#line, #refB").addClass("hide");
+			}
+			break;
+		}
+	});
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
@@ -106,11 +158,11 @@ function introGuide() {
 			})
 		break;
 		case "leftDiv1":
-			$("#leftDiv1").removeClass("opacity00");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#leftDiv1").removeClass("opacity00");
 				var text = "Let us consider an example without reference variables.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton').show();
@@ -124,17 +176,17 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Here we declared an int variable <b class='ct-code-b-yellow'>num1</b> with value <b class='ct-code-b-yellow'>10</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "rightDiv1":
 			if (introjs._currentStep == 3) {
-				$("#rightDiv1").removeClass("opacity00");
 				introjs.refresh();
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#rightDiv1").removeClass("opacity00");
 					var text = "The value <b class='ct-code-b-yellow'>10</b> is stored in variable <b class='ct-code-b-yellow'>num1</b>.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#aPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
@@ -149,7 +201,7 @@ function introGuide() {
 							TweenMax.to("#aPanelVal", 1, {top : 0, left : 0, onComplete:function() {
 								$('#aPanelVal').removeClass('circle-css');
 								$("#aVal").removeClass("z-index");
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							}});
 						});	
 					});
@@ -163,7 +215,7 @@ function introGuide() {
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#bPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 							$(this).removeClass("animated zoomIn");
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});	
 					});
 				});
@@ -171,12 +223,11 @@ function introGuide() {
 		break;
 		case "intB":
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
+			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Declared an int variable <b class='ct-code-b-yellow'>num2</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -209,7 +260,7 @@ function introGuide() {
 								TweenMax.to("#bPanelVal", 1, {top : 0, left : 0, onComplete:function() {
 									$('#bPanelVal').removeClass('circle-css');
 									$("#bPanel").removeClass("z-index");
-									$('.introjs-nextbutton').show();
+									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								}});
 							}});
 						}});
@@ -230,7 +281,7 @@ function introGuide() {
 					$("#bPanel").addClass("z-index");
 					fromEffectWithTweenMax("#tooltipBVal", "#bPanelVal", function() {
 						$("#bPanel").removeClass("z-index");
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			});
@@ -240,9 +291,15 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 500);
+				if (introjs._direction == "forward") {
+					setTimeout(function(){
+						introjs.nextStep();
+					}, 500);
+				} else {
+					setTimeout(function(){
+						introjs.previousStep();
+					}, 500);
+				}
 			});
 		break;
 		case "outputDiv":
@@ -253,9 +310,15 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#body").append("<div>The values of a, b : 10 20</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 500);
+					if (introjs._direction == "forward") {
+						setTimeout(function(){
+							introjs.nextStep();
+						}, 500);
+					} else {
+						setTimeout(function(){
+							introjs.previousStep();
+						}, 500);
+					}
 				});
 			} else if (introjs._currentStep == 16) {
 				introjs.refresh();
@@ -263,9 +326,15 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#body > div:last-child").append("<div>The values of a, b : 10 10</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 500);
+					if (introjs._direction == "forward") {
+						setTimeout(function(){
+							introjs.nextStep();
+						}, 500);
+					} else {
+						setTimeout(function(){
+							introjs.previousStep();
+						}, 500);
+					}
 				});
 			}
 		break;
@@ -277,7 +346,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Let us consider an example with <b class='ct-code-b-yellow'>reference variable</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -288,17 +357,17 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Here we declared an int variable <b class='ct-code-b-yellow'>a</b> with value <b class='ct-code-b-yellow'>10</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "rightDiv2":
 			if (introjs._currentStep == 12) {
-				$("#rightDiv2").removeClass("opacity00");
 				introjs.refresh();
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#rightDiv2").removeClass("opacity00");
 					var text = "Memory is allocated to the variable <b class='ct-code-b-yellow'>num1</b>.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#aRefPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
@@ -313,7 +382,7 @@ function introGuide() {
 							TweenMax.to("#aRefPanelVal", 1, {top : 0, left : 0, onComplete:function() {
 								$('#aRefPanelVal').removeClass('circle-css');
 								$("#aRefVal").removeClass("z-index");
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							}});
 						});	
 					});
@@ -326,7 +395,7 @@ function introGuide() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "No extra memory is allocated to the <b class='ct-code-b-yellow'>reference variable</b>.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			}
@@ -350,7 +419,7 @@ function introGuide() {
 						TweenMax.to("#tooltipRefAVal", 0.5, {rotationX : -90, onComplete:function() {
 							$("#tooltipRefAVal").text($("#aVal").text());
 							TweenMax.to("#tooltipRefAVal", 0.5, {rotationX : 0, onComplete:function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							}});
 						}});
 					}});
@@ -362,9 +431,15 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 500);
+				if (introjs._direction == "forward") {
+					setTimeout(function(){
+						introjs.nextStep();
+					}, 500);
+				} else {
+					setTimeout(function(){
+						introjs.previousStep();
+					}, 500);
+				}
 			});
 		break;
 		case "restart":

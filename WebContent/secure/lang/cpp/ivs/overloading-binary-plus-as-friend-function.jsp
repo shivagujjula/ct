@@ -345,17 +345,16 @@ div, span {
 		<span id="s3Sum" class="opacity00">s3 = s1 + s2;</span>
 		<span id="printSum" class="opacity00">cout << "addition of complex no's is : " ;</span>
 		<span id="s3PutData" class="opacity00">s3.putData();</span>
-}</span></pre>
+<span id="end">}</span></span></pre>
 			</div>
 			<div class="col-xs-6 col-xs-offset-1  margin-top-25">
 				<div class="col-xs-12 box-border opacity00" id="addressDiv">
 					<div class="col-xs-12" style="margin-top: 10px;">
-						<div class="col-xs-12 box-Heading text-center opacity00" style="font-weight: bold; color: rgb(47, 79, 79);">
-							<div id="boxHeading1" class="col-xs-4 col-xs-offset-1 opacity00" style="margin-left: 55px;">S1</div>
-							<div id="boxHeading2" class="col-xs-4 col-xs-offset-1 opacity00" style="margin-left: 100px;">S2</div>
-						</div>
-						<div class="col-xs-5  col-xs-offset-1 box-border opacity00" id="s1Box">
-							<div class="col-xs-12 opacity00" id="s1AnimationDiv">
+						<div class="col-xs-5  opacity00" id="s1Box">
+							<div class="col-xs-12 box-Heading text-center opacity00" style="font-weight: bold; color: rgb(47, 79, 79);">
+								<div id="boxHeading1" class="col-xs-4 col-xs-offset-4 opacity00" >S1</div>
+							</div>
+							<div class="col-xs-12 box-border opacity00" id="s1AnimationDiv">
 								<div id="s1RealBox" class="col-xs-6  text-center opacity00">
 									<div><b style="color: maroon;">real</b></div>
 									<div class="box-border" style="line-height: 25px; height: 50px;">
@@ -374,8 +373,11 @@ div, span {
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-5 box-border col-xs-offset-1 opacity00" id="s2Box">
-							<div class="col-xs-12 opacity00" id="s2AnimationDiv">
+						<div class="col-xs-5 col-xs-offset-2 opacity00" id="s2Box">
+							<div class="col-xs-12 box-Heading text-center opacity00" style="font-weight: bold; color: rgb(47, 79, 79);">
+								<div id="boxHeading2" class="col-xs-4 col-xs-offset-4 opacity00" >S2</div>
+							</div>
+							<div class="col-xs-12 box-border opacity00" id="s2AnimationDiv">
 								<div id="s2RealBox" class="col-xs-6  opacity00 text-center">
 									<div><b style="color: maroon;">real</b></div>
 									<div class="box-border" style="line-height: 25px; height: 50px;">
@@ -386,7 +388,7 @@ div, span {
 								<div id="s2ImagBox" class="col-xs-6  opacity00 text-center">
 									<!-- <div id="localVal" class="col-xs-7 col-xs-offset-2"> -->
 										<div><b style="color: maroon;">imag</b></div>
-										<div style="height: 50px;" class="box-border">
+										<div style="line-height: 25px; height: 50px;" class="box-border">
 											<span id="s2ImagVal" class=" arrayValue1 ct-green-color text-center"></span>
 										</div>
 										<!-- <div class='opacity00'>2323</div> -->

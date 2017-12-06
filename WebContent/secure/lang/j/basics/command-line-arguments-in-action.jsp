@@ -48,7 +48,7 @@
 }
 
 .creamPreTab4 {
-	-moz-tab-size: 6;
+	tab-size: 3;
     background-color: #fffae6;
     border-radius: 8px;
     font-size: 11px;

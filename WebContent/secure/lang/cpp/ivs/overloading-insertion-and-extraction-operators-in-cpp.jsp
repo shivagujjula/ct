@@ -253,14 +253,15 @@ div, span {
 </style>
 <script>
 	$(document).ready(function() {
-		usageOfGetcharReady();
+		overloadingInsertionAndExtractionOperatorsReady();
 	});
 </script>
 <body>
 <div class="main-div col-xs-12">
 	<div class="row text-center" id="heading">
 		<h3 class='label ct-demo-heading margin-top-2'>
-			<span>Overloading insertion and extraction operators in C++</span>
+			<span>Overloading insertion (<span class="ct-code-b-yellow"><<</span>) and extraction (<span class="ct-code-b-yellow">>></span>) 
+				operators in C++</span>
 		</h3>
 	</div>
 	<div class="cool-xs-12">
@@ -271,10 +272,11 @@ div, span {
 				 <li id="list1" class="opacity00"><span class="ct-Maroon-color">Points to remember when 
 				 	overloading insertion(<<) and extraction(>>) operators : </span>
 				 	<ul class="expl">
-				 		<li id="list11" class="opacity00">Cout is an object of ostream class and Cin is an 
+				 		<li id="list11" class="opacity00">cout is an object of ostream class and cin is an 
 				 			object of istream class.</li>
-				 		<li id="list12" class="opacity00">The operators << and >> are overloading  by using 
-				 			only <span class="ct-code-b-green">friend functions</span>.</li>
+				 		<li id="list12" class="opacity00">The operators <span class="ct-code-b-green"><<</span> and 
+				 			<span class="ct-code-b-green">>></span> are overloaded  by using only 
+				 			<span class="ct-code-b-green">friend functions</span>.</li>
 				 		<li id="list13" class="opacity00">For example <span class="ct-code-b-green">cout << ob1</span> 
 				 			is a statement when operator function call is like as <span class="ct-code-b-green">operator << (cout, ob1)</span>
 				 		</li>

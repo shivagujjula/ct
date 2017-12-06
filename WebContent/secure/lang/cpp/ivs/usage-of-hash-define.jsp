@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +17,8 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/cpp/js-min/uohd.min.js" type="text/javascript"></script>
+<script src="/secure/lang/cpp/js-min/uohd.min.js" type="text/javascript"></script> 
+
 
 <title>Usage of #define</title>
 </head>
@@ -257,10 +256,9 @@ int <span id="line3"><b>main()</b></span> {
 								<span class="title"><b>Console</b></span>
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
-								<span id="typeRadiusId" class=""></span> <span
-									id="enterRadiusValue" class="hidden">Enter the radius :
-									<input id='inputChar' maxlength='3' class='enter-values'
-									tabindex='0' />
+								<span id="enterRadiusValue"><span id="typeRadiusId" class="hidden">Enter the radius :</span>
+									<input id='inputChar' class="opacity00" maxlength='3' class='enter-values'
+									tabindex='0' style="color: black;"/>
 								</span> <span id="finalAreaValue"></span><br /> <span id="finalCircumferenceValue"></span>
 							</div>
 						</div>
@@ -304,10 +302,9 @@ int <span id="line13"><b>main()</b></span> {
 								<span class="title"><b>Console</b></span>
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv1">
-								<span id="typeNumberId" class=""></span><span
-									id="enterNumberId" class="hidden">Enter a number : <input
-									id='inputChar1' maxlength='3' class='enter-values' tabindex='0'
-									onkeypress="return isNumber(event)" /></span><br /> <span
+								<span id="enterNumberId"><span id="typeNumberId" class="hidden">Enter a number : </span><input
+									id='inputChar1' class="opacity00" maxlength='3' class='enter-values' tabindex='0'
+									onkeypress="return isNumber(event)" style="color: black;"/></span><br /> <span
 									id="finalCubeValue"></span>
 							</div>
 						</div>

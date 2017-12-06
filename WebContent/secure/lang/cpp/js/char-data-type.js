@@ -1,5 +1,5 @@
 var introjs;
-var typingInterval = 10;
+var typingInterval = 1;
 var chValueChanged = true;
 var charDataTypeReady = function() {
 	$('.introjs-nextbutton').keydown(function(e) {
@@ -88,7 +88,7 @@ function introJsFunction() {
 		},
 		{
 			element : "#restartBtn",
-			intro : "Click to Restart",
+			intro : "Click to restart",
 			tooltipClass: "introjs-tooltip-min-width-custom",
 			position : "right"
 		}
@@ -136,6 +136,7 @@ function introJsFunction() {
 			break;
 		case "chValue":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$("#chValue").focus();
 				charAtEnd('chValue');
 				introjsDynamicStep('#printf1', '', 'top', '');
 				var typingContent = 'You can change the value of <span class="ct-code-b-yellow">ch</span> and try or '+
@@ -179,6 +180,7 @@ function introJsFunction() {
 					introjsDynamicStep('#chValue', '', 'top', '');
 					chValueChanged = true;
 				}
+				$('.output-console-body').scrollTo('br:last', 200);
 				var selector = $('.output-console-body > .visibility-hidden').eq(0);
 				var typingContent = selector.removeClass('visibility-hidden').html();
 				typing(selector, typingContent, 30, 'white', function() {
@@ -189,6 +191,7 @@ function introJsFunction() {
 			});
 			break;
 		case "restartBtn":
+			$('.introjs-tooltip').css('min-width', '125px');
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
 			});

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/stoc.min.js"></script>
+<script src="/secure/lang/cpp/js-min/stoc.min.js" type="text/javascript"></script> 
 
 <style type="text/css">
 .margin-top-20 {
@@ -111,7 +112,7 @@ y {
 <span id="defSection" class="opacity00">Definition section</span>
 <span id="globalDef" class="opacity00">Global definition section</span>
 <span id="totalMainFun" class="opacity00">class Example {
-<span id="totalMainSec"> <span id="dclrPart">Data members part;</span>
+ <span id="totalMainSec"> <span id="dclrPart">Data members part;</span>
   <span id="excPart">Member functions part;</span>
 }</span></span>
 <span id="subPro" class="opacity00">int main() {
@@ -137,11 +138,11 @@ using namespace std;</span>
      }
      <span id="exePart2">void display()</span> {
          total = a + b;
-         cout << "Sum of give values : " << total;
+         cout << "Sum of given values : " << total;
      }
 };</span>
 <span id="sumFun" class="opacity00">int main() <span id="mainFun">{
- Example e;
+  Example e;
   e.read();
   e.display();
 }</span></span>

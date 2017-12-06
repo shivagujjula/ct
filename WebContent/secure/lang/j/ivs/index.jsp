@@ -90,7 +90,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Command line arguments', '/secure/lang/j/basics/command-line-arguments-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Command line arguments</span></td>
-						<td>In progress</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil</td>
 						<td></td>
 						<td></td>
@@ -101,7 +101,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Java program with println', '/secure/lang/j/basics/simple-java-program-with-println.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Java program with println</span></td>
-						<td>In progress</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil</td>
 						<td></td>
 						<td></td>
@@ -112,7 +112,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Difference between print and println', '/secure/lang/j/basics/difference-between-print-n-println.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Difference between print and println</span></td>
-						<td>In progress</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil</td>
 						<td></td>
 						<td></td>
@@ -123,7 +123,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to binary', '/secure/lang/j/basics/decimal-to-binary.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to binary</span></td>
-						<td></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -134,7 +134,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to octal', '/secure/lang/j/basics/decimal-to-octal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to octal</span></td>
-						<td></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -145,7 +145,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Decimal to hexadecimal', '/secure/lang/j/basics/decimal-to-hexadecimal.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Decimal to hexadecimal</span></td>
-						<td></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -221,8 +221,8 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of for loop', '/secure/lang/j/basics/basic-for-loop-syntax.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of for loop</span></td>
-						<td></td>
-						<td></td>
+						<td>In progress</td>
+						<td>Mahesh</td>
 						<td></td>
 						<td></td>
 					</tr>

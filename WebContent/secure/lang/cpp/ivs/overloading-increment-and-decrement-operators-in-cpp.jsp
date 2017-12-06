@@ -67,7 +67,7 @@
 	margin: 7px 0 0 -3px;
 }
 #classDiv, #mainDiv {
-	border: 1px solid black;
+	border: 1px solid whitesmoke;
 }
 .ct-Maroon-color {
 	color: #800021;
@@ -204,9 +204,10 @@ div, span {
 }
 
 100%{
-left:10px;
-top:0px;
+	left:10px;
+	top:0px;
 }
+
 }
 .error-text {
 	color: red;
@@ -268,7 +269,7 @@ top:0px;
 </style>
 <script>
 	$(document).ready(function() {
-		usageOfGetcharReady();
+		overloadingIncrementAndDecrementOperatorsReady();
 	});
 </script>
 <body>

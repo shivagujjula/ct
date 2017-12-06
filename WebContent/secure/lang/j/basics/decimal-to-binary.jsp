@@ -1,22 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Decimal to Binary.jsp</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/jquery-latest.js"></script>
-<script src="/js/bootstrap.js"></script>
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
-<script src="/js/gs/TweenMax.min.js"></script>
-<script src="/js/typewriting.min.js"></script>
-<script src='/js/intro.js'></script>
-<script src='/js/jquery-ui-latest.js'></script>
-<script src='../js-min/dtb.min.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
-<style>
+<script type="text/javascript" src="/js/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+<script type="text/javascript" src="/js/typewriting.min.js"></script>
+<script type="text/javascript" src='/js/intro.js'></script>
+<script type="text/javascript" src='/js/jquery-ui-latest.js'></script>
+<!-- <script src="/secure/lang/j/js-min/dtb.min.js"></script> -->
+<script src="/secure/lang/j/js/decimal-to-binary.js"></script>
 
+<style>
+.user-btn1 {
+	width : 46px;
+	border-radius: 3px !important;
+	background-color: green !important;
+}
+.user-btn {
+	width : 46px;
+	border-radius: 3px !important;
+	background-color: #5bc0de !important;
+}
 .ct-demo-heading {
 	background: highlight none repeat scroll 0.0;
 	border-radius: 10px;
@@ -42,7 +55,7 @@ input:focus::-moz-placeholder {
 
 .index-textbox-size {
 	width: 18%;
-	height: 30px !important;
+	min-height: 30px !important;
 	border: 1px solid gold;
 	display: inline !important;
 	border-radius: 4px;
@@ -90,15 +103,6 @@ input:focus::-moz-placeholder {
 	width: 0px !important;
 }
 
-.introjs-tooltip {
-	min-width: 270px !important;
-}
-
-.introjs-tooltiptext {
-	min-height: 25px !important;
-	font-size: 14px;
-}
-
 .store-remainder {
 	padding: 6px;
 	font-family: monospace;
@@ -115,10 +119,10 @@ input:focus::-moz-placeholder {
 }
 
 #infoDiv {
-	height: 88px;
+	min-height: 88px;
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	margin-left: 20.5%;
+	font-family: monospace;
 }
 
 #inputDiv {
@@ -127,7 +131,7 @@ input:focus::-moz-placeholder {
 
 #remainderValues {
 	margin-left: 6%;	
-	height: 35px;
+	min-height: 35px;
 }
 
 .font-size-14 {
@@ -138,13 +142,13 @@ input:focus::-moz-placeholder {
 	margin-top: 1%;	
 }
 
-#resultDiv > .col-sm-3 {
+#resultDiv > .col-xs-3 {
 	width: 26% !important;
-	height: 115px !important;
+	min-height: 115px !important;
 	border: 1px solid lightblue;
 }
 
-#resultDiv > .col-sm-3 > table {
+#resultDiv > .col-xs-3 > table {
 	margin: 7px auto 0 !important;
 }
 
@@ -180,19 +184,19 @@ ol, ul {
 
 @media (min-width: 768px) {
   .set-height {
-		height: 153px !important;
+		min-height: 153px !important;
 	}
 }
 
 @media (min-width: 992px) {
   .set-height {
-		height: 130px !important;
+		min-height: 130px !important;
 	}
 }
  
 @media (min-width: 1200px) {
   .set-height {
-		height: 102px !important;
+		min-height: 102px !important;
 	}
 }
 .background-effect {
@@ -214,28 +218,28 @@ ol, ul {
 			</h3>
 		</div>
 		<div class="row" id="informationDiv" >
-			<div id="infoDiv" class="col-sm-7 col-sm-offset-2 font-size-14 margin-top-1 position-relative set-height" ></div>
+			<div id="infoDiv" class="col-xs-8 col-xs-offset-2 font-size-14 margin-top-1 position-relative set-height" ></div>
 		</div>
 		<div class="row text-center">
-			<div id="inputDiv" class="col-sm-6 col-sm-offset-2 margin-top-1 visibility-hidden">
+			<div id="inputDiv" class="col-xs-6 col-xs-offset-2 margin-top-1 visibility-hidden">
 				<span class='font-size-16'>Decimal Value:</span>&nbsp;&nbsp;&nbsp;<input
 				class="index-textbox-size" type="text" name="decimalValue"
-				id="decimalValue" placeholder="Decimal Value" Maxlength='3' disabled="false">&nbsp;&nbsp;&nbsp;
+				id="decimalValue" placeholder="e.g. 32" Maxlength='3' disabled="false">&nbsp;&nbsp;&nbsp;
 			<button type="button" class="btn btn-success disabled opacity40" id="convert">
 				<i class="fa fa-arrow-right"></i> Convert to Binary </button>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2" id="animationDiv">
-				<div class="row col-sm-12">
-						<div class="row text-center col-sm-10 font-size-16 margin-top-1" id="remainderValues">
-							<div id="remainders" class="col-sm-offset-2 col-sm-4 opacity00 margin-top-1">Remainders:</div>
-							<div class="col-sm-6 text-left margin-top-1" ><table><tr id="remaindersRow"></tr></table></div>
+			<div class="col-xs-8 col-xs-offset-2" id="animationDiv">
+				<div class="row col-xs-12">
+						<div class="row text-center col-xs-10 font-size-16 margin-top-1" id="remainderValues">
+							<div id="remainders" class="col-xs-offset-2 col-xs-4 opacity00 margin-top-1">Remainders:</div>
+							<div class="col-xs-6 text-left margin-top-1" ><table id="finalValues"><tr id="remaindersRow"></tr></table></div>
 						</div>
 				 </div>
 				<div class="row" id="resultDiv" style="margin-left:3%"></div>
 				<div class="row binary-value-prop">
-						<span id="binaryValueDiv" class="col-sm-12 font-size-18" style="height: 30px"></span>
+						<span id="binaryValueDiv" class="col-xs-12 font-size-18" style="min-height: 40px"></span>
 				</div>
 				<div class="row" style="margin-top: 3%; margin-left: 14.5%">
 					<button class="btn btn-warning hidden" type="button" id='restartBtn'>Restart</button>
@@ -244,18 +248,9 @@ ol, ul {
 		</div>
 	</div>
 	<script>
-		
-		 <% 
-		if (request.getParameter("restart") != null) {
-	%>
-			typingFlag = false;
-	<%
-		}
-	%>  
 		$(document).ready(function(){
 			decimalToBinaryReady();
 		});
-		
 	</script>
 </body>
 </html>

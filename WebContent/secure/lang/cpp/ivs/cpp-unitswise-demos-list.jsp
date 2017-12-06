@@ -141,8 +141,8 @@
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; explanation of #define
 							</div>
 						</td>
-						<td></td>
-						<td>Shiva & Rajashekar</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva & Rajashekar / Shanthan</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -155,8 +155,8 @@
 							href="javascript:opendialog('Sample program in C++ using cout', 'sample-of-cout.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C++ using cout</span>
 						</td>
-						<td></td>
-						<td>Rajashekar</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Rajashekar / Shanthan</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -496,7 +496,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of streamflow', 'streamflow.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of streamflow</span></td>
-						<td></td>
+						<td>no need</td>
 						<td>Rajashekar</td>
 						<td></td>
 						<td></td>
@@ -632,10 +632,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Reference Variables in C++', 'reference-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Reference Variables in C++</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / shanthan</td>
 						<td></td>
-						<td>Anil</td>
-						<td></td>
-						<td></td>
+						<td>06-12-17</td>
 					</tr>
 					
 					<tr>
@@ -670,8 +670,8 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Structure of C++', 'structure-of-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Structure of C++</span></td>
-						<td></td>
-						<td>Karthik</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Karthik / Shanthan</td>
 						<td></td>
 						<td>07-10-17</td>
 					</tr>
@@ -841,8 +841,8 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Execution of Bitwise XOR Operator', 'bitwise-xor-operator.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise XOR Operator</span></td>
-						<td></td>
-						<td>Rajashekar</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Rajashekar / Anil</td>
 						<td></td>
 						<td>04-12-17</td>
 					</tr>
@@ -1049,7 +1049,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of switch-case', 'switch-statement-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of switch-case</span></td>
-						<td></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva</td>
 						<td></td>
 						<td></td>
@@ -1194,7 +1194,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Accessing Two-dimensional arrays', 'two-dimensional-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Accessing Two-dimensional arrays</span></td>
-						<td></td>
+						<td>Shiva (In progress)</td>
 						<td>Shiva</td>
 						<td></td>
 						<td></td>
@@ -1455,7 +1455,7 @@
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Formal & actual arguments</span>
 							</div>
 						</td>
-						<td></td>
+						<td>Raj (In progress)</td>
 						<td>Rajashekar</td>
 						<td></td>
 						<td></td>
@@ -1501,6 +1501,7 @@
 						<td>Functions</td>
 						<td>
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('function overloading', 'function-overloading-in-cpp.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">function overloading</span>
@@ -1513,6 +1514,7 @@
 							</div>
 
 							<div>
+								<i class="fa fa-check fa-1x"></i>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Local global variables', 'local-global-variables.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Local global variables</span>
@@ -1531,7 +1533,7 @@
 							</div>
 							
 						</td>
-						<td></td>
+						<td>Swathi (In progress)</td>
 						<td>Anil</td>
 						<td></td>
 						<td>07-10-17</td>
@@ -1580,7 +1582,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('statements in c++', 'statements-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">statements in c++</span></td>
-						<td></td>
+						<td>Swathi (In progress)</td>
 						<td>Rajashekar</td>
 						<td></td>
 						<td></td>
@@ -1904,10 +1906,10 @@
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as member function</span>
 							</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
 						<td></td>
-						<td>Sathish</td>
-						<td></td>
-						<td></td>
+						<td>06-12-17</td>
 					</tr>
 					<tr>
 						<td>2</td>
@@ -1920,8 +1922,7 @@
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
-						<td></td>
-						<td></td>
+						<td><td>06-12-17</td></td>
 					</tr>
 					<tr>
 						<td>3</td>
@@ -1929,10 +1930,10 @@
 						<td><a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading increment and decrement operators without dif', 'overloading-increment-and-decrement-operators-without-dif-in-cpp.jsp', 1, 1)"><i
 										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators without dif</span>
-						<td>Pending</td>
-						<td>Sathish</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
 						<td></td>
-						<td></td>
+						<td>06-12-17</td>
 					</tr>
 					<tr>
 						<td>4</td>
@@ -1952,7 +1953,7 @@
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
-						<td></td>
+						<td>06-12-17</td>
 					</tr>
 					<tr>
 						<td>5</td>
@@ -2204,6 +2205,19 @@
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>
 						<td>16-10-17</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Function templates with multiple arguments</td>
+						<td>
+							
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Function templates with multiple arguments', 'function-templates-with-multiple-arguments.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Function templates with multiple arguments</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
+						<td></td>
+						<td>06-12-17</td>
 					</tr>
 				</tbody>
 			</table>

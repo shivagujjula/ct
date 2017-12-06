@@ -33,8 +33,8 @@
 }
 
 .creamPreTab1 {
-	-moz-tab-size: 2;
-	tab-size: 2;
+	-moz-tab-size: 3;
+	tab-size: 4;
 	background-color: #fffae6;
 	border-radius: 8px;
  	font-size: 12px; 
@@ -241,7 +241,7 @@ div, span {
 
 .z-index1000000 {
 	background-color: white; 
-	z-index: 1000000 !important;
+	z-index: 1000010 !important;
 }
 .position {
 	display: inline-block;
@@ -277,19 +277,19 @@ div, span {
 <span id="preDir"><span id="include">#include</span> &lt;<span
 							id="ioStream">iostream</span>&gt;</span>
 <span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
-<span id="class">class Sample {
-	<span id="init">int num;</span>
-	<span id="public">public: 
-		<span id="SamplePara"><span id="Sample">Sample(<span id="xInit">int x</span>)</span> {
+<span id="class" class="opacity00">class Sample {
+	<span id="init" class="opacity00">int <span id="intNum">num</span>;</span>
+	<span id="public" class="opacity00">public: 
+		<span id="SamplePara" class="opacity00"><span id="Sample">Sample(<span id="xInit">int x</span>)</span> {
 			<span id="aValue">num = x;</span>
 		}</span>
-		<span id="putData">void putdata() {
+		<span id="putData" class="opacity00">void putData() {
 			<span id="printA">cout << <span id="number">num</span>;</span>
 		}</span>					
-		<span id="preInc">void operator ++() { 
+		<span id="preInc" class="opacity00">void operator ++() { 
 			<span id="aPreInc">num = num + 1;</span>
 		}</span>
-		<span id="preDec">void operator --() { 
+		<span id="preDec" class="opacity00">void operator --() { 
 			<span id="aPreDecVal">num = num - 1;</span>
 		}</span>
 		<span id="postInc" class="opacity00" >void operator ++(int d) { 
@@ -301,20 +301,20 @@ div, span {
 	</span>
 };</span>
 
-<span id="main">main() {
-	<span id="sInit">Sample <span id="sObj">s(<span id="num">5</span>)</span>;</span>
-	<span id="sPutData">s.putdata();</span>
+<span id="main" class="opacity00">main() {
+	<span id="sInit" class="opacity00">Sample <span id="sObj">s(<span id="num">5</span>)</span>;</span>
+	<span id="sPutData" class="opacity00">s.putData();</span>
 	
-	<span id="sPreInc">++s;</span>
-	<span id="sPutData1">s.putdata();</span>
-	<span id="sPostInc">s++;</span>
-	<span id="sPutData2">s.putdata();</span>
+	<span id="sPreInc" class="opacity00">++s;</span>
+	<span id="sPutData1" class="opacity00">s.putData();</span>
+	<span id="sPostInc" class="opacity00">s++;</span>
+	<span id="sPutData2" class="opacity00">s.putData();</span>
 	
-	<span id="sPreDec">--s;</span>
-	<span id="sPutData3">s.putdata();</span>
-	<span id="sPostDec">s--;</span>
-	<span id="sPutData4">s.putdata();</span>
-}</span>
+	<span id="sPreDec" class="opacity00">--s;</span>
+	<span id="sPutData3" class="opacity00">s.putData();</span>
+	<span id="sPostDec" class="opacity00">s--;</span>
+	<span id="sPutData4" class="opacity00">s.putData();</span>
+<span id ="end">}</span></span>
 </pre>
 				</div>
 				<div class="col-xs-4  col-xs-offset-1 panel panel-primary margin-top-5 opacity00"
@@ -322,7 +322,7 @@ div, span {
 					<div id="varBox" class="col-xs-6 col-xs-offset-3 opacity00">
 						<div id="sAddress" class="text-center opacity00"
 							style="margin-top: 22px; height: 140px;">
-							<div class=" panel panel-primary">
+							<div class="panel panel-primary">
 								<div class="panel-heading text-center">
 									<b style="color: white;">s</b>
 								</div>
@@ -333,7 +333,7 @@ div, span {
 												<b style="color: white;">num</b>
 											</div>
 											<div id="sAnimationDiv"
-												class="ct-sgreen-color panel panel-body">
+												class="panel panel-body" style = "min-width: 124px; min-height: 52px;">
 												<span id="sVal" class="opacity00 ct-green-color">5</span>
 											</div>
 										</div>

@@ -1,7 +1,7 @@
 var typingInterval = 5;
 var arr = [];
 var iVal = 1;
-var usageOfGetcharReady = function() {
+var overloadingInsertionAndExtractionOperatorsReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
 		if (e.keyCode == 13) {
@@ -405,7 +405,7 @@ function introGuide() {
 			break;
 		case 'main':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.</li></ul>";
+				var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#main").fadeTo("slow" , 1, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -436,12 +436,22 @@ function introGuide() {
 			break;
 		case 'friendFunction':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-nextbutton, .introjs-prevbutton").show();
+				var text = "The <span class='ct-code-b-yellow displayBlock'> operator function << </span> "+
+						   "is written as <span class='ct-code-b-yellow'>friend function</span> " +
+						   "in class <span class='ct-code-b-yellow'>Student</span>."; 
+				typing(".introjs-tooltiptext",text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
 			});
 			break;
 		case 'friendFunction1':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-nextbutton, .introjs-prevbutton").show();
+				var text = "The <span class='ct-code-b-yellow displayBlock'> operator function >> </span> "+
+						   "is written as <span class='ct-code-b-yellow'>friend function</span> " +
+						   "in class <span class='ct-code-b-yellow'>Student</span>."; 
+				typing(".introjs-tooltiptext",text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
 			});
 			break;
 		case 'frndFunCin':
@@ -614,7 +624,7 @@ function introGuide() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
 					$("#printLineInConsole2").removeClass("opacity00").attr('contenteditable', true).addClass("blinking").focus();
-					typing('.introjs-tooltiptext',"Enter marks upto 3digits <span class='ct-code-b-yellow'>i.e 123</span>", function() {
+					typing('.introjs-tooltiptext',"Enter marks upto 3 digits <span class='ct-code-b-yellow'>i.e 123</span>", function() {
 						checking("#printLineInConsole2");
 					});	
 				});
@@ -952,7 +962,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 1;
+	var typingSpeed = 10;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

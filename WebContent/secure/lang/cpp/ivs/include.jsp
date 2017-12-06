@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js-min/incd.min.js"></script>
+<script type="text/javascript" src="/secure/lang/cpp/js-min/incd.min.js"></script> 
 <style type="text/css">
 
 .margin-top-56 {
@@ -39,6 +39,7 @@
 	border: 1px solid gray;
 	border-radius: 8px;
 	padding: 10px;
+	font-family: monospace;
 }
 
 .creampretab {
@@ -168,10 +169,10 @@
 					<!-- <b id="example" class="color-red opacity00">Example:</b><br/> -->
 					<ol>
 						 <li id="olLi1" class="opacity00">
-						 	#include &lt;<b>iostream</b>&gt;<br/>
+						 	#include &lt;<b>iostream.h</b>&gt;<br/>
 						 </li>
 						 <li id="olLi2" class="opacity00">
-						 	#include "<b>c\XYZ\Baahubali\abc.cpp</b>"
+						 	#include "<b>cpp\XYZ\Baahubali\abc.cpp</b>"
 						 </li>	
 					 </ol>
  				</ul>
@@ -185,16 +186,16 @@
 			<pre class="creampretab"><span id="totalPro"><span class="opacity00" id="include1">#include &lt;iostream&gt;</span>
 <span class="opacity00" id = "namespace">using namespace std;</span> 
 <span id="main"><span class="colorPink">int</span> main () {
-  <span id="cOut1">cout <<"<span id="ct" class="colorGreen">CodeTantra</span>";</span>
+  <span id="printf1">cout << "<span id="ct" class="colorGreen">CodeTantra</span>";</span>
 }</span></span>
 </pre>
 			</div>
 			<div id="code2" class="margin-top-40 opacity00">
-			<pre class="creampretab"><span id="totalPro2"><span id="include21" >#include &lt;iostream&gt;</span>
+			<pre class="creampretab"><span id="totalPro2"><span id="include2"><span id="include21" class="opacity00">#include &lt;iostream&gt;</span>
 <span id= "namespace1" >using namespace std;</span>
-<span id="include2"><span id="include22" class="opacity00">#include &lt;math.h&gt;</span></span>
+<span id="include22" class="opacity00">#include&lt;math.h&gt;</span></span>
 <span class="colorPink">int</span> main() {
-  <span id="cOut2">cout << "<span id="sqrt" class="colorGreen">Square root of 4.0 = "</span><<  sqrt(4.0);</span>
+  <span id="printf2">cout << "<span id="sqrt" class="colorGreen">Square root of 4.0 = "</span> <<  sqrt(4.0);</span>
 }</span>
 </pre>
 			</div>

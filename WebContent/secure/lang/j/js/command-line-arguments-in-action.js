@@ -110,58 +110,60 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "commandLineValues":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "argsLine":
 			/*$("table tr").eq(1).addClass("opacity00");*/
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#td0, #td1, #td2, #tdValue0, #tdValue1, #tdValue2").addClass("opacity00").removeClass('td-border');
 		break;
 		case "animationBox":
 			//$("#td0, #td1, #td2").addClass("opacity00").removeClass('td-border');
 			//animateArrayWith(0);
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "sopArgsLength":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#outputArgsLength').addClass("opacity00");
 		break;
 		case "animationBox":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "outputDiv":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "sopAgrsOf0":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#outputArgsOf0').addClass("opacity00");
 		break;
 		case "animationBox":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "outputDiv":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "sopAgrsOf1":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#outputArgsOf1').addClass("opacity00");
 		break;
 		case "animationBox":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "outputDiv":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "sopAgrsOf2":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('#outputArgsOf2').addClass("opacity00");
 		break;
 		case "animationBox":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "outputDiv":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "mainMethodCloseBrace":
-			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "restartBtn":
 			
@@ -311,9 +313,9 @@ function introGuide() {
 			}
 		break;
 		case "sopArgsLength":
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var text = "<ul><li>This statement prints the length of the array referenced by <span class='ct-code-b-yellow'>args</span>.</li>"
 						+ "<li><span class='ct-code-b-yellow'>args.length</span> will return the size of the array.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -368,9 +370,9 @@ function introGuide() {
 			}
 		break;
 		case "sopAgrsOf0":
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var text = "<ul><li>In Java arrays elements are stored from <span class='ct-code-b-yellow'>zero</span> index. It means that the first element is "
 						+ " accessed with index <span class='ct-code-b-yellow'>0</span>, second with index <span class='ct-code-b-yellow'>1</span> and so on.</li>"
 							+ "<li>The above statement accesses the element present at index <span class='ct-code-b-yellow'>0</span> in the String array referenced "
@@ -381,9 +383,9 @@ function introGuide() {
 			});
 		break;
 		case "sopAgrsOf1":
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var text = "The above statement accesses the element present at index <span class='ct-code-b-yellow'>1</span> in the String array referenced by "
 						+ " <span class='ct-code-b-yellow'>args</span>.";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -402,7 +404,7 @@ function introGuide() {
 				});
 			});
 		break;
-		case "restart":
+		case "restartBtn":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-tooltip").css({"min-width": "115px"});
 			$('#restartBtn').removeClass("opacity00").css({"opacity":1});

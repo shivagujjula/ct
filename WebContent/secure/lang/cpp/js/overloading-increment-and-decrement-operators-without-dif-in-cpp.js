@@ -1,4 +1,4 @@
-var typingInterval = 5;
+var typingInterval = 1;
 var t1;
 var overloadingIncrementAndDecrementOperatorsWithoutDiffReady = function() {
 	introGuide();
@@ -35,14 +35,17 @@ function introGuide() {
 		}, {
 			element :"#class",
 			intro : "",
+			tooltipClass : 'hide',
 			position : 'right',
 		}, {
 			element : '#main',
 			intro : '',
+			tooltipClass : 'hide',
 			position : "right"
 		}, {
 			element : '#sInit',
 			intro : "",
+			tooltipClass : 'hide',
 			position : "right"
 		}, {
 			element : '#addressDiv',
@@ -52,20 +55,23 @@ function introGuide() {
 		}, {
 			element :"#SamplePara",
 			intro : "",
+			tooltipClass : 'hide',
 			position : 'right',
 			
 		}, {
 			element :"#sPutData",
 			intro : "",
+			tooltipClass : 'hide',
 			position : 'right',
 		}, {
 			element :"#putData",
 			intro : "",
+			tooltipClass : 'hide',
 			position : 'right',
 		}, {
 			element :"#printA",
 			intro : "",
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -74,6 +80,7 @@ function introGuide() {
 		}, {
 			element :"#sPreInc",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#preInc",
@@ -82,10 +89,12 @@ function introGuide() {
 		}, {
 			element :"#aPreInc",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#sPutData1",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#putData",
@@ -94,7 +103,7 @@ function introGuide() {
 		}, {
 			element :"#printA",
 			intro : "",
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -103,11 +112,13 @@ function introGuide() {
 		}, {
 			element :"#sPostInc",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'errorText',
+			tooltipClass: "hide",
 			position : 'left',
 		}, {
 			element :"#postInc",
@@ -116,10 +127,12 @@ function introGuide() {
 		}, {
 			element :"#aPostIncVal",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#sPutData2",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#putData",
@@ -128,7 +141,7 @@ function introGuide() {
 		}, {
 			element :"#printA",
 			intro : "",
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -137,6 +150,7 @@ function introGuide() {
 		}, {
 			element :"#sPreDec",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#preDec",
@@ -145,10 +159,12 @@ function introGuide() {
 		}, {
 			element :"#aPreDecVal",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#sPutData3",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#putData",
@@ -157,7 +173,7 @@ function introGuide() {
 		}, {
 			element :"#printA",
 			intro : "",
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
@@ -166,11 +182,13 @@ function introGuide() {
 		}, {
 			element :"#sPostDec",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'errorText1',
+			tooltipClass: "hide",
 			position : 'left',
 		}, {
 			element :"#postDec",
@@ -179,10 +197,12 @@ function introGuide() {
 		}, {
 			element :"#aPostDecVal",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#sPutData4",
 			intro : "",
+			tooltipClass: "hide",
 			position : 'right',
 		}, {
 			element :"#putData",
@@ -191,12 +211,16 @@ function introGuide() {
 		}, {
 			element :"#printA",
 			intro : "",
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		}, {
 			element :"#consoleId",
 			intro : "",
 			animateStep : 'sPostDecVal',
 			tooltipClass: "hide"
+		},{
+			element : '#end',
+			intro : '',
+			position : "right"
 		}, {
 			element :"#restart",
 			intro : "Click to restart.",
@@ -206,17 +230,211 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
+		case 'preTableDiv':
+			$("#class").css("opacity", 0);	
+			break;
+			
+		case 'class':
+			$("#class, #init, #public, #SamplePara, #putData, #preInc, #preDec").css("opacity", 0);	
+			$("#main").addClass("opacity00");
+			break;
+			
+		case 'main':
+			$("#main, #sInit").addClass("opacity00");
+			$(".introjs-tooltip").removeAttr("style");
+			break;
+			
+		case 'sInit':
+			$("#sInit").addClass("opacity00");
+			$("#addressDiv").addClass("opacity00");
+			$("#varBox, #sAddress").css("opacity", 0);
+			$("#aBoxS").css("opacity", 0);
+			$("#sVal").text("");
+			break;
+			
+		case 'SamplePara':
+			$(".introjs-tooltip").removeAttr("style");
+			$("#sPutData").addClass('opacity00');
+			$("#sVal").text("");
+			break;
+			
+		case 'sPutData':
+		case 'sPutData1':
+		case 'sPutData2':
+		case 'sPutData3':
+		case 'sPutData4':
+			$('#' + elementId).addClass('opacity00');
+			break;
+			
+		case 'putData':
+			$("#putData").addClass("opacity00");
+			break;
+			
+		case 'printA':
+			if (introjs._direction == 'backward') {
+				if(introjs._currentStep == 9) {
+					$("#consoleId").addClass("opacity00");
+					$("#sValue").addClass('opacity00');
+					
+				} else if(introjs._currentStep == 16) {
+					$("#sPreIncVal").addClass('opacity00');
+					
+				} else if(introjs._currentStep == 24) {
+					$("#sPostIncVal").addClass('opacity00');
+					
+				} else if(introjs._currentStep == 31) {
+					$("#sPreDecVal").addClass('opacity00');
+					
+				} else if(introjs._currentStep == 39) {
+					$("#sPostDecVal").addClass('opacity00');
+				}
+			}  
+			break;
+		case 'sPreInc':
+			$("#sPreInc").addClass('opacity00');
+			$(".introjs-tooltip").removeAttr("style");
+			break;
+			
+		case 'preInc':
+			 $("#sVal").text("5");
+			 $(".introjs-tooltip").removeAttr("style");
+			break;
+			
+		case 'aPreInc':
+			$("#sVal").text("5");
+			$("#sPutData1").addClass('opacity00');
+			break;
+		
+		case 'sPostInc':
+			$("#sPostInc").addClass('opacity00');
+			$("#errorText").text("");
+			//$(".introjs-tooltip").removeAttr("style");
+			break;
 		case 'postInc':
+			$("#errorText").text("");
 			$("#postInc").show();
+			$("#sVal").text("6");
 			break;
+			
+		case 'aPostIncVal':
+			$("#sVal").text("6");
+			$("#sPutData2").addClass('opacity00');
+			break;
+			
+		case 'sPreDec':
+			$("#sPreDec").addClass('opacity00');
+			$(".introjs-tooltip").removeAttr("style");
+			break;
+			
+		case 'preDec':
+			$(".introjs-tooltip").removeAttr("style");
+			$("#sVal").text("7");
+			break;
+			
+		case 'aPreDecVal':
+			 $("#sVal").text("7");
+			 $("#sPutData3").addClass('opacity00');
+			break;
+		
+		case 'sPostDec':
+			$("#sPostDec").addClass('opacity00');
+			$("#errorText1").text("");
+			break;
+			
 		case 'postDec':
+			$("#errorText1").text("");
 			$("#postDec").show();
+			$(".introjs-tooltip").removeAttr("style");
+			$("#sVal").text("6");
 			break;
+			
+		case 'aPostDecVal':
+			 $("#sVal").text("6");
+			 $("#sPutData4").addClass('opacity00');
+			break;
+			
+		case 'consoleId':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "sValue" :
+				 $("#sPreInc").addClass("opacity00");
+				 $(".introjs-tooltip").removeAttr("style");
+				break;
+				
+			case "sPreIncVal" :
+				$("#sPostInc").addClass("opacity00");
+				 $(".introjs-tooltip").removeAttr("style");
+				break;
+				
+			case "errorText" :
+				$("#errorText").text("");
+				$("#postInc").hide();
+				$(".introjs-tooltip").removeAttr("style");
+				break;
+				
+			case "sPostIncVal" :
+				$("#sPreDec").addClass("opacity00");
+				 $(".introjs-tooltip").removeAttr("style");
+				break;
+				
+			case "sPreDecVal" :
+				$("#sPostDec").addClass("opacity00");
+				 $(".introjs-tooltip").removeAttr("style");
+				break;
+				
+			case "errorText1" :
+				$("#errorText1").text("");
+				$("#postDec").hide();
+				$(".introjs-tooltip").removeAttr("style");
+				break;
+				
+			case "sPostDecVal" :
+				
+				break;
+			}
+			break;
+			
+		case "addressDiv" :
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "sAddress" :
+				 $("#sPutData").addClass("opacity00");
+				
+				break;
+				
+			case "animationDiv" :
+				
+				break;
+				
+			case "animationDiv2" :
+				
+				break;
+			}
+			break;
+			
 		}
 	});
 	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'infoDiv':
@@ -246,63 +464,83 @@ function introGuide() {
 			break;
 		case 'class':
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass('hide');
 				var text = "This is the class <span class='ct-code-b-yellow'>Sample</span> which" +
 						   " consists of a private member <span class='ct-code-b-yellow'>num</span>" +
 						   " and different member functions in public section.";
 				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show();
+					$("#class").fadeTo("slow" , 1, function() {
+						$("#init").fadeTo("slow" , 1, function() {
+							$("#public").fadeTo("slow" , 1, function() {
+								$("#SamplePara").fadeTo("slow" , 1, function() {
+									$("#putData").fadeTo("slow" , 1, function() {
+										$("#preInc").fadeTo("slow" , 1, function() {
+											$("#preDec").fadeTo("slow" , 1, function() {
+												$(".introjs-nextbutton, .introjs-prevbutton").show();
+											});
+										});
+									});
+								});
+							});
+						});
+					});
 				});
 			});
 			break;
 		case 'main':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is"+
-						" the operating system call.<ul><li><span class='ct-code-b-yellow'>main()"+
-						"</span> is execution starting point for any C++ program.</li></ul>", function() {
-					$('.introjs-nextbutton').show();
+				$(".introjs-tooltip").removeClass('hide');
+				var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.";
+				typing(".introjs-tooltiptext", text, function() {
+					$("#main").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'sInit':
+			$(".introjs-tooltip").css("min-width", "280px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "<ul><li>Here <span class='ct-code-b-yellow'>s</span> is an object of class "+
-				"<span class='ct-code-b-yellow'>Sample</span></li>" +
-				"<li>When an object is created, memory allocated for that object.</li>" +
-				"<li>After memory allocation it will call either a <span class='ct-code-b-yellow'>default constructor</span> "+
-				"when no arguments is passed or <span class='ct-code-b-yellow'>parameterized constructor</span> when " +
-				"different arguments are passed.</li></ul>";						   
+				$(".introjs-tooltip").removeClass('hide');
+				var text = 	"<ul><li>Here <span class='ct-code-b-yellow'>s</span> is an object of class "+
+							"<span class='ct-code-b-yellow'>Sample</span></li>" +
+							"<li>When an object is created, memory allocated for that object.</li>" +
+							"<li>After memory allocation it will call either a <span class='ct-code-b-yellow'>default constructor</span> "+
+							"when no arguments is passed or <span class='ct-code-b-yellow'>parameterized constructor</span> when " +
+							"different arguments are passed.</li></ul>";						   
 				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show();
+					$("#sInit").removeClass("opacity00");
+					$('.introjs-prevbutton, .introjs-nextbutton').show();
 				});
 			});
 			break;
 		case 'SamplePara':
-			$('#SamplePara').removeClass('opacity00');
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('#SamplePara').removeClass('opacity00');
 				$('.introjs-tooltip').removeClass('hide');
 				$(".introjs-tooltiptext").append("<span id='sample' class='position ct-code-b-yellow opacity00'>Sample(<span id='xTip' class='position'>int x</span>) {</span>");
 				$('#sample').removeClass('opacity00');
 				fromEffectWithTweenMax("#Sample", "#sample", function() {
-					$("#xTip").text("5");
-					fromEffectWithTweenMax("#xInit", "#xTip", function() {
+					//$("#xTip").text("5");
+					//fromEffectWithTweenMax("#xInit", "#xTip", function() {
 						 $(".introjs-tooltiptext").append("<br>&emsp;<span id='aVal' class='position ct-code-b-yellow opacity00'>num = <span id='xVal' class='position'>x</span>;</span><br><span class='ct-code-b-yellow'>}</span>");
 						 $('#aVal').removeClass('opacity00');
 						 $('#aValue').addClass('blinking-white');
 						 fromEffectWithTweenMax("#aValue", "#aVal", function() {
 							 $('#aValue').removeClass('blinking-white');
 							 $('#xVal').text("5");
-							 fromEffectWithTweenMax("#xTip", "#xVal", function() {
+							 $('#sInit').addClass('blinking-white');
+							 fromEffectWithTweenMax("#num", "#xVal", function() {
 								 $("#sVal").text("5").addClass('opacity00');
-								// $('#aBoxS').addClass('z-index1000000');
-								 $('#sVal').removeClass("opacity00").css("z-index", "10000010");
+								 $('#sVal').removeClass("opacity00");
+								 $('#sInit').removeClass('blinking-white');
+								  $('#sAddress').css("z-index", "10000010");
 								 fromEffectWithTweenMax("#xVal", "#sVal", function() {
-									 $('#sVal').css('z-index', '');
-									// $('#aBoxS').removeClass('z-index1000000');
+									 $('#sAddress').css("z-index", "");
 									 $(".introjs-nextbutton, .introjs-prevbutton").show();
 								 });
 							 });
 						 });
-					 });
+					 //});
 				 });
 			});
 			break;
@@ -311,70 +549,79 @@ function introGuide() {
 		case 'sPutData2':
 		case 'sPutData3':
 		case 'sPutData4':
-			$("#sAddress").removeClass("z-index1000000");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "The member function <span class='ct-code-b-yellow'>getdata()</span>" +
-						   " is called by the  object <span class='ct-code-b-yellow'>s</span>";
+				$('.introjs-tooltip').removeClass('hide');
+				var text = "The member function <span class='ct-code-b-yellow'>putData()</span>" +
+						   " is called by the  object <span class='ct-code-b-yellow'>s</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$('#' + elementId).removeClass('opacity00');
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'putData':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "The member function <span class='ct-code-b-yellow'>putdata()</span>"+
+				$('.introjs-tooltip').removeClass('hide');
+				var text = "The member function <span class='ct-code-b-yellow'>putData()</span>"+
 						   " is used to print the data memeber <span class='ct-code-b-yellow'>num</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$("#consoleId").removeClass("opacity00");
-					$('.introjs-nextbutton').show();
+					$("#putData").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'printA':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function () {
-					introjs.nextStep();
-				}, 500);
+				var text = "This statement is used to print the string in the console.";
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
 			});
 			break;
 		case 'sPreInc':
+			$('.introjs-tooltip').css("width", "300px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass("hide");
 				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>++s</span>,"+
-				   " first increment operation is done and next assignment operation is done.</li>" +
-				   "<li><span class='ct-code-b-yellow'>++s</span> is executed as <br>" +
-				   " <span class='ct-code-b-yellow'>s.operator ++()</span> </li></ul>";
+						   " first increment operation is done and next assignment operation is done.</li>" +
+						   "<li><span class='ct-code-b-yellow'>++s</span> is executed as " +
+						   " <span class='ct-code-b-yellow'>s.operator ++()</span> </li></ul>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$('#sPreInc').removeClass('opacity00');
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'preInc':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here the member <span class='ct-code-b-yellow'>operator ++()</span> function" +
-						" is called by object <span class='ct-code-b-yellow'>s</span>";
+				$('.introjs-tooltip').removeClass("hide");
+				var text = 	"Here the member <span class='ct-code-b-yellow position'>operator ++()</span> function " +
+							"is called by object <span class='ct-code-b-yellow'>s</span>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$('#preInc').removeClass('opacity00');
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'aPreInc':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#aPreInc").effect( "highlight",{color: 'red'}, 800,function() {
-					$(".introjs-tooltiptext").append("<span id='aSum' class='position ct-code-b-yellow opacity00'>num = <span id ='total' class='position'><span id='a' class='position'>num</span> + <span id='one' class='position'>1</span>;</span></span>");
+					$(".introjs-tooltiptext").append("<span id='aSum' class='position ct-code-b-yellow opacity00'>num = <span id ='total' class='position'><span id='a' class='position'>num</span> + <span id='one' class='position'>1</span></span>;</span>");
 					$('.introjs-tooltip').removeClass("hide");
 					$('#aSum').removeClass('opacity00');
 					fromEffectWithTweenMax("#aPreInc", "#aSum", function() {
 						$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button user-btn'>Next &#8594;</a>"); 
 						$('.user-btn').click(function() { 
 							$('.user-btn').remove(); 
-							$("#aSum").append("<br><span id='aSum1'  class='position ct-code-b-yellow opacity00'>num = <span id ='tot' class='displayBlock position'><span id='a1' class='position'>s.num</span> + <span id='one1' class='position'>1</span>;</span></span>");
+							$("#aSum").append("<br><span id='aSum1'  class='position ct-code-b-yellow opacity00'>num = <span id ='tot' class='displayBlock position'><span id='a1' class='position'>s.num</span> + <span id='one1' class='position'>1</span></span>;</span>");
 							 $('#aSum1').removeClass('opacity00');
 							 fadeInBounceEffectWithTimelineMax("#sVal", "#a1", function() {
 								var t = parseInt($("#sVal").text()) + parseInt($("#one1").text());
 								rotation('#tot', t, function() {
+									$('#sAddress').css("z-index", "10000010");
 									fadeInBounceEffectWithTimelineMax("#tot", "#sVal", function() {
-										$("#sAddress").addClass("z-index1000000");
-											$('.introjs-nextbutton').show();
+										$('#sAddress').css("z-index", "");
+										$(".introjs-nextbutton, .introjs-prevbutton").show();
 									});			
 								});
 							});
@@ -385,26 +632,29 @@ function introGuide() {
 			break;
 		
 		case 'sPostInc':
+			$('.introjs-tooltip').css("width", "300px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass("hide");
 				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s++</span>,"+
-				   " first assignment operation is done and next increment operation is done.</li>" +
-				   "<li><span class='ct-code-b-yellow'>s++</span> is executed as <br>" +
-				   " <span class='ct-code-b-yellow'>s.operator ++(int)</span> </li>" +
-				   "<li>Here <span class='ct-code-b-yellow'>int</span> is an additional argument" +
-				   " is used to distinguish between the prefix and postfix increment operators. </li></ul>";
+						   " first assignment operation is done and next increment operation is done.</li>" +
+						   "<li><span class='ct-code-b-yellow'>s++</span> is executed as " +
+						   " <span class='ct-code-b-yellow'>s.operator ++(int)</span> </li>" +
+						   "<li>Here <span class='ct-code-b-yellow'>int</span> is an additional argument" +
+						   " is used to distinguish between the prefix and postfix increment operators. </li></ul>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$('#sPostInc').removeClass('opacity00');
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'postInc':
-			$("#errorText").remove();
+			$("#errorText").text("");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#postInc').removeClass('opacity00');
-				var text = "Here the member <span class='ct-code-b-yellow'>operator ++(int)</span> function" +
+				var text = "Here the <span class='ct-code-b-yellow position'>operator ++(int)</span> function" +
 							" is called by object <span class='ct-code-b-yellow'>s</span>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -413,7 +663,7 @@ function introGuide() {
 				$("#aPostIncVal").effect( "highlight",{color: 'red'}, 800,function() {
 					 $(".introjs-tooltiptext").append("<span id='aSum' class='position ct-code-b-yellow opacity00'>num = "+
 							 " <span id ='total' class='position'><span id='a' class='position'>num<span>"+
-							 " + <span id='one' class='position'>1</span>;</span></span>");
+							 " + <span id='one' class='position'>1</span></span>;</span>");
 					 $('.introjs-tooltip').removeClass("hide");
 					 $('#aSum').removeClass('opacity00');
 					 fromEffectWithTweenMax("#aPostIncVal", "#aSum", function() {
@@ -422,14 +672,15 @@ function introGuide() {
 						 $('.user-btn').click(function() { 
 							$('.user-btn').remove(); 
 							$("#aSum").append("<br><span id='aSum1' class='position ct-code-b-yellow opacity00'>num = "+
-									"<span id ='tot' class='displayBlock position'><span id='a1' class='position displayBlock'>s.num</span> + <span id='one1' class='position'>1</span>;</span</span>");
+									"<span id ='tot' class='displayBlock position'><span id='a1' class='position displayBlock'>s.num</span> + <span id='one1' class='position'>1</span></span>;</span>");
 							$('#aSum1').removeClass('opacity00');
 							fadeInBounceEffectWithTimelineMax("#sVal", "#a1", function() {
 								var t = parseInt($("#sVal").text()) + parseInt($("#one1").text());
 								rotation('#tot', t, function() {
+									$('#sAddress').css("z-index", "10000010");
 									fadeInBounceEffectWithTimelineMax("#tot", "#sVal", function() {
-										$("#sAddress").addClass("z-index1000000");
-										$('.introjs-nextbutton').show();
+										$('#sAddress').css("z-index", "");
+										$(".introjs-nextbutton, .introjs-prevbutton").show();
 									});	
 								});
 							});
@@ -440,23 +691,26 @@ function introGuide() {
 			break;
 			
 		case 'sPreDec':
+			$('.introjs-tooltip').css("width", "300px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>--s</span>,"+
-				   " first decrement operation is done and next assignment operation is done.</li>" +
-				   "<li><span class='ct-code-b-yellow'>--s</span> is executed as <br>" +
-				   " <span class='ct-code-b-yellow'>s.operator --()</span> </li></ul>";
+				$('.introjs-tooltip').removeClass("hide");
+				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>--s</span>, "+
+						   "first decrement operation is done and next assignment operation is done.</li>" +
+						   "<li><span class='ct-code-b-yellow'>--s</span> is executed as " +
+						   "<span class='ct-code-b-yellow'>s.operator --()</span> </li></ul>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$("#sPreDec").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'preDec':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preDec").removeClass("opacity00");
-				var text = "Here the member <span class='ct-code-b-yellow'>operator --()</span> function" +
+				var text = "Here the member <span class='ct-code-b-yellow position'>operator --()</span> function" +
 							" is called by object <span class='ct-code-b-yellow'>s</span>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -474,14 +728,15 @@ function introGuide() {
 						$('.user-btn').click(function() { 
 							$('.user-btn').remove(); 
 							$("#aSub").append("<br><span id='aSub1' class='position ct-code-b-yellow opacity00'>num ="+
-											" <span id ='tot' class='displayBlock position'><span id='a1' class='position displayBlock'>s.num</span> - <span id='one1' class='position'>1</span>;</span</span>");
+											" <span id ='tot' class='displayBlock position'><span id='a1' class='position displayBlock'>s.num</span> - <span id='one1' class='position'>1</span></span>;</span>");
 							 $('#aSub1').removeClass('opacity00');
 							 fadeInBounceEffectWithTimelineMax("#sVal", "#a1", function() {
 								var t = parseInt($("#sVal").text()) - parseInt($("#one1").text());
 								rotation('#tot', t, function() {
+									$('#sAddress').css("z-index", "10000010");
 									fadeInBounceEffectWithTimelineMax("#tot", "#sVal", function() {
-										$("#sAddress").addClass("z-index1000000");
-										$('.introjs-nextbutton').show();
+										$('#sAddress').css("z-index", "");
+										$(".introjs-nextbutton, .introjs-prevbutton").show();
 									});			
 								});
 							 });
@@ -492,26 +747,29 @@ function introGuide() {
 			break;
 		
 		case 'sPostDec':
+			$('.introjs-tooltip').css("width", "300px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s++</span>,"+
-				   " first assignment operation is done and next decrement operation is done.</li>" +
-				   "<li><span class='ct-code-b-yellow'>s++</span> is executed as <br>" +
-				   " <span class='ct-code-b-yellow'>s.operator --(int)</span> </li>" +
-				   "<li>Here <span class='ct-code-b-yellow'>int</span> is an additional argument" +
-				   " is used to distinguish between the prefix and postfix increment operators. </li></ul>";
+				$('.introjs-tooltip').removeClass("hide");
+				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s++</span>, "+
+						   "first assignment operation is done and next decrement operation is done.</li>" +
+						   "<li><span class='ct-code-b-yellow'>s++</span> is executed as " +
+						   "<span class='ct-code-b-yellow'>s.operator --(int)</span> </li>" +
+						   "<li>Here <span class='ct-code-b-yellow'>int</span> is an additional argument " +
+						   "is used to distinguish between the prefix and postfix increment operators. </li></ul>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$("#sPostDec").removeClass("opacity00");
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'postDec':
-			$("#errorText1").remove();
+			$("#errorText1").text("");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#postDec").removeClass("opacity00");
-				var text = "Here the member <span class='ct-code-b-yellow'>operator --(int)</span> function" +
-				" is called by object <span class='ct-code-b-yellow'>s</span>";
+				var text = "Here the member <span class='ct-code-b-yellow position'>operator --(int)</span> function " +
+							"is called by object <span class='ct-code-b-yellow'>s</span>";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-nextbutton').show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -530,14 +788,15 @@ function introGuide() {
 							$('.user-btn').remove(); 
 							$("#aSub").append("<br><span id='aSub1' class='position ct-code-b-yellow opacity00'>num ="+
 									" <span id ='tot' class='displayBlock position'><span id='a1'"+
-									" class='position displayBlock'>s.num</span> - <span id='one1' class='position'>1</span>;</span</span>");
+									" class='position displayBlock'>s.num</span> - <span id='one1' class='position'>1</span></span>;</span>");
 							 $('#aSub1').removeClass('opacity00');
 							 fadeInBounceEffectWithTimelineMax("#sVal", "#a1", function() {
 								var t = parseInt($("#sVal").text()) - parseInt($("#one1").text());
 								rotation('#tot', t, function() {
+									$('#sAddress').css("z-index", "10000010");
 									fadeInBounceEffectWithTimelineMax("#tot", "#sVal", function() {
-										$("#sAddress").addClass("z-index1000000");
-										$('.introjs-nextbutton').show();
+										$('#sAddress').css("z-index", "");
+										$(".introjs-nextbutton, .introjs-prevbutton").show();
 									});			
 								});
 							 });
@@ -551,26 +810,20 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "sValue" :
-				$("#sAddress").addClass("z-index1000000");
-				$('.introjs-helperLayer ').one('transitionend', function() {
-						transferEffect("#number", "#sValue", function() {
-							$("#sAddress").removeClass("z-index1000000");
-							setTimeout(function () {
-								introjs.nextStep();
-							}, 500);
-						});
-					
-				});
+				//$('.introjs-helperlayer ').one('transitionend', function() {
+					consoleTimeout("#sValue");
+				//});
 				break;
 			case "sPreIncVal" :
-				$("#sAddress").addClass("z-index1000000");
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					consoleTimeout("#sPreIncVal");
+					/*$("#sAddress").addClass("z-index1000000");
 					transferEffect("#number", "#sPreIncVal", function() {
 						$("#sAddress").removeClass("z-index1000000");
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 500);
-					});
+					});*/
 					
 				});
 				break;
@@ -587,120 +840,163 @@ function introGuide() {
 								"<br> s++;</span>";
 						typing('#errorText',text, function() {
 							introjs.refresh();
-							$(".introjs-tooltip").show();
+							//$(".introjs-tooltip").show();
 							//$("#postInc").show();
-							var text = "This error occurs when compiler cannot find the definition for the " +
-									"<span class='ct-code-b-yellow'>s++</span> that is, " +
-									"<span class='ct-code-b-yellow'>post increment</span>. To remove this error" +
-									" add the post increment definition";
+							$('.introjs-tooltip').removeClass("hide");
+							var text = "This error occurs when compiler cannot find the definition " +
+									"for the  <span class='ct-code-b-yellow'>s++</span> that is, " +
+									"<span class='ct-code-b-yellow'>post increment</span>. To remove " +
+									"this error add the post increment definition.";
 							typing(".introjs-tooltiptext", text, function() {
-								$('.introjs-nextbutton').show();
+								$(".introjs-nextbutton, .introjs-prevbutton").show();
 							});
 					});
 				});
 				break;
 			case "sPostIncVal" :
-				$("#sAddress").addClass("z-index1000000");
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					consoleTimeout("#sPostIncVal");
+					/*$("#sAddress").addClass("z-index1000000");
 					transferEffect("#number", "#sPostIncVal", function() {
 						$("#sAddress").removeClass("z-index1000000");
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 500);
-					});
+					});*/
 				});
 				break;
 			case "sPreDecVal" :
-				$("#sAddress").addClass("z-index1000000");
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					consoleTimeout("#sPreDecVal");
+					/*$("#sAddress").addClass("z-index1000000");
 					transferEffect("#number", "#sPreDecVal", function() {
 						$("#sAddress").removeClass("z-index1000000");
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 500);
-					});
+					});*/
 				});
 				break;
 			case "errorText1" :
 				$(".introjs-tooltip").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "<span class='ct-white-color'>sample1.cpp:</span> In function"+
-							" <span class='ct-white-color'>‘int main()’:</span> <br>"+
-							" <span class='ct-white-color'>sample1.cpp:45:3:</span>"+
-							" <span class='blinking-orange'><span class='errorText'>error: " +
-							"</span>no <span class='ct-white-color'>"+
-							" ‘operator--(int)’</span><br> declared for" +
-							" 	postfix <span class='ct-white-color'> ‘--’</span>[-fpermissive]" +
-							"<br> s--;</span>";
+					var text = 	"<span class='ct-white-color'>sample1.cpp:</span> In function"+
+								" <span class='ct-white-color'>‘int main()’:</span> <br>"+
+								" <span class='ct-white-color'>sample1.cpp:45:3:</span>"+
+								" <span class='blinking-orange'><span class='errorText'>error: " +
+								"</span>no <span class='ct-white-color'>"+
+								" ‘operator--(int)’</span><br> declared for" +
+								" 	postfix <span class='ct-white-color'> ‘--’</span>[-fpermissive]" +
+								"<br> s--;</span>";
 					typing('#errorText1',text, function() {
 						//$("#postDec").show();
-						$(".introjs-tooltip, #postDec").show();
-						var text = "This error occurs when compiler cannot find the definition for the " +
-									"<span class='ct-code-b-yellow'>s--</span> that is, " +
-									"<span class='ct-code-b-yellow'>post decrement</span>." +
-									" To remove this error" +
-									" add the post decrement definition";
+						//$(".introjs-tooltip").show();
+						$('.introjs-tooltip').removeClass("hide");
+						var text = "This error occurs when compiler cannot find the definition " +
+									"for the <span class='ct-code-b-yellow'>s--</span> that is, " +
+									"<span class='ct-code-b-yellow'>post decrement</span>. " +
+									"To remove this error add the post decrement definition";
 						typing(".introjs-tooltiptext", text, function() {
-							$('.introjs-nextbutton').show();
+							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
 					});
 				});
 				break;
 			case "sPostDecVal" :
-				$("#sAddress").addClass("z-index1000000");
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					 consoleTimeout("#sPostDecVal");
+					/*$("#sAddress").addClass("z-index1000000");
 					transferEffect("#number", "#sPostDecVal", function() {
 						$("#sAddress").removeClass("z-index1000000");
 						setTimeout(function () {
 							introjs.nextStep();
-						}, 500);
-					});
+						}, 1000);
+					});*/
 				});
 				break;
 			}
 			break;
+			
 		case "addressDiv" :
 			$("#addressDiv").removeClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "sAddress" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#sInit").addClass("z-index1000000");
-					$("#sObj").addClass("blinking");
-					TweenMax.to("#varBox, #sAddress", 1, {opacity: 1, onComplete: function() {
-						$("#varBox, #sAddress").removeClass("opacity00");
-						TweenMax.to("#aBoxS", 1, {opacity: 1, onComplete: function() {
-							$("#aBoxS").removeClass("opacity00");
-							$("#sInit").removeClass("z-index1000000");
-							$("#sObj").removeClass("blinking");
-							setTimeout(function () {
-								introjs.nextStep();
-							}, 500);
+					if (introjs._direction == 'backward') {
+						$("#addressDiv").addClass("opacity00");
+						$("#varBox, #sAddress").css("opacity", 0);
+						$("#aBoxS").css("opacity", 0);
+						$("#sVal").text("");
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					} else{
+						$("#sInit").addClass("blinking");
+						TweenMax.to("#varBox, #sAddress", 1, {opacity: 1, onComplete: function() {
+							$("#varBox, #sAddress").removeClass("opacity00");
+							$("#init").addClass("blinking");
+							TweenMax.to("#aBoxS", 1, {opacity: 1, onComplete: function() {
+								$("#aBoxS").removeClass("opacity00");
+								$("#init").removeClass("blinking");
+								$("#sInit").removeClass("blinking");
+								setTimeout(function () {
+									introjs.nextStep();
+								}, 1000);
+							}});
 						}});
-					}});
-					
+					}
 				});
 				break;
+				
 			case "animationDiv" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#aBoxS").removeClass("opacity00");
-					$("#sVal").text("5");
-					transferEffect("#aValue", "#sVal", function() {
-						$("#noVal").text($("#printLineInConsole1").val());
-						$('.introjs-nextbutton').show();
-					});
+					if (introjs._direction == 'backward') {
+						
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					} else{
+						$("#aBoxS").removeClass("opacity00");
+						$("#sVal").text("5");
+						transferEffect("#aValue", "#sVal", function() {
+							$("#noVal").text($("#printLineInConsole1").val());
+							$setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						});
+					}
 				});
 				break;
+				
 			case "animationDiv2" :
 				$("#printLineInConsole2").attr('disabled','disabled');
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					transferEffect("#printLineInConsole2", "#marksVal", function() {
-						$("#marksVal").text($("#printLineInConsole2").val());
-						$('.introjs-nextbutton').show();
-					});
+					if (introjs._direction == 'backward') {
+						
+						setTimeout(function() {
+							introjs.previousStep();
+						}, 1000);
+					} else{
+						transferEffect("#printLineInConsole2", "#marksVal", function() {
+							$("#marksVal").text($("#printLineInConsole2").val());
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						});
+					}
 				});
 				break;
 			}
+			break;
+			
+		case 'end':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "This is the end of the main() function where the program execution ends.";
+				typing(".introjs-tooltiptext",text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
+			});
 			break;
 		
 			
@@ -720,6 +1016,36 @@ function introGuide() {
 	introjs.start();
 }
 
+function timeOut() {
+	if (introjs._direction == 'backward') {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 1000);
+	} else{
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 1000);
+	}
+}
+function consoleTimeout(selector){
+	if (introjs._direction == 'backward') {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 1000);
+	} else{
+		//$("#sAddress").addClass("z-index1000000");
+		$("#sAddress").css("z-index", "1000010");
+		transferEffect("#number", selector, function() {
+			//$("#sAddress").removeClass("z-index1000000");
+			$("#sAddress").css("z-index", "");
+			setTimeout(function () {
+				introjs.nextStep();
+			}, 1000);
+		});
+	}
+}
+
+
 function typing(selector, text, callBackFunction) {
 	var typingSpeed = 1;
 	$(selector).typewriting( text , {
@@ -730,6 +1056,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }
@@ -785,7 +1112,7 @@ function fadeInBounceEffectWithTimelineMax(selector1, selector2, callBackFunctio
 		var topLength = l1.top - l2.top;
 		var leftLength = l1.left - l2.left;
 		
-		$('#codeDiv').append("<span id='dummy' class='ct-code-b-yellow ct-fonts' style='position: relative; z-index: 99999999;'>" 
+		$('#codeDiv').append("<span id='dummy' class='ct-code-b-yellow ct-fonts' style='position: relative; z-index: 10000010;'>" 
 			+ $(selector2).text() + "</span>");
 		$('#dummy').offset({
 			"top": l2.top, 

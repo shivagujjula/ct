@@ -1,7 +1,7 @@
 var typingInterval = 5;
 var arr = [];
 var iVal;
-var usageOfGetcharReady = function() {
+var overloadingIncrementAndDecrementOperatorsReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
 		if (e.keyCode == 13) {
@@ -108,7 +108,6 @@ function introGuide() {
 		}, {
 			element : '#return',
 			intro : "",
-			//tooltipClass : 'hide',
 		}, {
 			element : '#s2PreInc',
 			intro : "",
@@ -190,12 +189,6 @@ function introGuide() {
 		}, {
 			element : '#return1',
 			intro : "",
-			//tooltipClass : 'hide',
-		/*}, {
-			element : '#locVarAddress',
-			intro : "",
-			animateStep : 'sAddress',
-			tooltipClass : 'hide',*/
 		}, {
 			element : '#s3PostInc',
 			intro : "",
@@ -278,12 +271,6 @@ function introGuide() {
 		}, {
 			element : '#return2',
 			intro : "",
-			//tooltipClass : 'hide',
-		/*}, {
-			element : '#locVarAddress',
-			intro : "",
-			animateStep : 'sAddress',
-			tooltipClass : 'hide',*/
 		}, {
 			element : '#s4PreDec',
 			intro : "",
@@ -366,11 +353,6 @@ function introGuide() {
 		}, {
 			element : '#return3',
 			intro : "",
-			//tooltipClass : 'hide',
-		/*}, {
-			element : '#locVarAddress',
-			intro : "",
-			animateStep : 'sAddress',*/
 		}, {
 			element : '#s5PostDec',
 			intro : "",
@@ -676,7 +658,7 @@ function introGuide() {
 		case 'main':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.</li></ul>";
+				var text = 	"<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#main").removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -710,8 +692,8 @@ function introGuide() {
 								+ " (<span id='xTip' class='position'>int x</span>) {</span>");
 				$('#sample').removeClass('opacity00');
 				fromEffectWithTweenMax("#SampleInt", "#sample", function() {
-					$("#xTip").text("5");
-					fromEffectWithTweenMax("#xInit", "#xTip", function() {
+					/*$("#xTip").text("5");
+					fromEffectWithTweenMax("#xInit", "#xTip", function() {*/
 						 $(".introjs-tooltiptext").append("<br>&emsp;<span id='aVal' class='position ct-code-b-yellow opacity00'>"
 								 	+ " num = <span id='xVal' class='position'>x</span>;</span><br><span class='ct-code-b-yellow'>}</span>");
 						 $('#aVal').removeClass('opacity00');
@@ -719,10 +701,12 @@ function introGuide() {
 						 fromEffectWithTweenMax("#aValue", "#aVal", function() {
 							 $('#aValue').removeClass('blinking-white');
 							 $('#xVal').text("5");
-							 fromEffectWithTweenMax("#xTip", "#xVal", function() {
+							 $('#s1Init').addClass('blinking-white');
+							 fromEffectWithTweenMax("#num", "#xVal", function() {
 								 $("#s1Val").text("5").addClass('opacity00');
 								 //$('#aBoxS1').addClass('z-index1000000');
 								 $('#s1Val').removeClass("opacity00");
+								 $('#s1Init').removeClass('blinking-white');
 								 $('#aBoxS1').css("z-index", "10000010");
 								 fromEffectWithTweenMax("#xVal", "#s1Val", function() {
 									 $('#aBoxS1').css('z-index', '');
@@ -730,7 +714,7 @@ function introGuide() {
 								 });
 							 });
 						 });
-					 });
+					/* });*/
 				 });
 			});
 			break;
@@ -790,7 +774,9 @@ function introGuide() {
 			$("#sBox, #aBoxS").addClass("opacity00");
 			$('.introjs-tooltiptext').removeAttr("style");
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "";
+				var text = "The <span class='ct-code-b-yellow'> operator function ++ </span> "+
+						   "is written as <span class='ct-code-b-yellow'>memeber function</span> " +
+						   "in class <span class='ct-code-b-yellow'>Sample</span>."; 
 				$('.introjs-tooltip').removeClass("hide");
 				typing(".introjs-tooltiptext", text, function() {
 					$("#" + elementId).removeClass("opacity00");
@@ -805,7 +791,7 @@ function introGuide() {
 		case 'postDecS1':
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$('.introjs-tooltip').removeClass("hide");
-				var text = " ";
+				var text = "Here, <span class='ct-code-b-yellow'>s</span> is an object of sample is created.";
 				typing(".introjs-tooltiptext", text, function() {
 					//$("#" + elementId).removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -872,9 +858,9 @@ function introGuide() {
 		case 'return2':
 		case 'return3':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = " ";
+				var text = "It returns the value of s.";
 				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					$('.introjs-prevbutton, .introjs-nextbutton').show();
 				});
 			});
 			break;
@@ -1708,7 +1694,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 1;
+	var typingSpeed = 10;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

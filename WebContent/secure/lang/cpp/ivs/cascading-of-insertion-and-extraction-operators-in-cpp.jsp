@@ -262,10 +262,7 @@ div, span {
 	z-index: 1000000 !important;
 	position: relative;
 }
-.error-text {
-	color: red;
-	font-weight: bold;
-}
+
 
 .position {
 	display: inline-block;
@@ -310,14 +307,15 @@ div, span {
 </style>
 <script>
 	$(document).ready(function() {
-		usageOfGetcharReady();
+		cascadingOfInsertionAndExtractionOperatorsReady();
 	});
 </script>
 <body>
 <div class="main-div col-xs-12">
 	<div class="row text-center" id="heading">
 		<h3 class='label ct-demo-heading margin-top-2'>
-			<span>Cascading of insertion and extraction operators in C++</span>
+			<span>Cascading of insertion(<span class="ct-code-b-yellow"><<</span>) and extraction(<span class="ct-code-b-yellow">>></span>)
+			 	operators in C++</span>
 		</h3>
 	</div>
 	<div class="col-xs-12">
@@ -329,14 +327,15 @@ div, span {
 			
 				 <li id="list2" class="opacity00"><span class="ct-Maroon-color">Points to remember when overloading insertion(<<) and extraction(>>) operators : </span>
 				 	<ul class="expl">
-				 		<li id="list11" class="opacity00">Cout is an object of Ostream class and Cin is an object of istream class.</li>
-				 		<li id="list12" class="opacity00">The operators << and >> are overloading  by using only 
-				 		<span class="ct-code-b-green">friend functions</span>.</li>
+				 		<li id="list11" class="opacity00">cout is an object of ostream class and cin is an object of istream class.</li>
+				 		<li id="list12" class="opacity00">The operators <span class="ct-code-b-green"><<</span> and 
+				 			<span class="ct-code-b-green">>></span> are overloaded  by using only  
+				 			<span class="ct-code-b-green">friend functions</span>.</li>
 				 		<li id="list13" class="opacity00">For example <span class="ct-code-b-green">cout << ob1</span> is a statement
-				 		when operator function call is like as <span class="ct-code-b-green">operator << (cout, ob1)</span>
+				 			when operator function call is like as <span class="ct-code-b-green">operator << (cout, ob1)</span>
 				 		</li>
 				 		<li id="list14" class="opacity00">For example <span class="ct-code-b-green">cin >> ob1</span> is a statement
-				 		when operator function call is like as <span class="ct-code-b-green">operator >> (cin, ob1)</span>
+				 			when operator function call is like as <span class="ct-code-b-green">operator >> (cin, ob1)</span>
 				 		</li>
 		 			</ul>
 		 			<span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
@@ -354,7 +353,7 @@ div, span {
 <span id="class">class Student {
 		<span id="char">char <span id="charName">name[20]</span>;</span>
 		<span id="init">int <span id="intNum">no</span>, <span id="intMarks">marks</span>;</span>
-		<span id="friendFunction">public: friend ostream & operator << (ostream &, Student &);</span>
+		public: <span id="friendFunction">friend ostream & operator << (ostream &, Student &);</span>
 				  <span id="friendFunction1">friend istream & operator >> (istream &, Student &);</span>
 };</span>
 <span id="frndFunCout">ostream & operator << (ostream &output, Student &s) { 
