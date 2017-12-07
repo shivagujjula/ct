@@ -79,7 +79,7 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Java program life cycle', '/secure/lang/j/basics/program-life-cycle.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Java program life cycle</span></td>
-						<td></td>
+						<td>No need</td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -221,10 +221,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of for loop', '/secure/lang/j/basics/basic-for-loop-syntax.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of for loop</span></td>
-						<td>In progress</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh</td>
 						<td></td>
-						<td></td>
+						<td>07-12-17</td>
 					</tr>
 					<tr>
 						<td>6</td>
@@ -305,7 +305,7 @@
 		</div>
 		<div class='row'>
 			<div class='text-center'>
-				<h3>UNIT-5: Text Processing</h3>
+				<h3>UNIT-5: Text Processing(D Mahesh)</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>

@@ -37,7 +37,8 @@ var functionDeclarationReady = function() {
 			intro :''
 		},{
 			element :'#declaration1',
-			intro :''
+			intro :'',
+			tooltipClass: 'hide'
 		},{
 			element :'#example1',
 			intro :''
@@ -54,7 +55,35 @@ var functionDeclarationReady = function() {
 		}]
 	});
 	
+	intro.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "declaration1" :
+			$("#declaration1").addClass("visibility-hidden");
+		break;
+		case "semicolon3" :
+			$("#declaration1").addClass("visibility-hidden");
+		break;
+		}
+	});
 	intro.onafterchange(function(targetElement) { 
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			
+			if (intro._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.intro-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -108,7 +137,7 @@ var functionDeclarationReady = function() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					typing('.introjs-tooltiptext', "Any valid identifier can be used as a <span class='ct-code-b-yellow'>function_name</span>.",
 							 function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -118,22 +147,23 @@ var functionDeclarationReady = function() {
 							+ " types that will be used by the function definition.</li><li><span class='ct-code-b-yellow'>"
 							+ "parameter_types</span> are <span class='ct-code-b-yellow'>optional</span>.</li></ul>", 
 							 function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "semicolon3" :
 				$(".introjs-helperLayer").one("transitionend", function() {
 					typing('.introjs-tooltiptext', "Function declaration must end with a <span class='ct-code-b-yellow'>semicolon(;)</span>.", function() {  
-			  			$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
 			case "declaration1" :
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', "Let us consider three different types of function declarations.", function() {  
 						$("#declaration1").removeClass("visibility-hidden");
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -142,7 +172,7 @@ var functionDeclarationReady = function() {
 					typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>sum</span>, it takes two"
 							+ " <span class='ct-code-b-yellow'>int</span> arguments and it will return a value of"
 							+ " <span class='ct-code-b-yellow'>int</span> data type.", function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -151,7 +181,7 @@ var functionDeclarationReady = function() {
 			  	typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>display</span>, it takes"
 			  			+ " <span class='ct-code-b-yellow'>void</span>(no argument) and it will return a <span class='ct-code-b-yellow'>void</span>"
 			  			+ " (i.e., nothing).", function() {  
-					$('.introjs-nextbutton').show();
+			  		$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			break;
@@ -160,7 +190,7 @@ var functionDeclarationReady = function() {
 					typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>gettime</span>, it takes"
 							+ " <span class='ct-code-b-yellow'>void</span>(no argument) as parameter and it will return a value of"
 							+ " <span class='ct-code-b-yellow'>int</span> data type.", function() {  
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 			  		});
 				});
 			break;
@@ -186,6 +216,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }

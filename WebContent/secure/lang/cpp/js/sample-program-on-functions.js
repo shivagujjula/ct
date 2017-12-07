@@ -147,6 +147,7 @@ function introGuide() {
 			
 		break;
 		case "callingFun":
+			$("#sum").removeClass("opacity00");
 			if (introjs._currentStep == 6){
 				$("#funDef").addClass("opacity00");
 			} else if (introjs._currentStep == 9) {

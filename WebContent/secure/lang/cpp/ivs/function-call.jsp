@@ -17,7 +17,6 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/fc.min.js"></script>
-
 <style type="text/css">
 .margin-top-20 {
 	margin-top: 20px;
@@ -121,12 +120,15 @@
 					<li id='li2' class='opacity00'>A call to the function must end with a <b class='ct-green-color'>semicolon (;)</b>.</li>
 				</ul>
 			</div>
+			<div class="col-xs-12">
 				<div class="col-xs-offset-4 col-xs-4 opacity00" id="syntax">
 					<div class="text-center"><b class="margin-top-10">Syntax</b><br><div>
 							<pre><span id="funName">function_name </span><span id="parameters">(parameter_list);</span></pre>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-xs-12">
 				<div class="col-xs-offset-4 col-xs-4 opacity00" id="example">
 					<div class="text-center"><b class="margin-top-10">Example</b><br></div>
 					<div class="text-center">
@@ -135,11 +137,11 @@
 <span id="mulFun">int total = <span class='ct-blue-color'>mul(a, b, c)</span>;</span></pre>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-xs-12">
-		<div class="col-xs-offset-1 col-xs-5 margin-top-20">
-			<div id="leftDiv" class="opacity00">
+		<div class="opacity00 col-xs-offset-1 col-xs-5 margin-top-20" id="leftDiv">
 			<pre class="creampretab" id="code">#include &lt;iostream&gt;
 using namespace std;
 <span id="funDec">void <span class='ct-blue-color'>printName()</span>;</span>
@@ -151,7 +153,6 @@ int <b class='ct-blue-color'>main()</b> {
 	<span id="printf1">cout << "CodeTantra\n";</span>
 <span id='endFunc'>}</span></span>	
 </pre>
-			</div>
 		</div>
 		<div class="col-xs-5">
 			<div id="outputDiv" class="opacity00">

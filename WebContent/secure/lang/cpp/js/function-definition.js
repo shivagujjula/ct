@@ -21,7 +21,7 @@ var functionDefinitionReady = function() {
 		},{
 			element :'#format',
 			intro :'',
-			tooltipClass: "hide"
+			//tooltipClass: "hide"
 		},{
 			element :'#returnType1',
 			intro :''
@@ -40,7 +40,8 @@ var functionDefinitionReady = function() {
 			intro :''
 		},{
 			element :'#declaration1',
-			intro :''
+			intro :'',
+			tooltipClass: 'hide'
 		},{
 			element :'#functionDeclaration',
 			intro :''
@@ -56,8 +57,37 @@ var functionDefinitionReady = function() {
 			position:"right"
 		}]
 	});
+	
+	intro.onbeforechange(function(targetElement) { 
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "declaration1" :
+  			$("#declaration1").addClass("opacity00");
+  		break;
+		case "returnValue" :
+  			$("#declaration1").addClass("opacity00");
+  		break;
+		}
+	});
 	intro.onafterchange(function(targetElement) { 
-		$('.introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton').hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			
+			if (intro._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.intro-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
@@ -84,7 +114,7 @@ var functionDefinitionReady = function() {
 				typing('.introjs-tooltiptext', "<ul><li>Any valid identifier can be used as a <span class='ct-code-b-yellow'>function_name</span>."
 						+ "</li><li>Keywords should not be used to name user-defined <span class='ct-code-b-yellow'>function_names</span>.</li></ul>",
 						function() {  
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -94,14 +124,14 @@ var functionDefinitionReady = function() {
 						+ " of the <span class='ct-code-b-yellow'>variable</span> and <span class='ct-code-b-yellow'>name</span> of the variable"
 		  				+ " seperated by a <span class='ct-code-b-yellow'>space</span>(i.e., int a).<br> If there are more than one parameters,"
 		  				+ " they are seperated by a <span class='ct-code-b-yellow'>comma</span>.", function() {  
-		  			$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "functionBody" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "The function body is a collection of statements that define what the function does.", function() {  
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -110,15 +140,16 @@ var functionDefinitionReady = function() {
 				typing('.introjs-tooltiptext', "<ul><li>A <span class='ct-code-b-yellow'>return</span> statement is used to return a value by the"
 						+ " function.</li><li>If a function does not return any value, the <span class='ct-code-b-yellow'>return</span> "
 						+ "type is specified as <span class='ct-code-b-yellow'>void</span>.</li></ul>", function() {  
-		  			$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "declaration1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-tooltip').removeClass('hide');
 		  		typing('.introjs-tooltiptext', "Let us consider the example of a function definition.", function() {  
 		  			$("#declaration1").removeClass("opacity00");
-					$('.introjs-nextbutton').show();
+		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -127,14 +158,14 @@ var functionDefinitionReady = function() {
 				typing('.introjs-tooltiptext', "Here the name of the function is <span class='ct-code-b-yellow'>sum</span>, it takes two"
 			  			+ " <span class='ct-code-b-yellow'>int</span> arguments and it will return a value of type <span class='ct-code-b-yellow'>"
 			  			+ "int</span>.", function() {  
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "functionBody3" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				typing('.introjs-tooltiptext', "The function body defines local variable declarations and some executable statements.", function() {  
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -143,7 +174,7 @@ var functionDefinitionReady = function() {
 				typing('.introjs-tooltiptext', "Here, it returns the value <span class='ct-code-b-yellow'>s</span> which is the"
 						+ " <span class='ct-code-b-yellow'>sum</span> of adding variables <span class='ct-code-b-yellow'>a</span> and"
 						+ " <span class='ct-code-b-yellow'>b</span>.", function() {  
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -185,6 +216,7 @@ function typing(selector, text, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	})
 }

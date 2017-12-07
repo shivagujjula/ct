@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>review</title>
+<title>Two Dimensional Array</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
@@ -18,8 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/cpp/js-min/tda.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/cpp/js/two-dimensional-array.js" type="text/javascript"></script>
+<script src="/secure/lang/cpp/js-min/tda.min.js" type="text/javascript"></script>
 <style>
 
 .zIndex {
@@ -68,9 +67,10 @@ pre {
 	margin-top: 20px;
 }
 
-/* #typingDiv {
-	height: 40px;
-} */
+#typingDiv {
+	min-height: 40px;
+	font-family: monospace;
+}
 
 .back-color {
 	background-color: #D6C2E7;
@@ -199,31 +199,24 @@ pre > span {
 			twoDimensionalArrayReady();
 		});
 	</script>
-	<div class="ct-box-main padding0">
-		<div class='text-center'>
-			<h1 class='label ct-demo-heading' id="heading">Two Dimensional Array</h1>
-		</div>
+<div class="ct-box-main padding0">
+	<div class='text-center'>
+		<h1 class='label ct-demo-heading' id="heading">Two Dimensional Array</h1>
+	</div>
 
-		<div class='col-xs-12 text-center'>
-			<span id='restart'
-				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
-				&nbsp;<i class='fa fa-refresh'></i>
-			</span>
-		</div>
-
-		<div id="typingDiv"
-			class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
-				<ul><li>Two dimensional array can be used to represents matrix form of elements.</li>
-				<li>General format of two dimenstional array is as follows 
-				<div id="textAnimate" class="text-bold" style="display:inline-block"> 
-				<span id="part1">data_type</span> 
-				<span id="part2">array_name</span>
-				<span id="part3">[<span class="green-color">size1</span>]</span>
-				<span id="part4">[<span class="green-color">size2</span>]</span>;</div></li></ul>
-		</div>
-		<div id='mainDiv' class='col-xs-12 padding0'>
-			<div class='col-xs-6 '>
-				<pre class="creampretab4 opacity00" id='codeDiv'>
+	<div id="typingDiv"
+		class='margin-top20 col-xs-offset-2 col-xs-8 col-xs-offset-2'>
+			<ul><li>Two dimensional array can be used to represents matrix form of elements.</li>
+			<li>General format of two dimenstional array is as follows 
+			<div id="textAnimate" class="text-bold" style="display:inline-block"> 
+			<span id="part1">data_type</span> 
+			<span id="part2">array_name</span>
+			<span id="part3">[<span class="green-color">size1</span>]</span>
+			<span id="part4">[<span class="green-color">size2</span>]</span>;</div></li></ul>
+	</div>
+	<div id='mainDiv' class='col-xs-12 padding0'>
+		<div class='col-xs-6 '>
+			<pre class="creampretab4 opacity00" id='codeDiv'>
 #include <span>&lt;iostream&gt;</span>
 using namespace std;
 int main() {
@@ -260,21 +253,28 @@ int main() {
 				</div>
 			</div>
 		</div>
-<div class="col-xs-12"><div id='tableDiv'>
-
-<div class='col-xs-12' id='arrayBox'>
-						<table class='table-css'>
-							<tbody>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-</div></div>
+		<div class="col-xs-12">
+			<div id='tableDiv'>
+				<div class='col-xs-12' id='arrayBox'>
+					<table class='table-css'>
+						<tbody>
+							<tr>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
+<div class='col-xs-12 text-center'>
+	<span id='restart'
+		class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
+		&nbsp;<i class='fa fa-refresh'></i>
+	</span>
+</div>
 </body>
 </html>

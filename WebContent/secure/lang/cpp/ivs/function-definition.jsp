@@ -18,7 +18,6 @@
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
 	<script src="/secure/lang/cpp/js-min/fde.min.js"></script>
-	
 	<title>function definition</title>
 <style>
 

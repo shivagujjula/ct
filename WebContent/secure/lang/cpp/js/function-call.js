@@ -74,7 +74,8 @@ function introGuide() {
 				},{
 			 		element : "#leftDiv",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass : "hide"
 				},{
 			 		element : "#funDec",
 					intro : "",
@@ -98,7 +99,7 @@ function introGuide() {
 				}, {
 					element: '#endFunc',
 					intro: '',
-					position: 'right'
+					position: 'right',
 				},{
 			 		element : "#printf2",
 					intro : "",
@@ -114,7 +115,44 @@ function introGuide() {
 				}
 			]});
 	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+		case "totalDiv":
+			$("#totalDiv").removeAttr('style');
+		break;
+		case "parameters":
+			$("#example").addClass("opacity00");
+		break;
+		case "nameFun":
+			$("#example").addClass("opacity00");
+		break;	
+		case "mulFun":
+			$('#leftDiv').addClass("opacity00").removeAttr('style');
+		break;	
+		case "leftDiv":
+			$('#leftDiv').addClass("opacity00").removeAttr('style');
+		break;
+		}
+	});
 	introjs.onafterchange(function(targetElement) {
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -142,19 +180,17 @@ function introGuide() {
 		break;
 		case "parameters":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The parameter-list is a list of variables that are passed to the function.<br> A <span class ='ct-code-b-yellow'>" 
-							+ "function call </span> must end with a <span class ='ct-code-b-yellow'>semicolon (;)</span>.";
-				typing($(".introjs-tooltiptext"), text, function() {
-					$("#example").removeClass("opacity00");
-					$(".introjs-nextbutton").show();
+				typing($(".introjs-tooltiptext"),"The parameter-list is a list of variables that are passed to the function.<br> A <span class ='ct-code-b-yellow'>" 
+						+ "function call </span> must end with a <span class ='ct-code-b-yellow'>semicolon (;)</span>.", function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "nameFun":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is a call to the function <b class ='ct-code-b-yellow'>printName()</b>. This function returns void.";
-				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+				$("#example").removeClass("opacity00");
+				typing($(".introjs-tooltiptext"), "This is a call to the function <b class ='ct-code-b-yellow'>printName()</b>. This function returns void.", function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
@@ -165,28 +201,27 @@ function introGuide() {
 							+ " <span class ='ct-code-b-yellow'>b</span>."
 							+ "<br> The returned value will be stored in the variable <b class ='ct-code-b-yellow'>sum</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "mulFun":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is a call to the function <b class ='ct-code-b-yellow'>mul()</b>.<br> This function "
+				typing($(".introjs-tooltiptext"), "This is a call to the function <b class ='ct-code-b-yellow'>mul()</b>.<br> This function "
 							+ "has a return type of int and the parameters passed are <b class ='ct-code-b-yellow'>a</b>,"
 							+ " <span class ='ct-code-b-yellow'>b</span> and <span class ='ct-code-b-yellow'>c</span>."
-							+ "<br> The returned value will be stored in the variable <b class ='ct-code-b-yellow'>total</b>.";
-				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+							+ "<br> The returned value will be stored in the variable <b class ='ct-code-b-yellow'>total</b>.", function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "leftDiv":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#leftDiv').removeClass("opacity00");
-				var text = "Let's consider an example. We will learn <b class ='ct-code-b-yellow'>Function Definition</b>"
-							+ ", <b class ='ct-code-b-yellow'>Function Declaration</b> and <b class ='ct-code-b-yellow'>Function Call</b>.";
-				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+				$('.introjs-tooltip').removeClass('hide');
+				typing($(".introjs-tooltiptext"), "Let's consider an example. We will learn <b class ='ct-code-b-yellow'>Function Definition</b>"
+						+ ", <b class ='ct-code-b-yellow'>Function Declaration</b> and <b class ='ct-code-b-yellow'>Function Call</b>.", function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
@@ -196,7 +231,7 @@ function introGuide() {
 							+ " Here, user defined functions with name <b class ='ct-code-b-yellow'>printName()</b> is declared.<br> This function"
 							+ " takes <span class='ct-code-b-yellow'>no parameters</span> and does not return any value.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
 		break;
@@ -205,38 +240,50 @@ function introGuide() {
 				var text = "This is a <b class ='ct-code-b-yellow'>Function Call</b>. Here, when a call to function is made the control is"
 							+ " transferred to the called function.<br>  i.e., <b class ='ct-code-b-yellow'> Function Definition</b>(body)";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "funDef":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is the <b class ='ct-code-b-yellow'>Function Definition</b>.";
-				typing($(".introjs-tooltiptext"), text, function() {
-					$(".introjs-nextbutton").show();
+				typing($(".introjs-tooltiptext"), "This is the <b class ='ct-code-b-yellow'>Function Definition</b>.", function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
 		case "printf1":
-			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function() {
-					introjs.nextStep()
-				}, 1000);
+				if(introjs._direction == "forward") {
+					setTimeout(function() {
+						introjs.nextStep()
+					}, 1000);
+				} else {
+					$("#outputDiv").addClass("opacity00");
+					setTimeout(function() {
+						introjs.previousStep();
+					},1000);
+				}
 			});
 		break;
 		case "outputDiv":
-			if (introjs._currentStep == 11){
+			if (introjs._currentStep == 11) {
 			introjs.refresh();
 			$("#outputDiv").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<b class='val-color'> Codetantra </b>";
-				$("#outputBody").append("<div></div>");
-				typing($("#outputBody > div:last-child"), text, function() {
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
-				});
+				if(introjs._direction == "forward") {
+					$("#outputBody").append("<div id='code'></div>");
+					typing($("#outputBody > div:last-child"),"<b class='val-color' id='codeTantra'>Codetantra</b>", function() {
+						setTimeout(function(){
+							introjs.nextStep();
+						}, 1500);
+					});
+				
+				} else {
+					$("#codeTantra").remove();
+					setTimeout(function() {
+						introjs.previousStep();
+					},1000);
+				}
 			});
 		 } else if (introjs._currentStep == 14){
 			introjs.refresh();
@@ -254,8 +301,9 @@ function introGuide() {
 		case "endFunc":
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "When the end of the function is reached, the control is transferred back to the calling method.";
+				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', text, function() {
-					$('.introjs-nextbutton').show()
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 		break;
@@ -288,6 +336,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }

@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script src="../js/difference-between-print-n-println.js"></script>
+<script src="/secure/lang/j/js-min/dbpnpln.min.js"></script>
 <title>println method</title>
 </head>
 <style>

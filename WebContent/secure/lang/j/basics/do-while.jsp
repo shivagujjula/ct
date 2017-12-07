@@ -13,8 +13,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/dwlic.min.js"></script> -->
-<script src="/secure/lang/j/js/do-while.js"></script>
+<script src="/secure/lang/j/js-min/dw.min.js"></script>
 
 <style type="text/css">
 

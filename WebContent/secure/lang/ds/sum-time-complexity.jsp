@@ -213,21 +213,6 @@ th:nth-child(3) {
 			<span>Time Complexity of sum( )</span>
 		</h3>
 	</div>
-	<!-- <div class="col-xs-12">
-		<div class="col-xs-7 col-xs-offset-2">
-			<div id="infoDiv" class="font-size-14 margin-top-2">
-				<ul>
-					<li id="line1" class="opacity00">The time complexity of an algorithm is the <span class="ct-color-green">total 
-					amount of time</span> required by an algorithm to complete its execution.
-					</li>
-					<li id="line2" class="opacity00">The time complexity of an algorithm is commonly expressed using <span class="ct-color-green">big O</span> notation, 
-					which excludes coefficients and lower order terms.<br/>
-					<span id='nextButton' class='opacity00'>
-						<a class='introjs-button user-btn'>Next &#8594;</a></span></li>
-				</ul>
-			</div>
-		</div>
-	</div> -->
 	<div class="col-xs-12 margin-top-5">
 		<div class="col-xs-6 col-xs-offset-3 opacity00" id="divTable" style="background: antiquewhite;">
 			<table align="center">
@@ -327,6 +312,6 @@ th:nth-child(3) {
 </body>
 
 <script type="text/javascript">
-sumTimeComplexityReady();
+	sumTimeComplexityReady();
 </script>
 </html>

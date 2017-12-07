@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 
-<script src="../js/command-line-arguments-in-action.js" type="text/javascript"></script>
+<script src="/secure/lang/j/js-min/claia.min.js" type="text/javascript"></script>
 <title>CMD</title>
 <style>
 .box-main {
