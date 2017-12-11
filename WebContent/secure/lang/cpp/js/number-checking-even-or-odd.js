@@ -1,6 +1,17 @@
-var typingInterval = 10;
+var typingInterval = 1;
+var remainderSpan ;
+var remianderSpan2;
+var ifLine;
+var elseLine;
+var remainderSpan3;
+var flag = false;
 
 var numberCheckingEvenOrOddReady = function() {
+	remainderSpan = $("#reminder1PopOver").html().trim();
+	remainderSpan2 = $("#reminder2Span").html().trim();
+	remainderSpan3 = $("#reminder3Span").html().trim();
+	ifLine = $("#ifLine").html();
+	elseLine = $("#elseLine").html();
 	introjs = introJs();
 	$("body").keydown(function(e) {
 		if (e.keyCode == 13) {
@@ -25,17 +36,69 @@ var numberCheckingEvenOrOddReady = function() {
 		}, {
 			element : "#oddNumberExample",
 			intro : '',
+			tooltipClass: "hide"
 		}, {
 			element : "#evenNumberExample",
 			intro : '',
+			tooltipClass : 'hide'
 		} , {
 			element : '#totalDiv',
 			intro : '',
+			tooltipClass: "hide"
 		}]
+	});
+	
+	introjs.onbeforechange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		var elementId = targetElement.id;
+		switch(elementId) {
+		
+		case 'oddNumberExample':
+			if (introjs._direction == "backward") {
+				$("#multiplyNumber1, #resultStep1, #equalZero1, #openBrace1,  #oddNumber, #closedBrace1, #quotient1, #calculation1, #reminder1PopOver, #firstNumber, #secondNumber").removeAttr("style").addClass("opacity00");
+				$("#reminder1PopOver").empty().removeAttr("style").append(remainderSpan);
+				$("#borderTop1").addClass("opacity00");
+				$("#calculation1").text("2 x 22");
+			
+				$("#evenNumberExample, #resultStep2, #equalZero2, #multiplyNumber2, #openBrace2, #evenNumber, #closedBrace2, #quotient2, #calculation2, #reminder2Span, #firstNumberEven, #secondNumberEven").removeAttr("style").addClass("opacity00");
+				$("#reminder2Span").empty().removeAttr("style").append(remainderSpan2);
+				$("#borderTop2").addClass("opacity00");
+				$("#calculation2").text("2 x 34");
+			}
+			break;
+			case 'evenNumberExample':
+				$(".user-btn").remove();
+				$("#totalDiv, #conditionDiv").addClass("opacity00");
+				$("#integerNumber").text("254");
+			if (introjs._direction == "backward") {
+				$("#evenNumberExample, #resultStep2, #equalZero2, #multiplyNumber2, #openBrace2, #evenNumber, #closedBrace2, #quotient2, #calculation2, #reminder2Span, #firstNumberEven, #secondNumberEven").removeAttr("style").addClass("opacity00");
+				$("#reminder2Span").empty().removeAttr("style").append(remainderSpan2);
+				$("#borderTop2").addClass("opacity00");
+				$("#calculation2").text("2 x 34");
+			}
+			break;
+		}
+			
 	});
 	
 	introjs.onafterchange(function(targetElement) {
 		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'infoDiv' :
@@ -50,10 +113,12 @@ var numberCheckingEvenOrOddReady = function() {
 			});	
 			break;
 		case 'oddNumberExample':
+			$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#oddNumberExample").removeClass("opacity00");
 				var text = "Let us consider a number <span class='ct-code-b-yellow'>45</span> and verify if it is <span class='ct-code-b-yellow'>"+
 					"even</span> or <span class='ct-code-b-yellow'>odd</span>.";
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn' " +
 					"onclick=oddNumberExample()>Next &#8594;</a>");
@@ -61,56 +126,63 @@ var numberCheckingEvenOrOddReady = function() {
 			});
 			break;
 		case 'evenNumberExample':
+			$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#evenNumberExample").removeClass("opacity00");
 				var text = "Let us consider another number <span class='ct-code-b-yellow'>78</span> and verify if it is "+
 				"<span class='ct-code-b-yellow'>even</span> or <span class='ct-code-b-yellow'>odd</span>.";
+				$(".introjs-tooltip").removeClass("hide");
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-				//	evenNumberExample();
 					$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn' " +
 					"onclick=evenNumberExample()>Next &#8594;</a>");
 				});
 			});
 			break;
 		case 'totalDiv':
+			$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#totalDiv").removeClass("opacity00");
-				$("#conditionDiv").removeClass("opacity00");
-				var text = $("#variablesId").html();
-				typing('#variablesId', text, typingInterval, 'white', function() {
-					var text = "Let us write a sample <span class='ct-code-b-yellow'>C++</span> code to determine the given number "+
-					"is <span class='ct-code-b-yellow'>even</span> or <span class='ct-code-b-yellow'>odd</span>."+ 
-						"<br>Here we declare variables.<br> You can also change the number.<br><br>" +
-					"The value <span class='tooltip-text-edit ct-code-b-yellow'> " + ($("#integerNumber").text()) + "</span> stored " +
-					"in variable <span class='ct-code-b-yellow'>number</span>.<br>";
-					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
-						$("#integerNumber").attr({contenteditable: 'true'});
-						$("#integerNumber").addClass("blinking-once");
-						$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-						charAtEnd('integerNumber');
-						$(".user-btn").click(function() {
-							$(".user-btn").remove();
-							opearationRepeatFunction();
-						});
-					});
-				});
+				totalDivFirstStep();
 			});
 			break;
 		}
 	});
 	introjs.start();
 }
-
+function totalDivFirstStep() {
+	$("#totalDiv").removeClass("opacity00");
+	$("#conditionDiv").removeClass("opacity00");
+	var text = $("#variablesId").html();
+	$(".introjs-tooltip").removeClass("hide");
+	typing('#variablesId', text, typingInterval, 'white', function() {
+		var text = "Let us write a sample <span class='ct-code-b-yellow'>C++</span> code to determine the given number "+
+		"is <span class='ct-code-b-yellow'>even</span> or <span class='ct-code-b-yellow'>odd</span>."+ 
+			"<br>Here we declare variables.<br> You can also change the number.<br><br>" +
+		"The value <span class='tooltip-text-edit ct-code-b-yellow'> " + ($("#integerNumber").text()) + "</span> stored " +
+		"in variable <span class='ct-code-b-yellow'>number</span>.<br>";
+		typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+			$("#integerNumber").attr({contenteditable: 'true'});
+			$("#integerNumber").addClass("blinking-once");
+			$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
+			$('.introjs-prevbutton').show();
+			charAtEnd('integerNumber');
+			$(".user-btn").click(function() {
+				$(".user-btn").remove();
+				opearationRepeatFunction();
+			});
+		});
+	});
+}
 function opearationRepeatFunction() {
+	$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
 	$("#integerNumber").attr({contenteditable: 'false'});
 	var text = "Now let us write the if condition to verify the given number is <span class='ct-code-b-yellow'>even</span> or "+
 	"<span class='ct-code-b-yellow'>odd</span>."
 	typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {	
 		nextButtonFucntion(function() {
-			var text = $("#ifLine").html();
+			var text = ifLine;
 			typing('#ifLine', text, typingInterval, 'white', function() {
 				TweenMax.to($("#print1"), 1, {opacity: 1, onComplete: function() {
-					var text = $("#elseLine").html();
+					var text = elseLine;
 					typing('#elseLine', text, typingInterval, 'white', function() {
 						TweenMax.to($("#print2"), 1, {opacity: 1, onComplete: function() {
 							TweenMax.to($("#closeCurlyBrace"), 1, {opacity: 1, onComplete: function() {
@@ -149,6 +221,10 @@ function executionDivFunction() {
 							$("#fontCheck").append('<i class="fa fa-check" aria-hidden="true" style="color: green;"></i>');
 							var text = "The condition evaluates <span class='ct-code-b-yellow'>true</span>.";
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+								$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn1'>&#8592; Back</a>");
+								$(".user-btn1").click(function() {
+									totalRevStep();
+								});
 								nextButtonFucntion(function() {
 									finalResultStepFunction();
 								});
@@ -157,6 +233,10 @@ function executionDivFunction() {
 							$("#fontCheck").append('<i class="fa fa-times" aria-hidden="true" style="color: red;"></i>');
 							var text = "The condition evaluates <span class='ct-code-b-yellow'>false</span>.";
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+								$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn1'>&#8592; Back</a>");
+								$(".user-btn1").click(function() {
+									totalRevStep();
+								});
 								nextButtonFucntion(function() {
 									finalResultStepFunction();
 								});
@@ -168,8 +248,22 @@ function executionDivFunction() {
 		});
 	});
 }
+function totalRevStep() {
+	$("#reminder3Span").empty().append(remainderSpan3);
+	$("#remainderExecutionSpan").text("number");
+	$("#multiplyNumber4, #reminder3Span,#inputNumber, #closedBrace3, #quotient3,#openBrace3").addClass("opacity00").removeAttr('style');
+	$("#inputNumberId, #quotient3, #calculation3").text("");
+	$("#calculation3").empty().removeAttr('style').removeClass("opacity00 background-effect");
+	$("#remainderExecution, #borderTop3, #executionDiv").addClass("opacity00");
+	$("#print1, #print2, #closeCurlyBrace").css("opacity", "0");
+	$("#ifLine, #elseLine, #fontCheck").empty();
+	$(".user-btn1,.user-btn").remove();
+	$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+	totalDivFirstStep();
+}
 
 function finalResultStepFunction() {
+	$(".user-btn1").remove();
 	if ($("#reminder3Span").text() == 0 ) {	
 		$("#ifCondition").addClass("blinking");
 		transferEffect($("#ifCondition"), $("#print1"), function() {
@@ -211,6 +305,7 @@ function recursionFunction() {
 	$("#variablesId").addClass("blinking");
 	var text = "Now you can change the number and verify the condition by click on the <b>next</b> button otherwise click to <b>restart</b>.";
 	typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+		$(".introjs-prevbutton").hide();
 		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
 		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn-restart' id='restart'><i class='fa fa-refresh'></i>&nbsp;Restart</a>");
 		
@@ -231,11 +326,11 @@ function recursionFunction() {
 		});
 		$(".user-btn-restart").click(function() {
 			$(".user-btn-restart").remove();
+			$(".user-btn").remove();
 			location.reload();
 		});
 	});
 }
-
 
 function typing(typingId, text, typingInterval, cursorColor, typingCallbackFunction) {
 	$(typingId).removeClass("opacity00");
@@ -278,6 +373,7 @@ function tweenmaxValueAnimationWithTop(selector1, selector2, callBackFunction) {
 
 function zoomingEffect(selector, callBackFunction) {
 	$(selector).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+		$(selector).removeClass("animated zoomIn");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}	
@@ -336,7 +432,6 @@ function charAtEnd(elementId) {
 			$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'></span>");
 			e.preventDefault();
 		} else {
-		//	$(".introjs-duplicate-nextbutton").remove();
 		}
 	});
 	
@@ -346,7 +441,9 @@ function charAtEnd(elementId) {
 		if ($(this).text() == "") {
 			$('.introjs-tooltiptext').append("<span class='ct-color-red length-error-text'><b>Please enter number.</b></span>");
 			$('.user-btn').hide();
+			$('.introjs-prevbutton').hide()
 		} else {
+			$('.introjs-prevbutton').show()
 			$('.user-btn').show();
 		}
 	});
@@ -360,7 +457,6 @@ function oddNumberExample() {
 }
 
 function calucationForOddNumDivision() {
-//	$(".user-btn").remove();
 	divisionPartAnimation("#openBrace1", "#closedBrace1", "#multiplyId", "#multiplyNumber1", "#quotient1", "#calculation1", '44', "#borderTop1", 
 			"#oddNumberId", "#reminder1PopOver", "#firstNumber", "#secondNumber", '1', function() {
 		$('#quotient1').popover({
@@ -420,7 +516,7 @@ function calucationForEvenNumDivision() {
 					var text = "Since the remainder is <span class='ct-code-b-yellow'>0</span> so the number "+
 					"<span class='ct-code-b-yellow'>78</span> is <span class='ct-code-b-yellow'>even</span>.";
 					typing(".introjs-tooltiptext", text, typingInterval, 'white', function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton,.introjs-prevbutton').show();
 					});
 				}});
 			});

@@ -184,6 +184,7 @@ ul.expl {
 #addressAnimationDiv, #addressAnimationDiv1 {
 	min-height: 131px;
 	border-top: 0px;
+	background-color: aliceblue;
 }
 div, span {
 	position: relative;
@@ -223,6 +224,18 @@ div, span {
 
 .user-btn {
 	background-color:green;
+}
+.blinking {
+	animation-name: blink;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+}
+
+@keyframes blink { 
+50% {
+	background: orange;
+}
+
 }
 
 .blinking-white {
@@ -275,7 +288,7 @@ div, span {
 .box-border {
 	border: 1px solid gray;
 }
-.errorText {
+.error-text {
 	color: red;
 	font-weight: bold;
 }
@@ -284,6 +297,7 @@ div, span {
 	background-color: rgba(165, 165, 165, 0.5);
 	border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    padding: 4px;
 }
 .padding00 {
 	padding : 0px;
@@ -297,6 +311,7 @@ div, span {
 	font-weight: bold;
 }
 .method-box-text-css {
+	padding: 1px;
 	background: lightblue none repeat scroll 0 0;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -350,33 +365,32 @@ div, span {
 <span id="preDir"><span id="include">#include</span> &lt;<span
 							id="ioStream">iostream</span>&gt;</span>
 <span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
-<span id="class">class Student {
-		<span id="char">char <span id="charName">name[20]</span>;</span>
-		<span id="init">int <span id="intNum">no</span>, <span id="intMarks">marks</span>;</span>
-		public: <span id="friendFunction">friend ostream & operator << (ostream &, Student &);</span>
-				  <span id="friendFunction1">friend istream & operator >> (istream &, Student &);</span>
+<span id="class" class="opacity00">class Student {
+		<span id="char" class="opacity00">char <span id="charName" class="opacity00">name[20];</span></span>
+		<span id="init" class="opacity00">int <span id="intNum" class="opacity00">no,</span> <span id="intMarks" class="opacity00">marks;</span></span>
+		<span id="public"  class="opacity00">public: <span id="friendFunction" class="opacity00">friend ostream &operator << (ostream &, Student &);</span>
+				  	<span id="friendFunction1" class="opacity00">friend istream &operator >> (istream &, Student &);</span></span>
 };</span>
-<span id="frndFunCout">ostream & operator << (ostream &output, Student &s) { 
-		<span id="sN">output << "student name : " ;</span>
-		<span id="sName1">output << <span id="name">s.name</span>;</span>
-		<span id="nAM">output << "no and marks : ";</span>
-		<span id="sNAM1">output << <span id="num">s.no</span> << <span id="mark">s.marks</span></span>
-		<span id="return1">return(output);</span>
+<span id="frndFunCout" class="opacity00">ostream &operator << (ostream &output, Student &s) { 
+		<span id="sN" class="opacity00">output << "student name : " ;</span>
+		<span id="sName1" class="opacity00">output << <span id="name">s.name</span>;</span>
+		<span id="nAM" class="opacity00">output << "no and marks : ";</span>
+		<span id="sNAM1" class="opacity00">output << <span id="num">s.no</span> << <span id="mark">s.marks</span>;</span>
+		<span id="return1" class="opacity00">return output;</span>
 }</span>
-<span id="frndFunCin">istream & operator >> (istream &input, Student &s) { 
-		<span id="eSN">cout << "Enter student name : ";</span>
-		<span id="sName">input >> s.name;</span>
-		<span id="eNAM">cout << "Enter no and marks :  ";</span> 
-		<span id="sNAM">input >> s.no >> s.marks; </span>
-		<span id="return">return input;</span>
+<span id="frndFunCin" class="opacity00">istream &operator >> (istream &input, Student &s) { 
+		<span id="eSN" class="opacity00">cout << "Enter student name : ";</span>
+		<span id="sName" class="opacity00">input >> s.name;</span>
+		<span id="eNAM" class="opacity00">cout << "Enter no and marks :  ";</span> 
+		<span id="sNAM" class="opacity00">input >> s.no >> s.marks; </span>
+		<span id="return" class="opacity00">return input;</span>
 }</span>
-<span id="main">main() {
-		<span id="sInit">Student <span id="s1">s1</span>, <span id="s2">s2</span>;</span>
-		<span id="eSd">cout << "Enter two students details : " << endl;</span>
-		<span id="sEnter">cin >> s1 >> s2;</span>
-		<span id="tSd">cout << "The student details are : " << endl;</span>
-		<span id="sOut">cout << s1 << s2;</span>
-		<span id="retNull">return 0;</span>
+<span id="main" class="opacity00">main() {
+		<span id="sInit" class="opacity00">Student <span id="s1">s1</span>, <span id="s2">s2</span>;</span>
+		<span id="eSd" class="opacity00">cout << "Enter two students details : " << endl;</span>
+		<span id="sEnter" class="opacity00">cin >> s1 >> s2;</span>
+		<span id="tSd" class="opacity00">cout << "The student details are : " << endl;</span>
+		<span id="sOut" class="opacity00">cout << s1 << s2;</span>
 <span id="end">}</span></span>
 					</pre>
 				</div>
@@ -447,7 +461,9 @@ div, span {
 					</div>
 					<div id="addressDiv1"
 						class="col-xs-12 padding00 margin-top-2 opacity00">
-						<div class="method-box-text-css box-border opacity00" id="obj1">s2</div>
+						<div class="text-center box-Heading">
+							<div class="method-box-text-css box-border opacity00" id="obj1">s2</div>
+						</div>
 						<div class="col-xs-12 box-border opacity00"
 							id="addressAnimationDiv1">
 							<table id="tableId1" class="table opacity00">
@@ -523,8 +539,7 @@ div, span {
 								</div>
 								<div id="enterNAM" class="opacity00">
 									Enter no and marks : <span id="printLineInConsoleNAM"><div
-											id="printLineInConsole1" contenteditable="false" 
-											class="position input-char"></div></span>
+											id="printLineInConsole1" class="position input-char"></div></span>
 								</div>
 								<div id="enterStuName1" class="opacity00">
 									Enter student name : <input id="enterName1"
@@ -546,7 +561,6 @@ div, span {
 										class="opacity00 ct-sgreen-color"></span>  <span id="printLineInConsole41"
 										class="ct-sgreen-color"></span>
 								</div>
-								<br>
 								<div id="stuName1" class="opacity00">
 									student name : <span id="printLineInConsole5"
 										class="opacity00 ct-sgreen-color"></span>

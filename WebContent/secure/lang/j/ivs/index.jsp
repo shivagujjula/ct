@@ -329,38 +329,55 @@
 						<td></td>
 						<td></td>
 					</tr>
+					
 					<tr>
 						<td>2</td>
 						<td>String methods</td>
-						<td>
-							<div>
-								<a class='btn btn-xs btn-success'
+						<td><a class='btn btn-xs btn-success'
 								href="javascript:opendialog('String equal method', '/secure/lang/j/string/equal-methods.jsp?id=1', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String equal method</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					
+					<tr>
+						<td>3</td>
+						<td>String methods</td>
+						<td><a class='btn btn-xs btn-success'
 								href="javascript:opendialog('String equalsIgnoreCase method', '/secure/lang/j/string/equal-methods.jsp?id=2', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String equalsIgnoreCase method</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>String methods</td>
+						<td><a class='btn btn-xs btn-success'
 								href="javascript:opendialog('String startsWith method', '/secure/lang/j/string/starts-with-methods.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String startsWith method</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-								href="javascript:opendialog('String endsWith method', '/secure/lang/j/string/ends-with-method.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String endsWith method</span>
-							</div>
-						</td>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String startsWith method</span></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>3</td>
+						<td>5</td>
+						<td>String methods</td>
+						<td><a class='btn btn-xs btn-success'
+								href="javascript:opendialog('String endsWith method', '/secure/lang/j/string/ends-with-method.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String endsWith method</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					
+					<tr>
+						<td>6</td>
 						<td>String methods</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String indexOf method', '/secure/lang/j/string/string-indexof-methods.jsp', 1, 1)"><i
@@ -371,7 +388,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td>4</td>
+						<td>7</td>
 						<td>String methods</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String substring method', '/secure/lang/j/string/string-methods-demo.jsp?id=2', 1, 1)"><i
@@ -382,7 +399,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td>5</td>
+						<td>8</td>
 						<td>String methods</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-methods-demo.jsp?id=3', 1, 1)"><i

@@ -249,7 +249,7 @@ function introGuide() {
 			switch(animateStep) {
 			case "obj" :
 				$("#addressDiv, #obj, #addressAnimationDiv").addClass("opacity00");
-				TweenMax.to("#tableId, #noBox, #marksBox", 0.5, {opacity: 0});
+				$("#tableId, #noBox, #marksBox").css("opacity",0);
 				$("#addressDiv").removeAttr("style");
 				break;
 			}
@@ -791,13 +791,13 @@ function introGuide() {
 					for(var i = 0; i <= result.length; i++) {
 						if (result.length >= 0 && result.length < 20) {
 							if (i == result.length) {
-								$("table tr:nth-child(2) td:eq("+ (i+1) + ")");
+								$("table tr:nth-child(2) td:eq("+ (i+1) + ")").text("\\0");;
 							} else {
 								$("table tr:nth-child(2) td:eq("+ (i+1) +")").text(result[i]);
 							}
 						}  else {
 							if (i == 19) {
-								$("table tr:nth-child(2) td:eq("+ (i+1) + ")");
+								$("table tr:nth-child(2) td:eq("+ (i+1) + ")").text("\\0");;
 								break;
 							} else {
 								$("table tr:nth-child(2) td:eq("+ (i+1) +")").text(result[i]);

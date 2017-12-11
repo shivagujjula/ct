@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -119,6 +117,45 @@
 	min-width: 110px !important;
 }
 
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
+/* a:focus {
+	outline: none;
+} */
+
+
+y {
+	font-family: monospace;
+	font-weight: bold;
+	color: yellow;
+}
+
+
+
+
 </style>
 </head>
 <body>
@@ -129,25 +166,25 @@
 	<div id="mainBox" class="col-xs-12 margin-top-20">
 		<div class="col-xs-offset-2 col-xs-5">
 <pre id="codeAnimation" class='creampretab4 box-border'>
-#include&lt;iostream&gt;
-using namespace std;
-int main() {
-	<span id="varInit">int a , b , c ;</span>
-	<span id="mainPrintf">cout << "Enter the values of a , b , c : ";</span>
+<in>#include</in> <ink>&ltiostream&gt;</ink>
+<span><in>using</in> <ink>namespace</ink> std;</span>
+<go>int</go> main() {
+	<span id="varInit"><g>int</g> a , b , c ;</span>
+	<span id="mainPrintf">cout << <ink>"Enter the values of a , b , c : "</ink>;</span>
 	<span id="mainScanf">cin >> a >> b >> c;</span>
-	<div id="nestedIf" class="flip">if (<span id="ifCondtn">a > b</span>) {
-	<div class="flip" id="nestedBlock1">if (<span id="ifCond1">a > c</span>) {
-	<span id="printfInIf1">cout << a << " is the biggest number"; </span>
-} else {
-	<span id="printfInIf2">cout << c << " is the biggest number"; </span>
+	<div id="nestedIf" class="flip"><go>if</go> (<span id="ifCondtn">a > b</span>) {
+	<div class="flip" id="nestedBlock1"><go>if</go> (<span id="ifCond1">a > c</span>) {
+	<span id="printfInIf1">cout << a << " is the biggest number";</span>
+} <go>else</go> {
+	<span id="printfInIf2">cout << c << " is the biggest number";</span>
 }</div>
 }
-<div id="elseBlock" style = "display: inline-block; position: relative;">else {
-	<div class="flip" id="nestedBlock2">if (<span id="ifInElse">b > c</span>) {
-	<span id="printfInElse1">cout << b << " is the biggest number"; </span>
+<div id="elseBlock" style = "display: inline-block; position: relative;"><go>else</go> {
+	<div class="flip" id="nestedBlock2"><go>if</go> (<span id="ifInElse">b > c</span>) {
+	<span id="printfInElse1">cout << b << " is the biggest number";</span>
 }
-else {
-	<span id="printfInElse2">cout << c << " is the biggest number"; </span>
+<go>else</go> {
+	<span id="printfInElse2">cout << c << " is the biggest number";</span>
 }</div>
 }</div></div>
 <span id="endMain">}</span></pre>

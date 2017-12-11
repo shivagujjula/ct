@@ -1,5 +1,3 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +17,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/ptc.min.js"></script>
+<script type="text/javascript" src="/secure/lang/cpp/js-min/ptc.min.js"></script> 
+
 <style type="text/css">
 
 .margin-top-20 {
@@ -92,6 +91,7 @@
 
 pre {
 	border:medium none;
+	font-size: 12px;
 }
 
 #codeDiv pre {
@@ -168,6 +168,30 @@ pre {
 	color : yellow;
 	
 }
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
 </style>
 </head>
 <body>
@@ -185,7 +209,7 @@ $(document).ready(function() {
 	</div>
 	<div class="col-xs-offset-1 col-xs-10 margin-top-20">
 		<div id="topDiv">
-			<div id="typingDiv1">
+			<div id="typingDiv1" style="font-family: monospace;">
 				<ul>
 					<li id="li1" class="opacity00">In mathematics, Pascal's triangle is a triangular array of
 						the binomial coefficients.</li>
@@ -274,22 +298,22 @@ $(document).ready(function() {
 	<div class="col-xs-12 center margin-top-20">
 		<div class='col-xs-offset-1 col-xs-5' ><div id="codeDiv" class='opacity00'>
 	<pre class='bg-info'>
-#include &lt;iostream&gt;
+<in>#include</in> <ink>&lt;iostream&gt;</ink>
 using namespace std;
-<span id='mainMethod'>int <span id='main'>main()</span> {
-	<span id='variableDeclaration'>int rows, index, spaces, col, number;</span>
-	<span id='getPrintf'>cout << "Enter number of rows: ";</span>
+<span id='mainMethod'><g>int</g> <span id='main'>main()</span> {
+	<span id='variableDeclaration'><g>int</g> rows, index, spaces, col, number;</span>
+	<span id='getPrintf'>cout << <ink>"Enter number of rows: "</ink>;</span>
 	<span id='getScanf'>cin >> rows;</span>
-	<span id="totalForLoop"><span class='outer'>for (<span id='forLoopI'>index = 0</span>;<span id='iCondition'> index < rows</span>; <span id='iIncrements'>index++</span>) {</span>
-		<span id='firstInnerForLoop'><span class='inner-one'>for (<span id='forLoopJ'>spaces = rows</span>; <span id='jCondition'>spaces > index</span>; <span id='jIncrement'>spaces--</span>) {</span>
-			<span class='inner-one' id='printfSpace'>cout << " ";</span>
+	<span id="totalForLoop"><span class='outer'><go>for</go> (<span id='forLoopI'>index = <ink>0</ink></span>;<span id='iCondition'> index < rows</span>; <span id='iIncrements'>index++</span>) {</span>
+		<span id='firstInnerForLoop'><span class='inner-one'><go>for</go> (<span id='forLoopJ'>spaces = rows</span>; <span id='jCondition'>spaces > index</span>; <span id='jIncrement'>spaces--</span>) {</span>
+			<span class='inner-one' id='printfSpace'>cout << <ink>" "</ink>;</span>
 		<span class='inner-one'>}</span></span>
-		<span id="numberReset">number = 1;</span>
-		<span id='secondInnerForLoop'><span class='inner-two'>for (<span id='forLoopK'>col = 0</span>; <span id='kCondition'>col <= index</span>; <span id='kIncrement'>col++</span>) {</span>
-			<span id='codeStarPrint' class='inner-two'>cout << number;</span>
-			<span id="numberSet" class='inner-two'>number = number * (index - col) / (col + 1);</span>
+		<span id="numberReset">number = <ink>1</ink>;</span>
+		<span id='secondInnerForLoop'><span class='inner-two'><go>for</go> (<span id='forLoopK'>col = <ink>0</ink></span>; <span id='kCondition'>col <= index</span>; <span id='kIncrement'>col++</span>) {</span>
+			<span id='codeStarPrint' class='inner-two'>cout << <ink>" "</ink> << number;</span>
+			<span id="numberSet" class='inner-two'>number = number * (index - col) / (col + <ink>1</ink>);</span>
 		<span class='inner-two'>}</span></span>
-		<span id="codeNextLine" class='outer'>cout << "\n";</span>
+		<span id="codeNextLine" class='outer'>cout << <ink>"<in>\n</in>"</ink>;</span>
 	<span class='outer'>}</span></span></span>
 }</pre>
 	</div></div>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Operator Precedence Table</title>
+<title>Operator Precedence Table c++</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
@@ -57,12 +57,14 @@ td {
 		<tr>
 			<td>1</td>
 			<td>
+				<div class='borderBottom'><b>: :</b></div>
 				<div class='borderBottom'>( )</div>
 				<div class='borderBottom'>[ ]</div>
 				<div class='borderBottom'>.</div>
 				<div>---></div>
 			</td>
 	    	<td>
+	    		<div class='borderBottom'>Scope resolution</div>
 	    		<div class='borderBottom'>Functional cell(or) Parentheses</div>
 	    		<div class='borderBottom'>Array subscript</div>
 				<div class='borderBottom'>Dot</div>
@@ -80,6 +82,8 @@ td {
 				<div class='borderBottom'>--</div>
 				<div class='borderBottom'>&</div>
 				<div class='borderBottom'>*</div>
+				<div class='borderBottom'>new</div>
+				<div class='borderBottom'>delete</div>
 				<div class='borderBottom'>(fata_type)</div>
 				<div>sizeof()</div>
 			</td>
@@ -91,6 +95,8 @@ td {
 				<div class='borderBottom'>Decrement</div>
 				<div class='borderBottom'>Address of</div>
 				<div class='borderBottom'>Indirection</div>
+				<div class='borderBottom'>	Dynamic memory allocation</div>
+				<div class='borderBottom'>	Dynamic memory deallocation</div>
 				<div class='borderBottom'>Cast oparator</div>
 				<div>sizeof special operator</div>
 	    	</td> 
@@ -99,12 +105,14 @@ td {
 		<tr>
 			<td>3</td>
 			<td>
+				<div class='borderBottom'>.*   ->*</div>
 				<div class='borderBottom'>*</div>
 				<div class='borderBottom'>/</div>
 				<div>%</div>
 				
 			</td>
 	    	<td>
+	    		<div class='borderBottom'>Pointer-to-member</div>
 	    		<div class='borderBottom'>Multiplication</div>
 	    		<div class='borderBottom'>Division</div>
 				<div>Modulus</div>

@@ -20,7 +20,8 @@
    		<script src="/js/gs/TweenMax.min.js"></script>
    		<script src="/js/gs/TweenLite.min.js"></script>
    		<script src="/js/typewriting.min.js"></script>
-   		<script src="../js-min/ewm.min.js"></script>
+   		<!-- <script src="../js-min/ewm.min.js"></script> -->
+   		<script src="/secure/lang/j/js/ends-with-method.js"></script>
    		
 
 <title>Insert title here</title> 
@@ -153,12 +154,18 @@ pre {
 	color: #ed138e;
 }
 
+
+.row {
+	margin-right: 0px !important;
+}
+
 </style>
 
 </head>
 <body>
 
 <script type="text/javascript">
+
 	$(document).ready(function(){
 		endsWithMethodReady();
 	});
@@ -166,7 +173,7 @@ pre {
 	
 
 </script>
-
+<div class="col-xs-12">
 	<h3 class="headings" ><span class="label label-default titles">EndsWith Method in Action</span></h3>
 
 	<div class = 'codeAndAnimation row'>
@@ -191,7 +198,7 @@ pre {
 		
 			</div>
 	</div>
-	<div id = 'restartDiv' class = 'col-xs-offset-5'> <button id ='restart' type="button" class="btn btn-success">Restart</button> </div>
+	<div id = 'restartDiv' class = 'col-xs-offset-5'> <button id ='restart' type="button" class="btn btn-warning">restart</button> </div>
 	</div>
 		
 	<div id = "textBoxes" class="row col-xs-offset-0">	
@@ -217,6 +224,6 @@ pre {
 		<div id= "result" class='results'> &nbsp;</div>
 		<div id = 'lengthError' class='result-font remove-typingCursor'> </div>
 	</div>
-	
+	</div>
 </body>
 </html>

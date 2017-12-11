@@ -1,4 +1,4 @@
-var value;
+var value = 1;
 var condition;
 var introjs;
 var incrementTextTypingSpeed = 0;
@@ -34,9 +34,12 @@ introJsGuide();
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
         	$(".initializeBtn").removeClass("opacity00");
+        	value = parseInt($('#initializationValue').text());
+        	$(".introjs-prevbutton").show();
         } else {
         	$(".initializeBtn").addClass("opacity00");
         	$('.errorText').html("Please initialize the variable <b class='ct-code-b-yellow'>value</b> with a value.");
+        	$(".introjs-prevbutton").hide();
 			charAtEnd("initializationValue");
         }
     });
@@ -47,6 +50,7 @@ introJsGuide();
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
         	$(".evaluateBtn").removeClass("opacity00"); 
+
         } else {
         	$(".evaluateBtn").addClass("opacity00");
         	$('.errorText').html("Please enter a value.");
@@ -55,10 +59,13 @@ introJsGuide();
     });
 
 	$('.initializeBtn').click(function() {
+		$(".introjs-prevbutton").hide();
 		value = parseInt($("#initializationValue").text());
 		$(this).addClass('hidden');
+		
 		$('#initializationValue').removeClass('position-absolute');
 		$('#initializationValue').addClass('position-relative');
+		
 		initializeCup();
 	});
 	
@@ -81,11 +88,25 @@ introJsGuide();
 		introjs.goToStep(8);
 	});
 	
+	
+	var flag = true;
 	$('.continueBtn').click(function() {
 		$(this).addClass('hidden');
+		if (flag) {
+			$('.FinishBtn').addClass('hidden abc');
+		} else {
+			$('.FinishBtn').addClass('hidden');
+		}
 		$('.FinishBtn').addClass('hidden');
+		
 		introjs.goToStep(4);
 	});
+	
+	$(".oneStepBackBtn").click(function() {
+		evaluateBtnCount = 0;
+		introjs.goToStep(7);
+	})
+	
 	
 	$("#initialization").click(function() {
 		$("#initializationValue").focus();
@@ -109,6 +130,7 @@ introJsGuide();
 	
 	$('.evaluateBtn').click(function() {
 		isCompleted = true;
+		$(".introjs-prevbutton").hide();
 		if ($("#conditionValue").text().length > 0) {
 			$(this).addClass('hidden');
 			$('#conditionValue').attr('contenteditable', false);
@@ -136,11 +158,13 @@ introJsGuide();
 						});
 					} else {
 						typing('#conditionTyping', 'evaluates to <b class="ct-code-b-yellow">true</b>.', function() {
-							$('.introjs-nextbutton').addClass("hidden opacity00");
 							$('.continueBtn').removeClass("hidden opacity00");
+							$('.introjs-prevbutton').show();
 						});
 					}
-					evaluateBtnCount++;
+					if (introjs._direction == "forward") {
+						evaluateBtnCount++;
+					}
 				});
 			} else {
 				$('#value').one('animationend', function() {
@@ -151,7 +175,6 @@ introJsGuide();
 								+ "<b class='ct-code-b-yellow'>do-while</b> body and the program terminates.";
 					
 					typing('#conditionTyping', text , function() {
-						$('.introjs-nextbutton').addClass("hidden opacity00");
 						$('.FinishBtn').removeClass("hidden opacity00");
 					});
 					$('.FinishBtn').text("Done");
@@ -198,14 +221,16 @@ function initializeCup() {
 }
 
 function travelEffect() {
-	$(".introjs-nextbutton").addClass("opacity00");
+	$(".introjs-nextbutton, .introjs-prevbutton").hide();
 	var l1 = $('#travelledNum').offset();
 	var l2 = $('#cup_num').offset();
 	var topLength = l2.top-l1.top;
 	var leftLength = l2.left-l1.left;
 	
 	TweenMax.to('#travelledNum', 1, {top:"+=" + topLength, left: "+=" + leftLength, onComplete: function() {
+		
 		$('#travelledNum').css({'top': '', 'left': ''});
+		
 		setTimeout(function() {
 			$('#cupValue').text(value);
 		}, 500);
@@ -219,7 +244,7 @@ function travelEffect() {
 			var leftLength = l2.left-l1.left;
 			$('#updatedValue').offset({'top':l2.top, 'left':l2.left});
 			$('#updatedValue').animate({'top': 0, 'left' : 0}, 1000, function() {
-				$(".introjs-nextbutton").removeClass("opacity00");
+				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			});
 		});
 		
@@ -227,13 +252,13 @@ function travelEffect() {
 }
 
 function typing(id, content, callBackFunction) {
-	var typingSpeed = 20;
+	var typingSpeed = 1;
 	if (id.substring(1) === 'incrementText') {
 		if (incrementTextTypingSpeed == 0) {
-			typingSpeed = 20;
-			incrementTextTypingSpeed = 10;
+			typingSpeed = 1;
+			incrementTextTypingSpeed = 1;
 		} else {
-			typingSpeed = 20;
+			typingSpeed = 1;
 		}
 	}
 	$(".introjs-nextbutton").addClass("opacity00 hidden");
@@ -245,6 +270,7 @@ function typing(id, content, callBackFunction) {
 		$(".introjs-nextbutton").removeClass("opacity00 hidden");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -254,38 +280,36 @@ function introJsGuide() {
 	introjs.setOptions({
 		steps : [ {
 			element : '#doWhile',
-			intro : "Above code demonstrates the working of <b class='ct-code-b-yellow'>do-while</b>.",
-			position : 'bottom'
+			intro : "",
+			position : 'bottom',
+			tooltipClass: "hide"
 		},{
 			element : '#initialization',
-			intro : "The <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>value</b> is declared and initialized to " 
-					+ "<b class='ct-code-b-yellow changeVal'>1</b>. <br/><br/>You can also change the " 
-					+ "value <b class='ct-code-b-yellow changeVal'>1</b> to any other number." 
-					+ "<br><span class='errorText'></span>",
+			intro : "",
 			position : 'bottom',
+			tooltipClass: "hide"
 		},{
 			element : '#docondition',
 			intro : "",
 			position : 'bottom',
 		},{
 			element : '#statement',
-			intro : 'Above statement prints the value of variable <b class="ct-code-b-yellow">value</b>.',
-			position : 'bottom'
+			intro : '',
+			position : 'bottom',
+			tooltipClass: "hide"
 		}, {
 			element : '#outputDiv',
 			tooltipClass : 'hide'
 		}, {
 			element : '#update',
-			intro : "<span class='incrementText'></span>",
-			position : 'right'
+			intro : "",
+			position : 'right',
+			tooltipClass:"hide"
 		}, {
 			element : '#condition',
-			intro : "This is the <b class='ct-code-b-yellow'>condition</b> part. <br>If the condition evaluates " 
-					+ "to <b class='ct-code-b-yellow'>true</b>, the control enters into the " 
-					+ "<b class='ct-code-b-yellow'>do-while</b> body." 
-					+ "<br><span class='errorText'>"
-					+ "<br></span><span id='conditionTest'></span><br><span id='conditionTyping'></span>",
-			position : 'bottom'
+			intro : "",
+			position : 'bottom',
+			tooltipClass: "hide"
 		}, {
 			element: "#mainEnd",
 			intro : "",
@@ -305,66 +329,173 @@ function introJsGuide() {
 	$('.introjs-prevbutton').hide();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
+	
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button initializeBtn hidden'>Next &#8594;</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button evaluateBtn hidden'>Next &#8594;</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button incrementBtn hidden'>Next &#8594;</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button FinishBtn hidden'>Finish</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button continueBtn hidden'>Next &#8594;</a>");
-	introjs.onafterchange(function(targetElement) {
+	$(".introjs-tooltipbuttons").prepend("<a class='introjs-button oneStepBackBtn hidden'>&#8594; Back</a>");
+	
+	
+	introjs.onbeforechange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "initialization" :
+			if (introjs._direction == "backward") {
+				$('#initializationValue').removeAttr("style");
+				$(".cup-bg").removeAttr("style");
+				$("#cupValue").text('');
+			}
+			break;
+		case "update" :
+			if (introjs._direction == "backward") {
+				value--;
+				if ($("#conditionValue").text().length > 0) {
+					if ( value <= condition) {
+						if (evaluateBtnCount > 0) {
+							evaluateBtnCount--;
+						}
+					}
+				}
+			}
+			break;
+		}
+	});
+	
+	
+	
+	
+	introjs.onafterchange(function(targetElement) {
+		
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0 && targetElement.id !== "codeDiv") {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+		
+		case "doWhile":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#initializationValue").attr("contenteditable", true);
-				$('.introjs-nextbutton').addClass("opacity00");
-				$('.initializeBtn').removeClass("hidden");
-				
-				charAtEnd("initializationValue");
+				$(".initializeBtn").addClass("hidden");
+				$(".introjs-tooltip").removeClass("hide");
+				var text = "Above code demonstrates the working of <b class='ct-code-b-yellow'>do-while</b>.";
+					typing(".introjs-tooltiptext", text, function() {
+						
+						$('.introjs-nextbutton').show();
+					})
+			})	
+		break;	
+		
+		case "initialization" :
+			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".introjs-tooltip").removeClass("hide");
+				var text = "The <b class='ct-code-b-yellow'>int</b> variable <b class='ct-code-b-yellow'>value</b> is declared and initialized to " 
+					+ "<b class='ct-code-b-yellow changeVal'>"+ value +"</b>. <br/><br/>You can also change the " 
+					+ "value <b class='ct-code-b-yellow changeVal'>"+ value +"</b> to any other number." 
+					+ "<br><span class='errorText'></span>";
+				typing(".introjs-tooltiptext", text, function() {
+					$("#initializationValue").attr("contenteditable", true);
+					$('.initializeBtn').removeClass("hidden");
+					$('.introjs-prevbutton').show();
+					charAtEnd("initializationValue");
+				})
 			});
 			break;
 		case "docondition" :
-			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$('.introjs-tooltipbuttons').hide();
 				var text = "<b class='ct-code-b-yellow'>do-while</b> is an <b class='ct-code-b-yellow'>exit controlled loop</b> where the statements are executed atleast once.";
 				typing(".introjs-tooltiptext", text, function() {
-					$('.introjs-tooltipbuttons').show();
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "condition" :
-			$('.introjs-nextbutton').addClass("opacity00");
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".oneStepBackBtn").addClass("hidden");
 				charAtEnd("conditionValue");
-				$('.introjs-nextbutton').addClass("opacity00");
-				$('.evaluateBtn').removeClass("hidden");
+				$(".introjs-tooltip").removeClass("hide");
+				if(introjs._currentStep == 6) {
+				var text = "This is the <b class='ct-code-b-yellow'>condition</b> part. <br>If the condition evaluates " 
+					+ "to <b class='ct-code-b-yellow'>true</b>, the control enters into the " 
+					+ "<b class='ct-code-b-yellow'>do-while</b> body." 
+					+ "<br><span class='errorText'>"
+					+ "<br></span><span id='conditionTest'></span><br><span id='conditionTyping'></span>";
+				
+				typing('.introjs-tooltiptext', text, function() {
+					$('.evaluateBtn').removeClass("hidden");
+					$(".introjs-prevbutton").show();
+				})
+			} else {
+				
+				$(".introjs-tooltiptext").append("<span id='conditionTest'></span><br><span id='conditionTyping'></span>");
+				
 				if (evaluateBtnCount > 0) {
+					$(".abc").removeClass("abc");
 					$('.evaluateBtn').click();
 				}
+				
+			}	
 			});
 			break;
 		case "statement":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$('#output').append("<div class='opacity00'>value : " + value + "</div>");
-				$('.introjs-tooltipbuttons').show();
+				$(".introjs-tooltip").removeClass("hide");
+				var text = "Above statement prints the value of variable <b class='ct-code-b-yellow'>value</b>.";
+				typing('.introjs-tooltiptext', text, function() {
+					if ($(".FinishBtn").hasClass("abc")) {
+						$(".introjs-nextbutton").show();
+					} else {
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
+					}
+				})
 			});
 			break;
 		case "outputDiv" :
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$('.output-console-body').animate({scrollTop: 1500}, 500);
-				$('#output > div:last-child').fadeTo(1500, 1, function () {
-					introjs.nextStep();
-				});
+				$('.introjs-prevbutton').hide();
+				$(".oneStepBackBtn").addClass("hidden");
+				if (introjs._direction == "forward") {
+					$('#output').append("<div class='opacity00'>value : " + value + "</div>");
+					$('#output > div:last-child').fadeTo(1500, 1, function () {
+						stepNext();
+					});
+				} else {
+					$('#output > div:last-child').remove();
+					$("#cupValue").text(--value);
+					stepNext();
+				}
 			});
 			break;
-		case "update" :
-			$('.introjs-nextbutton').show().addClass("opacity00");
+		case "update":
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".incrementText").remove();
+				$(".evaluateBtn, .continueBtn").addClass("hidden");
+				
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "The post-increment operator increments the value of <b class='ct-code-b-yellow'> variable value</b>" 
 					+ " by <b class='ct-code-b-yellow'>1</b>.<br> Now  <b class=''>" 
 					+ "<span id='travelledNum' class='''>value</span> = <span id='updatedValue'></span></b>";
-			
+				
+				$(".introjs-tooltiptext").append("<span class='incrementText'></span>");
 				typing('.incrementText', text , function() {
 					travelEffect();
 				});
@@ -372,8 +503,6 @@ function introJsGuide() {
 					introjs._introItems[6].intro = "<span id='conditionTest'></span><br><span id='conditionTyping'></span>";
 				}
 				value++;
-				$('.introjs-tooltipbuttons').show();
-				$('.introjs-nextbutton').removeClass("opacity00");	
 			});
 			break;
 		case "mainEnd" :
@@ -384,7 +513,7 @@ function introJsGuide() {
 				var text = "Control comes out of the <b class='ct-code-b-yellow'>do-while</b> loop and the program terminates.";
 				typing(".introjs-tooltiptext", text, function() {
 					$('.introjs-tooltipbuttons').show();
-					$('.introjs-nextbutton').removeClass("opacity00");
+					$('.introjs-nextbutton').show();
 				});
 			});
 			break;
@@ -398,4 +527,42 @@ function introJsGuide() {
 			break;
 		}
 	});
+	
+	$(".introjs-tooltip").removeClass("hide");
+	var text = "Above code demonstrates the working of <b class='ct-code-b-yellow'>do-while</b>.";
+		typing(".introjs-tooltiptext", text, function() {
+			$("#initializeBtn").removeClass("hidden");
+			$('.introjs-nextbutton').show();
+		})
+}
+
+
+function stepNext() {
+	if (introjs._direction == "forward") {
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 800)
+	} else {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 800)
+	}
+}
+
+
+function getStep(element, intro, position, tooltipClass) {
+	var step = {};
+	if (typeof element != 'undefined') {
+		step['element'] = element;
+	}
+	if (typeof intro != 'undefined') {
+		step['intro'] = intro;
+	}
+	if (typeof position != 'undefined') {
+		step['position'] = position;
+	}
+	if (typeof tooltipClass != 'undefined') {
+		step['tooltipClass'] = tooltipClass;
+	}
+	return step;
 }

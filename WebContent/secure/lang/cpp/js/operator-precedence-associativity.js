@@ -1,9 +1,11 @@
 var introjs;
 var timelineLite = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var typing_interval = 10;
+var eqtnExe2;
 
 var operatorPrecedenceAssociativityReady = function() {
+	eqtnExe2 = $("#eqtnExe2").html();
 	introGuide();
 	$("[contenteditable=true]").on("click keydown keyup", function(e) {
 		$(".errMsg").remove();
@@ -32,7 +34,7 @@ var operatorPrecedenceAssociativityReady = function() {
 			e.preventDefault();
 		}
 	});
-	$("#restart").click(function(){
+	$("#restart").click(function() {
 		location.reload();
 	});
 }
@@ -68,7 +70,7 @@ function introGuide() {
 			   },{
 					element : "#printf",
 					intro : "",
-					tooltipClass: "hide"
+					position : "right"
 			   },{
 					element : "#outputDiv",
 					intro : "",
@@ -79,7 +81,35 @@ function introGuide() {
 					position : "right"
 				}
 			]});
-	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "editNum":
+			$("#editNum").addClass("color-black");
+			$("#eqtnExe1").removeClass("color-black");
+		break;
+		case "eqtnExe1":
+			$("#rightDiv").addClass("opacity00");
+			$('#eqtnRef').addClass("opacity00");
+			for (var i = 2; i <= 7; i++) {
+				$("#eqtnExe" + i).addClass("opacity00");
+			}
+			if (introjs._direction == "backward") {
+			$("#eqtnExe2").removeAttr('style').empty().append(eqtnExe2);
+			}
+			break;
+		case "rightDiv":
+			if (introjs._direction == "backward") {
+			$("#rightDiv").addClass("opacity00");
+			$('#eqtnRef').addClass("opacity00");
+			for (var i = 2; i <= 7; i++) {
+				$("#eqtnExe" + i).addClass("opacity00");
+			}
+			$("#eqtnExe2").removeAttr('style').empty().append(eqtnExe2);
+			}
+			break;
+		}
+	})
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -94,6 +124,7 @@ function introGuide() {
 		case "leftDiv":
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
+			$("#editNum").removeClass("color-black");
 			$(".user-btn, .user-btn1, .user-btn2").remove();
 			introjs.refresh();
 			$("[contenteditable=true]").attr("contenteditable", "false");
@@ -110,10 +141,9 @@ function introGuide() {
 		$('.introjs-nextbutton').hide();
 		$('.introjs-prevbutton').hide();
 		introjs.refresh();
-		$("#editNum").addClass("color-black");
 		$("[contenteditable=false]").attr("contenteditable", "true");
 		$(".introjs-helperLayer").one("transitionend", function() {
-			var text = "Please, note you can always change the values assign to <b class='ct-code-b-yellow'>num1</b>, <b class='ct-code-b-yellow'>num2</b>,"
+			var text = "Please, note you can always change the values assigned to <b class='ct-code-b-yellow'>num1</b>, <b class='ct-code-b-yellow'>num2</b>,"
 						+ " <b class='ct-code-b-yellow'>num3</b> and <b class='ct-code-b-yellow'>num4</b>.";
 			typing($(".introjs-tooltiptext"), text, function() {
 				$("#firstVal").effect( "highlight",{color: 'yellow'}, 500, function() {
@@ -122,7 +152,7 @@ function introGuide() {
 							$("#fourthVal").effect("highlight", {color: 'yellow'}, 500, function() {
 								charAtEnd("firstVal");
 								introjs.refresh();
-								$(".introjs-nextbutton").show();
+								$(".introjs-nextbutton,.introjs-prevbutton").show();
 							});
 						});
 					});
@@ -137,9 +167,15 @@ function introGuide() {
 			$(".color-black").removeClass("color-black");
 			$("#eqtnExe1").addClass("color-black");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				if (introjs._direction == "forward") {
 				setTimeout(function(){
 					introjs.nextStep();
 				}, 1000);
+				} else {
+					setTimeout(function(){
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "rightDiv":
@@ -171,9 +207,12 @@ function introGuide() {
 			$(".background-color-blue").removeClass("background-color-blue");
 			$("#printf").addClass("color-black");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 500);
+				var text = "This statement is displayed on console with output value "+
+				"<b class='ct-code-b-yellow'>"+ $('#totalSum').text()+ "</b>.";
+				typing($(".introjs-tooltiptext"), text, function() {
+					introjs.refresh();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
+				});
 			});
 		break;
 		case "outputDiv":
@@ -274,7 +313,7 @@ function animationEqtnExe3() {
 	TweenMax.from("#eqtnExe3", 1, {top: topLength, left: leftLength});
 	
 	$(".introjs-tooltiptext ul").empty();
-	var text = "The sam rule applies untill all the <span class='ct-code-b-yellow'>parenthesis</span> present in the expression are evaluated.";
+	var text = "The same rule applies untill all the <span class='ct-code-b-yellow'>parenthesis</span> present in the expression are evaluated.";
 	typing($(".introjs-tooltiptext"), text, function() {
 		$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="animationInnerEqtnExe3()">Next &#8594;</a>');
 	});
@@ -443,7 +482,7 @@ function animationEqtnExe7() {
 			$("#totalSum").text(parseInt(parseInt($("#num1num2num3Sub").text()) + parseInt($("#divide").text())));
 			TweenMax.to("#totalSum", 0.5, {rotationX : 0, onComplete:function() {
 				$(".background-color-yellow").removeClass("background-color-yellow");
-				$(".introjs-nextbutton").show();
+				$(".introjs-nextbutton, .introjs-prevbutton").show();
 			}});
 		}});
 	});

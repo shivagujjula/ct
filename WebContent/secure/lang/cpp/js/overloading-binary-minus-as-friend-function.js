@@ -850,7 +850,6 @@ function checking(selector) {
 	
 	$(selector).on("keydown", function(e) {
 		$('.introjs-prevbutton').hide();
-		arr = [];
 		if (arr.length == 2) {
 				if (e.keyCode == 32) {
 					e.preventDefault();
@@ -862,11 +861,6 @@ function checking(selector) {
 		if (((e.shiftKey) || (e.keyCode < 48 || e.keyCode > 57)) && ((e.keyCode < 96) || (e.keyCode > 105))) {
 			e.preventDefault();
 		}
-		var max = $(this).attr("maxlength");
-		if ($(this).text().split("").length > max) {
-			//$('.introjs-tooltiptext').append("<span class='ct-code-b-red error-text'><br/>String length to 3.</span>");
-			e.preventDefault();
-		} 
 	});
 	
 	
@@ -887,13 +881,20 @@ function checking(selector) {
 				$('.user-btn').remove();
 				$('.introjs-tooltiptext').append("<span class='error-text'><br/>" + 
 														"Please limit the index " + idx + " number in between 0 and 9.</span>");
-				//$(".introjs-nextbutton").hide();
-				
 			} else if (val.trim().length > 0) {
 				arr.push(val);
 				count++;
 			}
 		});
+		
+		arr = arr1.filter(function(val) {
+			return val.trim().length > 0
+		});
+		
+		if (arr.length < 2 || arr.length > 2){
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
+		} 
+		
 		if (count == 2 ) {
 			if (selector == '#inputChar') {
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="storeVal3()">Next&rarr;</a>');

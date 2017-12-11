@@ -433,7 +433,7 @@ div, span {
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
 								<span id="typeChar"></span>
-									<div id="hiddenTypingChar" class="opacity00">Enter the  real and imaginary parts : <span id="outputPrintfLine"><div id="inputChar" contenteditable="true" maxlength="2" class="position input-char"></div></span></div>
+									<div id="hiddenTypingChar" class="opacity00">Enter the  real and imaginary parts : <span id="outputPrintfLine"><div id="inputChar" contenteditable="true"  class="position input-char"></div></span></div>
 									<div id="hiddenTypingChar1" class="opacity00" >Enter the  real and imaginary parts : <span id="outputPrintfLine1" class="opacity00"><div id="inputChar1" contenteditable="true" maxlength="2" class="opacity00 position input-char"></div></span></div>
 								<div id="printLineInConsole" class="opacity00">addition of complex no's is : <span id="printpreLine2" class="opacity00"></span></div><br>
 							</div>

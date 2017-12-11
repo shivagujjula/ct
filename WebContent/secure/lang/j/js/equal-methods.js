@@ -21,7 +21,7 @@
 			
 		stepsArr.push({
   				element: '#text1Id', 
-  				intro: "This statement initializes the reference <b>text1</b> with <b class='tooltip-text-edit ct-code-b-yellow'>Jurassic</b>.<br><br>The text can be changed to any other value.<br><br><span class = 'errorText'></span>",
+  				intro: "",
   				position: 'right',
 				});
 		stepsArr.push({
@@ -32,7 +32,7 @@
 				});
 		stepsArr.push({
 				element: '#text2Id', 
-  				intro: "Here <b>text2</b> is initialized with <b class='tooltip-text-edit ct-code-b-yellow'>JuraSSic</b>.<br><br>The text can be changed to any other value.<br><br><span class = 'errorText'></span>",
+  				intro: "",
   				position: 'right',
 				});
 				
@@ -90,7 +90,7 @@
 	  	});
 		stepsArr.push({
 			element: '#restart', 
-			intro: "Click to Restart",
+			intro: "Click to restart.",
 			position: 'right',
 		});
 		
@@ -129,9 +129,9 @@
 	    	$(".tooltip-text-edit").text($("#changeText1").text());
 	        if ($(this).text().length > 0) {
 	        	$('.errorText').empty();
-	        	$(".introjs-nextbutton").removeClass("opacity00");
+	        	$(".introjs-nextbutton, .introjs-prevbutton").show();
 	        } else {
-	        	$(".introjs-nextbutton").addClass("opacity00");
+	        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
 	        	$('.errorText').text("please enter text");
 	        }
 	    });
@@ -140,9 +140,9 @@
 			$(".tooltip-text-edit").text($("#changeText2").text());
 	        if ($(this).text().length > 0) {
 	        	$('.errorText').empty();
-	        	$(".introjs-nextbutton").removeClass("opacity00");
+	        	$(".introjs-nextbutton, .introjs-prevbutton").show();
 	        } else {
-	        	$(".introjs-nextbutton").addClass("opacity00");
+	        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
 	        	$('.errorText').text("please enter text");
 	        }
 	    });
@@ -155,12 +155,38 @@
 			text1 = $('#changeText1').text();
 			text2 = $('#changeText2').text();
 			if(element == "text1Id") {
+				
+				introjs._introItems[introjs._currentStep].intro = "This statement initializes the reference <b>text1</b> with "
+					+"<b class='tooltip-text-edit ct-code-b-yellow'>" +$("#changeText1").text()+ "</b>. The text can be changed to "
+					+"any value.<br><br><span class = 'errorText'></span>";
+				
+				$('.temp + span, .temp').remove();
+				$('#enteredText, #textIndices').empty();
+				$('.introjs-prevbutton').show();
 			$("#changeText1").attr("contenteditable", true);
 				setTimeout(function() {
 					charAtEnd(document.getElementById("changeText1"));
 				},1000);
 			}
+			
+			if (element == "restart") {
+				$('.introjs-prevbutton').hide();
+			}
+			
+			if ( element == "codeIntro") {
+				$('.introjs-prevbutton').hide();
+				$("[contenteditable]").attr("contenteditable", false);
+			}
+			
 			if(element == "text2Id") {
+				
+				
+				introjs._introItems[introjs._currentStep].intro = "This statement initializes the reference <b>text2</b> with "
+					+"<b class='tooltip-text-edit ct-code-b-yellow'>" +$("#changeText2").text()+ "</b>. The text can be changed to "
+					+"any value.<br><br><span class = 'errorText'></span>";
+				$('.temp1 + span, .temp1').remove();
+				$('#enteredText2, #textIndices2').empty();
+				$('#').empty().append("Indices = ");
 			$("#changeText2").attr("contenteditable", true);
 				setTimeout(function() {
 					charAtEnd(document.getElementById("changeText2"));
@@ -180,17 +206,22 @@
 						$('#textIndices').hide();
 						givenText1();
 			      		$('.introjs-helperLayer ').one('transitionend', function() {
-			      			$('#enteredText').append("text1 = ");
+			      			$('#enteredText').empty().append("text1 = ");
 							$('#enteredText').fadeIn(500);
 			      		}); 
 						tl.staggerFrom("#executeBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
 						tl.from("#executeBoxes", 0.5, {onComplete: function() {
-							$('#textIndices').append("Indices = ");
+							$('#textIndices').empty().append("Indices = ");
 							$('#textIndices').fadeIn(500);
 						}});
 						tl.staggerFrom("#excecuteIndices", 0.5, {opacity:0, y:-200, delay:0.5});
 						tl.from("#excecuteIndices", 0.5, {delay:0.5, onComplete : function() {
-							$('.introjs-nextbutton').click();
+							//$('.introjs-nextbutton').click();
+							if (introjs._direction == "forward") {
+								introjs.nextStep();
+							} else {
+								introjs.previousStep();
+							}
 						}});
 					} else if(introjs._currentStep == 4) {
 						$("#changeText2").attr("contenteditable", false);
@@ -199,17 +230,22 @@
 						$('#textIndices2').hide();
 						givenText2();
 						$('.introjs-helperLayer ').one('transitionend', function() {
-			      			$('#enteredText2').append("text2 = ");
+			      			$('#enteredText2').empty().append("text2 = ");
 							$('#enteredText2').fadeIn(500);
 			      		}); 
 						tl.staggerFrom("#executeBoxes2", 0.5, {opacity:0, y:-200, delay:1.8});
 						tl.from("#executeBoxes2", 0.5, {onComplete: function() {
-							$('#textIndices2').append("Indices = ");
+							$('#textIndices2').empty().append("Indices = ");
 							$('#textIndices2').fadeIn(500);
 						}});
 						tl.staggerFrom("#excecuteIndices2", 0.5, {opacity:0, y:-200, delay:0.5});
 						tl.from("#excecuteIndices2", 0.5, {delay:0.5, onComplete : function() {
-							$('.introjs-nextbutton').click();
+							//$('.introjs-nextbutton').click();
+							if (introjs._direction == "forward") {
+								introjs.nextStep();
+							} else {
+								introjs.previousStep();
+							}
 						}});
 					} 
 				
@@ -433,25 +469,27 @@
 	/* ------------------------   functions    -------------------------- */
 	var i;
 	function givenText1() {	
+		$('.temp + span, .temp').remove();
 		for(i = 0; i < text1.length; i++) {
-			$("#row1").append($("#textIndices"));
+			/*$("#row1").append($("#textIndices"));
 			$("#row2").append($("#enteredText"));
 			$("#row1").append($("#excecuteIndices"));
-			$("#row2").append($("#executeBoxes")); 
+			$("#row2").append($("#executeBoxes")); */
 			
-			$("#excecuteIndices").append("<span id = 'text1Index"+i+"' class = 'circle'><b class='indexLetter'>" + i + "</b></span>&nbsp;");
-			$("#executeBoxes").append("<span id = 'text1Box"+i+"' class='box green'><b class='letter'>" + text1.charAt(i) + "</b></span>&nbsp;");						
+			$("#excecuteIndices").append("<span id = 'text1Index"+i+"' class = 'circle temp'><b class='indexLetter'>" + i + "</b></span><span>&nbsp;</span>");
+			$("#executeBoxes").append("<span id = 'text1Box"+i+"' class='box green temp'><b class='letter'>" + text1.charAt(i) + "</b></span><span>&nbsp;</span>");						
 		}
 	}
 	function givenText2() {	
+		$('.temp1 + span, .temp1').remove();
 		for(i = 0; i < text2.length; i++) {
-			$("#text2Row1").append($("#textIndices2"));
+			/*$("#text2Row1").append($("#textIndices2"));
 			$("#text2Row2").append($("#enteredText2"));
 			$("#text2Row1").append($("#excecuteIndices2"));
-			$("#text2Row2").append($("#executeBoxes2")); 
+			$("#text2Row2").append($("#executeBoxes2")); */
 			
-			$("#excecuteIndices2").append("<span id = 'text2Index"+i+"' class='circle'><b class='indexLetter'>" + i + "</b></span>&nbsp;");
-			$("#executeBoxes2").append("<span id = 'text2Box"+i+"' class='box green'><b class='letter'>" + text2.charAt(i) + "</b></span>&nbsp;");						
+			$("#excecuteIndices2").append("<span id = 'text2Index"+i+"' class='circle temp1'><b class='indexLetter'>" + i + "</b></span><span>&nbsp;</span>");
+			$("#executeBoxes2").append("<span id = 'text2Box"+i+"' class='box green temp1'><b class='letter'>" + text2.charAt(i) + "</b></span><span>&nbsp;</span>");						
 		}
 	}
 	function typing(id, content) {

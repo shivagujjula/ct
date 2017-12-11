@@ -825,7 +825,6 @@ function checking(selector) {
 		$('.introjs-prevbutton').hide();
 		maxNumberOfInputs = 2;
 		maxLengthOfInput = 1;
-		arr = [];
 		if (arr.length == maxNumberOfInputs) {
 			if (e.keyCode == 32) {
 				e.preventDefault();
@@ -870,6 +869,15 @@ function checking(selector) {
 				count++;
 			}
 		});
+		
+		arr = arr1.filter(function(val) {
+			return val.trim().length > 0
+		});
+		
+		if (arr.length < 2 || arr.length > 2){
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
+		} 
+		
 		if (count == 2) {
 			if (selector == '#inputChar') {
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="storeVal3()">Next&rarr;</a>');

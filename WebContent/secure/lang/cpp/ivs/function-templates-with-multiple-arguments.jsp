@@ -40,6 +40,12 @@
 	padding: 6px;
 	white-space: pre;
 }
+pre#syntax {
+    background-color: rgb(243, 235, 235);
+    border: none;
+    padding-left: 50px;
+    font-size: 14px;
+}
 
 #introduction {
 	background-color: rgb(243, 235, 235);
@@ -250,23 +256,29 @@ pre > span {
 			id="infoDiv">
 			<ul>
 				<li id="list1" class="opacity00">In <span
-					class="ct-code-b-green">function templates</span> user can uses
+					class="ct-code-b-green">function templates</span>, a user can use
 					more than one <span class="ct-code-b-green">generic data
-						type</span> in template statement by using <span class="ct-code-b-green">separator
-						comma</span>.<br>
+						type</span> in the template statement by using a separator
+						<span class="ct-code-b-green">comma</span>.<br>
 				</li>
-				<li id="list2" class="opacity00">The format is: <br> <span
-					class="syntax ct-Maroon-color opacity00" id="syntax">template&lt;class T1, class T2, ---------, class Tn&gt; 
-					<br>return_type function_name(parameters of T1, T2,--------- Tn) <br> 
-						{ <br>
-						&emsp;&emsp;&emsp;Statement1;<br> 
-						&emsp;&emsp;&emsp;Statement2;<br> 
-						&emsp;&emsp;&emsp;Statement3;<br>
-						&emsp;&emsp;&emsp;---------------<br> 
-						&emsp;&emsp;&emsp;---------------<br> 
-						&emsp;&emsp;&emsp;Statement n;<br>
-						}
-				</span><br> <span id='nextButton' class='opacity00'><a
+				<li id="list2" class="opacity00">The format is: 
+<pre class="syntax opacity00" id="syntax"><span class="ct-code-b-green">template &lt;class T1, class T2, ---------, class Tn&gt;</span>
+<span class="ct-Maroon-color"><br>return_type  function_name(parameters of T1, T2,--------- Tn) { 
+
+	Statement1;
+	
+	Statement2;
+	
+	Statement3;
+	
+	----------
+	
+	---------- 
+	
+	Statement n;
+	
+}</span></pre>
+<span id='nextButton' class='opacity00'><a
 						class='introjs-button user-btn'>Next &#8594;</a></span>
 			</ul>
 		</div>
@@ -303,7 +315,7 @@ pre > span {
 											<b style="color: white;">x</b>
 										</div>
 										<div class="panel panel-body text-center" style="height: 62px;">
-											<span id="XVal" class="ct-sgreen-color opacity00">10</span>
+											<span id="XVal" class="ct-code-b-green opacity00">10</span>
 										</div>
 									</div>
 								</div>
@@ -313,7 +325,7 @@ pre > span {
 											<b style="color: white;">y</b>
 										</div>
 										<div class="panel panel-body text-center" style="height: 62px;">
-											<span id="YVal" class="ct-sgreen-color opacity00">20</span>
+											<span id="YVal" class="ct-code-b-green opacity00">20</span>
 										</div>
 									</div>
 								</div>

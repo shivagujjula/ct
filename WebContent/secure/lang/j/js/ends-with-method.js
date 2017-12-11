@@ -3,7 +3,6 @@ var stringInterval;
 var text;
 var endsWithText;
 var introjs;
-
 function introJsTest(stepNo){
 	introjs = introJs();
 	introjs.setOptions({
@@ -15,7 +14,7 @@ function introJsTest(stepNo){
         	    },
         	    {
 	  				element: '#text1Id', 
-	  				intro: "This statement initializes the reference <b>text</b> with <b class='tooltip-text-edit ct-code-b-yellow'>Jurassic</b>. The text can be changed to any value.<br><br><span class = 'errorText'></span>",
+	  				intro: "",
 	  				position: 'right',
   				},
   				{
@@ -47,8 +46,8 @@ function introJsTest(stepNo){
         	  		tooltipClass: "hide"
       	  		},
       	  		{
-	  				element: '#restart', 
-	  				intro: "Click to Restart",
+	  				element: '#restart',
+	  				intro: "Click to restart.",
 	  				position: 'right',
   				}]
 	});
@@ -67,7 +66,7 @@ function introJsTest(stepNo){
 
 
 var endsWithMethodReady = function() {
-
+	
 	introJsTest(1);
 	$("#skipButton").hide();
 	$(".given-text").keydown(function(e) { // conditions to enter text
@@ -88,19 +87,20 @@ var endsWithMethodReady = function() {
 		$(".tooltip-text-edit").text($("#changeText1").text());
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").removeClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").show();
         } else {
-        	$(".introjs-nextbutton").addClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
         	$('.errorText').text("please enter text");
         }
     });
+	
 	$("#endsWithText").keyup(function() {
 		introjs.refresh();
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").removeClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").show();
         } else {
-        	$(".introjs-nextbutton").addClass("opacity00");
+        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
         	$('.errorText').text("please enter text");
         }
     });
@@ -109,20 +109,37 @@ var endsWithMethodReady = function() {
 		 location.reload();
 	});
 
-	introjs.onbeforechange(function(targetElement){
+	introjs.onbeforechange(function(targetElement) {
 		var element = targetElement.id;
+		
+		if(element == "codeIntro") {
+			console.log("asdf");
+			$(".introjs-nextbutton").show();
+			$(".introjs-prevbutton").hide();
+			$("#changeText1").attr("contenteditable", false);
+		}
+		
 		if(element == "text1Id") {
+			introjs._introItems[introjs._currentStep].intro = "This statement initializes the reference <b>text</b> with "
+				+"<b class='tooltip-text-edit ct-code-b-yellow'>" +$("#changeText1").text()+ "</b>. The text can be changed to "
+				+"any value.<br><br><span class = 'errorText'></span>";
+		$(".temp + span, .temp").remove();
+		$('#enteredText, #textIndices').empty();
 		$("#changeText1").attr("contenteditable", true);
+		$(".introjs-nextbutton, .introjs-prevbutton").show();
 			setTimeout(function() {
 				charAtEnd(document.getElementById("changeText1"));
 			},1000);
 		}
+		
+		
 		if(element == "endsWithMethod") {
 			$("#endsWithText").attr("contenteditable", true);
 			setTimeout(function() {
 				charAtEnd(document.getElementById("endsWithText"));
 			},1000);
 		}
+		
 		if(element == "animationDiv") {
 			text = $('#changeText1').text();
 			
@@ -139,18 +156,25 @@ var endsWithMethodReady = function() {
 					$('#textIndices').hide();
 					givenText1();
 		      		$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#enteredText').append("text = ");
+		      			$('#enteredText').empty().append("text = ");
 						$('#enteredText').fadeIn(500);
 		      		}); 
 					tl.staggerFrom("#executeBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
 					tl.from("#executeBoxes", 0.5, {onComplete: function() {
-						$('#textIndices').append("Indices = ");
+						$('#textIndices').empty().append("Indices = ");
 						$('#textIndices').fadeIn(500);
 					}});
 					tl.staggerFrom("#excecuteIndices", 0.5, {opacity:0, y:-200, delay:0.5});
-					tl.from("#excecuteIndices", 0.5, {delay:0.5, onComplete : function() {
-						$('.introjs-nextbutton').click();
-					}});
+					if( introjs._direction == "forward") {
+						tl.from("#excecuteIndices", 0.5, {delay:0.5, onComplete : function() {
+							introjs.nextStep();
+						}});
+					} else {
+						tl.from("#excecuteIndices", 0.5, {delay:0.5, onComplete : function() {
+							introjs.previousStep();
+						}});
+					}
+					
 				}  else if(introjs._currentStep == 4) {
 					endsWithText = $("#endsWithText").text();
 					$("#endsWithText").attr("contenteditable", false);
@@ -230,7 +254,7 @@ var endsWithMethodReady = function() {
 										if (x != (endsWithIndex + (endsWithText.length-1))) {
 											$('.introjs-nextbutton').click();
 										}
-									},2500);
+									},2000);
 								}
 							},2200);
 						}},"-=1.8");
@@ -269,11 +293,13 @@ var endsWithMethodReady = function() {
 		if(introjs._currentStep == 6) {
 			setTimeout (function() {
 				$('.introjs-nextbutton').click();
+				$('.introjs-prevbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('#restart').fadeTo(1000,1);
 				});
 			}, 2800);
 		}
+		
 	});
 	
 }
@@ -281,14 +307,16 @@ var endsWithMethodReady = function() {
 /* ------------------------   functions    -------------------------- */
 var i;
 function givenText1() {	
+	$(".temp + span, .temp").remove();
 	for(i = 0; i < text.length; i++) {
-		$("#row1").append($("#textIndices"));
+		
+		/*$("#row1").append($("#textIndices"));
 		$("#row2").append($("#enteredText"));
 		$("#row1").append($("#excecuteIndices"));
-		$("#row2").append($("#executeBoxes")); 
+		$("#row2").append($("#executeBoxes")); */
 		
-		$("#excecuteIndices").append("<span id = 'textIndex"+i+"' class = 'circle'><b class='indexLetter'>" + i + "</b></span>&nbsp;");
-		$("#executeBoxes").append("<span id = 'text1Box"+i+"' class='box green'><b class='letter'>" + text.charAt(i) + "</b></span>&nbsp;");						
+		$("#excecuteIndices").append("<span id = 'textIndex"+i+"' class = 'circle temp'><b class='indexLetter'>" + i + "</b></span><span>&nbsp;</spn>");
+		$("#executeBoxes").append("<span id = 'text1Box"+i+"' class='box green temp'><b class='letter'>" + text.charAt(i) + "</b></span><span>&nbsp;</spn>");						
 	}
 }
 function endWithText() {	
@@ -296,6 +324,7 @@ function endWithText() {
 		$("#ewBoxes").append("<span id = 'ewBox"+i+"' class='box green'><b class='letter'>" + endsWithText.charAt(i) + "</b></span>&nbsp;");						
 	}
 }
+
 function typing(id, content) {
  $(id).removeClass('typingCursor');
     $(id).typewriting( content , {
@@ -307,7 +336,7 @@ function typing(id, content) {
 }
 function charAtEnd(element) {
 	element.focus();
-	if (typeof window.getSelection != "undefined"&& typeof document.createRange != "undefined") {
+	if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
 	    var range = document.createRange();
 	    range.selectNodeContents(element);
 	    range.collapse(false);

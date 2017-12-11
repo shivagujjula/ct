@@ -167,6 +167,18 @@ function introGuide() {
 			case "template":
 				$("#lt, #gt, #t1, #t2, #class1, #class2").removeClass("blinking-white");
 				break;
+				
+			case 'typeName':
+				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+				switch(animateStep) {
+				case "class" :
+					$('.introjs-tooltip').removeAttr('style');
+					break;
+				}
+				break;
+			case 'main':
+				$('.introjs-tooltip').removeAttr('style');
+				break;
 			case 'show':
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 				switch(animateStep) {
@@ -180,18 +192,15 @@ function introGuide() {
 					$('#xBox, #yBox').removeAttr('style');
 					$("#XVal, #YVal").text("");
 					break;
-					break;
 				case 'animationDiv2':
 					$("#addressDiv, #xBox, #yBox").addClass("opacity00");
 					$('#xBox, #yBox').removeAttr('style');
 					$("#XVal, #YVal").text("");
 					break;
-					break;
 				case 'animationDiv3':
 					$("#addressDiv, #xBox, #yBox").addClass("opacity00");
 					$('#xBox, #yBox').removeAttr('style');
 					$("#XVal, #YVal").text("");
-					break;
 					break;
 				}
 				break;
@@ -208,6 +217,7 @@ function introGuide() {
 					break;
 				case 'functionDet':
 					$("#lt, #gt, #t1, #t2, #class1, #class2").removeClass("blinking-white");
+					$('.introjs-tooltip').css('width', '300px');
 					break;
 				}
 				break;
@@ -257,8 +267,9 @@ function introGuide() {
 		case 'preTableDiv':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preTableDiv").removeClass("opacity00");
-				typing('.introjs-tooltiptext', "Let us learn about <span class='ct-code-b-yellow'>"+
-						" function templates with multiple arguments</span>.", function() {
+				var text = 	"Let us learn about <span class='ct-code-b-yellow'> function templates</span> " +
+							"with <span class='ct-code-b-yellow'>multiple arguments</span>.";
+				typing('.introjs-tooltiptext',text , function() {
 					$(".introjs-nextbutton").show();
 					$(".introjs-prevbutton").hide();
 				});
@@ -266,10 +277,10 @@ function introGuide() {
 			break;
 		case 'templateDiv':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This statement is called  <span class='ct-code-b-yellow'>template" +
-						" function declaration</span>.<br>" +
-						"In this statement, a template with <span class='ct-code-b-yellow'>T1</span>" +
-						", <span class='ct-code-b-yellow'>T2</span> classes are declared."; 
+				var text = "<ul><li>This statement is called  <span class='ct-code-b-yellow'>template " +
+							"function</span> declaration.</li><li>In this statement, a template with " +
+							"<span class='ct-code-b-yellow'>T1</span>, <span class='ct-code-b-yellow'>T2</span> " +
+							"classes are declared.</li></ul>"; 
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -293,7 +304,7 @@ function introGuide() {
 					$('.introjs-tooltip').removeClass('hide');
 					$("#class1, #class2").addClass("blinking-white");
 					var text = "Function template declaration followed by a keyword "+
-							   "<span class='blinking-white ct-code-b-yellow'>class</span> " +
+							   "<span class='ct-code-b-yellow'>class</span> " +
 							   "after <span class='ct-code-b-yellow'>template</span>."; 
 					typing(".introjs-tooltiptext",text, function() {
 						$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button user-btn'>Next &#8594;</a>"); 
@@ -302,17 +313,18 @@ function introGuide() {
 							$("#class1, #class2").removeClass("blinking-white");
 							$("#t1, #t2").addClass("blinking-white");
 							//$('.introjs-tooltip').removeClass('hide');
-							var text = "<span class='blinking-white'>Template type argument/s"+
-									   " or parameter/s(T1 and T2)</span> should be mentioned after"+
-									   " class or type_name"; 
+							var text = "<span class='ct-code-b-yellow'>Template type arguments (T1 and T2)</span> should " +
+										"be mentioned after <span class='ct-code-b-yellow'>class</span> or <span class='ct-code-b-yellow'>" +
+										"type_name</span>"; 
 							typing(".introjs-tooltiptext",text, function() {
 								$('.introjs-tooltipbuttons').append("<a style='background-color:green' class='introjs-button user-btn'>Next &#8594;</a>"); 
 								$('.user-btn').click(function() { 
 									$('.user-btn').remove();
 									$("#class1, #class2, #t1, #t2").removeClass("blinking-white");
 									$("#lt, #gt").addClass("blinking-white");
-									var text = "The class with template type arguments must"+
-									   		   " be enclosed in angle brackets(<span class='blinking-white'>< ></span>)";
+									var text = "The <span class='ct-code-b-yellow'>class</span> with <span class='ct-code-b-yellow'>" +
+												"template type arguments</span> must be enclosed in <span class='ct-code-b-yellow'>angular " +
+												"brackets</span>(<span class='ct-code-b-yellow'>< ></span>)";
 									typing(".introjs-tooltiptext",text, function() {
 										$(".introjs-nextbutton, .introjs-prevbutton").show();
 									});
@@ -332,13 +344,10 @@ function introGuide() {
 			switch(animateStep) {
 			case 'temp1':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "The function <span class='ct-code-b-yellow'>show()</span>" +
-						" has two arguments of template type, that is," +
-						" <span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y.</span>" +
-						" <br>The <span class='ct-code-b-yellow'>show()</span> function" +
-						" receives <span class='ct-code-b-yellow'>x</span>," +
-						" <span class='ct-code-b-yellow'>y</span> both are of type " +
-						" <span class='ct-code-b-yellow p1Type'>int</span> and displays them.";
+				var text = "The <span class='ct-code-b-yellow'>show()</span> function " +
+							"receives <span class='ct-code-b-yellow'>x</span> and " +
+							"<span class='ct-code-b-yellow'>y</span> of type " +
+							"<span class='ct-code-b-yellow p1Type'>int</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -346,13 +355,10 @@ function introGuide() {
 			break;
 			case 'temp2':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "The function <span class='ct-code-b-yellow'>show()</span>" +
-							" has two arguments of template type, that is," +
-							" <span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y" +
-							" </span>.<br>The <span class='ct-code-b-yellow'>show()</span> function" +
-							" receives <span class='ct-code-b-yellow'>x</span>," +
-							" <span class='ct-code-b-yellow'>y</span> both are of type " +
-							" <span class='ct-code-b-yellow p3Type'>float</span> and displays them.";
+					var text = 	"The <span class='ct-code-b-yellow'>show()</span> function " +
+								"receives <span class='ct-code-b-yellow'>x</span> and " +
+								"<span class='ct-code-b-yellow'>y</span> of type " +
+								"<span class='ct-code-b-yellow p3Type'>float</span>.";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -360,15 +366,11 @@ function introGuide() {
 				break;
 			case 'temp3':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "The function <span class='ct-code-b-yellow'>show()</span>" +
-							" has two arguments of template type, that is," +
-							" <span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y" +
-							" </span>.<br>The <span class='ct-code-b-yellow'>show()</span> function" +
-							" receives <span class='ct-code-b-yellow'>x</span>" +
-							" is of type " +
-							" <span class='ct-code-b-yellow p5Type'>int</span>, " +
-							" <span class='ct-code-b-yellow'>y</span> is of type " +
-							" <span class='ct-code-b-yellow p6Type'>float</span> and displays them.";
+					var text = "The <span class='ct-code-b-yellow'>show()</span> function " +
+								"receives <span class='ct-code-b-yellow'>x</span> is of type " +
+								"<span class='ct-code-b-yellow p5Type'>int</span> and " +
+								"<span class='ct-code-b-yellow'>y</span> is of type " +
+								"<span class='ct-code-b-yellow p6Type'>float</span>.";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -376,15 +378,11 @@ function introGuide() {
 				break;
 			case 'temp4':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "The function <span class='ct-code-b-yellow'>show()</span>" +
-							" has two arguments of template type, that is," +
-							" <span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y" +
-							" </span>.<br>The <span class='ct-code-b-yellow'>show()</span> function" +
-							" receives <span class='ct-code-b-yellow'>x</span>" +
-							" is of type " +
-							" <span class='ct-code-b-yellow p7Type'>char</span>, " +
-							" <span class='ct-code-b-yellow'>y</span> is of type " +
-							" <span class='ct-code-b-yellow p8Type'>int</span> and displays them.";
+					var text = "The <span class='ct-code-b-yellow'>show()</span> function " +
+								"receives <span class='ct-code-b-yellow'>x</span> " +
+								"is of type <span class='ct-code-b-yellow p7Type'>char</span> " +
+								"and  <span class='ct-code-b-yellow'>y</span> is of type " +
+								"<span class='ct-code-b-yellow p8Type'>int</span>.";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -392,12 +390,12 @@ function introGuide() {
 				break;
 			case 'functionDet':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "The function <span class='ct-code-b-yellow'>show()</span>" +
-							" has two arguments of template type, that is," +
-							" <span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y" +
-							" </span>respectively.<br>The <span class='ct-code-b-yellow'>show()</span>" +
-							" function receives different data type values" +
-							" and displays the values on the screen." 
+					$('.introjs-tooltip').css("width", "300px");
+					var text = "<ul><li>The function <span class='ct-code-b-yellow'>show()</span> " +
+								"has two arguments of template type, that is, " +
+								"<span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y " +
+								"</span>respectively.</li><li>The <span class='ct-code-b-yellow'>show()</span> " +
+								"function receives different data type values and displays the values on the screen.</li></ul>" 
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -407,21 +405,13 @@ function introGuide() {
 			break;
 		case 'main':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is"+
-						" the operating system call.<ul><li><span class='ct-code-b-yellow'>main()"+
-						"</span> is execution starting point for any C++ program.</li></ul>", function() {
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution."
+				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
-		case 'temp1':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here two integers are passed to the  function <span class='ct-code-b-yellow'>show()</span>";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
+		
 		case 'show':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
@@ -674,7 +664,18 @@ function introGuide() {
 		case 'cout':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				var text = "This statement is used to print the string in the console.";
+				var text = "The <span class='ct-code-b-yellow'>cout</span> is used to display the values " +
+							"<span class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y</span> " +
+							"on the console.";
+				typing(".introjs-tooltiptext",text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
+			});
+			break;
+		case 'temp1':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "Here two <span class='ct-code-b-yellow'>integers</span> are passed to the " +
+							"function <span class='ct-code-b-yellow'>show()</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -683,7 +684,8 @@ function introGuide() {
 		case 'temp2':
 			//$("#addressDiv").addClass("opacity00");	
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here two float values are passed to the  function <span class='ct-code-b-yellow'>show()</span>";
+				var text = "Here two <span class='ct-code-b-yellow'>float</span> values are passed to the " +
+							"function <span class='ct-code-b-yellow'>show()</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -692,7 +694,8 @@ function introGuide() {
 		case 'temp3': 
 			//$("#addressDiv").addClass("opacity00");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here  integer and float values are passed to the  function <span class='ct-code-b-yellow'>show()</span>";
+				var text = "Here  <span class='ct-code-b-yellow'>integer</span> and <span class='ct-code-b-yellow'>float</span> " +
+							"values are passed to the  function <span class='ct-code-b-yellow'>show()</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -701,7 +704,8 @@ function introGuide() {
 		case 'temp4':
 			//$("#addressDiv").addClass("opacity00");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here  char and integer values are passed to the  function <span class='ct-code-b-yellow'>show()</span>";
+				var text = "Here  <span class='ct-code-b-yellow'>char</span> and <span class='ct-code-b-yellow'>integer</span> " +
+							"values are passed to the  function <span class='ct-code-b-yellow'>show()</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -709,7 +713,7 @@ function introGuide() {
 			break;
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = "This is the end of the <span class='ct-code-b-yellow'>main()</span> function where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});

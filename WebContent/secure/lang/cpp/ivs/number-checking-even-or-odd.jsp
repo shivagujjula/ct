@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,6 +24,10 @@
 	border-radius: 10px;
 	font-size: 15px;
 	padding: 11px 12px;
+}
+
+.user-btn1 {
+	background-color: #5bc0de !important;
 }
 
 .margin-top-1 {
@@ -289,19 +291,19 @@ td {
 	</div>
 	<div class="col-xs-10 col-xs-offset-1">
 		<div class="col-xs-12 margin-top-2 border-css-main opacity00 cream-color-gold" id="totalDiv">
-			<div class="col-xs-7 margin-top-2 opacity00 font-family" id="conditionDiv" style="border-radius: 10px;">
+			<div class="col-xs-8 margin-top-2 opacity00 font-family" id="conditionDiv" style="border-radius: 10px;">
 				<div id="variablesId" class="display-inline">int number = 
 					<div class="ct-color-teal integer-number display-inline" id="integerNumber" MaxLength="4" contenteditable="false">254</div>;
 				</div>
 <pre id="preCode" class="cream-color-gold">
 <span id="ifLine" class="opacity00">if (<span id="ifCondition"><span class='display-inline' id="remainderValue">number % 2</span> == 0</span>) {</span>
-	<span id="print1" class="opacity00">cout << " is even number.";</span>
+	<span id="print1" class="opacity00">cout << number << " is even number." << endl;</span>
 <span id="elseLine" class="opacity00">} else {</span>
-	<span id="print2" class="opacity00">cout << " is odd number.";</span>
+	<span id="print2" class="opacity00">cout << number << " is odd number." << endl;</span>
 <span id="closeCurlyBrace" class="opacity00">}</span>
 </pre>
 			</div>
-			<div class="col-xs-5">
+			<div class="col-xs-4">
 				<div class="opacity00 margin-top-2 text-center" id="remainderExecution">
 					<span class="display-inline" id="remainderExecutionSpan">number</span> % <span id="multiplyNumber3">2</span> == 0&nbsp;
 					<span id="fontCheck"></span>
@@ -321,7 +323,7 @@ td {
 									</tr>
 								</table>
 								<div class="col-xs-12 text-center">
-									<span class="display-inline" id="calculation3"></span>
+								   <span class="display-inline" id="calculation3"></span>
 								</div>
 								<div class="col-xs-12 text-center">
 									<div class="col-xs-4 col-xs-offset-4 opacity00" id="borderTop3" style="border-top: 2px solid;"></div>

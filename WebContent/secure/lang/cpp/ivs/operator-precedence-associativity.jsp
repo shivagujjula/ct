@@ -18,6 +18,7 @@
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/secure/lang/cpp/js-min/opas.min.js"></script>
 
+
 <style type="text/css">
 .margin-top-10 {
 	margin-top: 8px;
@@ -201,7 +202,7 @@
 						which place a role. 
 					</li>
 					<li id="li4" class="opacity00">
-						<b>Associativity</b> refers to the order in which <b style='color:green'>C</b> evaluates the operators having the same precedence.
+						<b>Associativity</b> refers to the order in which <b style='color:green'>Cpp</b> evaluates the operators having the same precedence.
 						 Such operators can associate either from right to left or	left to right.<br>Let us consider how the following example evaluates:&nbsp;&nbsp;
 						 <b class ='color-red'>2 + 3 + 6 - 5</b>
 						&emsp; <span class='user-btn2 introjs-button' onclick='flipSecondEqtn()'>Next &#8594;</span><br>
@@ -226,14 +227,20 @@
 </div>
 <div class="col-xs-12  margin-top-20">
 <div class="col-xs-offset-0 col-xs-6">
-	<div id="leftDiv" class="opacity00"><pre class="creampretab background-color-black color-white"><span id="links">#include&lt;stdio.h&gt;</span>
-void main() {
-	<span id="editNum">int num1 = <span contenteditable='true' maxlength='1' id='firstVal' class="padding-5" spellcheck="false">4</span>;
-	int num2 = <span contenteditable='true' maxlength='1' id='secondVal' class="padding-5" spellcheck="false">6</span>;
-	int num3 = <span contenteditable='true' maxlength='1' id='thirdVal' class="padding-5" spellcheck="false">3</span>;
-	int num4 = <span contenteditable='true' maxlength='1' id='fourthVal'  class="padding-5" spellcheck="false">2</span>;</span>
+	<div id="leftDiv" class="opacity00"><pre class="creampretab background-color-black color-white"><span id="links">#include &lt;iostream&gt;</span>
+using namespace std;
+int main() {
+	<span id="editNum">int num1 = <span contenteditable='true' maxlength='1' id='firstVal' class="padding-5" spellcheck="false" style="
+    display: inline-block;
+">4</span>;
+	int num2 = <span contenteditable='true' maxlength='1' id='secondVal' class="padding-5" spellcheck="false" style="
+    display: inline-block;">6</span>;
+	int num3 = <span contenteditable='true' maxlength='1' id='thirdVal' class="padding-5" spellcheck="false" style="
+    display: inline-block;">3</span>;
+	int num4 = <span contenteditable='true' maxlength='1' id='fourthVal'  class="padding-5" spellcheck="false" style="
+    display: inline-block;">2</span>;</span>
 	<span id="eqtnExe1">int num5 = num1 * num2 - num3 + ((num2 + num3) * num4) / num2;</span>
-	<span id="printf">printf("The value of num5 is : %d /n", num5);</span>
+	<span id="printf">cout << "The value of num5 is : " << num5 << endl;</span>
 }</pre>	
 	</div>
 </div>

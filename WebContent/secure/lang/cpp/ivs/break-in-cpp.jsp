@@ -1,3 +1,4 @@
+
 <!DOCTYPE>
 <html>
 <head>
@@ -14,6 +15,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/bic.min.js"></script>
+
 <style type="text/css">
 
 body {
@@ -103,6 +105,30 @@ body {
 	margin-top: 10px;
 }
 
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
 </style>
 </head>
 <body>
@@ -114,15 +140,15 @@ body {
 	</div>
 	<div class="col-xs-offset-1 col-xs-6">
 		<div>
-		<pre class="creamePreTab4">#include &lt;iostream&gt;
+		<pre class="creamePreTab4"><in>#include</in> <ink>&lt;iostream&gt;</ink>
 using namespace std;
-int main() {
-	int i;
-	<div id='brkLoop' class='display'>for (<span id='initialization' class="position-relative">i = <span id="initializationValue" class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span> <span id='condition'>i < 10;</span> <span id='update'>i++</span>) {
-    <div id='ifBlk' class='display'>if (<span id='ifCondition'>i % 5 == 0</span>) {
-	<span id='breakStmt'>break;</span>
+<g>int</g> main() {
+	<g>int</g> i;
+	<div id='brkLoop' class='display'><go>for</go> (<span id='initialization' class="position-relative">i = <ink><span id="initializationValue" class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span></ink>&nbsp;;</span> <span id='condition'>i < <ink>10</ink>;</span> <span id='update'>i++</span>) {
+    <div id='ifBlk' class='display'><go>if</go> (<span id='ifCondition'>i % <ink>5</ink> == <ink>0</ink></span>) {
+	<span id='breakStmt'><go>break;</go></span>
 }</div>
- 	<span id='sop'>cout << "i : " << i << "\n";</span>
+ 	<span id='sop'>cout << <ink>"i : "</ink> << i << "\n";</span>
 }</div>
 <span id='mainEnd'>}</span>
 </pre>
@@ -137,7 +163,7 @@ int main() {
 	</div>
 </div>
 <div class="text-center col-xs-12">
-	<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+	<a class="btn btn-warning opacity00" id="restart">Restart</a>
 </div>
 
 <script type="text/javascript">

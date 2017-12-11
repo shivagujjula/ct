@@ -1,6 +1,3 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,7 +17,8 @@ pageEncoding="UTF-8"%>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/cpp/js-min/ftc.min.js" type="text/javascript"></script>
+<script src="/secure/lang/cpp/js-min/ftc.min.js" type="text/javascript"></script> 
+
 <style>
 
 .margin-top20 {
@@ -51,6 +49,7 @@ pageEncoding="UTF-8"%>
 
 pre {
 	border:medium none;
+	font-size: 12px;
 }
 
 #codeDiv pre {
@@ -128,22 +127,39 @@ pre {
 	
 }
 
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
+
 </style>
 </head>
 
 <script>
 	
-	
-	
 	$(document).ready(function() {
 		floydsTriangleCReady();
 	});
 	
-	
-	
-	
-	
-	//$('#codeNextLine').prepend("<span class='glyphicon glyphicon-arrow-right faa-passing animated' id='treearr'></span>");
 	</script>
 
 <body>
@@ -155,7 +171,7 @@ pre {
 		<div class='row'>
 		<div class="col-xs-12 margin-top20 center">
 		<div  id='topDiv' class='col-xs-offset-4 col-xs-4'>
-		<div id='typingDiv'>
+		<div id='typingDiv' style="font-family: monospace;">
 						<ul>
 							<li>The pyramid of triangle can be represented as &emsp; 
 							</li>
@@ -173,19 +189,19 @@ pre {
 		</div>
 	</div>
 	<div class='col-xs-12 center'>
-	<div class='col-xs-offset-2 col-xs-4'><div id="codeDiv" class='opacity00'>
+	<div class='col-xs-offset-2 col-xs-4' ><div id="codeDiv" class='opacity00'>
 	<pre class='bg-info'>
-#include &lt;iostream&gt;
+<in>#include</in> <ink>&lt;iostream&gt;</ink>
 using namespace std;
-<span id='mainMethod'>int <span id='main'>main()</span> {
-	<span id='variableDeclaration'>int rows, i, j, k = 1;</span>
-	<span id='getPrintf'>cout << "Enter number of rows: ";</span>
+<span id='mainMethod'><g>int</g> <span id='main'>main()</span> {
+	<span id='variableDeclaration'><g>int</g> rows, i, j, k = 1;</span>
+	<span id='getPrintf'>cout << <ink>"Enter number of rows: "</ink>;</span>
 	<span id='getScanf'>cin >> rows;</span>
-	<span id="totalForLoop"><span class='outer'>for (i = 1; i &lt;= rows; i++) {</span>
-		<span id="jForLoop" class="inner-one">for ( j = 1; j &lt;= i; j++) {</span>
-			<span id='printNumber' class="inner-one">cout << k++ << " ";</span>
+	<span id="totalForLoop"><span class='outer'><go>for</go> (i = <ink>1</ink>; i &lt;= rows; i++) {</span>
+		<span id="jForLoop" class="inner-one"><go>for</go> ( j = <ink>1</ink>; j &lt;= i; j++) {</span>
+			<span id='printNumber' class="inner-one">cout << <ink>" "</ink> << k++;</span>
 		<span class="inner-one">}</span>
-		<span id="codeNextLine" class='outer'>cout << "\n";</span>
+		<span id="codeNextLine" class='outer'>cout << <ink>"\n"</ink>;</span>
 	<span class='outer'>}</span></span>
 }</span>	</pre>
 	</div></div>
@@ -201,7 +217,7 @@ using namespace std;
 	
 	</div></div>
 	<div class='col-xs-12 margin-top20 text-center'>
-		<span id='restart' class='btn btn-warning btn-sm opacity00'>Restart &nbsp;<i class='fa fa-refresh'></i></span>
+		<span id='restart' class='btn btn-warning btn-sm opacity00'>Restart &nbsp;</span>
 	</div>
 	</div>
 	

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,15 +18,16 @@
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src='/secure/lang/cpp/js-min/lyp.min.js'></script>
 
-<title>Insert title here</title>
+
+<title>leap-year-program</title>
 
 <style type="text/css">
 
 .info-div {
 	background-color: rgb(243, 235, 235);
 	border-radius: 10px;
-	font-size: 15px;
-	padding: 11px 12px;
+	padding: 8px 6px;
+	font-family: monospace;
 }
 
 .margin-top-1 {
@@ -206,6 +207,29 @@ td {
 .margin-left-9 {
 	margin-left: 9%;
 }
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
 </style>
 
 </head>
@@ -217,11 +241,11 @@ td {
 		</h3>
 	</div>
 	<div class="col-xs-12">
-		<div class="col-xs-8 col-xs-offset-2 margin-top-1 info-div" id="infoDiv">
+		<div class="col-xs-8 col-xs-offset-2 margin-top-2 info-div" id="infoDiv">
 			<ul>
 				<li id="list1" class="opacity00">Any year except <span class='ct-code-b-green'>century years</span> (years ending with 00) is 
-					said to be <span class="ct-code-b-green">leap year</span> only when it is divisible by <span id='multiplyId'><b>4</b></span>.</li>
-				<li id="list2" class="opacity00">A <span class='ct-code-b-green'>century year</span> is said to be <span class="ct-code-b-green">
+					said to be the <span class="ct-code-b-green">leap year</span> only when it is divisible by <span id='multiplyId'><b>4</b></span>.</li>
+				<li id="list2" class="opacity00">A <span class='ct-code-b-green'>century year</span> is said to be the <span class="ct-code-b-green">
 					leap year</span> only when it is divisible by <span id="multipleOfCenturyId"><b>400</b></span>.</li>
 			</ul>
 		</div>
@@ -230,24 +254,24 @@ td {
 		<div class="col-xs-5 col-xs-offset-1">
 			<div class="col-xs-12 margin-top-2" id="conditionDiv" style="border-radius: 10px;">
 				<pre id="preCode" class="opacity00">
-#include &lt;iostream&gt;
+<in>#include</in> <ink>&lt;iostream&gt;</ink>
 using namespace std;
-int main() {
-	int year;
-	<span id='printfLine1'>cout << "Enter a year: ";</span>
+<g>int</g> main() {
+	<g>int</g> year;
+	<span id='printfLine1'>cout << <ink>"Enter a year: "</ink>;</span>
 	<span id='scanfLine1'>cin >> year;</span>
-	<span id="ifStatement1">if (<span id="ifCondition">year % 4 == 0</span>)</span> {
-		<span id="ifStatement2">if (<span id="ifConditionForCenturyYear">year % 100 == 0</span>)</span> {
-			<span id="ifStatement3">if (<span id="elseIfCondition">year % 400 == 0</span>)</span> {
-				<span id="printLine1">cout << year << " is a leap year.";</span>
-			} <span id='elseSpan1'>else {
-				<span id="printLine2">cout << year << " is not a leap year.";</span>
+	<span id="ifStatement1"><go>if</go> (<span id="ifCondition">year % <ink>4</ink> == <ink>0</ink></span>)</span> {
+		<span id="ifStatement2"><go>if</go> (<span id="ifConditionForCenturyYear">year % <ink>100</ink> == <ink>0</ink></span>)</span> {
+			<span id="ifStatement3"><go>if</go> (<span id="elseIfCondition">year % <ink>400 == <ink>0</ink></span>)</span> {
+				<span id="printLine1">cout << year << <ink>" is a leap year."</ink> << endl;</span>
+			} <span id='elseSpan1'><go>else</go> {
+				<span id="printLine2">cout << year << <ink>" is not a leap year."</ink> << endl;</span>
 			}</span>
-		} <span id='elseSpan2'>else {
-			<span id="printLine3">cout << year << " is a leap year.";</span>
+		} <span id='elseSpan2'><go>else</go> {
+			<span id="printLine3">cout << year << <ink>" is a leap year."</ink> << endl;</span>
 		}</span>
-	} <span id='elseSpan3'>else {
-		<span id="printLine4">cout << year << " is not a leap year.";</span>
+	} <span id='elseSpan3'><go>else</go> {
+		<span id="printLine4">cout << year << <ink>" is not a leap year."</ink> << endl;</span>
 	}</span>
 }
 </pre>
@@ -270,7 +294,7 @@ int main() {
 	</div>
 	<div class="col-xs-12">
 		<div class="text-center margin-top-2" id="restartDiv">
-			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+			<a class="btn btn-warning opacity00" id="restart">Restart</a>
 		</div>
 	</div>
 </div>

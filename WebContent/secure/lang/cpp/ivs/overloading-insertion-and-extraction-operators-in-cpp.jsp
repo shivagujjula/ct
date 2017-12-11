@@ -155,6 +155,21 @@ div, span {
 .user-btn {
 	background-color:green;
 }
+
+.blinking {
+	animation-name: blink;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+}
+
+@keyframes blink { 
+50% {
+	background: orange;
+}
+
+}
+
+
 .blinking-white {
 	animation-name: blink-border-background-white ;
 	animation-duration: 1s ;
@@ -220,7 +235,7 @@ div, span {
 	padding: 10px;
 }
 
-.errorText {
+.error-text {
 	color: red;
 	font-weight: bold;
 }

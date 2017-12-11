@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>while</title>
+<title>while loop in cpp</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
@@ -12,7 +12,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js-min/whlic.min.js"></script>
+<script src="/secure/lang/cpp/js-min/whlic.min.js" type="text/javascript"></script>
 
 <style type="text/css">
 
@@ -76,7 +76,7 @@ body {
     transition: all 1.3s ease-out 0s;
     width: 85px;
     z-index: 9999998 !important;
-    left: 200px;
+    left: 400px;
 }
 
 .cup {
@@ -180,6 +180,35 @@ body {
 	min-width: 110px;
 }
 
+
+.oneStepBackBtn {
+	background-color: #5bc0de !important
+}
+
+
+in {
+	color: rgb(62, 50, 173);
+	font-weight: bold;
+}
+
+ink {
+	color: 	rgb(255, 0, 191);
+}
+
+go {
+	color: rgb(134, 19, 19);
+	font-weight: bold;
+}
+
+g {
+	color: 	rgb(64, 130, 65);
+	font-weight: bold;
+}
+
+r {
+	color: red;
+}
+
 </style>
 
 </head>
@@ -192,12 +221,12 @@ body {
 	</div>
 	<div class="col-xs-offset-1 col-xs-6">
 		<div>
-				<pre class="creamePreTab4">#include &lt;iostream&gt;
-using namespace std;				
-int main() {
-	<span id='initialization' class="position-relative">int value = <span id="initializationValue" class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>value</b></span>= <h6 id="cupValue"></h6></h5></span></span>
-	<span id='whileLoop'>while (<span id='condition'>value <= <span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="false" placeholder=" ">5</span></span>) {
-		<span id='statement'>cout << "value : " << value << endl;</span>
+				<pre class="creamePreTab4"><in>#include</in> <ink>&lt;iostream&gt;</ink>
+using namespace std;
+<g>int</g> main() {
+	<span id='initialization' class="position-relative"><g>int</g> value = <span id="initializationValue" class="allowNumbers position-absolute" maxlength="1" contenteditable=false placeholder=" ">1</span>&nbsp;;</span><span class="cup-bg position-absolute opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2"></i><h5 class="num-position"><span id='cup_num'><b>value</b></span>= <h6 id="cupValue"></h6></h5></span></span>
+	<span id='whileLoop'><go>while</go> (<span id='condition'>value <= <ink><span id="conditionValue" class="allowNumbers" maxlength="1" contenteditable="false" placeholder=" ">5</span></ink></span>) {
+		<span id='statement'>cout << <ink>"value : "</ink> << value << endl;</span>
 		<span id='update'>value++;</span>
 	<span id='whileEnd'>}</span></span>
 <span id='mainEnd'>}</span>
@@ -213,7 +242,7 @@ int main() {
 	</div>
 </div>
 	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+		<a class="btn btn-warning opacity00" id="restart">Restart</a>
 	</div>
 
 <script type="text/javascript">

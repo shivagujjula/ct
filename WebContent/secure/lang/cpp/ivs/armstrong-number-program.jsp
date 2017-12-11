@@ -16,7 +16,8 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/cpp/js-min/anp.min.js"></script>
+<script src="/secure/lang/cpp/js-min/anp.min.js"></script> 
+
 
 <title>armstrong-number.jsp</title>
 
@@ -56,7 +57,7 @@ div,span {
 .creamPreTab4 {
     margin: 8px;
     padding: 10px;
-   font-size: 13px;
+    font-size: 13px;
     white-space: pre;
 	-moz-tab-size: 6;
     border-radius: 8px;
@@ -191,7 +192,7 @@ div,span {
 				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
 			</div>
 			<div class="col-xs-12">
-				<div id="armstrongDefinition" class="col-xs-6 col-xs-offset-3">
+				<div id="armstrongDefinition" class="col-xs-6 col-xs-offset-3" style="font-family: monospace;">
 				<ul><li id="text1" class="opacity00">An <span class = "ct-code-b-green">armstrong</span> number is a number which is the
 				 	<span class="ct-code-b-green">sum</span> of its digits each raised to the
 				  	<span class="ct-code-b-green">power</span> of the <span class = "ct-code-b-green">number of digits.</span></li>
@@ -255,6 +256,7 @@ div,span {
 		algoritmStepsDivs();
 		introGuide();
 	});
+
 </script>
 </body>
 </html>

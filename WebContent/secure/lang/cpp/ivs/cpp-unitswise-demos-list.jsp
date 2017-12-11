@@ -952,10 +952,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Operator Precedence and Associativity', 'operator-precedence-associativity.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Operator Precedence and Associativity</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Live-Demo / Shanthan</td>
 						<td></td>
-						<td>Live-Demo</td>
-						<td></td>
-						<td>Same as C</td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1012,10 +1012,10 @@
 							</div>
 
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva & Sathish</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1037,10 +1037,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Nested if-else-if', 'nested-if-else-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Nested if-else-if</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1061,10 +1061,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('While loop', 'while-loop-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of while loop</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1073,10 +1073,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of do-while loop', 'do-while-loop-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of do-while loop</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1097,10 +1097,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of break statement', 'break-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of break statement</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1109,10 +1109,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of continue statement', 'continue-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of continue statement</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1121,10 +1121,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of goto statement', 'goto.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of goto statement</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 					
 					<tr>
@@ -1134,7 +1134,7 @@
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Program on Prime numbers', 'sample-program-on-prime-numbers.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program on Prime numbers 
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program on Prime numbers (In progress)
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1152,10 +1152,10 @@
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; Program to print Pascal triangle
 							</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td></td>
+						<td>11-12-17</td>
 					</tr>
 				</tbody>
 			</table>

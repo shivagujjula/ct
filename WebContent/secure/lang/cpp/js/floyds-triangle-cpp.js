@@ -1,9 +1,9 @@
-var typingSpeed = 5;
-	var intro;
-	var tl;
-	var iCount = 1;
-	var jCount = 1;
-	var k = 1;
+var typingSpeed = 1;
+var intro;
+var tl;
+var iCount = 1;
+var jCount = 1;
+var k = 1;
 
 var floydsTriangleCReady = function() {
 	$("#restart").click(function() {
@@ -34,10 +34,10 @@ var floydsTriangleCReady = function() {
 		if ($(this).text() == "") {
 			$('.error-msg').remove();
 	       	$('.introjs-tooltiptext').append("<div class='error-msg'><br/>Empty value is not allowed.</div>");
-			$(".introjs-nextbutton").hide();
+	       	$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$("#rowValue").empty();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 	});
 	
@@ -57,12 +57,14 @@ var floydsTriangleCReady = function() {
 		steps : [{
 			element : "#topDiv",
 			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass : "hide"
 		}, {
 			element : "#codeDiv",
 			intro : "",
 			position : "right",
-			action : "sampleCode"
+			action : "sampleCode",
+			tooltipClass : "hide"
 		}, {
 			element : "#variableDeclaration",
 			intro : "",
@@ -84,11 +86,13 @@ var floydsTriangleCReady = function() {
 			element : "#outputDiv",
 			intro : "",
 			position : "left",
-			action : "printfValue"
+			action : "printfValue",
+			tooltipClass : "hide"
 		}, {
 			element : "#totalForLoop",
 			intro : "",
-			position : "top"
+			position : "top",
+			tooltipClass : "hide"
 		}, {
 			element : "#outputDiv",
 			intro : "",
@@ -100,27 +104,92 @@ var floydsTriangleCReady = function() {
 			position : "right"
 		}]});
 	
+	
+	intro.onbeforechange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		var elementId = targetElement.id;
+		switch (elementId) {
+        	
+		case "topDiv":
+			$("#starDisplay").addClass("opacity00");
+			$("#codeDiv").addClass("opacity00");
+		break;
+		case "codeDiv":
+			$('#codeDiv').removeClass('opacity00');
+        	break;
+        case "getPrintf":
+        	$('#consoleId1').addClass('opacity00');
+        	break;
+		case "outputDiv":
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var action = intro._introItems[intro._currentStep].action;
+				switch(action) {
+				case "printfText":
+					$('#animationDivText').addClass('opacity00');
+					break;
+				case "printfValue":
+					$('#rowValue').removeAttr('contenteditable');
+					$('.matrix').addClass('opacity00');
+					$("#rowValue").text('');
+					$(".outer").removeClass("background-color-green");
+					$(".inner-one").removeClass("background-color-yellow");
+					$(".inner-two").removeClass("background-color-blue");
+					break;
+				}
+			});
+        	break;
+		case "getScanf":
+			$('#rowValue').removeAttr('contenteditable');
+			$('.matrix').addClass('opacity00');
+        	break;
+        	
+		}
+	});
+	
 	intro.onafterchange(function(targetElement) {
+		
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			
+			if (intro._currentStep != 0 && targetElement.id !== "codeDiv") {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
         	
 		case "topDiv":
 			$('.introjs-nextbutton').hide();
-			var text = $("#typingDiv").html();
-			typing("#typingDiv", text, function() {
-			});
+			if (intro._direction == "backward") {
+				setTimeout(function() {
+					StarPreview();
+				}, 500)
+			}
 		break;
 		
 		case "codeDiv":
 			$('#codeDiv').removeClass('opacity00');
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
+				$(".introjs-tooltip").removeClass("hide");
 				var action = intro._introItems[intro._currentStep].action;
 				switch(action) {
 				case "sampleCode":
 					var text = "This is the sample <b class='ct-code-b-yellow'>C++</b> program.";
 		        	typing(".introjs-tooltiptext", text, function() {
-		        		$(".introjs-nextbutton").show();
+		        		$(".introjs-nextbutton, .introjs-prevbutton").show();
 		        	}); 
 					break;
 				}
@@ -128,18 +197,17 @@ var floydsTriangleCReady = function() {
         	break;
         	
 		case "variableDeclaration":
-			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				var text = "integer variables <b class ='ct-code-b-yellow'>rows,i,j,k</b> are declared.";
 	        	typing(".introjs-tooltiptext", text, function() {
-	        		$(".introjs-nextbutton").show();
+	        		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	        	});
 			});
         	break;
         	
 		case "restart":
 			$('.user-btn').remove();
-			$('.introjs-tooltip').css("min-width","200px");
+			$('.introjs-tooltip').css("min-width","130px");
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('#restart').removeClass('opacity00');
@@ -151,15 +219,17 @@ var floydsTriangleCReady = function() {
         	
         case "totalForLoop":
 			$('#rowValue').attr('contenteditable','false');
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-					var text="Here you have one outer <b class='ct-code-b-yellow'>for-loop</b> and one inner <b class='ct-code-b-yellow'>for-loop</b>.";
+				$(".introjs-tooltip").removeClass("hide");
+					var text="Here you have one outer <b class='ct-code-b-yellow'>for-loop</b> and two inner <b class='ct-code-b-yellow'>for-loops</b>.";
 		        	typing(".introjs-tooltiptext", text, function() {
 		        		$('.introjs-tooltiptext').append("<ul><li></li></ul>");
 		        		var text="The outer <b class='ct-code-b-yellow'>for-loop</b> is used to  print number of lines of pyramid.(Green color)";
 		        		typing(".introjs-tooltiptext ul li:last-child", text, function() {
 		        			$('.outer').addClass('background-color-green');
 		        			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="innerLoopOne()">Next &#8594;</a>');
+		        			$(".introjs-prevbutton").show();
 		        		});
 		        	});
 			});
@@ -168,9 +238,7 @@ var floydsTriangleCReady = function() {
         case "getPrintf":
 			$(".introjs-nextbutton").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function() {
-						intro.nextStep();
-				}, 500);
+					stepNext();
 			});
         	break;
         	
@@ -182,10 +250,11 @@ var floydsTriangleCReady = function() {
 				var action = intro._introItems[intro._currentStep].action;
 				switch(action) {
 				case "printfText":
-					$('#animationDivText').removeClass('opacity00');
-						setTimeout(function() {
-							intro.nextStep();
-					}, 1000);
+					
+					if (intro._direction == "forward") {
+						$('#animationDivText').removeClass('opacity00');
+					} 
+						stepNext();
 					break;
 					
 				case "printfValue":
@@ -193,6 +262,7 @@ var floydsTriangleCReady = function() {
 					$('.introjs-nextbutton').hide();
 						$('.matrix').removeClass('opacity00');
 						charAtEnd('rowValue');
+						$(".introjs-tooltip").removeClass("hide");
 						 var text ="Enter a value for number of rows.";
 						typing(".introjs-tooltiptext", text, function() {
 		 				});
@@ -216,9 +286,9 @@ var floydsTriangleCReady = function() {
 		case "getScanf":
 			$(".introjs-nextbutton").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here <b class ='ct-code-b-yellow'>cin</b> function reads one integer value as row size.";
+				var text = "Here <b class ='ct-code-b-yellow'>cin()</b> function reads one integer value as row size.";
 	        	typing(".introjs-tooltiptext", text, function() {
-	        		$(".introjs-nextbutton").show();
+	        		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	        	});
 			});
         	break;
@@ -227,14 +297,31 @@ var floydsTriangleCReady = function() {
 	});
 	
 	intro.start();
+	$('.introjs-nextbutton').hide();
+	$('.introjs-prevbutton').hide();
 	$('.introjs-skipbutton').hide();
-    $('.introjs-prevbutton').hide();
+	$('.introjs-bullets').hide();
 }
+
+
+function stepNext() {
+	if (intro._direction == "forward") {
+		setTimeout(function() {
+			intro.nextStep();
+		}, 800)
+	} else {
+		setTimeout(function() {
+			intro.previousStep();
+		}, 800)
+	}
+}
+
 
 function StarPreview() {
 	$('.user-btn').remove();
 	$('#starDisplay').removeClass('opacity00');
 	var text = "Let us consider a sample <b class='ct-code-b-yellow'>C++</b> program to print this pyramid.";
+	$(".introjs-tooltip").removeClass("hide");
 	typing(".introjs-tooltiptext", text, function() {
 		$(".introjs-nextbutton").show();
 	});
@@ -248,17 +335,19 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
 
 function innerLoopOne () {
+	$(".introjs-prevbutton").hide();
 	$('.user-btn').remove();
 	$('.introjs-tooltiptext ul').append("<li></li>");
 	var text="This inner <b class='ct-code-b-yellow'>for-loop</b> is used to print <b class='ct-code-b-yellow'>number</b>  on each line.(Yellow color)";
 	typing(".introjs-tooltiptext li:last-child", text, function() {
 		$('.inner-one').addClass('background-color-yellow').removeClass("background-color-green");
-		$(".introjs-nextbutton").show();	
+		$(".introjs-nextbutton, .introjs-prevbutton").show();
 	});
 	
 }

@@ -1,5 +1,5 @@
-var introcode;
-var typingInterval = 10;
+var introjs;
+var typingInterval = 1;
 var tl = new TimelineLite();
 var spanCount = 1;
 var number;
@@ -7,8 +7,8 @@ var remainder;
 var sum = 0;
 var countNumber = 1;
 function introGuide() {
-		introcode = introJs();
-		introcode.setOptions({
+		introjs = introJs();
+		introjs.setOptions({
 			showStepNumbers : false,
 			exitOnOverlayClick : false,
 			showBullets : false,
@@ -35,7 +35,42 @@ function introGuide() {
 				tooltipClass: "introjs-tooltip-min-width-custom",
 			}]
 });
-introcode.onafterchange(function(targetElement){
+		
+		
+		introjs.onbeforechange(function(targetElement){
+			var elementId = targetElement.id;
+			switch (elementId) {
+				case "algorithmDiv":
+					$(".introjs-duplicate-nextbutton").remove();
+					$("#number").text("number").removeAttr("style");
+					$("#algorithmDiv, #enterArmstrongNumber, #StoreValueInToTemp, #whileLoop1, #algorithmStepsDiv").addClass("opacity00");
+				break;
+			}
+		});
+
+		
+introjs.onafterchange(function(targetElement){
+	
+	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+	
+	if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+		introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+	}
+	
+	if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+		
+		if (introjs._currentStep != 0 && targetElement.id !== "codeDiv") {
+			$('.introjs-prevbutton').show();
+		}
+
+		$('.introjs-nextbutton').show();
+		return;
+	}
+	
+	if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+		introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+	}
+	
 	var elementId = targetElement.id;
 	switch (elementId) {
 		case "armstrongDefinition" :
@@ -45,13 +80,13 @@ introcode.onafterchange(function(targetElement){
 						$('.introjs-duplicate-nextbutton').removeClass('opacity00').addClass("animated zoomIn").one('animationend', function() {
 							$('.introjs-duplicate-nextbutton').click(function() {
 								$(".introjs-duplicate-nextbutton").remove();
-								introcode.nextStep();
+								introjs.nextStep();
 							});
 						});
 				}});
 			}});
 		break;
-		case "" :
+		case "notArmstrongExample" :
 			$("#armstrongDefinition").addClass("z-index1000000");
 			$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
@@ -102,12 +137,14 @@ introcode.onafterchange(function(targetElement){
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 					$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton' " +
 					"onclick=armstrongNumberAnimation(1)>Next &#8594;</a>");
+					$(".introjs-prevbutton").show();
 				});
 			});
 		break;
 		
 		case "restartBtn":
 			$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+			$('.introjs-tooltip').css("min-width","200px");
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#whileLoop1, #armstrongDefinition").removeClass("z-index1000000");
 				$("#restartBtn").removeClass('visibility-hidden');
@@ -118,7 +155,7 @@ introcode.onafterchange(function(targetElement){
 		break;
 	}
 });
-introcode.start();
+introjs.start();
 $('.introjs-skipbutton').hide();
 $('.introjs-prevbutton').hide();
 $('.introjs-nextbutton').hide(); 
@@ -230,10 +267,10 @@ function printArmstrongNumber() {
 				});
 			} else {
 				$('.armstrongText'+spanCount).append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-				introcode.refresh();
+				introjs.refresh();
 				$(".introjs-duplicate-nextbutton").click(function() {
 					$(".introjs-duplicate-nextbutton").remove();
-					introcode.nextStep();
+					introjs.nextStep();
 				});
 			}
 		});
@@ -331,6 +368,7 @@ function rotationAndAlgorithmAnimation() {
 
 function armstrongNumberAnimation(count) {
 	$('.introjs-tooltip').addClass('hide');
+	$(".introjs-prevbutton").hide();
 	$(".introjs-duplicate-nextbutton").remove();	
 	text = $("#step"+count).removeClass("opacity00").html();
 	typing('#step'+count, text, typingInterval, 'white', function() {
@@ -496,7 +534,7 @@ function ifCondition(count) {
 												"</span> is an Armstrong number");
 											transferEffect("#trueStatement", "#printArmstrongNumber", function() {
 												setTimeout(function() {
-													introcode.nextStep();
+													introjs.nextStep();
 												},1500);
 											})
 										});
@@ -520,7 +558,7 @@ function ifCondition(count) {
 											"</span> is not an Armstrong number");
 											transferEffect("#falseStatement", "#printArmstrongNumber", function() {
 												setTimeout(function() {
-													introcode.nextStep();
+													introjs.nextStep();
 												},1500);
 											})
 										});
@@ -615,7 +653,7 @@ function charAtEnd(elementId) {
 		} else {
 			$(this).removeClass("empty");
 		}
-		introcode.refresh();
+		introjs.refresh();
 		if ($("#armstrongNumber").text().length == 3) {
 			$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton' " +
 			"onclick=valueStoredIntemp()>Next &#8594;</a>");

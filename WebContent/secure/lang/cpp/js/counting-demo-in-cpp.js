@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 5;
+var typingSpeed = 1;
 var continueBtnCount = 0;
 var introjsNextBtnCount = 0;
 var passCount = 0;
@@ -11,9 +11,10 @@ var ifBlkId = "";
 var subMarks = "";
 var animationIfBlkName = "maths";
 
+var passValues;
 var countingDemoInCReady = function() {
 	introJsGuide();
-	
+	passValues = $(".passCount-rightside ").html();
 	$(".mathsMarksDiv").click(function() {
 		$(".mathsMarksDiv > .allowNumbers").focus();
 	});
@@ -54,7 +55,6 @@ var countingDemoInCReady = function() {
 				$(".javacode-internalmaths-marks").text($("#internalmathsMarks").text());
 				$(".javacode-internalscience-marks").text($("#internalscienceMarks").text());
 				$(".javacode-internalsocial-marks").text($("#internalsocialMarks").text());
-				
 				$(".errorMsg").empty();
 				
 				$(".introjs-tooltiptext").append("<div></div>");
@@ -129,7 +129,7 @@ var countingDemoInCReady = function() {
 				} else if ( $("#internalsocialMarks").text() > 30) {
 					$(".errorMsg").text("Please enter valid marks for social internals which should be less than or equal to 30.");
 					charAtEnd("internalsocialMarks");
-				} else if ( $("#mathsMarks").text() > 70) {
+				} else if ($("#mathsMarks").text() > 70) {
 					$(".errorMsg").text("Please enter valid marks for maths externals which should be less than or equal to 70.");
 					charAtEnd("mathsMarks");
 				} else if ( $("#socialMarks").text() > 70) {
@@ -191,42 +191,20 @@ var countingDemoInCReady = function() {
 	
 	$('#restart').click(function() {
 		$(this).addClass("opacity00");
-		continueBtnCount = 0;
 		introjsNextBtnCount = 0;
-		passCount = 0;
-		continueActionCount = 0;
-		
 		subName = "mathsMarks";
 	  	ifBlkId = ".mathsIf";
 	  	subMarks = $("#mathsMarks").text();
 		animationIfBlkName = "maths";
 		
 		$('.allowNumbers').attr('contenteditable', true);
-		
-		$(".passCount-rightside").empty().append("<span class='display-inline-block'>pass_count</span><span> + 1</span>");
-		$(".passmark-in-animation").text("externalpassMark");
-		
-		$(".science-ifblk-body-in-animation").empty().append("<span class='display-inline-block'>pass_count</span><span> + 1</span>");
-		$(".maths-ifblk-condition-in-animation").addClass("opacity00");
-		$(".science-ifblk-condition-in-animation").addClass("opacity00");
-		$(".social-ifblk-condition-in-animation").addClass("opacity00");
-		
-		$(".maths-ifblk-condition1-in-animation").addClass("opacity00");
-		$(".science-ifblk-condition1-in-animation").addClass("opacity00");
-		$(".social-ifblk-condition1-in-animation").addClass("opacity00");
-		
-		$(".maths-ifblk-body-in-animation").addClass("opacity00");
-		$(".science-ifblk-body-in-animation").addClass("opacity00");
-		$(".social-ifblk-body-in-animation").addClass("opacity00");
-		
-		$(".dynamic-tag").remove();
-		$(".dynamic1-tag").remove();
 		$('.introjs-tooltipbuttons').show();
 		$('.introjs-tooltiptext').css("min-width", "250px");
-		$("#animationDivArea").addClass("opacity00");
+		
 		$("#javaCodeDiv").addClass("opacity00");
 		$("#animationDiv .completed").addClass("opacity00");
 		$("#outputDiv").addClass("opacity00");
+		animationDiv();
 		introjs.goToStep(2);
 	});
 }
@@ -258,6 +236,26 @@ function introJsGuide() {
 			position: "right"
 		}]
 	});
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "animationDiv":
+			$(".introjs-tooltip").css("min-width", "100px");
+			introjsNextBtnCount = 0;
+			$(".mathsMarksDiv, .scienceMarksDiv, .socialMarksDiv, .internalmathsMarks, .internalscienceMarks").addClass("opacity00").removeClass("completed");
+			$(".internalsocialMarks,.passMarkDiv, .externalpassMark, .totaldeclareDiv, .passCountDiv").addClass("opacity00").removeClass("completed");
+			$(".totalmathsMark, .totalscienceMark, .totalsocialMark").addClass("opacity00").removeClass("completed");
+			$(".totalmathsMarks,.totalscienceMarks, .totalsocialMarks").empty();
+			$("#animationDivArea").addClass("opacity00");
+			animationDiv();
+			break;
+		case "animationDivArea":
+			introjsNextBtnCount = 4;
+			$("#javaCodeDiv").addClass("opacity00");
+			animationDiv();
+			break;
+	}
+	});
 	
 	introjs.onafterchange(function(targetElement) {
 		switch (targetElement.id) {
@@ -268,12 +266,12 @@ function introJsGuide() {
 		break;
 			
 		case "animationDiv":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one("transitionend", function() {
-				
-				var text = "Here, we can see a program on counting variable.<br>The external and internal marks in 3 subjects are ";
+			$('.allowNumbers').attr('contenteditable', true);	
+			var text = "Here, we can see a program on counting variable.<br>The external and internal marks in "+
+						"<b class='ct-code-b-yellow'>3</b> subjects are here";
 				typing(".introjs-tooltiptext", text, function() {
-					
 					var text = $(".mathsMarksDiv").removeClass("opacity00").html();
 					typing(".mathsMarksDiv", text, function() {
 						var text = $(".scienceMarksDiv").removeClass("opacity00").html();
@@ -309,13 +307,18 @@ function introJsGuide() {
 		break;
 			
 		case "animationDivArea":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$('.introjs-tooltip').css("min-width", "500px");
-				var text = "Let us compare <b class='ct-code-b-yellow'>external_maths_marks</b> with <b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_maths_marks</b> with <b class='ct-code-b-yellow'>total_pass_mark</b>."
+				var text = "Let us compare <b class='ct-code-b-yellow'>external_maths_marks</b> "+
+				"with <b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_maths_marks</b> "+
+				"with <b class='ct-code-b-yellow'>total_pass_mark</b>."
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-tooltiptext").append("<div></div>");
-					var text = "A student is considered as <b class='ct-code-b-yellow'>pass</b> in maths, only when the following two conditions are satisfied.<ul><li><b class='ct-code-b-yellow'>external_maths_marks</b> >= <b class='ct-code-b-yellow'>26</b></li><li><b class='ct-code-b-yellow'>total_maths_marks</b> >= <b class='ct-code-b-yellow'> 40</b></li></ul>"
+					var text = "A student is considered as <b class='ct-code-b-yellow'>pass</b> in maths, "+
+						"only when the following two conditions are satisfied.<ul><li><b class='ct-code-b-yellow'>external_maths_marks</b> "+
+						">= <b class='ct-code-b-yellow'>26</b></li><li><b class='ct-code-b-yellow'>total_maths_marks</b> >= "+
+						"<b class='ct-code-b-yellow'> 40</b></li></ul>";
 					typing(".introjs-tooltiptext > div:last-child", text, function() {
 					$(".introjsNextBtn").removeClass("hidden");
 					});
@@ -325,16 +328,16 @@ function introJsGuide() {
 			
 		case "javaCodeDiv":
 			$('.introjs-tooltip').css("min-width", "120px");
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$("#output").append("<div class='opacity00 dynamic-tag'>Number of subjects passed = " + passCount + "</div>");
 				$("#javaCodeDiv").fadeTo(800, 1, function() {
 					$(this).css("opacity", "");
 					$("#javaCodeDiv").removeClass("opacity00").addClass("focus");
 					
-					var text = "The code for C++ program."
+					var text = "The code for <b class='ct-code-b-yellow'>C++</b> program."
 					typing(".introjs-tooltiptext", text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			});
@@ -381,7 +384,28 @@ function introJsGuide() {
 	$('.introjs-nextbutton').hide();
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button introjsNextBtn hidden'>Next &#8594;</a>");
 }
+function animationDiv() {
+	continueBtnCount = 0;
+	passCount = 0;
+	continueActionCount = 0;
+	$(".mathsIf, .scienceIf, .socialIf").addClass("opacity00").removeClass("completed");
+	$(".passmark-in-animation").removeAttr('style').text("external_pass_mark");
+	$(".passmark1-in-animation").removeAttr('style').text("total_pass_mark");
+	$(".passCount-rightside").empty().append(passValues);
+	$(".subMark").removeAttr('style').text("subjectMark");
+	$(".subMark1").text("subjectMark1");
+	$(".dynamic-tag, .dynamic1-tag").remove();
+	$(".maths-ifblk-condition-in-animation, .maths-ifblk-condition1-in-animation, .maths-ifblk-body-in-animation ").addClass("opacity00");
+	$(".science-ifblk-condition-in-animation").addClass("opacity00");
+	$(".social-ifblk-condition-in-animation").addClass("opacity00");
 	
+	$(".science-ifblk-condition1-in-animation").addClass("opacity00");
+	$(".social-ifblk-condition1-in-animation").addClass("opacity00");
+	
+	$(".science-ifblk-body-in-animation").addClass("opacity00");
+	$(".social-ifblk-body-in-animation").addClass("opacity00");
+
+}	
 function typing(id, text, callBackFunction) {
 	$(id).typewriting( text , {
 		"typing_interval": typingSpeed,
@@ -471,6 +495,7 @@ function flipIfCondition() {
 															$(".introjs-tooltiptext").append("<div></div>");
 															var text = "";
 															$("." + animationIfBlkName + "-ifblk-condition1-in-animation").append("<span class='dynamic1-tag'></span>");
+														//parseInt(subMarks) >= 40 && parseInt(subMarks1) >= 26)
 															if (parseInt(subMarks1) >= 40) {
 																typing("." + animationIfBlkName + "-ifblk-condition1-in-animation > span:last-child()", "is <b class='ct-code-b-blue'>true</b>", function() {
 																	$(".introjs-tooltipbuttons").append("<a class='introjs-button introjsNextBtn2' onclick=evalateCondition()>Next &#8594;</a>");
@@ -688,7 +713,9 @@ function continueAction() {
 	continueActionCount++;
 	if (continueActionCount == 1) {
 		$(".introjs-tooltiptext").empty();
-		var text = "Let us compare <b class='ct-code-b-yellow'>external_science_marks</b> with <b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_science_marks</b> with <b class='ct-code-b-yellow'>total_pass_mark</b>.";
+		var text = "Let us compare <b class='ct-code-b-yellow'>external_science_marks</b> with "+
+		"<b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_science_marks</b> "+
+		"with <b class='ct-code-b-yellow'>total_pass_mark</b>.";
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button introjsNextBtn1' onclick=continueAction()>Next &#8594;</a>");
 		});
@@ -704,7 +731,9 @@ function continueAction() {
 		});
 	} else if (continueActionCount == 3) {
 		$(".introjs-tooltiptext").empty();
-		var text = "Let us compare <b class='ct-code-b-yellow'>external_social_marks</b> with <b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_social_marks</b> with <b class='ct-code-b-yellow'>total_pass_mark</b>.";
+		var text = "Let us compare <b class='ct-code-b-yellow'>external_social_marks</b> with "+
+			"<b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_social_marks</b> with "+
+			"<b class='ct-code-b-yellow'>total_pass_mark</b>.";
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append("<a class='introjs-button introjsNextBtn1' onclick=continueAction()>Next &#8594;</a>");
 		});
@@ -722,14 +751,14 @@ function continueAction() {
 		$(".introjs-tooltiptext").append("<br/><div></div>");
 		var text = "Finally the value of <b class='ct-code-b-yellow'>pass_count</b> is " + passCount +  ".";
 		typing(".introjs-tooltiptext > div:last-child()", text, function() {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		});
 	}
 }
 
 function evalateCondition() {
 	$(".introjsNextBtn2").hide();
-	if (parseInt(subMarks) >= 40 && parseInt(subMarks1) >= 26) {
+	if (parseInt(subMarks1) >= 40 && parseInt(subMarks) >= 26) {
 		text = "Since the condition evaluates to <b class='ct-code-b-yellow'>true</b>,<br>" 
 				+ " control enters into <b class='ct-code-b-yellow'>if-body</b> and updates " 
 				+ "<b class='ct-code-b-yellow'>pass_count</b> by value <b class='ct-code-b-yellow'>1.</b>";
@@ -746,7 +775,7 @@ function evalateCondition() {
 
 function evalateConditionscience() {
 	$(".introjsNextBtn2").hide();
-	if (parseInt(subMarks) >= 40 && parseInt(subMarks1) >= 26) {
+	if (parseInt(subMarks1) >= 40 && parseInt(subMarks) >= 26) {
 		text = "Since the condition evaluates to <b class='ct-code-b-yellow'>true</b>,<br>" 
 				+ " control enters into <b class='ct-code-b-yellow'>if-body</b> and updates " 
 				+ " <b class='ct-code-b-yellow'>pass_count</b> by value <b class='ct-code-b-yellow'>1.</b>";
@@ -763,7 +792,7 @@ function evalateConditionscience() {
 
 function evalateConditionsocial() {
 	$(".introjsNextBtn2").hide();
-	if (parseInt(subMarks) >= 40 && parseInt(subMarks1) >= 26) {
+	if (parseInt(subMarks1) >= 40 && parseInt(subMarks) >= 26) {
 		text = "Since the condition evaluates to <b class='ct-code-b-yellow'>true</b>,<br>" 
 				+ " control enters into <b class='ct-code-b-yellow'>if-body</b> and updates " 
 				+ "<b class='ct-code-b-yellow'>pass_count</b> by value <b class='ct-code-b-yellow'>1.</b>";
