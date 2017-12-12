@@ -5,7 +5,7 @@ var countValueBox = 0;
 var valueArr = [];
 var sortArr = [];
 var value;
-var typing_interval = 10;
+var typing_interval = 0.1;
 var y = 1;
 var recursionCount = 0;
 
@@ -46,8 +46,79 @@ var differentSetsReady = function() {
 			position : "bottom"
 		}
 		]});
+		
+	intro.onbeforechange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		var elementId = targetElement.id;
+		switch (elementId) {
+		  case "heading":
 			
+		break;
+		
+		case "addMethod":
+			
+		break;
+		
+		case "hashSet":
+			
+			if (intro._direction == "backward") {
+				
+				$(".hashSet" + countValueBox).remove();
+				$("#lHashSet").empty();
+				$(".lset"+ countValueBox).remove();
+				
+				var top = parseInt($("#linkedHashSetAnimationJar").height() - $("#linkedHashSetAnimationJar > div").height() - 6);
+				if (top < 0) {
+					$("#linkedHashSetAnimationJar > div").css("top" , "0");
+				} else {
+					$("#linkedHashSetAnimationJar > div").css({
+						"top" : top,
+					});
+				}
+			}
+			
+		break;
+		
+		case "linkedHashSet":
+			
+			if (intro._direction == "backward") {
+				
+				$(".lset"+ countValueBox).remove();
+				$("#tSet").empty();
+				$(".tSetAnimate" + countValueBox).remove();
+				
+				var top = parseInt($("#linkedHashSetAnimationJar").height() - $("#linkedHashSetAnimationJar > div").height() - 6);
+				if (top < 0) {
+					$("#linkedHashSetAnimationJar > div").css("top" , "0");
+				} else {
+					$("#linkedHashSetAnimationJar > div").css({
+						"top" : top,
+					});
+				}
+				
+				y--;
+				var top = parseInt($("#treeSetAnimationJar").height() - $("#treeSetAnimationJar > div").height() - 6);
+				if($('#treeSetAnimationJar .value-append-box').length < 5) {
+					$("#treeSetAnimationJar > div").css({
+						"top" : top,
+					});
+				} else {
+					$("#treeSetAnimationJar > div").css({
+						"top" : top - (28 * y)
+					});
+				}
+			}
+		break;
+		
+		case "treeSet":
+			
+		break;
+		}
+	});
+	
+	
 		intro.onafterchange(function(targetElement) {
+			$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 			var elementId = targetElement.id;
 			switch (elementId) {
 			  case "heading":
@@ -72,7 +143,11 @@ var differentSetsReady = function() {
 				break;
 			case "hashSet":
 				$('.introjs-nextbutton').hide();
+				$('#setHash').append('<span id="valueSpan' + countValueBox + '"class="value-append-box"><span id="value' + countValueBox 
+						+ '" class="visibility-hidden ct-pink-color">'
+						+ $('#addByElementMethodValue').text() + '</span></span>');
 				$(".introjs-helperLayer").one("transitionend", function() {
+					
 					
 					var l1 = $('#addByElementMethodValue').offset();
 					var l2 = $('#value' + countValueBox).offset();
@@ -92,9 +167,15 @@ var differentSetsReady = function() {
 						}});
 					}});
 				});
-				break;
+			break;
+			
 			case "linkedHashSet":
 				$('.introjs-nextbutton').hide();
+				$('.user-btn').remove();
+				$('#lHashSet').append('<span id="valueSpan' + countValueBox + '"class="value-append-box"><span id="value' + countValueBox 
+						+ '" class="visibility-hidden ct-pink-color">'
+						+ $('#addByElementMethodValue').text() + '</span></span>');
+				
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var l1 = $('#addByElementMethodValue').offset();
 					$("#linkedHashSet .value-append-div #value" + (countValueBox) ).offset({
@@ -112,10 +193,17 @@ var differentSetsReady = function() {
 						}});
 					}});
 				});
-				break;
+			break;
+				
 			case "treeSet":
 				$('.introjs-nextbutton').hide();
 				$('#arrow').addClass('visibility-hidden');
+				
+				$('#tSet').append('<span id="valueSpan' + countValueBox + '"class="value-append-box"><span id="value' + countValueBox 
+						+ '" class="visibility-hidden ct-pink-color">'
+						+ $('#addByElementMethodValue').text() + '</span></span>');
+				
+				
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var l1 = $('#addByElementMethodValue').offset();
 					$("#treeSet .value-append-div #value" + (countValueBox)).offset({
@@ -186,9 +274,9 @@ var differentSetsReady = function() {
 			return;
 		}
 		
-		$('.value-append-div').append('<span id="valueSpan' + countValueBox + '"class="value-append-box"><span id="value' + countValueBox 
+		/*$('.value-append-div').append('<span id="valueSpan' + countValueBox + '"class="value-append-box"><span id="value' + countValueBox 
 										+ '" class="visibility-hidden ct-pink-color">'
-										+ $('#addByElementMethodValue').text() + '</span></span>');
+										+ $('#addByElementMethodValue').text() + '</span></span>');*/
 		$("[contenteditable=true]").attr("contenteditable", "false");
 		intro.nextStep();
 	});
@@ -200,8 +288,13 @@ function changeElementId() {
 	});
 }
 
+
+
 function checkElementForHashSet() {
+	$(".introjs-prevbutton").hide();
+	$(".user-btn").remove();
 	var noDuplicate = true;
+	
 	for (var index = 0; index < countValueBox; index++) {
 		if ($('#valueSpan' + countValueBox).text() == $('#valueSpan' + index).text()) {
 			 
@@ -211,7 +304,8 @@ function checkElementForHashSet() {
 			var value = $('#valueSpan' + countValueBox).text();
 			
 			$(".introjs-tooltiptext").append("Since the <b class ='ct-code-b-yellow'>HashSet</b> already contains an element(<b class ='ct-code-b-yellow'>"+value+"</b>)"
-					+ " it is not included.");			
+					+ " it is not included.");	
+			$(".user-btn").remove();
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="pauseBlinkEffect()">Next &#8594;</a>');
 		
 			noDuplicate = false;
@@ -227,21 +321,28 @@ function checkElementForHashSet() {
 			break;
 		}
 	}
+
+
 	if (noDuplicate) {
 		$(".introjs-tooltip").removeClass("hide");
-		if ($("#hashSetAnimationJar .value-append-box").length == 0) { 
+		if ($("#hashSetAnimationJar .value-append-box").length == 0) {
+			$(".user-btn").remove();
 			var text = "A <b class ='ct-code-b-yellow'>HashSet</b> does not allow duplicates and does not guarantee any particular order for its entries.<br/>" 
 						+ " The order in which the elements are stored internally might dynamically change while adding new elements.";
+			
 			typing(".introjs-tooltiptext", text, function() {
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="checkPositionOfValue()">Next &#8594;</a>');
 			});
+			
 		} else {
+			$(".user-btn").remove();
 			$(".introjs-tooltiptext").append("A <b class ='ct-code-b-yellow'>HashSet</b> does not allow duplicates and does not guarantee any particular order for its entries.<br/>" 
 												+ " The order in which the elements are stored internally might dynamically change while adding new elements.");	
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="checkPositionOfValue()">Next &#8594;</a>');
 			$(".introjs-tooltip").removeClass("hide");
 		}
 	}
+	
 }
 
   function pauseBlinkEffect() {
@@ -291,7 +392,7 @@ function comparePositions( p1, p2 ) {
 function setPositionOfValue(elementOffset, topPosition, leftPosition) {
 	timelineLite.to('#valueSpan' + countValueBox, 1, {top: (topPosition- elementOffset.top), left: (leftPosition - elementOffset.left), onComplete: function() {
 		$('#valueSpan' + countValueBox).remove();
-		$('#hashSetAnimationJar').append('<span id="valueSpan' + countValueBox + '" class="value-append-box border-fade"><span id="valueSpan' + countValueBox 
+		$('#hashSetAnimationJar').append('<span id="valueSpan' + countValueBox + '" class="value-append-box border-fade hashSet'+ countValueBox +'"><span id="valueSpan' + countValueBox 
 									+ '" class="ct-pink-color">'
 									+ $('#addByElementMethodValue').text() + '</span></span>');
 		$("#hashSetAnimationJar #valueSpan" + countValueBox).css("border-color", "gray");
@@ -304,7 +405,9 @@ function setPositionOfValue(elementOffset, topPosition, leftPosition) {
 }
 
 function checkElementOfLinkedHashSet() {
+	$(".introjs-prevbutton").hide();
 	var noDuplicate = true;
+	$(".user-btn").remove();
 	for (var index = 0; index < countValueBox; index++) {
 		
 		if ($('#valueSpan' + countValueBox).text() == $('#valueSpan' + index).text()) {
@@ -338,12 +441,14 @@ function checkElementOfLinkedHashSet() {
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" '
 			+ ' onclick="setPositionForLinkedHashSet()">Next &#8594;</a>');
+			$(".introjs-prevbutton").show();
 		});
 	
 		} else {
 		$(".introjs-tooltiptext").append("<b class ='ct-code-b-yellow'>LinkedHashSet</b> does not allow duplicates and strores the entries in the order in which they are inserted.");	
 		$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" '
 				+ ' onclick="setPositionForLinkedHashSet()">Next &#8594;</a>');
+		$(".introjs-prevbutton").show();
 		$(".introjs-tooltip").removeClass("hide");
 		}
 	  }
@@ -351,8 +456,9 @@ function checkElementOfLinkedHashSet() {
 
 
 function setPositionForLinkedHashSet() {
+	$(".introjs-prevbutton").hide();
 	$(".user-btn").remove();
-	$('#linkedHashSetAnimationJar > div').prepend('<div class="text-center" id="textCenter"><span class="value-append-box visibility-hidden">'
+	$('#linkedHashSetAnimationJar > div').prepend('<div class="text-center lset'+ countValueBox +'" id="textCenter"><span class="value-append-box visibility-hidden">'
 			+ '<span id="valueSpan' 
 			+ countValueBox + '" class="ct-pink-color">'
 			+ $('#addByElementMethodValue').text()
@@ -399,6 +505,7 @@ function setPositionForLinkedHashSet() {
 
 function checkElementOfTreeSet() {
 	var noDuplicate = true;
+	$(".user-btn").remove();
 	for (var index = 0; index < countValueBox; index++) {
 		if ($('#valueSpan' + countValueBox).text() == $('#valueSpan' + index).text()) {
 			$(".introjs-tooltip").removeClass("hide");
@@ -436,6 +543,7 @@ function checkElementOfTreeSet() {
 					+ " the elements are sorted in alphabetical order.";
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="setPositionForTreeSet()">Next &#8594;</a>');
+			$(".introjs-prevbutton").show();
 		});
 		} else {
 			$(".introjs-tooltiptext").append("A <b class ='ct-code-b-yellow'>TreeSet</b> does not allow duplicates and stores its elements in their natural order."
@@ -443,6 +551,7 @@ function checkElementOfTreeSet() {
 					+ " the elements are sorted in alphabetical order of the values.");
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" '
 					+ ' onclick="setPositionForTreeSet()">Next &#8594;</a>');
+			$(".introjs-prevbutton").show();
 			$(".introjs-tooltip").removeClass("hide");
 		}
 	}
@@ -454,10 +563,11 @@ function sortingElements() {
 }
 
 function setPositionForTreeSet() {
+	$(".introjs-prevbutton").hide();
 	$('.user-btn').remove();
 	var index = sortArr.indexOf(value);
 	if (index == 0) {
-		$('#treeSetAnimationJar > div').prepend('<div class="text-center margin-top-10" id="textCenter"><span class="value-append-box visibility-hidden"><span id="valueSpan' 
+		$('#treeSetAnimationJar > div').prepend('<div class="text-center tSetAnimate'+ countValueBox +' margin-top-10" id="textCenter"><span class="value-append-box visibility-hidden"><span id="valueSpan' 
 				+ countValueBox + '" class="ct-pink-color">'
 				+ $('#addByElementMethodValue').text()
 				+ '</span></span></div>');

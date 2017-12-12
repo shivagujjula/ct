@@ -1,6 +1,6 @@
 
 var tl = new TimelineLite();
-var typingSpeed = 10;
+var typingSpeed = 1;
 var executeBtnCount = 1;
 var cIdentifiersReady = function() {
 	$('body').keypress(function(event) {

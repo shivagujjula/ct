@@ -274,13 +274,13 @@ function charAtEnd(element) {
 }
 	
 function typing(id, content, nextAction1, nextAction2) {
-	var typingSpeed = 20;
+	var typingSpeed = 1;
 	if (id === 'incrementText') {
 		if (incrementTextTypingSpeed == 0) {
-			typingSpeed = 20;
-			incrementTextTypingSpeed = 10;
+			typingSpeed = 1;
+			incrementTextTypingSpeed = 1;
 		} else {
-			typingSpeed = 20;
+			typingSpeed = 1;
 		}
 	}
 	$('#' + id).typewriting( content , {

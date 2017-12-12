@@ -153,6 +153,7 @@ function introGuide() {
 		break;
 		case "catchBlock":
 			introjs.refresh();
+			$("#code").addClass("hide");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "When the <y>try block</y> throws an exception, immediately the program control enter into the <y>catch block</y>.";
@@ -174,10 +175,11 @@ function introGuide() {
 					});
 				});
 			} else if (introjs._currentStep == 11) {
+				$("#op1, #op2").addClass("hide");
 				$("#try2catch").removeClass("hide");
 				$("#cout2").addClass("hide");
 				introjs.refresh();
-				$("#body").empty();
+				//$("#body").empty();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "Let us consider a sample <y>C++</y> program with <y>try, catch</y> blocks.";
@@ -200,24 +202,40 @@ function introGuide() {
 		case "cout1":
 			if (introjs._currentStep == 7) {
 				introjs.refresh();
+				$("#outputDiv").addClass("opacity00");
+				$("#op1").addClass("hide");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else 	if (introjs._currentStep == 12) {
 				introjs.refresh();
+				$("#op3").addClass("opacity00");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
 		case "cout2":
 			$("#cout2").removeClass("hide");
+			$("#op2").addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -246,20 +264,28 @@ function introGuide() {
 		break;
 		case "outputDiv":
 			if (introjs._currentStep == 8) {
-				$("#outputDiv").removeClass("hide");
+				$("#outputDiv").removeClass("hide opacity00");
 				introjs.refresh();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Before execution, inside main()</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					//$("#body").append("<div>Before execution, inside main()</div>");
+					$("#op1").removeClass("hide opacity00");;
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 10) {
 				introjs.refresh();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Floating point exception</div>");
+					//$("#body").append("<div><red>Floating point exception</red></div>");
+					$("#op2").removeClass("hide opacity00");
 					var text = "<ul><li>The compiler evaluate the result of <y>division by zero</y> and there by terminates the "
 					+ "  execution of the program abnormally.</li>"
 					+ "<li>By using <y>try</y>, <y>catch</y> blocks execute the program normally.</li></ul>"
@@ -271,28 +297,49 @@ function introGuide() {
 				introjs.refresh();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Before execution, inside main()</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					//$("#body").append("<div>Before execution, inside main()</div>");
+					$("#op3").removeClass("opacity00");;
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 17) {
 				introjs.refresh();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Division by 0 error is occured</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					//$("#body").append("<div>Division by 0 error is occured</div>");
+					$("#op4").removeClass("opacity00");;
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 19) {
 				introjs.refresh();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>After exception, inside main()</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					//$("#body").append("<div>After exception, inside main()</div>");
+					$("#op5").removeClass("opacity00");;
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
@@ -339,18 +386,30 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "cout5":
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "restart":

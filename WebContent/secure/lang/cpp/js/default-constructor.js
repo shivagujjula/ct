@@ -75,17 +75,71 @@ function introGuide() {
 				}
 			]});
 	
+	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "topDiv":
+			
+		break;	
+		case "code":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#code").removeClass("opacity00");
+			$('.user-btn').addClass("hide");
+		break;
+		case "class":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "callDefaultConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "memoryDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "defaultConstByClass":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "defaultConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			
+		break;
+		case "s1Panel":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "callMethod1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#a2Panel, #b2Panel").addClass("opacity00");
+		break;
+		case "displayMethod":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "cout":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "restart":
+			
+		break;
+		
+		}
+	});
+	
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
 		introjs.refresh();
 		switch (elementId) {
 		case "topDiv":
-			$('.introjs-nextbutton').hide();
+			$('.user-btn').removeClass("hide");
+			$("#code").addClass("opacity00");
 			$("#li1").fadeTo(500, 1, function () {
 				$("#li2").fadeTo(500, 1, function () {
 					$("#li3").fadeTo(500, 1, function () {
-						$("#nextBtn").fadeTo(500, 1, function () {
+						$("#li4").fadeTo(500, 1, function () {
+							$("#nextBtn").fadeTo(500, 1, function () {
+							});
 						});
 					});
 				});
@@ -93,7 +147,7 @@ function introGuide() {
 		break;
 		case "code":
 			$("#code").removeClass("opacity00");
-			$('.user-btn').remove();
+			$('.user-btn').addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -117,15 +171,13 @@ function introGuide() {
 		break;
 		case "callDefaultConst":
 			$("#callDefaultConst").removeClass("hide");
+			$("#memoryDiv, #s1Panel").addClass("opacity00");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
-					+ "<li>Here <y>s1</y> is an object of the class <y>Sample</y>.</li>"
-					+ "<li>First the memory is allocated for that object.</li>";
+				var text = "<ul><li>Here <y>s1</y> is an object of the class <y>Sample</y> created by the user.</li>"
+					+ "<li>Whenever an object is declared, memory is allocated to the object.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -133,27 +185,30 @@ function introGuide() {
 			if (introjs._currentStep == 4) {
 				$("#memoryDiv").removeClass("opacity00");
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#s1Panel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
-						var text = "Memory is created for object <y>s1</y>, which consists of two integer variables <y>a</y> and <y>b</y>.";
+						var text = "<ul><li>Memory is created for object <y>s1</y>, which consists of two integer variables <y>a</y> and <y>b</y>.</li>"
+								+ "<li>After allocation of memory to the object, the <y>default constructor</y> will call automatically.</li></ul>";
 						typing($(".introjs-tooltiptext"), text, function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});	
 				});
 			} else if (introjs._currentStep == 11) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#s2Panel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 			}
@@ -161,41 +216,42 @@ function introGuide() {
 		case "defaultConstByClass":
 			$("#defaultConstByClass").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>If we are not defined any constructor, the compiler will <y>implicitly</y> declare and define a <y>default constructor</y> with an <y>empty body</y>.</li>"
-					+ "<li>If we are define any constructor, the compiiler will not define.</li></ul>";
+				var text = "<ul><li>When a class is defined the compiler automatically defines a <y>default constructor</y> with an empty body.</li>"
+					+ "<li>If the user defined any default constructor then the compiiler default constructor disappear.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "defaultConst":
 			$("#defaultConstByClass").addClass("hide");
 			$("#defaultConst").removeClass("hide");
+			$("#a1PanelVal, #b1PanelVal").addClass("opacity00");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Here we are <y>explicitly</y> defined the <y>default constructor</y>.</li>"
 					+ "<li>So, after creating an object immediately the default constructor will call automatically. And <y>initialize</y> variables <y>a</y>, <y>b</y>.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "s1Panel":
 			$("#memoryDiv").removeClass("opacity00");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#a1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
 					$("#b1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 			});
@@ -203,52 +259,60 @@ function introGuide() {
 		case "callMethod1":
 			$("#callMethod1").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1500);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "displayMethod":
 			$("#displayMethod").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1500);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "cout":
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "The <y>cout</y> display the output on the console.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "outputDiv":
 			$("#outputDiv").removeClass("opacity00");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#body").append("<div>Given values: 5 10</div>");
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1500);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "restart":
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-tooltip").css({"min-width": "115px"});
 			$('#restart').removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {

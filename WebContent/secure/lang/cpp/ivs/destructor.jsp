@@ -84,7 +84,7 @@
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 	font-size: 13px;
-	height: 388px;
+	height: 130px;
 	padding: 10px;
 	white-space: inherit;
 }
@@ -165,7 +165,7 @@ $(document).ready(function() {
 <div class="col-xs-offset-1 col-xs-10 margin-top-20">
 		<div id="topDiv">
 			<div id="typingDiv1">
-				<ul style="font-family: monospace;">
+				<ul>
 					<li id="li1" class="opacity00"><a href="https://en.wikipedia.org/wiki/Destructor_(computer_programming)" target="_blank">Destructor</a> functions are the inverse of constructor functions. They are called when objects are destroyed (deallocated).</li>
 					<li id="li2" class="opacity00">Destructors have same name as the class preceded by a tilde<g>(~)</g>.</li>
 					<li id="li3" class="opacity00">If we do not write our own destructor in class, compiler creates a default destructor for us.</li>
@@ -200,7 +200,7 @@ $(document).ready(function() {
 			cout << <red>"s1 and s2 objects are deleted.\n"</red>;
 		}</span>
 };</span>
-<span id="main"><red>void</red> main() {
+<span id="main"><red>int</red> main() {
 	<span id="callDefaultConst" class="hide">Sample s1;</span>
 	<span id="callParameterConst" class="hide">Sample s2(<spa id="s1Val1">10</spa>, <span id="s1Val2">20</span>);</span>
 }</span>
@@ -272,6 +272,9 @@ $(document).ready(function() {
 				<span class="title">Output</span>
 			</div>
 			<div class="output-console-body" id="body">
+				<div id="op1" class="opacity00">s1 object is created.</div>
+				<div id="op2" class="opacity00">s2 object is created.</div>
+				<div id="op3" class="opacity00">s1 and s2 objects are deleted.</div>
 			</div>
 		</div>
 	</div>

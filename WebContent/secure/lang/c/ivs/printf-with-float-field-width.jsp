@@ -21,9 +21,6 @@
 
 <title>printf.jsp</title>
 <style type="text/css">
-.introjs-tooltiptext br {
-	margin: 15px;
-}
 
 .introjs-tooltip {
 	min-width: 300px;
@@ -199,6 +196,9 @@ keyframes blink { 50% {
 	border-bottom: 1px solid green;
 	margin: 0.9px;
 }
+#printfDefinition {
+font-family:monospace;
+}
 </style>
 
 </head>
@@ -224,10 +224,10 @@ keyframes blink { 50% {
 					id="restartBtn">Restart</button>
 			</div>
 			<div class="col-xs-12">
-				<div class="col-xs-6 col-xs-offset-3 margin-top" id="printfDefinition">
+				<div class="col-xs-8 col-xs-offset-2 margin-top" id="printfDefinition">
 					
 				
-					<ul><li id="text1">The <span class="ct-code-b-green">printf()</span> function allows for printing a
+					<ul><li id="text1" class= "opacity00">The <span class="ct-code-b-green">printf()</span> function allows for printing a
 							<span class="ct-code-b-green">float number</span> using the format character
 							<span class="ct-code-b-green"> %f</span>.
 							While printing a <span class="ct-code-b-green">float number</span>using the format character
@@ -235,7 +235,7 @@ keyframes blink { 50% {
 							<span class="ct-code-b-green">field width</span> in between
 							<span class="ct-code-b-green">%</span> and the <span class="ct-code-b-green">f</span> format character. 
 							also specifier <span class="ct-code-b-green">field width</span>.</li>
-						<li id="text2">For example, we are trying to 
+						<li id="text2"class = "opacity00">For example, we are trying to 
 						print <span class="ct-code-b-green">65.3536</span>, using a field width
 						<span class="ct-code-b-green">8.3</span> specified by 
 						<span class="ct-code-b-green">%8.3f</span>, we get the output as:<span class="ct-code-b-white">

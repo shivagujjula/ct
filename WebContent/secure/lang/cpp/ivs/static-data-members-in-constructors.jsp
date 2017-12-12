@@ -303,7 +303,14 @@ $(document).ready(function() {
 			<div class="output-console-title-bar">
 				<span class="title">Output</span>
 			</div>
-			<div class="output-console-body" id="body"></div>
+			<div class="output-console-body" id="body">
+				<div id="op1" class="hide">Object created : 1</div>
+				<div id="op2" class="hide">Object created : 2</div>
+				<div id="op3" class="hide">Object created : 3</div><br>
+				<div id="op4" class="hide">Object deleted : 3</div>
+				<div id="op5" class="hide">Object deleted : 2</div>
+				<div id="op6" class="hide">Object deleted : 1</div>
+			</div>
 		</div>
 	</div>
 	<!-- <div class="col-xs-12 text-center margin-top-20">

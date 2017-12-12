@@ -1,5 +1,6 @@
+
 var intro;
-var typingInterval = 3;
+var typingInterval = 1;
 var zeros1 = '';
 var binaryNumber = "";
 var number = "";
@@ -202,6 +203,7 @@ function introSteps() {
 			case "restart":
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$('#informationDiv').css({"z-index": "0"});
+				$('.introjs-tooltip').css('min-width', '125px');
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
 						var text = "Click to restart.";
@@ -247,7 +249,6 @@ function flipEffect(selector, val, callBackFunction) {
 
 function showBinaryDigits() {
 $(".nextButton").remove();
-$("#values").prepend("<span class='margin-top20'>Binary number :&emsp;&emsp;&emsp;&emsp;</span>");
 for (var i = 0; i < $("#values > span").length; i++) {
 	TweenMax.to("#binaryBox" + i, 1, {opacity : 1});
 	TweenMax.from($("#binaryBox" + i), 0.5, {top: -100});
@@ -327,9 +328,7 @@ if(id >= 0) {
 		});
   	}
 } else {
-	var text = "After fliping, the <span class='ct-code-b-yellow'>one's complement</span>"+
-				" of <span class='ct-code-b-yellow'>" + $("#firstNum").val() + 
-				"</span> is represented as <span class='ct-code-b-yellow'> ~" + $("#firstNum").val() + "</span> value."
+	var text = "After fliping, the <span class='ct-code-b-yellow'>one's complement</span> of <span class='ct-code-b-yellow'>" + $("#firstNum").val() + "</span> is represented as <span class='ct-code-b-yellow'> ~" + $("#firstNum").val() + "</span> value."
 	typing(".introjs-tooltiptext", text, function() {
 		$('.introjs-nextbutton').show();
 		$('.introjs-prevbutton').show();

@@ -1,7 +1,7 @@
 var introjs;
 var timelineLite = new TimelineLite();	
-var typingSpeed = 5;
-var typing_interval = 10;
+var typingSpeed = 1;
+var typing_interval = 1;
 
 var operatorPrecedenceAssociativityReady = function() {
 	introGuide();

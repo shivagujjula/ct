@@ -129,6 +129,7 @@ function introGuide() {
 		case "topDiv":
 			$('.introjs-nextbutton').hide();
 			$('.user-btn').removeClass("hide");
+			$("#code").addClass("opacity00");
 			$("#li1").fadeTo(500, 1, function () {
 				$("#li2").fadeTo(500, 1, function () {
 					$("#nextBtn").fadeTo(500, 1, function () {
@@ -175,6 +176,7 @@ function introGuide() {
 		break;
 		case "rd":
 			$("#rd").removeClass("hide");
+			$("#memoryDiv, #rPanel, #dPanel").addClass("opacity00")
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -186,6 +188,7 @@ function introGuide() {
 		break;
 		case "memoryDiv":
 			$("#memoryDiv").removeClass("hide");
+			$("#callingParaConst").removeClass("yellow");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
@@ -197,14 +200,21 @@ function introGuide() {
 					$("#dPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
 						$("#memoryDiv").removeClass("z-index");
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 			});
 		break;
 		case "comments":
+			$("[contenteditable=false]").attr("contenteditable", "true");
 			$("#comments").removeClass("hide");
 			$("#callingParaConst").removeClass("opacity00").addClass("yellow");
 			introjs.refresh();
@@ -262,11 +272,12 @@ function introGuide() {
 					+ "<li>For converting <y>user-defined</y> to<br> <y>user-defined</y> use <y>operator radian()</y> in the class <y>degree</y>.</li>"
 					+ "<li>Here operator radian() converts the <y>degree</y> value into <y>radian</y>.<br> So, <y>r = d</y> called like<br> <y>r = d.operator radian()</y>;</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$('.introjs-nextbutton').show();	
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			} else if (introjs._currentStep == 10) {
 				introjs.refresh();
+				$("#radPanelVal").text("");
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
 				$(".introjs-tooltip").css({"min-width": "300px"});
@@ -278,13 +289,14 @@ function introGuide() {
 					+ " <li><y>r</y> is user defined object of a class <y>radian</y></li>"
 					+ "<li>The basic data type value is assigned to an object by using conversion constructor which is a <y>parameterized constructor</y> i.e <y>radian("+((($("#dVal").text()) * 3.14) / 180).toFixed(2)+")</y></li></ul>";;
 					typing($(".introjs-tooltiptext"), text, function() {
-						$('.introjs-nextbutton').show();	
+						$('.introjs-nextbutton, .introjs-prevbutton').show();	
 					});
 				});
 			}
 		break;
 		case "operatorRad":
 			$("#operatorRad").removeClass("hide");
+			$("#radPanelVal").text("");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
@@ -348,9 +360,15 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "displayFun":
@@ -360,9 +378,15 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "outputDiv":
@@ -371,10 +395,16 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#body").append("<div>radians value : "+((($("#dVal").text()) * 3.14) / 180).toFixed(2)+"</div>");
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				$("#body").append("<div id='op1'>radians value : "+((($("#dVal").text()) * 3.14) / 180).toFixed(2)+"</div>");
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "restart":
@@ -420,7 +450,7 @@ function initD() {
 	$("#dPanel").addClass("z-index");
 	fromEffectWithTweenMax("#tooltipX", "#degPanelVal", function() {
 		$("#dPanel").removeClass("z-index");
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	});	
 }
 
@@ -444,7 +474,7 @@ function initR() {
 	$("#rPanel").removeClass("opacity00").addClass("z-index");
 	fromEffectWithTweenMax("#tooltipXVal", "#radPanelVal", function() {
 		$("#rPanel").removeClass("z-index");
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	});
 }
 
@@ -464,7 +494,7 @@ function returnValue() {
 		flipEffect("#tooltipDeg", $("#dVal").text(), function() {
 			flipEffect("#tooltipMul", ($("#dVal").text()) * 3.14, function() {
 				flipEffect("#tooltipDiv", ((($("#dVal").text()) * 3.14) / 180).toFixed(2), function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		});

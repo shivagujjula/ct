@@ -15,7 +15,7 @@ var inheritanceConceptReady = function() {
 	
 	introJsFunction();
 	$(".introjs-prevbutton").hide();
-	var text = "Here we will learn the <y>single inheritance</y>.";
+	var text = "Here we will learn the <y>single inheritance</y> concept.";
 	typing($(".introjs-tooltiptext"), text, function() {
 		$(".introjs-nextbutton").show();
 	});
@@ -281,9 +281,9 @@ function introJsFunction() {
 					typing($(".introjs-tooltiptext"), text, function() {
 						//introjs.insertOption(introjs._currentStep + 1, insertionIntro("headerFiles1", "", "top"));
 						if (introjs._direction == "forward") {
-							introjs.insertOption(introjs._currentStep + 1, insertionIntro("firstClass1", "", "right"));
-							introjs.insertOption(introjs._currentStep + 2, insertionIntro("secondClass1", "", "right", "hide"));
-							introjs.insertOption(introjs._currentStep + 3, insertionIntro("mainMthd1", "", "right", "hide"));
+							introjs.insertOption(introjs._currentStep + 1, insertionIntro("firstClass1", "", "left"));
+							introjs.insertOption(introjs._currentStep + 2, insertionIntro("secondClass1", "", "left", "hide"));
+							introjs.insertOption(introjs._currentStep + 3, insertionIntro("mainMthd1", "", "left", "hide"));
 						}
 						setTimeout(function() {
 							introjs.nextStep();
@@ -292,9 +292,6 @@ function introJsFunction() {
 				} else {
 					stepNext();
 				}
-				
-				
-				
 			});
 		break;
 		
@@ -311,6 +308,7 @@ function introJsFunction() {
 			
 		case "mainMthd1":
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#mainMthd1").removeClass("opacity00");
 				$(".introjs-tooltip").removeClass("hide");
 				var text = "The program execution starts from <y>main()</y> function.";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -327,9 +325,9 @@ function introJsFunction() {
 		case "singleObj1":
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$(".introjs-tooltip").removeClass("hide");
-				text = "<ul><li><y>obj1</y> is an object of <y>class B</y>.</li>"
-					+"<li>since <y>class B</y> is derived from <y>class A</y> so "
-					+"the object of <y>class B</y> can access the public members of <y>class A</y>.</li></ul>"
+				text = "<ul><li><y>obj1</y> is an object of class <y>B</y>.</li>"
+					+"<li>since class <y>B</y> is derived from class <y>A</y> so "
+					+"the object of class <y>B</y> can access the public members of class <y>A</y>.</li></ul>"
 				
 				typing($(".introjs-tooltiptext"), text, function() {
 					if (introjs._direction == "forward") {
@@ -379,8 +377,9 @@ function introJsFunction() {
 				
 				if (visit === "print1_repeat_visit") {
 					
-					text = "Now the <y>obj1</y> can access the publically inherited <y>class A</y> member function <y>display()</y>.";
-						
+					text = "Now the <y>obj1</y> can access the publicly inherited class <y>A</y> member"
+							+" function <y>display()</y>.";
+	
 					if (introjs._direction == "forward") {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("display1", "", "top", "hide"));
 					}	
@@ -388,9 +387,9 @@ function introJsFunction() {
 					
 				} else if (visit === "second_visit") {
 					$("#inheritA").addClass("hide");
-					text = "<ul><li><y>obj1</y> is object of derived <y>class B</y>.</li><li>The <y>obj1</y> can access the"
-							+" public member function <y>display()</y> of <y>class A</y>.</li><li>It gives an <y>error</y>"
-							+" message, why because <y>class A</y> is <y>privately</y> inherited.so convert it to <y>public</y>.</li></ul>";
+					text = "<ul><li><y>obj1</y> is object of derived class <y>B</y>.</li><li>The <y>obj1</y> can access the"
+							+" public member function <y>display()</y> of class <y>A</y>.</li><li>It gives an <r>error</r>"
+							+" message, why because class <y>A</y> is <y>privately</y> inherited. So convert it to <y>public</y>.</li></ul>";
 					
 					
 					if (introjs._direction == "forward") {
@@ -403,8 +402,8 @@ function introJsFunction() {
 					if (introjs._direction == "forward") {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("outputBox", "", "", "hide"));
 					}
-					text = "<ul><li><y>obj1</y> is object of derived <y>class B</y>.</li><li>The <y>obj1</y> can access the"
-						+" public member function <y>display()</y> of <y>class A</y>.</li></ul>";
+					text = "<ul><li><y>obj1</y> is object of derived class <y>B</y>.</li><li>The <y>obj1</y> can access the"
+						+" public member function <y>display()</y> of class <y>A</y>.</li></ul>";
 				}
 				
 				
@@ -423,7 +422,7 @@ function introJsFunction() {
 					
 					if (introjs._direction == "forward") {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("show1", "", "right", "hide"));
-						introjs.insertOption(introjs._currentStep + 2, insertionIntro("cout2", "", "right", "hide"));
+						introjs.insertOption(introjs._currentStep + 2, insertionIntro("cout2", "", "top", "hide"));
 					}
 					
 					$(".introjs-prevbutton, .introjs-nextbutton").show();
@@ -441,9 +440,7 @@ function introJsFunction() {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("cout1", "", "top", ""));
 					}
 				}
-				
 				stepNext();
-				
 			})
 		break;	
 			
@@ -463,7 +460,7 @@ function introJsFunction() {
 		
 		case "objB":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The <y>object</y> for <y>class B</y> is created in the member function.";
+				var text = "The <y>object</y> for class <y>B</y> is created in the member function.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					introjs.insertOption(introjs._currentStep + 1, insertionIntro("callShow4", "", "right", ""));
 					$(".introjs-prevbutton, .introjs-nextbutton").show();
@@ -474,13 +471,13 @@ function introJsFunction() {
 		case "callShow" + clickIndex:
 			$(".introjs-helperLayer").one("transitionend", function() {
 					if ("callShow" + clickIndex === "callShow3") {
-					var text = "Here calling the method <y>display()</y> of <y>class A</y> from <y>print()</y>.";
+					var text = "Here calling the method <y>display()</y> of class <y>A</y> from <y>print()</y>.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("showMthd3", "", "right", "hide"));
 						$(".introjs-prevbutton, .introjs-nextbutton").show();
 					});
 				} else {
-					var text = "Here <y>objB</y> calls the member function <y>show()</y> of <y>class B</y> with the object <y>objB</y> in <y>class C</y>.";
+					var text = "Here <y>objB</y> calls the member function <y>show()</y> of class <y>B</y> with the object <y>objB</y> in class <y>C</y>.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("showMthd4", "", "right", "hide"));
 						$(".introjs-prevbutton, .introjs-nextbutton").show();
@@ -524,19 +521,19 @@ function introJsFunction() {
 					
 						$("#outputBox").removeClass("opacity00");
 						if (visit === "print2_one") {
-							$(".output-console-body").html("<div>Base Class A</div>");
+							$(".output-console-body").html("<div>This is base class A</div>");
 							introjs.insertOption(introjs._currentStep + 1, insertionIntro("print34", "", "right", ""));
 						} else if (visit === "print2_first_visit" || visit === "print2_two") {
 							
 							if (visit === "print2_first_visit") {// required
-								$(".output-console-body").append("<div>Derived Class B</div>");
+								$(".output-console-body").append("<div>This is derived class B</div>");
 							} else if (visit === "print2_two") {
-								$(".output-console-body").append("<div>Base Class B</div>");
+								$(".output-console-body").append("<div>This is base class B</div>");
 							}
 							introjs.insertOption(introjs._currentStep + 1, insertionIntro("restartBtn", "", "", "hide"));
 							
 						} else if (visit === "print1_second_visit" || visit === "class_A" || visit === "A_class") {
-							$(".output-console-body").html("<div>Base Class A</div>");
+							$(".output-console-body").html("<div>This is base class A</div>");
 							introjs.insertOption(introjs._currentStep + 1, insertionIntro("print2" , "", "right",""));
 						} else {
 							$(".output-console-body").html("<div><div>singleInh.cpp: error: <go>void</go> A::display() is"
@@ -579,21 +576,20 @@ function stepNext() {
 }
 
 function flowSteps(elementId, visit) {
-	console.log("flowSteps method ....");
 	$(".introjs-tooltip").removeClass("hide");
 	if (elementId == "firstClass1") {
-		text = "Here <y>class A</y> is the <y>base class</y> <b>(or)</b> <y>parent class</y>, which contains only one member"
+		text = "Here class <y>A</y> is the <y>base class</y> <b>(or)</b> <y>parent class</y>, which contains only one member"
 				+" function <y>display()</y>.";
 	} else if (elementId == "secondClass1") {
-		
+		$("#secondClass1").removeClass("opacity00");
 		var text = "";
 		if(visit === "second_visit") {
-			text = "Here <y>class A</y> is inherited as <y>private(default)</y> if we specify it as <y>public</y> we can "
-					+"access the member of <y>class A</y> in <y>class B</y>.";
+			text = "Here class <y>A</y> is inherited as <y>private(default)</y> if we specify it as <y>public</y> we can "
+					+"access the member of class <y>A</y> in class <y>B</y>.";
 			introjs.insertOption(introjs._currentStep + 1, insertionIntro("print1", "", "right", "hide"));
 			introjs._introItems[introjs._currentStep + 1]["visits"] = "print1_repeat_visit";
 		} else {
-			text = "Here <y>class B</y> is the <y>derived class</y> <b>(or)</b> <y>child class</y> of <y>class A</y>, it inherits the properties of"
+			text = "Here class <y>B</y> is the <y>derived class</y> <b>(or)</b> <y>child class</y> of class <y>A</y>, it inherits the properties of"
 					+" <y>base class</y> and also it contains only one member function <y>show()</y>.";
 		}
 		

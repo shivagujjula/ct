@@ -101,7 +101,7 @@
 	margin-bottom: 14px;
 	padding: 10px;
 	white-space: nowrap;
-	min-height: 250px;
+	min-height: 150px;
 }
 .position {
 	display: inline-block;
@@ -209,27 +209,35 @@
  	min-height: 35px;
  } 
  .panel-primary {
- 	border-color: #606675;
+ 	border-color: #b2be83;
 }
 .panel-primary>.panel-heading {
 	 color: #fff;
-	 background-color: #606675;
+	 background-color: #a7b571;
 	 border: 0px;
 	 font-weight: bold;
  }
  .panel-primary>.panel-heading1 {
 	 color: #fff;
-	 background-color: #606675;
+	 background-color: #b2be83;
 	 border: 0px;
 	 font-weight: bold;
  }
  .panel-body {
  	padding: 30px;
- 	margin-bottom: 20px;
+ 	/* margin-bottom: 20px; */
 	padding-top: 8px;
  }
  .cupvalue {
  	color: #0a0501;
+ }
+ #totalBox {
+ 	border: 1px solid #b2be83;
+ 	margin-bottom: 10px;
+ }
+ #voidGet, #voidCount {
+ 	color: #49c068;
+ 	font-weight: bold;
  }
 </style>
 </head>
@@ -254,28 +262,29 @@
 	<div class="col-xs-12 body-div paddin0">
 		<div class="col-xs-5 margin-top padding0">
 			<pre class="creamPreTab4 opacity00" id="preBody">
- <div class ="display" id="total"><div class ="display" id="declaration"><div class="violet display">#include</div> <div class="pink display">&lt;iostream&gt;</div></div>
-<div class="red display">using namespace</div> std;
-<div class ="display" id="class"><div class="red display">class</div> Student {
-  <div class ="display" id="variables"><div class="green display">int</div> <div class ="display" id="first">maths</div>, <div class ="display" id="second">physics</div>;</div>
-  <div class ="display" id="count"><div id="static" class="green display">static int</div> count;</div>
-  <div class ="display" id="method"><div class="red display">public</div>: <div class="green display">void</div> getdata() {
-   <div class ="display" id="cout">cout << <div id="textEnter" class="pink display">"Enter two subjects marks : "</div>;</div>
-   <div class ="display" id="cin">cin >>  <div class ="display" id="enterVal">maths >> physics;</div></div>
-   <div class ="display" id="count1">count++;</div>
-}</div>
-  <div class ="display" id="method1"><div class="green display">void</div> getcount() {
+ <div class ="display" id="total"><div class ="display" id="declaration"><div class="violet display">#include</div> <div class="green display">&lt;iostream&gt;</div></div>
+<div class="red display">using </div><div class="display green">namespace</div> std;
+<div class ="display opacity00" id="class"><div class="red display">class</div> Student {
+  <div class ="display opacity00" id="variables"><div class="green display">int</div> <div class ="display" id="first">maths</div>, <div class ="display" id="second">physics</div>;</div>
+  <div class ="display opacity00" id= "count"><div id="static" class="green display">static int</div> count;</div>
+  <div class="red display opacity00" id="public">public: </div>
+   <div class ="display opacity00" id="method"><div class="display" id="getVoid"><div class="green display">void</div> getData()</div> {
+     <div class ="display" id="cout">cout << <div id="textEnter" class="pink display">"Enter two subjects marks : "</div>;</div>
+     <div class ="display" id="cin">cin >> <div class ="display" id="enterVal">maths >> physics;</div></div>
+     <div class ="display" id="count1">count++;</div>
+  }</div>
+    <div class ="display opacity00" id="method1"><div class="display" id="getVoid1"><div class="green display">void</div> getCount()</div> {
    <div class ="display" id="cout1">cout << <div id="textEnter1" class="pink display">"The given two subjects marks are : "</div>;<br><div class ="display" id="element">cout << maths <<<div class="pink display"> " "</div> << physics </div><< endl;</div>
    <div class ="display" id="cout2">cout << <div id="textEnter2" class="pink display">"Students count is : "</div> << <div class="display" id="count4">count</div> << endl;</div>
-}</div>
+ }</div>
 };</div>
-<div class ="display" id="int"><div class="green display">int</div> Student :: count;</div>
-<div class ="display" id="main">main() {
-  <div class ="display" id="object">Student <div id="paraMeter1" class="green display">s1</div>, <div id="paraMeter2" class="green display">s2</div>;</div>
-  <div class ="display" id="data">s1.getdata();</div>
-  <div class ="display" id="data1">s2.getdata();</div>
-  <div class ="display" id="count2">s1.getcount();</div>
-  <div class ="display" id="count3">s2.getcount();</div>
+<div class ="display opacity00" id="int"><div class="green display">int</div> Student :: count;</div>
+<div class ="display opacity00" id="main">int main() {
+  <div class ="display opacity00" id="object">Student <div id="paraMeter1" class="green display">s1</div>, <div id="paraMeter2" class="green display">s2</div>;</div>
+  <div class="display opacity00" id="getData"><div class ="display opacity00" id="data">s1.getdata();</div>
+<div class ="display opacity00" id="data1">s2.getdata();</div></div>
+ <div class="display opacity00" id="getCount"><div class ="display opacity00" id="count2">s1.getcount();</div>
+<div class ="display opacity00" id="count3">s2.getcount();</div></div>
  <div class ="display" id='mainClose'>}</div>
 </div>
 </div>
@@ -283,57 +292,65 @@
 		</div>
 		<div class= "col-xs-7 margin-top">
 			<div class="col-xs-12 margin-top box-border opacity00" id="animationBox">
-				<div class="col-xs-12">
-				<div class="col-xs-5 padding">
-					<div class="box-border2 panel panel-primary  padding margin-top opacity00" id="borderBox">
-						<div class="panel-heading text-center" id="s1">S1</div>
-						<div class="col-xs-12 panel-body">
-							<div id="one" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top" id="bodyBox">
-									<div class="panel-heading1 text-center">maths</div>
-									<div class="panel-body1 text-center" id="boxParent">
-										<span class="arrayValue text-center position" id="box"></span>
+				<div class="col-xs-12 margin-top" id="">
+					<div class="col-xs-10 opacity00" id= "totalBox">
+					<div class="col-xs-12">
+					<div class="col-xs-6 padding">
+						<div class="box-border2 panel panel-primary  padding margin-top opacity00" id="borderBox">
+							<div class="panel-heading text-center" id="s1">S1</div>
+							<div class="col-xs-12 panel-body">
+								<div id="one" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+									<div class="panel panel-primary padding margin-top" id="bodyBox">
+										<div class="panel-heading1 text-center">maths</div>
+										<div class="panel-body1 text-center" id="boxParent">
+											<span class="arrayValue text-center position" id="box"></span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div id="two" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top" id="bodyBox1">
-									<div class="panel-heading1 text-center">physics</div>
-									<div class="panel-body1 text-center" id="boxParent1">
-										<span class="arrayValue text-center position" id="box1"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-					<div class="col-xs-5 padding">
-					<div class="col-xs-0 box-border2 padding panel panel-primary opacity00 margin-top" id="borderBox1">
-						<div class="panel-heading text-center" id="s2">S2</div>
-						<div class="col-xs-12 panel-body">
-							<div id="three" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top" id="bodyBox2">
-									<div class="panel-heading1 text-center">maths</div>
-									<div class="panel-body1 text-center" id="boxParent2">
-										<span class="arrayValue1 text-center position" id="box2"></span>
-									</div>
-								</div>
-							</div>
-							<div id="four" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
-								<div class="panel panel-primary padding margin-top" id="bodyBox3">
-									<div class="panel-heading1 text-center">physics</div>
-									<div class="panel-body1 text-center" id="boxParent3">
-										<span class="arrayValue1 text-center position" id="box3"></span>
+								<div id="two" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+									<div class="panel panel-primary padding margin-top" id="bodyBox1">
+										<div class="panel-heading1 text-center">physics</div>
+										<div class="panel-body1 text-center" id="boxParent1">
+											<span class="arrayValue text-center position" id="box1"></span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					</div>
+						</div>
+						
+						<div class="col-xs-6 padding">
+						<div class="col-xs-0 box-border2 padding panel panel-primary opacity00 margin-top" id="borderBox1">
+							<div class="panel-heading text-center" id="s2">S2</div>
+							<div class="col-xs-12 panel-body">
+								<div id="three" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+									<div class="panel panel-primary padding margin-top" id="bodyBox2">
+										<div class="panel-heading1 text-center">maths</div>
+										<div class="panel-body1 text-center" id="boxParent2">
+											<span class="arrayValue1 text-center position" id="box2"></span>
+										</div>
+									</div>
+								</div>
+								<div id="four" class="col-xs-6  text-center opacity00 box-border1" style='margin-top:12px;'>
+									<div class="panel panel-primary padding margin-top" id="bodyBox3">
+										<div class="panel-heading1 text-center">physics</div>
+										<div class="panel-body1 text-center" id="boxParent3">
+											<span class="arrayValue1 text-center position" id="box3"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+						</div>
+						<div class="col-xs-12 opacity00" id="borderLine" style="border-top: 1px solid #b2be83; padding: 0px;"></div>
+						<div class="col-xs-12 opacity00 text-center" id= "voidGet" style="margin-top: 10px;">void getData()</div>
+						<div class="col-xs-12 opacity00 text-center" id= "voidCount" style="margin-bottom: 10px;">void getCount()</div>
+						</div>
 					<div class="col-xs-1 text-center " id="totalCup">
-						<div class="col-x-12 padding00 opacity00" id="countBox" style=" margin-top: 40px;">
+						<div class="col-xs-12 padding00 opacity00" id="countBox" style=" margin-top: 40px;">
 							<span id="countCupValue" class="cupvalue"></span>
-							<i class="fa fa-coffee fa-3x count-cup" style="color: #7cb8be;"></i><br>
+							<i class="fa fa-coffee fa-3x count-cup" style="color: #cec372;"></i><br>
 							<span id="countCupVariable" class = "ct-code-b-black">count</span>
 						</div>
 					</div>

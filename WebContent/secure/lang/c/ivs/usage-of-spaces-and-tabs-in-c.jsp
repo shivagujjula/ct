@@ -12,8 +12,7 @@
 <script src="/js/bootstrap.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/secure/lang/c/js-min/uosatic.min.js" type="text/javascript"></script>
-
-<title>Insert title here</title>
+<title>Usage of Spaces and Tabs</title>
 
 <style>
 
@@ -121,7 +120,6 @@
 	</div>
 
 </div>
-
 <script>
 $(document).ready(function() {
 	usageOfSpacesAndTabsInCReady();

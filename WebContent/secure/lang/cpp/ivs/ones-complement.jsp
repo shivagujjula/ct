@@ -8,7 +8,7 @@
 <link href="/css/introjs.css" rel="stylesheet">
 
 <link href="/css/introjs-ct.css" rel="stylesheet">
-<link href="/css/data-structures-css.css" rel="stylesheet">
+<!-- <link href="/css/data-structures-css.css" rel="stylesheet"> -->
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
@@ -16,7 +16,6 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js/ones-complement.js"></script>
 <script src="/secure/lang/cpp/js-min/oc.min.js"></script> 
 
 <title>one's complement</title>
@@ -168,16 +167,14 @@ table {
 		<span class="label label-default ct-demo-heading">One's Complement</span>
 	</h2>
 	<div id="informationDiv" class="col-xs-offset-2 col-xs-8 information-div margin-top20">
-		<div class="col-xs-12 margin-top20" id="text" style="margin-bottom: 15px;">
+		<div class="col-xs-12 margin-top20" id="text" style="margin-bottom: 15px; font-family: monospace;">
 			<ul>
 				<li class="opacity00" id="li1"><b>One's complement</b> of a binary number is defined as a value
 					obtained by inverting all the bits of that number which is represented in a binary form, i.e. flipping all <span
 					class='ct-code-b-green'>1's</span> to <span class='ct-code-b-green'>0's</span> and all <span
 					class='ct-code-b-green'>0's</span> to <span class='ct-code-b-green'>1's</span>.
 				</li>
-				<li class="opacity00" id="li2"><b>One's complement</b> form is used in 
-					<b>two's complement</b> form which we will learn later.
-				</li>
+				<li class="opacity00" id="li2"><b>One's complement</b> form is used in <b>two's complement</b> form which we will learn later.</li>
 			</ul>
 		</div>
 	</div>
@@ -189,8 +186,7 @@ table {
 			<option value="long int">long int</option>
 		</select> 
 		<span id="number" style="margin-left: 20px;">Number : </span>
-		<input type="text" id="firstNum" class="input-text opacity00" 
-				contenteditable="true" maxlength="2" placeholder="eg: 34" style="margin-left: 20px;"/>
+		<input type="text" id="firstNum" class="input-text opacity00" contenteditable="true" maxlength="2" placeholder="eg: 34" style="margin-left: 20px;"/>
 	</div>
 	<div class="col-xs-offset-3 col-xs-7 binary-value-div margin-top20" id="binaryValueDiv" style="min-height: 200px;">
 		<div class="col-xs-12 padding0 margin-top20" id ="values"></div>

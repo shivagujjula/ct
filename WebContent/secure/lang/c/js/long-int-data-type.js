@@ -78,7 +78,7 @@ function introJsFunction() {
 
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval": 10,
+		"typing_interval": 1,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');

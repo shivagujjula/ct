@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 10;
+var typingSpeed = 1;
 var tl;
 var phaseCount = 1;
 var stepCount = 1;

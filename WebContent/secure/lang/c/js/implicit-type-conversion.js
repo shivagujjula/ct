@@ -1,5 +1,5 @@
 var intro;
-var typingSpeed = 5;
+var typingSpeed = 1;
 var text1 = "Click on any button to see the different examples on Implicit type conversion.";
 
 var implicitTypeConversionReady = function() {

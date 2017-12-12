@@ -157,7 +157,6 @@ orange {
 <body>
 <script type="text/javascript">
 
-
 $(document).ready(function() {
 	friendFunctionReadyFun();
 });
@@ -245,6 +244,9 @@ $(document).ready(function() {
 				<span class="title">Output</span>
 			</div>
 			<div class="output-console-body" id="body">
+				<div id="op1" class="hide">friend-function.cpp: In function <br><b>'int addFive(Distance)'</b>:<br>"
+					+ " friend-function.cpp:5:10:<br> <red><b>error</b>:</red> <b>'int Distance::meter'</b> is private int meter;</div>
+				<div id="op2" class="hide">Distance: 5</div>
 			</div>
 		</div>
 	</div>

@@ -18,8 +18,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<!-- <script src="/secure/lang/c/js-min/scd.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/c/js/scanf-comma-dot.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/scd.min.js" type="text/javascript"></script>
 
 <title>scanf() with comma</title>
 
@@ -166,7 +165,9 @@
 	font-size: 12px;
 	padding: 4px 10px;
 }
-
+#description {
+font-family:monospace;
+}
 </style>
 
 <script type="text/javascript">
@@ -183,7 +184,7 @@
 </div>
 
 <div class=" margin-top-20 col-xs-12">
-  <div class="col-xs-5 center  box-border" id="description" style="float: unset;">
+  <div class="col-xs-8 col-xs-offset-2   box-border" id="description" style="float: unset;">
   	<div id="desText" style="padding: 7px 0px; line-height: 1.7;"> 
 	  	<ul>
 	 		<li id="desList1" class="opacity00">In the statement <span class="b-black">scanf

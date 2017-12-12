@@ -1,5 +1,5 @@
 var tl = new TimelineLite();
-var typingSpeed = 0.05;
+var typingSpeed = 1;
 var executeBtnCount = 1;
 
 var constantsInCReady = function() {

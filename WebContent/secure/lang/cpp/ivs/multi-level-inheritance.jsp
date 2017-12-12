@@ -99,7 +99,7 @@ a:focus {
 }
 
 y {
-	font-family: monospace;
+	/* font-family: monospace; */
 	font-weight: bold;
 	color: yellow;
 }
@@ -229,22 +229,22 @@ e {
 <span id="firstClass3"><go>class</go> A {
 	<span id="showMthd3"><go>public</go>: 
 		<span id="display3"><g>void</g> display() {
-			<span id="cout1">cout << <ink>"Base Class A<in>\n</in>"</ink>;</span>
+			<span id="cout1">cout << <ink>"This is base class A<in>\n</in>"</ink>;</span>
 		}</span></span>
 };</span>
-<span id="secondClass3"><go>class</go> B : <go>public</go> A {
+<span id="secondClass3" class="opacity00"><go>class</go> B : <go>public</go> A {
 	<go>public</go>: 
 		<span id="show3"><g>void</g> show() {
-			<span id="cout2">cout << <ink>"Base Class B<in>\n</in>"</ink>;</span>
+			<span id="cout2">cout << <ink>"This is base class B<in>\n</in>"</ink>;</span>
 		}</span>
 };</span>
-<span id="thirdClass3"><go>class</go> C : <go>public</go> B {
+<span id="thirdClass3"  class="opacity00"><go>class</go> C : <go>public</go> B {
 	<go>public</go>: 
 		<span id="print3"><g>void</g> print() {
 			<span id="callShow3">display();</span>
 		}</span>
 };</span>
-<div id="mainMthd3" class="displayInline"><g>int</g> main() {
+<div id="mainMthd3" class="displayInline opacity00"><g>int</g> main() {
 	<span id="singleObj3">C obj1;</span>
 	<span id="print1">obj1.print();</span>
 	<span id="print2">obj1.show();</span>

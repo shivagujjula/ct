@@ -70,7 +70,7 @@ function introGuide() {
 				},{
 			 		element : "#memoryDiv",
 					intro : "",
-					tooltipClass : "hide"
+					tooltipClass : "right"
 				},{
 			 		element : "#defaultConst",
 					intro : "",
@@ -179,7 +179,7 @@ function introGuide() {
 		break;
 		case "constM":
 			$("#constM").removeClass("hide");
-			introjs.refresh();
+			$("#memoryDiv, #mPanel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Let us create an object for class <y>Meter</y>.";
@@ -191,22 +191,22 @@ function introGuide() {
 		case "memoryDiv":
 			$("#memoryDiv").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('.introjs-nextbutton').show();
+				var text = "Memory is created for object <y>m</y>, which consists of a integer variable <y>length</y>.";
+				typing($(".introjs-tooltiptext"), text, function() {
 				 $("#memoryDiv").removeClass("opacity00").addClass("z-index");
 					$("#mPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
 						$("#memoryDiv").removeClass("z-index");
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						});
 					});
 				});
 		break;
 		case "defaultConst":
 			$("#defaultConst").removeClass("hide");
+			$("#lengthPanelVal1").addClass("opacity00");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -225,9 +225,15 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#lengthPanelVal1").removeClass("opacity00");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 500);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 13) {
 				introjs.refresh();
@@ -237,9 +243,15 @@ function introGuide() {
 					$("#inputVal").addClass("z-index");
 					fromEffectWithTweenMax("#inputVal", "#lengthPanelVal1", function() {
 						$("#inputVal").removeClass("z-index");
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 1000);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 			}
@@ -250,9 +262,15 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "getdataFun":
@@ -261,20 +279,33 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "cout2":
 			$("#cout2").removeClass("hide");
+			$("#outputText").addClass("opacity00");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "outputDiv":
@@ -285,9 +316,15 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#outputText").removeClass("opacity00");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 12) {
 				introjs.refresh();
@@ -305,9 +342,15 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#body").append("<div>length in centemeters : " + (($("#inputVal").text()) * 100).toFixed(2) + "</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
@@ -319,7 +362,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<y>cin</y> will read the input from the inputstream given by the user.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();	
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -331,7 +374,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Declare a float variable <y>x</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();	
+					$('.introjs-nextbutton, .introjs-prevbutton').show();	
 				});
 			});
 		break;
@@ -348,7 +391,7 @@ function introGuide() {
 					+ "<li><b><y>x = m</y></b> means assign the user-defined object <y>m</y> to variable <y>x</y>.</li>"
 					+ "<li>The user-defined object assigned to a variable by using <y>operator function</y>.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$('.introjs-nextbutton').show();	
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			} else if (introjs._currentStep == 17) {
@@ -359,7 +402,7 @@ function introGuide() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "The returned value <y><b>" + (($("#inputVal").text()) * 100).toFixed(2) + "</b></y> is stored into the float variable <y>x</y>.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$('.introjs-nextbutton').show();	
+						$('.introjs-nextbutton, .introjs-prevbutton').show();	
 					});
 				});
 			}
@@ -404,9 +447,15 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "restart":
@@ -447,7 +496,7 @@ function returnX() {
 					$("#tooltipTotalLength").text((($("#inputVal").text()) * 100).toFixed(2));
 					TweenMax.to("#tooltipTotalLength", 0.5, {rotationX : 0, onComplete:function() {
 						$("#text").removeClass("opacity00");
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					}});
 				}});
 			}});

@@ -148,7 +148,7 @@ function introGuide() {
 			switch(animateStep) {
 			case 'firstStep':
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Now find the time complexity for the bubble sort function.";
+					var text = "Now find the time complexity for the <span class='ct-code-b-yellow'>bubble sort</span> function.";
 					typing(".introjs-tooltiptext", text, function() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							$(".introjs-tooltip").hide();

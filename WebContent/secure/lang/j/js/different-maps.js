@@ -38,15 +38,95 @@ var differentMapsReady = function() {
 		},
 	]});
    
-    intro.onafterchange(function(targetElement) {
+	intro.onbeforechange(function(targetElement) {
         var elementId = targetElement.id;
         switch (elementId) {
         
         case "heading":
+       	break;
+        
+        case "input":
+       	break;
+  
+        case "hashmapdiv":
+        	
+        	if (intro._direction == "backward") {
+        		$("#hasharea").empty();
+        		$("#hmap" + countBox).remove();
+        		$("#lmap" + countBox).remove();
+        		$("#linkedarea").empty();
+        		
+        		var top = $("#linkedhashmapJar").height() - $("#linkedhashmapJar > div").height() - 5;
+        		x--;
+        		if($('#linkedhashmapJar .val-box-width').length < 5) {
+        			$("#linkedDivs").css({
+        				"top" : top 
+        			});
+        		} else {
+        			$("#linkedDivs").css({
+        				"top" : top - (28 * x)
+        			});
+        		}
+        	}
+        	
+       	break;
+        	
+        case "linkedhashmapdiv":
+        	
+        	if (intro._direction == "backward") {
+        		$("#treearea").empty();
+        		$("#lmap" + countBox).remove();
+        		$("#tmap" + countBox).remove();
+        		var top = $("#linkedhashmapJar").height() - $("#linkedhashmapJar > div").height() - 5;
+        		x--;
+        		if($('#linkedhashmapJar .val-box-width').length < 5) {
+        			$("#linkedDivs").css({
+        				"top" : top 
+        			});
+        		} else {
+        			$("#linkedDivs").css({
+        				"top" : top - (28 * x)
+        			});
+        			
+        		}
+        		
+        		
+        		y--;
+        		
+        		var top = $("#treemapJar").height() - $("#treemapJar > div").height() - 5;
+        		
+        		if($('#treemapJar .val-box-width').length < 5) {
+        			$("#treeDivs").css({
+        				"top" : top 
+        			});
+        		} else {
+        			$("#treeDivs").css({
+        				"top" : top - (28 * y)
+        			});
+        		}
+        	}
+        	
+      	break;
+        
+        case "treemapdiv" :
+       	break;
+        }
+    });
+	
+    intro.onafterchange(function(targetElement) {
+    	
+    	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+    	
+        var elementId = targetElement.id;
+        switch (elementId) {
+        
+        case "heading":
+        	
         	$(".introjs-nextbutton").hide();
         	var text = "In this live demo we will learn how "
         				+ "<b class ='ct-code-b-yellow'>HashMap, LinkedHashMap</b> and</b>"
         				+ " <b class ='ct-code-b-yellow'>TreeMap</b> store the elements internally.";
+        	
         	typing(".introjs-tooltiptext", text, function() {
         		$(".introjs-nextbutton").show();
         	});
@@ -68,19 +148,23 @@ var differentMapsReady = function() {
         		charAtEnd("putKey");
         		});
         	}
-        	
-        	break;
+       	break;
+
         case "hashmapdiv":
         	$('.introjs-helperLayer ').one('transitionend', function() {
-        		hashMapAniamtion();
+        		
+        		//if (intro._direction == "forward") {
+        			hashMapAniamtion();
+        		//}
+        		
         	});
-        	break;
+        break;
         	
         case "linkedhashmapdiv":
         	$('.introjs-helperLayer ').one('transitionend', function() {
-        		linkedHashMapAnimation();
+        			linkedHashMapAnimation();
         	});
-        	break;
+        break;
         
         case "treemapdiv" :
         	$('.introjs-helperLayer ').one('transitionend', function() {
@@ -159,17 +243,20 @@ function charAtEnd(elementId) {
 
 
 function hashMapAniamtion() {
-	  $("#hasharea").append("<span class='val-box-width '>" 
-			+ "<div class='keyDiv'><span class='key set-key'>" + key + "</span></div>"
-			+ "<div class='arrowDiv'><span class='fa fa-long-arrow-right arrow fa-2x opacity00'></span></div>" 
-			+ "<div class='opacity00 valDiv'><span class='value set-value'>" + value + "</span></div></span>");
+	
+	$("#hasharea").append("<span class='val-box-width'>" 
+		+ "<div class='keyDiv'><span class='key set-key'>" + key + "</span></div>"
+		+ "<div class='arrowDiv'><span class='fa fa-long-arrow-right arrow fa-2x opacity00'></span></div>" 
+		+ "<div class='opacity00 valDiv'><span class='value set-value'>" + value + "</span></div></span>");
 	 
 	var l1 = $("#putKey").offset();
 	$("#hasharea .set-key").offset({
 		"top" : l1.top,
 		"left" : l1.left
 	});
+	
 	TweenMax.to("#hasharea .set-key", 2, {top : 0, left : 0});
+	
 	var l1 = $("#putVal").offset();
 	$("#hasharea .valDiv").removeClass("opacity00");
 	$("#hasharea .set-value").offset({
@@ -185,20 +272,23 @@ function hashMapAniamtion() {
 	tl.to("#hasharea .arrow", 0.5, {delay: 0.1, onComplete : function() {
 		$("#hasharea .arrow").removeClass("opacity00").addClass("reveal-left")
 		.one("animationend", function() {
-			$("hasharea .arrow").removeClass("reveal-left");
+				$("hasharea .arrow").removeClass("reveal-left");
 				checkElementPresent();
 		}); 
 	}});
 }
 
 function treeMapAnimation() {
+	
 	$("#treemapJar").animate({
         scrollTop: 0
-    }, 600); 
+    }, 600);
+	
 	$("#treearea").append("<span class='val-box-width'>"
 			+ "<div class='keyDiv opacity00'><span class='key set-key'>" + key + "</span></div>"
 			+ "<div class='arrowDiv'><span class='fa fa-long-arrow-right arrow fa-2x opacity00'></span></div>" 
 			+ "<div class='opacity00 valDiv'><span class='value set-value'>" + value + "</span></div></span>");
+
 	if (key == "") {
 		alert("key value must not be null for treemap");
 		$("#putKey").text("");
@@ -207,11 +297,14 @@ function treeMapAnimation() {
 	} else {
 		var l1 = $("#putKey").offset();
 		$("#treearea .keyDiv").removeClass("opacity00");
+		
 		$("#treearea .set-key").offset({
 			"top" : l1.top,
 			"left" : l1.left
 		});
+		
 		TweenMax.to("#treearea .set-key", 2, {top : 0, left : 0});
+		
 		var l1 = $("#putVal").offset();
 		$("#treearea .valDiv").removeClass("opacity00");
 		$("#treearea .set-value").offset({
@@ -228,7 +321,7 @@ function treeMapAnimation() {
 		
 		tl.to("#treearea .arrow", 0.5, {delay: 0.1, onComplete : function() {
 			$("#treearea .arrow").removeClass("opacity00").addClass("reveal-left")
-			.one("animationend", function() {
+				.one("animationend", function() {
 				$("treearea .arrow").removeClass("reveal-left");
 				$("#putKey").text("");
 				$("#putVal").text("");
@@ -236,6 +329,7 @@ function treeMapAnimation() {
 			});
 		}});
 	}
+	
 }
 	
 function linkedHashMapAnimation() {
@@ -263,9 +357,10 @@ function linkedHashMapAnimation() {
 	}});
 	tl.to("#linkedarea .arrow", 0.5, {delay: 0.1, onComplete : function() {
 		$("#linkedarea .arrow").removeClass("opacity00").addClass("reveal-left")
-		.one("animationend", function() {
-			$("hasharea .arrow").removeClass("reveal-left");
-			checkLinkedElementPresent();
+			.one("animationend", function() {
+		$("hasharea .arrow").removeClass("reveal-left");
+		checkLinkedElementPresent();
+		
 		}); 
 	}});
 }
@@ -282,7 +377,9 @@ function checkLinkedElementPresent() {
 			$('#linkedarea .keyDiv').addClass('border');
 			$(".introjs-tooltip").removeClass("hide");
 			var key1 = $('.keyDiv .set-key').text();
+			
 			if (repeat2 == 1) {
+				
 			var text = "Since an entry with the same key(<b class='ct-code-b-yellow'>"+ key1 +"</b>)"
 						+ " is already present in the map, its oldvalue is replaced with the new value.";
 			typing(".introjs-tooltiptext", text, function() {
@@ -293,8 +390,8 @@ function checkLinkedElementPresent() {
 				$(".introjs-tooltiptext").append("Since an entry with the same key(<b class='ct-code-b-yellow'>"+ key1 +"</b>)"
 						+ " is already present in the map, its oldvalue is replaced with the new value.");
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="pauseBlinkEffect()">Next →</a>');
-				
 			}
+			
 			$("#linkedarea .keyDiv").addClass('blinking-border-background-blue');
 			$(this).parent().addClass('blinking-border-background-blue').one("animationend", function() {
 				$(".blinking-border-background-blue").removeAttr("style");
@@ -333,21 +430,30 @@ function checkLinkedElementPresent() {
 		$(".introjs-tooltip").removeClass("hide");
 		if($('#linkedhashmapJar .val-box-width').length == 0) {
 		var text = "<b class='ct-code-b-yellow'>LinkedHashMap</b> strores the entries in the order in which they are inserted.";
+		$(".user-btn").remove();
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="setElementPositionOfLinked()">Next →</a>');
+			$(".introjs-prevbutton").show();
 		});
 		} else {
+			$(".user-btn").remove();
 			$(".introjs-tooltiptext").append("<b class='ct-code-b-yellow'>LinkedHashMap</b> strores the entries in the order in which they are inserted.");
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="setElementPositionOfLinked()">Next →</a>');
+			$(".introjs-prevbutton").show();
 		}
 	}
 }
 	
+
 function checkTreeElementPresent() {
+	
+	$(".introjs-prevbutton").hide();
 	$(".user-btn").remove();
 	dynamicSteps();
 	var noDuplicate = true;
+	
 	$('#treemapJar .set-key').each(function(index) {
+		
 		if ($(this).text() == key ) {
 			$(this).parent().addClass('moveto');
  			$('#treemapJar').scrollTo('.moveto',{duration:'slow', offset :{left:'left', top:-30 }});
@@ -355,15 +461,21 @@ function checkTreeElementPresent() {
 			$('#treearea .keyDiv').addClass('border');
 			$(".introjs-tooltip").removeClass("hide");
 			var key1 = $('.keyDiv .set-key').text();
-			if(repeat3 == 1) {
-				
+			if (repeat3 == 1) {
+			
 			var text = "Since an entry with the same key(<b class='ct-code-b-yellow'>"+ key1 +"</b>)"
 						+ " is already present in the map, its oldvalue is replaced with the new value.";
+			
+			$(".user-btn").remove();
+			
 			typing(".introjs-tooltiptext", text, function() {
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="pauseBlinkEffect()">Next →</a>');
 			});
+			
 			repeat3++;
+			
 			} else {
+				$(".user-btn").remove();
 				$(".introjs-tooltiptext").append("Since an entry with the same key(<b class='ct-code-b-yellow'>"+ key1 +"</b>)"
 						+ " is already present in the map, its oldvalue is replaced with the new value.");
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="pauseBlinkEffect()">Next →</a>');
@@ -402,23 +514,30 @@ function checkTreeElementPresent() {
 			return;
 		}
 	});
+	
 	if (noDuplicate) {
 		keyArr.push(key);
 		keyArr.sort();
 		$(".introjs-tooltip").removeClass("hide");
 		if($('#treemapJar .val-box-width').length == 0) {
+			console.log("checkTreeElementPresent() of ifblock ...");
 		var text = "A <b class='ct-code-b-yellow'>TreeMap</b> stores its entries in the natural order of their keys."
 					+ " For example, if the keys are of type <b class='ct-code-b-yellow'>String</b> the entries are sorted in alphabetical order of the keys.";
 		typing(".introjs-tooltiptext", text, function() {
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="setElementPositionOfTreemap()">Next →</a>');
+			$(".introjs-prevbutton").show();
 		});
 		} else {
+			console.log("checkTreeElementPresent() of elseblock ...");
 				$(".introjs-tooltiptext").append("A <b class='ct-code-b-yellow'>TreeMap</b> stores its entries in the natural order of their keys."
 						+ " For example, if the keys are of type <b class='ct-code-b-yellow'>String</b> the entries are sorted in alphabetical order of the keys.");
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="setElementPositionOfTreemap()">Next →</a>');
+				$(".introjs-prevbutton").show();
+				
 		}
 	}
 }
+
 
 function dynamicSteps(action) {
 	var dynamicStep = {
@@ -427,6 +546,7 @@ function dynamicSteps(action) {
 			action: action
 	}
 	intro.insertOption(intro._currentStep + 1, dynamicStep);
+	
 	var dynamicStep = {
 			element : "#hashmapdiv",
 			intro : "",
@@ -435,6 +555,7 @@ function dynamicSteps(action) {
 			action: action
 	}
 	intro.insertOption(intro._currentStep + 2, dynamicStep);
+	
 	var dynamicStep = {
 			element : "#linkedhashmapdiv",
 			tooltipClass : "hide",
@@ -442,6 +563,7 @@ function dynamicSteps(action) {
 			intro : ""
 	}
 	intro.insertOption(intro._currentStep + 3, dynamicStep);
+	
 	var dynamicStep = {
 			element : "#treemapdiv",
 			intro : "",
@@ -449,48 +571,64 @@ function dynamicSteps(action) {
 			position : "left"
 	}
 	 intro.insertOption(intro._currentStep + 4, dynamicStep);
+	
 	var dynamicStep = {
 			element : "#methodsBox",
 			intro : ""
 	}
-	intro.insertOption(intro._currentStep + 5, dynamicStep); 
+	intro.insertOption(intro._currentStep + 5, dynamicStep);
+	
 }
+
+
 function setElementPositionOfTreemap() {
+	
+	$(".introjs-prevbutton").hide();
 	$(".user-btn").remove();
 	var index = keyArr.indexOf(key);
 		if (index == 0) {
-			$('#treemapJar > div').prepend("<div class='margin-top-5px'><span class='val-box-width' id='tmap" + countBox + "'>" 
+			$('#treemapJar > div').prepend("<div class='margin-top-5px'><span class='val-box-width opacity00' id='tmap" + countBox + "'>" 
 	 				+ "<div class='border keyDiv1'><span class='key set-key'>" + key + "</span></div>" 
 	 				+ "<div class='arrowDiv'><span class='fa fa-long-arrow-right arrow fa-2x'></span></div>" 
 	 				+ "<div class='border valDiv1'><span class='value set-value'>" + value + "</span></div></span></div>");
+			
+			console.log("setElementPositionOfTreemap() if block....");
+			
 		} else {
-			$("<div class='margin-top-5px'><span class='val-box-width' id='tmap" + countBox + "'>"
+			console.log("setElementPositionOfTreemap() else block...");
+			$("<div class='margin-top-5px'><span class='val-box-width opacity00' id='tmap" + countBox + "'>"
 	 			+ "<div class='border keyDiv1'><span class='key set-key'>" + key + "</span></div>" 
 	 			+ "<div class='arrowDiv'><span class='fa fa-long-arrow-right arrow fa-2x'></span></div>" 
 	 			+ "<div class='border valDiv1'><span class='value set-value'>" + value 
 	 			+ "</span></div></span></div>").insertAfter('#treemapJar > div > div:nth-child('
 	 			+ index + ')');
 		}
-		var top = $("#treemapJar").height() - $("#treemapJar > div").height() - 5;
-		$("#treemapJar > div").css({
-			"top" : top,
-		});
 		
-		if($('#treemapJar .val-box-width').length < 5) {
-			$("#treeDivs").css({
-				"top" : top 
+		setTimeout(function() {
+			var top = $("#treemapJar").height() - $("#treemapJar > div").height() - 5;
+			$("#treemapJar > div").css({
+				"top" : top,
 			});
-		} else {
-			$("#treeDivs").css({
-				"top" : top + (28 * y)
+			
+			if($('#treemapJar .val-box-width').length < 5) {
+				$("#treeDivs").css({
+					"top" : top 
+				});
+			} else {
+				$("#treeDivs").css({
+					"top" : top + (28 * y)
+				});
+				y++;
+			}
+			$("#treemapJar").css("pointer-events", "");
+			
+			console.log("Before settimeout()...");
+			console.log("In settimeout()...");
+			$("#tmap" + countBox).removeClass("opacity00");
+			$("#tmap" + (countBox)).css({
+				"left" : $("#treemapJar").width()/2 - $("#tmap" + countBox).width() /2 + (16 - $("#tmap" + countBox + " .keyDiv1").width())
 			});
-			y++;
-		}
-		$("#treemapJar").css("pointer-events", "");
-		$("#tmap" + (countBox)).css({
-			"left" : $("#treemapJar").width()/2 - $("#tmap" + countBox).width() /2 + (16 - $("#tmap" + countBox + " .keyDiv1").width())
-		});
-		$('#treearr').remove();
+			$('#treearr').remove();
 		var  tmap = $('#tmap' + countBox + ' .keyDiv1').offset();
 		$('#treemapJar').append('<span class="glyphicon glyphicon-arrow-right faa-passing animated" id="treearr"> </span>');
 		var b = $('#treearr').width();
@@ -524,6 +662,7 @@ function setElementPositionOfTreemap() {
 							}});
 						}
 					}});
+		}, 300);
 			}
  
 function typing(selector, text, callbackFunction) {
@@ -538,16 +677,18 @@ function typing(selector, text, callbackFunction) {
 }
 	 
 function setElementPositionOfLinked() {
+	$(".introjs-prevbutton").hide();
 	$(".user-btn").remove();
 	$('#linkedhashmapJar > div').prepend("<div class='margin-top-5px'><span class='val-box-width visibility-hidden' id = 'lmap" + countBox + "'>" 
 				+ "<div class='border keyDiv1'><span class='key set-key'>" + key + "</span></div>" 
 				+ "<div class='arrowDiv'><span class='fa fa-long-arrow-right arrow fa-2x'></span></div>" 
 				+ "<div class='border valDiv1'><span class='value set-value'>" + value + "</span></div></span></div>");
 	 var top = $("#linkedhashmapJar").height() - $("#linkedhashmapJar > div").height() - 5;
-	if($('#linkedhashmapJar .val-box-width').length < 5) {
-	$("#linkedDivs").css({
-		"top" : top 
-	});
+	
+	 if($('#linkedhashmapJar .val-box-width').length < 5) {
+		$("#linkedDivs").css({
+			"top" : top 
+		});
 	} else {
 		$("#linkedDivs").css({
 			"top" : top + (28 * x)
@@ -576,15 +717,20 @@ function setElementPositionOfLinked() {
 }
 
 function checkElementPresent() {
+	
+	console.log(" checkElementPresent()... ");
+	$(".introjs-prevbutton").hide();
 	var noDuplicate = true;
 	$('#hashmapJar .set-key').each(function(index) {
-		if ($(this).text() == key ) { 
+		if ($(this).text() == key ) {
 			$('#hasharea .keyDiv').removeClass('fade-in');
 			$('#hasharea .keyDiv').addClass('border');
 			$(".introjs-tooltip").removeClass("hide");
+			
 			var key1 = $('.keyDiv .set-key').text();
+			
 			if(repeat1 == 1){
-				
+				$(".user-btn").remove();
 			var text = "Since an entry with the same key(<b class='ct-code-b-yellow'>"+ key1 +"</b>) is already"
 						+ " present in the map, its oldvalue is replaced with the new value.";
 			typing(".introjs-tooltiptext", text, function() {
@@ -592,10 +738,12 @@ function checkElementPresent() {
 			});
 			repeat1++;
 			} else {
+				$(".user-btn").remove();
 				$(".introjs-tooltiptext").append("Since an entry with the same key(<b class='ct-code-b-yellow'>"+ key1 +"</b>) is already"
 						+ " present in the map, its oldvalue is replaced with the new value.");
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="pauseBlinkEffect()">Next →</a>');
 			}
+			
 			$("#hasharea .keyDiv").addClass('blinking-border-background-blue');
 			$(this).parent().addClass('blinking-border-background-blue').one("animationend", function() {
 				$(".blinking-border-background-blue").removeAttr("style");
@@ -605,11 +753,15 @@ function checkElementPresent() {
 					"top" : l1.top,
 					"left" : l1.left
 				});
+				
+				
 				var l2 = $(".duplicateKeyVal1").offset();
 				var l3 = $(this).parent().find('.valDiv1').offset();
 				var topLength = l3.top-l2.top;
 				var leftLength = l3.left-l2.left;
 				var replacedElmt = $(this).parent().find('.set-value');
+				
+				
 				TweenMax.to(".duplicateKeyVal1", 3, { ease: Bounce.easeOut, top: "+=" + topLength, left: "+=" + leftLength, delay :1.3});
 				TweenMax.to($(this).parent().find('.valDiv1'), 1.5, { ease: Sine.easeOut, top:100 , delay : 2.4, opacity:0 , onComplete: function() {
 					$(".duplicateKeyVal1").remove();
@@ -629,25 +781,31 @@ function checkElementPresent() {
 			return;
 		}
 	});
+	
 	if (noDuplicate) {
 		$(".introjs-tooltip").removeClass("hide");
 		if($('#hashmapJar .val-box-width').length == 0) {
 			var text = "A <b class ='ct-code-b-yellow'>HashMap</b> does not guarantee any particular order for its entries. "
 					+ "And it does not guarantee that the order will remain the same "
 					+ "after adding/removing entries.";
-		typing(".introjs-tooltiptext", text, function() {
-			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="checkPositionOfValue()">Next →</a>');
-		});
+			$(".user-btn").remove();
+			typing(".introjs-tooltiptext", text, function() {
+				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="checkPositionOfValue()">Next →</a>');
+			});
+		
 		} else {
+			
 			$(".introjs-tooltiptext").append("A <b class ='ct-code-b-yellow'>HashMap</b> does not guarantee any particular order for its entries. "
 					+ "And it does not guarantee that the order will remain the same "
 					+ "after adding/removing entries.");
+			$(".user-btn").remove();
 			$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="checkPositionOfValue()">Next →</a>');
 		}
 	}
 }
 
 function pauseBlinkEffect() {
+	$(".introjs-prevbutton").hide();
 	$(".user-btn").remove();
 	$(".blinking-border-background-blue").css("animation-iteration-count", "1");
 	
@@ -684,10 +842,12 @@ function checkPositionOfValue() {
 			break;
 		}
 	}
+	
 	if (flag) {
 		setPositionOfValue(elementOffset, topPosition, leftPosition);
 		return;
 	}
+	
 }
 
 function comparePositions( p1, p2 ) {

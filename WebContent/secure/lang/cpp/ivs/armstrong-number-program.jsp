@@ -19,7 +19,7 @@
 <script src="/secure/lang/cpp/js-min/anp.min.js"></script> 
 
 
-<title>armstrong-number.jsp</title>
+<title>Armstrong number</title>
 
 <style type="text/css">
 .introjs-tooltiptext br {

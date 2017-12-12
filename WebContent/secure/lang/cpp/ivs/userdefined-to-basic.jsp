@@ -202,7 +202,7 @@ $(document).ready(function() {
 </div>
 <div class="col-xs-offset-1 col-xs-10 margin-top-20">
 		<div id="topDiv">
-			<ul style="font-family: monospace;">
+			<ul>
 				<li id="li1" class="opacity00">
 					To convert a <b class='monospace lite-blue'>user-defined type</b> to <b class='monospace lite-blue'>basic type</b>,
 					 the conversion function should be defined in a class in the form of <b class='monospace lite-blue'>operator function</b>.

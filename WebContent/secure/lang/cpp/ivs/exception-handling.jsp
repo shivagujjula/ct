@@ -256,7 +256,11 @@ $(document).ready(function() {
 				<span class="title">Output</span>
 			</div>
 			<div class="output-console-body" id="body">
-				
+				<div id="op1" class="opacity00">Before execution, inside main()</div>
+				<div id="op2" class="opacity00"><red>Floating point exception</red></div>
+				<div id="op3" class="opacity00">Before execution, inside main()</div>
+				<div id="op4" class="opacity00">Division by 0 error is occured</div>
+				<div id="op5" class="opacity00">After exception, inside main()</div>				
 			</div>
 		</div>
 	</div>

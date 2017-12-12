@@ -99,7 +99,7 @@ a:focus {
 }
 
 y {
-	font-family: monospace;
+	/* font-family: monospace; */
 	font-weight: bold;
 	color: yellow;
 }
@@ -232,22 +232,22 @@ e {
 <pre id='code2' class='code opacity00'>
 <span id="headerFiles2"><in>#include</in> <ink>&lt;iostream&gt;</ink>
 <go>using namespace</go> std;</span>
-<span id="firstClass2"><go>class</go> A {
+<span id="firstClass2" ><go>class</go> A {
 	<go>public</go>: 
 		<span id="display2"><g>void</g> display() {
-			<span id="cout1">cout << <ink>"Base Class A<in>\n</in>"</ink>;</span>
+			<span id="cout1">cout << <ink>"This is base class A<in>\n</in>"</ink>;</span>
 		}</span>
 };</span>
-<span id="secondClass2"><go>class</go> B {
+<span id="secondClass2" class="opacity00"><go>class</go> B {
 	<go>public</go>: 
 		<span id="show2"><g>void</g> show() {
-			<span id="cout2">cout << <ink>"Base Class B<in>\n</in>"</ink>;</span>
+			<span id="cout2">cout << <ink>"This is base class B<in>\n</in>"</ink>;</span>
 		}</span>
 };</span>
-<span id="thirdClass2"><go>class</go> C : <go>public</go> A, <go>public</go> B {
+<span id="thirdClass2" class="opacity00"><go>class</go> C : <go>public</go> A, <go>public</go> B {
 
 };</span>
-<div id="mainMthd2" class="displayInline"><g>int</g> main() {
+<div id="mainMthd2" class="displayInline opacity00"><g>int</g> main() {
 	<span id="singleObj2">C obj1;</span>
 	<span id="print1">obj1.display();</span>
 	<span id="print2">obj1.show();</span>

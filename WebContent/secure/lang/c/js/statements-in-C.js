@@ -432,7 +432,7 @@ function dynamicSteps(action) {
 
 function typing(typingId, typingContent, callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval" : 5,
+		"typing_interval" : 1,
 		"cursor_color": "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');

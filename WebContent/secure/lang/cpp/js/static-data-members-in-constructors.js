@@ -158,6 +158,7 @@ function introGuide() {
 		switch (elementId) {
 		case "topDiv":
 			$('.user-btn').removeClass("hide");
+			$("#code").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#li1").fadeTo(500, 1, function () {
 				$("#nextBtn").fadeTo(500, 1, function () {
@@ -201,6 +202,7 @@ function introGuide() {
 		break;
 		case "explitCall":
 			$("#explitCall").removeClass("hide");
+			$("#countPanel, #memoryDiv").addClass("opacity00")
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>A static varible is always initialised with <y>0</y> by default.</li>"
@@ -212,6 +214,8 @@ function introGuide() {
 		break;
 		case "object1":
 			$("#object1").removeClass("hide");
+			$("#s1, #arrow1").hide();
+			$("#s1Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
@@ -285,7 +289,9 @@ function introGuide() {
 		break;
 		case "defaultConst":
 			if (introjs._currentStep == 8) {
+				$("#countPanelVal").text("0");
 				$("#defaultConst").removeClass("hide");
+				$("#op1").addClass("hide");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-tooltip").css({"min-width": "210px"});
 				$(".introjs-helperLayer").one("transitionend", function() {
@@ -296,6 +302,8 @@ function introGuide() {
 					});
 				});
 			} else if (introjs._currentStep == 12) {
+				$("#op2").addClass("hide");
+				$("#countPanelVal").text("1");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will call.</li>"
@@ -305,6 +313,8 @@ function introGuide() {
 					});
 				});
 			}  else if (introjs._currentStep == 16) {
+				$("#op3").addClass("hide");
+				$("#countPanelVal").text("2");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will call.</li>"
@@ -320,7 +330,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "The <y>cout</y> display the output on the console.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -329,55 +339,108 @@ function introGuide() {
 				$("#outputDiv").removeClass("opacity00");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Object created : 1</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					//$("#body").append("<div>Object created : 1</div>");
+					$("#op1").removeClass("hide");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 13) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Object created : 2</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					/*$("#body").append("<div>Object created : 2</div>");*/
+					$("#op2").removeClass("hide");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 17) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#countPanelVal").text("3");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Object created : 3</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					/*$("#body").append("<div>Object created : 3</div>");*/
+					$("#op3").removeClass("hide");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
+					}
 				});
 			} else if (introjs._currentStep == 21) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				/*$("#countPanelVal").text("2");*/
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Object deleted : 3</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					/*$("#body").append("<div>Object deleted : 3</div>");*/
+					$("#op4").removeClass("hide");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 25) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				/*$("#countPanelVal").text("1");*/
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Object deleted : 2</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					/*$("#body").append("<div>Object deleted : 2</div>");*/
+					$("#op5").removeClass("hide");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 29) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>Object deleted : 1</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					/*$("#body").append("<div>Object deleted : 1</div>");*/
+					$("#op6").removeClass("hide");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
 		case "object2":
 			$("#object2").removeClass("hide");
+			$("#s2, #arrow2").hide();
+			$("#s2Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
@@ -390,6 +453,8 @@ function introGuide() {
 		break;
 		case "object3":
 			$("#object3").removeClass("hide");
+			$("#s3, #arrow3").hide();
+			$("#s3Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
@@ -401,90 +466,141 @@ function introGuide() {
 			});
 		break;
 		case "end":
+			$("#memoryDiv").removeClass("z-index");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#s3, #arrow3").show();
+			$("#s3Panel").show().removeClass("opacity00");
+			//TweenMax.to($("#arrow3"), 1, {attr:{x2:"59%", y2:"4%"}});
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "At the completion of program execution, <y>destructor</y> will be called in the reverse order of the objects created.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "destructor":
 			if (introjs._currentStep == 19) {
 				$("#destructor").removeClass("hide");
+				$("#countPanelVal").text("3");
+				$("#s3, #arrow3").show();
+				$("#s2, #arrow2").show();
+				$("#s2Panel").show().removeClass("opacity00");
+				$("#s3Panel").show().removeClass("opacity00");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "<ul><li>The <y>destructor</y> will remove the objects in the reverse order of the objects created.</li>"
 						+	"<li>So first the <y>destructor</y> will remove the <y>s3</y> object.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#memoryDiv").addClass("z-index");
-						arrowRevealBack("#arrow3", function() {
-							$("#arrow3").hide();
-							$("#s3Panel").hide();
-							$("#memoryDiv").removeClass("z-index");
-							$('.introjs-nextbutton').show();
-						});
+						
+						$("#s3, #arrow3").hide();
+						$("#s3Panel").addClass("opacity00");
+						
+						//arrowRevealBack("#arrow3", function() {
+							//$("#arrow3").hide();
+							//$("#s3Panel").hide();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						//});
 					});
 				});
 			} else if (introjs._currentStep == 23) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#countPanelVal").text("2");
+				$("#s2, #arrow2").show();
+				$("#s2Panel").show().removeClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "<ul><li>The <y>destructor</y> will remove the objects in the reverse order of the objects created.</li>"
 						+	"<li>So first the <y>destructor</y> will remove the <y>s2</y> object.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#memoryDiv").addClass("z-index");
-						arrowRevealBack("#arrow2", function() {
-							$("#arrow2").hide();
-							$("#s2Panel").hide();
-							$("#memoryDiv").removeClass("z-index");
-							$('.introjs-nextbutton').show();
-						});
+						$("#s2, #arrow2").hide();
+						$("#s2Panel").addClass("opacity00");
+						
+						//arrowRevealBack("#arrow2", function() {
+							//$("#arrow2").hide();
+							//$("#s2Panel").hide();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						//});
 					});
 				});
 			} else if (introjs._currentStep == 27) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#countPanel").show();
+				$("#countPanelVal").text("1");
+				$("#s1, #arrow1").show();
+				$("#s1Panel").show().removeClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "<ul><li>The <y>destructor</y> will remove the objects in the reverse order of the objects created.</li>"
 						+	"<li>So first the <y>destructor</y> will remove the <y>s1</y> object.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#memoryDiv").addClass("z-index");
-						arrowRevealBack("#arrow1", function() {
-							$("#arrow1").hide();
-							$("#s1Panel").hide();
-							$("#memoryDiv").removeClass("z-index");
-							$('.introjs-nextbutton').show();
-						});
+						$("#s1, #arrow1").hide();
+						$("#s1Panel").addClass("opacity00");
+						
+						//arrowRevealBack("#arrow1", function() {
+							//$("#arrow1").hide();
+							//$("#s1Panel").hide();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						//});
 					});
 				});
 			}
 		break;
 		case "cout2":
 			if (introjs._currentStep == 20) {
+				$("#memoryDiv").removeClass("z-index");
+				/*$("#countPanelVal").text("3");*/
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#op4").addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 24) {
+				$("#memoryDiv").removeClass("z-index");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#op5").addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 28) {
+				$("#memoryDiv").removeClass("z-index");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#op6").addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
 		case "count2":
 			if (introjs._currentStep == 22) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#memoryDiv").removeClass("z-index");
+				$("#s2, #arrow2").show();
+				$("#s2Panel").show().removeClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "The count value will be decrement.";
 					typing($(".introjs-tooltiptext"), text, function() {
@@ -502,7 +618,7 @@ function introGuide() {
 									$("#countPanel").addClass("z-index");
 									fromEffectWithTweenMax("#tooltipX", "#countPanelVal", function() {
 										$("#countPanel").removeClass("z-index");
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									});
 								});
 							}});
@@ -511,6 +627,9 @@ function introGuide() {
 				});
 			} else if (introjs._currentStep == 26) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$("#memoryDiv").removeClass("z-index");
+				$("#s1, #arrow1").show();
+				$("#s1Panel").show().removeClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "The count value will be decrement.";
 					typing($(".introjs-tooltiptext"), text, function() {
@@ -528,7 +647,7 @@ function introGuide() {
 									$("#countPanel").addClass("z-index");
 									fromEffectWithTweenMax("#tooltipX", "#countPanelVal", function() {
 										$("#countPanel").removeClass("z-index");
-										$('.introjs-nextbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									});
 								});
 							}});
@@ -608,7 +727,7 @@ function sendValues1() {
 	//flipEffect("#countPanelVal", "1", function(){
 		fromEffectWithTweenMax("#tooltipX", "#countPanelVal", function() {
 		$("#countPanel").removeClass("z-index");
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	//});
 	});
 }
@@ -638,7 +757,7 @@ function sendValues2() {
 	//flipEffect("#countVal", "2", function(){
 		fromEffectWithTweenMax("#tooltipX", "#countPanelVal", function() {
 		$("#countPanel").removeClass("z-index");
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	//});
 	});
 }
@@ -667,7 +786,7 @@ function sendValues3() {
 	$("#memoryDiv").addClass("z-index");
 	fromEffectWithTweenMax("#tooltipX", "#countPanelVal", function() {
 		$("#memoryDiv").removeClass("z-index");
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	});
 }
 
@@ -692,7 +811,7 @@ function removeArrow3() {
 					$("#memoryDiv").addClass("z-index");
 					fromEffectWithTweenMax("#tooltipX", "#countPanelVal", function() {
 						$("#memoryDiv").removeClass("z-index");
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			}});
@@ -704,7 +823,7 @@ function removeCount() {
 	$('.user-btn').remove();
 	$("#countPanel").hide();
 	$("#memoryDiv").removeClass("z-index");
-	$('.introjs-nextbutton').show();
+	$('.introjs-nextbutton, .introjs-prevbutton').show();
 }
 
 function typing(selector, text, callBackFunction) {

@@ -97,7 +97,7 @@ a:focus {
 }
 
 y {
-	font-family: monospace;
+	/* font-family: monospace; */
 	font-weight: bold;
 	color: yellow;
 }
@@ -169,7 +169,9 @@ e {
 	margin-top: 40px;
 }
 
-
+r {
+	color: red;
+}
 
 </style>
 </head>
@@ -218,19 +220,19 @@ e {
 <pre id='code1' class='code opacity00'>
 <span id="headerFiles1"><in>#include</in> <ink>&lt;iostream&gt;</ink>
 <go>using namespace</go> std;</span>
-<span id="firstClass1"><go>class</go> A {
+<span id="firstClass1" class=""><go>class</go> A {
 	<go>public</go>: 
 		<span id="display1"><g>void</g> display() {
-			<span id='cout1'>cout << <ink>"Base Class A<in>\n</in>"</ink>;</span>
+			<span id='cout1'>cout << <ink>"This is base class A<in>\n</in>"</ink>;</span>
 		}</span>
 };</span>
-<span id="secondClass1"><go>class</go> B : <span id="inheritA" class="opacity00 hide" style="display:inline-block; position:relative;"><go>public</go></span> A {
+<span id="secondClass1" class="opacity00"><go>class</go> B : <span id="inheritA" class="opacity00 hide" style="display:inline-block; position:relative;"><go>public</go></span> A {
 	<go>public</go>: 
 		<span id="show1"><g>void</g> show() {
-			<span id="cout2">cout << <ink>"Derived Class B<in>\n</in>"</ink>;</span>
+			<span id="cout2">cout << <ink>"This is derived class B<in>\n</in>"</ink>;</span>
 		}</span>
 };</span>
-<div id="mainMthd1" class="displayInline"><g>int</g> main() {
+<div id="mainMthd1" class="displayInline opacity00"><g>int</g> main() {
 	<span id="singleObj1">B obj1;</span>
 	<span id="print1">obj1.display();</span>
 	<span id="print2">obj1.show();</span>

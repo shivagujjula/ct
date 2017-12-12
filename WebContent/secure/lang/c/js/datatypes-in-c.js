@@ -115,7 +115,7 @@ function introGuide() {
 
 function typing(typingId,typingContent,callbackFunction) {
 	$(typingId).typewriting(typingContent, {
-		"typing_interval" : 0.05,
+		"typing_interval" : 1,
 		"cursor_color" : "blue"
 	}, function() {
 		$(typingId).removeClass('typingCursor');

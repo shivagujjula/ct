@@ -95,6 +95,70 @@ function introGuide() {
 				}
 			]});
 	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "topDiv":
+			
+		break;	
+		case "code":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#code").removeClass("opacity00");
+			$('.user-btn').addClass("hide");
+		break;
+		case "class":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "callDefaultConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "memoryDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "defaultConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "s1Panel":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			//$("#a2Panel, #b2Panel").addClass("opacity00");
+		break;
+		case "callParameterConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "memoryDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "parameterConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "s2Panel":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "main":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "destruct":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "memoryDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "restart":
+			
+		break;
+		
+		}
+	});
+	
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
@@ -141,8 +205,7 @@ function introGuide() {
 		break;
 		case "callDefaultConst":
 			$("#callDefaultConst").removeClass("hide");
-			$("#s1Panel").addClass("opacity00").addClass("animated zoomOut");
-			$("#s1Panel").removeClass("animated zoomOut");
+			$("#memoryDiv, #s1Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -193,6 +256,7 @@ function introGuide() {
 		break;
 		case "defaultConst":
 			$("#defaultConst").removeClass("hide");
+			$("#a1PanelVal, #b1PanelVal").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -205,14 +269,21 @@ function introGuide() {
 		break;
 		case "s1Panel":
 			$("#memoryDiv").removeClass("opacity00");
+			$("#op1, #outputDiv").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#a1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
 					$("#b1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 			});
@@ -222,29 +293,50 @@ function introGuide() {
 				$("#outputDiv").removeClass("opacity00");
 				introjs.refresh();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>s1 object is created.</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					$("#op1").removeClass("opacity00");
+					//$("#body").append("<div>s1 object is created.</div>");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 12) {
 				$("#outputDiv").removeClass("opacity00");
 				introjs.refresh();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body > div:last-child").append("<div>s2 object is created.</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					$("#op2").removeClass("opacity00");
+					//$("#body > div:last-child").append("<div>s2 object is created.</div>");
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 16) {
 				$("#outputDiv").removeClass("opacity00");
 				introjs.refresh();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body > div:last-child").append("<div>s1 and s2 objects are deleted.</div>");
+					$("#op3").removeClass("opacity00");
+					//$("#body > div:last-child").append("<div>s1 and s2 objects are deleted.</div>");
 					/* $("#body > div:last-child").append("<div>s1 and s2 objects are deleted.</div>"); */
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
@@ -257,12 +349,13 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "constructor with parameters.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
 		case "parameterConst":
 			$("#parameterConst").removeClass("hide");
+			$("#a2PanelVal, #b2PanelVal").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -275,12 +368,19 @@ function introGuide() {
 		break;
 		case "s2Panel":
 			introjs.refresh();
+			$("#op2").addClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#a2PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
 					$("#b2PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 			});
@@ -291,7 +391,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "After <y>main()</y> execution completed, the <y>destructor</y> will call.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -305,7 +405,7 @@ function introGuide() {
 				var text = "When the <y>destructor</y> called, the objects are deleted from the memory."
 					+ " The <y>cout</y> display the output on the console.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -347,7 +447,7 @@ function abValues() {
 				TweenMax.to("#tooltipYVal", 0.3, {rotationX : -90, onComplete:function() {
 					$("#tooltipYVal").text($("#s1Val2").text());
 					TweenMax.to("#tooltipYVal", 0.5, {rotationX : 0, onComplete:function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					}});
 				}});
 			}});

@@ -18,6 +18,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
+
 <script src="../js-min/cc.min.js"></script>
 
 <style type="text/css">
@@ -183,7 +184,7 @@ $(document).ready(function() {
 <div class="col-xs-offset-1 col-xs-10 margin-top-20">
 		<div id="topDiv">
 			<div id="typingDiv1">
-				<ul style="font-family: monospace;">
+				<ul>
 					<li id="li1" class="opacity00">A  copy constructor creates an object by initializing it with an object of the same class, which has been created previously.</li>
 					<li id="li2" class="opacity00">The copy constructor is used to − Initialize one object from another of the same type. Copy an object to pass it as an argument to a function.</li>
 					<li id="li3" class="opacity00">The format of the <b><g>copy constructor</g></b> is:<br>
@@ -288,6 +289,8 @@ $(document).ready(function() {
 				<span class="title">Output</span>
 			</div>
 			<div class="output-console-body" id="body">
+				<div id="op1" class="opacity00">Given values: 10 20</div>
+				<div id="op2" class="opacity00">Given values: 10 20</div>
 			</div>
 		</div>
 	</div>

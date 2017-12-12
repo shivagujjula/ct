@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="/css/custom-styles.css" />
 
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js-min/mm.min.js"></script>
 
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/alertify.js"></script>
@@ -26,6 +25,8 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TimelineLite.min.js"></script>
+
+<script src="/secure/lang/c/js-min/mm.min.js"></script>
 <style type="text/css">
 .padding0 {
 	padding: 0;

@@ -588,7 +588,7 @@ function initIntroJS() {
 
 function typing(typingId, typingContent,callBackFunction) {
 	$(typingId).typewriting( typingContent , {
-		"typing_interval": '5',
+		"typing_interval": '1',
 		"cursor_color": 'white',
 	}, function() {
 		$(typingId).removeClass('typingCursor');

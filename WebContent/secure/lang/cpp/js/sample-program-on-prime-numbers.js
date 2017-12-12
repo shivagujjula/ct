@@ -1,5 +1,5 @@
 var introjs;
-var typingInterval = 5;
+var typingInterval = 1;
 var num = 2;
 var counter = 0;
 var tValue = 1;
@@ -29,17 +29,21 @@ function introGuide() {
 				}, {
 					element: '#example',
 					intro: '',
-					position: 'left'
+					position: 'left',
+					tooltipClass: "hide"
 				}, {
 					element: '#wholeLogic',
 					intro: '',
-					position: 'right'
+					position: 'right',
+					tooltipClass: "hide"
 				}, {
 					element: '#intDec',
-					intro: ''
+					intro: '',
+					tooltipClass: "hide"
 				}, {
 					element: '#iInit',
-					intro: ''
+					intro: '',
+					tooltipClass: "hide"
 				}, {
 					element: '#printfEnter',
 					intro: '',
@@ -55,25 +59,186 @@ function introGuide() {
 				}, {
 					element: '#console',
 					intro: '',
-					consoleSteps: 'EnterNumber'
+					consoleSteps: 'EnterNumber',
+					tooltipClass: "hide"
 				}, {
 					element: '#whileLoop',
 					intro: '',
-					position: 'right'
-				}, {
-					element: '#console',
-					intro: '',
-					tooltipClass: 'hide',
-					consoleSteps: 'secondPrint'
-				}, {
-					element: '#restart',
-					intro: 'Click to restart.',
-					position: 'right'
-				} ]
+					position: 'right',
+					tooltipClass: "hide"
+				}]
 	});
 	
-	introjs.onafterchange(function(targetElement) {
+	
+	introjs.onbeforechange(function(targetElement) {
 		$('.introjs-prevbutton, .introjs-skipbutton, .introjs-nextbutton').hide();
+		var elementId = targetElement.id;
+		switch (elementId) {
+				
+			case "example":
+				
+				tValue = 1;
+				
+				$("#example").addClass("opacity00");
+				$("#primeDiv1").addClass("opacity00");
+				
+				$("#program").addClass("opacity00");
+				$("#fa1, #primeDiv2, #primeDiv3").remove();
+				
+				$("#example br").remove();
+				
+				break;
+				
+			case "wholeLogic":
+
+				$(".explanation, #cCupDiv").addClass("opacity00");
+				$("#cVal").text('');
+				
+				break;
+			
+			case "intDec":
+				$(".explanation, #cCupDiv").addClass("opacity00");
+				$("#cVal").text('');
+				$("#iCupDiv").addClass("opacity00");
+				$("#iVal").text('');
+				break;
+				
+			case "iInit":
+				
+				$("#iCupDiv").addClass("opacity00");
+				$("#iVal").text('');
+				
+				break;
+				
+				
+			case "console":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					$("#console").removeClass("opacity00");
+					var consoleSteps = introjs._introItems[introjs._currentStep].consoleSteps;
+					switch(consoleSteps) {
+					
+					case "printEnter":
+						
+						break;
+						
+					case "EnterNumber":
+						
+						$("#textEnter").remove();
+						
+						if (introjs._introItems.length > 10) {
+							introjs._introItems.splice(10);
+						}
+						
+						break;
+						
+					}
+				});
+				break;
+				
+			case "scanf":
+				
+				$("#textEnter").remove();
+				
+				break;
+				
+			case "whileLoop":
+				
+				if (introjs._direction == "backward") {
+					
+					
+					if (num <= ($("#enteredText").val()/2)) {
+						introjs._introItems.splice(introjs._introItems.length - 2);
+					} else {
+						introjs._introItems.splice(introjs._introItems.length - 4);
+					}
+				}
+				
+				break;
+				
+			case "ifCond":
+				
+				if (introjs._direction == "backward") {
+					
+					
+					if (($("#enteredText").val() % num) == 0) {
+						introjs._introItems.splice(introjs._introItems.length - 1);
+					} else {
+						introjs._introItems.splice(introjs._introItems.length - 1);
+					}
+				}
+				
+				break;
+				
+			case "cInc":
+				
+				if (introjs._direction == "backward") {
+					$("#cVal").text( --counter );
+					introjs._introItems.splice(introjs._introItems.length - 1);
+				}
+				
+				break;
+				
+			case "cCupDiv":
+			
+				if (introjs._direction == "backward") {
+					introjs._introItems.splice(introjs._introItems.length - 2);
+				}
+				
+				break;
+				
+			case "breakSpan":
+				if (introjs._direction == "backward") {
+					introjs._introItems.splice(introjs._introItems.length - 4);
+				}
+				
+				break;
+				
+			case "iInc":
+				if (introjs._direction == "backward") {
+					$("#iVal").text( --num );
+					introjs._introItems.splice(introjs._introItems.length - 1);
+				}
+				
+				break;
+				
+			case "iCupDiv":
+				if (introjs._direction == "backward") {
+					introjs._introItems.splice(introjs._introItems.length - 2);
+				}
+				
+				break;
+				
+		}
+	});
+	
+	
+	introjs.onafterchange(function(targetElement) {
+		
+		$('.introjs-prevbutton, .introjs-skipbutton, .introjs-nextbutton').hide();
+		
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0 && targetElement.id !== "codeDiv") {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}
+
+		
+		
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		
@@ -84,7 +249,7 @@ function introGuide() {
 						$("#example").append('<div id="primeDiv'+ tValue +'" style="padding-top: 5px;"><span id="number'
 											+ tValue +'" class="opacity00">5</span>&nbsp;</div>');
 						$("#description > ul li:last-child").append('&emsp;&emsp;<a class="introjs-button usr-btn"'
-																+ ' onclick="nextStep()">next &#8594;</a>');
+																+ ' onclick="nextStep()">Next &#8594;</a>');
 					}});
 				}});
 				break;
@@ -92,7 +257,9 @@ function introGuide() {
 			case "example":
 				$('.introjs-tooltip').css({'min-width' : '300px'});
 				$("#example").removeClass("opacity00");
+				
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$('.introjs-tooltip').removeClass("hide");
 					var text = "Let us consider a few examples to verify if a given number is prime number or not.<br><br>";
 					typing('.introjs-tooltiptext', text, function() {
 						//$('.introjs-tooltipbuttons').append('<a class="introjs-button skip-button" id="skipBtn" onClick="skipNext()">Skip</a>');
@@ -106,9 +273,10 @@ function introGuide() {
 				$("#program").removeClass("opacity00");
 				$('.introjs-tooltip').css({'min-width' : '200px'});
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$(".introjs-tooltip").removeClass("hide");
 					var text = "In this program we will go through the algorithm used to determine if a given number is a prime number or not.";
 					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
@@ -125,6 +293,7 @@ function introGuide() {
 				
 			case "intDec":
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$(".introjs-tooltip").removeClass("hide");
 					var text = "Let us declare two integer variables <span class='ct-code-b-yellow'>num</span> and"
 								+ " <span class='ct-code-b-yellow'>count</span>."
 								+ " <br>While <span class='ct-code-b-yellow'>count</span> is being initialized to"
@@ -133,7 +302,9 @@ function introGuide() {
 						$(".explanation, #cCupDiv").removeClass("opacity00");
 						$("#cVal").text($("#zero").text());
 						fromEffectWithTweenMax("#zero", "#cVal", function() {
-							$('.introjs-nextbutton').show()
+							
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+							
 						});
 					});
 				});
@@ -141,6 +312,7 @@ function introGuide() {
 				
 			case "iInit":
 				$('.introjs-helperLayer').one('transitionend', function() {
+					$(".introjs-tooltip").removeClass("hide");
 					var text = "Let us declare a variable <span class='ct-code-b-yellow'>i</span> of type"
 								+ " <span class='ct-code-b-yellow'>int</span> is declared"
 								+ " and initialized to <span class='ct-code-b-yellow'>2</span>."
@@ -149,7 +321,7 @@ function introGuide() {
 						$("#iCupDiv").removeClass("opacity00");
 						$("#iVal").text($("#one").text());
 						fromEffectWithTweenMax("#one", "#iVal", function() {
-							$('.introjs-nextbutton').show();
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
 				});
@@ -159,7 +331,12 @@ function introGuide() {
 			case "falsePrint":
 			case "truePrint":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					timeOut();
+					//timeOut();
+					if (elementId == "printfEnter") {
+						$("#console").addClass("opacity00")
+					}
+					
+					stepNext();
 				});
 				break;
 				
@@ -170,11 +347,18 @@ function introGuide() {
 					switch(consoleSteps) {
 					
 					case "printEnter":
-						$(".console-text").removeClass("opacity00");
-						timeOut();
+						if (introjs._direction == "forward") {
+							$(".console-text").removeClass("opacity00");
+						} else {
+							$(".console-text").addClass("opacity00");
+						}
+						//timeOut();
+						stepNext();
 						break;
 						
 					case "EnterNumber":
+						$(".introjs-tooltip").removeClass("hide");
+						
 						var text = "Enter a number.";
 						typing('.introjs-tooltiptext', text, function() {
 							$(".console-text").append('<span id="textEnter"></span>');
@@ -193,9 +377,10 @@ function introGuide() {
 							$("#printing").append('The given number <span class="ct-code-b-yellow">' + $("#enteredText").val() + '</span>'
 												+ ' is <span class="ct-code-b-yellow">not a prime number</span>');
 						}
-						setTimeout(function() {
+						/*setTimeout(function() {
 							introjs.nextStep();
-						}, 600);
+						}, 600);*/
+						stepNext();
 						break;
 						
 					}
@@ -204,11 +389,11 @@ function introGuide() {
 				
 			case "scanf":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var text = "The <span class='ct-code-b-yellow'>scanf()</span> function reads the number which you want to verify as a"
+					var text = "The <span class='ct-code-b-yellow'>cin</span> object reads the number which you want to verify as a"
 								+ " prime number and stores it into the"
 								+ " <span class='ct-code-b-yellow'>num</span>."; 
 					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});	
 				break;
@@ -232,20 +417,33 @@ function introGuide() {
 								   		$('.introjs-tooltiptext').append('<div id="text"></div>');
 								   		var text1 = "since the above condition evaluates to";
 								   		if (num <= ($("#enteredText").val() / 2)) {
-							   				dynamicStep("#ifCond");
+								   			
+													dynamicStep("#ifCond");
+								   			
 								   			var text = text1 + " <span class='ct-code-b-yellow'>true</span>."
 								   						+ " The control <span class='ct-code-b-yellow'>enters</span> into the"
 								   						+ " <span class='ct-code-b-yellow'>loop</span>.";
 								   			typing("#text", text, function() {
-												$('.introjs-nextbutton').show();
+												if ($("#iValue").text() <= 7) {
+													$('.introjs-nextbutton, .introjs-prevbutton').show();
+												} else {
+													$('.introjs-nextbutton').show();
+												}
+								   				
 								   			});
 								   		} else {
-							   				dynamicStep("#outerIf");
+								   			
+												dynamicStep("#outerIf");
+								   			
 								   			var text = text1 + " <b class='red'>false</b>. The control"
 								   						+ " <span class='ct-code-b-yellow'>comes out</span> of the"
 								   						+ " <span class='ct-code-b-yellow'>loop</span>.";
 								   			typing("#text", text, function() {
-								   				$('.introjs-nextbutton').show();
+								   				if ($("#iValue").text() <= 7) {
+													$('.introjs-nextbutton, .introjs-prevbutton').show();
+												} else {
+													$('.introjs-nextbutton').show();
+												}
 								   			});
 								   		}
 									});
@@ -281,18 +479,22 @@ function introGuide() {
 										var text1 = "since the above condition evaluates to";
 										var text2 = " The control <span class='ct-code-b-yellow'>";
 										if (($("#enteredText").val() % num) == 0) {
-											dynamicStep("#cInc");
+											
+												dynamicStep("#cInc");
+											
 									   		var text = text1 + " <span class='ct-code-b-yellow'>true</span>." + text2
 									   					+ "enters</span> into the <br><span class='ct-code-b-yellow'>if-block</span>.";
 											typing("#text", text, function() {
-												$('.introjs-nextbutton').show();
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
 											});
 										} else {
-											dynamicStep("#iInc");
+											
+												dynamicStep("#iInc");
+											
 											var text = text1 + " <b class='red'>false</b>." + text2 
 														+ "comes out</span> of the <br><span class='ct-code-b-yellow'>if-block</span>.";
 											typing("#text", text, function() {
-												$('.introjs-nextbutton').show();
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
 											});
 										}
 							   		});
@@ -304,49 +506,77 @@ function introGuide() {
 				break;
 				
 			case "cInc":
-				counter++;
+				
 				$('.introjs-helperLayer').one('transitionend', function() {
-					dynamicStep("#cCupDiv");
-					timeOut();
+					
+					if (introjs._direction == "backward") {
+						//$("#cVal").text( --counter );
+					} else {
+						counter++;
+						dynamicStep("#cCupDiv");
+					}
+					stepNext();
 				});
 				break;
 				
 			case "cCupDiv":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					dynamicStep("#breakSpan");
-					countValue(".count-cup", "#cVal", counter);
+					
+					if (introjs._direction == "forward") {
+						dynamicStep("#breakSpan");
+						countValue(".count-cup", "#cVal", counter);
+					} else {
+						stepNext();
+					}
+					
 				});
 				break;
 				
 			case "breakSpan":
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
-					dynamicStep("#outerIf");
+					
+						dynamicStep("#outerIf");
 					var text = "The <span class='ct-code-b-yellow'>break</span> statement will terminate the"
 								+ " <span class='ct-code-b-yellow'>while-loop</span> and"
 								+ " the control comes out of <span class='ct-code-b-yellow'>while-loop</span> block.";
 					typing('.introjs-tooltiptext', text, function() {
-						$('.introjs-nextbutton').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 				
 			case "iInc":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					num++;
-					if (num <= 7) {	
-						dynamicStep("#iCupDiv");
-						timeOut();
+					
+					if (introjs._direction == "backward") {
+						//$("#iVal").text( --num );
+						stepNext();
 					} else {
-						primeNumber(num);
+						num++;
+						if (num <= 7) {
+							dynamicStep("#iCupDiv");
+							stepNext();
+						} else {
+							primeNumber(num);
+						}
 					}
+					
 				});
 				break;
 				
 			case "iCupDiv":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					dynamicStep("#whileLoop");
-					countValue(".i-cup", "#iVal", num);
+						
+						if (introjs._direction == "forward") {
+							dynamicStep("#whileLoop");
+							countValue(".i-cup", "#iVal", num);
+						} else {
+							stepNext();
+						}
+						
+						
+					
 				});
 				break;
 				
@@ -365,22 +595,42 @@ function introGuide() {
 									var text1 = "since the above condition evaluates to";
 									var text2 = " The control enters into the";
 									if ((counter == 0) & ($("#enteredText").val() != 1)) {
-										dynamicStep("#truePrint");
+										
+											
+											introjs.insertOption(introjs._currentStep + 1, getStep("#truePrint", "", "hide", "right"));
+											introjs.insertOption(introjs._currentStep + 2, getStep("#console", "", "hide", "right", "secondPrint"));
+											introjs.insertOption(introjs._currentStep + 3, getStep("#restart", "Click to restart.", "", "right"));
+										
 										$('.introjs-tooltiptext').append('<div class="outer-text"></div>')	
 										var text =  text1 + " <span class='ct-code-b-yellow'>true</span>." + text2
 													+ " <span class='ct-code-b-yellow'>if-block</span>.";
 										typing('.outer-text', text, function() {
-											$('.introjs-nextbutton').show();
+											
+											if ($("#iValue").text() <= 7) {
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
+											} else {
+												$('.introjs-nextbutton').show();
+											}
 										});
 									} else {
-										dynamicStep("#falsePrint");
+										
+											introjs.insertOption(introjs._currentStep + 1, getStep("#falsePrint", "", "hide", "right"));
+											introjs.insertOption(introjs._currentStep + 2, getStep("#console", "", "hide", "right", "secondPrint"));
+											introjs.insertOption(introjs._currentStep + 3, getStep("#restart", "Click to restart.", "", "right"));
+											
 										$('.introjs-tooltiptext').append('<div id="outerText"></div>');
 										var text = text1 + " <b class='red'>false</b>." + text2
 													+ " <span class='ct-code-b-yellow'>else-block</span>.";
 										typing('#outerText', text, function() {
-											$('.introjs-nextbutton').show();
+											
+											if ($("#iValue").text() <= 7) {
+												$('.introjs-nextbutton, .introjs-prevbutton').show();
+											} else {
+												$('.introjs-nextbutton').show();
+											}
 										});
 									}
+									
 								});
 							});
 						}});
@@ -389,6 +639,7 @@ function introGuide() {
 				break;
 	
 			case "restart":
+				$('.introjs-tooltip').css("min-width","200px");
 				$(".introjs-tooltip").css({"min-width" : "110px"});
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#restart").removeClass("opacity00");
@@ -407,6 +658,7 @@ function typing(typingId, typingContent,callBackFunction) {
 		$(typingId).removeClass('typingCursor');
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -416,7 +668,7 @@ function nextStep() {
 	introjs.nextStep();
 }
 
-function getStep(element, intro, tooltipClass, position) {
+function getStep(element, intro, tooltipClass, position, consoleSteps) {
 	var step = {};
 	if (typeof element != 'undefined') {
 		step['element'] = element;
@@ -430,6 +682,10 @@ function getStep(element, intro, tooltipClass, position) {
 	if (typeof position != 'undefined') {
 		step['position'] = position;
 	}
+	
+	if (typeof consoleSteps != 'undefined') {
+		step['consoleSteps'] = consoleSteps;
+	}
 	return step;
 }
 
@@ -440,7 +696,7 @@ function timeOut() {
 }
 
 function dynamicStep(id) {
-	var newStep = getStep(id, '', 'hide', 'right');
+	var newStep = getStep(id, '', 'hide', 'right', '');
 	introjs.insertOption(introjs._currentStep + 1, newStep);
 }
 
@@ -448,13 +704,13 @@ function dynamicStep(id) {
 function exampleText() {
 	$(".usr-btn").remove();
 	if (tValue == 2) {
-		$('.introjs-tooltipbuttons').append('<a class="introjs-button skip-button" id="skipBtn" onClick="skipNext()">Skip</a>');
+		//$('.introjs-tooltipbuttons').append('<a class="introjs-button skip-button" id="skipBtn" onClick="skipNext()">Skip</a>');
 	}
 	$(".introjs-tooltipbuttons").append('<a class="introjs-button usr-btn visibility-hidden" onClick="dividing()">Next &#8594;</a>');
 	$("#appendText").remove();
 	$('.introjs-tooltiptext').append('<div id="appendText"><ul><li></li></ul></div>');
 	if (tValue == 1) {
-		$('primeDiv'+ tValue).removeClass("opacity00");
+		$('#primeDiv'+ tValue).removeClass("opacity00");
 	} else if (tValue == 2) {
 		$("#example").append('<br><div id="primeDiv'+ tValue +'"><span id="number'+ tValue +'" class="opacity00">45</span></div>');
 	} else {
@@ -602,9 +858,9 @@ function events() {
 		
 	$("#enteredText").on("keyup", function(e) {
 		if ($("#enteredText").val().length < 1) {
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		} else {
-			$('.introjs-nextbutton').show();
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}
 	});
 }
@@ -636,20 +892,22 @@ function rotationEffect(selector, val, callBackFunction) {
 
 //===i value increment based on n===
 function primeNumber(value) {
-	if (value <= ($("#enteredText").val() - 1)) {
-		if ((value <= ($("#enteredText").val() / 2)) && ($("#enteredText").val() % value == 0)) {
-			counting();
+	
+		if (value <= ($("#enteredText").val() - 1)) {
+			if ((value <= ($("#enteredText").val() / 2)) && ($("#enteredText").val() % value == 0)) {
+				counting();
+			} else {
+				num++;
+				value++;
+				primeNumber(value);
+			}
 		} else {
-			num++;
-			value++;
-			primeNumber(value);
+			counting();
 		}
-	} else {
-		counting();
-	}
 }
 
 function counting() {
+	
 	$('.introjs-tooltip').removeClass("hide");
 	var text = "Similarly loop continuosly runs upto <span class='ct-code-b-yellow'>i = " + (num - 1) + "</span>. ";
 	typing('.introjs-tooltiptext', text, function() {
@@ -657,7 +915,7 @@ function counting() {
 		var text = "<br><span class='ct-code-b-yellow'>i</span> value incremented to <span class='ct-code-b-yellow'>"
 					+ (num)+"</span>"; 
 		typing("#numText", text, function() {
-			dynamicStep("#iCupDiv");
+				dynamicStep("#iCupDiv");
 			$('.introjs-nextbutton').show();
 		});	
 	});	
@@ -674,7 +932,20 @@ function countValue(selector1, selector2, val) {
 		}
 		setTimeout(function() {
 			$(selector1).css({'color': '#e1e1e1'});
-			introjs.nextStep();
+			stepNext();
 		}, 400);
 	});
+}
+
+
+function stepNext() {
+	if (introjs._direction == "forward") {
+		setTimeout(function() {
+			introjs.nextStep();
+		}, 800)
+	} else {
+		setTimeout(function() {
+			introjs.previousStep();
+		}, 800)
+	}
 }

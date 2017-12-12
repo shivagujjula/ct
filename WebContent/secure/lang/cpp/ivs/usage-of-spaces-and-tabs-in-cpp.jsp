@@ -24,6 +24,7 @@
 	display: block;
 	margin-top: 10px;
 }
+
 .introjs-tooltip {
 	min-width: 300px;
 	-webkit-transition: opacity 0.3s ease-out !important;
@@ -79,6 +80,7 @@
 .tab-css {
 	border:1px solid pink;
 	border-radius:8px;
+	display: inline-block;
 }
 
 .enter-css {
@@ -87,10 +89,7 @@
 	border-radius:6px;
 	padding: 0px 7px;
 }
-.b-yellow {
-	font-weight : bold;
-	color: yellow;
-}
+
 </style>
 
 </head>

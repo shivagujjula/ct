@@ -16,7 +16,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/secure/lang/c/js-min/conic.min.js"></script>
-
 <title>constants in C</title>
 </head>
 <style>

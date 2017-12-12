@@ -17,9 +17,9 @@ var basicUserDefinedReadyFun = function() {
 		introjs.refresh();
 		
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 		
 		if ($(this).text().indexOf(".") == -1) {
@@ -128,7 +128,96 @@ function introGuide() {
 				}
 			]});
 	
+introjs.onbeforechange(function(targetElement) {
+
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "topDiv":
+			
+		break;	
+		case "code":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#code").removeClass("opacity00");
+			$('.user-btn').addClass("hide");
+		break;
+		case "class":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "constM":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#memoryDiv, #mPanel").addClass("opacity00");
+		break;
+		case "memoryDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "defaultConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#lengthPanelVal1").addClass("opacity00");
+		break;
+		case "lengthPanel":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "floatX":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "cout1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "cin":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("[contenteditable=false]").attr("contenteditable", "true");
+			charAtEnd("inputVal");
+		break;
+		case "comments":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "paraConst":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "callMethod":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "putdataFun":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('#outputArgsOf2').addClass("opacity00");
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "restart":
+			
+		break;
+		
+		}
+	});
+	
 	introjs.onafterchange(function(targetElement) {
+		
+/*		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}*/
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
 		introjs.refresh();
@@ -146,10 +235,7 @@ function introGuide() {
 			});
 		break;
 		case "code":
-			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Let us consider sample C++ program to convert <y>basic</y> to <y>user-defined</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -192,9 +278,15 @@ function introGuide() {
 					$("#mPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
 						$("#memoryDiv").removeClass("z-index");
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 		break;
@@ -220,9 +312,15 @@ function introGuide() {
 				$('.introjs-nextbutton').show();
 					$("#lengthPanelVal1").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
-						setTimeout(function(){
-							introjs.nextStep();
-						}, 500);
+						if (introjs._direction == "forward") {
+							setTimeout(function () {
+								introjs.nextStep();
+							}, 1000);
+						} else {
+							setTimeout(function () {
+								introjs.previousStep();
+							}, 1000);
+						}
 					});
 				});
 		break;
@@ -241,33 +339,44 @@ function introGuide() {
 		case "cout1":
 			$("#cout1").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#outputText").addClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "outputDiv":
 			if (introjs._currentStep == 9) {
 				$("#outputDiv").removeClass("opacity00");
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#outputText").removeClass("opacity00");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 11) {
 				introjs.refresh();
-				$('.introjs-nextbutton').hide();
-				$('.introjs-prevbutton').hide();
+				$("[contenteditable=false]").attr("contenteditable", "true");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "Enter length value.";
 					typing($(".introjs-tooltiptext"), text, function() {
+						introjs.refresh();
 						charAtEnd("inputVal");
+						/*("#inputVal").focus();*/
 					});
 				});
 			} else if (introjs._currentStep == 16) {
@@ -277,34 +386,39 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#body").append("<div>length in meters = " + (($("#inputVal").text()) / 100).toFixed(2) + "</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
 		case "cin":
 			$("#cin").removeClass("hide");
+			/*$("#inputVal").text("");*/
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<y>cin</y> will read the input from the inputstream given by the user.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();	
+					$('.introjs-nextbutton, .introjs-prevbutton').show();	
 				});
 			});
 		break;
 		case "comments":
+			$('.user-btn').remove();
+			$("#lengthPanelVal1").text("0");
 			$("#comments").removeClass("hide");
 			$("#mx").removeClass("hide").addClass("yellow");
 			introjs.refresh();
-			$("[contenteditable=true]").attr("contenteditable", "false");
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
+			//$("[contenteditable=true]").attr("contenteditable", "false");
 			$(".introjs-tooltip").css({"min-width": "300px"});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li><y>x</y> is a float variable with value <y>" + $("#inputVal").text() + "</y>"
+				var text = "<ul><li><y>x</y> is a float variable.</li>"
 					+ "<li><y>m</y> is user-defined object of a class Meter.</li>"
 					+ "<li><b><y>m = x</y></b> means assign the <y>x</y> value to user defined object <y>m</y></li>"
 					+ "<li>The basic data type value is assigned to an object by using <y>conversion constructor</y> which is a <y>parameterized constructor</y>"
@@ -313,18 +427,17 @@ function introGuide() {
 					TweenMax.to("#tooltipXVal", 1, {rotationX : -90, onComplete:function() {
 						$("#tooltipXVal").text($("#inputVal").text());
 						TweenMax.to("#tooltipXVal", 1, {rotationX : 0, onComplete:function() {
-							$('.introjs-nextbutton').show();	
+							$('.introjs-nextbutton, .introjs-prevbutton').show();	
 						}});	
 					}});
 				});
 			});
 		break;
 		case "paraConst":
+			$('.user-btn').remove();
 			$("#paraConst").removeClass("hide");
 			$("#mx").removeClass("yellow");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>The parameterized constructor <y>Meter(float y)</y> is called when <y>m = x</y> is made.</li>"
 					+ "<li>The <y>x</y> value <y>" + $("#inputVal").text() + "</y> is copied into the formal parameter <y>y</y>.</li></ul>";
@@ -334,31 +447,38 @@ function introGuide() {
 			});
 		break;
 		case "callMethod":
+			$('.user-btn').remove();
 			$("#callMethod").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "putdataFun":
 			$("#putdataFun").removeClass("hide");
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "restart":
 			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
 			$(".introjs-tooltip").css({"min-width": "115px"});
 			$('#restart').removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -405,7 +525,7 @@ function transferValue() {
 	$("#lengthPanel").addClass("z-index");
 	fromEffectWithTweenMax("#tooltipTotalLength", "#lengthPanelVal1", function() {
 		$("#lengthPanel").removeClass("z-index");
-		$('.introjs-nextbutton').show();
+		$('.introjs-nextbutton, .introjs-prevbutton').show();
 	});	
 }
 
@@ -417,6 +537,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			//introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }

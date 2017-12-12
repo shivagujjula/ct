@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 5;
+var typingSpeed = 1;
 var tl;
 var arr;
 
@@ -35,59 +35,67 @@ function introGuide() {
 		},{
 			element : "#scanf1",
 			intro : "",
+			position : "right",
+			
+		},{
+			element : "#consoleId",
+			intro : "",
+			position : "right",
+			tooltipClass:"hide"
+		},{
+			element : "#scanf1",
+			intro : "",
+			position : "bottom",
+			tooltipClass:"hide"
+		},{
+			element : "#consoleId",
+			intro : "",
+			tooltipClass: "hide"
+		},{
+			element : "#scanf1",
+			intro : "",
+			position : "bottom",
+			tooltipClass:"hide"
+		},{
+			element : "#consoleId",
+			intro : "",
+			tooltipClass: "hide",
+			tooltipClass:"hide"
+		},{
+			element : "#scanf1",
+			intro : "",
+			position : "bottom",
+			tooltipClass:"hide"
+		},{
+			element : "#printf2", //step 13
+			intro : "",
+			tooltipClass: "hide"
+		},{
+			element : "#consoleId", //step14
+			intro : "",
+			tooltipClass: "hide"
+		},{
+			element : "#printf3", //step 15
+			intro : "",
+			tooltipClass: "hide"
+		},{
+			element : "#consoleId",// step 16
+			intro : "",
+			tooltipClass: "hide"
+		},{
+			element : "#scanf2", // step 17
+			intro : "",
 			position : "right"
 		},{
 			element : "#consoleId",
 			intro : "",
-			position : "right"
-		},{
-			element : "#scanf1",
-			intro : "",
-			position : "bottom"
-		},{
-			element : "#consoleId",
-			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#scanf1",
-			intro : "",
-			position : "bottom"
-		},{
-			element : "#consoleId",
-			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#scanf1",
-			intro : "",
-			position : "bottom"
-		},{
-			element : "#printf2",
-			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#consoleId",
-			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#printf3",
-			intro : "",
-			tooltipClass: "hide"
-		},{
-			element : "#consoleId",
-			intro : "",
-			tooltipClass: "hide"
+			position : "right",
+			tooltipClass:"hide"
 		},{
 			element : "#scanf2",
 			intro : "",
-			position : "right"
-		},{
-			element : "#consoleId",
-			intro : "",
-			position : "right"
-		},{
-			element : "#scanf2",
-			intro : "",
-			position : "bottom"
+			position : "bottom",
+			tooltipClass:"hide"
 		},{
 			element : "#consoleId",
 			intro : "",
@@ -118,8 +126,133 @@ function introGuide() {
 			position : "right"
 		}]
 	});
-	
+	introjs.onbeforechange(function(targetElement) {
+		introjs.refresh();
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "codeAnimation":
+			if (introjs._direction == "backward") {
+				$("#consoleId").addClass("opacity00");
+				$("#addressDiv").addClass("opacity00");
+			}
+			break;
+		case "printf1":
+			if (introjs._direction == "backward") {
+				$("#consoleId").addClass("opacity00");
+			}
+			break;
+		case "printf3":
+				if (introjs._direction == "backward") {
+					$("#runEditor3").addClass("opacity00");
+				}
+			break;
+		case "printf2":
+			if (introjs._direction == "backward") {
+				$("#runEditor2").addClass("opacity00");
+			}
+			break;
+		case "consoleId":
+			if (introjs._currentStep == 4) {
+			} else if (introjs._currentStep == 6) {
+				if (introjs._direction == "backward") {
+				$("#givenNum1").text("");
+				$("[data-toggle='popover']").popover("hide");
+				}
+				} else if (introjs._currentStep == 8) {
+					$(".introjs-helperLayer").one("transitionend", function() {
+						if (introjs._direction == "backward") {
+							introjs._introItems.splice(9, 1);	//only one element at index 8
+						}
+					});
+				} else if (introjs._currentStep == 18) {
+					if (introjs._direction == "backward") {
+					$("#givenNum1").removeAttr("style").addClass("opacity00");
+					$("[data-toggle='popover']").popover("hide");
+					}
+				} else if (introjs._currentStep == 20) {
+					$(".introjs-helperLayer").one("transitionend", function() {
+						if (introjs._direction == "backward") {
+							introjs._introItems.splice(21, 1);
+						}
+					});
+					
+				}
+			break;
+			
+		case "scanf1":
+			
+			if (introjs._currentStep == 5) {
+				if (introjs._direction == "backward") {
+					$("#inputVal").text("");
+				}
+			} else if (introjs._currentStep == 7) {
+				if (introjs._direction == "backward") {
+					$("#comma0").removeAttr("style");
+					$("#givenNum1").removeClass("zIndex ");
+					$("[data-toggle='popover']").popover("hide");
+				}
+			} else if (introjs._currentStep == 10) {
+				if (introjs._direction == "backward") {
+					$("#givenNum2").removeClass("zIndex ");
+					$("[data-toggle='popover']").popover("hide");
+					var l2 = $("#scanNum2").offset();
+					$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+					$("#givenNum2").text( $('#val1').text() ).css('opacity', 0);
+					//if (introjs._direction == "backward") {
+					$("[data-toggle='popover']").popover("hide");
+					$("#val1").css('border', '1px solid black');
+					//$("#val1").removeAttr("style");
+				}
+			} else {
+				if (introjs._direction == "backward") {
+					var l2 = $("#scanNum2").offset();
+					$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+					$("#givenNum2").text( $('#val1').text() ).css('opacity', 0);
+					//if (introjs._direction == "backward") {
+					$("[data-toggle='popover']").popover("hide");
+					$("#val1").css('border', '1px solid black');
+				}
+			}
+			
+			break;
+			
+		case "scanf2":
+			
+			if (introjs._currentStep == 17) {
+				if (introjs._direction == "backward") {
+				$("#inputVal2").text("");
+				}
+			} else if (introjs._currentStep == 19) {
+				if (introjs._direction == "backward") {
+					$("#dot0").removeAttr("style");
+					$("#givenNum1").removeClass("zIndex");
+				}
+			}
+			
+			break;
+		}
+	});	
 	introjs.onafterchange(function(targetElement) {
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		// ********************** start ************back button logic
+				
+				if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+					introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+					if (introjs._currentStep != 0 && introjs._currentStep != 1) {
+						$('.introjs-prevbutton').show();
+					}
+					$('.introjs-nextbutton').show();
+					return;
+				}
+				
+				if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+					introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+				}
+				
+				// ********************** end ************back button logic
 		introjs.refresh();
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -137,6 +270,7 @@ function introGuide() {
 		case "codeAnimation":
 			$(".introjs-nextbutton").hide();
 			$("#codeAnimation").removeClass("opacity00");
+			//$("#consoleId").removeClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "In this program we will learn how <span class='ct-code-b-yellow'>scanf()</span> function behaves when " 
 							+ " formatting characters are mixed with other characters."
@@ -147,27 +281,51 @@ function introGuide() {
 			break;
 			
 		case "printf1":
+			$(".introjs-nextbutton").hide();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				setTimeout(function() {
+					if (introjs._direction=="forward") {
+					introjs.nextStep()
+					} else {
+					introjs.previousStep()
+					}
+					}, 500);
+			});
+			break;
 		case "printf3":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
+					if (introjs._direction=="forward") {
+					introjs.nextStep()
+					} else {
+					introjs.previousStep()
+					}
+					}, 500);
+				//$(".introjs-nextbutton,.introjs-prevbutton").show();
 			});
 			break;
 			
 		case "printf2":
-			$(".introjs-nextbutton").hide();
-			$('#val1').css("border", "none");
-			$("#scanNum1").popover("show");
-			$("#scanNum2").popover("show");
-			$("#popoverContent1").text($("#val0").text());
-			$("#popoverContent2").text($("#val1").text());
-			$(".introjs-helperLayer").one("transitionend", function() {
-				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
-			});
+			
+				if (introjs._direction=="forward") {
+					$(".introjs-nextbutton").hide();
+					$('#val1').css("border", "none");
+					$("#scanNum1").popover("show");
+					$("#scanNum2").popover("show");
+					$("#popoverContent1").text($("#val0").text());
+					$("#popoverContent2").text($("#val1").text());
+						$(".introjs-helperLayer").one("transitionend", function() {
+							/*$(".introjs-nextbutton,.introjs-prevbutton").show();
+						});*/
+				
+						introjs.nextStep()
+						});
+				} else {
+						introjs.previousStep()
+					}
+					
+		
 			break;
 			
 		case "finalPrintf":
@@ -180,8 +338,12 @@ function introGuide() {
 			$('#dotVal1').css('border', 'none');
 			$(".introjs-helperLayer").one("transitionend", function() {
 				setTimeout(function() {
-					introjs.nextStep();
-				}, 1000);
+					if (introjs._direction=="forward") {
+					introjs.nextStep()
+					} else {
+					introjs.previousStep()
+					}
+					}, 500);
 			});
 			break;
 			
@@ -191,7 +353,13 @@ function introGuide() {
 				$("#addressDiv").removeClass("opacity00");
 				tl.to("#addressLocation", 1, {opacity: 1, onComplete: function() {
 					$("#addressLocation").removeClass("opacity00");
-					introjs.nextStep();
+					setTimeout(function() {
+						if (introjs._direction=="forward") {
+						introjs.nextStep()
+						} else {
+						introjs.previousStep()
+						}
+						}, 500);
 				}});
 			});
 			break;
@@ -199,17 +367,26 @@ function introGuide() {
 		case "consoleId":
 			$(".introjs-nextbutton").hide();
 			if (introjs._currentStep == 4) {
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#consoleId").removeClass("opacity00");
-					var text = "Enter two numbers:  <span id='inputVal'></span>"
-					typing("#runEditor1", text, function() {
 						setTimeout(function() {
-							introjs.nextStep();
-						}, 1000);
-					});
-				});
+							if (introjs._direction=="forward") {
+								$(".introjs-helperLayer").one("transitionend", function() {
+									$("#consoleId").removeClass("opacity00");
+									var text = "Enter two numbers:  <span id='inputVal'></span>"
+										typing("#runEditor1", text, function() {
+											setTimeout(function() {			
+												introjs.nextStep()
+											}, 400);
+										});
+									});	
+							} else {
+							introjs.previousStep()
+							}
+							}, 500);
+			
 			} else if (introjs._currentStep == 6) {
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#consoleId").removeClass("opacity00");
+					$(".introjs-tooltip").removeClass("hide")
 					var text = "<input type='text' id='num1' spellcheck='false' class='int-num'/>";
 					typing("#inputVal", text, function() {
 						var text2 = "Enter two numbers seperated by a <span class='ct-code-b-yellow'>comma</span>. " 
@@ -220,8 +397,18 @@ function introGuide() {
 							$("#num1").focus();
 							arr = [];
 							$('#num1').on("keydown", function(e) {
-								if (arr.length == 2) {
+								/*if (arr.length == 2) {
 									if (e.keyCode == 188) {
+										e.preventDefault();
+									}
+								}*/
+								if ((arr.length == 2 || arr.length == 0) && e.keyCode == 188) {
+									e.preventDefault();
+								}
+								if (arr.length == 1) {
+									var flag = false;
+									flag = $('#num1').val().indexOf(',') >= 0;
+									if (e.keyCode == 188 && flag) {
 										e.preventDefault();
 									}
 								}
@@ -250,16 +437,16 @@ function introGuide() {
 								});
 								
 								if (arr.length < 2) {
-									$(".introjs-nextbutton").hide();
+									$(".introjs-nextbutton,.introjs-prevbutton").hide();
 								} else if (arr.length == 2) {
-									$(".introjs-nextbutton").show();
+									$(".introjs-nextbutton,.introjs-prevbutton").show();
 								}
 								
 								$.each(arr, function(idx, val) {
 									if (val.length > 2) {
 										$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 																				"Please limit the number length to 2 digits.</span>");
-										$(".introjs-nextbutton").hide();
+										$(".introjs-nextbutton,.introjs-prevbutton").hide();
 									}
 								});
 							});
@@ -268,10 +455,11 @@ function introGuide() {
 				});
 					
 				} else if (introjs._currentStep == 8) {
-					$("#scanNum1").popover("show");
-					$("#popoverContent2").text($("#val1").text());
-					$("#popoverContent1").text($("#val0").text());
-					$(".introjs-helperLayer").one("transitionend", function() {
+					if (introjs._direction=="forward") {
+						$("#scanNum1").popover("show");
+						$("#popoverContent2").text($("#val1").text());
+						$("#popoverContent1").text($("#val0").text());
+						$(".introjs-helperLayer").one("transitionend", function() {
 						$('#val0').css("border", "none");
 						$('#val0').effect( "transfer", { to: $("#comma0"), className: "ui-effects-transfer" }, 1000, function() {
 							$('#comma0').css('border', '1px solid yellow');
@@ -279,56 +467,84 @@ function introGuide() {
 							var newStep = {
 								"element" : "#comma0",
 								"intro" : "",
-								"position" : "right"
+								"position" : "right",
+								"tooltipClass" : "hide"
 							}
 							introjs.insertOption(introjs._currentStep + 1, newStep);
 							setTimeout(function() {
-								introjs.nextStep();
-							},1000);
-						})
+									introjs.nextStep()
+							}, 500);
+						});
 					});
+				} else {
+					setTimeout(function() {
+						introjs.previousStep()
+					}, 500);
+				}
 					
 				} else if (introjs._currentStep == 11) {
+					
 					$("#scanNum1").popover("show");
 					$("#popoverContent2").text($("#val1").text());
 					$("#popoverContent1").text($("#val0").text());
-					$("#commaBlink").removeClass("blinking-yellow");
-					$(".introjs-helperLayer").one("transitionend", function() {
-						$('#comma0').css('border', 'none');
-						$('#comma0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
-							$('#val1').css('border', '1px solid yellow');
+						if (introjs._direction=="forward") {
+							$("#commaBlink").removeClass("blinking-yellow");
+							$(".introjs-helperLayer").one("transitionend", function() {
+								$('#comma0').css('border', 'none');
+								$('#comma0').effect( "transfer", { to: $("#val1"), className: "ui-effects-transfer" }, 1000, function() {
+									$('#val1').css('border', '1px solid yellow');
+									setTimeout(function() {
+									introjs.nextStep()
+									}, 500)
+								});
+							});
+						} else {
+							setTimeout(function() {
+								introjs.previousStep()
+							}, 500)
+						}
 							
-							setTimeout(function() {
-								introjs.nextStep();
-							},1000);
-						});
-					});
+					
 				} else if (introjs._currentStep == 14) {
-					$("#scanNum1").popover("show");
-					$("#scanNum2").popover("show");
-					$("#popoverContent1").text($("#val0").text());
-					$("#popoverContent2").text($("#val1").text());
-					$("#inputVal").removeClass("zIndex");
-					$(".introjs-helperLayer").one("transitionend", function() {
-						var text = "a = "+$("#givenNum1").text()+" b = "+$("#givenNum2").text()+"";
-						typing("#runEditor2", text, function() {
-							setTimeout(function() {
-								$(".introjs-nextbutton").click();
-							},1000)
+						$("#scanNum1").popover("show");
+						$("#scanNum2").popover("show");
+						$("#popoverContent1").text($("#val0").text());
+						$("#popoverContent2").text($("#val1").text());
+						$("#inputVal").removeClass("zIndex");
+						$(".introjs-helperLayer").one("transitionend", function() {
+							if (introjs._direction == "forward") {
+								$("#runEditor2").removeClass("opacity00");
+								var text = "a = "+$("#givenNum1").text()+" b = "+$("#givenNum2").text()+"";
+								typing("#runEditor2", text, function() {
+									setTimeout(function() {
+										introjs.nextStep()
+									}, 800);
+								});
+							} else {
+								setTimeout(function() {
+									introjs.previousStep();
+								}, 500);
+							}
 						});
-					});
 				} else if (introjs._currentStep == 16) {
 					$("#scanNum1").popover("show");
 					$("#scanNum2").popover("show");
 					$("#popoverContent1").text($("#val0").text());
 					$("#popoverContent2").text($("#val1").text());
 					$(".introjs-helperLayer").one("transitionend", function() {
-						var text = "Enter two numbers: <span id='inputVal2'></span>"
-						typing("#runEditor3", text, function() {
+						if (introjs._direction=="forward") {
+							$("#runEditor3").removeClass("opacity00");
+							var text = "Enter two numbers: <span id='inputVal2'></span>"
+							typing("#runEditor3", text, function() {
+								setTimeout(function() {
+									introjs.nextStep()
+								}, 800);
+							});
+						} else {
 							setTimeout(function() {
-								introjs.nextStep();
-							}, 1000);
-						});
+								introjs.previousStep()
+							}, 500);
+						}
 					});
 				} else if (introjs._currentStep == 18) {
 					$("#scanNum1").popover("show");
@@ -336,6 +552,7 @@ function introGuide() {
 					$("#popoverContent1").text($("#val0").text());
 					$("#popoverContent2").text($("#val1").text());
 					$(".introjs-helperLayer").one("transitionend", function() {
+						$(".introjs-tooltip").removeClass("hide")
 						var text = "<input id='num2' spellcheck='false' class='int-num'/>";
 						typing("#inputVal2", text, function() {
 							var text2 = "Enter two numbers seperated by a <span class='ct-code-b-yellow'>dot</span>. " 
@@ -346,8 +563,13 @@ function introGuide() {
 								$("#num2").focus();
 								arr = [];
 								$('#num2').on("keydown", function(e) {
-									if (arr.length == 2) {
-										if (e.keyCode == 190 || e.keyCode == 110) {
+									if ((arr.length == 2 || arr.length == 0) && (e.keyCode == 190 || e.keyCode == 110)) {
+										e.preventDefault();
+									}
+									if (arr.length == 1) {
+										var flag = false;
+										flag = $('#num2').val().indexOf('.') >= 0;
+										if ((e.keyCode == 190 || e.keyCode == 110) && flag) {
 											e.preventDefault();
 										}
 									}
@@ -376,16 +598,16 @@ function introGuide() {
 									});
 									
 									if (arr.length < 2) {
-										$(".introjs-nextbutton").hide();
+										$(".introjs-nextbutton,.introjs-prevbutton").hide();
 									} else if (arr.length == 2) {
-										$(".introjs-nextbutton").show();
+										$(".introjs-nextbutton,.introjs-prevbutton").show();
 									}
 									
 									$.each(arr, function(idx, val) {
 										if (val.length > 2) {
 											$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/>" + 
 																					"Please limit the number length to 2.</span>");
-											$(".introjs-nextbutton").hide();
+											$(".introjs-nextbutton,.introjs-prevbutton").hide();
 										}
 									});
 								});
@@ -394,6 +616,7 @@ function introGuide() {
 					});
 					
 				} else if (introjs._currentStep == 20) {
+					if (introjs._direction=="forward") {
 					$("#scanNum3").popover("show");
 					$("#scanNum1").popover("show");
 					$("#scanNum2").popover("show");
@@ -409,14 +632,20 @@ function introGuide() {
 							var newStep = {
 								"element" : "#dot0",
 								"intro" : "",
-								"position" : "right"
+								"position" : "right",
+								"tooltipClass" : "hide"
 							}
 							introjs.insertOption(introjs._currentStep + 1, newStep);
 							setTimeout(function() {
-								introjs.nextStep();
-							},1000);
-						})
+									introjs.nextStep()
+							}, 500);
+						});
 					});
+				} else {
+					setTimeout(function() {
+						introjs.previousStep()
+					}, 500);
+				}
 					
 				} else if (introjs._currentStep == 23) {
 					$("#scanNum3").popover("show");
@@ -433,8 +662,12 @@ function introGuide() {
 							$('#dotVal1').css('border', '1px solid yellow');
 							
 							setTimeout(function() {
-								introjs.nextStep();
-							},1000);
+								if (introjs._direction=="forward") {
+								introjs.nextStep()
+								} else {
+								introjs.previousStep()
+								}
+								}, 500);
 						});
 					});
 				} else {
@@ -471,26 +704,28 @@ function introGuide() {
 						+ " in the <span class='ct-code-b-yellow'>address</span> of variable <span class='ct-code-b-yellow'>b</span> referred by " 
 						+ " <span class='ct-code-b-yellow'>&b</span>. <br/><br/>"			
 					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
 				});
 			} else if (introjs._currentStep == 7) {
-				var text = $("#num1").val();
+				if (introjs._direction == "forward") {
+				var text1 = $("#num1").val();
 				var i = 0;
 				$("#inputVal").empty();
-				$.each(text.split(","), function(index, val) {
+				$.each(text1.split(","), function(index, val) {
 				  $("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='comma"+i+"'>,</span>");
-				  if(i == 1) {
+				  /*if(i == 1) {
 					  $("#comma1").remove();
-				  }
+				  }*/
 				  i++;
 				});
+				}
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var l1 = $("#scanNum1").offset();
 					var l2 = $("#scanNum2").offset();
 					
-					$("#givenNum1").offset({"top": l1.top, "left": l1.left});
-					$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+					$("#givenNum1").offset({"top": l1.top, "left": l1.left}).css('opacity', '00');
+					$("#givenNum2").offset({"top": l2.top, "left": l2.left}).css('opacity', '00');
 					
 					$("#givenNum1").text( $('#val0').text() );
 					$("#givenNum2").text( $('#val1').text() );
@@ -502,6 +737,7 @@ function introGuide() {
 						$("#dBlink1").addClass("blinking-orange");
 						$("#scanNum1").popover("show");
 						$("#popoverContent1").text($("#val0").text());
+						$(".introjs-tooltip").removeClass("hide")
 						var text1 = "The <span class='ct-code-b-yellow'>scanf()</span> function reads " 
 							+ "<span class='ct-code-b-yellow'>"+$("#val0").text()+"</span> into " 
 							+ "<span class='ct-code-b-yellow'>&a</span> using the first <span class='ct-code-b-yellow'>%d</span> format character."
@@ -511,20 +747,24 @@ function introGuide() {
 					});
 				});
 			} else if (introjs._currentStep == 10) {
+				$(".introjs-tooltip").removeClass("hide")
 				$("#scanNum1").popover("show");
 				$("#popoverContent2").text($("#val1").text());
 				$("#popoverContent1").text($("#val0").text());
 				$('#comma0').css('border', '1px solid yellow');
 				$('#comma0').css('color', 'white');
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$(".introjs-tooltip").removeClass("hide");
 					$("#commaBlink").addClass("blinking-yellow");
+					$(".introjs-tooltip").removeClass("hide")
 					var text = "This <span class='ct-code-b-yellow'>comma</span> has to be provided by the user for the " 
 						+ " <span class='ct-code-b-yellow'>scanf()</span> to read the next number.";					
 					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
 				});
 			} else {
+				$('#val1').css('border', '1px solid yellow');
 				$("#scanNum1").popover("show");
 				$("#popoverContent2").text($("#val1").text());
 				$("#popoverContent1").text($("#val0").text());
@@ -533,7 +773,7 @@ function introGuide() {
 						$("#val1").addClass("blinking-orange");
 						$("#scanNum2").popover("show");
 						$("#popoverContent2").text($("#val1").text());
-						
+						$(".introjs-tooltip").removeClass("hide")
 						var text = "The <span class='ct-code-b-yellow'>scanf()</span> function reads " 
 							+ "<span class='ct-code-b-yellow'>"+$("#val1").text()+"</span> into " 
 							+ "<span class='ct-code-b-yellow'>&b</span> using the second <span class='ct-code-b-yellow'>%d</span> format character."
@@ -557,10 +797,11 @@ function introGuide() {
 					var text = "Here, you will notice that the <span class='ct-code-b-yellow'>scanf()</span> function contains two " 
 						+ " <span class='ct-code-b-yellow'>%d</span> characters seperated by a <span class='ct-code-b-yellow'>dot</span>."			
 					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-nextbutton").show();
+						$(".introjs-nextbutton,.introjs-prevbutton").show();
 					});
 				});
 			} else if (introjs._currentStep == 19) {
+				if (introjs._direction == "forward") {
 				$("#popoverContent2").text( $("#val1").text() );
 				$("#popoverContent1").text( $("#val0").text() );
 				$("#popoverContent3").text( $("#dotVal0").text() );
@@ -571,16 +812,17 @@ function introGuide() {
 				$("#givenNum2").removeClass("blinking-orange");
 				$("#givenNum1").css('opacity', '0');
 				$("#givenNum2").css('opacity', '0');
-				var text = $("#num2").val();
+				var text1 = $("#num2").val();
 				var i = 0;
 				$("#inputVal2").empty();
-				$.each(text.split("."), function(index, val) {
+				$.each(text1.split("."), function(index, val) {
 				  $("#inputVal2").append("<span id='dotVal"+i+"'>" + val + "</span><span id='dot"+i+"'>.</span>");
-				  if(i == 1) {
+				  /*if(i == 1) {
 					  $("#dot1").remove();
-				  }
+				  }*/
 				  i++;
 				});
+			}
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var l1 = $("#scanNum3").offset();
 					var l2 = $("#scanNum4").offset();
@@ -598,6 +840,7 @@ function introGuide() {
 						$("#dBlink3").addClass("blinking-orange");
 						$("#scanNum3").popover("show");
 						$("#popoverContent3").text($("#dotVal0").text());
+						$(".introjs-tooltip").removeClass("hide")
 						var text1 = "The <span class='ct-code-b-yellow'>scanf()</span> function reads " 
 							+ "<span class='ct-code-b-yellow'>"+$("#dotVal0").text()+"</span> into " 
 							+ "<span class='ct-code-b-yellow'>&a</span> using the first <span class='ct-code-b-yellow'>%d</span>"
@@ -647,18 +890,24 @@ function introGuide() {
 			break;
 			
 		case "comma0":
-			$(".introjs-nextbutton").hide();
-			$("#popoverContent2").text($("#val1").text());
+			$('#commaBlink').removeClass('blinking-yellow');
+			$("#scanNum1").popover("show");
 			$("#popoverContent1").text($("#val0").text());
+			$(".introjs-nextbutton").hide();
+			$('#comma0').css('border', '1px solid black');
+			$('#comma0').css('color', 'black');
+			var l2 = $("#scanNum2").offset();
+			$("#givenNum2").offset({"top": l2.top, "left": l2.left});
+			$("#givenNum2").text( $('#val1').text() ).css('opacity', 0);
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('#comma0').css('border', '1px solid black');
-				$('#comma0').css('color', 'black');
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "This <span class='ct-code-b-yellow'>comma</span> is being matched with the " 
 							+ " <span class='ct-code-b-yellow'>comma</span> provided in the control string.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
+	
 			break;
 			
 		case "dot0":
@@ -670,10 +919,11 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#dot0').css('border', '1px solid black');
 				$('#dot0').css('color', 'black');
+				$(".introjs-tooltip").removeClass("hide");
 				var text = "This <span class='ct-code-b-yellow'>dot</span> is being matched with the " 
 							+ " <span class='ct-code-b-yellow'>dot</span> provided in the control string.";
 				typing(".introjs-tooltiptext", text, function() {
-					$(".introjs-nextbutton").show();
+					$(".introjs-nextbutton,.introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -681,12 +931,11 @@ function introGuide() {
 		case "restart":
 			$(".introjs-nextbutton").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to <span class='ct-code-b-yellow'>restart</span>." 
+				var text = "Click to restart</span>." 
 				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-tooltip").css({"min-width": "115px"});
 					$("#restart").removeClass("opacity00");
-					$("#restart").click(function() {
-						location.reload();
-					});
+					
 				});
 			});
 			break;
@@ -701,6 +950,9 @@ function introGuide() {
 	$('.introjs-prevbutton').hide();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-bullets').hide();
+	$("#restart").click(function() {
+		location.reload();
+	});
 }
 
 function typing(selector, text, callBackFunction) {
@@ -711,6 +963,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
@@ -735,9 +988,14 @@ function valTransfer1() {
 		$("#givenNum1").addClass("blinking-orange");
 		$("#givenNum1").removeClass("opacity00");
 		$("#scanNum1").removeClass("blinking-orange");
-		setTimeout(function() {
-			introjs.nextStep();
-		},1000);
+		$(".introjs-nextbutton,.introjs-prevbutton").show();
+		/*setTimeout(function() {
+			if (introjs._direction=="forward") {
+			introjs.nextStep()
+			} else {
+			introjs.previousStep()
+			}
+			}, 500);*/
 	}});
 }
 
@@ -752,9 +1010,14 @@ function valTransfer2() {
 		$("#givenNum2").addClass("blinking-orange");
 		$("#givenNum2").removeClass("opacity00");
 		$("#scanNum2").removeClass("blinking-orange");
-		setTimeout(function() {
-			introjs.nextStep();
-		},1000);
+		$(".introjs-nextbutton,.introjs-prevbutton").show();
+		/*setTimeout(function() {
+			if (introjs._direction=="forward") {
+			introjs.nextStep()
+			} else {
+			introjs.previousStep()
+			}
+			}, 500);*/
 	}});
 }
 
@@ -769,9 +1032,14 @@ function valTransfer3() {
 		$("#givenNum1").addClass("blinking-orange");
 		$("#givenNum1").removeClass("opacity00");
 		$("#scanNum3").removeClass("blinking-orange");
-		setTimeout(function() {
-			introjs.nextStep();
-		},1000);
+		/*setTimeout(function() {
+			if (introjs._direction=="forward") {
+			introjs.nextStep()
+			} else {
+			introjs.previousStep()
+			}
+			}, 500);*/
+		$(".introjs-nextbutton,.introjs-prevbutton").show();
 	}});
 }
 
@@ -787,8 +1055,12 @@ function valTransfer4() {
 		$("#givenNum2").removeClass("opacity00");
 		$("#scanNum4").removeClass("blinking-orange");
 		setTimeout(function() {
-			introjs.nextStep();
-		},1000);
+			if (introjs._direction=="forward") {
+			introjs.nextStep()
+			} else {
+			introjs.previousStep()
+			}
+			}, 500);
 	}});
 }
 

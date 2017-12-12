@@ -17,9 +17,9 @@ var catchAllExceptionsReadyFun = function() {
 		introjs.refresh();
 		
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 		
 		if ($(this).text().indexOf(".") == -1) {
@@ -100,7 +100,71 @@ function introGuide() {
 				}
 			]});
 	
+introjs.onbeforechange(function(targetElement) {
+
+		
+		var elementId = targetElement.id;
+		switch (elementId) {
+		case "topDiv":
+			
+		break;	
+		case "code":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#code").removeClass("opacity00");
+			$('.user-btn').addClass("hide");
+		break;
+		case "try":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "catch":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "intX":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "cout1":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "cin":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "outputDiv":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "ifElseIf":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		break;
+		case "restart":
+			
+		break;
+		
+		}
+	});
+	
 	introjs.onafterchange(function(targetElement) {
+		
+		/*$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
+			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
+			
+			if (introjs._currentStep != 0) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
+			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
+		}*/
+		
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
 		introjs.refresh();
@@ -135,9 +199,9 @@ function introGuide() {
 		case "try":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Tis is <y>try block</y>. The statements which may expected to generate an exception is written in <y>try block</y>.";
+				var text = "This is <y>try block</y>. The statements which may expected to generate an exception is written in <y>try block</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();	
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -148,7 +212,7 @@ function introGuide() {
 					var text = "If you want to specify that a <y>catch block</y> should handle any type of <y>exception</y> that is thrown by a <y>try block</y>,"
 					+ " you must put three ellipses(<y>...</y>) in between the parenthesis.";
 					typing($(".introjs-tooltiptext"), text, function() {
-						$('.introjs-nextbutton').show();	
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 			} else {
@@ -178,21 +242,34 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#outputText").removeClass("opacity00");
-				setTimeout(function(){
-					introjs.nextStep();
-				}, 1000);
+				if (introjs._direction == "forward") {
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 1000);
+				} else {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 1000);
+				}
 			});
 		break;
 		case "outputDiv":
+			$('.user-btn').remove();
 			if (introjs._currentStep == 6) {
 				$("#outputDiv").removeClass("opacity00");
 				introjs.refresh();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#outputText").removeClass("opacity00");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1000);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			} else if (introjs._currentStep == 8) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
@@ -205,9 +282,15 @@ function introGuide() {
 			} else {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#body").append("<div>This is generic catch to all exceptions.</div>");
-					setTimeout(function(){
-						introjs.nextStep();
-					}, 1500);
+					if (introjs._direction == "forward") {
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					} else {
+						setTimeout(function () {
+							introjs.previousStep();
+						}, 1000);
+					}
 				});
 			}
 		break;
@@ -228,6 +311,7 @@ function introGuide() {
 				var text = "Let us check the conditions.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="condition1()">Next &#8594;</a>');
+					$('.introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -295,6 +379,7 @@ function introGuide() {
 
 function condition1() {
 	$('.user-btn').remove();
+	$('.introjs-nextbutton, .introjs-prevbutton').hide();
 	$(".introjs-tooltiptext").append(" <div id='firstCnd' class='opacity00 display-inline-block relative'>"
 			+ " <y>if (<div id='tooltipX1' class='display-inline-block relative'>x</div>"
 			+ " == 1)</y>"
@@ -311,7 +396,7 @@ function condition1() {
 				TweenMax.to("#tooltipX1", 0.3, {rotationX : 0, onComplete:function() {
 					var text;
 					if (parseInt($("#inputVal").text()) == 1) {
-						text = "is evaluates to <b><g>true</g></b>. So the <y>if-block</y> will execute and throw an exception.";
+						text = "is evaluates to <b><y>true</y></b>. So the <y>if-block</y> will execute and throw an exception.";
 					} else {
 						text = "is evaluates to <red>false</red>. So, the control come out of the <y>if-block</y> and enter into the <y>else-if</y> block.";
 					}
@@ -332,6 +417,7 @@ function condition1() {
 
 function condition2() {
 	$('.user-btn').remove();
+	$('.introjs-nextbutton, .introjs-prevbutton').hide();
 	$(".introjs-tooltiptext").append(" <div id='secondCnd' class='opacity00 display-inline-block relative'>"
 			+ " <y>else if (<div id='tooltipX2' class='display-inline-block relative'>x</div>"
 			+ " == 0)</y>"
@@ -348,7 +434,7 @@ function condition2() {
 				TweenMax.to("#tooltipX2", 0.3, {rotationX : 0, onComplete:function() {
 					var text;
 					if (parseInt($("#inputVal").text()) == 0) {
-						text = "is evaluates to <b><g>true</g></b>. So the <y>else-if</y> block will execute and throw an exception.";
+						text = "is evaluates to <b><y>true</y></b>. So the <y>else-if</y> block will execute and throw an exception.";
 					} else {
 						text = "is evaluates to <red>false</red>. So, the control come out of the <y>else-if</y> block and enter into the another <y>else-if</y> block.";
 					}
@@ -369,6 +455,7 @@ function condition2() {
 
 function condition3() {
 	$('.user-btn').remove();
+	$('.introjs-nextbutton, .introjs-prevbutton').hide();
 	$(".introjs-tooltiptext").append(" <div id='thirdCnd' class='opacity00 display-inline-block relative'>"
 			+ " <y>else if (<div id='tooltipX3' class='display-inline-block relative'>x</div>"
 			+ " == 2)</y>"
@@ -385,7 +472,7 @@ function condition3() {
 				TweenMax.to("#tooltipX3", 0.3, {rotationX : 0, onComplete:function() {
 					var text;
 					if (parseInt($("#inputVal").text()) == 2) {
-						text = "is evaluates to <b><g>true</g></b>. So the <y>else-if</y> block will execute and throw an exception.";
+						text = "is evaluates to <b><y>true</y></b>. So the <y>else-if</y> block will execute and throw an exception.";
 					} else {
 						text = "is evaluates to <red>false</red>. So, the control come out of the <y>else-if</y> block and exit from the program."
 							+ " Here the <y>catch block</y> will not execute, because there is no exception raised in <y>try block</y>."
@@ -396,7 +483,7 @@ function condition3() {
 							$(".introjs-nextbutton").removeClass("introjs-disabled").show();
 						} else {
 							introjs.insertOption(introjs._currentStep + 1, getStep("#restart", "", "right"));
-							$(".introjs-nextbutton").removeClass("introjs-disabled").show();
+							$(".introjs-nextbutton, .introjs-prevbutton").removeClass("introjs-disabled").show();
 						}
 					});
 				}});
@@ -413,6 +500,7 @@ function typing(selector, text, callBackFunction) {
 		$(selector).removeClass("typingCursor");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
+			//introjs._introItems[introjs._currentStep].intro = $(".introjs-tooltiptext").html();
 		}
 	});
 }
