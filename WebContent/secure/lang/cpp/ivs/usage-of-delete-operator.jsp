@@ -105,6 +105,7 @@
 
 .ct-color-maroon {
 	color: maroon;
+	font-weight: bold;
 }
 
 .ct-color-springgreen {
@@ -297,6 +298,9 @@ div, span {
 				<div class="col-xs-4 border opacity00" id="secondDivExample">
 <pre class="creamPreTab opacity00" id="preCodeTwo">
 <span id="arr"><span id="secondExLine1"><span class="value-css" id="dataTypeInt5">int</span> *p </span> = <span id="secondExLine2"><span class="ct-code-b-green" id="newSpan2">new</span><span class="value-css" id="dataTypeInt6"> int[<span class="ct-code-b-green" id="rValue">5</span>]</span></span>;</span>
+
+<span class="ct-color-maroon">//doing something </span>
+
 <span id="secondExLine3"><span class="ct-code-b-green">delete</span> p;</span>
  </pre>
 				</div>

@@ -14,7 +14,7 @@ var postDecrementOperatorReady = function() {
 			steps : [{
 						element :'#program',
 						intro :'',
-						//tooltipClass : "hide"
+						tooltipClass : "hide"
 					},{
 						element :'#yVariableDeclararionLine',
 						intro :'',
@@ -88,6 +88,11 @@ var postDecrementOperatorReady = function() {
 			$('.animation-div2').addClass("opacity00").css("opacity", "");
 			$('.animation-div3').addClass("opacity00").css("opacity", "");
 		break;
+		case "xVariableDeclararionLine":
+			$("#xCup").addClass("visibility-hidden");
+			$("#xvalue").attr("contenteditable", "true");
+			$('.introjs-tooltip').removeClass('hide');
+		break;
 		case "yVariableDeclararionLine"  :
 			if(introcode._currentStep == 1) {
 				$('.animation-div1').addClass("opacity00").css("opacity", "");
@@ -102,20 +107,11 @@ var postDecrementOperatorReady = function() {
 				$('#xCupValue').text($('#xvalue').text());
 			}
 		break;
-		case "xCup" :
-			$("#xCup").addClass("visibility-hidden");
-			$("#xCupValue").text("");
-		break;
 		case "expressionStatement":
 			$('#yCup').addClass('visibility-hidden');
 			$('.animation-div5').addClass('opacity00').css('opacity', "");
 			$('#yCupValue').text("");
 		break;
-		case "outputDiv":
-			if (introcode._currentStep == 10) {
-				$('#yValue').remove();
-			} 
-			break;
 		case "singleStatement"  :
 			if (introcode._currentStep == 11) {
 				$("#xCupValue").text("13");
@@ -126,10 +122,27 @@ var postDecrementOperatorReady = function() {
 	});
 	introcode.onafterchange(function(targetElement) {
 	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+	
+	if (introcode._introItems[introcode._currentStep]["tooltipClass"] == "hide") {
+		introcode._introItems[introcode._currentStep]["animation"] = "repeat";
+	}
+	
+	if (introcode._introItems[introcode._currentStep]["isCompleted"]) {
+		if (introcode._currentStep != 1) {
+			$('.introjs-prevbutton').show();
+		}
+
+		$('.introjs-nextbutton').show();
+		return;
+	}
+	
+	if (introcode._introItems[introcode._currentStep]["animation"] != "repeat") {
+		introcode._introItems[introcode._currentStep]["isCompleted"] = true;
+	}
 	var elementId = targetElement.id;
 		switch (elementId) {
 			case "program" :
-				//$('.introjs-tooltip').removeClass('hide');
+				$('.introjs-tooltip').removeClass('hide');
 				text = '<span class="ct-code-b-yellow">--</span> indicates decrement.<br>'+
 				 		'When it is applied after a variable, for example: <span class="ct-code-b-yellow">x--</span>,'+
 				 		' it is called <span class="ct-code-b-yellow">post-decrement</span>.<br/><br/>'+
@@ -180,6 +193,7 @@ var postDecrementOperatorReady = function() {
 							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 								$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton' " +
 								"onclick=xValueAssignedToVariabley()>Next &#8594;</a>");
+								//$('.introjs-prevbutton').show();
 							});
 						});
 					});
@@ -199,24 +213,32 @@ var postDecrementOperatorReady = function() {
 				});
 			break;
 			case "xCup":
-				$("#xvalue").attr("contenteditable", "false");
-				$("#xVariableDeclararionLine").addClass("z-index1000000");
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
-				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
-					$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
-						$("#xCup").removeClass("visibility-hidden");
-						$("#xCupValue").text($("#xvalue").text());
-						$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
-						fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {
-						   $("#xCupValue").removeClass("z-index100000000");
-						   $("#xVariableDeclararionLine").removeClass("z-index1000000");
-						   setTimeout(function(){
-							   introcode.nextStep();
-						   },800);
-						});
-					});							
-				});
+				if(introcode._direction == 'forward') {
+					$("#xvalue").attr("contenteditable", "false");
+					$("#xVariableDeclararionLine").addClass("z-index1000000");
+					$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
+						$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
+							$("#xCup").removeClass("visibility-hidden");
+							$("#xCupValue").text($("#xvalue").text());
+							$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
+							fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {
+							   $("#xCupValue").removeClass("z-index100000000");
+							   $("#xVariableDeclararionLine").removeClass("z-index1000000");
+							   setTimeout(function(){
+								   introcode.nextStep();
+							   },800);
+							});
+						});							
+					});
+				} else {
+					$("#xCup").addClass("visibility-hidden");
+					$("#xCupValue").text("");
+					setTimeout(function(){
+						   introcode.previousStep();
+					},800);
+				}
 			break;
 			case "expressionStatement":
 				$("#yVariableDeclararionLine").addClass("z-index1000000");
@@ -237,13 +259,43 @@ var postDecrementOperatorReady = function() {
 					});							
 				});
 			break;
-			case "sopLine" + sopLineCount:
-				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+			case "sopLine1":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					setTimeout(function(){
-						introcode.nextStep();
-						sopLineCount++;
-					},1000);
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				});
+				break;
+			case "sopLine3":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				});
+				break;
+			case "sopLine2":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
 				});
 				break;
 			case "outputDiv":
@@ -251,20 +303,43 @@ var postDecrementOperatorReady = function() {
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (introcode._currentStep == 8) {
-						$(".output").append('<span> x value : '+ $("#xCupValue").text() + '</span><br>');
+						if(introcode._direction == 'forward') {
+						$(".output").append('<span id="xValue"> x value : '+ $("#xCupValue").text() + '</span><br>');
 						setTimeout(function(){
 							introcode.nextStep();
 						},1000);
+						} else {
+							$('#xValue').remove();
+							$('.output').empty();
+							setTimeout(function(){
+								introcode.previousStep();
+							},1000);
+						}
 					} else if (introcode._currentStep == 10) {
+						if(introcode._direction == 'forward') {
 						$(".output").append('<span id="yValue"> y value : '+ $("#yCupValue").text() + '</span>');
 							setTimeout(function(){
 								introcode.nextStep();
 							},1000);
 					} else {
-						$(".output").append('<br><span> x value : '+ $("#xCupValue").text() + '</span>');
+						$('#yValue').remove();
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+
+					} else {
+						if(introcode._direction == 'forward') {
+						$(".output").append('<br><span id="xValue1"> x value : '+ $("#xCupValue").text() + '</span>');
 						setTimeout(function(){
 							introcode.nextStep();
 						},1000);
+						} else {
+							$('#xValue1').remove();
+							setTimeout(function(){
+								introcode.previousStep();
+							},1000);
+						}
 					}
 					
 				});
@@ -346,6 +421,7 @@ function postdecrementOperatorAnimation() {
 			'<span class="ct-code-b-yellow">y</span>.';
 	typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 		$('.introjs-tooltipbuttons').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
+		//$('.introjs-prevbutton').show();
 		$(".introjs-duplicate-nextbutton").click(function() {
 			$('.introjs-tooltip').removeClass('hide');
 			$(".introjs-duplicate-nextbutton").remove();

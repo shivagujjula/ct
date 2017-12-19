@@ -547,10 +547,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('float data type', 'float-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">float data type</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Karthik / shanthan</td>
 						<td></td>
-						<td>Karthik</td>
-						<td></td>
-						<td></td>
+						<td>14-12-17</td>
 					</tr>
 					<tr>
 						<td>35</td>
@@ -637,41 +637,7 @@
 						<td></td>
 						<td>04-11-17</td>
 					</tr>
-					<tr>
-						<td>42</td>
-						<td>Structure of C++</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Structure of C++', 'structure-of-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Structure of C++</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Karthik / Shanthan</td>
-						<td></td>
-						<td>07-10-17</td>
-					</tr>
 					
-					<tr>
-						<td>43</td>
-						<td>Generation of Computers</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('generation of Computers', 'generation-of-computers.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">generation of Computers</span></td>
-						<td>no need</td>
-						<td>Shanthan</td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td>44</td>
-						<td>Generation of programming languages</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('generation of programming languages', 'generations-of-programming-languages.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">generation of programming languages</span></td>
-						<td>no need</td>
-						<td>Anil</td>
-						<td></td>
-						<td></td>
-					</tr>
 				</tbody>
 			</table>
 			
@@ -928,35 +894,8 @@
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
-					
-					
-
-					
-					
-					
-					
-					
-					
-					
-
-					
-
-
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					<tr>
-						<td>16</td>
+						<td>20</td>
 						<td>Implicit Type Conversion</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Implicit Type Conversion', 'implicit-type-conversion.jsp', 1, 1)"><i
@@ -966,9 +905,8 @@
 						<td></td>
 						<td>Same as C</td>
 					</tr>
-					
 					<tr>
-						<td>17</td>
+						<td>21</td>
 						<td>Explicit Type Conversion</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('', 'explicit-type-conversion.jsp', 1, 1)"><i
@@ -978,10 +916,21 @@
 						<td></td>
 						<td>Same as C</td>
 					</tr>
-					
-					
 					<tr>
-						<td>20</td>
+						<td>22</td>
+						<td>Programs on if-else</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Counting Problem', 'counting-demo-in-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Counting Problem</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					<tr>
+						<td>23</td>
 						<td>if-else</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -992,44 +941,31 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
 					<tr>
-						<td>21</td>
+						<td>24</td>
 						<td>Programs on if-else</td>
 						<td>
-							<div>
-								<a class='btn btn-xs btn-success'
+							<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Number is even or odd', 'number-checking-even-or-odd.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Number is even or odd</span>
-							</div>
-
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Year is Leap year or Not', 'leap-year-program.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Year is Leap year or Not</span>
-							</div>
-
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Difference between if-else and switch-case', 'diff-if-else-and-switch-statement-in-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Difference between if-else and switch-case</span>
-							</div>
-							
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Counting Problem', 'counting-demo-in-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Counting Problem</span>
-							</div>
-
-						</td>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Number is even or odd</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>Nested if-else-if</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Nested if-else-if', 'nested-if-else-in-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Nested if-else-if</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Shanthan</td>
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>23</td>
+						<td>26</td>
 						<td>if-else-if</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -1040,21 +976,32 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
 					<tr>
-						<td>24</td>
-						<td>Nested if-else-if</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Nested if-else-if', 'nested-if-else-in-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Nested if-else-if</span></td>
+						<td>27</td>
+						<td>Programs on if-else</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Year is Leap year or Not', 'leap-year-program.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Year is Leap year or Not</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Shanthan</td>
 						<td></td>
-						<td>11-12-17</td>
+						<td></td>
 					</tr>
-					
 					<tr>
-						<td>25</td>
+						<td>28</td>
+						<td>Difference between if-else and switch-case</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Difference between if-else and switch-case', 'diff-if-else-and-switch-statement-in-cpp.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Difference between if-else and switch-case</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>29</td>
 						<td>Switch case</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of switch-case', 'switch-statement-in-cpp.jsp', 1, 1)"><i
@@ -1064,9 +1011,8 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
 					<tr>
-						<td>26</td>
+						<td>30</td>
 						<td>While loop</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('While loop', 'while-loop-in-cpp.jsp', 1, 1)"><i
@@ -1076,9 +1022,34 @@
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>27</td>
+						<td>31</td>
+						<td>Programs on loop</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Program on Armstrong numbers', 'armstrong-number-program.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program on Armstrong numbers</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					<tr>
+						<td>32</td>
+						<td>Programs on loop</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Program on Prime numbers', 'sample-program-on-prime-numbers.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program on Prime numbers</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					<tr>
+						<td>33</td>
 						<td>do-while</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of do-while loop', 'do-while-loop-in-cpp.jsp', 1, 1)"><i
@@ -1088,9 +1059,8 @@
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>28</td>
+						<td>34</td>
 						<td>for loop</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of for loop', 'for-loop-in-cpp.jsp', 1, 1)"><i
@@ -1100,9 +1070,34 @@
 						<td></td>
 						<td>12-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>29</td>
+						<td>35</td>
+						<td>Programs on loop</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Program to print Pascal triangle', 'pascal-triangle-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program to print Pascal triangle</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					<tr>
+						<td>36</td>
+						<td>Programs on loop</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Program to print Floyds Triangle', 'floyds-triangle-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program to print floyds triangle</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shanthan</td>
+						<td></td>
+						<td>11-12-17</td>
+					</tr>
+					<tr>
+						<td>37</td>
 						<td>break statement</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of break statement', 'break-in-cpp.jsp', 1, 1)"><i
@@ -1112,9 +1107,8 @@
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>30</td>
+						<td>38</td>
 						<td>Continue</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of continue statement', 'continue-in-cpp.jsp', 1, 1)"><i
@@ -1124,9 +1118,8 @@
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>31</td>
+						<td>39</td>
 						<td>goto statement</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Explanation of goto statement', 'goto.jsp', 1, 1)"><i
@@ -1136,38 +1129,6 @@
 						<td></td>
 						<td>11-12-17</td>
 					</tr>
-					
-					<tr>
-						<td>32</td>
-						<td>Programs on loop</td>
-						<td>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Program on Prime numbers', 'sample-program-on-prime-numbers.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program on Prime numbers</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Program on Armstrong numbers', 'armstrong-number-program.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program on Armstrong numbers</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Program to print Floyds Triangle', 'floyds-triangle-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program to print floyds triangle</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Program to print Pascal triangle', 'pascal-triangle-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Program to print Pascal triangle</span>
-							</div>
-						</td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Shiva / Shanthan</td>
-						<td></td>
-						<td>11-12-17</td>
-					</tr>
-					
 				</tbody>
 			</table>
 			<div class='text-center'>
@@ -1198,7 +1159,6 @@
 						<td></td>
 						<td>02-12-17</td>
 					</tr>
-					
 					<tr>
 						<td>2</td>
 						<td>2-D Arrays</td>
@@ -1210,7 +1170,6 @@
 						<td></td>
 						<td>07-12-17</td>
 					</tr>
-					
 					<tr>
 						<td>3</td>
 						<td>Arrays</td>
@@ -1236,7 +1195,6 @@
 						<td></td>
 						<td>22-11-17</td>
 					</tr>
-					
 					<tr>
 						<td>5</td>
 						<td>Program on arrays</td>
@@ -1248,7 +1206,6 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
 					<tr>
 						<td>6</td>
 						<td>Program on arrays</td>
@@ -1260,7 +1217,6 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
 					<tr>
 						<td>7</td>
 						<td>Program on arrays</td>
@@ -1272,7 +1228,6 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
 					<tr>
 						<td>8</td>
 						<td>Sorting Technique</td>
@@ -1372,24 +1327,8 @@
 						<td></td>
 						<td></td>
 					</tr>
-					
-					
-					
 					<tr>
-						<td>15</td>
-						<td>Strings</td>
-						<td>
-							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('string functions', 'string-functions.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">string functions</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Karthik / Karthik</td>
-						<td></td>
-						<td>07-10-17</td>
-					</tr>
-					
-					<tr>
-						<td>16</td>
+						<td>14</td>
 						<td>Strings</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -1400,10 +1339,8 @@
 						<td></td>
 						<td>25-10-17</td>
 					</tr>
-					
-					
 					<tr>
-						<td>17</td>
+						<td>15</td>
 						<td>Strings</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -1414,23 +1351,21 @@
 						<td></td>
 						<td>25-10-17</td>
 					</tr>
-					
 					<tr>
-						<td>18</td>
+						<td>16</td>
 						<td>Strings</td>
 						<td>
 							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Copy of a string', 'copy-of-a-string.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Copy of a string</span></td>
+							href="javascript:opendialog('string functions', 'string-functions.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">string functions</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>
-						<td>25-10-17</td>
+						<td>07-10-17</td>
 					</tr>
-					
 					<tr>
-						<td>19</td>
-						<td>Functions</td>
+						<td>17</td>
+						<td>User-defined Functions</td>
 						<td>
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1449,67 +1384,15 @@
 									href="javascript:opendialog('Function Call', 'function-call.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Function Call</span>
 							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Formal & actual arguments', 'different-argument-variables.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Formal & actual arguments</span>
-							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar</td>
 						<td></td>
 						<td>07-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>20</td>
-						<td>Functions</td>
-						<td>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('call by address', 'call-by-address.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">call by address</span>
-							</div>
-
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('call by value', 'call-by-value.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">call by value</span>
-							</div>
-							
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('call by reference', 'call-by-reference.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">call by reference</span>
-							</div>
-							
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Default arguements', 'default-arguments.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Default arguments</span>
-							</div>
-							
-						</td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Sathish & Shanthan</td>
-						<td></td>
-						<td>01-11-17</td>
-					</tr>
-					
-					<tr>
-						<td>21</td>
-						<td>Functions</td>
-						<td><a class='btn btn-xs btn-success'
-									href="javascript:opendialog('function overloading', 'function-overloading-in-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">function overloading</span>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Anil / Swathi</td>
-						<td></td>
-						<td>07-10-17 / 04-12-17</td>
-					</tr>
-					<tr>
-						<td>22</td>
-						<td>Functions</td>
+						<td>18</td>
+						<td>User-defined Functions</td>
 						<td><a class='btn btn-xs btn-success'
 									href="javascript:opendialog('sample program on functions', 'sample-program-on-functions.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">sample program on functions</span>
@@ -1519,8 +1402,21 @@
 						<td>07-10-17</td>
 					</tr>
 					<tr>
-						<td>23</td>
-						<td>Functions</td>
+						<td>19</td>
+						<td>Formal and Actual arguments</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+											href="javascript:opendialog('Formal & actual arguments', 'different-argument-variables.jsp', 1, 1)"><i
+											class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Formal & actual arguments</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Rajashekar</td>
+						<td></td>
+						<td>07-12-17</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td>Local and Global variables</td>
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Local global variables', 'local-global-variables.jsp', 1, 1)"><i
@@ -1531,36 +1427,131 @@
 						<td>07-10-17 / 04-12-17</td>
 					</tr>
 					<tr>
-						<td>24</td>
-						<td>Functions</td>
+						<td>21</td>
+						<td>Functions with Arrays</td>
 						<td><a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Functions with arrays', 'functions-with-arrays.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Functions with arrays</span>
-						<td>no need</td>
-						<td>Anil / Swathi</td>
-						<td></td>
-						<td>07-10-17</td>
-					</tr>
-					<tr>
-						<td>25</td>
-						<td>Functions</td>
-						<td><a class='btn btn-xs btn-success'
-								href="javascript:opendialog('Categories of functions', 'categories-of-functions.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Categories of functions</span>
 						<td>no need</td>
 						<td>Anil</td>
 						<td></td>
 						<td>07-10-17</td>
 					</tr>
+					<tr>
+						<td>22</td>
+						<td>Inline Functions</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Inline Functions', 'inline-functions.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of inline functions</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Rajashekar / Rajashekar</td>
+						<td></td>
+						<td>04-12-17</td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>Default Arguments</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Default arguements', 'default-arguments.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Default arguments</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish & Shanthan</td>
+						<td></td>
+						<td>01-11-17</td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td>Function Overloading</td>
+						<td><a class='btn btn-xs btn-success'
+									href="javascript:opendialog('function overloading', 'function-overloading.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">function overloading</span>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / Swathi</td>
+						<td></td>
+						<td>07-10-17 / 04-12-17</td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>Program on Recursion</td>
+						<td>
+							<div>
+								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to find Factorial of a number using Recursion',
+									 '/secure/lang/ds/factorial-using-recursion.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
+								 	<span style = "color : green">Find Factorial of a number using Recursion</span>
+							</div>
+							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
+						</td>
+						<td>No need</td>
+						<td>Pavan</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
 					<tr>
 						<td>26</td>
+						<td>Program on Recursion</td>
+						<td>
+							<div>
+								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to find gcd of 2 numbers using Recursion',
+									 '/secure/lang/ds/gcd-using-recursion.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
+								  	<span style = "color : green">Find gcd of 2 numbers using Recursion</span>
+						 	</div>	
+							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
+						</td>
+						<td>No need</td>
+						<td>Pavan</td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr>
+						<td>27</td>
+						<td>Program on Recursion</td>
+						<td>
+							<div>
+								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to print Fibonacci series using Recursion', 
+									'/secure/lang/ds/fibonacci-series-using-recursion.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a>
+								 	&emsp; <span style = "color : green">Print Fibonacci series using Recursion</span>
+							</div>
+							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
+						</td>
+						<td>No need</td>
+						<td>Pavan</td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr>
+						<td>28</td>
+						<td>Program on Recursion</td>
+						<td>
+							<div>
+								<a class='btn btn-xs btn-success' href="javascript:opendialog('Towers of Hanoi problem',
+									 '/secure/lang/ds/tower-of-hanoi.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
+									<span style = "color : green"> Towers of Hanoi problem</span>
+							</div>
+							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
+						</td>
+						<td>No need</td>
+						<td>Pavan</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>29</td>
 						<td>Pointers</td>
 						<td>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Introduction of pointers', 'pointers-introduction.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Introduction of pointers</span>
+							</div>
+							<div>
+								<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Declaration of pointers', 'pointers-declaration.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Declaration of pointers</span>
 							</div>
 
 							<div>
@@ -1578,100 +1569,64 @@
 									href="javascript:opendialog('Multiple indirection operator', 'multiple-indirection-operator.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Multiple indirection operator</span>
 							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Declaration of pointers', 'pointers-declaration.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Declaration of pointers</span>
-							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>
 						<td>25-10-17</td>
 					</tr>
-					
-					<tr>
-						<td>27</td>
-						<td>Program on Recursion</td>
-						<td>
-							<div>
-								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to find Factorial of a number using Recursion',
-									 '/secure/lang/ds/factorial-using-recursion.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-								 	<span style = "color : green">Find Factorial of a number using Recursion</span>
-							</div>
-							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
-						</td>
-						<td>No need</td>
-						<td>Pavan</td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td>28</td>
-						<td>Program on Recursion</td>
-						<td>
-							<div>
-								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to find gcd of 2 numbers using Recursion',
-									 '/secure/lang/ds/gcd-using-recursion.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
-								  	<span style = "color : green">Find gcd of 2 numbers using Recursion</span>
-						 	</div>	
-							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
-						</td>
-						<td>No need</td>
-						<td>Pavan</td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td>29</td>
-						<td>Program on Recursion</td>
-						<td>
-							<div>
-								<a class='btn btn-xs btn-success' href="javascript:opendialog('Program to print Fibonacci series using Recursion', 
-									'/secure/lang/ds/fibonacci-series-using-recursion.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a>
-								 	&emsp; <span style = "color : green">Print Fibonacci series using Recursion</span>
-							</div>
-							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
-						</td>
-						<td>No need</td>
-						<td>Pavan</td>
-						<td></td>
-						<td></td>
-					</tr>
-					
 					<tr>
 						<td>30</td>
-						<td>Program on Recursion</td>
+						<td>Parameter Passing Methods</td>
 						<td>
 							<div>
-								<a class='btn btn-xs btn-success' href="javascript:opendialog('Towers of Hanoi problem',
-									 '/secure/lang/ds/tower-of-hanoi.jsp?lang=cpp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-									<span style = "color : green"> Towers of Hanoi problem</span>
+								<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('call by value', 'call-by-value.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">call by value</span>
 							</div>
-							<div>(Available in C and C++ from <b>secure/lang/ds</b>)</div>
+							<div>
+								<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('call by address', 'call-by-address.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">call by address</span>
+							</div>
+							<div>
+								<a class='btn btn-xs btn-success'
+									href="javascript:opendialog('call by reference', 'call-by-reference.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">call by reference</span>
+							</div>
 						</td>
-						<td>No need</td>
-						<td>Pavan</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish & Shanthan</td>
 						<td></td>
-						<td></td>
+						<td>01-11-17</td>
 					</tr>
-					
 					<tr>
 						<td>31</td>
-						<td>Inline functions</td>
+						<td style = "color : red">Strings</td>
 						<td>
 							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Inline Functions', 'inline-functions.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of inline functions</span></td>
+							href="javascript:opendialog('Copy of a string', 'copy-of-a-string.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Copy of a string</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Rajashekar / Rajashekar</td>
+						<td>Karthik / Karthik</td>
 						<td></td>
-						<td>04-12-17</td>
+						<td>25-10-17</td>
+					</tr>
+
+					<tr>
+						<td>32</td>
+						<td style = "color : red">Functions</td>
+						<td><a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Categories of functions', 'categories-of-functions.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Categories of functions</span>
+						<td>no need</td>
+						<td>Anil</td>
+						<td></td>
+						<td>07-10-17</td>
 					</tr>
 				</tbody>
 			</table>
+			
 			<div class='text-center'>
 				<h3>UNIT-4: Classes and Objects</h3>
 			</div>
@@ -1688,28 +1643,65 @@
 				<tbody class='table-striped'>
 					<tr>
 						<td>1</td>
-						<td>Access specifiers</td>
+						<td>Structure of C++</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Structure of C++', 'structure-of-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Structure of C++</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Karthik / Shanthan</td>
+						<td></td>
+						<td>07-10-17</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Structure in C++</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Processing a Structure using dot operator', 'processing-of-structure-with-dot-in-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Processing a Structure using dot operator</span></td>
+						<td></td>
+						<td>Shiva</td>
+						<td></td>
+						<td>Yet to start</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Classes in C++</td>
 						<td>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('access specifiers', 'access-specifiers.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">access specifiers</span>
-							</div>
-							<div>
-								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('scope of classes and objects', 'scope-of-classes-and-objects.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scope of classes and objects</span>
-							</div>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Access specifiers', 'access-specifiers.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Access specifiers</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shanthan / Shanthan</td>
 						<td></td>
 						<td>04-11-17</td>
 					</tr>
-					
 					<tr>
-						<td>2</td>
-						<td>Static member functions</td>
+						<td>4</td>
+						<td>Classes in C++</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Object memory allocation', 'object-memory-allocation.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of object memory allocation</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Karthik / Karthik</td>
+						<td></td>
+						<td>25-10-17</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Array of objects</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Array of Objects', 'array-of-objects.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of array of objects</span></td>
+						<td></td>
+						<td>Rajashekar</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Static Members</td>
 						<td>
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1727,22 +1719,33 @@
 						<td></td>
 						<td>16-10-17</td>
 					</tr>
-					
 					<tr>
-						<td>3</td>
-						<td>Array of objects</td>
+						<td>7</td>
+						<td>Friend Functions</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Array of Objects', 'array-of-objects.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of array of objects</span></td>
+							href="javascript:opendialog('Friend functions', 'friend-function.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Friend functions</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / Anil</td>
 						<td></td>
-						<td>Rajashekar</td>
-						<td></td>
-						<td></td>
+						<td>06-10-17 / 12-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>4</td>
-						<td>Nested classes</td>
+						<td>8</td>
+						<td>Scope of Classes</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('scope of classes and objects', 'scope-of-classes-and-objects.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scope of classes and objects</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shanthan / Shanthan</td>
+						<td></td>
+						<td>04-11-17</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Nested Classes</td>
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Nested classes', 'nested-classes.jsp', 1, 1)"><i
@@ -1752,38 +1755,12 @@
 						<td></td>
 						<td>25-10-17</td>
 					</tr>
-					
 					<tr>
-						<td>5</td>
-						<td>Objects and memory</td>
-						<td>
-							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Object memory allocation', 'object-memory-allocation.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of object memory allocation</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Karthik / Karthik</td>
-						<td></td>
-						<td>25-10-17</td>
-					</tr>
-					
-					<tr>
-						<td>6</td>
-						<td>Friend functions</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Friend functions', 'friend-function.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Friend functions</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Anil / Anil</td>
-						<td></td>
-						<td>06-10-17 / 12-12-17</td>
-					</tr>
-					
-					<tr>
-						<td>7</td>
-						<td>Static variables</td>
+						<td>10</td>
+						<td style = "color : red">Storage classes - Static variables</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Static variables', 'static-variables.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static variables</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Static variables</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1808,17 +1785,6 @@
 				<tbody class='table-striped'>
 					<tr>
 						<td>1</td>
-						<td>Constructor</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Constructor', 'constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constructor</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Anil / Anil</td>
-						<td></td>
-						<td>12-12-17</td>
-					</tr>
-					<tr>
-						<td>2</td>
 						<td>Default constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Default constructor', 'default-constructor.jsp', 1, 1)"><i
@@ -1829,7 +1795,7 @@
 						<td>12-12-17</td>
 					</tr>
 					<tr>
-						<td>3</td>
+						<td>2</td>
 						<td>Parameterized constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Parameterized constructor', 'parameterized-constructor.jsp', 1, 1)"><i
@@ -1839,9 +1805,8 @@
 						<td></td>
 						<td>12-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>4</td>
+						<td>3</td>
 						<td>Copy constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Copy constructor', 'copy-constructor.jsp', 1, 1)"><i
@@ -1851,9 +1816,8 @@
 						<td></td>
 						<td>12-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>5</td>
+						<td>4</td>
 						<td>Destructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor', 'destructor.jsp', 1, 1)"><i
@@ -1863,9 +1827,8 @@
 						<td></td>
 						<td>12-12-17</td>
 					</tr>
-					
 					<tr>
-						<td>6</td>
+						<td>5</td>
 						<td>Static data members in constructors</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -1876,12 +1839,23 @@
 						<td></td>
 						<td>18-10-17</td>
 					</tr>
-					
+					<tr>
+						<td>6</td>
+						<td style = "color : red">Constructor</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Constructor', 'constructor.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Constructor</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / Anil</td>
+						<td></td>
+						<td>12-12-17</td>
+					</tr>
 				</tbody>
 			</table>
 			
+			
 			<div class='text-center'>
-				<h3>UNIT-6: Operator Overloading and Type Conversions</h3>
+				<h3>UNIT-6: Operator Overloading</h3>
 			</div>
 			<table class='table table-bordered'>
 				<tr>
@@ -1900,8 +1874,8 @@
 						<td>
 							<div>
 								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Overloading binary minus as friend function', 'overloading-binary-minus-as-friend-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary minus as friend function</span>
+									href="javascript:opendialog('Overloading binary plus as member function', 'overloading-binary-plus-as-member-function.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as member function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
@@ -1915,8 +1889,8 @@
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Overloading binary plus as member function', 'overloading-binary-plus-as-member-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as member function</span>
+									href="javascript:opendialog('Overloading binary minus as friend function', 'overloading-binary-minus-as-friend-function.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary minus as friend function</span>
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -1926,30 +1900,6 @@
 					</tr>
 					<tr>
 						<td>2</td>
-						<td>Increment and Decrement operators</td>
-						<td>
-							<a class='btn btn-xs btn-success'
-								href="javascript:opendialog('Overloading increment and decrement operators', 'overloading-increment-and-decrement-operators-in-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators</span>
-								
-						</td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Sathish / Sathish</td>
-						<td><td>06-12-17</td></td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Increment and Decrement operators</td>
-						<td><a class='btn btn-xs btn-success'
-									href="javascript:opendialog('Overloading increment and decrement operators without dif', 'overloading-increment-and-decrement-operators-without-dif-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators without dif</span>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Sathish / Sathish</td>
-						<td></td>
-						<td>06-12-17</td>
-					</tr>
-					<tr>
-						<td>4</td>
 						<td>Insertion and Extraction operators</td>
 						<td>
 							<div>
@@ -1967,6 +1917,30 @@
 						<td>Sathish / Sathish</td>
 						<td></td>
 						<td>06-12-17</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Increment and Decrement operators</td>
+						<td><a class='btn btn-xs btn-success'
+									href="javascript:opendialog('Overloading increment and decrement operators without dif', 'overloading-increment-and-decrement-operators-without-dif-in-cpp.jsp', 1, 1)"><i
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators without dif</span>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
+						<td></td>
+						<td>06-12-17</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Increment and Decrement operators</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Overloading increment and decrement operators', 'overloading-increment-and-decrement-operators-in-cpp.jsp', 1, 1)"><i
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators</span>
+								
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
+						<td><td>06-12-17</td>
 					</tr>
 					<tr>
 						<td>5</td>
@@ -2004,6 +1978,8 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			
 			
 			<div class='text-center'>
 				<h3>UNIT-7: Inheritance</h3>
@@ -2091,6 +2067,42 @@
 						<td></td>
 						<td>25-10-17</td>
 					</tr>
+					<tr>
+						<td>7</td>
+						<td>overriding</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('overriding', 'overriding.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">overriding</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / Anil</td>
+						<td></td>
+						<td>13-12-17</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Constructors types in inheritance</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('onstructors types in inheritance', 'constructors-types-in-inheritance-in-cpp.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">onstructors types in inheritance</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
+						<td></td>
+						<td>19-12-17</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Destructor in inheritance</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Destructor in inheritance', 'destructor-in-inheritance.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in inheritance</span></td>
+						<td></td>
+						<td>Sathish (In progress)</td>
+						<td></td>
+						<td></td>
+					</tr>
 					
 					
 				</tbody>
@@ -2113,6 +2125,18 @@
 					
 					<tr>
 						<td>1</td>
+						<td>virtual functions</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('virtual functions', 'virtual-functions.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">virtual functions</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shanthan (In progress)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>2</td>
 						<td>Pure virtual functions</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -2124,7 +2148,7 @@
 						<td>04-11-17</td>
 					</tr>
 					<tr>
-						<td>2</td>
+						<td>3</td>
 						<td>Virtual destructor</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -2136,12 +2160,12 @@
 						<td>25-10-17</td>
 					</tr>
 					<tr>
-						<td>3</td>
-						<td>Virtual functions</td>
+						<td>4</td>
+						<td>Constructors and Virtual Functions</td>
 						<td>
 							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Virtual functions', 'constructor-invoke-virtual-function.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual functions</span></td>
+							href="javascript:opendialog('Constructors and Virtual Functions', 'constructor-invoke-virtual-function.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constructors and Virtual Functions</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>

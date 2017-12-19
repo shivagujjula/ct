@@ -29,6 +29,7 @@
 	font-size: 15px;
 	padding: 11px 12px;
 	font-family: monospace;
+	min-height: 86px;
 }
 
 .border {
@@ -164,6 +165,7 @@
 
 .ct-color-lime {
 	color: lime;
+	font-weight: bold;
 }
 
 .css-circle {

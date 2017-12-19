@@ -126,7 +126,7 @@ function introGuide() {
 			break;
 		case 'firstExLine4':
 			$("#cValue").text("1054");
-			$('#firstMemoryAllocation, #svg1').css('opacity', 1);
+			$("#svg1, #firstMemoryAllocation").removeAttr('style');
 			break;
 		case 'firstExDiv':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
@@ -139,8 +139,15 @@ function introGuide() {
 			case 'tweenmax':
 				$("#Value").addClass("opacity00");
 				break;
+			case 'freeAction':
+				$("#cValue").text("1054");
+				$("#svg1, #firstMemoryAllocation").removeAttr('style');
+				$("#secondDivExample, #preCodeTwo").addClass("opacity00");
+				break;
 			}
 			break;
+		
+		
 		case 'secondExLine1':
 			$("#rBox").addClass("opacity00");
 			break;
@@ -173,6 +180,8 @@ function introGuide() {
 	});
 	
 	introjs.onafterchange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
 		}
@@ -186,7 +195,7 @@ function introGuide() {
 		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
 			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
 		}
-		$(".introjs-skipbutton, .introjs-prevbutton, .introjs-nextbutton").hide();
+		
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'infoDiv':
@@ -216,7 +225,6 @@ function introGuide() {
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					TweenMax.to($("#preCode"), 1, {opacity: 1, onComplete: function() {
 						$(".introjs-nextbutton").show();
-						$(".introjs-prevbutton").hide();
 					}});
 				});
 			});
@@ -315,7 +323,7 @@ function introGuide() {
 			case 'tweenmaxSvg':
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#firstMemoryAllocation").addClass("opacity00");
+						//$("#firstMemoryAllocation").addClass("opacity00");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -364,6 +372,7 @@ function introGuide() {
 							});
 						});
 					});
+					
 				});
 				break;
 			}
@@ -377,8 +386,7 @@ function introGuide() {
 									"this sample code.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {	
 					TweenMax.to($("#preCodeTwo"), 1, {opacity: 1, onComplete: function() {
-						$(".introjs-nextbutton").show();
-						$(".introjs-prevbutton").hide();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					}});
 				});
 			});

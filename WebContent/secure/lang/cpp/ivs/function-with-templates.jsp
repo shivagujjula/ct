@@ -28,10 +28,13 @@
 	margin-top: 20px;
 }
 .margin-topp {
-	margin-top: 100px;
+	margin-top: 90px;
+}
+.margin-topp1 {
+	margin-top: 90px;
 }
 .margin-top1 {
-	margin-top: 100px;
+	margin-top: 23px;
 }
 g, r, y ,p{
 	font-weight: bold;
@@ -75,6 +78,7 @@ k {
 	border-radius: 8px;
 	font-family: monospace; 
 	background-color: #e5eecc;
+	min-height: 200px;
 }
 .violet {
 	color : #ad08ad;
@@ -98,7 +102,14 @@ k {
 .box-border {
 	border: 2px solid #dcd9d9;
 	border-radius: 8px;
-	min-height : 300px;
+	min-height : 105px;
+	padding-left : 10px;
+	padding-right : 10px;
+}
+.box-border3 {
+	border: 2px solid #dcd9d9;
+	border-radius: 8px;
+	min-height : 105px;
 	padding-left : 10px;
 	padding-right : 10px;
 }
@@ -135,7 +146,6 @@ k {
   .ui-effectss-transfer {
     border: 2px dashed deeppink;
     z-index: 99999999 !important;
-    border-radius: 8px;
  }
  .circle-css {
 	border: 1px solid white;
@@ -150,11 +160,9 @@ k {
 	z-index:1000000 !important;
 }
 .border {
-	border: 2px solid #ccefd0;
-	background : #bdf3a5;
+	background : #a7eef1;
 	color: black;
 	font-weight: bold;
-	border-radius: 2px;
 }
 .managerBox {
 	background: #8ddcd0 none repeat scroll 0 0;
@@ -178,13 +186,16 @@ k {
 	z-index: 10000000;
 	position: relative;
 }
-
+.user-btn {
+	background-color: green;
+}
 @keyframes blink-border-background-orange { 
 	50% {
 		border-color: white;
 		background: orange;
 	}
 }
+
 </style>
 </head>
 <body>
@@ -196,12 +207,6 @@ k {
 		<div class="col-xs-10 col-xs-offset-1" id="informationDiv" style=' margin-top: 5px;'>
 			<span id="infoText" class=''><ul><li><g>Templates</g> are used to avoid the duplication of the
 			 code in the prohram whenever we are performing same operation with different data types.</li>
-			 <li><g>Overloaded</g> function are normally used to perform similar operations on different
-			  types of data but they have to the redefined for each datatype.</li>
-			  <li>Therefore by reducing the <g>duplication</g> of the code the programmer writes a <g>single
-			  function template</g> defination based on the argument types provided <g>explicity</g> or 
-			  <g>inferred</g> from calls to the function <g>template</g>, the compiler generate
-			  separate object code function to handle each data type of call approxmately.</li>
 			  <li>The general format for defining a function <g>template</g> is
 			  <span id="class">Template &lt;class T&gt;</span>.</li>
 			  <a class="introjs-button user-button" id="nextButton">Next&rarr;</a></ul></span>
@@ -210,28 +215,32 @@ k {
 	<div class="col-xs-12 " style='margin-top: 10px;'>
 		<div class="col-xs-5">
 			<pre class="creamPreTab4 opacity00" id="preBody">
-<span id="declaration"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
-<span class="red">using namespace</span> std;
-   <div id="method1" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display">int</div> num1) {</div>
+<span id="declaration"><span class="violet">#include</span> <span class="green">&lt;iostream&gt;</span></span>
+<span class="red">using</span> <span class="green">namespace</span> <span>std;</span>
+   <div class="display opacity00" id="method"><div id="method1" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display" id="intBlink">int</div> num1) {</div>
    <div id="cout1" class="display">cout << <div id="enterText1" class="display pink">"Integer number is : "</div> << <div id="animateVal1" class="display">num1</div> << endl;</div>
 }</div>
-   <div id="method2" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display">float</div> num2) {</div>
+ <div id="method2" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display" id="floatBlink">float</div> num2) {</div>
    <div id="cout2" class="display">cout << <div id="enterText2" class="display pink">"Float number is : "</div> << <div id="animateVal2" class="display">num2</div> << endl;</div>
 }</div>
-   <div id="method3" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display">char</div> ch) {</div>
+ <div id="method3" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display" id="charBlink">char</div> ch) {</div>
    <div id="cout3" class="display">cout << <div id="enterText3" class="display pink">"Character is : "</div> << <div id="animateVal3" class="display">ch</div> << endl;</div>
-}</div>
-<div id="main" class="display"><span class="green">int</span> main() {
-   <div id="int1" class="display"><div class="green display">int</div> <div class="display" id ="aVal1">num1 = <span class="pink">10</span></div>;</div>
-   <div id="float1" class="display"><div class="green display">float</div> <div class="display" id ="bVal1">num2 = <span class="pink">10.5</span></div>;</div>
-   <div id="char1" class="display"><div class="green display">char</div> <div class="display" id ="cVal1">ch = <span class="pink">'R'</span></div>;</div>
-   <div id="show1" class="display">show(num1);</div>
-   <div id="show2" class="display">show(num2);</div>
-   <div id="show3" class="display">show(ch);</div>
+}</div></div>
+ <div class="display hide position" id="template"><span class="opacity00" id="template1"><span class="red">template</span> <span class="" id="tempVal">&lt;<span class="red">class</span> T&gt;</span></span>
+   <span id="method4" class=" position"><span class="" id="void"><span class="green">void</span> show (<span class="display red">T</span> x) {</span>
+   <span id="cout4" class="">&nbsp;&nbsp;&nbsp;cout << <span id="enterText4" class="pink">"The value is : "</span> << <span id="animateVal4" class="">x</span> << endl;</span>
+</span>}</div>
+<div id="main" class="display opacity00"><span class="green">int</span> main() {
+   <div id="int1" class="display opacity00"><div class="green display" id="int">int</div> <div class="display" id ="aVal1">num1 = <span class="pink">10</span></div>;</div>
+   <div id="float1" class="display opacity00"><div class="green display" id="float">float</div> <div class="display" id ="bVal1">num2 = <span class="pink">10.5</span></div>;</div>
+   <div id="char1" class="display opacity00"><div class="green display" id="char">char</div> <div class="display" id ="cVal1">ch = <span class="pink">'R'</span></div>;</div>
+   <div id="show1" type="int"  param="a"class="display opacity00">show(num1);</div>
+   <div id="show2" type="float" param="b" class="display opacity00">show(num2);</div>
+   <div id="show3" type="char" param="c" class="display opacity00">show(ch);</div>
    <div id="return" class="display"><div class="red display">return</div> <span class="pink">0</span>;</div>
-<span id="mainClose1">}</span></div>
+<span id="mainClose">}</span></div>
 			</pre>
-			<pre class="creamPreTab4 opacity00" id="preBody1">
+			<!-- <pre class="creamPreTab4 opacity00" id="preBody1">
 <span id="declaration1"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
 <span class="red">using namespace</span> std;
    <div class="display" id="template"><span class="red">template</span> <div class="display" id="tempVal">&lt;<span class="red">class</span> T&gt;</div></div>
@@ -247,10 +256,10 @@ k {
    <div id="show6" type="char" param="c" class="display">show(ch);</div>
    <div id="return1" class="display"><div class="red display">return</div> <span class="pink">0</span>;</div>
 <span id="mainClose2">}</span></div>
-			</pre>
+			</pre> -->
 		</div>
 		<div class="col-xs-6">
-			<div class="col-xs-12 margin-topp box-border opacity00" id="animationBox">
+			<div class="col-xs-12 margin-topp box-border hide" id="animationBox">
 				<div class="col-xs-12">
 					<div class="col-xs-3 margin-top text-center opacity00" id="aValue1">
 						<div id="" class="text-center managerBox " style = "color : #4a4649; font-weight:bold;">num1</div>
@@ -265,26 +274,34 @@ k {
 						<div class="padding box-border1 " id="borderBox3"><span class="text-center" id="boxValue3"><k>R</k></span></div>
 					</div>
 				</div>
+				</div>
+				 <div class="col-xs-12 margin-topp1 box-border3 hide" id="animationBox1">
 				<div class="col-xs-12">
 					<div class="col-xs-3  margin-top1 text-center opacity00" id="aValue2">
 						<div class="text-center managerBox1" style = "color : #58a905; font-weight:bold;">num1</div>
-						<div class="padding box-border2 position" id="borderBox4"><span class="text-center" id="boxValue4"><o>6</o></span></div>
+						<div class="padding box-border2 position" id="borderBox4"><span class="text-center" id="boxValue4"><o>10</o></span></div>
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 margin-top1 text-center opacity00" id="bValue2">
 						<div class="text-center managerBox1" style = "color: #58a905; font-weight:bold;">num2</div>
-						<div class="padding box-border2" id="borderBox5"><span class="text-center" id="boxValue5"><o>7.9</o></span></div>
+						<div class="padding box-border2" id="borderBox5"><span class="text-center" id="boxValue5"><o>10.5</o></span></div>
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 margin-top1 text-center opacity00" id="cValue2">
 						<div class="text-center managerBox1" style = "color: #58a905; font-weight:bold;">ch</div>
-						<div class="padding box-border2" id="borderBox6"><span class="text-center" id="boxValue6"><o>S</o></span></div>
+						<div class="padding box-border2" id="borderBox6"><span class="text-center" id="boxValue6"><o>R</o></span></div>
 					</div>
 				</div>
 			</div>
-			<div class="output-console col-xs-12 margin-top padding00 opacity00" id="outputBox">
+			<div class="output-console col-xs-12 margin-top padding00 hide" id="outputBox">
 				<div class="output-console-title-bar  text-center">
 					<span>output</span>
 				</div>
 				<div class="output-console-body" id="outputBody"></div>
+			</div>
+			<div class="output-console col-xs-12 margin-top padding00 hide" id="outputBox1">
+				<div class="output-console-title-bar  text-center">
+					<span>output</span>
+				</div>
+				<div class="output-console-body" id="outputBody1"></div>
 			</div>
 		</div>
 	</div>

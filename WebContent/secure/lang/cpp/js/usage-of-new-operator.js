@@ -148,6 +148,9 @@ function introGuide() {
 		case 'firstExLine3':
 			$("#Value").addClass("opacity00");
 			break;
+		case 'firstExLine4':
+			$("#printText").addClass("visibility-hidden");
+			break;
 		case 'newBox':	
 			$("#newBox").addClass("opacity00");
 			$("#cValue").addClass("opacity00");
@@ -164,6 +167,9 @@ function introGuide() {
 				$("#Value").addClass("opacity00");
 				break;
 			}
+			break;
+		case 'consoleId':
+			$("#exampleTwo").addClass("opacity00");
 			break;
 		case 'secondExLine1':
 			$("#kBox").addClass("opacity00");
@@ -184,6 +190,7 @@ function introGuide() {
 			break;
 		case 'secondExLine4':
 			$("#secondExDiv").removeClass("z-index9999999");
+			$("#printText1").addClass("visibility-hidden");
 			break;
 		case 'secondExDiv':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
@@ -196,6 +203,9 @@ function introGuide() {
 					$("#Value1").addClass("opacity00");
 					break;
 			}
+			break;
+		 case 'consoleId1':
+			$("#exampleThree").addClass("opacity00");
 			break;
 		case 'thirdExLine1':
 			$("#rBox").addClass("opacity00");
@@ -242,7 +252,7 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'infoDiv':
-			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
+			//$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list1").fadeTo(300, 1, function() {
 				$('#nextButton1').removeClass("opacity00");
 				$('.user-btn').click(function() {
@@ -397,14 +407,20 @@ function introGuide() {
 		case 'consoleId':
 			$("#firstExDiv").addClass("z-index9999999");
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#printText").removeClass("visibility-hidden");
-				var text = $("#printText").html();
-				typing($("#printText"), text, function() {
-					$("#firstExDiv").removeClass("z-index9999999");
+				if (introjs._direction == "backward") {
 					setTimeout(function () {
-						introjs.nextStep();
+						introjs.previousStep();
 					}, 1000);
-				});
+				} else {
+					$("#printText").removeClass("visibility-hidden");
+					var text = $("#printText").html();
+					typing($("#printText"), text, function() {
+						$("#firstExDiv").removeClass("z-index9999999");
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					});
+				}
 			});
 			break;
 		case 'preCodeTwo':
@@ -415,8 +431,7 @@ function introGuide() {
 				typing('.introjs-tooltiptext', "Let us consider another example.", function() {
 					TweenMax.to($("#preCodeTwo"), 1, {opacity: 1, onComplete: function(){
 						$("#preCodeTwo").removeClass("opacity00");
-						$(".introjs-nextbutton").show();
-						$(".introjs-prevbutton").hide();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					}});
 				});
 			});
@@ -535,14 +550,20 @@ function introGuide() {
 			$("#consoleId1").removeClass("opacity00");
 			$("#secondExDiv").addClass("z-index9999999");
 			$('.introjs-helperLayer').one('transitionend', function() {
-				$("#printText1").removeClass("visibility-hidden");
-				var text = $("#printText1").html();
-				typing($("#printText1"), text, function() {
-					$("#secondExDiv").removeClass("z-index9999999");
+				if (introjs._direction == "backward") {
 					setTimeout(function () {
-						introjs.nextStep();
+						introjs.previousStep();
 					}, 1000);
-				});
+				} else {
+					$("#printText1").removeClass("visibility-hidden");
+					var text = $("#printText1").html();
+					typing($("#printText1"), text, function() {
+						$("#secondExDiv").removeClass("z-index9999999");
+						setTimeout(function () {
+							introjs.nextStep();
+						}, 1000);
+					});
+				}
 			});
 			break;
 		case 'preCodeThree':
@@ -553,8 +574,7 @@ function introGuide() {
 				typing('.introjs-tooltiptext',"Let us consider an example.", function() {
 					TweenMax.to($("#preCodeThree"), 1, {opacity: 1, onComplete: function(){
 						$("#preCodeThree").removeClass("opacity00");
-						$(".introjs-nextbutton").show();
-						$(".introjs-prevbutton").hide();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					}});
 				});
 			});

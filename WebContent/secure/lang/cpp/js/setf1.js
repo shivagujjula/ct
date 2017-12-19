@@ -48,7 +48,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 						element :'#line7',
 						intro :'',
 						position:"bottom",
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -58,7 +57,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 						element :'#line8',
 						intro :'',
 						position:"bottom",
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -100,6 +98,22 @@ var readPrintStringUsingGetsPutsReady = function() {
 	});
 	intro.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody" :

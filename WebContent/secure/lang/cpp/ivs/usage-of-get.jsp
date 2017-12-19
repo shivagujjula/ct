@@ -19,7 +19,6 @@
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/uoget.min.js'></script>
 
-
 <title>usage of get()</title>
 </head>
 
@@ -29,6 +28,7 @@
 	border-radius: 10px;
 	font-size: 15px;
 	padding: 9px 14px;
+	min-height : 200px;
 }
 
 #introduction {
@@ -50,7 +50,10 @@
 #line1 {
 	color: maroon;
 }
-
+.ct-blue-color {
+	color: blue;
+	font-weight: bold;
+}
 .ct-code-b-green{
 	color: green;
 	font-weight: bold;
@@ -74,7 +77,7 @@
 	color: #f0f0f0;
 	font-family: monospace;
 	font-size: 13px;
-	height: 120px;
+	min-height: 120px;
 	overflow: auto;
 	padding: 10px;
 	white-space: nowrap;
@@ -106,7 +109,7 @@ div, span {
 	tab-size: 3;
 	background-color: #fffae6;
 	border-radius: 8px;
-	font-size: 13px;
+	font-size: 12px;
 	margin: 5px;
 	padding: 6px;
 	white-space: pre;
@@ -150,17 +153,16 @@ div, span {
 	padding: 0px;
 }
 
-.panel-heading {
+/* .panel-heading {
 	padding: 2px 40px;
-}
-
-.panel-body {
-	padding: 12px 44px;
-	height: 40px;
 }
 
 .panel-group {
 	margin-top: 45px;
+} */
+
+.panel-body {
+	min-height: 40px;
 }
 
 .syntax {
@@ -191,7 +193,8 @@ div, span {
 	animation-iteration-count: 1;
 }
 
-@keyframes blink { 50% {
+@keyframes blink { 
+50% {
 	background: orange;
 }
 
@@ -265,9 +268,9 @@ div, span {
 				<pre id="preTableDiv" class="creamPreTab1 opacity00">
 #include &lt;<span class="ct-code-b-green">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-code-b-green">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main"><span class="ct-blue-color">int</span> main()</span> {
 	<span id="line2">char ch;</span>
-	<span id="line3">cout << "Enter a Character : "; </span>
+	<span id="line3">cout << "Enter a character : "; </span>
 	<span id="line4">ch = cin.get(); </span> // or cin.get(ch)
 	<span id="line5">cout << "The given input character is : " << ch << endl;</span>
 <span id="end">}</span>
@@ -288,7 +291,7 @@ div, span {
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-xs-3">
 				<div id="consoleId" class="center opacity00" style="margin-top: 3%;">
 					<div class="output-console-title-bar">
 						<span class="title"><b>Console</b></span>
@@ -308,11 +311,11 @@ div, span {
 				<pre id="preTableDiv2" class="creamPreTable2 opacity00">
 #include &lt;<span class="ct-code-b-green">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-code-b-green">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main1"><span class="ct-blue-color">int</span> main()</span> {
 	<span id="preline1">char ch[20];</span>
-	<span id="preline11">cout << "Enter a String : ";</span>
+	<span id="preline11">cout << "Enter a string : ";</span>
 	<span id="preline2">cin.get(ch, 20);</span>
-	<span id="preline3">cout << "The Output is : " << ch << endl;</span>
+	<span id="preline3">cout << "The output is : " << ch << endl;</span>
 <span id="end1">}</span>
 	</pre>
 			</div>
@@ -376,11 +379,11 @@ div, span {
 								<span class="title"><b>Console</b></span>
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
-								<div id="typeChar1" class="opacity00"> Enter a String : <input id='inputChar2' maxlength='20'
+								<div id="typeChar1" class="opacity00"> Enter a string : <input id='inputChar2' maxlength='20'
 										class='input-char-2' tabindex='0' />
 								</div>
 								<br>
-								<span id="printpreLine1" class="opacity00">The Output is : </span>
+								<div id="printpreLine1" class="opacity00">The output is : </div>
 							</div>
 						</div>
 					</div>
@@ -392,11 +395,11 @@ div, span {
 				<pre id="preTableDiv3" class="creamPreTable2 opacity00">
 #include &lt;<span class="ct-code-b-green">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-code-b-green">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main2"><span class="ct-blue-color">int</span> main()</span> {
 	<span id="step1">char ch[20];</span>
-	<span id="step11">cout << "Enter a String : ";</span>
+	<span id="step11">cout << "Enter a string : ";</span>
 	<span id="step2">cin.get(ch, 20, '#');</span>
-	<span id="step3">cout << "The Output is : " << ch << endl;</span>
+	<span id="step3">cout << "The output is : " << ch << endl;</span>
 <span id="end2">}</span>
 	</pre>
 			</div>
@@ -461,11 +464,11 @@ div, span {
 							</div>
 							<div class="output-console-body" id="consoleBodyDiv">
 								<div id="typeChar2" class="opacity00">
-									Enter a String : <input id='inputChar3' maxlength='20'
-										class='input-char-2' tabindex='0' />
+									Enter a string : <input id='inputChar3' maxlength='20'
+										class='input-char-3' tabindex='0' />
 								</div>
 								<br>
-								<span id="printLine1" class="opacity00">The Output is :</span>
+								<div id="printLine1" class="opacity00">The output is :  </div>
 							</div>
 						</div>
 					</div>

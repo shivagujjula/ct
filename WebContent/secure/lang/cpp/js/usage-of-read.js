@@ -32,6 +32,10 @@ function introGuide() {
 			position : 'right',
 			tooltipClass : 'hide'
 		}, {
+			element : '#main',
+			intro : '',
+			position : "right"
+		}, {
 			element : '#preline',
 			intro : '',
 			position : 'right',
@@ -125,6 +129,7 @@ function introGuide() {
 	});
 	
 	introjs.onafterchange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
 		}
@@ -138,7 +143,6 @@ function introGuide() {
 		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
 			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
 		}
-		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'infoDiv':
@@ -170,15 +174,22 @@ function introGuide() {
 				typing('.introjs-tooltiptext', "Let us consider an sample program using"+
 						" <span class='ct-code-b-yellow'>read()</span> function.", function() {
 					$(".introjs-nextbutton").show();
-					$(".introjs-prevbutton").hide();
+				});
+			});
+			break;
+		case 'main':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution."
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'preline':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<ul><li>Here, <span class='ct-code-b-yellow'>ch</span>"+
-						" is the <span class='ct-code-b-yellow'>character array varaiable</span> which"+
-						" contains <span class='ct-code-b-yellow'>20</span> characters.</li>" +
+				typing(".introjs-tooltiptext", "<ul><li>Here, <span class='ct-code-b-yellow'>ch</span> "+
+						"is the <span class='ct-code-b-yellow'>character array varaiable</span> which "+
+						"contains <span class='ct-code-b-yellow'>20</span> characters.</li>" +
 						"<li>Each character occupies <span class='ct-code-b-yellow'>1</span>"+
 						" byte(8 bits) in the memory.</li></ul> ", function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -196,9 +207,9 @@ function introGuide() {
 			break;
 		case 'preline2':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "The <span class='ct-code-b-yellow'>read()</span> "+
-						   "reads <span class='ct-code-b-yellow'>10</span> " +
-						   "characters and places \\0 at the end.";
+				var text = 	"The <span class='ct-code-b-yellow'>read()</span> reads " +
+							"<span class='ct-code-b-yellow'>10</span> characters and " +
+							"places <span class='ct-code-b-yellow'>\\0</span> at the end.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -224,7 +235,8 @@ function introGuide() {
 			break;
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = "This is the end of the <span class='ct-code-b-yellow'>main()</span>function " +
+							"where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -244,8 +256,8 @@ function introGuide() {
 						$("#addressBox").removeClass("opacity00");
 						TweenMax.to("#tableId", 0.2, {opacity: 1, onComplete: function() {
 							$('.introjs-tooltip').removeClass('hide');
-							typing(".introjs-tooltiptext", "20 bytes are allocated to the array"+
-									" <span class='ct-code-b-yellow'>ch</span>.", function() {
+							typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>20</span> bytes are " +
+									"allocated to the array <span class='ct-code-b-yellow'>ch</span>.", function() {
 								$(".introjs-nextbutton, .introjs-prevbutton").show();
 							});
 						}});
@@ -296,7 +308,7 @@ function introGuide() {
 				$("#typeChar").removeClass("opacity00");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass('hide');
-					var text = "Enter any string with minimum <span class='ct-code-b-yellow'>10</span> characters."
+					var text = "Enter any string with minimum <span class='ct-code-b-yellow'>10</span> characters.";
 					typing(".introjs-tooltiptext",text, function() {
 						$("#inputChar").addClass("blinking").focus();
 						checking("#inputChar");
@@ -351,12 +363,14 @@ function introGuide() {
 	introjs.start();
 }
 function checking(selector) {
+	$('.errorText').remove();
 	$(selector).on("click keyup keydown", function(){
-		$('.errorText').remove();
 		if($(selector).val() != "" &&  $(selector).val().length >= 10) {
+			$('.errorText').remove();
 			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		} else {
-			$('.introjs-tooltiptext').html("<span class='errorText'><br/>" + "Enter minimum 10 characters.</span>");
+			$('.introjs-tooltiptext').html("Enter any string with minimum <span class='ct-code-b-yellow'>10</span> characters." +
+					"<span class='errorText'><br/>" + "Enter minimum 10 characters.</span>");
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		}
 	});

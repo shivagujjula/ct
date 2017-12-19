@@ -27,6 +27,7 @@
 	border-radius: 10px;
 	font-size: 15px;
 	padding: 11px 12px;
+	min-height: 141px;
 }
 
 .margin-top-2 {
@@ -105,6 +106,7 @@
 }
 .ct-color-gold {
 	color: gold;
+	font-weight : bold;
 }
 
 .ct-color-spring {
@@ -225,9 +227,9 @@ div, span {
 <pre id="preTableDiv" class="creamPreTab4 opacity00">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-color-red">using</span> <span class="ct-green-color">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main"><span class="ct-blue-color">int</span> main() </span> {
 	<span id="line2">char ch;</span>
-	<span id="line3">cout << "Enter a Character : "; </span>
+	<span id="line3">cout << "Enter a character : "; </span>
 	<span id="line4">ch = cin.get(); </span> 
 	<span id="line5">cout.put(ch);</span>
 <span id="end">}</span>
@@ -266,7 +268,7 @@ div, span {
 	<pre id="preDiv" class="creamPreTab4 visibility-hidden" style="margin-top: 8%">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-color-red">using</span> <span class="ct-green-color">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main1"><span class="ct-blue-color">int</span> main() </span> {
 	<span id="line6" class="">cout.put('<span id="constantId">p</span>');</span>
 	<span id="line7" class="">cout.put(65);</span>
 <span id="end1">}</span>
@@ -278,7 +280,7 @@ div, span {
 					<span class="title"><b>Console</b></span>
 				</div>
 				<div class="output-console-body" id="consoleBodyDiv">
-					<span id="constantChar"></span>
+					<span id="constantChar"></span><br><br>
 					<span id="asciiChar"></span>
 				</div>
 			</div>

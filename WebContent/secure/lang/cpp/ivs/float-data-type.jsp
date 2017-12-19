@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,8 +14,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script  src="/secure/lang/cpp/js-min/fdty.min.js" type="text/javascript"></script>
-<title>DataTypes</title>
+ <script  src="/secure/lang/cpp/js-min/fdty.min.js" type="text/javascript"></script> 
+<title>Float-data-type</title>
 <style type="text/css">
 #rightDecimalExp {
 	z-index: 10000000;
@@ -61,6 +59,10 @@ pre {
 	background-color : green !important;
 }
 
+.user-btn {
+    width: 46px;
+    background-color: #5bc0de;
+}
  .introjs-fixParent {
 	opacity : 1 !important;
 	position : relative !important;
@@ -407,7 +409,10 @@ ul {
 							<div id='expDivStep3' style='height:65px'>
 								<div id='expDivStep2' style='height:45px'>
 									<div id="expDivStep1" style='height: 33px'>
-										<div id="pdiv" style='height: 17px'></div>
+										<div id="pdiv" style="height: 17px">
+											<div id="apndVal"><span id="intVal">23</span><span>.</span><span id="decimalVal">74</span> f</div>
+											<div id=binVal></div>
+										</div>
 									</div>
 								</div>
 							</div>

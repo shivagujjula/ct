@@ -31,7 +31,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 						element :'#line2',
 						intro :'',
 						position:"bottom",
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -43,7 +42,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line4',
 						intro :'',
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -95,9 +93,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$("#addressBox").addClass("opacity00");
 				$("#tableId").addClass("opacity00").css('opacity', '');
 			break;
-			case "memory1" :
-				$("#tableId1").addClass("opacity00").css("opacity", "");
-			break;
 			case "animation" :
 				$("#c1, #c2, #c3, #c4, #c5,#c6").addClass("opacity00");
 			break;
@@ -120,6 +115,24 @@ var readPrintStringUsingGetsPutsReady = function() {
 	});
 	intro.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody" :
@@ -156,23 +169,41 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 		case "line6" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1500);
+				if(intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},500);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}
 			});
 			break;
 		case "line7" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1000);
+				if(intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},500);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}
 			});
 			break;
 		case "line5" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1000);
+				if(intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},500);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}
 			});
 			break;
 		case "addressBox" :
@@ -215,11 +246,18 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			case "memory1" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
+					if(intro._direction == 'forward') {
 					$("#tableId1").fadeTo(1000, 1, function() {
 						setTimeout(function() {
 							intro.nextStep();
 						},1000);
 					});
+					} else {
+						$("#tableId1").css('opacity', '0');
+						setTimeout(function() {
+							intro.previousStep();
+						},1000);
+					}
 				});
 				break;
 			case "animation1" :

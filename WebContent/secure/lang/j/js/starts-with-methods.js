@@ -5,7 +5,7 @@ var prefix;
 var startIndex;
 var introjs;
 
-	function introJsTest(stepNo){
+	function introJsTest() {
 		introjs = introJs();
 		introjs.setOptions({
 			steps: [
@@ -20,7 +20,7 @@ var introjs;
 		  				position: 'right',
 	  				},
 	  				{
-		  				element: '#animationDiv', 
+		  				element: '#animationDiv',
 		  				intro: "",
 		  				position: 'bottom',
 		  				tooltipClass: "hide"
@@ -64,7 +64,7 @@ var introjs;
 	      	  		},
 	      	  		{
 		  				element: '#restart', 
-		  				intro: "Click to Restart",
+		  				intro: "Click to restart.",
 		  				position: 'right',
 	  				}]
 		});
@@ -73,22 +73,23 @@ var introjs;
 	 	introjs.setOption("exitOnOverlayClick","false");
 	 	introjs.setOption("showBullets","false");
 		introjs.setOption('keyboardNavigation', false);
-		introjs.goToStep(stepNo).start();
+		//introjs.goToStep(stepNo).start();
+		introjs.start();
 		$('.introjs-tooltipbuttons').append("<a id='skipButton' style='background-color:orange' class='introjs-button skip-space'>Skip</a>");
 		$("#skipButton").insertBefore(".introjs-nextbutton");
 		$("#space").insertBefore(".introjs-nextbutton");
 		$('.introjs-bullets').hide();
 		$('.introjs-prevbutton').hide();
 		$('.introjs-skipbutton').hide();
+		
 	}
 
 
 
 var startsWithMethods = function() {
-
+	
 	introJsTest(1);
 	$("#skipButton").hide();
-	
 	$('body').keydown(function(e) {
 		if(e.which == 13) {
 			e.preventDefault();
@@ -101,8 +102,8 @@ var startsWithMethods = function() {
 			e.preventDefault();
 		}	
 		if ($(this).text().length > max) {
-			if(e.which == 8 || e.which == 46){
-	   			return true;	
+			if(e.which == 8 || e.which == 46) {
+	   			return true;
 			}
 			e.preventDefault();
 	 	}
@@ -116,7 +117,7 @@ var startsWithMethods = function() {
 	$(".index-length-limit").keydown(function(e) { // conditions to enter text
 		var max = $(this).attr("maxlength");
 			if ($(this).text().length > max || (isNaN($(this).text()))) {
-				if (e.which == 8 || e.which == 46){
+				if (e.which == 8 || e.which == 46) {
 		   			return true;	
 				}
    			e.preventDefault();
@@ -132,11 +133,12 @@ var startsWithMethods = function() {
     	introjs.refresh();
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").removeClass("opacity00");
+        	$('.introjs-nextbutton, .introjs-prevbutton').show();
         	$("#skipButton").removeClass("opacity00");
+        	
         } else {
-        	$(".introjs-nextbutton").addClass("opacity00");
         	$("#skipButton").addClass("opacity00");
+        	$('.introjs-nextbutton, .introjs-prevbutton').hide();
         	$('.errorText').text("please enter text");
         }
     });
@@ -156,6 +158,7 @@ var startsWithMethods = function() {
 		 location.reload();
 	});
 	$("#skipButton").click(function() {
+		
 		if(introjs._currentStep == 3) {
 			introjs.goToStep(6);
 		}
@@ -165,28 +168,58 @@ var startsWithMethods = function() {
 			introjs.goToStep(9);
 		}
 	});
-
-	introjs.onbeforechange(function(targetElement){
+	
+	
+	//introJsTest(0);
+	introjs.onbeforechange(function(targetElement) { 
+		
 		var element = targetElement.id;
-		if(element == "textId") {
+		
+		if (element == "codeIntro" ) {
+			$('.introjs-prevbutton, .skip-space').hide();
+			$("#changeText").attr("contenteditable", false);
+		}
+		
+		if (element == "restart") {
+			$('.introjs-prevbutton').hide();
+			$('#space').empty();
+		}
+		
+		if(element == "textId") { 
+			$('.skip-space').hide();
+			introjs._introItems[introjs._currentStep].intro = "This statement initializes the reference <b>text</b> with "
+					+"<b class='tooltip-text-edit ct-code-b-yellow'>"+ $("#changeText").text() +"</b>. The text can be changed to any value"
+					+".<br><br><span class = 'errorText'></span>";
+			
+			$('#enteredText, #textIndices').empty();
+			$('.temp + span, .temp').remove();
+			$('.introjs-prevbutton').show();
 		$("#changeText").attr("contenteditable", true);
 			setTimeout(function() {
 				charAtEnd(document.getElementById("changeText"));
-			},1000);
+			},500);
 		}
+		
 		if(element == "startsWithNoparameter") {
+			$('.first-temp + span, .first-temp, .check-temp + span, .check-temp, .not-matched').remove();
+			$("#swText").empty();
 			$("#prefix").attr("contenteditable", true);
 			setTimeout(function() {
 				charAtEnd(document.getElementById("prefix"));
-			},1000);
+			},500);
 		}
+		
 		if(element == "startsWithMethod") {
 			$("#startsWithText").attr("contenteditable", true);
 			$("#startsWithIndex").attr("contenteditable", true);
 			setTimeout(function() {
 				charAtEnd(document.getElementById("startsWithText"));
-			},1000);
+			},500);
 		}
+		
+		
+		
+		
 		if(element == "animationDiv") {
 			text = $('#changeText').text();
 			startsWithText = $("#startsWithText").text();
@@ -206,19 +239,25 @@ var startsWithMethods = function() {
 					$('#textIndices').hide();
 					givenText();
 		      		$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#enteredText').append("text = ");
+		      			$('#enteredText').empty().append("text = ");
 						$('#enteredText').fadeIn(500);
 		      		}); 
 					tl.staggerFrom("#executeBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
 					tl.from("#executeBoxes", 0.5, {onComplete: function() {
-						$('#textIndices').append("Indices = ");
+						$('#textIndices').empty().append("Indices = ");
 						$('#textIndices').fadeIn(500);
 					}});
 					tl.staggerFrom("#excecuteIndices", 0.5, {opacity:0, y:-200, delay:0.5});
 					tl.from("#excecuteIndices", 0.5, {delay:0.5, onComplete : function() {
-						$('.introjs-nextbutton').click();
+						//$('.introjs-nextbutton').click();
+						if (introjs._direction == "forward") {
+							introjs.nextStep();
+						} else {
+							introjs.previousStep();
+						}
 					}});
 				}  else if(introjs._currentStep == 4) {
+					$('.check-temp + span, .check-temp, .not-matched').remove();
 					prefix = $("#prefix").text();
 					$("#prefix").attr("contenteditable", false);
 					$('#swText').hide();
@@ -227,22 +266,23 @@ var startsWithMethods = function() {
 					$("#textBoxes").append("<br>");
 					prefixText();
 		      		$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#swText').append("Starts with text = ");
+		      			$('#swText').empty().append("Starts with text = ");
 						$('#swText').fadeIn(800);
 		      		}); 
 					tl.staggerFrom("#swBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
 					tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
-						$("#compareLength").append("Length of the <b>text</b> = <span class = 'length'> "+ text.length + "</span>" );
+						$("#compareLength").empty().append("Length of the <b>text</b> = <span class = 'length'> "+ text.length + "</span>" );
 						$("#compareLength").fadeIn(500);
 					}});
 					tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
-						$("#compareLength2").append("<br>Length of the <b>starts with text</b> = <span class = 'length'> "+ prefix.length + "</span>" );
+						$("#compareLength2").empty().append("<br>Length of the <b>starts with text</b> = <span class = 'length'> "+ prefix.length + "</span>" );
 						$("#compareLength2").fadeIn(500);
 					}});
 					var z = 0;
 					if(prefix.length <= text.length) {
 						tl.from("#", 0.5, {delay: 0.8, onComplete: function() {
 							$(".length").css("border", "1px solid blue");
+							$('#startWithError').empty().removeAttr('style');
 							typing("#startWithError", "<br>Since the length of <b>starts with text</b> does not exceed the length of <b>text</b>, we will compare the characters.");
 						}});
 						tl.from("#", 0.5, {delay: 8.5, onComplete: function() {
@@ -270,12 +310,20 @@ var startsWithMethods = function() {
 									$('.comparingCircle').fadeOut(800);
 									setTimeout(function() {
 										$(".circle").css("border", "none");
-										$('.introjs-nextbutton').click();
+										//$('.introjs-nextbutton').click();
+										if (introjs._direction == "forward") {
+											console.log("first forward step 4");
+											introjs.nextStep();
+										} else {
+											console.log("first backward step 4");
+											introjs.previousStep();
+										}
 									},2200);
 								}
+								
 								if(text.charAt(z) === prefix.charAt(z)) {
 									setTimeout(function() {
-										$("#result").append("<span class='check fa fa-check'></span>&nbsp;");
+										$("#result").append("<span class='check fa fa-check check-temp'></span><span>&nbsp;<span>");
 										++z;
 									},1300);
 								} else {
@@ -287,7 +335,13 @@ var startsWithMethods = function() {
 									setTimeout(function() {
 										$(".circle").css("border", "none");
 										if (z != (prefix.length-1)) {
-											$('.introjs-nextbutton').click();
+											if (introjs._direction == "forward") {
+												console.log('second forward step 4');
+												introjs.nextStep();
+											} else {
+												console.log('second backward step 4');
+												introjs.previousStep();
+											}
 										}
 									},2500);
 								}
@@ -296,6 +350,7 @@ var startsWithMethods = function() {
 					} else {
 						$('.introjs-helperLayer ').one('transitionend', function() {
 							tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
+								$('#startWithError').empty().removeAttr('style');
 								$(".length").css("border", "1px solid blue");
 								typing("#startWithError", "<br>Since the length of the <b>starts with text</b> exceeds the length of the <b>text</b>, <b>text</b> will not start with it.");
 							}});
@@ -341,6 +396,7 @@ var startsWithMethods = function() {
 					var y = 0;
 					if(startIndex <= text.length-1 && startsWithText.length <= text.length) {
 						tl.from("#", 0.5, {delay: 0.8, onComplete: function() {
+							$('#startWithError').empty().removeAttr('style');
 							$(".length").css("border", "1px solid blue");
 							typing("#startWithError", "<br>Since the length of <b>starts with text</b> not exceeds the length of <b>text</b>, we will compare characters.");
 						}});
@@ -354,7 +410,7 @@ var startsWithMethods = function() {
 								$("#textIndex" + x).css("border", "2px solid #A9A9A9");
 								if(x > startIndex) {
 									$('#circleAtText2'+ (x-1)).hide();
-									$('#circleAtSw2'+ (y-1)).hide();
+									$('#circleAtSw2'+ (y-1)).hide(); 
 								}
 								
 								$("#textBox" + x).append("<span style = 'color:green; position: absolute;' class = 'comparingCircle' id = 'circleAtText2" + x + "'></span>")
@@ -395,6 +451,7 @@ var startsWithMethods = function() {
 						$('.introjs-helperLayer ').one('transitionend', function() {
 							tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
 								$(".length").css("border", "1px solid blue");
+								$('#startWithError').empty().removeAttr('style');
 								typing("#startWithError", "<br>Since the length of the <b>starts with text</b> exceeds the length of the <b>text</b>, <b>text</b> can't starts with it.");
 							}});
 							tl.from("#", 0.5, {delay: 8.5, onComplete: function() {
@@ -405,6 +462,7 @@ var startsWithMethods = function() {
 						$('.introjs-helperLayer ').one('transitionend', function() {
 							tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
 								$(".length").css("border", "1px solid blue");
+								$('#startWithError').empty().removeAttr('style');
 								typing("#startWithError", "<br>Length of the <b>starts with text</b> not exceeds the length of the <b>text</b>.<br>But Starts with index <b style = 'color : red'>"+ startIndex + "</b> exceeds the <b>last index of the text</b>, So <b>text</b> can't starts with it.");
 							}});
 							tl.from("#", 0.5, {delay: 13, onComplete: function() {
@@ -425,11 +483,17 @@ var startsWithMethods = function() {
 			
 			if(introjs._currentStep == 5) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					typingOutput("#runEditor1", "startsWith : " + returnVal);
+					if (introjs._direction == "forward") {
+						typingOutput("#runEditor1", "startsWith : " + returnVal);
+						setTimeout(function() {
+				       		introjs.nextStep();
+				       	}, 2000);
+					} else {
+						$('#runEditor1').empty();
+						introjs.previousStep();
+					}
 				});
-				setTimeout(function() {
-		       		$('.introjs-nextbutton').click();
-		       	}, 2800);
+				
 			}
 			if(introjs._currentStep == 8) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
@@ -458,24 +522,27 @@ var startsWithMethods = function() {
 /* ------------------------   functions    -------------------------- */
 var i;
 function givenText() {	
+	$('.temp + span, .temp').remove();
 	for(i = 0; i < text.length; i++) {
-		$("#row1").append($("#textIndices"));
+		/*$("#row1").append($("#textIndices"));
 		$("#row2").append($("#enteredText"));
 		$("#row1").append($("#excecuteIndices"));
 		$("#row2").append($("#executeBoxes")); 
-		
-		$("#excecuteIndices").append("<span id = 'textIndex"+i+"' class = 'circle'><b class='indexLetter'>" + i + "</b></span>&nbsp;");
-		$("#executeBoxes").append("<span id = 'textBox"+i+"' class='box green'><b class='letter'>" + text.charAt(i) + "</b></span>&nbsp;");						
+		*/
+		$("#excecuteIndices").append("<span id = 'textIndex"+i+"' class = 'circle temp'><b class='indexLetter'>" + i + "</b></span><span>&nbsp;</span>");
+		$("#executeBoxes").append("<span id = 'textBox"+i+"' class='box green temp'><b class='letter'>" + text.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
-function prefixText() {	
+function prefixText() {
+	$('.first-temp + span, .first-temp').remove();
 	for(i = 0; i < prefix.length; i++) {
-		$("#swBoxes").append("<span id = 'swBox"+i+"' class='box green'><b class='letter'>" + prefix.charAt(i) + "</b></span>&nbsp;");						
+		$("#swBoxes").append("<span id = 'swBox"+i+"' class='box green first-temp'><b class='letter'>" + prefix.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
 function startWithText() {	
+	$('.letter-temp + span, .letter-temp').remove();
 	for(i = 0; i < startsWithText.length; i++) {
-		$("#swBoxes").append("<span id = 'swBox"+i+"' class='box green'><b class='letter'>" + startsWithText.charAt(i) + "</b></span>&nbsp;");						
+		$("#swBoxes").append("<span id = 'swBox"+i+"' class='box green letter-temp'><b class='letter'>" + startsWithText.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
 function typing(id, content) {

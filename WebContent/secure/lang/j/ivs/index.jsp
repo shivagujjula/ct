@@ -359,10 +359,10 @@
 						<td><a class='btn btn-xs btn-success'
 								href="javascript:opendialog('String startsWith method', '/secure/lang/j/string/starts-with-methods.jsp', 1, 1)"><i
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String startsWith method</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>18-12-17</td>
 					</tr>
 					<tr>
 						<td>5</td>

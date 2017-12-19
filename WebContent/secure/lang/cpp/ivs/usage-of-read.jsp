@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
@@ -17,7 +18,6 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/uor.min.js'></script>
-<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <title>usage of read()</title>
 </head>
@@ -41,7 +41,10 @@
 #restart {
     margin-top: 13%;
 } 
-
+.ct-green-color {
+	color: green;
+	font-weight : bold;
+}
 .margin-top-2 {
 	margin-top: 2%;
 }
@@ -235,7 +238,7 @@ div, span {
 	<pre id="preTableDiv" class="creamPreTable2 opacity00">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-green-color">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main"><span class="ct-blue-color">int</span> main()</span> {
 	<span id="preline">char ch[20];</span>
 	<span id="preline1">cout << "Enter a line of text with minimum 10 characters : ";</span>
 	<span id="preline2">cin.read(ch, 10);</span>

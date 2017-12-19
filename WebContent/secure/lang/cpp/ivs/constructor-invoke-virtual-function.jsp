@@ -155,7 +155,7 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="col-xs-12 text-center marginTop20">
-	<div class="label label-default ct-demo-heading" id="heading">Virtual Functions</div>
+	<div class="label label-default ct-demo-heading" id="heading">Constructors and Virtual Functions</div>
 </div>
 
 <div class="col-xs-12 marginTop20">

@@ -5,22 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-  		<script src="/js/jquery-latest.js"></script>
-   		<script src="/js/jquery-ui-latest.js"></script>
-		<link rel="stylesheet" href="/css/jquery-ui.css">
-		<link rel="stylesheet" href="/css/font-awesome-animation.min.css">
-		<link rel="stylesheet" href="/css/font-awesome.min.css">
-  		<script src="/js/bootstrap.min.js"></script>
-  		  
-  		       
-   		<script src="/js/intro.js"></script>
-   		<link rel="stylesheet" href="/css/introjs.css">
-   		<link rel="stylesheet" href="/css/introjs-ct.css">
-   		<script src="/js/gs/TweenMax.min.js"></script>
-   		<script src="/js/gs/TweenLite.min.js"></script>
-   		<script src="/js/typewriting.min.js"></script>
-   		<script src="../js-min/swm.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/font-awesome-animation.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/introjs.css">
+<link rel="stylesheet" href="/css/introjs-ct.css">
+		       
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/jquery-ui-latest.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/intro.js"></script>
+<script src="/js/gs/TweenMax.min.js"></script>
+<script src="/js/gs/TweenLite.min.js"></script>
+<script src="/js/typewriting.min.js"></script>
+<script src="/secure/lang/j/js/starts-with-methods.js"></script>
 
 <title>Insert title here</title> 
 
@@ -97,7 +96,7 @@ pre {
 .letter {
 	color:white;
 }
-.green{
+.green {
   	background-color: #6fb936;
 }
 .result-font{
@@ -135,7 +134,9 @@ pre {
 }
 .errorText {
 	color: red;
+	font-weight: bold;
 }
+
 #restart, .exit-main {
 	opacity: 0;
 }
@@ -148,6 +149,10 @@ pre {
 }
 .ct-code-pink {
 	color: #ed138e;
+}
+
+.row {
+	margin-right: 0px !important;
 }
 
 </style>
@@ -191,7 +196,7 @@ pre {
 		
 			</div>
 	</div>
-	<div id = 'restartDiv' class = 'col-xs-offset-5'> <button id ='restart' type="button" class="btn btn-success">Restart</button> </div>
+	<div id = 'restartDiv' class = 'col-xs-offset-5'> <button id ='restart' type="button" class="btn btn-warning">Restart</button> </div>
 	</div>
 		
 	<div id = "textBoxes" class="row col-xs-offset-0">	

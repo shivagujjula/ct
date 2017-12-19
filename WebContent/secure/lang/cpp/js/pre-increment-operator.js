@@ -89,22 +89,24 @@ var preIncrementOperatorReady = function() {
 				$('.animation-div2').addClass("opacity00").css("opacity", "");
 				$('.animation-div3').addClass("opacity00").css("opacity", "");
 			} else if(introcode._currentStep == 5) {
-				$('#xCupValue').text($('#xvalue').text());
-				$('#yCup').addClass('visibility-hidden');
-				$('.animation-div5').addClass('opacity00').css('opacity', "");
-				$('#yCupValue').text("");
+				$(".introjs-duplicate-nextbutton").remove();
+				$("#xCupValue").text($("#xvalue").text());
+				$("#yCup").addClass("visibility-hidden");
+				$("#yCupValue").text("");
+				$('.animation-div5').css({"opacity":0});
+				$('.introjs-tooltip').removeClass('hide');
 			} else if(introcode._currentStep == 6) {
 				$('#xCupValue').text($('#xvalue').text());
 			}
 		break;
-		case "xCup" :
+		case "xVariableDeclararionLine":
 			$("#xCup").addClass("visibility-hidden");
-			$("#xCupValue").text("");
+			$("#xvalue").attr("contenteditable", "true");
+			$('.introjs-tooltip').removeClass('hide');
 		break;
 		case "expressionStatement":
-			$('#yCup').addClass('visibility-hidden');
-			$('.animation-div5').addClass('opacity00').css('opacity', "");
-			$('#yCupValue').text("");
+			$("#yVariableDeclararionLine").addClass("z-index1000000");
+			$("#xCupValue").text($("#xvalue").text());
 		break;
 		case "outputDiv":
 			if (introcode._currentStep == 10) {
@@ -112,16 +114,32 @@ var preIncrementOperatorReady = function() {
 			} 
 			
 		break;
-		case "singleStatement"  :
-			if (introcode._currentStep == 11) {
-				$("#xCupValue").text("15");
-				$(".animation-div6").addClass("opacity00").css("opacity", "");
-			} 
+		case "singleStatement":
+			$('.animation-div6').css({"opacity":0})
+			$("#xCupValue").text(parseInt($("#xvalue").text()) + (1));
+			$(".introjs-duplicate-nextbutton").remove();
 		break;
 		}
 	});
 	introcode.onafterchange(function(targetElement) {
-	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introcode._introItems[introcode._currentStep]["tooltipClass"] == "hide") {
+			introcode._introItems[introcode._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introcode._introItems[introcode._currentStep]["isCompleted"]) {
+			if (introcode._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introcode._introItems[introcode._currentStep]["animation"] != "repeat") {
+			introcode._introItems[introcode._currentStep]["isCompleted"] = true;
+		}
 	var elementId = targetElement.id;
 		switch (elementId) {
 			case "program" :
@@ -191,23 +209,31 @@ var preIncrementOperatorReady = function() {
 				});
 			break;
 			case "xCup":
-				$("#xvalue").attr("contenteditable", "false");
-				$("#xVariableDeclararionLine").addClass("z-index1000000");
-				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
-					$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
-						$("#xCup").removeClass("visibility-hidden");
-						$("#xCupValue").text($("#xvalue").text());
-						$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
-						fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {
-						   $("#xCupValue").removeClass("z-index100000000");
-						   $("#xVariableDeclararionLine").removeClass("z-index1000000");
-						   setTimeout(function(){
-							   introcode.nextStep();
-						   },800);
-						});
-					});							
-				});
+				if(introcode._direction == 'forward') {
+					$("#xvalue").attr("contenteditable", "false");
+					$("#xVariableDeclararionLine").addClass("z-index1000000");
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$("#xVariable").effect( "highlight",{color: '#ffff33'}, 500);
+						$("#xVariable").effect( "transfer", { to: $("#xCup"), className: "ui-effects-transfer" }, 1000 , function(){
+							$("#xCup").removeClass("visibility-hidden");
+							$("#xCupValue").text($("#xvalue").text());
+							$("#xCupValue").addClass("z-index100000000").removeClass("visibility-hidden");
+							fromEffectWithTweenMax('#xvalue', '#xCupValue', function() {
+							   $("#xCupValue").removeClass("z-index100000000");
+							   $("#xVariableDeclararionLine").removeClass("z-index1000000");
+							   setTimeout(function(){
+								   introcode.nextStep();
+							   },800);
+							});
+						});							
+					});
+				} else {
+					$("#xCup").addClass("visibility-hidden");
+					$("#xCupValue").text("");
+					setTimeout(function(){
+						   introcode.previousStep();
+					   },800);
+				}
 			break;
 			case "expressionStatement":
 				$("#yVariableDeclararionLine").addClass("z-index1000000");
@@ -227,36 +253,88 @@ var preIncrementOperatorReady = function() {
 					});							
 				});
 			break;
-			case "sopLine" + sopLineCount:
+			case "sopLine1":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					setTimeout(function(){
-						introcode.nextStep();
-						sopLineCount++;
-					},1000);
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				});
+				break;
+			case "sopLine3":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				});
+				break;
+			case "sopLine2":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
 				});
 				break;
 			case "outputDiv":
 				$("#xCup").removeClass("z-index1000000");
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (introcode._currentStep == 8) {
-						$(".output").append('<span> x value : '+ $("#xCupValue").text() + '</span><br>');
+						if(introcode._direction  == 'forward') {
+						$(".output").append('<span id="xValue"> x value : '+ $("#xCupValue").text() + '</span><br>');
 						setTimeout(function(){
 							introcode.nextStep();
 						},1000);
+					} else {
+						$('#xValue').remove();
+						$('.output').empty();
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
 					} else if (introcode._currentStep == 10) {
+						if(introcode._direction  == 'forward') {
 						$(".output").append('<span id="yValue"> y value : '+ $("#yCupValue").text() + '</span>');
 							setTimeout(function(){
 								introcode.nextStep();
 							},1000);
 					} else {
-						$(".output").append('<br><span> x value : '+ $("#xCupValue").text() + '</span>');
+						$('#yValue').remove();
 						setTimeout(function(){
-							introcode.nextStep();
+							introcode.previousStep();
 						},1000);
 					}
-					
+				} else {
+					if(introcode._direction == 'forward') {
+					$(".output").append('<br><span id="xValue1"> x value : '+ $("#xCupValue").text() + '</span>');
+					setTimeout(function(){
+						introcode.nextStep();
+					},1000);
+					} else {
+						$('#xValue1').remove();
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				}
 				});
-				break;
+				break;;
 			case "singleStatement"  :
 				$(".introjs-duplicate-nextbutton").remove();
 				$('.introjs-helperLayer').one('transitionend', function() {
@@ -365,9 +443,7 @@ function preincrementOperatorAnimation() {
 							fromEffectWithTweenMax('#xCupValue', '#yCupValue', function() {
 								$(".y-cup").removeClass("blinking");
 								$("#yCupValue").removeClass("z-index100000000");
-								setTimeout(function() {
-									introcode.nextStep();
-								},1200);
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});

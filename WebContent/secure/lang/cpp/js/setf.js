@@ -32,7 +32,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 						element :'#line2',
 						intro :'',
 						position:"bottom",
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -47,7 +46,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line5',
 						intro :'',
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -151,6 +149,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 			case "memory1" :
 				$("#tableId1").addClass("opacity00").css("opacity", "");
 			break;
+			case "animation3" :
+				
+			break;
 		}
 		break;
 		case "line2" :
@@ -175,6 +176,23 @@ var readPrintStringUsingGetsPutsReady = function() {
 	});
 	intro.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody" :
@@ -240,9 +258,15 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case "line9" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					setTimeout(function() {
-						intro.nextStep();
-					},1000);
+					if(intro._direction == 'forward') {
+						setTimeout(function() {
+							intro.nextStep();
+						},500);
+					} else {
+						setTimeout(function() {
+							intro.previousStep();
+						},500);
+					}
 					
 				});
 				break;
@@ -266,9 +290,15 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 		case "line12" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1000);
+				if(intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},500);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}
 			});
 			break;
 		case "line13" :
@@ -281,9 +311,15 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 		case "line10" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1000);		
+				if(intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},500);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},500);
+				}		
 			});
 			break;
 		case "line14" :
@@ -298,7 +334,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 		case "line15" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<li>Close the main() tag</li> ", 10, "",function() {
+				typing(".introjs-tooltiptext", "This is the end of the <y>main()</y> function " +
+						"where the program execution ends.", 10, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -406,15 +443,23 @@ var readPrintStringUsingGetsPutsReady = function() {
 			case "memory2" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#tableId2").fadeTo(1000, 1, function() {
-						setTimeout(function() {
-							intro.nextStep();
-						},1000);
+						if(intro._direction == 'forward') {
+							setTimeout(function() {
+								intro.nextStep();
+							},500);
+						} else {
+							$("#tableId2").css('opacity', '0');
+							setTimeout(function() {
+								intro.previousStep();
+							},500);
+						}
 					});
 				});
 				break;
 			case "animation2" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					intro.refresh();
+					if(intro._direction == 'forward') {
 					for (var i = 1; i < 3; i++) {
 						var l = $("#val" + i).offset();
 						$("#e" + i).removeClass("opacity00").offset({
@@ -427,6 +472,11 @@ var readPrintStringUsingGetsPutsReady = function() {
 					setTimeout(function() {
 						intro.nextStep();
 					},2000);
+					} else {
+						setTimeout(function() {
+							intro.previousStep();
+						},1500);
+					}
 				});
 			break;
 		case "animation3" :
@@ -477,7 +527,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 																					typing(".introjs-tooltiptext", "This is the output for"
 																							+" <span class='ct-code-b-yellow'>decimal value</span>"
 																							+" change to <span class='ct-code-b-yellow'>octal value</span> .", 10, "",function() {
-																						$('.introjs-nextbutton, .introjs-prevbutton').show();
+																						$('.introjs-nextbutton').show();
 																					});
 																				});
 																			});

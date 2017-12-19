@@ -1,4 +1,3 @@
-
 var cell = 32;
 	var dataStep;
 	var rightVal, leftVal;
@@ -9,6 +8,9 @@ var cell = 32;
 	var rightDec;
 	var floatVal = "23.74";
 	var fadeStep = 1;
+	var step;
+	var flag = false;
+	
 var floatDataType = function() {
 	dataStep = 1;
 	divisionStep = 1;
@@ -27,69 +29,140 @@ var floatDataType = function() {
 					{
 						element : "#sign",
 						intro: "",
+						tooltipClass: "hide",
 						position: "bottom"
 					},
 					{
 						element : "#eightBits",
 						intro: "",
+						tooltipClass: "hide",
 						position: "bottom"
 					},
 					{
 						element : "#mantissa",
 						intro: "",
+						tooltipClass: "hide",
 						position: "bottom"
 					},
 					{
 						element : '.discription-border',
 						intro	: "",
-						position : 'bottom'
+						position : 'bottom',
+						tooltipClass: "hide"
 					},
 					{
 						element : "#exp",
 						intro: "",
-						position: "top"
+						position: "top",
 					}, 
 					{
 						element : '#expDivStep1',
 						intro	: "",
 						position : 'bottom'
-					}, 
+					}, {
+						element : "#intVal",
+						intro	: "",
+						position : "bottom"
+					},{
+						element : "#decimalVal",
+						intro	: "",
+						position : "bottom"
+					},
 					{
 						element : '#exp',//expDivStep2
 						intro	: "",
 						position : 'right'
-					},
-					{
-						element : '#exp',//#expDivStep3
+					},{
+						element : "#binVal",
 						intro	: "",
-						position : 'right'
+						position:"right"
 					},
-					{
-						element : '#exp',//expDivStep4
-						intro	: "",
-						position : 'right'
-					},
-					{
-						element : '#exp',//expDivStep4
-						intro	: "",
-						position : 'right'
-					},
-					{
-						element : '#exp',//expDivStep4
-						intro	: "",
-						position : 'right'
-					},
-					{
-						element : '#restartBtn',
-						intro : '',
-						position : 'right',
-						tooltipClass: 'hidden'
-					}
 			]
-		})
-		
+		});
+		intro.onbeforechange(function(targetElement) {
+			var element = targetElement.id;
+			switch(element) {
+			case "end1":
+				break;
+			}
+			if (intro._currentStep == 1) {
+					if(intro._direction == "backward") {
+						TweenMax.to($("#blocks > div").eq(0), 0, {opacity: 0});
+						TweenMax.to($("#blocks > div").eq(1), 0, {opacity: 0});
+						TweenMax.to($("#blocks > div").eq(2), 0, {opacity: 0});
+					} 
+			}
+			if (intro._currentStep == 2) {
+				if(intro._direction == "backward") {
+						TweenMax.to($("#blocks > div").eq(1), 0, {opacity: 0});
+						TweenMax.to($("#blocks > div").eq(2), 0, {opacity: 0});
+					} 
+			}
+			if (intro._currentStep == 3) {
+				if(intro._direction == "backward") {
+						TweenMax.to($("#blocks > div").eq(2), 0, {opacity: 0});
+						$("#blocks").next().fadeOut("fast");
+						$("#exp").hide();
+					} 
+					
+				
+			}
+			if (intro._currentStep == 4) {
+				if(intro._direction == "backward") {
+						$("#blocks").next().fadeOut("fast");
+						$("#exp").hide();
+					} 
+			}
+			if (intro._currentStep == 5) {
+				if(intro._direction == "backward") {
+						dataStep = 1; 
+					} 
+			}
+			if (intro._currentStep == 6) {
+				$("#rightDecimalExp").empty().removeAttr('style');
+				intro._introItems.splice()
+				if(intro._direction == "backward") {
+						dataStep = 2;
+						divisionStep = 1;
+						$('#rightDecimalExp').css('opacity','0');
+						$(".panel-Div").hide();
+						$(".panel-body ").empty();
+					} 
+			}
+			if (intro._currentStep == 7) {
+					if(intro._direction == "backward") {
+						dataStep = 3;
+						divisionStep = 1;
+				for (var i = 0; i < 3; i++) {
+					$("#binVal1").next().remove();
+				}
+				$("#binVal1,#fracDesc, #label2, #fracSteps1, #fracSteps2, #fracSteps3, #fracSteps4").remove();
+					}
+			}
+			if (intro._currentStep == 8) {
+					if(intro._direction == "backward") {
+						dataStep = 4;
+						divisionStep = 10;
+						for (var i = 0; i < 3; i++) {
+							$("#binVal1").next().remove();
+						}
+						$("#binVal").removeAttr('style').empty()
+						$("#binVal1,#fracDesc, #label2, #fracSteps1, #fracSteps2, #fracSteps3, #fracSteps4").remove();
+					}
+			}
+			if (intro._currentStep == 9) {
+					if(intro._direction == "backward") {
+						dataStep = 5;
+						divisionStep = 14;
+						$("#binVal").removeAttr('style').empty()
+					}
+			}
+		if (intro._currentStep == 10) {
+						dataStep = 6;
+						divisionStep = 14;
+			}
+		});
 		intro.onafterchange(function(targetElement) {
-			
 			if (intro._currentStep == 0) {
 					$("#discription").fadeIn("slow", function() {
 						setTimeout(function() {
@@ -99,12 +172,108 @@ var floatDataType = function() {
 			} 
 			
 			if (intro._currentStep == 1) {
+				$(".introjs-tooltip").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					TweenMax.to($("#blocks > div").eq(0), 1, {opacity: 1, onComplete: function() {
+						fadeStep = 1;
 						fadingClick(fadeStep);
 						++fadeStep;
-					}})
-				})
+					}});
+				});
+			}
+
+			if (intro._currentStep == 2) {
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if(intro._direction == "backward") {
+						fadeStep = 2;
+						fadingClick(fadeStep);
+						++fadeStep;
+					} 
+					
+				});
+			}
+			if (intro._currentStep == 3) {
+				$(".nextBtn").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if(intro._direction == "backward") {
+						fadeStep = 3;
+						fadingClick(fadeStep);
+						++fadeStep;
+					} 
+					
+				});
+			}
+			if (intro._currentStep == 4) {
+				$(".nextBtn").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if(intro._direction == "backward") {
+						fadeStep = 4;
+						fadingClick(fadeStep);
+						++fadeStep;
+					} 
+					
+				});
+			}
+			if (intro._currentStep == 5) {
+				$(".nextBtn, .introjs-prevbutton").hide();
+				$("#pdiv").hide();
+				$(".introjs-tooltip").addClass("hide");
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (intro._direction == "backward") {
+					nextClick(dataStep);
+					++dataStep;
+					}
+				});
+			}
+			if (intro._currentStep == 6) {
+				$(".nextBtn, .introjs-prevbutton").hide();
+				$("#pdiv").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (intro._direction == "backward") {
+					nextClick(dataStep);
+					++dataStep;
+					}
+				});
+			}
+			if (intro._currentStep == 7) {
+				$(".nextBtn, .introjs-prevbutton").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					$('.panel').hide();
+					$('.heading-height').empty();
+					if (intro._direction == "backward") {
+						$('#rightDecimalExp').empty().hide();
+					nextClick(dataStep);
+					++dataStep;
+					}
+				});
+			}
+			if (intro._currentStep == 8) {
+				$(".nextBtn, .introjs-prevbutton").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (intro._direction == "backward") {
+						nextClick(dataStep);
+					++dataStep;
+					}
+				});
+			}
+			if (intro._currentStep == 9) {
+				$(".nextBtn, .introjs-prevbutton").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (intro._direction == "backward") {
+						nextClick(dataStep);
+					++dataStep;
+					}
+				});
+			}
+			if (intro._currentStep == 10) {
+				$(".nextBtn, .introjs-prevbutton").hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					if (intro._direction == "forward" && flag == true) {
+						flag = false;
+						nextClick(dataStep);
+					++dataStep;
+					}
+				});
 			}
 		});	
 		intro.start();
@@ -118,6 +287,7 @@ var floatDataType = function() {
 		$('.introjs-tooltipbuttons').append("<a  class='introjs-button fadeBtn'>Next&#8594;</a>");
 		$("#divisionBtn").hide();
 		$('.nextBtn, .fadeBtn, .panel, #exp').hide();
+		
 		$(".nextBtn").click(function() {
 				intro.nextStep();
 				intro.refresh();
@@ -138,22 +308,28 @@ var floatDataType = function() {
 			});
 			addSpan();
 			$(".introjs-tooltip").hide();
+			
 }
 
-
 function fadingClick(fadeStep) {
-	
+	$(".introjs-tooltip").hide();
 	if (fadeStep == 1) {
-		$(".introjs-tooltip").show();
+		$(".introjs-prevbutton").hide();
+		$(".fadeBtn").hide();
+		$(".introjs-tooltip").removeClass("hide");
 			var text = "<span class='ct-code-b-yellow'>Sign bit</span> represents the sign of a given value."
 						+"<ul><li>0 -- positive number</li><li>1 -- negative number</li></ul>";
-				typing(".introjs-tooltiptext", text, function() {
+			$(".introjs-tooltip").show();	
+			typing(".introjs-tooltiptext", text, function() {
 					$(".fadeBtn").show();
+					
 				})
+		
 	}
 	
 	if (fadeStep == 2) {
 		$(".introjs-tooltip").hide();
+		$(".introjs-prevbutton").hide()
 		$(".fadeBtn").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				TweenMax.to($("#blocks > div").eq(1), 1, {opacity: 1, onComplete: function() {
@@ -162,8 +338,10 @@ function fadingClick(fadeStep) {
 								+" <span class='ct-code-b-yellow'>radix</span> or decimal point to number"
 								+" of positions and adding with <span class='ct-code-b-yellow'>127</span>."
 								+" It occupies <span class='ct-code-b-yellow'>8</span> bits.";
+					$(".introjs-tooltip").removeClass("hide");
 					typing(".introjs-tooltiptext", text, function() {
 						$(".fadeBtn").show();
+						$(".introjs-prevbutton").show();
 					})
 				}})
 			})
@@ -171,29 +349,37 @@ function fadingClick(fadeStep) {
 	
 	if (fadeStep == 3) {
 		$(".fadeBtn").hide();
+		$(".introjs-prevbutton").hide()
 		$(".introjs-tooltip").hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				TweenMax.to($("#blocks > div").eq(2), 1, {opacity: 1, onComplete: function() {
 					$(".introjs-tooltip").show();	
 					var text = "<span class='ct-code-b-yellow'>Mantissa</span> is the right side of radix or decimal point"
 								+" after exponent is achieved. It occupies <span class='ct-code-b-yellow'>23</span> bits.";
+					$(".introjs-tooltip").removeClass("hide");
 					typing(".introjs-tooltiptext", text, function() {
 						$(".fadeBtn").show();
-					})
+						$(".introjs-prevbutton").show();
+					});
 				}})
 			})
 	}	
 	
 	if (fadeStep == 4) {
 		$(".fadeBtn").hide();
+		$(".introjs-prevbutton").hide();
 		$(".introjs-tooltip").hide();
 		$('.introjs-helperLayer ').one('transitionend', function() {
 			$("#blocks").next().fadeIn("slow", function() {
 				$(".introjs-tooltip").show()
 				var text = "The float variable is converted to <span class='ct-code-b-yellow'>binary</span> and stored in"
 							+" the memory. Click on the next button.";
+				$(".introjs-tooltip").removeClass("hide");
+				dataStep = 1;
 				typing(".introjs-tooltiptext", text, function() {
 					$(".nextBtn, #exp").show();
+					$(".introjs-prevbutton").show();
+					
 				})
 			})
 		})
@@ -349,7 +535,7 @@ if (divisionStep == 11) {
 	var mulFraction = rightDec.toString().split(".")[1];
 	rightDec = '0.' + mulFraction;
 	$('#rightDecimalExp').append('<span id=cpyMulFraction style=position:relative;display:block;opacity:0; >0.'+mulFraction+'</span>');
-	valOffSet("#mulFraction0", "#cpyMulFraction");
+	//valOffSet("#mulFraction0", "#cpyMulFraction");
 	TweenMax.to("#cpyMulFraction",1,{opacity:1, top:0, left:0, onComplete: function() {
 		$(".heading-height").append("<li id=fracSteps3></li>");
 		typing('#one', '<li>Multiply the <span class="ct-code-b-yellow">'+rightDec +'</span> with <span class="ct-code-b-yellow">2</span>.</li>', function() {
@@ -363,7 +549,6 @@ if (divisionStep == 11) {
 }
 
 if (divisionStep == 12) {
-	
 	$("#divisionBtn").hide();
 	rightDec = rightDec * 2;
 	$('#cpyMulFraction').append('<span id="mulTwo" style=" display:inline-block;opacity:0;">&nbsp;x 2 =</span>');
@@ -371,7 +556,7 @@ if (divisionStep == 12) {
 		$('#mulTwo').append('<span id=fracBinary1>'+ rightDec.toString().split(".")[0]+'</span>.<span id=mulFraction1>'+rightDec.toString().split(".")[1]+'</span>');
 		$("#FractionalBinaryValue").append("<span id=fracBinSpan1></span>");
 		$("#fracBinSpan1").insertBefore("#fracBinSpan0")
-		valOffSet("#fracBinary1", "#fracBinSpan1");
+	//	valOffSet("#fracBinary1", "#fracBinSpan1");
 		TweenMax.to("#fracBinSpan1",0.5,{delay:0.5,top:0,left:0,onComplete: function() {
 			$("#FractionalBinaryValue > span").css("padding","0px 3px")
 			$("#fracBinSpan1").text(rightDec.toString().split(".")[0]);
@@ -433,6 +618,20 @@ if (divisionStep == 16) {
 				}
 				
 				$("#divisionBtn").show();
+				$(".introjs-tooltipbuttons").prepend("<a class='introjs-button user-btn'>&#8592; Back</a>");
+				$(".user-btn").click(function() {
+						dataStep = 6;
+						divisionStep = 14;
+						flag = true;
+						$(".user-btn").remove();
+						$("#afterRadixShift").next().remove()
+						$("#afterRadixShift").remove()
+						$("#divisionBtn").hide();
+							$("#finalBin1").remove();
+							$(".span-final").removeAttr('style').remove();
+						intro._introItems.splice(11);
+						intro.goToStep(11);
+				});
 				$("#restartBtn").click(function() {
 					location.reload(true);
 				})	
@@ -447,84 +646,55 @@ if (divisionStep == 17) {
 }
 
 function nextClick(dataStep) {
+	$(".user-btn").remove();
+	$(".introjs-prevbutton").hide();
+	intro.refresh();
 	if (dataStep == 1) {
-		$(".nextBtn").hide();
+		$(".introjs-tooltip").hide();
+		$(".nextBtn, .introjs-prevbutton").hide();
+		$(".introjs-tooltip").addClass("hide");
 		setTimeout(function() {
+			$(".introjs-tooltip").removeClass("hide");
+			$(".introjs-tooltip").show();
 			typing('.introjs-tooltiptext', "Consider a float <span class='ct-code-b-yellow'>23.74</span> in which"
 					+" <span class='ct-code-b-yellow'>23</span> is an integer and <span class='ct-code-b-yellow'>.74</span>"
 					+" is a fractional part.", function() {
 						$('.introjs-tooltiptext').removeClass('typingCursor');
-						$('.nextBtn').show();
+						$('.nextBtn, .introjs-prevbutton').show();
 			}); 
 		},1300);
 	}
 	
 	if (dataStep == 2) {
-		$(".nextBtn").hide();
+		$(".introjs-tooltip").hide();
+		$(".nextBtn, .introjs-prevbutton").hide();
+		$(".introjs-tooltip").addClass("hide");
 		beforeDecimal = floatVal;
 		leftVal = beforeDecimal.split('.')[0];
 		rightVal = beforeDecimal.split('.')[1];
 		leftBinary = (parseFloat(leftVal)).toString(2);
 		rightBinary = (parseFloat("0."+rightVal)).toString(2).split('.')[1];
-		$('#pdiv').append("<div id=apndVal><span id='intVal'>"+leftVal+"</span><span>.</span><span id='decimalVal'>"+rightVal+"</span> f</div>");
-		
+		$("#pdiv").show();
+	//	$('#pdiv').append("<div id=apndVal><span id='intVal'>"+leftVal+"</span><span>.</span><span id='decimalVal'>"+rightVal+"</span> f</div>");
+		$(".introjs-tooltip").removeClass("hide");
 		setTimeout(function(){
+			$(".introjs-tooltip").removeClass("hide");
+			$(".introjs-tooltip").show();
 			typing('.introjs-tooltiptext', "Since the value holds the float data type it occupies the <span class='ct-code-b-yellow'>4</span>"
 					+" bytes of memory i.e <span class='ct-code-b-yellow'>32</span> bits."
 					+"<ul id=bits></ul>", function(){
 					$('.introjs-tooltiptext').removeClass('typingCursor');
-					$('.nextBtn').show();
-					//$('.nextBtn').show();
-					  /* TweenMax.fromTo("#span0",1,{top:-90},{top:0,opacity:1,onComplete:function() {
-						 typing("#bits","<li><span id=signColor><b>S</b></span> - The sign of a binary floating-point number"
-								 +"(given float is -ve or +ve) is represented by a single bit. A <span class='ct-code-b-yellow'>1</span> "
-								 +"bit indicates a negative number, and a <span class='ct-code-b-yellow'>0</span> bit indicates"
-								 +" a positive number.</li><span id=bits1></span>",function() {
-							TweenMax.fromTo("#span1,#span2,#span3,#span4,#span5,#span6,#span7,#span8",1,{top: -90},{top:0,opacity:1,onComplete:function() {
-								typing("#bits1","<li><span id=exponentColor><b>E</b></span> - The exponent of the scientific notation it is achieved"
-										+" by shifting the radix point to number of positions and adding with <span class='ct-code-b-yellow'>127</span>."
-										+"</li><span id=bits2></span>",function(){
-									TweenMax.fromTo("#span9,#span10,#span11,#span12,#span13,#span14,#span15",1,{top:-90},{top:0,opacity:1,onComplete:function(){
-										typing("#bits2","<li><span id=mantisaColor><b>M</b></span> - Before a floating-point binary number can be"
-												+" stored correctly, its mantissa(M) must be normalized. As exponent part is achieved the"
-												+" right side of radix point is mantissa(M).</li>",function() {
-											TweenMax.fromTo('#span16, #span17, #span18, #span19, #span20, #span21, #span22, #span23',1,{top:-90},{top:0,opacity:1,onComplete:function(){
-												TweenMax.fromTo('#span24, #span25, #span26, #span27, #span28, #span29, #span30, #span31',1,{top:-90},{top:0,opacity:1,onComplete:function() {
-													$('.nextBtn').show();
-												}});
-											}});
-										});
-									}});
-								});
-							}})
-							}) 
-						}})   */
-				
-				//$('.nextBtn').show();
+					$('.nextBtn,.introjs-prevbutton').show();
 			}); 
 			},1300); 
-	
-		var options =  {
-				element : "#intVal",
-				intro	: "",
-				position : "bottom"
-			}
-		intro.insertOption(intro._currentStep + 1, options);
-	
-		 var options =  {
-				element : "#decimalVal",
-				intro	: "",
-				position : "bottom",
-			}
-		intro.insertOption(intro._currentStep + 2, options); 
-		 
 		}
 
 	if (dataStep == 3) {
+		$(".introjs-tooltip").hide();
 		$('#rightDecimalExp').css('opacity','1');
 		$(".nextBtn").hide(); // uncomment
 		setTimeout(function() {
-			
+			$(".introjs-tooltip").show();	
 		typing('.introjs-tooltiptext', "To convert the decimal to binary the steps to be followed,<ul id=decSteps></ul>",function(){
 			$('.introjs-tooltiptext').removeClass('typingCursor');
 			$('#rightDecimalExp').show();
@@ -554,7 +724,7 @@ function nextClick(dataStep) {
 				typing('.introjs-tooltiptext',"To convert the fractional to binary the " 
 						+"steps to be followed,<ul id=one></ul>", function() {
 							$('#rightDecimalExp').show();
-							$('#rightDecimalExp').append('<div id=label2><b>Fractionl-To-Binary</b></div>');
+							$('#rightDecimalExp').append('<div id=label2><b>Fractional-To-Binary</b></div>');
 							$("#label2").append("<span id=FractionalBinaryValue></span>");
 							typing('#one' ,"<li>Take the fractional part from the float <span class='ct-code-b-yellow'>23</span>."
 									+"<span style='color:yellow;font-weight:bold;'>"+rightVal+"</span> mulitply it with "
@@ -576,39 +746,44 @@ function nextClick(dataStep) {
 	}
 	 
 	 if (dataStep == 5) {
-		 $('.nextBtn').show();
+		 $('.nextBtn').hide();
 			setTimeout(function() {
 				$('.heading-height').animate({scrollTop: $('.heading-height').prop("scrollHeight")}, 500);
 				typing('.introjs-tooltiptext',"This is the exact converted floating-point to binary.", function() {
-					$('.nextBtn').show();	
+					$(".nextBtn, .introjs-prevbutton").show();
 				});//100
 			},1000);
-		$('#pdiv').append("<div id=binVal>(<span id=leftBinary>"+(parseFloat(leftVal)).toString(2)+"</span><span id=dot><b>.</b></span><span id=rightBinary>"+(parseFloat("0."+rightVal)).toString(2).split('.')[1]+"</span>)<sub>2</sub></div>");
+		$('#binVal').append("(<span id=leftBinary>"+(parseFloat(leftVal)).toString(2)+"</span><span id=dot><b>.</b></span><span id=rightBinary>"+(parseFloat("0."+rightVal)).toString(2).split('.')[1]+"</span>)<sub>2</sub>");
 		TweenMax.staggerFrom('#binVal',1,{opacity:0,delay:0.5,y:-40,onComplete: function() {
-		
-		var options = {
-					element : "#binVal",
-					position:"right"
-			}
-			intro.insertOption(intro._currentStep+1, options);
-			
-		var options =  {
-				element : "#dot",
-				position : "right"
-				}
-			intro.insertOption(intro._currentStep+2, options);
 		}});
 	}
 	 
 	if (dataStep == 6) {
 		$(".nextBtn").hide();
+		if (intro._direction == "forward") {
+		var options =  {
+				element : "#dot",
+				intro : "",
+				position : "right"
+				}
+			intro.insertOption(intro._currentStep+1, options);
+		}
 		typing(".introjs-tooltiptext","Before a floating-point binary number can be stored correctly, its mantissa must be normalized.",function() {
-			$(".nextBtn").show();
+			$(".nextBtn, .introjs-prevbutton").show();
 		});
 	} 
 	
 	if (dataStep == 7) {
-		$(".nextBtn").hide();
+		$(".nextBtn, .introjs-prevbutton").hide();
+		if (intro._direction == "forward") {
+		var options =  {
+				element : "#exp",
+				intro : "",
+				position : "right",
+				tooltipClass : 'hide'
+				}
+			intro.insertOption(intro._currentStep+1, options);
+		}
 		typing(".introjs-tooltiptext", "This is the radix point were the exponent value achieved by shifting this point.", function(){
 			$(".nextBtn").show();
 		})
@@ -616,6 +791,8 @@ function nextClick(dataStep) {
 	
 	if (dataStep == 8) {
 		$(".nextBtn").hide();
+		$(".introjs-tooltip").hide();
+		$(".introjs-tooltip").addClass("hide");
 		radixPoint();
 		var dotIndex ;
 		var dotShiftIndex;
@@ -638,26 +815,41 @@ function nextClick(dataStep) {
 			$('#afterRadixShift').append('<div id=radix style="position:realtive;display:inline-block;opacity:0;" >&nbsp;x 2<span><sup id=exponent style="display:inline-block;opacity:0;">'
 			+ (dotIndex - dotShiftIndex) +'</sup></span></div>');
 			$('#dotPosition').children().removeAttr('class');
+			if (intro._direction == "forward") {
+				 var options =  {
+						element : "#exponent",
+						intro : "",
+						position : "left",
+						}
+					intro.insertOption(intro._currentStep + 1, options); 
+					}
 			 setTimeout(function() {
 			TweenMax.fromTo('#radix', 1, {y:-90},{y:0,opacity:1,onComplete: function() {
 				TweenMax.fromTo('#exponent',1,{y:-90},{delay:1, y:0, opacity:1, onComplete: function() {
+					$(".introjs-tooltip").removeClass("hide");
+					$(".introjs-tooltip").show();
 					typing('.introjs-tooltiptext','The <span class="ct-code-b-yellow">mantissa</span> can be '
 							+'achieved,By moving the decimal point so that only one digit appears before the decimal.',function() {
 						$(".nextBtn").show();
 					});
-				 var options =  {
-						element : "#exponent",
-						position : "left"
-						}
-					intro.insertOption(intro._currentStep + 1, options); 
-				}});
+								}});
 			}}); 
 			}, 1000);  //9000
 		}}); 
 	}
 	
 	if (dataStep == 9) {
-		$(".nextBtn").hide();
+		$(".nextBtn, .introjs-tooltip").hide();
+		if (intro._direction == "forward") {
+			var options =  {
+					element : "#exp",
+					intro : "",
+					position : "right",
+					tooltipClass : 'hide'
+					}
+				intro.insertOption(intro._currentStep+1, options);
+			}
+		$(".introjs-tooltip").show();
 		typing(".introjs-tooltiptext","The <span class='ct-code-b-yellow'>exponent</span> expresses the number of positions the "
 				+"decimal point was moved <span class='ct-code-b-yellow'>left</span> (positive exponent) or moved <span class='ct-code-b-yellow'>right</span> (negative exponent).",function() {
 			$(".nextBtn").show();
@@ -665,15 +857,20 @@ function nextClick(dataStep) {
 	}
 	
 	if (dataStep == 10) {
+		$(".nextBtn, .introjs-tooltip").hide();
 		$('#pdiv').append('<div><span id=demoMulBin2 style="position:realtive;display:inline-block;">'+ binValue +'</span><span id=demoByTwo style="position:realtive;display:inline-block;opacity:0;"> x 2</span><span id=demoExponent2 style="position:realtive;display:inline-block;opacity:0;"><sup id=possibleExponent style=position:absolute;><sup style="font-size:9px;">'+ 
-		//change absolute to relative..		
 		$('#exponent').text()+'+'+127+'</sup></sup></span><span><sup id=flipFront style="display:inline-block;opacity:0">'+(parseInt($('#exponent').text())+127)+'</sup></span></div>');
-			 var options = {
+		if (intro._direction == "forward") {
+		var options = {
 						element : "#flipFront",
+						intro : "",
 						position : "left"
 			}
-			intro.insertOption(intro._currentStep + 1, options); 
+		intro.insertOption(intro._currentStep + 1, options); 
+		}
+		$(".introjs-tooltip").show();
 			TweenMax.fromTo("#demoByTwo",3,{delay:5,y:-90},{y:0,opacity:1,onComplete:function(){
+				$(".introjs-tooltip").removeClass("hide");
 				typing(".introjs-tooltiptext","IEEE Short Real exponents are stored as <span class='ct-code-b-yellow'>8</span>-bit unsigned "
 						+"integers with a bias of <span class='ct-code-b-yellow'>127</span> and the exponent is added to "
 						+"<span class='ct-code-b-yellow'>127</span>.");
@@ -681,10 +878,7 @@ function nextClick(dataStep) {
 						TweenMax.fromTo("#demoExponent2",1,{y:-90},{y:0,opacity:1,onComplete:function() {
 							TweenMax.fromTo("#possibleExponent",1,{delay:3,rotationX:0},{opacity:0,roatationX:90,onComplete:function(){
 								TweenMax.fromTo("#flipFront",0.5,{delay:1,rotationX:-90},{rotationX:0,opacity:1,onComplete:function(){
-							 		$(".nextBtn").show();
-								 	/*	setTimeout(function() {
-											typing(".introjs-tooltiptext","The binary exponent is unsigned, and therefore cannot be negative. The largest possible exponent is 128 when added to 127, it produces 255, the largest unsigned value represented by 8 bits. The approximate range is from 1.0 x 2<sup>"+ (-127) +"</sup> to 1.0 x 2<sup>"+128+"</sup>.",100,"","");
-										},7000); */
+									$(".nextBtn").show();
 								}});
 					 		}});
 						}})
@@ -693,23 +887,42 @@ function nextClick(dataStep) {
 	}
 	
 	if(dataStep == 11) {
+		if (intro._direction == "forward") {
+			var options =  {
+					element : "#exp",
+					intro : "",
+					position : "right",
+					tooltipClass : 'hide'
+					}
+				intro.insertOption(intro._currentStep+1, options);
+			}
 		typing(".introjs-tooltiptext","The binary exponent is unsigned, and therefore cannot be negative."
 				+" The largest possible exponent is <span class='ct-code-b-yellow'>128</span> when added "
 				+"to <span class='ct-code-b-yellow'>127</span>, it produces <span class='ct-code-b-yellow'>255</span>,"
 				+" the largest unsigned value represented by <span class='ct-code-b-yellow'>8</span> bits. The approximate"
 				+" range is from <span class='ct-code-b-yellow'>1.0 x 2<sup>"+ (-127) +"</sup> "
 				+"to 1.0 x 2<sup>"+128+"</sup></span>.",function() {
-					$(".nextBtn").show();
+			$(".nextBtn").show();
 		});
 	}
 	
 	if(dataStep == 12) {
+		$(".introjs-tooltip").addClass("hide");
+		if (intro._direction == "forward") {
+			var options =  {
+					element : "#exp",
+					intro : "",
+					position : "right"
+					}
+				intro.insertOption(intro._currentStep+1, options);
+			}
 				var afterDot = binValue.slice(2);
-				$('#pdiv').append('<div><span>'+binValue.substring(0,2)+'</span><span id=finalBin>'+ afterDot +'</span><span> x 2</span><sup id=biasedExponent><span id=biasBinExponent style="position: relative;" class=opacity00>'+
+				$('#pdiv').append('<div id="finalBin1"><span>'+binValue.substring(0,2)+'</span><span id=finalBin>'+ afterDot +'</span><span> x 2</span><sup id=biasedExponent><span id=biasBinExponent style="position: relative;" class=opacity00>'+
 						(parseInt($('#flipFront').text())).toString(2) +'</span><span id=expToBin style="position:absolute;display:inline-block;" class=opacity00>'+$('#flipFront').text() +'</span></sup></div>');
 			setTimeout(function(){
 				
 				TweenMax.to('#expToBin',1,{top:0, left:0, opacity:1,onComplete:function() {
+					$(".introjs-tooltip").removeClass("hide");
 					typing(".introjs-tooltiptext","Since the <span class='ct-code-b-yellow'>exponent</span> is in decimal, convert the exponent to binary.");
 					setTimeout(function() {
 						TweenMax.to('#expToBin',1,{rotationX:90,onComplete:function(){
@@ -723,6 +936,15 @@ function nextClick(dataStep) {
 	}
 	
 	if(dataStep == 13) {
+		if (intro._direction == "forward") {
+			var options =  {
+					element : '#restartBtn',
+					intro : '',
+					position : 'right',
+					tooltipClass: 'hidden'
+					}
+				intro.insertOption(intro._currentStep+1, options);
+			}
 		$(".nextBtn").hide();
 		var mySpanDiv = document.getElementById("pdiv");
 		for (var i = 0; i < 32; i++) {
@@ -755,8 +977,8 @@ function division(callBackFtn) {
 	$("#rightDecimalExp").append("<div id=tableDiv></div>");
 	$("#tableDiv").append("<table><tr><td id=divisor>2</td id=Brace><td style=color:blue>)</td><td id=dividend>"+leftVal+"</td>"
 							+"<td id=Brace style=color:blue>(</td><td id=quotient></td></tr><tr><td></td><td></td><td id=multiplier>"
-							+"</td></tr><tr><td></td><td id=line colspan=4 style=color:blue>----------</td></tr>"
-							+"<tr><td></td><td></td><td id=remainder></td></tr></table>");
+							+"</td></tr><tr><td></td><td id=line colspan=3 style=color:blue>----------</td></tr>"
+							+"<tr><td></td><td></td><td id=remainder class='text-center'></td></tr></table>");
 	$("#divisor, #leftBrace, #rightBrace, #line").addClass("opacity00");
 	
 	if (typeof callBackFtn === 'function') {
@@ -799,11 +1021,10 @@ function decimal() {
 	} else {
 		$("#rightDecimalExp").append("<span id=desc></span>");
 		typing("#desc","<span class='ct-code-b-blue'>(" + leftBinary + ")<sub>2</sub></span> is the binary value for the float-decimal <span class='ct-code-b-blue'>23</span>.",function() {
-			$(".nextBtn").show();
-		})
+			$(".introjs-prevbutton,.nextBtn").show();
+		})                                    
 	}
 }
-
 
 function decimalDivisionAnimate() {
 	
@@ -888,7 +1109,7 @@ function decimalDivisionAnimation() {
  function fractionRecursion() {
 	 var mulFraction = $("#rightDecimalExp span").last().text();
 	 $('#rightDecimalExp').append('<span id=cpyMulFraction style=position:relative;display:block;opacity:0; >0.'+ mulFraction + '</span>');
-	 valOffSet("#mulFraction"+index, "#cpyMulFraction");
+//	 valOffSet("#mulFraction"+index, "#cpyMulFraction");
 	 TweenMax.to("#cpyMulFraction",1,{opacity:1,top:0,left:0,onComplete:function() {
 		rightDec = $('#cpyMulFraction').text()*2;
 			$('#cpyMulFraction').append('<span id="mulTwo" style=" display:inline-block;opacity:0;">&nbsp;x 2 =</span>');
@@ -915,7 +1136,7 @@ function decimalDivisionAnimation() {
 				$("#rightDecimalExp").append("<span id=fracDesc></span>")
 				typing("#fracDesc","<span class='ct-code-b-blue'>("+ rightBinary.substring(0,5)+")<sub>2</sub></span>"
 						+" is the approximate binary values for the float-fractional value.",function() {
-						$(".nextBtn").show();
+						$(".nextBtn, .introjs-prevbutton").show();
 				});
 				
 			}
@@ -980,7 +1201,7 @@ function addSpan() {
 
 
 	function typing(selector, text, callBackFunction) {
-	var typingSpeed = 15;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

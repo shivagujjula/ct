@@ -30,7 +30,11 @@ function introGuide() {
 			element :"#preTableDiv",
 			intro : "",
 			position : 'right',
-			tooltipClass : 'hide'
+			//tooltipClass : 'hide'
+		}, {
+			element : '#main',
+			intro : '',
+			position : "right"
 		}, {
 			element : '#preline',
 			intro : '',
@@ -147,6 +151,7 @@ function introGuide() {
 			break;
 		case 'preline2':
 			$("#typeChar").addClass("opacity00");
+			$("#consoleId").addClass('opacity00').removeAttr("style");
 			break;
 		case 'preline3':
 			$(".td-css").text("");
@@ -199,6 +204,7 @@ function introGuide() {
 		}
 	});
 	introjs.onafterchange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
 		}
@@ -212,15 +218,14 @@ function introGuide() {
 		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
 			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
 		}
-		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
 		if (elementId == "line5") {
 			$("#line5").addClass('z-index9999999');
 		}
 		switch (elementId) {
 		case 'infoDiv':
-/*** The general format is: variable=gcount( ); ***/			
-			$("#infoDiv").removeClass("opacity00");
+/*** The general format is: variable = gcount( ); ***/			
+			$("#infoDiv").removeClass("opacity00").addClass('z-index9999999');
 			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list").fadeTo(300, 1, function() {
 				$("#list1").fadeTo(300, 1, function() {
@@ -245,7 +250,14 @@ function introGuide() {
 				typing('.introjs-tooltiptext', "Let us consider an sample program using "+
 						"<span class='ct-code-b-yellow'>gcount()</span> function.", function() {
 					$(".introjs-nextbutton").show();
-					$(".introjs-prevbutton").hide();
+				});
+			});
+			break;
+		case 'main':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution."
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -350,7 +362,8 @@ function introGuide() {
 			break;
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = 	"This is the end of the <span class='ct-code-b-yellow'>main()</span> function " +
+							"where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -578,14 +591,13 @@ function introGuide() {
 }
 function checking(selector) {
 	$(selector).on("click keyup keydown", function(){
-		if($(selector).val() != "" &&  $(selector).val().length >= 5) {
-			$('.errorText').empty();
+		$('.error-text').remove();
+		if($(selector).val() != "" && $(selector).val().length >= 5) {
+			$('.errorText').remove();
 			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		} else {
-			$('.introjs-tooltiptext').html("<span class='errorText'>" +
-					"Please type correctly.</span><br><b>Note : </b>" +
-					"<span class='ct-code-b-yellow'>Enter upto 5 characters."+
-					"</span>");
+			$('.introjs-tooltiptext').html("Enter <span class='ct-code-b-yellow'>5</span> characters." +
+											"<span class='errorText'><br/>" + "Enter upto 5 characters.</span>");
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		}
 	});

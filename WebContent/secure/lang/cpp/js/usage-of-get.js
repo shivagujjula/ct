@@ -1,7 +1,4 @@
-var asciiVal;
-var binaryVal;
-var typingInterval = 50;
-
+var typingInterval = 10;
 var usageOfGetReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
@@ -33,6 +30,10 @@ function introGuide() {
 			intro : "",
 			position : 'right',
 			tooltipClass : 'hide',
+		}, {
+			element : '#main',
+			intro : '',
+			position : "right"
 		}, {
 			element :"#line2",
 			intro : "",
@@ -87,6 +88,10 @@ function introGuide() {
 			position : "right",
 			tooltipClass : 'hide',
 		}, {
+			element : '#main1',
+			intro : '',
+			position : "right"
+		}, {
 			element : '#preline1',
 			intro : '',
 			position : "right"
@@ -134,6 +139,10 @@ function introGuide() {
 			intro : '',
 			position : "right",
 			tooltipClass : 'hide',
+		}, {
+			element : '#main2',
+			intro : '',
+			position : "right"
 		}, {
 			element : '#step1',
 			intro : '',
@@ -190,6 +199,9 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
+		case 'line3':
+			$("#consoleId").addClass('opacity00').removeAttr("style");
+			break;
 		case 'line4':
 			$("#inputChar").val("");
 			break;
@@ -204,10 +216,15 @@ function introGuide() {
 				$("#inputChar").val("");
 				break;
 			case 'printLine':
+				console.log("input-char");
 				$("#printLineInConsole").addClass("opacity00");
 				$(".input1").remove();
 				break;
 			}
+			break;
+			
+		case 'end':
+			$("#preTableDiv2").css("opacity", 0);
 			break;
 		case 'preline1':
 			$("#addressBox1").addClass("opacity00");
@@ -215,31 +232,47 @@ function introGuide() {
 		case 'preline11':
 			$("#typeChar1").addClass("opacity00");
 			$("#inputChar2").val("");
+			$("#consoleId2").addClass('opacity00').removeAttr("style");
 			break;
 		case 'preline2':
 			$(".td-css").text("");
+			$(".introjs-tooltip").css("min-width", "335px");
 			break;
 		case 'preline3':
 			$("#printpreLine1").addClass('opacity00');
 			break;
-		case 'consoleId2':
-			$("#consoleId2").removeClass("opacity00");
+		case "addressBox1" :
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
-			case 'typeChar':
-				$("#inputChar2").val("");
-				break;
-			case 'printPreline1':
-				$("#printpreLine1").addClass("opacity00");
-				$(".input1").remove();
+			case "animationDiv" :
+				$("#tableRowId").addClass("opacity00");
+				$(".introjs-tooltip").removeAttr("style");
 				break;
 			}
 			break;
+		case 'consoleId2':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case 'typeChar1':
+				$(".introjs-tooltip").removeAttr("style");
+				$("#inputChar2").val("");
+				break;
+			case 'printPreline1':
+				console.log("input-char-2");
+				$("#printpreLine1").addClass("opacity00");
+				$("#result").remove();
+				break;
+			}
+			break;
+		case 'end1':
+			 $("#preTableDiv3").css("opacity", 0);
+			 break;
 		case 'step1':
 			$("#addressBox2").addClass("opacity00");
 			break;
 		case 'step11':
 			$("#typeChar2").addClass("opacity00");
+			$("#consoleId3").addClass('opacity00').removeAttr("style");
 			break;
 		case 'step2':
 			$("#tableRowId1 >.td-css").text("");
@@ -247,6 +280,14 @@ function introGuide() {
 			break;
 		case 'step3':
 			$("#printLine1").addClass('opacity00');
+			break;
+		case "addressBox2" :
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "animationDiv1" :
+				$("#tableRowId1").addClass("opacity00");
+				break;
+			}
 			break;
 		case 'consoleId3':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
@@ -256,14 +297,16 @@ function introGuide() {
 				$("#inputChar3").val("");
 				break;
 			case 'printLine1':
+				console.log("input-char-3");
 				$("#printLine1").addClass("opacity00");
-				$(".input1").remove();
+				//$(".input1").remove();
 				break;
 			}
 			break;
 		}
 	});
 	introjs.onafterchange(function(targetElement) {
+		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
 		}
@@ -277,7 +320,6 @@ function introGuide() {
 		if (introjs._introItems[introjs._currentStep]["animation"] != "repeat") {
 			introjs._introItems[introjs._currentStep]["isCompleted"] = true;
 		}
-		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		var elementId = targetElement.id;
 		if (elementId == "line5") {
 			$("#line5").addClass('z-index9999999');
@@ -286,7 +328,8 @@ function introGuide() {
 		case 'infoDiv':
 /*** The general format is: variable=get ( ); ***/			
 			$("#infoDiv").removeClass("opacity00");
-			$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
+			$("#infoDiv").addClass("z-index9999999");
+			//$("#infoDiv").css({height: $("#infoDiv").outerHeight()});
 			$("#list").fadeTo(300, 1, function() {
 				$("#list1").fadeTo(300, 1, function() {
 					$("#list2").fadeTo(300, 1, function() {
@@ -314,7 +357,14 @@ function introGuide() {
 				typing('.introjs-tooltiptext', "Let us consider an example using" +
 						" <span class='ct-code-b-yellow'>get()</span> function.", function() {
 					$(".introjs-nextbutton").show();
-					$(".introjs-prevbutton").hide();
+				});
+			});
+			break;
+		case 'main':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution."
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -322,7 +372,7 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing('.introjs-tooltiptext', "<span class='ct-code-b-yellow'>ch</span> " +
 						"is a character variable used to store " +
-						"only one character at a time.", function() {
+						"only <span class='ct-code-b-yellow'>one</span> character at a time.", function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
@@ -359,7 +409,8 @@ function introGuide() {
 			break;
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = "This is the end of the <span class='ct-code-b-yellow'>main()</span> " +
+							"function where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -468,8 +519,16 @@ function introGuide() {
 				typing(".introjs-tooltiptext", text, function() {
 					TweenMax.to($("#preTableDiv2"), 1, {opacity: 1, onComplete: function() {
 						$(".introjs-nextbutton").show();
-						$(".introjs-prevbutton").hide();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					}});
+				});
+			});
+			break;
+		case 'main1':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution."
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
@@ -478,9 +537,9 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "<ul><li>Here, <span class='ct-code-b-yellow'>ch</span> " +
 						"is the <span class='ct-code-b-yellow'>character array varaiable</span> " +
-						"which contains 20 characters.</li><li>Each character occupies " +
-						"<span class='ct-code-b-yellow'>1</span> byte(8 bits) in the " +
-						"memory.</li></ul> ", function() {
+						"which contains <span class='ct-code-b-yellow'>20</span> characters.</li>" +
+						"<li>Each character occupies <span class='ct-code-b-yellow'>1</span> " +
+						"byte(8 bits) in the memory.</li></ul> ", function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
@@ -494,15 +553,17 @@ function introGuide() {
 			});
 			break;
 		case 'preline2':
+			$(".introjs-tooltip").css("min-width", "335px");
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "<ul><li>This statement extracts up to 19 characters and inserts "+
-				"<span class='ct-code-b-yellow'>null(\"\\0\")</span> at the end"+
-				" of the string stored in variable <span class='ct-code-b-yellow'>ch</span>.</li>"+
-				" <li>If a delimiter is found, the input is terminated.</li>"+
-				" <li>The delimiter is left in the stream, not stored in the array.</li><li>The delimiting "+
-				" character either the <span class='ct-code-b-yellow'>newline</span> "+
-				" character ('\n') or <span class='ct-code-b-yellow'>delim</span> (if this argument is specified)"+
-				" like *, #, /, +, ;, , etc...</li>";
+				var text = 	"<ul><li>This statement extracts up to <span class='ct-code-b-yellow'>19</span> " +
+							"characters and inserts <span class='ct-code-b-yellow'>null(\"\\0\")</span> at the end "+
+							"of the string stored in variable <span class='ct-code-b-yellow'>ch</span>.</li>"+
+							"<li>If a <span class='ct-code-b-yellow'>delimiter</span> is found, the " +
+							"<span class='ct-code-b-yellow'>input</span> is terminated.</li>"+
+							"<li>The <span class='ct-code-b-yellow'>delimiter</span> is left in the stream, not stored in the array.</li>" +
+							"<li>The delimiting character either the <span class='ct-code-b-yellow'>newline</span> "+
+							"character ('\n') or <span class='ct-code-b-yellow'>delim</span> (if this argument is specified) "+
+							"like <span class='ct-code-b-yellow'>*, #, /, +, ;, ,</span> etc...</li></ul>";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -519,8 +580,8 @@ function introGuide() {
 			break;
 		case 'end1':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where " +
-						   "the program execution ends.";
+				var text = "This is the end of the <span class='ct-code-b-yellow'>main()</span> " +
+							"function where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -541,7 +602,7 @@ function introGuide() {
 						$("#addressBox1").removeClass("opacity00");
 						TweenMax.to("#tableId", 0.2, {opacity: 1, onComplete: function() {
 							$('.introjs-tooltip').removeClass("hide");
-							typing(".introjs-tooltiptext", "20 bytes are allocated to the array " +
+							typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>20</span> bytes are allocated to the array " +
 									"<span class='ct-code-b-yellow'>ch</span>.", function() {
 								$(".introjs-nextbutton, .introjs-prevbutton").show();
 							});
@@ -610,7 +671,7 @@ function introGuide() {
 								var givenInput = $("#inputChar2").val();
 								var result = givenInput.slice(0, 19);
 								//$('.introjs-tooltip').removeClass("hide");
-								var text = $("#printpreLine1").text() + " " + '<span class="input-char-2 input1">' + result + '</span>';
+								var text = $("#printpreLine1").text() + " " + '<span class="input-char-2 input1" id = "result">' + result + '</span>';
 								typing("#printpreLine1", text, function() {
 									setTimeout(function () {
 										introjs.nextStep();
@@ -628,18 +689,26 @@ function introGuide() {
 				var text = "Let us consider one more example using <span class='ct-code-b-yellow'>get()</span>."
 				typing(".introjs-tooltiptext", text, function() {
 					TweenMax.to($("#preTableDiv3"), 1, {opacity: 1, onComplete: function() {
-						$(".introjs-nextbutton").show();
-						$(".introjs-prevbutton").hide();
+						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					}});
+				});
+			});
+			break;
+		case 'main2':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution."
+				typing(".introjs-tooltiptext", text, function() {
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
 		case 'step1':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "<ul><li>Here, <span class='ct-code-b-yellow'>ch</span> is the " +
-						"<span class='ct-code-b-yellow'>character array varaiable</span> "+
-						"which contains 20 characters.</li><li>Each character occupies " +
-						"<span class='ct-code-b-yellow'>1</span> byte(8 bits) in the memory.</li></ul>";
+				var text = 	"<ul><li>Here, <span class='ct-code-b-yellow'>ch</span> is the " +
+							"<span class='ct-code-b-yellow'>character array varaiable</span> "+
+							"which contains <span class='ct-code-b-yellow'>20</span> characters.</li>" +
+							"<li>Each character occupies <span class='ct-code-b-yellow'>1</span> " +
+							"byte(8 bits) in the memory.</li></ul>";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -656,10 +725,10 @@ function introGuide() {
 			
 		case 'step2':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "This statement extracts the characters upto " +
-						"<span class='ct-code-b-yellow'>delimter</span> is found.<br>"+
-						"If a <span class='ct-code-b-yellow'>delimter</span> is found" +
-						", the <span class='ct-code-b-yellow'>input</span> is terminated."; 
+				var text = 	"<ul><li>This statement extracts the characters upto " +
+							"<span class='ct-code-b-yellow'>delimter</span> is found.</li>"+
+							"<li>If a <span class='ct-code-b-yellow'>delimter</span> is found" +
+							", the <span class='ct-code-b-yellow'>input</span> is terminated.</li></ul>"; 
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -675,7 +744,8 @@ function introGuide() {
 			break;
 		case 'end2':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = 	"This is the end of the <span class='ct-code-b-yellow'>main()</span> function " +
+							"where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -695,7 +765,8 @@ function introGuide() {
 						$("#addressBox2").removeClass("opacity00");
 						TweenMax.to("#tableId1", 0.2, {opacity: 1, onComplete: function() {
 							$('.introjs-tooltip').removeClass("hide");
-							var text = "20 bytes are allocated to the array <span class='ct-code-b-yellow'>ch</span>.";
+							var text = 	"<span class='ct-code-b-yellow'>20</span> bytes are allocated to the array " +
+										"<span class='ct-code-b-yellow'>ch</span>.";
 							typing(".introjs-tooltiptext",text, function() {
 								$(".introjs-nextbutton, .introjs-prevbutton").show();
 							});
@@ -727,9 +798,9 @@ function introGuide() {
 					}
 					TweenMax.to(".td-css", 1, {opacity: 1, onComplete: function() {
 						$('.introjs-tooltip').removeClass("hide");
-						var text = "The given string is stored in the array and delimiter" +
-								" <span class='ct-code-b-yellow'>\\0</span> (or) <span class='ct-code-b-yellow'>\\n</span>" +
-								" is placed at the end of the string by the system.";
+						var text = 	"The given string is stored in the array and delimiter " +
+									"<span class='ct-code-b-yellow'>\\0</span> (or) <span class='ct-code-b-yellow'>\\n</span> " +
+									"is placed at the end of the string by the system.";
 						typing(".introjs-tooltiptext",text, function() {
 							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
@@ -762,7 +833,7 @@ function introGuide() {
 				$("#inputChar2").attr("disabled", false);
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
-					var text ="Enter any string end with #.";
+					var text ="<span class='ct-code-b-yellow'>Enter a string must be end with #.</span>";
 					typing('.introjs-tooltiptext', text, function() {
 						$("#inputChar3").addClass("blinking").focus();
 						check("#inputChar3");
@@ -783,7 +854,7 @@ function introGuide() {
 							var index = value.indexOf("#");
 							var givenInput = value.substring(0, index);
 							if (givenInput != "" &&  index != -1 && value.endsWith("#") == true) {
-								var text = $("#printLine1").text() + " " +'<span class="input-char-2 input1">'+ givenInput +'</span>';
+								var text = $("#printLine1").text() + " " +'<span class="input-char-3 input1">'+ givenInput +'</span>';
 									typing("#printLine1", text, function() {
 										setTimeout(function () {
 											introjs.nextStep();
@@ -791,7 +862,7 @@ function introGuide() {
 									});
 							} else if (value.length >= 20 ){
 								var givenInput = value.slice(0, -1);
-								var text = $("#printLine1").text() + " " +'<span class="input-char-2 input1">'+ givenInput +'</span>';
+								var text = $("#printLine1").text() + " " +'<span class="input-char-3 input1">'+ givenInput +'</span>';
 								typing("#printLine1", text, function() {
 									setTimeout(function () {
 										introjs.nextStep();

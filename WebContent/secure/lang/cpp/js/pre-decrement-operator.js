@@ -14,7 +14,7 @@ var preDecrementOperatorReady = function() {
 			steps : [{
 						element :'#program',
 						intro :'',
-						//tooltipClass : "hide"
+						tooltipClass : "hide"
 					},{
 						element :'#yVariableDeclararionLine',
 						intro :'',
@@ -103,9 +103,10 @@ var preDecrementOperatorReady = function() {
 				$('#xCupValue').text($('#xvalue').text());
 			}
 		break;
-		case "xCup" :
+		case "xVariableDeclararionLine":
 			$("#xCup").addClass("visibility-hidden");
-			$("#xCupValue").text("");
+			$("#xvalue").attr("contenteditable", "true");
+			$('.introjs-tooltip').removeClass('hide');
 		break;
 		case "expressionStatement":
 			$('#yCup').addClass('visibility-hidden');
@@ -127,7 +128,24 @@ var preDecrementOperatorReady = function() {
 		}
 	});
 	introcode.onafterchange(function(targetElement) {
-	$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
+		
+		if (introcode._introItems[introcode._currentStep]["tooltipClass"] == "hide") {
+			introcode._introItems[introcode._currentStep]["animation"] = "repeat";
+		}
+		
+		if (introcode._introItems[introcode._currentStep]["isCompleted"]) {
+			if (introcode._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (introcode._introItems[introcode._currentStep]["animation"] != "repeat") {
+			introcode._introItems[introcode._currentStep]["isCompleted"] = true;
+		}
 	var elementId = targetElement.id;
 		switch (elementId) {
 			case "program" :
@@ -137,6 +155,7 @@ var preDecrementOperatorReady = function() {
 				 		' it is called <span class="ct-code-b-yellow">pre-decrement</span>.<br/><br/>'+
 				 		'Let us learn how a <span class="ct-code-b-yellow">pre-decrement</span> operator '+
 				 		'works.'
+				 		$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
 					$('.introjs-nextbutton').show();
 				});
@@ -198,6 +217,7 @@ var preDecrementOperatorReady = function() {
 				});
 			break;
 			case "xCup":
+				if(introcode._direction == 'forward') {
 				$("#xvalue").attr("contenteditable", "false");
 				$("#xVariableDeclararionLine").addClass("z-index1000000");
 				$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
@@ -216,6 +236,13 @@ var preDecrementOperatorReady = function() {
 						});
 					});							
 				});
+				} else {
+					$("#xCup").addClass("visibility-hidden");
+					$("#xCupValue").text("");
+					 setTimeout(function(){
+						   introcode.previousStep();
+					   },800);
+				}
 			break;
 			case "expressionStatement":
 				$("#yVariableDeclararionLine").addClass("z-index1000000");
@@ -236,34 +263,86 @@ var preDecrementOperatorReady = function() {
 					});							
 				});
 			break;
-			case "sopLine" + sopLineCount:
+			case "sopLine1":
 				$('.introjs-helperLayer').one('transitionend', function() {
-					setTimeout(function(){
-						introcode.nextStep();
-						sopLineCount++;
-					},1000);
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				});
+				break;
+			case "sopLine3":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				});
+				break;
+			case "sopLine2":
+				$('.introjs-helperLayer').one('transitionend', function() {
+					if(introcode._direction == 'forward') {
+						setTimeout(function(){
+							introcode.nextStep();
+						},1000);
+					} else {
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
 				});
 				break;
 			case "outputDiv":
 				$("#xCup").removeClass("z-index1000000");
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (introcode._currentStep == 8) {
-						$(".output").append('<span> x value : '+ $("#xCupValue").text() + '</span><br>');
+						if(introcode._direction  == 'forward') {
+						$(".output").append('<span id="xValue"> x value : '+ $("#xCupValue").text() + '</span><br>');
 						setTimeout(function(){
 							introcode.nextStep();
 						},1000);
+					} else {
+						$('#xValue').remove();
+						$('.output').empty();
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
 					} else if (introcode._currentStep == 10) {
+						if(introcode._direction  == 'forward') {
 						$(".output").append('<span id="yValue"> y value : '+ $("#yCupValue").text() + '</span>');
 							setTimeout(function(){
 								introcode.nextStep();
 							},1000);
 					} else {
-						$(".output").append('<br><span> x value : '+ $("#xCupValue").text() + '</span>');
+						$('#yValue').remove();
 						setTimeout(function(){
-							introcode.nextStep();
+							introcode.previousStep();
 						},1000);
 					}
-					
+				} else {
+					if(introcode._direction == 'forward') {
+					$(".output").append('<br><span id="xValue1"> x value : '+ $("#xCupValue").text() + '</span>');
+					setTimeout(function(){
+						introcode.nextStep();
+					},1000);
+					} else {
+						$('#xValue1').remove();
+						setTimeout(function(){
+							introcode.previousStep();
+						},1000);
+					}
+				}
 				});
 				break;
 			case "singleStatement"  :

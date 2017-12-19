@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
@@ -17,7 +18,6 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/uogct.min.js'></script> 
-<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <title>usage of gcount()</title>
 </head>
@@ -58,7 +58,10 @@
     color: green;
     font-weight: bold;
 }
-
+.ct-blue-color {
+	color: blue;
+	font-weight : bold;
+}
 .ct-red-color {
 	color: red;
 	font-weight: bold;
@@ -82,12 +85,13 @@
 	color: yellow;
 	font-weight: bold;
 }
-.table>tbody>tr>td, .table>tbody>tr>th, 
-.table>tfoot>tr>td, .table>tfoot>tr>th, 
-.table>thead>tr>td, .table>thead>tr>th {
+.table>tbody>tr>td {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
+    min-width: 20px;
+    min-height: 20px;
+    border-top:0;
 }
 .output-console-body {
 	background-color: black;
@@ -215,6 +219,7 @@ div, span {
 	color: #e60073;
 	margin-top: 6px;
     margin-left: 15px;
+    font-weight : bold;
 }
 .z-index1000000 {
 	position: relative;
@@ -263,12 +268,12 @@ div, span {
 	<pre id="preTableDiv" class="creamPreTable opacity00">
 #include &lt;<span class="ct-green-color">iostream</span>&gt;
 <span class="ct-red-color">using</span> <span class="ct-green-color">namespace</span> std;
-<span class="ct-blue-color">int</span> main () {
+<span id="main"><span class="ct-blue-color">int</span> main()</span> {
 	<span id="preline">char ch[10];</span>
 	<span id="preline1">int count;</span>
 	<span id="preline2">cout << "Enter the text : ";</span>
 	<span id="preline3">cin.read(ch, 5);</span>
-	<span id="preline31">cout << "The Output is :  "; </span>
+	<span id="preline31">cout << "The output is :  "; </span>
 	<span id="preline32">cout.write(ch, 5); </span>
 	<span id="preline4">count = <b>cin.gcount();</b></span>
 	<span id="preline5">cout << <span id="cout"> "The number of characters extracted = " </span> << <span id="count">count</span> << endl;</span>
@@ -296,16 +301,16 @@ div, span {
 						</tr>
 				     	<tr id="tableRowId" class="">
 				     		<td style="border-top: none;"><b>ch </b>=</td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
-					        <td class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
+					        <td style="border: 2px solid green;" class="td-css table-bordered opacity00"></td>
 				      	</tr>
 					</tbody>
 	  			</table>
@@ -326,9 +331,9 @@ div, span {
 				</div>
 				<div class="output-console-body" id="consoleBodyDiv">
 					<div id="typeChar" class="opacity00">Enter the text : <input id='inputChar' maxlength='20' class='input-char' tabindex='0'/></div><br>
-					<div id="printpreLine1" class="opacity00">The Output is : <span id="printpre" class="opacity00"></span></div><br>
-					<span id="printpreLine2" class="opacity00"> The number of characters extracted = <span id='inputChar2'  class='input-char opacity00'></span>
-					</span><br>
+					<div id="printpreLine1" class="opacity00">The output is : <span id="printpre" class="opacity00"></span></div><br>
+					<div id="printpreLine2" class="opacity00"> The number of characters extracted = <span id='inputChar2'  class='input-char opacity00'></span>
+					</div><br>
 					<div><span id="printpreLine3" class="opacity00">The given text is :  </span> <span id='inputChar3'  class='input-char opacity00'></span></div>
 				</div>
 			</div>

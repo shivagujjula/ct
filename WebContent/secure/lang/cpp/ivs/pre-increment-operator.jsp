@@ -58,7 +58,6 @@
 }
 
 #codeDiv {
- 	/* height: 180px; */
  	margin-top: 45px;
 }
 
