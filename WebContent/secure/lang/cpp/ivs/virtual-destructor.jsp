@@ -113,10 +113,12 @@ y {
 }
 
 @keyframes blink-border-background-orange {
+	
 	50% {
 		border-color: white;
 		background: orange;
 	}
+	
 }
 
 .display-inline-block {
@@ -125,6 +127,19 @@ y {
 
 .relative {
 	position: relative;
+}
+
+.svg-css {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.svg-line {
+	stroke: #f53f3f;
+	stroke-width: 2;
 }
 
 </style>
@@ -138,7 +153,7 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="col-xs-12 text-center marginTop20">
-	<div class="label label-default ct-demo-heading" id="heading">VirtualDestructor</div>
+	<div class="label label-default ct-demo-heading" id="heading">Virtual Destructor</div>
 </div>
 
 <div class="col-xs-12 marginTop20">
@@ -147,7 +162,7 @@ $(document).ready(function() {
 <in>#include</in> <ink>&lt;iostream&gt;</ink>
 <go>using namespace</go> std;
 
-<span id="baseClass"><span><go>class</go> Base</span> {
+<span id="baseClass" class="opacity00"><span><go>class</go> Base</span> {
 	<span id="invokeSecond"><span><go>public</go>:</span>
 		<span>Base()</span> {
 			<span id="baseCon">cout << <ink>"Base class constructor"</ink>;</span>
@@ -158,7 +173,7 @@ $(document).ready(function() {
 		}</span>
 	<span>};</span></span>
 	
-<span id="deriveClass"><span><go>class</go> Derived : <go>public</go> Base</span> {
+<span id="deriveClass" class="opacity00"><span><go>class</go> Derived : <go>public</go> Base</span> {
 	<span id="invokeFirst"><span><go>public</go>:
 		<span>Derived() {</span>
 			<span id="deriveCon">cout << <ink>"Derived class constructor"</ink>;</span>
@@ -169,7 +184,7 @@ $(document).ready(function() {
 		<span>}</span></span>
 <span>};</span></span>		
 	
-	<span id="main">int main() {
+	<span id="main" class="opacity00">int main() {
 		<span id="objCreation">Base *p = <go>new</go> Derived;</span>
 		<span id="memoryRemove"><go>delete</go> p;</span>
 		<span id="return">return 0;</span>
@@ -180,11 +195,21 @@ $(document).ready(function() {
 <div class="col-xs-6 border1px opacity00" id="animate">
 	<div class="col-xs-12 padding00">
 		<div class="col-xs-offset-1 col-xs-5 padding00" style="margin-top: 4%;">
+			
 				<div class="panel panel-primary bottomMargin opacity00" id="obj">
 					<div class="panel-heading text-center"><b>Derived</b></div>
 					<div class="panel-body">
-						<div class="col-xs-12 padding00">
-							<div class="col-xs-5 padding00 opacity00" id="derive">
+						<div class="col-xs-12 padding00" style="background-color: lightyellow">
+							
+							
+							<div class="text-center" style="border: 1px dashed gray;">
+								<div><b>Derived();</b></div>
+								<div><b>~Derived();</b></div>
+							</div>
+							
+							
+							
+							<!-- <div class="col-xs-5 padding00 opacity00" id="derive">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<b>Derived()</b>
@@ -194,16 +219,19 @@ $(document).ready(function() {
 										<div></div>
 									</div>
 								</div>
-							</div>
-							<div class=" col-xs-offset-1 col-xs-6 padding00">
+							</div> -->
+							
+							<!-- <div class=" col-xs-offset-1 col-xs-6 padding00">
 								<div class="panel panel-primary opacity00" id="k">
 									<div class="panel-heading"><b>~Derived()</b></div>
-									<div class="panel-body opaity00 text-center" id="val1" > <!-- style="height: 10%; padding: 7%;" -->
+									<div class="panel-body opaity00 text-center" id="val1" > style="height: 10%; padding: 7%;"
 										<div><b>print</b></div>
 										<div></div>
 									</div>
 								</div>
-							</div>
+							</div> -->
+							
+							
 						</div>
 					</div>
 				</div>
@@ -211,6 +239,14 @@ $(document).ready(function() {
 			</div>
 			
 			<div class="col-xs-6 padding00 text-center" style="margin-top: 4%;">
+				<svg class="svg-css">
+				<marker id="flow4Marker" refX="3" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" style="fill: #f53f3f;">
+               			<path d="M0,0 L5,2.5 L0,5 Z"/>
+           		</marker>
+           		<!-- <line style="marker-end: url(#flow4Marker);" class="svg-line" x1="19%" y1="60.5%" x2="19%" y2="74%" id=""/> -->
+           		<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="30%" y1="23%" x2="1%" y2="23%" id=""></line>
+			</svg>
+			
 				<div class="col-xs-offset-3 col-xs-4">
 					<div class="panel panel-primary opacity00" id="p">
 						<div class="panel-heading"><b>*p</b></div>

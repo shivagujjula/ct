@@ -382,10 +382,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String indexOf method', '/secure/lang/j/string/string-indexof-methods.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String indexOf method</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>21-12-17</td>
 					</tr>
 					<tr>
 						<td>7</td>

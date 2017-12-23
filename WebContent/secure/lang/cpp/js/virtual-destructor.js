@@ -2,6 +2,7 @@ var typingSpeed = 10;
 var flag1 = false;
 var virtualDestructorFunction = function() {
 	introJsFunction();
+	$("line").hide();
 	$(".introjs-prevbutton").hide();
 	var text = "Here we will learn about the <y>virtual</y> destructor.";
 	typing($(".introjs-tooltiptext"), text, function() {
@@ -115,6 +116,7 @@ function introJsFunction() {
 			
 			case "animate":
 				$("#" + animateStep).addClass("opacity00");
+				$("line").hide();
 			break;
 			
 			case "outputBox":
@@ -125,6 +127,7 @@ function introJsFunction() {
 	
 	
 	introjs.onafterchange(function(targetElement) {
+		
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
@@ -151,10 +154,9 @@ function introJsFunction() {
 			case "pre":
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#pre").removeClass("opacity00");
-					var text = "Let us consider a sample program to understand the <y>virtual destructor</y> concepts.";
+					var text = "Let us consider a sample program to understand the <y>virtual destructor</y> concept.";
 					
 					typing($(".introjs-tooltiptext"), text, function() {
-						
 						
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("baseClass", "", "right"));
 						introjs.insertOption(introjs._currentStep + 2, insertionIntro("deriveClass", "", "right"));
@@ -170,14 +172,14 @@ function introJsFunction() {
 						/*introjs.insertOption(introjs._currentStep + 10,insertionIntro("animate", "", "top", "hide", "baseCon"));*/
 						introjs.insertOption(introjs._currentStep + 10,insertionIntro("outputBox", "", "top", "hide"));
 						introjs.insertOption(introjs._currentStep + 11,insertionIntro("invokeFirst", "", "top", "hide"));
-						introjs.insertOption(introjs._currentStep + 12,insertionIntro("animate", "", "top", "hide", "val2"));
-						introjs.insertOption(introjs._currentStep + 13,insertionIntro("deriveCon", "", "top", "hide"));
-						introjs.insertOption(introjs._currentStep + 14,insertionIntro("outputBox", "", "top", "hide"));
-						introjs.insertOption(introjs._currentStep + 15,insertionIntro("memoryRemove", "", "top"));
-						introjs.insertOption(introjs._currentStep + 16,insertionIntro("baseShow", "", "top"));
-						introjs.insertOption(introjs._currentStep + 17,insertionIntro("parentShow", "", "top"));
-						introjs.insertOption(introjs._currentStep + 18,insertionIntro("animate", "", "top", "hide", "k"));
-						introjs.insertOption(introjs._currentStep + 19,insertionIntro("deriveDes", "", "top", "hide"));
+						/*introjs.insertOption(introjs._currentStep + 12,insertionIntro("animate", "", "top", "hide", "val2"));*/
+						introjs.insertOption(introjs._currentStep + 12,insertionIntro("deriveCon", "", "top", "hide"));
+						introjs.insertOption(introjs._currentStep + 13,insertionIntro("outputBox", "", "top", "hide"));
+						introjs.insertOption(introjs._currentStep + 14,insertionIntro("memoryRemove", "", "top"));
+						introjs.insertOption(introjs._currentStep + 15,insertionIntro("baseShow", "", "top"));
+						introjs.insertOption(introjs._currentStep + 16,insertionIntro("parentShow", "", "top"));
+						/*introjs.insertOption(introjs._currentStep + 17,insertionIntro("animate", "", "top", "hide", "k"));*/
+						introjs.insertOption(introjs._currentStep + 17,insertionIntro("deriveDes", "", "top", "hide"));
 						//introjs.insertOption(introjs._currentStep + 19,insertionIntro("animate", "", "top", "hide", "desderive"));
 						//introjs.insertOption(introjs._currentStep + 18,insertionIntro("baseShow", "", "top", "","print"));//deriveDes
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -195,8 +197,9 @@ function introJsFunction() {
 							introjs.nextStep();
 						}, 600)
 					} else {
-						var text = "The base class <y>destructor</y> contians the <y>virtual</y> key, based on the pointer <y>p</y>"
-									+" address holded variable it execute the destructor.";
+						var text = "Here the <y>Base</y> class destructor is <y>virtual</y>. so, the <y>Base</y> "
+									+"or <y>Derived</y> destructor will be executed by depending on the address "
+									+"contained in pointer.";
 						typing($(".introjs-tooltiptext"), text, function() {
 							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
@@ -206,8 +209,8 @@ function introJsFunction() {
 				
 			case "parentShow":
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Since the pointer <y>p</y> holds the address of the <y>derive</y> class, first it execute "
-								+"<y>derive</y> class <y>destructor</y> then <y>base</y> class <y>destructor</y>.";
+					var text = "After the completion of execution of <y>Derived</y> "
+							+"destructor it execute the <y>Base</y> destructor.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -249,7 +252,13 @@ function introJsFunction() {
 				
 			case "memoryRemove":
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The <y>delete</y> key is used to remove the memory by calling the <y>destructor</y> of a class.";
+					
+					var text = "<ul><li>The <y>delete</y> operator is used to remove the memory allocated by a "
+								+"<y>new</y> operator.</li><li>When ever an object is no longer used, the destructor"
+								+" will be called automatically.</li><li>If <y>Base</y> class destructor is <y>virtual</y>"
+								+" then destructor of derived class will be executed when the pointer contains address of "
+								+"<y>Derived</y> object.</li></ul>";
+					
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -259,13 +268,14 @@ function introJsFunction() {
 			
 			case "baseClass":	
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#baseClass").removeClass("opacity00");
 					var text;
 					if (animateStep == "check") {
-						text = "The class <y>Base</y> doesn't inherit any other class it executes the"
-								+" constructor of <y>base</y> class, then it execute the <y>derive</y> class constructor.";
+						text = "The <y>Base</y> class default constructor will be executed first "
+								+"and next the <y>derived</y> class default constructor will be executed.";
 					} else {
 						/*text = "The base class contains the constructor <y>Base()</y> and destructor <y>~Base()</y>.";*/
-						text = "This is a class <y>Base</y> which contains the constructor <y>Base()</y> and destructor <y>~Base()</y>.";
+						text = "This is a class <y>Base</y> which contains the constructor <y>Base()</y> and the destructor <y>~Base()</y>.";
 					}
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -275,22 +285,25 @@ function introJsFunction() {
 				
 			case "deriveClass":	
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#deriveClass").removeClass("opacity00");
 					var text;
 					if (animateStep == "check") {
-						text = "Befor calling the constructor of the <y>derived</y> class it will be called <y>base</y> class of the member function.";
-						
+						text = "Befor calling the constructor of the <y>derived</y> class "
+								+"it will call default constructor of the <y>Base</y> class.";
 					} else {
-						text = "<ul><li>This is a <y>class Derived</y> which inherits the <y>class Base</y> publically.</li><li>The <y>class Derived</y>"
-								+" contains the constuctor <y>Derived()</y> and destructor <y>~Derived()</y>.</li></ul>";
+						text = "<ul><li>This is a class <y>Derived</y> which inherits the class <y>Base</y> publicly.</li><li>The class <y>Derived</y>"
+								+" contains the constuctor <y>Derived()</y> and the destructor <y>~Derived()</y>.</li></ul>";
 					}
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
+					
 				})	
 			break;
 				
 			case "main":	
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#main").removeClass("opacity00");
 					var text = "The program execution starts from <y>main()</y>.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -300,8 +313,8 @@ function introJsFunction() {
 				
 			case "objCreation":	
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "<ul><li>A pointer object <y>p</y> is created to the <y>class Base</y>.</li><li>The keywor <y>new</y>"
-								+" will allocate memory of the <y>derived</y> class and which will return the <y>base</y> address</li></ul>";
+					var text = "<ul><li>A pointer <y>p</y> is created to the class <y>Base</y>.</li><li>The keyword <y>new</y>"
+								+" will allocate dynamic memory of the <y>derived</y> class and returns the address of that memory.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -347,10 +360,12 @@ function introJsFunction() {
 								$("#addr1").append("<b>1274</b>");
 								$("#p, #addr2").removeClass("opacity00");
 								TweenMax.from("#addr1", 2, {top : topLength, left : leftLength, onComplete:function() {
-									setTimeout(function() {
-										introjs.nextStep();
-										flag1 = true;
-									}, 1000);
+									revealArrow("line", function() {
+										setTimeout(function() {
+											introjs.nextStep();
+											flag1 = true;
+										}, 1000);
+									});
 								}})
 							}, 500);
 						}
@@ -361,8 +376,8 @@ function introJsFunction() {
 					} else {
 						stepNext();
 					}
-					
 				});
+				
 			break;
 			
 			case "outputBox":
@@ -399,6 +414,21 @@ function stepNext() {
 			introjs.previousStep();
 		}, 800);
 	}
+}
+
+
+function revealArrow(selector, callBackFunction) {
+	let x2 = $(selector).attr("x2");	
+	let y2 = $(selector).attr("y2");
+	$(selector).attr("x2",  $(selector).attr("x1"));
+	$(selector).attr("y2",  $(selector).attr("y1"));
+	$(selector).show();
+	$(selector).attr("style", "marker-end: url(#flow4Marker);");
+	TweenMax.to($(selector), 1, {attr: {x2 : x2, y2: y2}, onComplete:function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
 }
 
 

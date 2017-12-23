@@ -15,8 +15,12 @@ var count;
 var countAtIndex;
 var targetLength;
 var lastIndexOfText;
+var firstEditable;
+var secondEditor;
+var thirdEditor1;
+var thirdEditor2;
 
-	function introJsTest(stepNo){
+	function introJsTest(stepNo) {
 		introjs = introJs();
 		introjs.setOptions({
 			steps: [
@@ -27,7 +31,8 @@ var lastIndexOfText;
 	        	    },
 	        	    {
 		  				element: '#textId', 
-		  				intro: "This statement initializes the reference <b>text</b> with <b class = 'keyupText ct-code-b-yellow'>\"ababcdedef\"</b>.<br> You can change the value of <b>text</b> to any other value.<br><span class = 'errorText'></span>",
+		  				intro: "",
+		  				/*intro: "This statement initializes the reference <b>text</b> with <b class = 'keyupText ct-code-b-yellow'>\"ababcdedef\"</b>.<br> You can change the value of <b>text</b> to any other value.<br><span class = 'errorText'></span>",*/
 		  				position: 'right',
 	  				},
 	  				{
@@ -38,7 +43,8 @@ var lastIndexOfText;
 	  				},
 	  				{
 	  					element: '#indexOfMethod', 
-		  				intro: "The <span class = 'ct-code-b-yellow'>indexOf(...)</span> method returns the index at which the first match is found for \"<span class = 'keyupText ct-code-b-yellow'>abc</span>\".<br><span class = 'errorText'></span>",
+	  					intro: "",
+		  				/*intro: "The <span class = 'ct-code-b-yellow'>indexOf(...)</span> method returns the index at which the first match is found for \"<span class = 'keyupText ct-code-b-yellow'>abc</span>\".<br><span class = 'errorText'></span>",*/
 		  				position: 'bottom',
 	  				},
 	  				{
@@ -55,7 +61,8 @@ var lastIndexOfText;
 	      	  		},
 	  				{
 	  					element: '#indexOfMethodWithParameter', 
-		  				intro: "The <span class = 'ct-code-b-yellow'>indexOf(...)</span> method returns the index at which the first match is found for \"<span class = 'keyupText ct-code-b-yellow'>b</span>\" from index <span class = 'keyupParameter ct-code-b-yellow'>2</span>.<br><span class = 'errorText'></span>",
+	  					intro: "",
+		  				/*intro: "The <span class = 'ct-code-b-yellow'>indexOf(...)</span> method returns the index at which the first match is found for \"<span class = 'keyupText ct-code-b-yellow'>b</span>\" from index <span class = 'keyupParameter ct-code-b-yellow'>2</span>.<br><span class = 'errorText'></span>",*/
 		  				position: 'bottom',
 	  				},
 	  				{
@@ -112,7 +119,7 @@ var lastIndexOfText;
 	      	  		
 	      	  		{
 		  				element: '#restart', 
-		  				intro: "Click to restart",
+		  				intro: "Click to restart.",
 		  				position: 'right',
 	  				}]
 		});
@@ -183,13 +190,17 @@ var stringIndexOfMethods = function() {
 	$(".given-text").keyup(function() {
     	introjs.refresh();
     	$(".keyupText").empty();
-        $(".keyupText").append($("#changeText").text());
+        $(".keyupText").append($("#changeText").text());	
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").show();
-        	$("#skipButton").show();
+        	$(".introjs-nextbutton, .introjs-prevbutton").show();
+        	if (introjs._currentStep == 1) {
+        		$("#skipButton").hide();
+        	} else {
+        		$("#skipButton").show();
+        	}
         } else {
-        	$(".introjs-nextbutton").hide();
+        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
         	$("#skipButton").hide();
         	$('.errorText').html("<b>Please enter some text to search </b>");
         }
@@ -199,10 +210,10 @@ var stringIndexOfMethods = function() {
 		introjs.refresh();
         if ($(this).text().length > 0) {
         	$('.errorText').empty();
-        	$(".introjs-nextbutton").show();
+        	$(".introjs-nextbutton, .introjs-prevbutton").show();
         	$("#skipButton").show();
         } else {
-        	$(".introjs-nextbutton").hide();
+        	$(".introjs-nextbutton, .introjs-prevbutton").hide();
         	$("#skipButton").hide();
         	$('.errorText').html("<b>Please enter index</b>");
         }
@@ -257,6 +268,7 @@ var stringIndexOfMethods = function() {
     });
 	
     $("#skipButton").click(function() {
+    	
 		if(introjs._currentStep == 3) {
 			introjs.goToStep(6);
 		}
@@ -271,31 +283,86 @@ var stringIndexOfMethods = function() {
 		}
 	});
     
-	introjs.onbeforechange(function(targetElement){
+	introjs.onbeforechange(function(targetElement) {
 		var element = targetElement.id;
 		if(element == "textId") {
+			$('.total-string + span , .total-string').remove();
+			$('#enteredText, #textIndices').empty();
+			firstEditable = $('#changeText').text();
 			$("#changeText").attr("contenteditable", true);
+    		introjs._introItems[introjs._currentStep].intro = "This statement initializes the reference <b>text</b> with "
+    		+"<b class = 'keyupText ct-code-b-yellow'>"+ firstEditable +"</b>.<br> You can change the value of <b>text</b> "
+    		+"to any other value.<br><span class = 'errorText'></span>"; 
+    		$('.introjs-nextbutton, .introjs-prevbutton').show();
+    		$('#skipButton').hide();
 			setTimeout(function() {
 				charAtEnd(document.getElementById("changeText"));
 			},1000);
 		}
 		
+		
+		if (element == "codeIntro") {
+			$('.introjs-prevbutton').hide();
+		}
+		
+		if (introjs._currentStep == 15) {
+			$('.introjs-prevbutton').hide();
+			$('#space').remove();
+			$('.introjs-tooltip').css('min-width','125px');
+		}
+		
+		
 		if(element == "indexOfMethod") {
+			
+			$('.results, #indexOfTextChecking, #conclusion').empty();
+			$('.checking-temp + span, .checking-temp, .comparingCircle, .extra-spaces').remove();
+			$('.opacity-mark').removeClass('opacity-mark');
+			$('#excecuteIndices .total-string').css('border','medium none');
+			
 			$("#indexOfText").attr("contenteditable", true);
+			
+			secondEditor = $('#indexOfText').text();
+			introjs._introItems[introjs._currentStep].intro = "The <span class = 'ct-code-b-yellow'>indexOf(...)</span> method returns the index"
+				+" at which the first match is found for \"<span class = 'keyupText ct-code-b-yellow'>"+ secondEditor +"</span>\".<br>"
+				+"<span class = 'errorText'></span>"; 
+			
+			
 			setTimeout(function() {
 				charAtEnd(document.getElementById("indexOfText"));
 			},1000);
 		}
 		
 		if(element == "indexOfMethodWithParameter") {
+			
+			$('.checking1-temp + span, .checking1-temp, .extra-spaces, .comparingCircle').remove();
+			$('#conclusion, .results, #indexOfTextChecking2, #lengthResult').empty();
+			$('.opacity-mark').removeClass('opacity-mark');
+			$('#excecuteIndices .total-string').css('border','medium none');
+
 			$("#textWithParameter").attr("contenteditable", true);
 			$("#parameterIndex").attr("contenteditable", true);
+			
+			thirdEditor1 = $('#textWithParameter').text();
+			thirdEditor2 = $('#parameterIndex').text();
+		
+			introjs._introItems[introjs._currentStep].intro = "The <span class = 'ct-code-b-yellow'>indexOf(...)</span> "
+				+"method returns the index at which the first match is "
+				+"found for \"<span class = 'keyupText ct-code-b-yellow'>"+ thirdEditor1 +"</span>\" from index <span class = "
+				+"'keyupParameter ct-code-b-yellow'>"+ thirdEditor2 +"</span>.<br><span class = 'errorText'></span>",
+			
 			setTimeout(function() {
 				charAtEnd(document.getElementById("textWithParameter"));
 			},1000);
 		}
 		
 		if(element == "lastIndexOfMethod") {
+			
+			
+			$('.checking2-temp + span, .checking2-temp, .extra-spaces, .comparingCircle').remove();
+			$('#conclusion, .results, #lastIndexOfTextChecking, #lengthResult').empty();
+			$('#excecuteIndices .total-string').css('border','medium none');
+			
+			
 			$("#lastIndexOfText").attr("contenteditable", true);
 			setTimeout(function() {
 				charAtEnd(document.getElementById("lastIndexOfText"));
@@ -331,39 +398,46 @@ var stringIndexOfMethods = function() {
 					
 					givenText();
 		      		$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#enteredText').append("text = ");
+		      			$('#enteredText').empty().append("text = ");
 						$('#enteredText').fadeIn(500);
 		      		}); 
 					tl.staggerFrom("#executeBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
 					tl.from("#executeBoxes", 0.5, {onComplete: function() {
-						$('#textIndices').append("Indices = ");
+						$('#textIndices').empty().append("Indices = ");
 						$('#textIndices').fadeIn(500);
 					}});
 					tl.staggerFrom("#excecuteIndices", 0.5, {opacity:0, y:-200, delay:0.5});
 					tl.from("#excecuteIndices", 0.5, {delay:0.5, onComplete : function() {
-						$('.introjs-nextbutton').click();
+						//$('.introjs-nextbutton').click();
+						if (introjs._direction == "forward") {
+							introjs.nextStep();
+						} else {
+							introjs.previousStep();
+						}
 					}});
 				} else if(introjs._currentStep == 4) {
 					indexOfText = $("#indexOfText").text();
 					$("#indexOfText").attr("contenteditable", false);
-					$('#animationDiv').append('<br><br><br><br><br>')
+					$('.extra-spaces').remove();
+					$('#animationDiv').append('<span class="extra-spaces"><br><br><br><br><br></span>')
 					$("#result").css('visibility', 'hidden');
 					resultSpans();
 					
 					$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#indexOfTextChecking').append("searchText = ");
+		      			$('#indexOfTextChecking').empty().append("searchText = ");
 						$('#indexOfTextChecking').fadeIn(800);
 		      		}); 
 					
-					chekingText();
+					$('#indexOfRow').show();
+					chekingText(); 
 					
 					tl.staggerFrom("#indexOfBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
 					tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
-						$("#compareLength").append("Length of the <span class = 'text-font'>text</span> = <span class = 'length'> "+ text.length + "</span>" );
+						$("#compareLength").empty().append("Length of the <span class = 'text-font'>text</span> = <span class = 'length'> "+ text.length + "</span>" );
 						$("#compareLength").fadeIn(500);
 					}});
 					tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
-						$("#compareLength2").append("Length of the <span class = 'text-font'>searchText</span> = <span class = 'length'> "+ indexOfText.length + "</span>" );
+						$("#compareLength2").empty().append("Length of the <span class = 'text-font'>searchText</span> = <span class = 'length'> "+ indexOfText.length + "</span>" );
 						$("#compareLength2").fadeIn(500);
 					}});
 					
@@ -373,18 +447,22 @@ var stringIndexOfMethods = function() {
 					if(indexOfText.length <= text.length) {
 						tl.from("#", 0.5, {delay: 0.8, onComplete: function() {
 							$(".length").css("border", "1px solid blue");
-							typing("#lengthResult", "<br>Since the length of <span class = 'text-font'>searchText</span> does not exceed the length of <span class = 'text-font'>text</span>, we will start searching by comparing characters.");
+							$('#lengthResult').show();
+							typing("#lengthResult", "<br>Since the length of <span class = 'text-font'>searchText</span> does not exceed the "
+									+"length of <span class = 'text-font'>text</span>, we will start searching by comparing characters.");
 						}});
-						tl.from("#", 0.5, {delay: 10, onComplete: function() {
+						tl.from("#", 0.5, {delay: 5, onComplete: function() {
 							$("#lengthResult").append($("#nextButton"));
-							$("#nextButton").fadeIn(500);
+							$("#nextButton").fadeIn(500).show();
 						}});
-						$("#nextButton").click(function(){
-							$("#nextButton").hide();
+						$("#nextButton").click(function() {
+							$("#nextButton").off().hide();
+							$('#animationDiv').append($("#nextButton"));
 							tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
 								$("#compareLength").fadeOut(500);
 								$("#compareLength2").fadeOut(500);
 								$("#lengthResult").fadeOut(500);
+								$('.comparingCircle').remove();
 								compare();
 							}});
 							
@@ -397,12 +475,18 @@ var stringIndexOfMethods = function() {
 								typing("#lengthResult", "<br>Since the length of the <span class = 'text-font'>searchText</span> exceeds the length of the <span class = 'text-font'>text</span>, <span class = 'text-font'>text</span> will not contain <span class = 'text-font'>searchText</span>.");
 							}});
 							tl.from("#", 0.5, {delay: 9, onComplete: function() {
-								$('.introjs-nextbutton').click();
+								//$('.introjs-nextbutton').click();
+								if (introjs._direction == "forward") {
+									introjs.nextStep();
+								} else {
+									introjs.previousStep();
+								}
 							}});
 						});
 					}
 					
 				} else if(introjs._currentStep == 7) {
+					$('#compareLength + br').css('display','none');
 					$("#result").css('margin-left', '27%');
 					$("#resultAtTarget").css('margin-left', '27%');
 					
@@ -413,16 +497,19 @@ var stringIndexOfMethods = function() {
 					$("#lengthResult").show();
 					$("#textWithParameter").attr("contenteditable", false);
 					$("#parameterIndex").attr("contenteditable", false);
-					$('#textBoxes').append('<br>');
-					$('#animationDiv').append('<br><br><br><br><br><br>');
+					$('.extra-spaces').remove();
+					$('#textBoxes').append('<span class="extra-spaces"><br><span>');
+					$('#animationDiv').append('<span class="extra-spaces"><br><br><br><br><br><br></span>');
 					$("#result").css('visibility', 'hidden');
 					resultSpans();
 				
 					
 					$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#indexOfTextChecking2').append("searchText = ");
+		      			$('#indexOfTextChecking2').empty().append("searchText = ");
 						$('#indexOfTextChecking2').fadeIn(800);
 		      		}); 
+					
+					$('#indexOfRow2').show();
 					chekingText2();
 					tl.staggerFrom("#indexOfBoxes2", 0.5, {opacity:0, y:-200, delay:1.8});
 					tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
@@ -445,12 +532,14 @@ var stringIndexOfMethods = function() {
 							$(".length").css("border", "1px solid blue");
 							typing("#lengthResult", "<br>Since the length of <span class = 'text-font'>searchText</span> does not exceed the length of <span class = 'text-font'>text</span>, we will start searching by comparing characters from the given index <b>"+indexOfParameter+"</b>.");
 						}});
-						tl.from("#", 0.5, {delay: 11.5, onComplete: function() {
+						tl.from("#", 0.5, {delay: 10, onComplete: function() {
 							$("#lengthResult").append($("#nextButton2"));
 							$("#nextButton2").fadeIn(500);
 						}});
 						$("#nextButton2").click(function(){
-							$("#nextButton2").hide();
+							//$("#nextButton2").hide();
+							$("#nextButton2").off().hide();
+							$('#animationDiv').append($("#nextButton2"));
 							tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
 								$("#compareLength").fadeOut(500);
 								$("#compareLength2").fadeOut(500);
@@ -473,36 +562,53 @@ var stringIndexOfMethods = function() {
 							}});
 							if(indexOfParameter >= text.length) {
 								tl.from("#", 0.5, {delay: 15.5, onComplete: function() {
-									$('.introjs-nextbutton').click();
+									if (introjs._direction == "forward") {
+										introjs.nextStep();
+									} else {
+										introjs.previousStep();
+									}
+									//$('.introjs-nextbutton').click();
 								}});
 							} else {
 								tl.from("#", 0.5, {delay: 10, onComplete: function() {
-									$('.introjs-nextbutton').click();
+									if (introjs._direction == "forward") {
+										introjs.nextStep();
+									} else {
+										introjs.previousStep();
+									}
+									//$('.introjs-nextbutton').click();
 								}});
 							}
 						});
 					}
 				} else if(introjs._currentStep == 10) {
+					
+					$('.results').empty();
+					
+					$('#compareLength2 + br').css('display','none');
+					
 					$("#result").css('margin-left', '27%');
 					$("#resultAtTarget").css('margin-left', '27%');
 					lastIndexOfText = $("#lastIndexOfText").text();
 					count = text.length-1;
-					
+						
 					$("#result").show();
 					$("#conclusion").show();
 					$("#lengthResult").show();
 					$("#lastIndexOfText").attr("contenteditable", false);
-					$('#textBoxes').append('<br>');
-					$('#animationDiv').append('<br><br><br><br><br><br>'); 
+					$('.extra-spaces').remove();
+					$('#textBoxes').append('<span class="extra-spaces"><br><span>');
+					$('#animationDiv').append('<span class="extra-spaces"><br><br><br><br><br><br><span>'); 
 					$("#result").css('visibility', 'hidden');
 					$("#resultAtTarget").css('visibility', 'hidden');
 					resultSpans();
 					targetMarks();
 					$('.introjs-helperLayer ').one('transitionend', function() {
-		      			$('#lastIndexOfTextChecking').append("searchText = ");
+		      			$('#lastIndexOfTextChecking').empty().append("searchText = ");
 						$('#lastIndexOfTextChecking').fadeIn(800);
 		      		}); 
 					
+					$("#lastIndexOfRow").show();
 					chekingText3();
 					
 					tl.staggerFrom("#lastIndexOfBoxes", 0.5, {opacity:0, y:-200, delay:1.8});
@@ -534,7 +640,9 @@ var stringIndexOfMethods = function() {
 						}});
 						
 						$("#nextButton3").click(function(){
-							$("#nextButton3").hide();
+							//$("#nextButton3").hide();
+							$("#nextButton3").off().hide();
+							$('#animationDiv').append($("#nextButton3"));
 							tl.from("#", 0.5, {delay: 0.5, onComplete: function() {
 								$("#compareLength").fadeOut(500);
 								$("#compareLength2").fadeOut(500);
@@ -549,7 +657,12 @@ var stringIndexOfMethods = function() {
 								typing("#lengthResult", "<br>Since the length of the <span class = 'text-font'>searchText</span> exceeds the length of the <span class = 'text-font'>text</span>, <span class = 'text-font'>text</span> will not contain <span class = 'text-font'>searchText</span>.");
 							}});
 							tl.from("#", 0.5, {delay: 9, onComplete: function() {
-								$('.introjs-nextbutton').click();
+								//$('.introjs-nextbutton').click();
+								if (introjs._direction == "forward") {
+									introjs.nextStep();
+								} else {
+									introjs.previousStep();
+								}
 							}});
 						});
 					}
@@ -647,78 +760,108 @@ var stringIndexOfMethods = function() {
 			lastIndexOfParameter = parseInt($("#lastIndexParameterIndex").text());
 			
 			if(introjs._currentStep == 5) {
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					typingOutput("#runEditor1", "indexOf '"+ indexOfText +"' : " + text.indexOf(indexOfText));
-				});
-				setTimeout(function() {
-					$("#indexOfRow").hide();
-					$("#result").hide();
-					$("#result").empty();
-					$("#resultAtTarget").empty();
-					$("#conclusion").hide();
-					$("#conclusion").empty();
-					$('.comparingCircle').fadeOut();
-					$("#lengthResult").empty();
-					$("#compareLength").fadeOut(500);
-					$("#compareLength2").fadeOut(500);
-					$("#lengthResult").fadeOut(500);
-					$("br").remove();
-					$(".circle").css("border", "none");
-					$("#result").css('visibility', 'hidden');
-					$(".check").removeClass('opacity-mark');
-					$(".circle").removeClass('opacity-mark');
-					$(".box").removeClass('opacity-mark');
-		       		$('.introjs-nextbutton').click();
-		       	}, 3500);
+				if (introjs._direction == "forward") {
+					$('.introjs-helperLayer ').one('transitionend', function() {
+						typingOutput("#runEditor1", "indexOf '"+ indexOfText +"' : " + text.indexOf(indexOfText));
+					});
+					setTimeout(function() {
+						$("#indexOfRow").hide();
+						$("#result").hide();
+						$("#result").empty();
+						$("#resultAtTarget").empty();
+						$("#conclusion").hide();
+						$("#conclusion").empty();
+						$('.comparingCircle').fadeOut();
+						$("#lengthResult").empty();
+						$("#compareLength").fadeOut(500);
+						$("#compareLength2").fadeOut(500);
+						$("#lengthResult").fadeOut(500);
+						$("br").hide();		//changed  from remove to hide
+						$(".circle").css("border", "none");
+						$("#result").css('visibility', 'hidden');
+						$(".check").removeClass('opacity-mark');
+						$(".circle").removeClass('opacity-mark');
+						$(".box").removeClass('opacity-mark');
+						introjs.nextStep();
+			       	}, 2000);
+				} else {
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$('#runEditor1').empty();
+						$("#result, #conclusion, br").show();
+						setTimeout(function() {
+							introjs.previousStep();
+						},500);
+					});
+				}
 			}
 			
 			if(introjs._currentStep == 8) {
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					typingOutput("#runEditor2", "indexOf '"+ indexOfText2 +"', after index "+indexOfParameter+" : " + text.indexOf(indexOfText2, indexOfParameter));
-				});
-				setTimeout(function() {
-					$("#indexOfRow2").hide();
-					$("#conclusion").hide();
-					$("#conclusion").empty();
-					$('.comparingCircle').fadeOut();
-					$("#compareLength").fadeOut(500);
-					$("#compareLength2").fadeOut(500);
-					$("#lengthResult").empty();
-					$("#result").empty();
-					$("#resultAtTarget").empty();
-					$("#lengthResult").fadeOut(500);
-					$("br").remove();
-					$(".circle").css("border", "none");
-					$("#result").css('visibility', 'hidden');
-					$(".check").removeClass('opacity-mark');
-					$(".circle").removeClass('opacity-mark');
-					$(".box").removeClass('opacity-mark');
-		       		$('.introjs-nextbutton').click();
-		       	}, 4300);
+				if (introjs._direction == "forward") {
+					$('.introjs-helperLayer ').one('transitionend', function() {
+						typingOutput("#runEditor2", "indexOf '"+ indexOfText2 +"', after index "+indexOfParameter+" : " + text.indexOf(indexOfText2, indexOfParameter));
+					});
+					setTimeout(function() {
+						$("#indexOfRow2").hide();
+						$("#conclusion").hide();
+						$("#conclusion").empty();
+						$('.comparingCircle').fadeOut();
+						$("#compareLength").fadeOut(500);
+						$("#compareLength2").fadeOut(500);
+						$("#lengthResult").empty();
+						$("#result").empty();
+						$("#resultAtTarget").empty();
+						$("#lengthResult").fadeOut(500);
+						$("br").hide();		//changed  from remove to hide
+						$(".circle").css("border", "none");
+						$("#result").css('visibility', 'hidden');
+						$(".check").removeClass('opacity-mark');
+						$(".circle").removeClass('opacity-mark');
+						$(".box").removeClass('opacity-mark');
+						introjs.nextStep();
+			       	}, 2000);
+				} else {
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$('#runEditor2').empty();
+						$("#result, #conclusion, br").show();
+						setTimeout(function() {
+							introjs.previousStep();
+						},500);
+					});
+				}
 			}
 			
 			if(introjs._currentStep == 11) {
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					typingOutput("#runEditor3", "lastIndexOf '"+ lastIndexOfText +"' : " + text.lastIndexOf(lastIndexOfText));
-				});
-				setTimeout(function() {
-					$("#lastIndexOfRow").hide();
-					$("#conclusion").hide();
-					$("#conclusion").empty();
-					$("#result").empty();
-					$("#resultAtTarget").empty();
-					$('.comparingCircle').fadeOut();
-					$("#compareLength").fadeOut(500);
-					$("#compareLength2").fadeOut(500);
-					$("#lengthResult").empty();
-					$("#lengthResult").fadeOut(500);
-					$("br").remove();
-					$(".circle").css("border", "none");
-					$(".check").removeClass('opacity-mark');
-					$(".circle").removeClass('opacity-mark');
-					$(".box").removeClass('opacity-mark');
-		       		$('.introjs-nextbutton').click();
-		       	}, 3500);
+				if (introjs._direction == "forward") {
+					$('.introjs-helperLayer ').one('transitionend', function() {
+						typingOutput("#runEditor3", "lastIndexOf '"+ lastIndexOfText +"' : " + text.lastIndexOf(lastIndexOfText));
+					});
+					setTimeout(function() {
+						$("#lastIndexOfRow").hide();
+						$("#conclusion").hide();
+						$("#conclusion").empty();
+						$("#result").empty();
+						$("#resultAtTarget").empty();
+						$('.comparingCircle').fadeOut();
+						$("#compareLength").fadeOut(500);
+						$("#compareLength2").fadeOut(500);
+						$("#lengthResult").empty();
+						$("#lengthResult").fadeOut(500);
+						$("br").hide();		//changed  from remove to hide
+						$(".circle").css("border", "none");
+						$(".check").removeClass('opacity-mark');
+						$(".circle").removeClass('opacity-mark');
+						$(".box").removeClass('opacity-mark');
+			       		$('.introjs-nextbutton').click();
+			       	}, 3500);
+				} else {
+					$('.introjs-helperLayer').one('transitionend', function() {
+						$('#runEditor3').empty();
+						$("#result, #conclusion, br").show();
+						setTimeout(function() {
+							introjs.previousStep();
+						},500);
+					});
+				}
 			}
 			
 			if(introjs._currentStep == 14) {
@@ -741,37 +884,43 @@ var stringIndexOfMethods = function() {
 
 
 function givenText() {	
+	
+	$('.total-string + span , .total-string').remove();
 	for(var i = 0; i < text.length; i++) {
-		$("#excecuteIndices").append("<span id = 'textIndex"+i+"' class = 'circle'><b class='indexLetter'>" + i + "</b></span>&nbsp;");
-		$("#executeBoxes").append("<span id = 'textBox"+i+"' class='box green blur'><b class='letter'>" + text.charAt(i) + "</b></span>&nbsp;");
+		$("#excecuteIndices").append("<span id = 'textIndex"+i+"' class = 'circle total-string'><b class='indexLetter'>" + i + "</b></span><span>&nbsp;<span>");
+		$("#executeBoxes").append("<span id = 'textBox"+i+"' class='box green blur total-string'><b class='letter'>" + text.charAt(i) + "</b></span><span>&nbsp;<span>");
 	}
 }
 
-function chekingText() {	
+function chekingText() {
+	$('.checking-temp + span, .checking-temp').remove();
 	for(var i = 0; i < indexOfText.length; i++) {
-		$("#indexOfBoxes").append("<span id = 'checkingBox"+i+"' class='box green'><b class='letter'>" + indexOfText.charAt(i) + "</b></span>&nbsp;");						
+		$("#indexOfBoxes").append("<span id = 'checkingBox"+i+"' class='box green checking-temp'><b class='letter'>" + indexOfText.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
 
 function chekingText2() {	
+	$('.checking1-temp + span, .checking1-temp').remove();
 	for(var i = 0; i < indexOfText2.length; i++) {
-		$("#indexOfBoxes2").append("<span id = 'checkingBox2"+i+"' class='box green'><b class='letter'>" + indexOfText2.charAt(i) + "</b></span>&nbsp;");						
+		$("#indexOfBoxes2").append("<span id = 'checkingBox2"+i+"' class='box green checking1-temp'><b class='letter'>" + indexOfText2.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
 
 function chekingText3() {	
+	$('.checking2-temp + span, .checking2-temp').remove();
 	for(var i = 0; i < lastIndexOfText.length; i++) {
-		$("#lastIndexOfBoxes").append("<span id = 'lastCheckingBox"+i+"' class='box green'><b class='letter'>" + lastIndexOfText.charAt(i) + "</b></span>&nbsp;");						
+		$("#lastIndexOfBoxes").append("<span id = 'lastCheckingBox"+i+"' class='box green checking2-temp'><b class='letter'>" + lastIndexOfText.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
 
 function chekingText4() {	
+	$('.checking3-temp + span, .checking3-temp').remove();
 	for(var i = 0; i < lastIndexOfText2.length; i++) {
-		$("#lastIndexOfBoxes2").append("<span id = 'lastCheckingBox2"+i+"' class='box green'><b class='letter'>" + lastIndexOfText2.charAt(i) + "</b></span>&nbsp;");						
+		$("#lastIndexOfBoxes2").append("<span id = 'lastCheckingBox2"+i+"' class='box green checking3-temp'><b class='letter'>" + lastIndexOfText2.charAt(i) + "</b></span><span>&nbsp;</span>");						
 	}
 }
 
-function resultSpans() {	
+function resultSpans() {
 	for(var i = 0; i < text.length; i++) {
 		$("#result").append("<span id = 'xmark"+i+"' class = 'check not-matched fa fa-check fa-times removeMark'> </span>");						
 	}
@@ -876,7 +1025,12 @@ function compare() {
 				typing("#conclusion", "<br>The <b>first occurrence</b> of the given <b class = 'text-font'>searchText</b> string in <b class='text-font'>text</b> is at the index <b style = 'color: blue'>" + text.indexOf(indexOfText) +"</b>. ");
 				
 				setTimeout(function() {
-					$('.introjs-nextbutton').click();
+					//$('.introjs-nextbutton').click();
+					if (introjs._direction == "forward") {
+						introjs.nextStep();
+					} else {
+						introjs.previousStep();
+					}
 				}, 7500);
 			} else {
 				setTimeout(function() {
@@ -950,8 +1104,13 @@ function compare() {
 				typing("#conclusion", "<br>The given <span class = 'text-font'>searchText</span> not found in the <span class = 'text-font'>text</span>.");
 		
 				setTimeout(function() {
-					$('.introjs-nextbutton').click();
-				}, 4000);
+					if (introjs._direction == "forward") {
+						//$('.introjs-nextbutton').click();
+						introjs.nextStep();
+					} else {
+						introjs.previousStep();
+					}
+				}, 3000);
 			}
 			
 			if (count >=  (text.length - (targetLength - 1))) {
@@ -1005,12 +1164,17 @@ function compare2() {
 				typing("#conclusion", "<br>The <b>first</b> occurrence of the given <span class = 'text-font'>searchText</span> from index <b>"+ indexOfParameter +"</b> in <span class = 'text-font'>text</span> is at the index <b style = 'color: blue'>" + text.indexOf(indexOfText2, indexOfParameter) +"</b>. ");
 				
 				setTimeout(function() {
-					$('.introjs-nextbutton').click();
-				}, 9000);
+					if (introjs._direction == "forward") {
+						//$('.introjs-nextbutton').click();
+						introjs.nextStep();
+					} else {
+						introjs.previousStep();
+					}
+				}, 5000);
 			} else {
 				setTimeout(function() {
 					compare2();
-				}, 1800);
+				}, 3800);
 			}
 			
 		},1300);
@@ -1038,7 +1202,12 @@ function compare2() {
 					$("#lengthResult").fadeOut(500);
 					typing("#conclusion", "<br>The given <span class = 'text-font'>searchText</span> not found in the <span class = 'text-font'>text</span>.");
 					setTimeout(function() {
-						$('.introjs-nextbutton').click();
+						if (introjs._direction == "forward") {
+							//$('.introjs-nextbutton').click();
+							introjs.nextStep();
+						} else {
+							introjs.previousStep();
+						}
 					}, 4000);
 				}
 				
@@ -1065,7 +1234,12 @@ function compare2() {
 					$("#lengthResult").fadeOut(500);
 					typing("#conclusion", "<br>The given <span class = 'text-font'>searchText</span> not found in the <span class = 'text-font'>text</span>.");
 					setTimeout(function() {
-						$('.introjs-nextbutton').click();
+						if (introjs._direction == "forward") {
+							//$('.introjs-nextbutton').click();
+							introjs.nextStep();
+						} else {
+							introjs.previousStep();
+						}
 					}, 4000);
 				}
 				
@@ -1096,7 +1270,12 @@ function compare2() {
 				typing("#conclusion", "<br>The given <span class = 'text-font'>searchText</span> not found in the <span class = 'text-font'>text</span>.");
 		
 				setTimeout(function() {
-					$('.introjs-nextbutton').click();
+					if (introjs._direction == "forward") {
+						//$('.introjs-nextbutton').click();
+						introjs.nextStep();
+					} else {
+						introjs.previousStep();
+					}
 				}, 4000);
 			}
 			
@@ -1148,7 +1327,12 @@ function compare2() {
 				typing("#conclusion", "<br>The <b>last occurrence</b> of the given <span class = 'text-font'>searchText</span> in <span class = 'text-font'>text</span> is at the index <b style = 'color: blue'>" + text.lastIndexOf(lastIndexOfText) +"</b>. ");
 				
 				setTimeout(function() {
-					$('.introjs-nextbutton').click();
+					if (introjs._direction == "forward") {
+						//$('.introjs-nextbutton').click();
+						introjs.nextStep();
+					} else {
+						introjs.previousStep();
+					}
 				}, 8000);
 			} else {
 				setTimeout(function() {
@@ -1226,7 +1410,12 @@ function compare2() {
 				typing("#conclusion", "<br>The given <span class = 'text-font'>searchText</span> not found in the <span class = 'text-font'>text</span>.");
 		
 				setTimeout(function() {
-					$('.introjs-nextbutton').click();
+					if (introjs._direction == "forward") {
+						//$('.introjs-nextbutton').click();
+						introjs.nextStep();
+					} else {
+						introjs.previousStep();
+					}
 				}, 4000);
 			}
 			
