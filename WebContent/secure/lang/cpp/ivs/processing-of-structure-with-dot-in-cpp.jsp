@@ -211,6 +211,18 @@ tr, td {
 div,span {
 	position: relative;
 }
+
+.blinking {
+	animation-name: blinking;
+	animation-duration: 0.4s;
+	animation-iteration-count: 3;
+ }
+
+@keyframes blinking {
+	50% {
+		background: #ffae1a;
+	}
+}
 </style>
 </head>
 <body>
@@ -242,29 +254,29 @@ div,span {
 			<pre class="code-div creampretab4 opacity00" id="codeDiv">
 #include &lt;iostream&gt;
 using namespace std;			
-<span id="declaration"><b class="ct-code-b-green">struct</b> employee_record {
+<span id="declaration"><span id="structLine"><b class="ct-code-b-green">struct</b> employee_record {</span>
 	<span id="variableDefinition"><span id="charData">char name [20];</span>
 	<span id="intData">int age;</span>
-	<span id="floatData">float sal;</span></span>
+	<span id="floatData">float salary;</span></span>
 	<span id="readDataFunction">void readData() {
 		<span id="readDataFunCout">cout << "Enter name, age and salary details : ";</span>
-		<span id="readDataFunCin">cin >> name >> age >> sal;</span>
+		<span id="readDataFunCin">cin >> name >> age >> salary;</span>
 	}</span>
 };</span>
 <span id="mainDeclaration">int main() {
 	<span id="empId">employee_record emp;</span>
 	<span id="readDataId">emp.readData();</span>
-	<span id="coutId1">cout << "name : " << emp.name << endl;</span>
-	<span id="coutId2">cout << "age : " << emp.age << endl;</span>
-	<span id="coutId3">cout << "salary : " << emp.sal << endl;</span>
+	<span id="mainCout"><span id="coutId1">cout << "name : " << <span id="coutEmpName">emp.name</span> << endl;</span>
+	<span id="coutId2">cout << "age : " << <span id="coutEmpAge">emp.age</span> << endl;</span>
+	<span id="coutId3">cout << "salary : " << <span id="coutEmpSalary">emp.salary</span> << endl;</span></span>
 }</span>
 </pre>
 		</div>
 		<div class="col-xs-6">
 			<div class="col-xs-12 opacity00" id="animationDiv" style="border: 1px solid gray; padding: 0;">
-				<div class="text-center object-css">emp</div>
+				<div class="text-center object-css" id="empObjectDiv"><span id="empObjectSpan">emp</span></div>
 				<div class="box-border2 panel panel-primary  padding margin-top opacity00" id="borderBox">
-					<div class="panel-heading text-center" id="s1">name</div>
+					<div class="panel-heading text-center" id="s1"><span id="s1Span">name</span></div>
 							
 					<div style="padding: 8px;">
 						<table class="table">
@@ -287,7 +299,7 @@ using namespace std;
 				<div class="col-xs-12 panel-body">
 					<div class="col-xs-3 col-xs-offset-3 text-center box-border1" id="borderBox1" style='margin-top:12px;'>
 						<div class="panel panel-primary padding margin-top opacity00" id="bodyBox1">
-							<div class="panel-heading1 text-center">age</div>
+							<div class="panel-heading1 text-center"><span id="panelAge">age</span></div>
 							<div class="panel-body1 text-center" id="boxParent">
 								<span class="arrayValue text-center position" id="box1"></span>
 							</div>
@@ -295,7 +307,7 @@ using namespace std;
 					</div>
 					<div class="col-xs-3  text-center box-border1" id="borderBox2" style='margin-top:12px;'>
 						<div class="panel panel-primary padding margin-top opacity00" id="bodyBox2">
-							<div class="panel-heading1 text-center">salary</div>
+							<div class="panel-heading1 text-center"><span id="panelSalary">salary</span></div>
 							<div class="panel-body1 text-center" id="boxParent1">
 								<span class="arrayValue text-center position" id="box2"></span>
 							</div>

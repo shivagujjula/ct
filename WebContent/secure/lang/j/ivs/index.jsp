@@ -583,10 +583,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of try, catch and finally', '/secure/lang/j/basics/try-catch-finally-intro.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of try, catch and finally</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>26-12-17</td>
 					</tr>
 					<tr>
 						<td>2</td>

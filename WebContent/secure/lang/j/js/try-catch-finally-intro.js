@@ -1,6 +1,6 @@
 
 var intro;
-	var typing_interval = 10;
+	var typing_interval = 1;
 	var typing_interval_autoNextStep = 30;
 
 var tryCatchFinallyIntroReady = function() {
@@ -102,7 +102,7 @@ var tryCatchFinallyIntroReady = function() {
 		},
 		{
 			element : "#restartBtn",
-			intro : "Click to Restart",
+			intro : "Click to restart.",
 			position : "right"
 		}
 		]});
@@ -111,33 +111,50 @@ var tryCatchFinallyIntroReady = function() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "tryBlock":
+			$('.introjs-prevbutton').show();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				intro.refresh();
 			});
 			break;
 		case "tryCatch":
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$('.introjs-tooltiptext').typewriting("There can be a <span class='ct-code-b-yellow'>try</span> <b>block</b> followed by a <span class='ct-code-b-yellow'>catch</span> <b>block</b> without the <span class='ct-code-b-yellow'>finally</span> <b>block</b>.", {
-					"typing_interval": typing_interval,
-					"cursor_color": 'white'
-					}, function() {
-						$('.introjs-tooltiptext').removeClass('typingCursor');
-						$('.finally').effect('highlight', {color : 'lightblue'}, 700, function() {
-							$('#finallyBlock').fadeOut(1300, function() {
-								$('.introjs-tooltip').hide();
-								intro.refresh();
-								$('.introjs-helperLayer').one('transitionend', function () {
-									$('.introjs-tooltip').addClass('tryCatch-tooltip-css').show();
-									$('.introjs-nextbutton').show();
-								});
-							});
-						});
+			
+			
+			if (intro._direction == "backward") {
+				$('#catchBlock').fadeIn(1);
+				$('#finallyBlock').fadeOut(1);
+			}
+			
+			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-tooltiptext').typewriting("There can be a <span class='ct-code-b-yellow'>try</span> <b>block</b> followed by a <span class='ct-code-b-yellow'>catch</span> <b>block</b> without the <span class='ct-code-b-yellow'>finally</span> <b>block</b>.", {
+				"typing_interval": typing_interval,
+				"cursor_color": 'white'
+			}, function() {
+				$('.introjs-tooltiptext').removeClass('typingCursor');
+				$('.finally').effect('highlight', {color : 'lightblue'}, 700, function() {
+					$('#finallyBlock').fadeOut(1300, function() {
+						$('.introjs-tooltip').hide();
+						intro.refresh();
+						$('.introjs-tooltip').addClass('tryCatch-tooltip-css').show();
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
+				});
+			});
+			
+		case "finallyBlock":
+			$('#finallyBlock').removeAttr('style');
+			$('.introjs-helperLayer').one('transitionend', function () {
+				intro.refresh();
 			});
 			break;
+			
+		case "valueLine":
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
+			break;
+			
 		case "tryFinally":
-			$('.introjs-nextbutton').hide();
+			
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-tooltiptext').typewriting("Similarly there can be a <span class='ct-code-b-yellow'>try</span> <b>block</b> followed by a <span class='ct-code-b-yellow'>finally</span> <b>block</b> without a <span class='ct-code-b-yellow'>catch</span> <b>block</b>.", {
 				"typing_interval": typing_interval,
 				"cursor_color": 'white'
@@ -146,7 +163,7 @@ var tryCatchFinallyIntroReady = function() {
 					$('.catch').effect('highlight', {color : 'lightblue'}, 700, function() {
 						$('#catchBlock').fadeOut(1300, function() {
 							$('#finallyBlock').fadeIn(1300, function() {
-								$('.introjs-nextbutton').show();
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
 						});
 					});
@@ -154,60 +171,82 @@ var tryCatchFinallyIntroReady = function() {
 			break;
 		case "mainMethodBlock":
 			if (intro._currentStep == 6) {
-				$('#catchBlock').show();
-				$('.introjs-helperLayer').one('transitionend', function () {
-					setTimeout(function() {
-						intro.nextStep();
-					}, 1000);
-				});
+				if (intro._direction == "forward") {
+					$('#catchBlock').show();
+					$('.introjs-helperLayer').one('transitionend', function () {
+						setTimeout(function() {
+							intro.nextStep();
+						}, 1000);
+					});
+				} else {
+					//$('#catchBlock').hide();
+					$('.introjs-helperLayer').one('transitionend', function () {
+						setTimeout(function() {
+							intro.previousStep();
+						}, 500);
+					});
+				}
+				
+			} else if (intro._currentStep == 0) {
+				$('.introjs-prevbutton').hide();
 			}
 			break;
 		case "tryLine":
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$('.introjs-tooltiptext').typewriting("Control enters into the <span class='ct-code-b-yellow'>try</span> block.", {
-					"typing_interval": typing_interval_autoNextStep,
-					"cursor_color": 'white'
-				}, function() {
-					$('.introjs-tooltiptext').removeClass('typingCursor');
-					setTimeout(function() {
-						intro.nextStep();
-					}, 1000);
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+				$('.introjs-helperLayer').one('transitionend', function () {
+					$('.introjs-tooltiptext').typewriting("Control enters into the <span class='ct-code-b-yellow'>try</span> block.", {
+						"typing_interval": typing_interval_autoNextStep,
+						"cursor_color": 'white'
+					}, function() {
+						$('.introjs-tooltiptext').removeClass('typingCursor');
+						setTimeout(function() {
+							if (intro._direction == "forward") {
+								intro.nextStep();
+							} else {
+								intro.previousStep();
+							}
+						}, 1000);
+					});
 				});
-			});
+			
 			break;
 		case "parseIntLine":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("The method <b>Integer.<span class='ct-code-b-yellow'>parseInt</span>(String str)</b> parses the String <b>str</b> and converts the contents to <b>int</b>. If the characters of <b>str</b> are not parsable to <b>int</b>, <span class='ct-code-b-yellow'>NumberFormatException</span> is thrown.", {
 					"typing_interval": typing_interval,
 					"cursor_color": 'white'
 				}, function() {
 					$('.introjs-tooltiptext').removeClass('typingCursor');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "catchLine":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("Since the value referred by <span class='ct-code-b-yellow'>text</span> is \"<b>3g</b>\", where '<b>g</b>' is not parsable to a decimal <b>int</b>, <b>parseInt()</b> method throws a <b>NumberFormatException</b> which is caught by this <span class='ct-code-b-yellow'>catch</span> block.", {
 					"typing_interval": typing_interval,
 					"cursor_color": 'white'
 				}, function() {
 					$('.introjs-tooltiptext').removeClass('typingCursor');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "sopInsideCatch":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				setTimeout(function() {
-					intro.nextStep();
+					if (intro._direction == "forward") {
+						intro.nextStep();
+					} else {
+						intro.previousStep();
+					}
 				}, 1000);
 			});
 			break;
 		case "printStackTraceLine":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("The <span class='ct-code-b-yellow'>printStackTrace()</span> method call on the reference <span " 
 														+ "class='ct-code-b-yellow'>e</span> will print the trace of all the method calls stored in the " 
@@ -216,7 +255,7 @@ var tryCatchFinallyIntroReady = function() {
 					"cursor_color": 'white'
 				}, function() {
 					$('.introjs-tooltiptext').removeClass('typingCursor');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
@@ -235,7 +274,7 @@ var tryCatchFinallyIntroReady = function() {
 			});
 			break;
 		case "finallyLine":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("The control enters into the <span class='ct-code-b-yellow'>finally</span> block after catch.", {
 					"typing_interval": typing_interval_autoNextStep,
@@ -255,33 +294,54 @@ var tryCatchFinallyIntroReady = function() {
 						"typing_interval": typing_interval_autoNextStep,
 						"cursor_color": 'white'
 						}, function() {
-							$('#outputOfSopInsideCatch').removeClass('typingCursor');
-							setTimeout(function() {
-								intro.nextStep();
-							}, 1000);
+							if (intro._direction == "forward") {
+								$('#outputOfSopInsideCatch').removeClass('typingCursor');
+								setTimeout(function() {
+									intro.nextStep();
+								}, 1000);
+							} else {
+								$('#outputOfSopInsideCatch').empty();
+								setTimeout(function() {
+									intro.previousStep();
+								}, 1000);
+							}
+						
 						});
 				} else if (intro._currentStep == 15) {
-					$('#outputOfprintStackTraceLine1').fadeTo(1000, 1, function() {
-						$('#outputOfprintStackTraceLine2').fadeTo(1000, 1, function() {
-							$('#outputOfprintStackTraceLine3').fadeTo(1000, 1, function() {
-								$('#outputOfprintStackTraceLine4').fadeTo(1000, 1, function() {
-									$('#outputOfprintStackTraceLine5').fadeTo(1000, 1, function() {
-										setTimeout(function() {
-											intro.nextStep();
-										}, 1000);
+					if (intro._direction == "forward") {
+						$('#outputOfprintStackTraceLine1').fadeTo(1000, 1, function() {
+							$('#outputOfprintStackTraceLine2').fadeTo(1000, 1, function() {
+								$('#outputOfprintStackTraceLine3').fadeTo(1000, 1, function() {
+									$('#outputOfprintStackTraceLine4').fadeTo(1000, 1, function() {
+										$('#outputOfprintStackTraceLine5').fadeTo(1000, 1, function() {
+											setTimeout(function() {
+												intro.nextStep();
+											}, 1000);
+										});
 									});
 								});
 							});
 						});
-					});
+					} else {
+						$('[id*=outputOfprintStackTraceLine]').removeAttr('style');
+						setTimeout(function() {
+							intro.nextStep();
+						}, 1000);
+					}
+					
 				} else if (intro._currentStep == 18) {
 					$('#outputOfSopInsideFinally1').typewriting("Inside finally block", {
 						"typing_interval": typing_interval_autoNextStep,
 						"cursor_color": 'white'
 						}, function() {
-							$('#outputOfSopInsideFinally1').removeClass('typingCursor');
 							setTimeout(function() {
-								intro.nextStep();
+								if (intro._direction == "forward") {
+									$('#outputOfSopInsideFinally1').removeClass('typingCursor');
+									intro.nextStep();
+								} else {
+									$('#outputOfSopInsideFinally1').empty();
+									intro.previousStep();
+								}
 							}, 1000);
 						});
 				} else if (intro._currentStep == 20) {
@@ -299,6 +359,7 @@ var tryCatchFinallyIntroReady = function() {
 			break;
 		case "restartBtn":
 			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width','125px');
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
 			});
