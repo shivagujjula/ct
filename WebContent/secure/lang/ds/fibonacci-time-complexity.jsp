@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js/fibonacci-time-complexity.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js-min/fitc.min.js"></script>
 
 <title>fibonacci time complexity</title>
 
@@ -416,7 +416,7 @@ td:nth-child(4) {
 <!-- 			<span id="finalLine1" class="opacity00">&#10003;The total number of units taken for the sum() = 
 				<span id="conclusionId">4<span id="alphabetN1">n</span> + 4</span></span><br> -->
 			<span id="finalLine1" class="opacity00">The time complexity of fibonacci() = <span style="font-family: monospace; color: #0849a0;">
-				big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
+				Big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">

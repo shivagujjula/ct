@@ -14,7 +14,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/tcfia.min.js"></script>
+<!-- <script src="../js-min/tcfia.min.js"></script> -->
+<script src="/secure/lang/j/js/try-catch-finally-in-action.js"></script>
 <title>try-catch-finally in Action</title>
 
 <style>
@@ -91,7 +92,7 @@ ol, ul {
 }
 
 .introjs-tooltip {
-	width: 300px !important;
+	min-width: 300px;
 }
 
 .introjs-tooltiptext {
@@ -114,6 +115,11 @@ ol, ul {
 	background-color:green !important;
 }
 
+y {
+	font-weight: bold;
+	color: yellow;
+}
+
 </style>
 
 </head>
@@ -133,7 +139,7 @@ ol, ul {
 <pre class='creamPreTab4'>
 public class TryCatchFinallyDemo {
 	public static void main(String[] args) {
-<span id='mainMethodBlock'>		<span id='textLine'>String text = "<span id='textEditable' maxlength="2" contenteditable=false>3gg</span>";</span>
+<span id='mainMethodBlock'>		<span id='textLine'>String text = "<span id='textEditable' maxlength="2" class="input-val" contenteditable=false>3gg</span>";</span>
 		<span id='valueLine'>int value = 0;</span>
 		<span id='tryLine'><b>try</b> {</span>
 			<span id='parseIntLine'>value = Integer.parseInt(text);</span>
@@ -150,7 +156,7 @@ public class TryCatchFinallyDemo {
 		</div>
 		<div class='col-sm-6 box-border'>
 		<div class="output-console center" id='output'>
-					<div class="output-console-title-bar">
+					<div class="output-console-title-bar"> 
 						<span>Output</span>
 					</div>
 	        		<div class="output-console-body">

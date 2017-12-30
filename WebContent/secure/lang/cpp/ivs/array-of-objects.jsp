@@ -20,6 +20,89 @@
 <script src="/secure/lang/cpp/js-min/aoo.min.js"></script>
 <title>Array of objects</title>
 <style type="text/css">
+
+
+.cup-bg {
+	background-color: #003399;
+    border: 1px solid white;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    height: 38px;
+    left: 280px;
+    padding-bottom: 2px;
+    position: absolute;
+    top: 330px;
+    transition: all 1.3s ease-out 0s;
+    width: 57px;
+    z-index: 1000004;
+}
+
+.cup {
+	display: inline-block;
+	left: 15px;
+	position: relative;
+	top: 2px;
+	z-index: 1000000;
+}
+
+#cup_value {
+	bottom: 52px;
+	color: black;
+	left: 8px;
+	position: relative;
+	z-index: 1000005 !important;
+}
+
+.i-position {
+	bottom: 32px;
+	color: white;
+	font-family: monospace;
+	font-size: 10px;
+	position: relative;
+	right: 11px;
+}
+
+.cup-bg1 {
+	background-color: #003399;
+    border: 1px solid white;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    height: 38px;
+    left: 280px;
+    padding-bottom: 2px;
+    position: absolute;
+    top: 330px;
+    transition: all 1.3s ease-out 0s;
+    width: 57px;
+    z-index: 1000004;
+}
+
+.cup1 {
+	display: inline-block;
+	left: 20px;
+	position: relative;
+	top: 30px;
+	z-index: 1000000;
+}
+
+#cup_value1 {
+	bottom: 52px;
+	color: black;
+	left: 9px;
+	position: relative;
+	z-index: 1000005 !important;
+}
+
+.i-position1 {
+	bottom: 32px;
+	color: white;
+	font-family: monospace;
+	font-size: 10px;
+	position: relative;
+	right: 15px;
+}
+
+
 #informationDiv {
 	border: 2px solid gray;
 	border-radius: 5px;
@@ -74,7 +157,7 @@ table {
 .box-border {
 	border: 2px solid #dcd9d9;
 	border-radius: 8px;
-	min-height : 400px;
+	min-height : 420px;
 	padding-left : 10px;
 	padding-right : 10px;
 }
@@ -93,7 +176,7 @@ table {
 	margin-bottom: 14px;
 	padding: 10px;
 	white-space: nowrap;
-	min-height: 100px;
+	height: 300px;
 }
 .output-console-title-bar {
   background-color: #8e8989;
@@ -113,7 +196,6 @@ table {
 	z-index:1000000 !important;
 }
 .z-index10000000 {
-  position: absolute;
   z-index: 10000000 !important;
 }
 [contenteditable="true"] {
@@ -123,7 +205,7 @@ table {
 	
 } 
 input {
-	background-color: #99ffb4;
+	background-color: #efddd1;
 	color : black;
 }
 .ct-code-b-green {
@@ -172,13 +254,12 @@ g {
 	color: #479047;
 }
 .border {
-	border: 2px solid #f2f5ad;
+	border: 1px solid #f2f5ad;
 	background : #f2f5ad;
 	color: black;
-	border-radius: 8px;
 }
 .inputVal,.inputVall_1,.inputVall {
-	background-color: #99ffb4;
+	background-color: #efddd1;
 	color: black; 
 }
  .display {
@@ -196,10 +277,11 @@ g {
 	padding-bottom: 10px;
 }
 .ui-effectss-transfer {
-    border: 2px solid blue;
+    border: 2px solid deeppink;
     z-index: 99999999 !important;
     border-radius: 8px;
  }
+ 
  .circle-css {
 	border: 1px solid;
 	border-radius: 50%;
@@ -207,6 +289,14 @@ g {
 	position: relative;
 	z-index: 1000000;
 }
+ #voidGet, #voidPut {
+ 	color: #49c068;
+ 	font-weight: bold;
+ 	font-size: 15px;
+ }
+ #inputNumber, #inputNumber3, #inputNumber6,  #inputNumber9 {
+ 	color: #fbe847;
+ }
 </style>
 </head>
 <body>
@@ -219,38 +309,39 @@ g {
 	<div class="col-xs-12">
 		<div class=" col-xs-6 col-xs-offset-3 " id="informationDiv" style='margin-top: 5px;'>
 			<span id="infoText">The array of the objects can be created for the 
-			class as <span id="text">classname-arrayname[size];</span><a class="introjs-button user-button" id="nextButton">Next&rarr;</a></span>
+			class as <span id="text">Class-name arrayName[size];</span><a class="introjs-button user-button" id="nextButton">Next&rarr;</a></span>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top ">
 		<div class="col-xs-5  padding">
 			<pre class="creamPretab4 opacity00" id="preBody">
-<span id="declaration"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
-<span class="red">using namespace</span> std;
-<div class ="display" id="class"><span class='red'>class</span> Employee {
+<span id="declaration"><span class="violet">#include</span> <span class="green">&lt;iostream&gt;</span></span>
+<span class="red">using</span> <span class="green">namespace</span> std;
+<div class ="display opacity00" id="class"><span class='red'>class</span> Employee {
   <div class ="display" id="char"><div class="green display">char</div> <div class ="display" id="createMemory">name[10]</div>;</div>
   <div class ="display" id="int"><span class="green">int</span> <div class ="display" id="age">age</div>;</div>
-  <div class ="display" id="method"><span class="red display">public:</span> void getdata() {
-    <div class ="display" id="cout">cout << <div class="pink display" id="enterText">"Enter employee name : "</div>;</div>
-    <div class ="display" id="cin">cin >> <div class ="display" id="name">name</div>;</div>
-    <div class ="display" id="cout1">cout << <div class="pink display" id="enterText1">"Enter age : "</div>;</div>
-    <span id="cin1">cin >> <span id="age1">age</span>;</span>
-<span id="close">}</span></div>
-  <div class ="display" id="method1"><div class="green display">void</div> putdata() {
-   <div class ="display" id="cout2">cout << <div id="textEnter" class="pink display">"Employee name is : "</div> << <span id='name1'>name </span><< endl;</div>
-   <div class ="display" id="cout3">cout << <div id="textEnter1" class="pink display">"Employee age is : "</div> << <span id='age5'>age </span><< endl;</div>
+ <span class="red display opacity00" id="public">public:</span> 
+<div id="method" class="opacity00 display">     <div class="display" id="getVoid"><span class="green">void</span> getData()</div> {
+        <div class ="display" id="cout">cout << <div class="pink display" id="enterText">"Enter employee name : "</div>;</div>
+        <div class ="display" id="cin">cin >> <div class ="display" id="name">name</div>;</div>
+        <div class ="display" id="cout1">cout << <div class="pink display" id="enterText1">"Enter age : "</div>;</div>
+        <span id="cin1">cin >> <span id="age1">age</span>;</span>
+    <span id="close">}</span></div>
+    <div class ="display opacity00" id="method1"><div class="display" id="getVoid1"><div class="green display">void</div> putData()</div> {
+    <div class ="display" id="cout2">cout << <div id="textEnter" class="pink display">"Employee name is : "</div> << <span id='name1'>name </span><< endl;</div>
+    <div class ="display" id="cout3">cout << <div id="textEnter1" class="pink display">"Employee age is : "</div> << <span id='age5'>age </span><< endl;</div>
 <span id="close3">}</span></div>
 };	</div>
- <div class ="display" id="main">main() {
-   <div class ="display" id="manager">Employee manager[<span class="pink">3</span>];</div>
-   <div class ="display" id="int1">int i;</div>
-   <div class ="display" id="condition"><div class ="display" id='forLoop' >for(<div class ="display" id="iVal">i = <span class="pink position" id="num1">0</span></div>; <span id="iValComparision">i < <div class="pink display">3</div></span>; <span id="iValIncrement">i++</span>) {</div>
-    <div class ="display" id="cout4">cout << <div id="enterDetails" class="pink display">"Enter the manager details : "</div> << endl;</div>
-    <span id="manager1" class="position">manager[i].getdata();</span>
+ <div class ="display opacity00" id="main">main() {
+   <div class ="display opacity00" id="manager">Employee manager[<span class="pink">3</span>];</div>
+   <div class ="display opacity00" id="int1">int i;</div>
+   <div class ="display opacity00" id="condition"><div class ="display" id='forLoop' >for(<div class ="display" id="iVal">i = <span class="pink position" id="num1">0</span></div>; <span id="iValComparision">i < <div class="pink display">3</div></span>; <span id="iValIncrement">i++</span>) {</div><span id= "countCup" class="cup-bg opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2x"></i><h5 class="i-position"><span id='cup_i'><b>i</b></span><b>=</b>&nbsp;&nbsp;&nbsp; <h6 id="cup_value"></h6></h5></span></span>
+   <div class ="display" id="cout4">cout << <div id="enterDetails" class="pink display">"Enter the manager-" << i <<" details"</div> << endl;</div>
+   <span id="manager1" class="position">manager[i].getdata();</span>
 <div class ="display" id="close1">}</div></div>
-   <div class ="display" id="cout5">cout << <span class="pink" id="enterDetails1">"The manager details are : "</span> << endl;</div>
-   <div class ="display" id="condition1"><div class ="display" id='forLoop1' >for (<div class ="display" id="iValue">i = <span class="pink" id="num2">0</span>;</div><span id="iValComparision1"> i < <div class="pink display">3</div>;</span> <span id='iValIncrement1'>i++</span>) {</div>
-   <span id="manager2">manager[i].putdata();</span>
+   <div class ="display opacity00" id="cout5">cout << <span class="pink" id="enterDetails1">"The managers details are : "</span> << endl;</div>
+   <div class ="display opacity00" id="condition1"><div class ="display" id='forLoop1' >for (<div class ="display" id="iValue">i = <span class="pink" id="num2">0</span>;</div><span id="iValComparision1"> i < <div class="pink display">3</div></span>; <span id='iValIncrement1'>i++</span>) {</div><span id= "countCup1" class="cup-bg opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2x"></i><h5 class="i-position"><span id='cup_i1'><b>i</b></span><b>=</b>&nbsp;&nbsp;&nbsp; <h6 id="cup_value1"></h6></h5></span></span>
+   <span class ="display" id="manager2">manager[i].putdata();</span>
 <div class ="display" id="close2">}</div></div>
    <div class ="display" id="return" ><span class="red display">return</span><span class="pink display"> 0</span>;</div>
 <span id='mainClose'>} </span>   
@@ -276,7 +367,7 @@ g {
 								<tr>
 								<td> <span class="darkgreen"><b>name</b></span> : </td>
 									<%for (int i = 0; i <= 9; i++ ) { %>
-										<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table1"><span class='td-css position'></span></td>
+										<td class ="text-center value" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table1"><span class='td-css position'></span></td>
 									<%}%>
 								
 								</tr>
@@ -308,7 +399,7 @@ g {
 								<tr>
 									<td> <span class="darkgreen"><b>name</b></span> :</td>
 										<%for (int i = 0; i <= 9; i++ ) { %>
-											<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table3"><span class='td-css1 position'></span></td>
+											<td class ="text-center value1" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table3"><span class='td-css1 position'></span></td>
 										<%}%>
 								</tr>
 							</table>
@@ -340,7 +431,7 @@ g {
 								<tr>
 									<td> <span class="darkgreen"><b>name</b></span> :</td>
 										<%for (int i = 0; i <= 9; i++ ) { %>
-											<td class ="text-center" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table5"><span class='td-css2 position'></span></td>
+											<td class ="text-center value2" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table5"><span class='td-css2 position'></span></td>
 										<%}%>
 								</tr>
 							</table>
@@ -355,22 +446,9 @@ g {
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12">
-					<div class="col-xs-6 text-center ">
-						<div class="col-x-12 padding00 margin-top opacity00" id="countBox">
-							<span id="countCupValue" class="cupvalue"></span>
-							<i class="fa fa-coffee fa-3x count-cup"style="color: salmon;"></i><br>
-							<span id="countCupVariable" class = "ct-code-b-black" style='font-weight: bold; color : green;'>i</span>
-						</div>
-					</div>
-					<div class="col-xs-6 text-center ">
-						<div class="col-x-12 padding00 margin-top opacity00" id="countBox1">
-							<span id="countCupValue1" class="cupvalue"></span>
-							<i class="fa fa-coffee fa-3x count-cup"style="color: salmon;"></i><br>
-							<span id="countCupVariable" class = "ct-code-b-black" style='font-weight: bold; color : green;'>i</span>
-						</div>
-					</div>
-				</div>
+				<div class="col-xs-12 opacity00" id="borderLine" style="border-top: 1px solid darkseagreen; padding: 0px; margin-top: 20px;"></div>
+				<div class="col-xs-12 opacity00 text-center" id= "voidGet" style="margin-top: 10px;">void getData()</div>
+				<div class="col-xs-12 opacity00 text-center" id= "voidPut" style="margin-bottom: 10px;">void getCount()</div>
 			</div>
 			
 			<div class="output-console col-xs-12 margin-top padding00 opacity00" id='outputBox'>
@@ -382,7 +460,9 @@ g {
 			</div>
 		</div>
 	</div>
-	<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00" id="restartBtn" style="margin-top : 15px;">Restart</button></div>
+	<div class="button col-xs-12 text-center margin-top-1" id="button">
+			<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+	</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

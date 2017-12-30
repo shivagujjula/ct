@@ -323,7 +323,7 @@
 						<td>String methods</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String methods', '/secure/lang/j/string/string-methods-demo.jsp?id=1', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String methods</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">String methods</span></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -392,7 +392,7 @@
 						<td>String methods</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String substring method', '/secure/lang/j/string/string-methods-demo.jsp?id=2', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String substring method</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">String substring method</span></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -403,11 +403,22 @@
 						<td>String methods</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-methods-demo.jsp?id=3', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String replace method</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">String replace method</span></td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>String replace</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-replace-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String replace method (<span style = "color : blue">Replace of 8th demo</span>)</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
+						<td></td>
+						<td>30-12-17</td>
 					</tr>
 				</tbody>
 			</table>
@@ -594,10 +605,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Understanding try-catch-finally syntax', '/secure/lang/j/basics/try-catch-finally-in-action.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Understanding try-catch-finally syntax</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>28-12-17</td>
 					</tr>
 				</tbody>
 			</table>

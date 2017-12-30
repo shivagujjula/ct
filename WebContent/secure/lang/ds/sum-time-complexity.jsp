@@ -17,7 +17,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/ds/js/sum-time-complexity.js"></script>
+<script src="/secure/lang/ds/js-min/stc.min.js"></script>
 
 <title>Sum Time Complexity</title>
 <style type="text/css">
@@ -302,7 +302,7 @@ th:nth-child(3) {
 			<span id="finalLine1" class="opacity00">&#10003;The total number of units taken for the sum() = 
 				<span id="conclusionId">4<span id="alphabetN1">n</span> + 4</span></span><br>
 			<span id="finalLine2" class="opacity00">&#10003;The time complexity of sum() = <span style="font-family: monospace; color: #0849a0;">
-				big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
+				Big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">

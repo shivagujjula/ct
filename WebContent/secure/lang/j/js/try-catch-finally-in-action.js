@@ -1,10 +1,11 @@
 var intro;
 	var noException;
-	var typing_interval = 10;
-	var typing_interval_autoNextStep = 30;
+	var typing_interval = 1;
+	var typing_interval_autoNextStep = 3;
+	var editorTemp;
 
 var tryCatchFinallyInAction = function() {
-
+	editorTemp = $('#textEditable').text();
 	
 	intro = introJs();
 	
@@ -20,11 +21,15 @@ var tryCatchFinallyInAction = function() {
 		},
 		{
 			element : "#textLine",
-			intro : "The reference <span class='ct-code-b-yellow'>text</span> is initialized to a value \"<b>3gg</b>\".<br/><br/>As you can notice \"<b>3gg</b>\" is not parsable to integer. Hence it will throw an exception."
+			intro : "",
+			tooltipClass: "hide",
+			
 		},
 		{
 			element : "#textEditable",
-			intro : "You can also change \"<b><span id='inputText'>3gg</span></b>\" to any other parsable or unparsable text of maximum length <b>3</b>.<br>For example : \"1\",\"44\", \"2a\", \"b8\", \"zz\" and so on."
+			intro :"",
+			tooltipClass: "hide",
+			/*intro : "You can also change \"<b><span id='inputText'>3gg</span></b>\" to any other parsable or unparsable text of maximum length <b>3</b>.<br>For example : \"1\",\"44\", \"2a\", \"b8\", \"zz\" and so on."*/
 		},
 		{
 			element : "#valueLine",
@@ -80,35 +85,91 @@ var tryCatchFinallyInAction = function() {
 		},
 		{
 			element : "#restartBtn",
-			intro : "Click to Restart",
+			intro : "Click to restart.",
 			position : "right"
 		}
 		]});
 	
-	intro.onbeforechange(function(targetElement) {
+	intro.onafterchange(function(targetElement) {
+		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "textEditable":
+			
+			
+			
 			$('.introjs-helperLayer').one('transitionend', function () {
+				$('.introjs-tooltip').removeClass('hide');
+				$('.introjs-tooltiptext').append("You can change \"<y id='yid' class='editor-class'>"+ editorTemp +"</y>\" to any other parsable or unparsable text "
+				+"of maximum length <y>3</y>.<br><br>For example : \"<y>1</y>\", \"<y>44</y>\", \"<y>2a</y>\", \"<y>b8</y>\", \"<y>zz</y>\" and so on.");
+				
+				/*intro._introItems[intro._currentStep].intro = "You can change <y id='yid'>"+ editorTemp +"</y> to any other parsable or unparsable text "
+				+"of maximum length 3.<br>For example :\"1\",\"44\",\"2a\",\"b8\",\"zz\" and so on.";*/
 				$( "#textEditable").effect("highlight", {color: 'rgb(255, 0, 45)'}, 1000, function() {
 					$('#textEditable').attr('contenteditable', true);
+					$('#inputText').text($(this).text());
 					caretAtEnd(document.getElementById('textEditable'));
 				});
 			});
 			break;
+			
+			
+		//mainMethodBlock//
+		case "mainMethodBlock":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			console.log("this is current step zerpo");
+			
+			$('.introjs-tooltiptext').typewriting("The above code demonstrates the working of <span class='ct-code-b-yellow'>try</span>, "
+					+"<span class='ct-code-b-yellow'>catch</span> and <span class='ct-code-b-yellow'>finally</span> constructs using "
+					+"a sample code which tries to convert a number value given as a <b>String</b> to <b>int</b> value.<br/>First we "
+					+"will try with a sample which will generate an exception.<br/>Next we will try with a sample which executes normally "
+					+"without an exception.", {
+				"typing_interval": typing_interval,
+				"cursor_color": 'white'
+			}, function() {
+				$('.introjs-tooltiptext').removeClass('typingCursor');
+					$('.introjs-nextbutton').show();
+			});
+			
+			break;
+		//textLine
+		case "textLine":
+			$('#textEditable').attr('contenteditable', false);
+			/*intro : "The reference <span class='ct-code-b-yellow'>text</span> is initialized to a value \"<b "
+				+"class='input-val'>"+editorTemp+"</b>\".<br/><br/>As you can notice \"<b>3gg</b>\" is not parsable "
+				+"to integer. Hence it will throw an exception."*/
+			$('.introjs-helperLayer').one('transitionend', function () {
+				editorTemp = $('.input-val').text();
+				$('.introjs-tooltip').removeClass('hide');
+				$('.introjs-tooltiptext').append("The reference <y>text</y> is initialized to a value \"<y class='input-val'>"+editorTemp+"</y>\""
+						+"<br>");
+				if (isInteger(editorTemp)) {
+					$('.introjs-tooltiptext').append("<span>As you can notice <y class='input-val'>"+editorTemp+"</y></span> is parsable to integer.");
+				} else {
+					$('.introjs-tooltiptext').append("<span>As you can notice <y class='input-val'>"+editorTemp+"</y></span> is not parsable to"
+								+" integer. Hence it will throw an exception.</span>");
+				}
+				
+				$('.introjs-prevbutton').show();
+			});
+			
+			break;
+			
 		case "valueLine":
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
 			$('#textEditable').attr('contenteditable', false);
 			noException = ($('#textEditable').text() == parseInt($('#textEditable').text()));
 			if (noException) {
-				$('#outputOfSopInsideCatch').remove();
-				$('#output-printStackTrace').remove();
+				$('#outputOfSopInsideCatch').empty(); //remove to emtpy 
+				$('#output-printStackTrace').empty(); // remove to emtpy
 			} else {
-				$('#outputOfSopInsideTry').remove();
+				$('#outputOfSopInsideTry').empty(); //remove to emtpy 
 				$('#output-text-value').append($('#textEditable').text());
 			}
 			break;
 		case "tryLine":
-			$('.introjs-nextbutton').hide();
+			$('.exceptionCheckBtn').addClass('hidden');
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("Control enters into the <span class='ct-code-b-yellow'>try</span> block.", {
 					"typing_interval": typing_interval_autoNextStep,
@@ -116,12 +177,17 @@ var tryCatchFinallyInAction = function() {
 				}, function() {
 					$('.introjs-tooltiptext').removeClass('typingCursor');
 					setTimeout(function() {
-						intro.nextStep();
+						if (intro._direction == "forward") {
+							intro.nextStep();
+						} else {
+							intro.previousStep();
+						}
 					}, 1000);
 				});
 			});
 			break;
 		case "parseIntLine":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				var typingContent;
 				if (noException) {
@@ -134,19 +200,26 @@ var tryCatchFinallyInAction = function() {
 					"cursor_color": 'white'
 				}, function() {
 					$('.introjs-tooltiptext').removeClass('typingCursor');
+					$('.introjs-prevbutton').show();
 					$('.exceptionCheckBtn').removeClass('hidden');
+					$('.introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "catchLine":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				setTimeout(function() {
-					intro.nextStep();
+					if (intro._direction == "forward") {
+						intro.nextStep();
+					} else {
+						//intro.previousStep();
+						intro.goToStep(6);
+					}
 				}, 1000);
 			});
 			break;
 		case "printStackTraceLine":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("The <span class='ct-code-b-yellow'>printStactTrace()</span> method call on the reference <span " 
 														+ "class='ct-code-b-yellow'>e</span> will print the trace of all the method calls stored in the " 
@@ -155,12 +228,12 @@ var tryCatchFinallyInAction = function() {
 					"cursor_color": 'white'
 				}, function() {
 					$('.introjs-tooltiptext').removeClass('typingCursor');
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			break;
 		case "finallyLine":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$('.introjs-tooltiptext').typewriting("The <span class='ct-code-b-yellow'>finally</span> block is always executed after executing the <span class='ct-code-b-yellow'>try</span> or <span class='ct-code-b-yellow'>catch</span> blocks.", {
 					"typing_interval": typing_interval_autoNextStep,
@@ -183,8 +256,12 @@ var tryCatchFinallyInAction = function() {
 		case "sopInsideCatch":
 			$('.introjs-helperLayer').one('transitionend', function () {
 				setTimeout(function() {
-					intro.nextStep();
-				}, 1000);
+					if (intro._direction == "forward") {
+						intro.nextStep();
+					} else {
+						intro.previousStep();
+					}
+				}, 600);
 			});
 			break;
 		case "sopInsideFinally1":
@@ -200,22 +277,29 @@ var tryCatchFinallyInAction = function() {
 					$('#outputOfSopInsideTry').typewriting("Successfully parsed text as integer", {
 						"typing_interval": typing_interval,
 						"cursor_color": 'white'
-						}, function() {
+						}, function() { 
 							$('#outputOfSopInsideTry').removeClass('typingCursor');
 							setTimeout(function() {
 								intro.goToStep(14);
 							}, 1000);
 						});
 				} else if (intro._currentStep == 10) {
-					$('#outputOfSopInsideCatch').typewriting("Unable to parse text as integer", {
-						"typing_interval": typing_interval_autoNextStep,
-						"cursor_color": 'white'
+					$('.introjs-helperLayer').one('transitionend', function () {
+						$('#outputOfSopInsideCatch').typewriting("Unable to parse text as integer", {
+							"typing_interval": typing_interval_autoNextStep,
+							"cursor_color": 'white'
 						}, function() {
 							$('#outputOfSopInsideCatch').removeClass('typingCursor');
 							setTimeout(function() {
-								intro.nextStep();
+								if (intro._direction == "forward") {
+									intro.nextStep();
+								} else {
+									$('#outputOfSopInsideCatch').empty();
+									intro.previousStep();
+								}
 							}, 1000);
 						});
+					});
 				} else if (intro._currentStep == 12) {
 					$('#outputOfprintStackTraceLine1').fadeTo(1000, 1, function() {
 						$('#outputOfprintStackTraceLine2').fadeTo(1000, 1, function() {
@@ -244,7 +328,8 @@ var tryCatchFinallyInAction = function() {
 				});
 			break;
 		case "restartBtn":
-			$('.introjs-nextbutton').hide();
+			$('.introjs-tooltip').css('min-width','125px');
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restartBtn").removeClass('visibility-hidden');
 			});
@@ -259,13 +344,13 @@ var tryCatchFinallyInAction = function() {
 	$('.introjs-bullets').hide();
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button exceptionCheckBtn hidden'>Next &#8594;</a>");
 	
-		$('.introjs-tooltiptext').typewriting("The above code demonstrates the working of <span class='ct-code-b-yellow'>try</span>, <span class='ct-code-b-yellow'>catch</span> and <span class='ct-code-b-yellow'>finally</span> constructs using a sample code which tries to convert a number value given as a <b>String</b> to <b>int</b> value.<br/>First we will try with a sample which will generate an exception.<br/>Next we will try with a sample which executes normally without an exception.", {
+	/*	$('.introjs-tooltiptext').typewriting("The above code demonstrates the working of <span class='ct-code-b-yellow'>try</span>, <span class='ct-code-b-yellow'>catch</span> and <span class='ct-code-b-yellow'>finally</span> constructs using a sample code which tries to convert a number value given as a <b>String</b> to <b>int</b> value.<br/>First we will try with a sample which will generate an exception.<br/>Next we will try with a sample which executes normally without an exception.", {
 			"typing_interval": typing_interval,
 			"cursor_color": 'white'
 		}, function() {
 			$('.introjs-tooltiptext').removeClass('typingCursor');
 				$('.introjs-nextbutton').show();
-		});
+		});*/
 	
 	$('.exceptionCheckBtn').click(function() {
 		if (!noException) {
@@ -273,7 +358,7 @@ var tryCatchFinallyInAction = function() {
 		} else {
 			intro.nextStep();
 		}
-		$(this).remove();
+		$(this).addClass('hidden');
 	});
 	
 	$("#textEditable").keydown(function(e) {
@@ -289,13 +374,21 @@ var tryCatchFinallyInAction = function() {
 	    	$('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'><br/><br/>Please limit the String's length to 3.</span>");
 			e.preventDefault();
 		}
+		
 	});
 	
 	$("#textEditable").on("keyup", function(e) {
 		if ($(this).text() != '') {
 			intro.refresh();
 		}
-		$('#inputText').text($(this).text());
+		if ($(this).text() == "") {
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		} else {
+			$('.introjs-nextbutton, .introjs-prevbutton').show();
+		}
+		
+		$('.editor-class').text($(this).text());
+		editorTemp = $('#textEditable').text();
 	});
 	
 	$('body').keypress(function(e) {
@@ -318,3 +411,8 @@ function caretAtEnd(element) {
 	sel.removeAllRanges();
 	sel.addRange(range);
 }
+
+function isInteger(value) {
+	  return /^\d+$/.test(value);
+}
+

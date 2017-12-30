@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js/factorial-recursion-time-complexity.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js-min/frtc.min.js"></script>
 
 <title>factorial recursion time complexity</title>
 
@@ -411,7 +411,7 @@ span {
 					<span id="line12Span" class="opacity00">2<span id="alphabetN1">n</span> + <span id="line12SpanFact">fact(0)</span></span>
 				</span><br>
 				<span id="finalLine" class="opacity00">The time complexity of factorial() = <span style="font-family: monospace; color: #0849a0;">
-				big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
+				Big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
 			</div>
 		</div>
 	</div>

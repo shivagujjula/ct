@@ -18,9 +18,9 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js-min/bustc.min.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js/insertion-sort-time-complexity.js"></script>
 
-<title>Bubble sort time complexity</title>
+<title>Insertion sort time complexity</title>
 <style type="text/css">
 
 .margin-top-1 {
@@ -235,22 +235,23 @@ a {
 <div class="col-xs-12">
 	<div class="text-center margin-top-1">
 		<h3 class='label ct-demo-heading' id="heading">
-			<span>Time Complexity of Bubble Sort</span>
+			<span>Time Complexity of Insertion Sort</span>
 		</h3>
 	</div>
 	<div class="col-xs-12">
 		<div class="col-xs-8 col-xs-offset-2 index-div" id="indexDiv">
 			<ul>
-				<li id="listLine1" class="opacity00"><span class="ct-blue">Bubble sort</span> is an internal sorting technique in which <b>adjacent 
-				elements</b> are compared and exchanged if necessary.</li>
-				<li id="listLine2" class="opacity00">The working procedure for <span class="ct-blue">Bubble sort</span> is as follows:</li>
+				<li id="listLine1" class="opacity00"><span class="ct-blue">Insertion sort</span> is one that <b>sorts</b> a set of elements by 
+				inserting an element into the existing sorted elements.</li>
+				<li id="listLine2" class="opacity00">The working procedure for <span class="ct-blue">insertion sort</span> is as follows:</li>
 				<ol>
 					<li id="listLine3" class="opacity00">Let us consider an array of <b>n</b> elements (i.e., <b>a[n]</b>) to be sorted.</li>
-					<li id="listLine4" class="opacity00">Compare the first two elements in the array i.e., <b>a[0]</b> and <b>a[1]</b>, if <b>a[1]</b> is less than <b>a[0]</b> 
-						then interchange the two values.</li>
-					<li id="listLine5" class="opacity00">Next compare <b>a[1]</b> and <b>a[2]</b>, if <b>a[2]</b> is less than <b>a[1]</b> then interchange the values.</li>
-					<li id="listLine6" class="opacity00">Continue this process till the last two elements are <b>compared</b> and <b>interchanged</b>.</li>
-					<li id="listLine7" class="opacity00">Repeat the above steps for <b>n - 1</b> passes.</li>
+					<li id="listLine4" class="opacity00">The <b>first element a[0]</b> in the array is itself trivially sorted.</li>
+					<li id="listLine5" class="opacity00">The <b>second element a[1]</b> is compared with first element <b>a[0]</b> and it will 
+						be inserted either before or after first element, so that <b>first</b> and <b>second</b> elements are sorted.</li>
+					<li id="listLine6" class="opacity00">The <b>third element a[2]</b> is compared with <b>a[0]</b> and <b>a[1]</b> and it will 
+						be inserted into its proper place by checking conditions, so that first three elements are sorted.</li>
+					<li id="listLine7" class="opacity00">Repeat the same process for <b>n - 1</b> passes.</li>
 				</ol>
 			</ul>
 		</div>
@@ -374,14 +375,14 @@ a {
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
 			<pre class="creamPreTab4 opacity00" id="preCode1">
-<span id="preCodeLine1"><span class="color-green">void</span> bubbleSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
-	<span id="preCodeLine2"><span class="color-green">int</span> i, j, temp;</span>
-	<span id="preCodeLine3"><span class="color-maroon">for</span> (i = <span class="color-deeppink">0</span>; i < n - <span class="color-deeppink">1</span>; i++) {</span>
-		<span id="preCodeLine4"><span class="color-maroon">for</span> (j = <span class="color-deeppink">0</span>; j < n - i - <span class="color-deeppink">1</span>; j++) {</span>
-			<span id="preCodeLine5"><span class="color-maroon">if</span> (a[j] > a[j+<span class="color-deeppink">1</span>]) {</span>
-				temp = a[j];
-				a[j] = a[j+<span class="color-deeppink">1</span>];
-				a[j+<span class="color-deeppink">1</span>] = temp;
+<span id="preCodeLine1"><span class="color-green">void</span> insertionSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
+	<span id="preCodeLine2"><span class="color-green">int</span> pos, j, temp;</span>
+	<span id="preCodeLine3"><span class="color-maroon">for</span> (pos = <span class="color-deeppink">0</span>; pos < n - <span class="color-deeppink">1</span>; pos++) {</span>
+		temp = a[pos];
+		<span id="preCodeLine4"><span class="color-maroon">for</span> (j = <span class="color-deeppink">pos</span>; j > <span class="color-deeppink">0</span>; j--) {</span>
+			<span id="preCodeLine5"><span class="color-maroon">if</span> (a[j - 1] > temp]) {</span>
+				a[j] = a[j - <span class="color-deeppink">1</span>];
+				a[j - <span class="color-deeppink">1</span>] = temp;
 			}
 		}
 	}
@@ -425,7 +426,7 @@ a {
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div id="finalDiv" class="col-xs-5 col-xs-offset-5 text-center opacity00">
-			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : Big O(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
+			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : BigO(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
@@ -435,7 +436,8 @@ a {
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	bubbleSortTimeComplexityFunction();
+	insertionSortTimeComplexityFunction();
+//	$(".opacity00").removeClass("opacity00");
 });
 
 </script>

@@ -156,8 +156,13 @@ k {
 }
 .z-index1000000 {
 	position:relative;
-	background-color:white;
+	background-color: white;
 	z-index:1000000 !important;
+}
+.z-index10000000 {
+	position: relative;
+	background-color: #a38388;
+	z-index: 10000000 !important;
 }
 .border {
 	background : #a7eef1;
@@ -179,7 +184,7 @@ k {
 	text-align: center;
 }
 .blinking-orange {
-	animation-name: blink-border-background-orange ;
+	animation-name: blink-border-background-orange;
 	animation-duration: 2s ;
 	animation-iteration-count: infinite;
 	animation-direction: alternate ;
@@ -192,7 +197,7 @@ k {
 @keyframes blink-border-background-orange { 
 	50% {
 		border-color: white;
-		background: orange;
+		background: #a38388;
 	}
 }
 
@@ -217,46 +222,29 @@ k {
 			<pre class="creamPreTab4 opacity00" id="preBody">
 <span id="declaration"><span class="violet">#include</span> <span class="green">&lt;iostream&gt;</span></span>
 <span class="red">using</span> <span class="green">namespace</span> <span>std;</span>
-   <div class="display opacity00" id="method"><div id="method1" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display" id="intBlink">int</div> num1) {</div>
-   <div id="cout1" class="display">cout << <div id="enterText1" class="display pink">"Integer number is : "</div> << <div id="animateVal1" class="display">num1</div> << endl;</div>
-}</div>
- <div id="method2" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display" id="floatBlink">float</div> num2) {</div>
-   <div id="cout2" class="display">cout << <div id="enterText2" class="display pink">"Float number is : "</div> << <div id="animateVal2" class="display">num2</div> << endl;</div>
-}</div>
- <div id="method3" class="display"><div class="display" ><div class="green display">void</div> show (<div class="display" id="charBlink">char</div> ch) {</div>
-   <div id="cout3" class="display">cout << <div id="enterText3" class="display pink">"Character is : "</div> << <div id="animateVal3" class="display">ch</div> << endl;</div>
-}</div></div>
- <div class="display hide position" id="template"><span class="opacity00" id="template1"><span class="red">template</span> <span class="" id="tempVal">&lt;<span class="red">class</span> T&gt;</span></span>
-   <span id="method4" class=" position"><span class="" id="void"><span class="green">void</span> show (<span class="display red">T</span> x) {</span>
-   <span id="cout4" class="">&nbsp;&nbsp;&nbsp;cout << <span id="enterText4" class="pink">"The value is : "</span> << <span id="animateVal4" class="">x</span> << endl;</span>
-</span>}</div>
-<div id="main" class="display opacity00"><span class="green">int</span> main() {
-   <div id="int1" class="display opacity00"><div class="green display" id="int">int</div> <div class="display" id ="aVal1">num1 = <span class="pink">10</span></div>;</div>
+   <span class="opacity00" id="method"><span id="method1" class=""><span class="" ><span class="green">void</span> show (<span id="intBlink">int</span> num1) {</span>
+     <span id="cout1" class="display">cout << <span id="enterText1" class="pink">"Integer number is : "</span> << <span id="animateVal1">num1</span> << endl;</span>
+   }</span>
+   <span id="method2"><span class=""><span class="green display">void</span> show (<span class="" id="floatBlink">float</span> num2) {</span>
+     <span id="cout2">cout << <span id="enterText2" class="pink">"Float number is : "</span> << <span id="animateVal2">num2</span> << endl;</span>
+   }</span>
+   <span id="method3"><span class="" ><span class="green display">void</span> show (<span id="charBlink">char</span> ch) {</span>
+    <span id="cout3">cout << <span id="enterText3" class="pink">"Character is : "</span> << <span id="animateVal3">ch</span> << endl;</span>
+   }</span></span>
+<span class="hide" id="template"><span class="" id="template1"><span class="red">template</span> <span class="" id="tempVal">&lt;<span class="red">class</span> T&gt;</span></span>
+<span id="method4" class=" position"><span class="" id="void"><span class="green">void</span> show (<span class="display red">T</span> x) {</span>
+   <span id="cout4" class="">cout << <span id="enterText4" class="pink">"The value is : "</span> << <span id="animateVal4" class="">x</span> << endl;</span>
+}</span></span>
+<span id="main" class="opacity00"><span class="green">int</span> main() {
+   <div id="int1" class="display opacity00"><span class="green display" id="int">int</span> <div class="display" id ="aVal1">num1 = <span class="pink">10</span></div>;</div>
    <div id="float1" class="display opacity00"><div class="green display" id="float">float</div> <div class="display" id ="bVal1">num2 = <span class="pink">10.5</span></div>;</div>
    <div id="char1" class="display opacity00"><div class="green display" id="char">char</div> <div class="display" id ="cVal1">ch = <span class="pink">'R'</span></div>;</div>
-   <div id="show1" type="int"  param="a"class="display opacity00">show(num1);</div>
-   <div id="show2" type="float" param="b" class="display opacity00">show(num2);</div>
-   <div id="show3" type="char" param="c" class="display opacity00">show(ch);</div>
+   <div id="show1" type="int"  param="a"class="display opacity00">show(<span id="num1">num1</span>);</div>
+   <div id="show2" type="float" param="b" class="display opacity00">show(<span id="num2">num2</span>);</div>
+   <div id="show3" type="char" param="c" class="display opacity00">show(<span id="num3">ch</span>);</div>
    <div id="return" class="display"><div class="red display">return</div> <span class="pink">0</span>;</div>
-<span id="mainClose">}</span></div>
+<span id="mainClose">}</span></span>
 			</pre>
-			<!-- <pre class="creamPreTab4 opacity00" id="preBody1">
-<span id="declaration1"><span class="violet">#include</span> <span class="pink">&lt;iostream&gt;</span></span>
-<span class="red">using namespace</span> std;
-   <div class="display" id="template"><span class="red">template</span> <div class="display" id="tempVal">&lt;<span class="red">class</span> T&gt;</div></div>
-   <div id="method4" class="display position"><div class="display" id="void"><div class="green display">void</div> show (<div class="display">T</div> x) {</div>
-   <div id="cout4" class="display">cout << <div id="enterText4" class="display pink">"The val is : "</div> << <div id="animateVal4" class="display">x</div> << endl;</div>
-}</div>
-<div id="main1" class="display"><span class="green">int</span> main() {
-   <div id="int2" class="display"><div class="green display" id="int">int</div> <div class="display" id ="aVal2">num1 = <span class="pink">6</span></div>;</div>
-   <div id="float2" class="display"><div class="green display" id="float">float</div> <div class="display" id ="bVal2">num2 = <span class="pink">7.9</span></div>;</div>
-   <div id="char2" class="display"><div class="green display" id="char">char</div> <div class="display" id ="cVal2">ch = '<span class="pink">S</span>'</div>;</div>
-   <div id="show4"  type="int" param="a" class="display">show(num1);</div>
-   <div id="show5" type="float" param="b" class="display">show(num2);</div>
-   <div id="show6" type="char" param="c" class="display">show(ch);</div>
-   <div id="return1" class="display"><div class="red display">return</div> <span class="pink">0</span>;</div>
-<span id="mainClose2">}</span></div>
-			</pre> -->
 		</div>
 		<div class="col-xs-6">
 			<div class="col-xs-12 margin-topp box-border hide" id="animationBox">

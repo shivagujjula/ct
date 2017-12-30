@@ -18,14 +18,9 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js/processing-of-structure-with-dot-in-cpp.js"></script>
+<script src="/secure/lang/cpp/js-min/poswdic.min.js"></script>
 <title>Processing of Structure with Dot Operator</title>
 <style>
-
-.border-div {
-	border:2px solid gray;
-	border-radius: 11px;
-}
 
 .information-div {
 	background-color: rgb(243, 235, 235);
@@ -36,25 +31,11 @@
 	border: 1px solid gray; 
 }
 
-.table-border {
-	border: 2px solid gray;
-	text-align: center;
-	width: 12%;
-	height: 26px;
-}
-
-.output-table-border {
-	border: 2px solid transparent;
-	text-align: center;
-	width: 12%;
-	height: 26px;
-}
-
 .creampretab4 {
 	-moz-tab-size: 3;
 	tab-size: 3;
 	background-color: lavender !important;
-	font-size: 11px;
+	font-size: 12px;
 	font-family: monospace;
 }
 
@@ -84,11 +65,6 @@
     cursor: wait !important;
 }
 
-.padding3 {
-	padding: 3px 9px 0 3px;
-	outline: none;
-}
-
 .ct-code-b-green {
 	color: green;
 }
@@ -105,12 +81,6 @@
 
 .introjs-tooltip {
 	min-width: 300px;
-}
-
-.td-css {
-	text-align: center;
-	color: fuchsia;
-	font-weight: bold;
 }
 
 td {
@@ -196,7 +166,6 @@ tr, td {
 
 .ui-effects-transfer {
 	border: 1px solid green;
-	/* border-radius: 50%; */
 	padding: 2px;
 	z-index: 9999999 !important;
 }
@@ -214,7 +183,7 @@ div,span {
 
 .blinking {
 	animation-name: blinking;
-	animation-duration: 0.4s;
+	animation-duration: 0.3s;
 	animation-iteration-count: 3;
  }
 
@@ -223,6 +192,25 @@ div,span {
 		background: #ffae1a;
 	}
 }
+
+m {
+	color: maroon;
+	font-weight: bold;
+}
+
+g {
+	color: green;
+	font-weight: bold;
+}
+
+pink {
+	color: deeppink;
+}
+
+blue {
+	color: blue;
+}
+
 </style>
 </head>
 <body>
@@ -231,7 +219,6 @@ div,span {
 		Change the error color form white to red */
 		$(document).ready(function() {
 			processingOfStructureWithDotReady();
-		//	$(".opacity00").removeClass("opacity00");
 		});
 	</script>
 
@@ -243,7 +230,7 @@ div,span {
 			<ul>
 				<li id="li1" class="opacity00"><span class="ct-code-b-green">Processing of structure</span> refers to the ways of accessing
 					 the members of a structure.</li>
-				<li id="li2" class="opacity00"><b class="ct-blue-color">Dot(.) operator</b>: This is used to access a member of a
+				<li id="li2" class="opacity00"><b class="ct-blue-color">Dot(.) operator</b> is used to access a member of a
 						 <span class="ct-code-b-green">structure</span>.<br>
 						 &emsp; <b>Syntax</b> : <span class="ct-code-b-green syntax-css">object.member</span></li>
 			</ul>
@@ -252,23 +239,23 @@ div,span {
 	<div class="col-xs-12 margin-top20">
 		<div class="col-xs-6">
 			<pre class="code-div creampretab4 opacity00" id="codeDiv">
-#include &lt;iostream&gt;
-using namespace std;			
-<span id="declaration"><span id="structLine"><b class="ct-code-b-green">struct</b> employee_record {</span>
-	<span id="variableDefinition"><span id="charData">char name [20];</span>
-	<span id="intData">int age;</span>
-	<span id="floatData">float salary;</span></span>
-	<span id="readDataFunction">void readData() {
-		<span id="readDataFunCout">cout << "Enter name, age and salary details : ";</span>
+<blue>#include</blue> <pink>&lt;iostream&gt;</pink>
+<m>using namespace</m> std;			
+<span id="declaration"><span id="structLine"><m>struct</m> employee {</span>
+	<span id="variableDefinition"><span id="charData"><g>char</g> name[<pink>20</pink>];</span>
+	<span id="intData"><g>int</g> age;</span>
+	<span id="floatData"><g>float</g> salary;</span></span>
+	<span id="readDataFunction"><g>void</g> readData() {
+		<span id="readDataFunCout">cout << <pink>"Enter name, age and salary details : "</pink>;</span>
 		<span id="readDataFunCin">cin >> name >> age >> salary;</span>
 	}</span>
 };</span>
-<span id="mainDeclaration">int main() {
-	<span id="empId">employee_record emp;</span>
+<span id="mainDeclaration"><g>int</g> main() {
+	<span id="empId">employee emp;</span>
 	<span id="readDataId">emp.readData();</span>
-	<span id="mainCout"><span id="coutId1">cout << "name : " << <span id="coutEmpName">emp.name</span> << endl;</span>
-	<span id="coutId2">cout << "age : " << <span id="coutEmpAge">emp.age</span> << endl;</span>
-	<span id="coutId3">cout << "salary : " << <span id="coutEmpSalary">emp.salary</span> << endl;</span></span>
+	<span id="mainCout"><span id="coutId1">cout << <pink>"name : "</pink> << <span id="coutEmpName">emp.name</span> << endl;</span>
+	<span id="coutId2">cout << <pink>"age : "</pink> << <span id="coutEmpAge">emp.age</span> << endl;</span>
+	<span id="coutId3">cout << <pink>"salary : "</pink> << <span id="coutEmpSalary">emp.salary</span> << endl;</span></span>
 }</span>
 </pre>
 		</div>
@@ -323,9 +310,10 @@ using namespace std;
 			<div class="output-console-body"><span class="output" id="output"></span></div>
 		</div>
 	</div>
-
-	<!-- <span class="hide">void displayData() {
-		cout << "The given details are : " << name << " " << age << " " << salary << "\n";
-	}</span> -->
+	<div class="col-xs-12">
+		<div class="text-center margin-top20" id="restartDiv">
+			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+		</div>
+	</div>
 </body>
 </html>

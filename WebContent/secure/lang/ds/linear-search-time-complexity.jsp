@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js/linear-search-time-complexity.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js-min/lstc.min.js"></script>
 
 <title>linear search time complexity</title>
 
@@ -456,15 +456,15 @@ th {
 				<ul>
 					<li id="line1" class="opacity00">
 						Best Case : <span id="firstCase" class="opacity00">5</span>
-						<span id="firstCaseComplexity" class="opacity00"> - Time complexity is <b>big O(<span id="result1" class="opacity00">1</span>)</b></span>
+						<span id="firstCaseComplexity" class="opacity00"> - Time complexity is <b>Big O(<span id="result1" class="opacity00">1</span>)</b></span>
 					</li>
 					<li id="line2" class="opacity00">
 						Average Case : <span id="secondCase" class="opacity00">2<span id="valueN1">n</span> + 2</span>
-						<span id="secondCaseComplexity" class="opacity00"> - Time complexity is <b>big O(<span id="result2" class="opacity00">n</span>)</b></span>
+						<span id="secondCaseComplexity" class="opacity00"> - Time complexity is <b>Big O(<span id="result2" class="opacity00">n</span>)</b></span>
 					</li>
 					<li id="line3" class="opacity00">
 						Worst Case : <span id="thirdCase" class="opacity00">4<span id="valueN2">n</span> + 3</span>
-						<span id="thirdCaseComplexity" class="opacity00"> - Time complexity is <b>big O(<span id="result3" class="opacity00">n</span>)</b></span>
+						<span id="thirdCaseComplexity" class="opacity00"> - Time complexity is <b>Big O(<span id="result3" class="opacity00">n</span>)</b></span>
 					</li>
 				</ul>
 			</div>

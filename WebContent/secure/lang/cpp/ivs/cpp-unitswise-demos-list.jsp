@@ -1624,6 +1624,17 @@
 						<td></td>
 						<td>07-10-17</td>
 					</tr>
+					<tr>
+						<td>33</td>
+						<td style = "color : red">Storage classes - Static variables</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Static variables', 'static-variables.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Static variables</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / Anil</td>
+						<td></td>
+						<td>06-10-17 / 12-12-17</td>
+					</tr>
 				</tbody>
 			</table>
 			
@@ -1658,10 +1669,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Processing a Structure using dot operator', 'processing-of-structure-with-dot-in-cpp.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Processing a Structure using dot operator</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Shiva / Shiva</td>
 						<td></td>
-						<td>Shiva</td>
-						<td></td>
-						<td>Yet to start</td>
+						<td>28-12-17</td>
 					</tr>
 					<tr>
 						<td>3</td>
@@ -1694,10 +1705,10 @@
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Array of Objects', 'array-of-objects.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of array of objects</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Rajashekar / Rajashekar</td>
 						<td></td>
-						<td>Rajashekar</td>
-						<td></td>
-						<td></td>
+						<td>29-12-17</td>
 					</tr>
 					<tr>
 						<td>6</td>
@@ -1754,17 +1765,6 @@
 						<td>Karthik / Karthik</td>
 						<td></td>
 						<td>25-10-17</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td style = "color : red">Storage classes - Static variables</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Static variables', 'static-variables.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Static variables</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Anil / Anil</td>
-						<td></td>
-						<td>06-10-17 / 12-12-17</td>
 					</tr>
 				</tbody>
 			</table>
@@ -1841,10 +1841,10 @@
 					</tr>
 					<tr>
 						<td>6</td>
-						<td style = "color : red">Constructor</td>
+						<td style = "color : red">Types of constructors</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Constructor', 'constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Constructor</span></td>
+							href="javascript:opendialog('Types of constructors', 'constructor.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Types of constructors</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -2077,7 +2077,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('overriding', 'overriding.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">overriding</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">overriding</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -2089,7 +2089,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('onstructors types in inheritance', 'constructors-types-in-inheritance-in-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Constructors types in inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green;">Constructors types in inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -2097,11 +2097,23 @@
 					</tr>
 					<tr>
 						<td>9</td>
-						<td>Destructor in inheritance</td>
+						<td>Destructor in single and multilevel inheritance</td>
 						<td>
 							<a class='btn btn-xs btn-success'
-							href="javascript:opendialog('Destructor in inheritance', 'destructor-in-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Destructor in inheritance</span></td>
+							href="javascript:opendialog('Destructor in single and multilevel inheritance', 'destructor-in-inheritance.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Destructor in single and multilevel inheritance</span></td>
+						<td></td>
+						<td>Sathish (In progress)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Destructor in multiple inheritance</td>
+						<td>
+							<a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Destructor in multiple inheritance', 'destructor-in-multiple-inheritance.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Destructor in multiple inheritance</span></td>
 						<td></td>
 						<td>Sathish (In progress)</td>
 						<td></td>
@@ -2320,14 +2332,14 @@
 					
 					<tr>
 						<td>1</td>
+						<td>Standard Template Library</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('Standard Template Library', 'standard-template-library.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Standard Template Library</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Swathi / Swathi</td>
 						<td></td>
-						<td><!-- <a class='btn btn-xs btn-success'
-							href="javascript:opendialog('', '', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"></span> --></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>27-12-17</td>
 					</tr>
 				</tbody>
 			</table>

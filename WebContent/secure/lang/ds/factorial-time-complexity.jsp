@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/ds/js/factorial-time-complexity.js"></script>
-<script type="text/javascript" src="/secure/lang/ds/js/factorial-time-complexity.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js-min/fatc.min.js"></script>
 
 <title>Factorial Time Complexity</title>
 <style type="text/css">
@@ -228,7 +228,7 @@ th:nth-child(3) {
 					<li id="line1" class="opacity00">The time complexity of an algorithm is the <span class="ct-color-green">total 
 					amount of time</span> required by an algorithm to complete its execution.
 					</li>
-					<li id="line2" class="opacity00">The time complexity of an algorithm is commonly expressed using <span class="ct-color-green">big O</span> notation, 
+					<li id="line2" class="opacity00">The time complexity of an algorithm is commonly expressed using <span class="ct-color-green">Big O</span> notation, 
 					which excludes coefficients and lower order terms.<br/>
 					<span id='nextButton' class='opacity00'>
 						<a class='introjs-button user-btn'>Next &#8594;</a></span></li>
@@ -325,7 +325,7 @@ th:nth-child(3) {
 			<span id="finalLine1" class="opacity00">&#10003;The total number of units taken for the factorial() = 
 				<span id="conclusionId">4<span id="alphabetN1">n</span> + 4</span></span><br>
 			<span id="finalLine2" class="opacity00">&#10003;The time complexity of factorial() = <span style="font-family: monospace; color: #0849a0;">
-				big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
+				Big O(<span id="alphabetN2" class="opacity00 position">n</span>)</span>.</span>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">

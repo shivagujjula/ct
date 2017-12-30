@@ -33,16 +33,8 @@ var processingOfStructureWithDotReady = function() {
 				element : "#declaration",
 				intro : "",
 				position:"right",
+				tooltipClass:"hide",
 				animateStep : 'firstStepDeclaration',
-			},{
-				element : "#variableDefinition", 
-				intro : "",
-				position:"right"
-			},{
-				element : "#readDataFunction", 
-				intro : "",
-				position:"right",
-				animateStep : 'explanation',
 			},{
 				element : "#mainDeclaration", 
 				intro : "",
@@ -51,6 +43,7 @@ var processingOfStructureWithDotReady = function() {
 				element : "#empId",
 				intro : "",
 				position:"right",
+				tooltipClass:"hide",
 			},{
 				element : "#readDataId",
 				intro : "",
@@ -59,11 +52,12 @@ var processingOfStructureWithDotReady = function() {
 				element : "#readDataFunction", 
 				intro : "",
 				position:"right",
-				animateStep : 'implementation',
+				tooltipClass:"hide"
 			},{
 				element : "#readDataFunCout",
 				intro : "",
 				position:"right",
+				tooltipClass:"hide"
 			},{
 				element : "#outputDiv", 
 				intro : "",
@@ -84,6 +78,11 @@ var processingOfStructureWithDotReady = function() {
 				intro : "",
 				tooltipClass:"hide",
 			},{
+				element : "#mainCout",
+				intro : "",
+				tooltipClass:"hide",
+				animateStep : 'coutAsPublic'
+			},{
 				element : "#coutId1",
 				intro : "",
 				position:"right",
@@ -102,10 +101,12 @@ var processingOfStructureWithDotReady = function() {
 				element : "#declaration",
 				intro : "",
 				position:"right",
+				tooltipClass:"hide",
 				animateStep : 'secondStepDeclaration',
 			},{
 				element : "#mainCout",
 				intro : "",
+				animateStep : 'coutAsError'
 			},{
 				element : "#outputDiv", 
 				intro : "",
@@ -116,6 +117,7 @@ var processingOfStructureWithDotReady = function() {
 				element : "#codeDiv",
 				intro : "",
 				position:"right",
+				tooltipClass:"hide",
 				animateStep : "displayFunction"
 			},{
 				element : "#outputDiv", 
@@ -131,84 +133,55 @@ var processingOfStructureWithDotReady = function() {
 			
 			]});
 		
-		/*intro.onbeforechange(function(targetElement) {
+		intro.onbeforechange(function(targetElement) {
 			var elementId = targetElement.id;
 			switch (elementId) {
 				
-				case "emp3":
-				case "emp2":
-				case "emp1":
-					if (elementId == "emp1") {
-						$("#animationDiv1").addClass("opacity00");
-					} else if (elementId == "emp2") {
-						$("#animationDiv2").addClass("opacity00");
-					} else if (elementId == "emp3") {
-						$("#animationDiv3").addClass("opacity00");
-						$("#output").empty();
-					}
-				break;
-				
-				case "animationDiv1":
-				case "animationDiv2":
-				case "animationDiv3":
-						if (elementId == "animationDiv1") {
-							$("#" + elementId).addClass("opacity00");
-						} else if (elementId == "animationDiv2") {
-							$("#" + elementId).addClass("opacity00");
-						} else if (elementId == "animationDiv3") {
-							$("#" + elementId).addClass("opacity00");
-							$("#output").empty();
-						}
-				break;
+				case "mainDeclaration":
+				case "empId":
+					$("#animationDiv").removeClass("z-index").addClass("opacity00");
+					$("#borderBox, #bodyBox1, #bodyBox2").addClass("opacity00");	
+					break;
 				case "outputDiv":
-					if (intro._currentStep == 13) {
-						$("#enterName1, #editname1").empty();
-						$("#editname1").attr("contenteditable", true);
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+					switch(animateStep) {
+						case 'enterCinAction':
+							var string = $("#val0").text();
+							$("#charAtTd" + string.length).empty();
+							$(".char-class, #box1, #box2").empty();
+							$(".small-box").removeClass("char-class");
+							break;
 					}
-					if (intro._currentStep == 17) {
-						$("#enterAge1, #editage1").empty();
-						$("#editage1").attr("contenteditable", true);
+					break;
+				case "declaration":
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+					switch(animateStep) {
+						case 'secondStepDeclaration':
+							$("#privateIdSpan").remove();
+							$("#publicIdSpan").remove();
+							intro.refresh();
+							break;
 					}
+					break;
+				case 'mainCout':
+					var animateStep = intro._introItems[intro._currentStep].animateStep;
+					switch(animateStep) {
+					case 'coutAsPublic':
+						$("#privateIdSpan").remove();
+						$("#publicIdSpan").remove();
+						intro.refresh();
+						break;
+					case 'coutAsError':
+					//	$("#output").empty();
+						$("#outputSpan1, #inputVal, #outputText1, #outputText2, #outputText3").show();
+						$("#errorImageId").remove();
+						break;
+					}
+					break;
 					
-					if (intro._currentStep == 21) {
-						$("#enterSal1, #editsal1").empty();
-						$("#editsal1").attr("contenteditable", true);
-					}
-					
-					if (intro._currentStep == 27) {
-						$("#enterName2, #editname2").empty();
-						$("#editname2").attr("contenteditable", true);
-					}
-					if (intro._currentStep == 31) {
-						$("#enterAge2, #editage2").empty();
-						$("#editage2").attr("contenteditable", true);
-					}
-					
-					if (intro._currentStep == 35) {
-						$("#enterSal2, #editsal2").empty();
-						$("#editsal2").attr("contenteditable", true);
-					}
-					
-					if (intro._currentStep == 41) {
-						$("#enterName3, #editname3").empty();
-						$("#editname3").attr("contenteditable", true);
-					}
-					if (intro._currentStep == 45) {
-						$("#enterAge3, #editage3").empty();
-						$("#editage3").attr("contenteditable", true);
-					}
-					
-					if (intro._currentStep == 49) {
-						$("#enterSal3, #editsal3").empty();
-						$("#editsal3").attr("contenteditable", true);
-					}
-					
-					
-					
-				break;
 			}
 			
-		});*/
+		});
 		
 		
 		intro.onafterchange(function(targetElement) {
@@ -256,7 +229,7 @@ var processingOfStructureWithDotReady = function() {
 						$("#codeDiv").removeClass("opacity00");
 						$(".introjs-helperLayer ").one('transitionend', function() {
 						//	$("#outputDiv").removeClass("opacity00");
-							var text = "Let us consider an example.";
+							var text = "Let us consider a <span class='ct-code-b-yellow'>c++</span> program.";
 							typing(".introjs-tooltiptext", text, function() {
 								$('.introjs-nextbutton').show();
 							});
@@ -268,10 +241,10 @@ var processingOfStructureWithDotReady = function() {
 								$("#mainCout").remove();
 								$("#readDataId").after("<br><span id='displayDataId' class='opacity00'>\temp.displayData();</span>");
 								TweenMax.to($("#displayDataId"), 1, {opacity: 1, onComplete: function() {
-									$("#readDataFunction").after("<br>\t<span id='displayDataFunction' class='opacity00'>void displayData() {<br>"+
-										"\t\tcout << \"name : \" << name << endl;<br>"+
-										"\t\tcout << \"age : \" << age << endl;<br>"+
-										"\t\tcout << \"salary : \" << salary << endl;<br>"+
+									$("#readDataFunction").after("<br>\t<span id='displayDataFunction' class='opacity00'><g>void</g> displayData() {<br>"+
+										"\t\tcout << <pink>\"name : \"</pink> << name << endl;<br>"+
+										"\t\tcout << <pink>\"age : \"</pink> << age << endl;<br>"+
+										"\t\tcout << <pink>\"salary : \"</pink> << salary << endl;<br>"+
 										"\t}</span>");
 									intro.refresh();
 									TweenMax.to($("#displayDataFunction"), 1, {opacity: 1, onComplete: function() {
@@ -294,23 +267,31 @@ var processingOfStructureWithDotReady = function() {
 				switch(animateStep) {
 					case 'firstStepDeclaration':
 						$(".introjs-helperLayer ").one('transitionend', function() {
-							var text = "We declare a user defined datatype <span class='ct-code-b-yellow'>employee_record</span>" 
-								+ ", which contains one <span class='ct-code-b-yellow'>character</span> member <span class='ct-code-b-yellow'>name</span>"
-								+ ", two <span class='ct-code-b-yellow'>integer</span> members <span class='ct-code-b-yellow'>age</span>"
-								+ " and <span class='ct-code-b-yellow'>sal</span>.";
+							var text = "<ul><li>Here a structure named <span class='ct-code-b-yellow'>employee</span> is declared with"
+								+ " three data members <span class='ct-code-b-yellow'>name</span>, <span class='ct-code-b-yellow'>age</span>"
+								+ ", <span class='ct-code-b-yellow'>salary</span> and one member function <span class='ct-code-b-yellow'>readData()</span>."
+								+ "</li><li>By default in s structure all the members are <span class='ct-code-b-yellow'>public</span>.</li></ul>";
+							$('.introjs-tooltip').removeClass('hide');
 							typing(".introjs-tooltiptext", text, function() {
-								$('.introjs-nextbutton, .introjs-prevbutton').show();
+								$("#variableDefinition").effect( "highlight", {color:"burlywood"}, 1500, function() {
+									$("#readDataFunction").effect( "highlight", {color:"burlywood"}, 1500, function() {
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
+									});
+								});
 							});
 						});
 						break;
 					case 'secondStepDeclaration':
+						$("#animationDiv").removeClass("z-index");
 						$(".introjs-helperLayer ").one('transitionend', function() {
-							var text = "Now make variables as private and readData member function as private."
+							var text = "Now make data members as <span class='ct-code-b-yellow'>private</span> and member function as "+
+							"<span class='ct-code-b-yellow'>public</span>.";
+							$('.introjs-tooltip').removeClass('hide');
 							typing(".introjs-tooltiptext", text, function() {
-								$("#structLine").after("<span id='privateIdSpan'><br>private:</span>");
-								$("#floatData").after("<span id='publicIdSpan'><br>public:</span>");
+								$("#structLine").after("<span id='privateIdSpan'><br><m>private</m>:</span>");
+								$("#floatData").after("<span id='publicIdSpan'><br><m>public</m>:</span>");
 								intro.refresh();
-								$("#privateIdSpan, #publicIdSpan").effect( "highlight", {color:"burlywood"}, 1000, function() {
+								$("#privateIdSpan, #publicIdSpan").effect( "highlight", {color:"burlywood"}, 2000, function() {
 									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								});
 							});
@@ -318,53 +299,35 @@ var processingOfStructureWithDotReady = function() {
 						break;
 				}
 				break;	
-			case "variableDefinition":
+			case "mainDeclaration":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					/*var text = "We have defined three struct variables <span class='ct-code-b-yellow'>emp1</span>, "
-								+ " <span class='ct-code-b-yellow'>emp2</span>, <span class='ct-code-b-yellow'>emp3</span> of type"
-								+ " <span class='ct-code-b-yellow'>employee_record</span>.";*/
-					var text = " ";
+					var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution of any program in "+
+						"<span class='ct-code-b-yellow'>c++</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
-				
-			break;
-			case "readDataFunction":
-				var animateStep = intro._introItems[intro._currentStep].animateStep;
-				switch(animateStep) {
-					case 'explanation':
-						$(".introjs-helperLayer ").one('transitionend', function() {
-							$('.introjs-nextbutton, .introjs-prevbutton').show();
-						});
-						break;
-					case 'implementation':
-						$(".introjs-helperLayer ").one('transitionend', function() {
-							$('.introjs-nextbutton, .introjs-prevbutton').show();
-						});
-						break;
-				}
-				break;
-			case "mainDeclaration":
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
 				break;
 			case "empId":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					$("#animationDiv").addClass("animated zoomIn z-index").removeClass("opacity00").one('animationend', function() {
-						$("#animationDiv").removeClass("animated zoomIn").off();
-						$("#charData").addClass("z-index");
-						transferEffectFunction("#charData", "#borderBox", function() {
-							$("#charData").removeClass("z-index");
-							$("#intData").addClass("z-index");
-							transferEffectFunction("#intData", "#bodyBox1", function() {
-								$("#intData").removeClass("z-index");
-								$("#floatData").addClass("z-index");
-								transferEffectFunction("#floatData", "#bodyBox2", function() {
-									$("#floatData").removeClass("z-index");
-									$('.introjs-nextbutton, .introjs-prevbutton').show();
-									
+					var text = "A structure variable <span class='ct-code-b-yellow'>emp</span> is defined, memory will be allocated to "+
+						"<span class='ct-code-b-yellow'>emp</span>.";
+					$('.introjs-tooltip').removeClass('hide');
+					typing(".introjs-tooltiptext", text, function() {
+						$("#animationDiv").addClass("animated zoomIn z-index").removeClass("opacity00").one('animationend', function() {
+							$("#animationDiv").removeClass("animated zoomIn").off();
+							$("#charData").addClass("z-index");
+							transferEffectFunction("#charData", "#borderBox", function() {
+								$("#charData").removeClass("z-index");
+								$("#intData").addClass("z-index");
+								transferEffectFunction("#intData", "#bodyBox1", function() {
+									$("#intData").removeClass("z-index");
+									$("#floatData").addClass("z-index");
+									transferEffectFunction("#floatData", "#bodyBox2", function() {
+										$("#floatData").removeClass("z-index");
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
+										
+									});
 								});
 							});
 						});
@@ -373,107 +336,186 @@ var processingOfStructureWithDotReady = function() {
 				break;
 			case "readDataId":
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
+					var text = "The member function <span class='ct-code-b-yellow'>readData()</span> is invoked by "+
+						"<span class='ct-code-b-yellow'>emp</span>.";
+					typing(".introjs-tooltiptext", text, function() {
+						$('.introjs-nextbutton, .introjs-prevbutton').show();
+					});
 				});
 				break;
 			case "readDataFunction":
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				if (intro._direction == "forward") {
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						setTimeToIntroNextStep();
+					});
+				} else {
+					setTimeout(function () {
+						intro.previousStep();
+					}, 1000);
+				}
 				break;
 			case "readDataFunCout":
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					$("#outputDiv").removeClass("opacity00");
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				if (intro._direction == "forward") {
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						$("#outputDiv").removeClass("opacity00");
+						setTimeToIntroNextStep();
+					});
+				} else {
+					setTimeout(function () {
+						$("#outputDiv").addClass("opacity00");
+						intro.previousStep();
+					}, 1000);
+				}
 				break;
 			case "readDataFunCin":
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					setTimeToIntroNextStep();
-				});
+				if (intro._direction == "forward") {
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						setTimeToIntroNextStep();
+					});
+				} else {
+					setTimeout(function () {
+						intro.previousStep();
+					}, 1000);
+				}
 				break;
 			case "coutId1":
-				$("#inputVal").after("<br><span id='outputText1' class='opacity00'><span id='outPutNamekey'>name : </span><span id='outPutNameValue'></span>");
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					$("#outputDiv").addClass("z-index");
-					transferEffectFunction("#coutId1", "#outputText1", function() {
-						$("#coutEmpName").addClass("blinking").one('animationend', function() {
-							$("#coutEmpName").removeClass("blinking").off();
-							$("#empObjectSpan").addClass("blinking").one('animationend', function() {
-								$("#empObjectSpan").removeClass("blinking").off();
-								$("#s1Span").addClass("blinking").one('animationend', function() {
-									$("#s1Span").removeClass("blinking").off();
-									$(".char-class").addClass("blinking").one('animationend', function() {
-										$(".char-class").removeClass("blinking").off();
-										$("#outPutNameValue").text($("#val0").text());
-										setTimeToIntroNextStep();
+				if (intro._direction == "forward") {
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						$("#inputVal").after("<div id='outputText1' class='opacity00'><span id='outPutNamekey'>name : </span><span id='outPutNameValue'></div>");
+						$("#outputDiv").addClass("z-index");
+						transferEffectFunction("#coutId1", "#outputText1", function() {
+							$("#coutEmpName").addClass("blinking").one('animationend', function() {
+								$("#coutEmpName").removeClass("blinking").off();
+								$("#empObjectSpan").addClass("blinking").one('animationend', function() {
+									$("#empObjectSpan").removeClass("blinking").off();
+									$("#s1Span").addClass("blinking").one('animationend', function() {
+										$("#s1Span").removeClass("blinking").off();
+										$(".char-class").addClass("blinking").one('animationend', function() {
+											$(".char-class").removeClass("blinking").off();
+											$("#outPutNameValue").text($("#val0").text());
+											setTimeToIntroNextStep();
+										});
 									});
 								});
 							});
 						});
 					});
-				});
+				} else {
+					setTimeout(function () {
+						$("#outputText1").remove();
+						intro.previousStep();
+					}, 1000);
+				}
 				break;
 			case "coutId2":
-				$("#outputText1").after("<br><span id='outputText2' class='opacity00'><span id='outPutAgekey'>age : </span><span id='outPutAgeValue'></span>");
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					transferEffectFunction("#coutId2", "#outputText2", function() {
-						$("#coutEmpAge").addClass("blinking").one('animationend', function() {
-							$("#coutEmpAge").removeClass("blinking").off();
-							$("#empObjectSpan").addClass("blinking").one('animationend', function() {
-								$("#empObjectSpan").removeClass("blinking").off();
-								$("#panelAge").addClass("blinking").one('animationend', function() {
-									$("#panelAge").removeClass("blinking").off();
-									$("#box1").addClass("blinking").one('animationend', function() {
-									$("#box1").removeClass("blinking").off();
-									$("#outPutAgeValue").text($("#val1").text());
-										setTimeToIntroNextStep();
+				if (intro._direction == "forward") {
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						$("#outputText1").after("<div id='outputText2' class='opacity00'><span id='outPutAgekey'>age : </span><span id='outPutAgeValue'></div>");
+						transferEffectFunction("#coutId2", "#outputText2", function() {
+							$("#coutEmpAge").addClass("blinking").one('animationend', function() {
+								$("#coutEmpAge").removeClass("blinking").off();
+								$("#empObjectSpan").addClass("blinking").one('animationend', function() {
+									$("#empObjectSpan").removeClass("blinking").off();
+									$("#panelAge").addClass("blinking").one('animationend', function() {
+										$("#panelAge").removeClass("blinking").off();
+										$("#box1").addClass("blinking").one('animationend', function() {
+										$("#box1").removeClass("blinking").off();
+										$("#outPutAgeValue").text($("#val1").text());
+											setTimeToIntroNextStep();
+										});
 									});
 								});
 							});
 						});
 					});
-				});
+				} else {
+					setTimeout(function () {
+						$("#outputText2").remove();
+						intro.previousStep();
+					}, 1000);
+				}
 				break;
 			case "coutId3":
-				$("#outputText2").after("<br><span id='outputText3' class='opacity00'><span id='outPutSalkey'>salary : </span><span id='outPutSalValue'></span>");
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					transferEffectFunction("#coutId3", "#outputText3", function() {
-						$("#coutEmpSalary").addClass("blinking").one('animationend', function() {
-							$("#coutEmpSalary").removeClass("blinking").off();
-							$("#empObjectSpan").addClass("blinking").one('animationend', function() {
-								$("#empObjectSpan").removeClass("blinking").off();
-								$("#panelSalary").addClass("blinking").one('animationend', function() {
-									$("#panelSalary").removeClass("blinking").off();
-									$("#box2").addClass("blinking").one('animationend', function() {
-										$("#box2").removeClass("blinking").off();
-										$("#outPutSalValue").text($("#val2").text());
-										$("#outputDiv").removeClass("z-index");	
-										setTimeToIntroNextStep();
+				if (intro._direction == "forward") {
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						$("#outputText2").after("<div id='outputText3' class='opacity00'><span id='outPutSalkey'>salary : </span><span id='outPutSalValue'></div>");
+						transferEffectFunction("#coutId3", "#outputText3", function() {
+							$("#coutEmpSalary").addClass("blinking").one('animationend', function() {
+								$("#coutEmpSalary").removeClass("blinking").off();
+								$("#empObjectSpan").addClass("blinking").one('animationend', function() {
+									$("#empObjectSpan").removeClass("blinking").off();
+									$("#panelSalary").addClass("blinking").one('animationend', function() {
+										$("#panelSalary").removeClass("blinking").off();
+										$("#box2").addClass("blinking").one('animationend', function() {
+											$("#box2").removeClass("blinking").off();
+											$("#outPutSalValue").text($("#val2").text());
+											$("#outputDiv").removeClass("z-index");	
+											setTimeToIntroNextStep();
+										});
 									});
 								});
 							});
 						});
 					});
-				});
+				} else {
+					setTimeout(function () {
+						$("#outputText3").remove();
+						intro.previousStep();
+					}, 1000);
+				}
 				break;
 			case 'mainCout':
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				var animateStep = intro._introItems[intro._currentStep].animateStep;
+				switch(animateStep) {
+				case 'coutAsPublic':
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						var text = "<span class='ct-code-b-yellow'>name</span>, <span class='ct-code-b-yellow'>age</span> and "+
+							"<span class='ct-code-b-yellow'>salary</span> are public data members and they can be accessed outside "+
+							"of the member function using structure variable <span class='ct-code-b-yellow'>emp</span>."
+						$('.introjs-tooltip').removeClass("hide");
+						typing(".introjs-tooltiptext", text, function() {
+							$("#coutEmpName").effect( "highlight", {color:"coral"}, 1000, function() {
+								$("#coutEmpAge").effect( "highlight", {color:"coral"}, 1000, function() {
+									$("#coutEmpSalary").effect( "highlight", {color:"coral"}, 1000, function() {
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
+										$("#animationDiv").addClass("z-index");
+									});
+								});
+							});
+						});
+					});
+					break;
+				case 'coutAsError':
+					$(".introjs-helperLayer ").one('transitionend', function() {
+						var text = "Here <span class='ct-code-b-yellow'>name</span>, <span class='ct-code-b-yellow'>age</span> and "+
+							"<span class='ct-code-b-yellow'>salary</span> are declared as <span class='ct-code-b-yellow'>private</span> "+
+							"data members, so they can not be accessed outside of the structure.";
+						typing(".introjs-tooltiptext", text, function() {
+							$('.introjs-nextbutton, .introjs-prevbutton').show();
+						});
+					});
+					break;
+				}
 				break;
 			case "outputDiv":
 				var animateStep = intro._introItems[intro._currentStep].animateStep;
 				switch(animateStep) {
 					case 'readCoutAction':
-						$(".introjs-helperLayer ").one('transitionend', function() {
-							$("#output").append("<span id='outputSpan1'>Enter name, age and salary details : </span>");
-							setTimeToIntroNextStep();
-						});
+						if (intro._direction == "forward") {	
+							$(".introjs-helperLayer ").one('transitionend', function() {
+								$("#output").append("<span id='outputSpan1'>Enter name, age and salary details : </span>");
+								setTimeToIntroNextStep();
+							});
+						} else {
+							setTimeout(function () {
+								intro.previousStep();
+								$("#output").text("");
+							}, 1000);
+						}
 						break;
 					case 'enterCinAction':
-						$("#outputSpan1").after("<br><span id='inputVal' class='input-all'><input id='secondInput' maxlength='20' class='input-all'/></span>");
 						$(".introjs-helperLayer ").one('transitionend', function() {
+							$("#outputSpan1").after("<div id='inputVal' class='input-all'><input id='secondInput' maxlength='20' class='input-all'/></div>");
 							$('.introjs-tooltip').removeClass('hide');
 							text ="Enter a string, an integer and a float value each separated by a"
 								+" <b class='ct-code-b-yellow'>space</b>.<br/>For example,"
@@ -519,7 +561,7 @@ var processingOfStructureWithDotReady = function() {
 										var dot = arr[2].indexOf(".") !== -1;
 										var dot1 = arr[1].indexOf(".") == -1;
 										if (a0 && a1 && a2 && dot && dot1) {
-										    $(".introjs-nextbutton").show();
+											$('.introjs-nextbutton, .introjs-prevbutton').show();
 										  } else {
 										    $(".introjs-nextbutton").hide();
 										    $('.introjs-tooltiptext').append("<span class='ct-code-b-red length-error-text'> "
@@ -533,10 +575,15 @@ var processingOfStructureWithDotReady = function() {
 						});
 						break;
 					case 'coutErrorStep':
-						$("#output").text("");
+					//	$("#output").text("");
+						$("#outputSpan1, #inputVal, #outputText1, #outputText2, #outputText3").hide();
 						$(".introjs-helperLayer ").one('transitionend', function() {
-							$("#output").append("<img src='../images/error-dot.png'>");
-							setTimeToIntroNextStep();
+							$('.introjs-tooltip').removeClass('hide');
+							var text = "So the output will give error.";
+							typing(".introjs-tooltiptext", text, function() {
+								$("#output").append("<div id='errorImageId'><img src='../images/error-dot.png'></div>");
+								$('.introjs-nextbutton, .introjs-prevbutton').show();
+							});
 						});
 						break;
 					case 'coutDisplayFunctionStep':
@@ -545,54 +592,67 @@ var processingOfStructureWithDotReady = function() {
 							$("#output").append("name : " + globalString +
 									"<br>age : " + $("#box1").text() +
 									"<br>salary : " + $("#box2").text());
+							setTimeToIntroNextStep();
 						});
 						break;
 				}
 				break;
 			case 'animationDiv':
-				var text = $('#secondInput').val();
-				var i = 0;
-				$('#inputVal').empty();
-				
-				var intIndexOfMatch = text.indexOf("  ");
-				while (intIndexOfMatch != -1) {
-					console.log(text);
-				  text = text.replace( "  ", " " )
-				  intIndexOfMatch = text.indexOf( "  " );
-				}
-				$.each(text.split(' '), function (index, val) {
-					$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
-					console.log($("#val" + i).text());
-						i++ 
-					});
-				var dotPos = $('#val2').text().indexOf(".");
-				if (dotPos == (($('#val2').text().length) - 1)) {
-					$('#val2').text($('#val2').text()+"0");
-				} else if (dotPos == 0){
-					$('#val2').text("0"+$('#val2').text());
-				}
-				var string = $("#val0").text();
-				globalString = $("#val0").text();
-				for (var i = 0; i < string.length; i++) {
-					$("#charAtTd" + i).append(string.charAt(i)).addClass("char-class opacity00");
-				}
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#empIdValue").text($("#val0").text());
-					fromEffectWithTweenMax("#val0",".char-class", function() {
-						intro.refresh();
+				if (intro._direction == "forward") {
+					var text = $('#secondInput').val();
+					var i = 0;
+					$('#inputVal').empty();
+					
+					var intIndexOfMatch = text.indexOf("  ");
+					while (intIndexOfMatch != -1) {
+					//	console.log(text);
+					  text = text.replace( "  ", " " )
+					  intIndexOfMatch = text.indexOf( "  " );
+					}
+					$.each(text.split(' '), function (index, val) {
+						$("#inputVal").append("<span id='val"+i+"'>" + val + "</span><span id='space"+i+"'>&nbsp;</span>");
+					//	console.log($("#val" + i).text());
+							i++ 
+						});
+					var dotPos = $('#val2').text().indexOf(".");
+					if (dotPos == (($('#val2').text().length) - 1)) {
+						$('#val2').text($('#val2').text()+"0");
+					} else if (dotPos == 0){
+						$('#val2').text("0"+$('#val2').text());
+					}
+					var string = $("#val0").text();
+					globalString = $("#val0").text();
+					for (var i = 0; i < string.length; i++) {
+						$("#charAtTd" + i).append(string.charAt(i)).addClass("char-class opacity00");
+					}
+					$('.introjs-helperLayer ').one('transitionend', function() {
+						$("#empIdValue").text($("#val0").text());
 						$(".char-class").removeClass("opacity00");
-						$("#box1").text($("#val1").text());
-						fromEffectWithTweenMax("#val1","#box1", function() {
-							$("#box2").text($("#val2").text());	
-							fromEffectWithTweenMax("#val2","#box2", function() {
-								setTimeToIntroNextStep();
+						fromEffectWithTweenMax("#val0",".char-class", function() {
+							intro.refresh();
+							$("#charAtTd" + string.length).append("\\0");
+							zoomingEffect($("#charAtTd" + string.length), function() {
+								$("#charAtTd" + string.length).off();
+								$("#box1").text($("#val1").text());
+								fromEffectWithTweenMax("#val1","#box1", function() {
+									$("#box2").text($("#val2").text());	
+									fromEffectWithTweenMax("#val2","#box2", function() {
+										setTimeToIntroNextStep();
+									});
+								});
 							});
 						});
 					});
-				});
+				} else {
+					setTimeout(function () {
+						intro.previousStep();
+						$("#inputVal").remove();
+					}, 1000);
+				}
 				break;
 			
 			case "restart":
+				$("#codeDiv").addClass("z-index");
 				$('.introjs-tooltip').css({'min-width' : '110px'});
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					$("#restart").removeClass("opacity00");
@@ -653,10 +713,19 @@ function scrollAtOutput() {
 function setTimeToIntroNextStep() {
 	setTimeout(function() {
 		intro.nextStep();
-	}, 800);
+	}, 1000);
 }
 function setTimeToIntroPreviousStep() {
 	setTimeout(function() {
 		intro.previousStep();
 	}, 800);
+}
+
+function zoomingEffect(id, callBackFunction) {
+	$(id).removeClass("opacity00").effect("highlight", {color:"#00FF00"}, 1000).addClass("animated zoomIn").one('animationend', function() {
+		$(id).removeClass("animated zoomIn");
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	});
 }

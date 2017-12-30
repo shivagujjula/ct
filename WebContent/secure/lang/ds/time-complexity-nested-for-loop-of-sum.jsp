@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js/time-complexity-nested-for-loop-of-sum.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js-min/tcnflos.min.js"></script>
 
 <title>sum time complexity</title>
 <style type="text/css">
@@ -328,7 +328,7 @@ td:nth-child(4) {
 			<span id="finalLine1" class="opacity00">&#10003;The total number of units taken for the sum( ) = 
 				<span id="conclusionId">3<span id="alphabetN1">n<sup>2</sup></span> + 4n + 3</span></span><br>
 			<span id="finalLine2" class="opacity00">&#10003;The time complexity of sum( ) = <span style="font-family: monospace; color: #0849a0;">
-				big O(<span id="alphabetN2" class="opacity00 position">n<sup>2</sup></span>)</span>.</span>
+				Big O(<span id="alphabetN2" class="opacity00 position">n<sup>2</sup></span>)</span>.</span>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
