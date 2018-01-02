@@ -3,8 +3,8 @@ var insertionSortTimeComplexityFunction = function() {
 	appendTds();
 }
 
-var outerIdx = 1, innerIdx = 0;
-var len = 8, elementAtInnerIdx;
+var outerIdx = 1, innerIdx = 0, countForColor = 0;
+var len = 5, elementAtInnerIdx;
 var arr = [];
 var innerFlag = true, flag = true, buttonflag = false;
 
@@ -84,7 +84,7 @@ function introGuide() {
 		case 'preCode1':
 			$(".introjs-helperLayer").one("transitionend", function() {	
 				var text = "Here we will find the <span class='ct-code-b-yellow'>time complexity</span> of "+
-					"<span class='ct-code-b-yellow'>bubble sort</span> algorithm.";
+					"<span class='ct-code-b-yellow'>insertion sort</span> algorithm.";
 				typing(".introjs-tooltiptext", text, function() {
 				TweenMax.to($("#preCode1"), 1, {opacity: 1, onComplete:function() {
 					buttonAppendFunction(".introjs-tooltiptext", function() {
@@ -114,14 +114,13 @@ function introGuide() {
 							$('#number0').focus();
 							changeValue();
 							buttonAppendFunction(".introjs-tooltiptext", function() {
+								$('.arr-ele').attr('contenteditable','false');
 								zoomingEffect("#arrElements", function() {
 									zoomingEffect("#eleAtInnerText");
 										zoomingEffect(".eleAtInnerIdx", function() {
 										buttonAppendFunction(".introjs-tooltiptext", function() {
-											outerLoopInitializationText();
-											//outerLoopInitializationText();	
-										//outerLoopConditionChecking();
-											//	bubbleSort();
+											insertionSort();
+										//	outerLoopInitialization();
 										});
 									});
 								})
@@ -241,7 +240,7 @@ function introGuide() {
 function setTimeoutFunction() {
 	setTimeout(function() {
 		introjs.nextStep();
-	}, 1500);
+	}, 800);
 }
 
 function zoomingEffect(id, callBackFunction) {
@@ -266,384 +265,71 @@ function tweenmaxAnimation(selector1, selector2, callBackFunction) {
 	}});
 }
 
-function outerLoopInitializationText() {
-	$('.introjs-duplicate-skipbutton').remove();
-	$('.introjs-duplicate-nextbutton, .popover').remove();
-	$('#explanationDiv1').removeClass('opacity00'); 
-//	arrow('#outerForLoop', '#outerForLoop');
-	text = '<span class="ct-code-b-black"><span class="ct-code-b-blue">outer</span>Idx</span> value Intialize to '
-			+ '<span class="outer-loop-color">1</span>.</span>'
-			+ ' <span id="appendButton"></span>';
-	typing('#explanationDiv', text, function() {
-		$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-			 	+ "onclick=outerLoopInitialization()>Next &#8594;</a>");
-	});
-}
-
-function outerLoopInitialization() {
-	$('.introjs-duplicate-skipbutton').remove();
-	$('.introjs-duplicate-nextbutton').remove();
-	$('#explanationDiv').removeClass('opacity00'); 
-	$('#outerInti').effect( "highlight",{color: 'blue'}, 800, function() {
-		zoomInEffect('#outerArrow' + outerIdx, function() {
-			setTimeout(function() {
-				outerLoopConditionChecking();
-			},600);
-		});
-	});
-} 
-
-
-function outerLoopConditionChecking() {
-	$('.introjs-duplicate-skipbutton').remove();
-	if (outerIdx < len) {
-		text = '<span class="ct-code-b-black"><span class="ct-code-b-blue">outer</span>Idx &lt; len - 1</span>'
-			+ ' evaluates <span class="ct-code-b-green">true</span>.&nbsp;'
-			+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			$('#outerLoop').css('background', 'lightgreen').effect( "highlight",{color: 'blue'}, 800, function() {
-				if (flag) {
-					$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-					 		+ "onclick=storeOuterIdxToElementAtOuter()>Next &#8594;</a>");	
-				} else {
-					setTimeout(function() {
-						storeOuterIdxToElementAtOuter();
-					},600);
-				}
-			});	
-		});
-	} else {
-		text = '<span class="ct-code-b-black"><span class="outer-loop-color">outer</span>Idx &lt; len - 1</span>'
-			+ ' evaluates <span class="ct-code-b-red">false</span>.&nbsp;'
-			+ ' <span id="appendButton"></span><br><span id="elementText"></span>';
-		typing('#explanationDiv', text, function() {
-			$('#outerLoop').effect( "highlight",{color: 'lightgreen'}, 800, function() {
-				$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-				$('.introjs-duplicate-nextbutton').click(function() {
-					for (var i = 0; i < len; i++) {
-						$("#sortEle" + i).parent().css({'background': 'orange'});
-					}
-					$('.introjs-duplicate-nextbutton, #appendButton').remove();
-					text = 'All elements are sorted successfully. <span id="appendButton"></span>';
-					typing('#elementText', text, function() { 
-						$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-						$('.introjs-duplicate-nextbutton').click(function() {
-							$('.introjs-duplicate-nextbutton').remove();
-							introNextSteps("#printArr", "printArr", 'bottom');
-							introcode.nextStep();
-						})
-					});
-				});
-			});
-		});
-	}
-}
-
-function storeOuterIdxToElementAtOuter() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-//	arrow('#outerForLoop', '#positionAtOuterIdx', function() {
-		text = '<span class="ct-code-b-black">elementAt<span class="ct-code-b-blue">Outer</span>Idx = '
-				+ 'arr[<span class="ct-code-b-blue">outer</span>Idx]</span>, the value <span class="outer-loop-color">'
-				+ $('#sortEle' + outerIdx).text() +'</span> is stored in the variable '
-				+ 'elementAt<span class="outer-loop-color">Outer</span>Idx. '
-				+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-				 	+ "onclick=positionInitialization()>Next &#8594;</a>");
-			if (buttonflag) {
-				innerFlag = true;
-				$('.introjs-duplicate-skipbutton').remove();
-				$('#autoCompleButtons').append("<a class='introjs-button introjs-duplicate-skipbutton'" 
-					 	+ "onclick=insertionSort()>Auto complete &#8594;</a>");
-			}
-		});
-	//});
-}
-
-function positionInitialization() {
-	$('.introjs-duplicate-nextbutton').remove();
-	fadeInFromEffectWithTimelineMax('#sortEle' + outerIdx , '#eleAtInnerIdxVal', function() {
-		innerLoopInitializationText();
-	});
-}
-
-function innerLoopInitializationText() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-	$('#outerLoop').css('background', '');
-	innerIdx = outerIdx;
-	if(innerIdx < len) {
-	//	arrow('#positionAtOuterIdx', '#innerForLoop', function() {
-			text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx = '
-					+ '<span class="ct-code-b-blue">outer</span>Idx </span> value Intialize to '
-					+ '<span class="inner-loop-color">'+ innerIdx +'</span>.</span>'
-					+ ' <span id="appendButton"></span>';
-			typing('#explanationDiv', text, function() {
-				if (flag) {
-					$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-					 		+ "onclick=innerLoopInitialization()>Next &#8594;</a>");						
-				} else {
-					setTimeout(function() {
-						innerLoopInitialization();
-					},600);
-				}
-			});
-	//	});
-	}
-}
-
-function innerLoopInitialization() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-	$('#innerInti').effect( "highlight",{color: 'blue'}, 800, function() {
-		zoomInEffect('#innerArrow' + innerIdx, function() {
-			$('#innerArrow' + innerIdx).css({'opacity' : '1'});
-			setTimeout(function() {
-				innerLoopConditionChecking();
-			},600);
-		});
-	});
-}
-
-function innerLoopConditionChecking() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-	if(innerIdx > 0 ) {
-		text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx &gt; 0 </span>'
-			+ '&nbsp; evaluates <span class="ct-code-b-green">true</span>.&nbsp;'
-			+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			$('#innerLoop').css('background', 'lightgreen').effect( "highlight",{color: 'blue'}, 800, function() {
-				if (flag) {
-					$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-					 		+ "onclick=checkIfCondition()>Next &#8594;</a>");	
-				} else {
-					setTimeout(function() {
-						checkIfCondition();
-					},600)
-				}
-			});	
-		});
-	} else {
-		text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx &gt; 0 </span>'
-			+ ' evaluates <span class="ct-code-b-red">false</span>.&nbsp;'
-			+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-				$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-				 		+ "onclick=outerIdxIncerementText()>Next &#8594;</a>");	
-				if (buttonflag) {
-					innerFlag = false;
-					$('.introjs-duplicate-skipbutton').remove();
-					$('#autoCompleButtons').append("<a class='introjs-button introjs-duplicate-skipbutton'" 
-						 	+ "onclick=insertionSort()>Auto complete &#8594;</a>");
-				}
-		});
-	}
-}
-
-function checkIfCondition() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-	$('#innerLoop').css('background', '');
-//	arrow('#innerForLoop', '#ifConditionCheck', function() {
-		$('#ifCondition').effect( "highlight",{color: 'blue'}, 500, function() {
-			arr[innerIdx - 1] = parseInt($('#sortEle' + (innerIdx - 1)).text());
-			var temp = parseInt($('#eleAtInnerIdxVal').text());
-			if (arr[innerIdx - 1] > temp) {
-				text = '<span class="ct-code-b-black">arr[<span class="inner-loop-color">inner</span>Idx - 1] &gt; '
-				        + 'elementAt<span class="ct-code-b-blue">Outer</span></span> evaluates  '
-						+ '<span class="inner-loop-color">true</span>.</span>'
-						+ ' <span id="appendButton"></span>';
-				typing('#explanationDiv', text, function() {
-					$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-					 		+ "onclick=swapElements()>Next &#8594;</a>");	
-					if (buttonflag) {
-						$('.introjs-duplicate-skipbutton').remove();
-						$('#autoCompleButtons').append("<a class='introjs-button introjs-duplicate-skipbutton'" 
-							 	+ "onclick=insertionSort()>Auto complete &#8594;</a>");
-					}
-				});
-			} else {
-				text = '<span class="ct-code-b-black">arr[<span class="inner-loop-color">inner</span>Idx - 1] &gt; '
-			        + 'elementAt<span class="ct-code-b-blue">Outer</span></span> evaluates  '
-					+ '<span class="ct-code-b-red">false</span>.</span>'
-					+ ' <span id="appendButton"></span>';
-				typing('#explanationDiv', text, function() {
-					if (flag) {
-						$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-						 		+ "onclick=innerIdxDecerementText()>Next &#8594;</a>");	
-					} else {
-						setTimeout(function() {
-							innerIdxDecerementText();
-						},600);
-					}
-				});
-			}
-		});
-//	});
-}
-
-function innerIdxDecerementText() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-//	arrow('#ifConditionCheck', '#innerForLoop', function() {
-		text = '<span class="ct-code-b-black"><span class="inner-loop-color">inner</span>Idx--</span> decrement by one'
-				+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			if (flag) {
-				$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-				 		+ "onclick=innerIdxDecerement()>Next &#8594;</a>");
-			} else {
-				setTimeout(function() {
-					innerIdxDecerement();
-				},600);
-			}
-		});
-//	});
-}
-
-function innerIdxDecerement() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
-	$('#storeValueInOuterIdx, #storeArrInnerIdxPlusVal, #storeEleOuterIdxVal').css('background', '');
-	--innerIdx;
-	$('#sortEle' + innerIdx).parent().effect("highlight", {color: 'pink'}, 100, function() {
-		toEffectWithTweenMax('#innerArrow' + (innerIdx + 1) , '#innerArrow' + innerIdx , function() {
-			flag = false;
-			setTimeout(function() {
-				innerLoopConditionChecking();
-			},600);
-		});
-	});
-}
-
-function swapElements() {
-	$('.introjs-duplicate-skipbutton').remove();
-//	arrow('#innerForLoop', '#storeArrInnerIdxPlusVal', function() {
-		text = 'Now, swap <span class="outer-loop-color">'+  $('#sortEle' + (innerIdx - 1)).text()
-				+ '</span> and <span class="outer-loop-color">' 
-				+ $('#eleAtInnerIdxVal').text() +'</span>.<br/><span id="appendedText"></span>'
-				+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			$('.introjs-duplicate-skipbutton').removeClass('opacity00');
-			$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-			$('.introjs-duplicate-nextbutton').click(function() {
-				$('.introjs-duplicate-nextbutton').remove();
-				$('#storeValueInOuterIdx, #storeArrInnerIdxPlusVal, #storeEleOuterIdxVal').css('background', 'lightgreen');
-				$('#storeValueInOuterIdx').effect( "highlight",{color: 'blue'});
-				$('#storeArrInnerIdxPlusVal').effect( "highlight",{color: 'blue'});
-				$('#storeEleOuterIdxVal').effect( "highlight",{color: 'blue'}, 800, function() {
-					fadeInFromEffectWithTimelineMax('#sortEle' + (innerIdx - 1), '#sortEle' + innerIdx, function() {
-						fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx - 1), function() {
-							$('.introjs-duplicate-skipbutton').remove();
-							$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-									+ "onclick=innerIdxDecerementText()>Next &#8594;</a>");
-							innerIdx;
-							if (buttonflag) {
-								$('.introjs-duplicate-skipbutton').remove();
-								$('#autoCompleButtons').append("<a class='introjs-button introjs-duplicate-skipbutton'" 
-									 	+ "onclick=insertionSort()>Auto complete &#8594;</a>");
-							}
-						});
-					});
-				});
-			});				
-		});
-//	});
-}
-
-function outerIdxIncerementText() {
-	$('.introjs-duplicate-skipbutton').remove();
-	$('#innerArrow' +innerIdx ).css('opacity', '0');
-	$('.introjs-duplicate-nextbutton').remove();
-//	arrow('#innerForLoop', '#outerForLoop', function() {
-		text = '<span class="ct-code-b-black"><span class="ct-code-b-blue">outer</span>Idx++</span> increment by one'
-				+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			if (flag) {
-				$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-				 		+ "onclick=outerIdxIncerement()>Next &#8594;</a>");
-			} else {
-				setTimeout(function() {
-					outerIdxIncerement();
-				},600);
-			}
-		});
-//	});
-}
-
-function outerIdxIncerement() {
-	$('#storeValueInOuterIdx, #storeArrInnerIdxPlusVal, #storeEleOuterIdxVal').css('background', '');
-	$('.introjs-duplicate-nextbutton').remove();
-	$('#outerInc').effect( "highlight",{color: 'blue'}, 500, function() {
-		$('#storeEle' + outerIdx).parent().removeAttr('style');
-		toEffectWithTweenMax('#outerArrow' + outerIdx , '#outerArrow' + (outerIdx + 1) , function() {
-			flag = false;
-			buttonflag = true;
-			++outerIdx;
-			$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'" 
-			 		+ "onclick=outerLoopConditionChecking()>Next &#8594;</a>");
-			if (buttonflag) {
-				innerFlag = true;
-				$('.introjs-duplicate-skipbutton').remove();
-				$('#autoCompleButtons').append("<a class='introjs-button introjs-duplicate-skipbutton'" 
-					 	+ "onclick=insertionSort()>Auto complete &#8594;</a>");
-			}
-		});
-	});
-}
-
 function insertionSort() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
 	outerCondition();
 }
 
 function outerCondition() {
 	if (outerIdx < len) {
-		$("#outerArrow" + outerIdx).removeClass("opacity00");
-		$("#eleAtInnerIdxVal").text($("#sortEle" + outerIdx).text());
-		if (innerFlag) {
-			innerIdx = outerIdx;
-		}
-		innerFlag = true;
-		 //innerIdx = outerIdx;
-		 innerCondition();
+		var text = "At <span class='ct-code-b-yellow'>pass-" + outerIdx +"</span> the elements are sorted as follows."+
+		"<br><span id='buttonAppendSpan'></span>";
+		typing('.introjs-tooltiptext', text, function() { 
+		//	$("#outerArrow" + outerIdx).removeClass("opacity00");
+			zoomingEffect('#outerArrow' + outerIdx, function() {
+				$("#eleAtInnerIdxVal").text($("#sortEle" + outerIdx).text());
+				if (innerFlag) {
+					innerIdx = outerIdx;
+				}
+				innerFlag = true;
+				 //innerIdx = outerIdx;
+				 innerCondition();
+			});
+		});
 	} else {
 		$('.introjs-duplicate-nextbutton, #appendButton').remove();
 		for (var i = 0; i < len; i++) {
 			$("#sortEle" + i).parent().css({'background': 'orange'});
 		}
 		text = 'All elements are sorted successfully. <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() { 
-			$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>Next &#8594;</a>");
-			$('.introjs-duplicate-nextbutton').click(function() {
-				$('.introjs-duplicate-nextbutton').remove();
-				introNextSteps("#printArr", "printArr", 'bottom');
-				introcode.nextStep();
-			})
+		typing('.introjs-tooltiptext', text, function() { 
+			buttonAppendFunction("#appendButton", function() {
+				setTimeout(function() {
+					introjs.nextStep();
+		    	},500);
+			});
 		});
 	}
 }
 
 function innerCondition() {
 	if (innerIdx > 0) {
-		$("#innerArrow" + innerIdx).removeClass("opacity00");
-		var val1 = parseInt($("#sortEle" + (innerIdx - 1)).text());
-		var val2 = parseInt($("#eleAtInnerIdxVal").text());
-		if(val1 > val2) {
-				$('#sortEle' + (innerIdx - 1)).parent().effect("highlight", {color: 'pink'}, 100, function() {
-					fadeInFromEffectWithTimelineMax('#sortEle' + (innerIdx - 1), '#sortEle' + innerIdx, function() {
-						fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx - 1), function() {
-					    	setTimeout(function() {
-								innerValDec();
-					    	},300);
-			            });
-			        });
-				});
-	    } else {
+	//	$("#innerArrow" + innerIdx).removeClass("opacity00");
+		zoomingEffect("#innerArrow" + innerIdx, function() {
+			var val1 = parseInt($("#sortEle" + (innerIdx - 1)).text());
+			var val2 = parseInt($("#eleAtInnerIdxVal").text());
+			if(val1 > val2) {
+					$('#sortEle' + (innerIdx - 1)).parent().effect("highlight", {color: 'pink'}, 100, function() {
+						fadeInFromEffectWithTimelineMax('#sortEle' + (innerIdx - 1), '#sortEle' + innerIdx, function() {
+							fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx - 1), function() {
+								setTimeout(function() {
+									innerValDec();
+						    	},300);
+				            });
+				        });
+					});
+		    } else {
 		    	setTimeout(function() {
 			    	innerValDec();
 		    	},300);
-	    }
+		    }
+		});
 	} else {
 		$("#innerArrow" + innerIdx).addClass("opacity00");
-    	setTimeout(function() {
+		$("#sortEle" + countForColor).parent().css({'background': 'orange'});
+		countForColor++;
+		buttonAppendFunction("#buttonAppendSpan", function() {
 			outerValInc();
-    	},300);
+		});
 	}
 }
 
@@ -674,7 +360,7 @@ function outerValInc() {
 		var l1 = $(selector1).offset();
 		$(selector2).offset({top: l1.top, left: l1.left});
 		$(selector1).addClass("opacity00").removeAttr("style")
-		TweenMax.to($(selector2), 0.3, {opacity: 1, top: 0, left: 0, onComplete: function() {
+		TweenMax.to($(selector2), 0.5, {opacity: 1, top: 0, left: 0, onComplete: function() {
 			$(selector2).removeAttr("style").removeClass("opacity00");
 			if (typeof callBackFunction === "function") {
 				callBackFunction();
@@ -962,7 +648,7 @@ function appendTds() {
 	for(var i = 0; i < 5; i++) {
 		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>')
 		$('#outerArrow').append('<th><div class="text-center opacity00" id="outerArrow'+ i + '">'
-				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">i</span></div>'
+				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">pos</span></div>'
 				+ '<i class="fa fa-arrow-down" id="outerarrow'+ i + '"></i></div></th>');
 		$('#innerArrow').append('<th><div class="text-center opacity00" id="innerArrow'+ i + '">'
 				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">j</span></div>'
@@ -1009,70 +695,6 @@ function changeValue() {
 			}
 		});
 	});
-}
-
-function bubbleSort() {
-	$(".introjs-duplicate-skipbutton").remove();
-	$('.introjs-duplicate-nextbutton').remove();
-	$("#outerArrow" + outerIdx).addClass("opacity00");
-	$("#innerArrow th i").parent().not(".opacity00").addClass("opacity00");
-	if (staringPoint <= endingPoint) {
-		$("#arrElements tr:nth-child(3) td").eq(staringPoint - 1).effect("highlight", {color: 'pink'}, 100, function() {
-			var val1 = parseInt($("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint - 1) + ") span").text());
-			var val2 = parseInt($("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint) + ") span").text());
-			if (val1 > val2) {
-				var elmt1 = $("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint - 1) + ") span");
-				var elmt2 = $("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint) + ") span");
-				var l1 = elmt1.text(val2).offset();
-				var l2 = elmt2.text(val1).offset();
-				$("#eleAtInnerIdxVal").text(val1);
-				var leftLength = l2.left - l1.left;
-				TweenMax.from(elmt1, 0.2, {"left" : leftLength});
-				TweenMax.from(elmt2, 0.2, {"left" : -leftLength, onComplete:function() {
-					staringPoint++;
-					bubbleSort();
-				}});
-			} else if (staringPoint <= endingPoint) {
-				$("#eleAtInnerIdxVal").text(val2);
-				staringPoint++;
-				bubbleSort();
-			}
-		});
-	} else if (staringPoint == 1) {
-		$("#arrElements tr:nth-child(3) td").eq(staringPoint - 1).effect("highlight", {color: 'pink'}, 100, function() {
-			if (staringPoint < endingPoint) {
-				staringPoint++;
-				bubbleSort();
-			}
-		});
-	} else {
-		$("#arrElements tr:nth-child(3) td").eq(staringPoint - 2).css("background-color", "orange").addClass("completed");
-			staringPoint = 1;
-			endingPoint--;
-			if (staringPoint <= endingPoint) {
-				setTimeout(function() {
-					bubbleSort();
-				}, 200);
-			} else {
-				$(".introjs-duplicate-skipbutton").remove();
-				$('.introjs-duplicate-nextbutton').remove();
-				text = 'All elements are sorted successfully.'
-						+ ' <span id="appendButton"></span>';
-				typing('.introjs-tooltiptext', text, function() {
-				/* $('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
-				$('.introjs-duplicate-nextbutton').click(function() {
-					$('.introjs-duplicate-nextbutton').remove();
-				//	introNextSteps("#printArr", "printArr", 'bottom');
-					introjs.nextStep();
-				}); */
-				buttonAppendFunction(".introjs-tooltiptext", function() {
-					$("#divTable").removeClass("hide");
-					$("#preCodeDiv").hide();
-					introjs.nextStep();
-				});
-			});
-		}
- 	}
 }
 
 function svgAppend(selector, svgId) {

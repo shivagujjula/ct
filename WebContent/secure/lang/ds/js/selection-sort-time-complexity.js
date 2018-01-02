@@ -1,15 +1,17 @@
-var bubbleSortTimeComplexityFunction = function() {
+var selectionSortTimeComplexityFunction = function() {
 	introGuide();
 	appendTds();
 }
 
-var staringPoint = 1;
-var endingPoint = 5;
-var flag = true;
-var outerIdx = 0;
+var outerIdx = 4, innerIdx;
 var len = 5, elementAtInnerIdx;
 var arr = [];
-var array = ["1", "2", "3", "4", "5"];
+var innerFlag = true, flag = true, buttonflag = false;
+var endingPoint;
+var position = outerIdx;
+var innerIdx = 0;
+var outerIndex;
+var lang;
 
 function introGuide() {
 	introjs = introJs();
@@ -33,10 +35,10 @@ function introGuide() {
 			element : '#indexDiv',
 			intro : '',
 			tooltipClass : 'hide',
-		}, {
+		},/* {
 			element : '#preCode1',
 			intro : '',
-		}, {
+		}, */{
 			element : '#arrTable',
 			intro : '',
 			animateStep : 'sortingInAction'
@@ -73,11 +75,11 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case 'indexDiv':
-			for (var i = 1; i <= 7; i++) {
+			for (var i = 1; i <= 6; i++) {
 				$("#listLine" + i).fadeTo(1000, 1, function() {
 				});
 			}
-			$("#listLine7").after('<span class="introjs-button user-btn">Next &#8594;</span>');
+			$("#listLine6").after('<span class="introjs-button user-btn">Next &#8594;</span>');
 			introjs.refresh();
 			$(".user-btn").click(function() {
 				$(".user-btn").remove();
@@ -87,7 +89,7 @@ function introGuide() {
 		case 'preCode1':
 			$(".introjs-helperLayer").one("transitionend", function() {	
 				var text = "Here we will find the <span class='ct-code-b-yellow'>time complexity</span> of "+
-					"<span class='ct-code-b-yellow'>bubble sort</span> algorithm.";
+					"<span class='ct-code-b-yellow'>selection sort</span> using <span class='ct-code-b-yellow'>largest element method</span> algorithm.";
 				typing(".introjs-tooltiptext", text, function() {
 				TweenMax.to($("#preCode1"), 1, {opacity: 1, onComplete:function() {
 					buttonAppendFunction(".introjs-tooltiptext", function() {
@@ -122,9 +124,8 @@ function introGuide() {
 									zoomingEffect("#eleAtInnerText");
 										zoomingEffect(".eleAtInnerIdx", function() {
 										buttonAppendFunction(".introjs-tooltiptext", function() {
-										outerLoopInitializationText();	
-										//outerLoopConditionChecking();
-											//	bubbleSort();
+											insertionSort();
+										//	outerLoopInitialization();
 										});
 									});
 								})
@@ -247,230 +248,155 @@ function setTimeoutFunction() {
 	}, 800);
 }
 
-function zoomingEffect(id, callBackFunction) {
-	$(id).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-		$(id).removeClass("animated zoomIn").off();
+function selectionSort() {
+	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
+	$("#outerArrow" + outerIdx).addClass("opacity00");
+	outerIdx = 7 - $('.completed').length;
+	outerCondition();
+}
+
+function outerCondition() {
+	$("#positionArrow" + position).addClass("opacity00");
+	if (outerIdx >= 1) {
+		$("#outerArrow" + outerIdx).removeClass("opacity00");
+		position = outerIdx;
+	    $("#positionArrow" + position).removeClass("opacity00");
+	    if (innerFlag) {
+			innerIdx = outerIdx;
+	    }
+	    innerFlag = true;
+		innerCondition();		
+	} else {
+		$("#outerArrow" + outerIdx).addClass("opacity00");
+		$('#sortEle0').parent().css('background', 'orange').addClass("completed");
+		console.log("all elements are sorted");
+		$(".introjs-duplicate-skipbutton").remove();
+		$('.introjs-duplicate-nextbutton').remove();
+		text = 'All elements are sorted successfully.'
+				+ ' <span id="appendButton"></span>';
+		typing('#explanationDiv', text, function() {
+			$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
+			$('.introjs-duplicate-nextbutton').click(function() {
+				$('.introjs-duplicate-nextbutton').remove();
+				introNextSteps("#printArr", "empty", 'bottom');
+				introcode.nextStep();
+				$('.arrow').remove();
+				setTimeout(function() {
+					$('.introjs-tooltip').removeClass('hide').css('min-width','200px');
+					var text = "<b class='ct-code-b-yellow'>sorted array</b> to be printed by using this for loop.";
+					typing('.introjs-tooltiptext', text, function() {
+						introNextSteps("#outputDiv", "empty", 'top');
+						$('.introjs-nextbutton').show();
+					});
+				},500);
+			});
+		});
+  }
+}
+
+function innerCondition() {
+	if(innerIdx == 0) {
+		$("#innerArrow" + (innerIdx + 1)).addClass("opacity00");
+    	$('#sortEle' + (outerIdx - 1)).parent().effect("highlight", {color: 'pink'}, 100, function() {
+      		fadeInFromEffectWithTimelineMax('#sortEle' + position, '#eleAtInnerIdxVal', function() {
+          		fadeInFromEffectWithTimelineMax('#sortEle' + (outerIdx),'#sortEle' + (position),  function() {
+					fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal','#sortEle' + (outerIdx),  function() {
+						$('#sortEle' + outerIdx).parent().css('background', 'orange').addClass("completed");
+    	          		outerValDec();
+            		});
+          		});
+        	});
+    	});
+  	} 
+	if (innerIdx >= 0) {
+		$("#innerArrow" + innerIdx).removeClass("opacity00");
+		var val1 = parseInt($("#sortEle" + innerIdx).text());
+    	var val2 = parseInt($("#sortEle" + position).text()); 
+		if(val1 > val2) {
+			$('#positionArrow' + position).addClass("opacity00");
+			position = innerIdx;
+      		toEffectWithTweenMax('#positionArrow' + position  , '#positionArrow' + innerIdx , function() {
+      			innerValDec();
+      		});
+	    } else {
+		    setTimeout(function() {
+			   	innerValDec();
+		    },300);
+	    }
+  } else {
+	$("#innerArrow" + innerIdx).addClass("opacity00");
+    	setTimeout(function() {
+    		innerValDec();
+    	},300);
+	}
+ }
+
+function innerValDec() {
+	--innerIdx;
+	toEffectWithTweenMax('#innerArrow' + (innerIdx + 1) , '#innerArrow' + innerIdx , function() {
+  		$('#sortEle' + position).parent().effect("highlight", {color: 'pink'}, 100);
+		$('#sortEle' + innerIdx).parent().effect("highlight", {color: 'pink'}, 100, function() {
+	    	setTimeout(function() {
+				innerCondition();
+	    	},300);
+		});
+	});
+}
+
+function outerValDec() {
+  --outerIdx;
+	toEffectWithTweenMax('#outerArrow' + (outerIdx + 1) , '#outerArrow' + (outerIdx) , function() {
+    	setTimeout(function() {
+			outerCondition();
+    	},300);
+	});
+}
+
+
+function flipEffectWithTweenMax(selector, val, callBackFunction) {
+	TweenMax.to($(selector), 0.3, {rotationX : -90, onComplete:function() {
+		$(selector).text(val);
+		TweenMax.to($(selector), 0.3, {rotationX : 0, onComplete:function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}});
+	}});
+}
+
+function zoomInEffect(selector1, callBackFunction) {
+	$(selector1).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+		$(selector1).removeClass("animated zoomIn");
+		$(selector1).removeAttr('style');
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
 	});
 }
 
-function tweenmaxAnimation(selector1, selector2, callBackFunction) {
-	var l3 = $(selector1).offset();
-	var l4 = $(selector2).offset();
-	var topLength = l3.top - l4.top;
-	var leftLength = l3.left - l4.left;
-	$(selector2).removeClass("opacity00");
-	TweenMax.from(selector2, 1, {top: topLength, left: leftLength, onComplete: function() {
+function transferEffect(selector1, selector2, callBackFunction) {
+	$(selector1).addClass('z-index1000000').effect( "highlight",{color: 'blues'}, 500, function() {
+		$(selector1).effect( "transfer", { to: $(selector2), className: "ui-effects-transfer" }, 500 , function() {
+			$(selector1).removeClass('z-index1000000');
+			$(selector2).removeClass('opacity00');
+			if (typeof callBackFunction === "function") {
+					callBackFunction();
+			}
+		});
+	});
+}
+
+function toEffectWithTweenMax(selector1, selector2, callBackFunction) {
+	var l1 = $(selector1).offset();
+	$(selector2).offset({top: l1.top, left: l1.left});
+	$(selector1).addClass("opacity00").removeAttr("style")
+	TweenMax.to($(selector2), 0.3, {opacity: 1, top: 0, left: 0, onComplete: function() {
+		$(selector2).removeAttr("style").removeClass("opacity00");
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
 	}});
 }
-
-	function outerLoopInitializationText() {
-		var text = "At <span class='ct-code-b-yellow'>pass-1</span> the elements are sorted as follows."+
-		"<br><span id='buttonAppendSpan'></span>";
-		typing(".introjs-tooltiptext", text, function() {
-			outerLoopInitialization();
-		});
-	}
-
-	function outerLoopInitialization() {
-		zoomingEffect('#outerArrow' + outerIdx, function() {
-			setTimeout(function() {
-				outerLoopConditionChecking();
-			},200);
-		});
-	} 
-	
-	function outerLoopConditionChecking() {
-		if (outerIdx < (len - 1)) {
-			if (flag) {
-				innerLoopInitializationText();
-			} else {
-				setTimeout(function() {
-					innerLoopInitializationText();
-				},200);
-			}
-		} else {
-			$('#sortEle0').parent().css('background', 'orange').addClass("completed");
-			endingPoint = 5 - $(".completed").length;
-			buttonAppendFunction(".introjs-tooltiptext", function() {
-				var text = "All elements are sorted succesfully.";
-				typing(".introjs-tooltiptext", text, function() {
-					buttonAppendFunction(".introjs-tooltiptext", function() {
-						$("#divTable").removeClass("hide");
-						$("#preCodeDiv").hide();
-						introjs.nextStep();
-					});
-				});
-			});
-		}
-	}
-	
-	function innerLoopInitializationText() {
-		var innerIdx = 0;
-		if(innerIdx < (len - outerIdx - 1)) {
-			setTimeout(function() {
-				innerLoopInitialization(innerIdx);
-			},200);
-		}
-	}
-	
-	function innerLoopInitialization(innerIdx) {
-		zoomingEffect('#innerArrow' + innerIdx, function() {
-			$('#innerArrow' + innerIdx).css({'opacity' : '1'});
-			setTimeout(function() {
-				innerLoopConditionChecking(innerIdx);
-			},200);
-		});
-	}
-	
-	function innerLoopConditionChecking(innerIdx) {
-		if(innerIdx < (len - outerIdx - 1)) {
-			if (flag) {
-				checkIfCondition(innerIdx);
-			} else {
-				setTimeout(function() {
-					checkIfCondition(innerIdx);
-				},200);
-			}
-		} else {
-			$("#buttonAppendSpan").after('<span id="buttonAppendSpan2">The largest element <span class="outer-loop-color">'+ parseInt($('#sortEle' + innerIdx).text()) 
-					+ '</span> will be places at index <span class="outer-loop-color">'+ innerIdx 
-					+ '</span>.<span id="appendButton"></span>');
-			typing('#buttonAppendSpan2', $("#buttonAppendSpan2").html(), function() {
-				$('#sortEle' + innerIdx).parent().css('background', 'orange').addClass("completed");
-				
-				endingPoint = 5 - $(".completed").length;
-				$("#appendButton").append("<div class='introjs-tooltipbuttons popover-btn-css'><span class='introjs-button user-btn'" 
-				 		+ "onclick=outerIdxIncerementText(" + innerIdx + ")>Next &#8594;</span></div>");	
-			//	outerIdxIncerementText(innerIdx);
-				// need back button here
-			});
-		}
-	}
-	
-	function checkIfCondition(innerIdx) {
-		$('.user-btn').remove();
-		arr[innerIdx] = parseInt($('#sortEle' + innerIdx).text());
-		arr[innerIdx + 1] = parseInt($('#sortEle' + (innerIdx + 1)).text());
-		if (arr[innerIdx] > arr[innerIdx + 1]) {
-				setTimeout(function() {
-					swapElements(innerIdx);
-				},200);
-		} else {
-				if (flag) {
-					innerIdxIncerementText(innerIdx);
-				} else {
-					setTimeout(function() {
-						innerIdxIncerementText(innerIdx);
-					},200);
-				}
-		}
-	}
-	
-	function innerIdxIncerementText(innerIdx) {
-		$('.user-btn').remove();
-		if (flag) {
-			innerIdxIncerement(innerIdx);
-		} else {
-			setTimeout(function() {
-				innerIdxIncerement(innerIdx);
-			},200);
-		}
-	}
-	
-	function innerIdxIncerement(innerIdx) {
-		++innerIdx;
-		toEffectWithTweenMax('#innerArrow' + (innerIdx - 1) , '#innerArrow' + innerIdx , function() {
-			flag = false;
-			setTimeout(function() {
-				innerLoopConditionChecking(innerIdx);
-			},200);
-		});
-	}
-	
-	function swapElements(innerIdx) {
-		$('.introjs-duplicate-skipbutton').removeClass('opacity00');
-		fadeInFromEffectWithTimelineMax('#sortEle' + innerIdx, '#eleAtInnerIdxVal', function() {
-			fadeInFromEffectWithTimelineMax('#sortEle' + (innerIdx + 1), '#sortEle' + innerIdx, function() {
-				fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal', '#sortEle' + (innerIdx + 1), function() {
-					setTimeout(function() {
-						innerIdxIncerementText(innerIdx);
-					},200);
-				});
-			});
-		});
-	}
-	
-	function outerIdxIncerementText(innerIdx) {
-		$(".introjs-tooltiptext").text("");
-		$(".user-btn").remove();
-		//text here
-		$('#innerArrow' +innerIdx ).css('opacity', '0');
-		if (flag) {
-			outerIdxIncerement();
-		} else {
-			setTimeout(function() {
-				outerIdxIncerement();
-			},200);
-		}
-	}
-	
-	function outerIdxIncerement() {
-		toEffectWithTweenMax('#outerArrow' + outerIdx , '#outerArrow' + (outerIdx + 1) , function() {
-			flag = false;
-			++outerIdx;
-			var text = "At <span class='ct-code-b-yellow'>pass-" + array[outerIdx] +"</span> the elements are sorted as follows."+
-			"<br><span id='buttonAppendSpan'></span>";
-			typing(".introjs-tooltiptext", text, function() {
-				setTimeout(function() {
-					outerLoopConditionChecking();
-				},200);
-			});
-		});
-	}
-	
-	function toEffectWithTweenMax(selector1, selector2, callBackFunction) {
-		var l1 = $(selector1).offset();
-		$(selector2).offset({top: l1.top, left: l1.left});
-		$(selector1).addClass("opacity00").removeAttr("style")
-		TweenMax.to($(selector2), 0.3, {opacity: 1, top: 0, left: 0, onComplete: function() {
-			$(selector2).removeAttr("style").removeClass("opacity00");
-			if (typeof callBackFunction === "function") {
-				callBackFunction();
-			}
-		}});
-	}
-	
-	function fadeInFromEffectWithTimelineMax(selector1, selector2, callBackFunction) {
-		var timelineMax = new TimelineMax();
-		$(selector1).parent().effect( "highlight",{color: 'blue'}, 500, function() {
-			$(selector1).removeClass('z-index1000000');
-			var l1 = $(selector1).offset();
-			var l2 = $(selector2).offset();
-			var topLength = l1.top - l2.top;
-			var leftLength = l1.left - l2.left;
-			$("#programDiv").append("<span id='dummy' style='position: relative;color: black;'>" 
-				+ $(selector2).text() + "</span>");
-			$('#dummy').offset({
-				"top": l2.top, 
-				"left": l2.left
-			});
-			$(selector2).text($(selector1).text());
-			timelineMax.from(selector2, 1, {top: topLength, left: leftLength, onComplete: function() {
-				if (typeof callBackFunction === "function") {
-					callBackFunction();
-				}
-			}}).to('#dummy', 0.5, {opacity: 0, onComplete: function() {
-				$("#animationDiv").removeAttr("style").addClass("introjs-showElement");			
-				$('#dummy').remove();
-			}}, "-=0.5");
-		});
-	}
 
 
 
@@ -726,7 +652,7 @@ function appendTds() {
 	for(var i = 0; i < 5; i++) {
 		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>')
 		$('#outerArrow').append('<th><div class="text-center opacity00" id="outerArrow'+ i + '">'
-				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">i</span></div>'
+				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">pos</span></div>'
 				+ '<i class="fa fa-arrow-down" id="outerarrow'+ i + '"></i></div></th>');
 		$('#innerArrow').append('<th><div class="text-center opacity00" id="innerArrow'+ i + '">'
 				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">j</span></div>'
@@ -773,70 +699,6 @@ function changeValue() {
 			}
 		});
 	});
-}
-
-function bubbleSort() {
-	$(".introjs-duplicate-skipbutton").remove();
-	$('.introjs-duplicate-nextbutton').remove();
-	$("#outerArrow" + outerIdx).addClass("opacity00");
-	$("#innerArrow th i").parent().not(".opacity00").addClass("opacity00");
-	if (staringPoint <= endingPoint) {
-		$("#arrElements tr:nth-child(3) td").eq(staringPoint - 1).effect("highlight", {color: 'pink'}, 100, function() {
-			var val1 = parseInt($("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint - 1) + ") span").text());
-			var val2 = parseInt($("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint) + ") span").text());
-			if (val1 > val2) {
-				var elmt1 = $("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint - 1) + ") span");
-				var elmt2 = $("#arrElements tr:nth-child(3) td:nth-child(" + (staringPoint) + ") span");
-				var l1 = elmt1.text(val2).offset();
-				var l2 = elmt2.text(val1).offset();
-				$("#eleAtInnerIdxVal").text(val1);
-				var leftLength = l2.left - l1.left;
-				TweenMax.from(elmt1, 0.2, {"left" : leftLength});
-				TweenMax.from(elmt2, 0.2, {"left" : -leftLength, onComplete:function() {
-					staringPoint++;
-					bubbleSort();
-				}});
-			} else if (staringPoint <= endingPoint) {
-				$("#eleAtInnerIdxVal").text(val2);
-				staringPoint++;
-				bubbleSort();
-			}
-		});
-	} else if (staringPoint == 1) {
-		$("#arrElements tr:nth-child(3) td").eq(staringPoint - 1).effect("highlight", {color: 'pink'}, 100, function() {
-			if (staringPoint < endingPoint) {
-				staringPoint++;
-				bubbleSort();
-			}
-		});
-	} else {
-		$("#arrElements tr:nth-child(3) td").eq(staringPoint - 2).css("background-color", "orange").addClass("completed");
-			staringPoint = 1;
-			endingPoint--;
-			if (staringPoint <= endingPoint) {
-				setTimeout(function() {
-					bubbleSort();
-				}, 200);
-			} else {
-				$(".introjs-duplicate-skipbutton").remove();
-				$('.introjs-duplicate-nextbutton').remove();
-				text = 'All elements are sorted successfully.'
-						+ ' <span id="appendButton"></span>';
-				typing('.introjs-tooltiptext', text, function() {
-				/* $('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
-				$('.introjs-duplicate-nextbutton').click(function() {
-					$('.introjs-duplicate-nextbutton').remove();
-				//	introNextSteps("#printArr", "printArr", 'bottom');
-					introjs.nextStep();
-				}); */
-				buttonAppendFunction(".introjs-tooltiptext", function() {
-					$("#divTable").removeClass("hide");
-					$("#preCodeDiv").hide();
-					introjs.nextStep();
-				});
-			});
-		}
- 	}
 }
 
 function svgAppend(selector, svgId) {

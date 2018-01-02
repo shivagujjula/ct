@@ -18,9 +18,9 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js-min/bustc.min.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js/selection-sort-time-complexity.js"></script>
 
-<title>Bubble sort time complexity</title>
+<title>Selection sort time complexity</title>
 <style type="text/css">
 
 .margin-top-1 {
@@ -239,23 +239,22 @@ a {
 <div class="col-xs-12">
 	<div class="text-center margin-top-1">
 		<h3 class='label ct-demo-heading' id="heading">
-			<span>Time Complexity of Bubble Sort</span>
+			<span>Time Complexity of Selection Sort</span>
 		</h3>
 	</div>
 	<div class="col-xs-12">
 		<div class="col-xs-8 col-xs-offset-2 index-div" id="indexDiv">
 			<ul>
-				<li id="listLine1" class="opacity00"><span class="ct-blue">Bubble sort</span> is an internal sorting technique in which <b>adjacent 
-				elements</b> are compared and exchanged if necessary.</li>
-				<li id="listLine2" class="opacity00">The working procedure for <span class="ct-blue">Bubble sort</span> is as follows:</li>
-				<ol>
-					<li id="listLine3" class="opacity00">Let us consider an array of <b>n</b> elements (i.e., <b>a[n]</b>) to be sorted.</li>
-					<li id="listLine4" class="opacity00">Compare the first two elements in the array i.e., <b>a[0]</b> and <b>a[1]</b>, if <b>a[1]</b> is less than <b>a[0]</b> 
-						then interchange the two values.</li>
-					<li id="listLine5" class="opacity00">Next compare <b>a[1]</b> and <b>a[2]</b>, if <b>a[2]</b> is less than <b>a[1]</b> then interchange the values.</li>
-					<li id="listLine6" class="opacity00">Continue this process till the last two elements are <b>compared</b> and <b>interchanged</b>.</li>
-					<li id="listLine7" class="opacity00">Repeat the above steps for <b>n - 1</b> passes.</li>
-				</ol>
+				<li id="listLine1" class="opacity00"><span class="ct-blue">Selection sort</span> process can be done in two ways, one is the 
+					<span class="ct-blue">largest element method</span> and the other is <span class="ct-blue">smallest element method</span>.</li>
+				<li id="listLine2" class="opacity00">The working procedure for selection sort using the 
+					<span class="ct-blue">largest element method</span> is as follows:</li>
+				<ol><li id="listLine3" class="opacity00">Let us consider an array of <b>n</b> elements (i.e., <b>a[n]</b>) to be sorted.</li>
+					<li id="listLine4" class="opacity00">In the first step, the <b>largest element</b> in the list is searched. Once the largest 
+					element is found, it is exchanged with the element which is placed at the <b>last position</b>. This completes the first pass.</li>
+					<li id="listLine5" class="opacity00">In the next step, it searches for the <b>second largest element</b> in the list and it 
+					is interchanged with the element placed at <b>second last position</b>. This is done in second pass.</li>
+					<li id="listLine6" class="opacity00">This process is repeated for <b>n - 1</b> passes to sort all the elements.</li></ol>
 			</ul>
 		</div>
 	</div>
@@ -377,17 +376,20 @@ a {
 			</table>
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
-			<pre class="creamPreTab4 opacity00" id="preCode1">
-<span id="preCodeLine1"><span class="color-green">void</span> bubbleSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
-	<span id="preCodeLine2"><span class="color-green">int</span> i, j, temp;</span>
-	<span id="preCodeLine3"><span class="color-maroon">for</span> (i = <span class="color-deeppink">0</span>; i < n - <span class="color-deeppink">1</span>; i++) {</span>
-		<span id="preCodeLine4"><span class="color-maroon">for</span> (j = <span class="color-deeppink">0</span>; j < n - i - <span class="color-deeppink">1</span>; j++) {</span>
-			<span id="preCodeLine5"><span class="color-maroon">if</span> (a[j] > a[j+<span class="color-deeppink">1</span>]) {</span>
-				temp = a[j];
-				a[j] = a[j+<span class="color-deeppink">1</span>];
-				a[j+<span class="color-deeppink">1</span>] = temp;
+			<pre class="creamPreTab4 " id="preCode1">
+void selectionSort(int a[], int n) {
+	int i, j, large, index;
+	for (i = n - 1; i > 0; i--) {
+		large = a[0];
+		index = 0;
+		for (j = 1; j <= i; j++) {
+			if (a[j] > large) {
+				large = a[j];
+				index = j;
 			}
 		}
+		a[index] = a[i];
+		a[i] = large;
 	}
 }
 			</pre>
@@ -429,7 +431,7 @@ a {
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div id="finalDiv" class="col-xs-5 col-xs-offset-5 text-center opacity00">
-			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : Big O(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
+			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : BigO(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
@@ -439,7 +441,8 @@ a {
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-	bubbleSortTimeComplexityFunction();
+	selectionSortTimeComplexityFunction();
+//	$(".opacity00").removeClass("opacity00");
 });
 
 </script>

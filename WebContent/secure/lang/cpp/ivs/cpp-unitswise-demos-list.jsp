@@ -2101,11 +2101,11 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor in single and multilevel inheritance', 'destructor-in-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Destructor in single and multilevel inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in single and multilevel inheritance</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
 						<td></td>
-						<td>Sathish (In progress)</td>
-						<td></td>
-						<td></td>
+						<td>02-01-18</td>
 					</tr>
 					<tr>
 						<td>10</td>
@@ -2113,11 +2113,11 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor in multiple inheritance', 'destructor-in-multiple-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Destructor in multiple inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in multiple inheritance</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Sathish / Sathish</td>
 						<td></td>
-						<td>Sathish (In progress)</td>
-						<td></td>
-						<td></td>
+						<td>02-01-18</td>
 					</tr>
 					
 					
