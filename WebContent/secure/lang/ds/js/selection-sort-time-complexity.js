@@ -1,6 +1,7 @@
 var selectionSortTimeComplexityFunction = function() {
 	introGuide();
 	appendTds();
+	
 }
 
 var outerIdx = 4, innerIdx;
@@ -120,12 +121,11 @@ function introGuide() {
 							changeValue();
 							buttonAppendFunction(".introjs-tooltiptext", function() {
 								$('.arr-ele').attr('contenteditable','false');
-								zoomingEffect("#arrElements", function() {
-									zoomingEffect("#eleAtInnerText");
-										zoomingEffect(".eleAtInnerIdx", function() {
+								zoomInEffect("#arrElements", function() {
+									zoomInEffect("#eleAtInnerText");
+										zoomInEffect(".eleAtInnerIdx", function() {
 										buttonAppendFunction(".introjs-tooltiptext", function() {
-											insertionSort();
-										//	outerLoopInitialization();
+											selectionSort();
 										});
 									});
 								})
@@ -249,9 +249,9 @@ function setTimeoutFunction() {
 }
 
 function selectionSort() {
-	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
+//	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
 	$("#outerArrow" + outerIdx).addClass("opacity00");
-	outerIdx = 7 - $('.completed').length;
+	outerIdx = 5 - $('.completed').length;
 	outerCondition();
 }
 
@@ -265,6 +265,7 @@ function outerCondition() {
 			innerIdx = outerIdx;
 	    }
 	    innerFlag = true;
+	   console.log("function entered");
 		innerCondition();		
 	} else {
 		$("#outerArrow" + outerIdx).addClass("opacity00");
@@ -296,6 +297,7 @@ function outerCondition() {
 
 function innerCondition() {
 	if(innerIdx == 0) {
+	//	console.log("innerIdx : " + );
 		$("#innerArrow" + (innerIdx + 1)).addClass("opacity00");
     	$('#sortEle' + (outerIdx - 1)).parent().effect("highlight", {color: 'pink'}, 100, function() {
       		fadeInFromEffectWithTimelineMax('#sortEle' + position, '#eleAtInnerIdxVal', function() {
@@ -367,7 +369,7 @@ function flipEffectWithTweenMax(selector, val, callBackFunction) {
 function zoomInEffect(selector1, callBackFunction) {
 	$(selector1).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 		$(selector1).removeClass("animated zoomIn");
-		$(selector1).removeAttr('style');
+	//	$(selector1).removeAttr('style');
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
 		}
@@ -396,6 +398,33 @@ function toEffectWithTweenMax(selector1, selector2, callBackFunction) {
 			callBackFunction();
 		}
 	}});
+}
+
+function fadeInFromEffectWithTimelineMax(selector1, selector2, callBackFunction) {
+	var timelineMax = new TimelineMax();
+	$(selector1).parent().effect( "highlight",{color: 'blue'}, 500, function() {
+		$(selector1).removeClass('z-index1000000');
+		var l1 = $(selector1).offset();
+		var l2 = $(selector2).offset();
+		var topLength = l1.top - l2.top;
+		var leftLength = l1.left - l2.left;
+		$("#programDiv").append("<span id='dummy' style='position: relative;color: black;'>" 
+			+ $(selector2).text() + "</span>");
+		$('#dummy').offset({
+			"top": l2.top, 
+			"left": l2.left
+		});
+		$(selector2).text($(selector1).text());
+		timelineMax.from(selector2, 1, {top: topLength, left: leftLength, onComplete: function() {
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}}).to('#dummy', 0.5, {opacity: 0, onComplete: function() {
+			$("#animationDiv").removeAttr("style").addClass("introjs-showElement");	
+			$("#eleAtInnerIdxVal").removeAttr("style");
+			$('#dummy').remove();
+		}}, "-=0.5");
+	});
 }
 
 
@@ -650,13 +679,17 @@ function buttonAppendFunction(selector, callBackFunction) {
 
 function appendTds() {
 	for(var i = 0; i < 5; i++) {
-		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>')
+		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>');
 		$('#outerArrow').append('<th><div class="text-center opacity00" id="outerArrow'+ i + '">'
-				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">pos</span></div>'
+				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">outer</span>Idx</div>'
 				+ '<i class="fa fa-arrow-down" id="outerarrow'+ i + '"></i></div></th>');
 		$('#innerArrow').append('<th><div class="text-center opacity00" id="innerArrow'+ i + '">'
-				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">j</span></div>'
+				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">inner</span>Idx</div>'
 				+ '<i class="fa fa-arrow-down" id="innerarrow'+ i + '"></i></div></th>'); 
+		$('#positionArrow').append('<th><div class="text-center opacity00" id="positionArrow'+ i + '">'
+				+ '<i class="fa fa-arrow-up" id="positionarrow'+ i + '"></i>' 
+				+ '<div id="innerIdxText'+ i +'"><span class="position-color">position</span></div></div></th>');
+		
 	}
 }
 

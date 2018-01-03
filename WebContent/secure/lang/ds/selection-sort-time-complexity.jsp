@@ -416,6 +416,7 @@ void selectionSort(int a[], int n) {
 						    	<td class="text-center"><span class="element" arrayvalue="7" id="sortEle7">6</span></td> -->
 						 	</tr>
 						 	<tr id="arrayIndices"></tr>
+							<tr id="positionArrow"></tr>
 						</tbody>
 					</table>
 				</div>
