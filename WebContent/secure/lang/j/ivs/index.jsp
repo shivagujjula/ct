@@ -420,6 +420,17 @@
 						<td></td>
 						<td>30-12-17</td>
 					</tr>
+					<tr>
+						<td>10</td>
+						<td>String substring method</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('String substring method', '/secure/lang/j/string/string-substring-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String substring method (<span style = "color : blue">Replace of 7th demo</span>)</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
+						<td></td>
+						<td>04-01-18</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

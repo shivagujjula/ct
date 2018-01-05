@@ -376,19 +376,19 @@ a {
 			</table>
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
-			<pre class="creamPreTab4 " id="preCode1">
+			<pre class="creamPreTab4 z-index" id="preCode1">
 void selectionSort(int a[], int n) {
-	int i, j, large, index;
+	int i, j, large, position;
 	for (i = n - 1; i > 0; i--) {
 		large = a[0];
-		index = 0;
+		position = 0;
 		for (j = 1; j <= i; j++) {
 			if (a[j] > large) {
 				large = a[j];
-				index = j;
+				position = j;
 			}
 		}
-		a[index] = a[i];
+		a[position] = a[i];
 		a[i] = large;
 	}
 }

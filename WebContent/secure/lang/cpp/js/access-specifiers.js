@@ -40,6 +40,7 @@ function introGuide() {
 		},{
 			element : "#class",
 			intro : "",
+			tooltipClass : 'hide',
 			position : "right"  
 		},{
 			element : "#variable",
@@ -161,7 +162,8 @@ function introGuide() {
 		},{
 			element : "#multiply2", 
 			intro : "",
-			position : "right" 
+			tooltipClass : 'hide',
+			//position : "right" 
 		},{
 			element : "#read",
 			intro : "",
@@ -169,7 +171,8 @@ function introGuide() {
 		},{
 			element : "#read1",
 			intro : "",
-			position : "right" 
+			tooltipClass : 'hide',
+			//position : "right" 
 		},{
 			element : "#console1",
 			intro : "",
@@ -262,6 +265,7 @@ function introGuide() {
 			break;
 		case "main1":
 			$("#animationBox2").addClass("hide");
+			$("#main1").removeClass("opacity00");
 			break;
 		case "variable":
 			$("#one").addClass("opacity00");
@@ -271,9 +275,6 @@ function introGuide() {
 			break;
 		case "areaVar":
 			$("#five").addClass("opacity00");
-			break;
-		case "preBody1":
-			$("#preBody1").removeClass("hide");
 			break;
 		
 		case "console1":
@@ -349,7 +350,39 @@ function introGuide() {
 				$("#err").show()
 				$("#preBody, #animationBox").show();
 				break;
-				
+			case "main":
+				$("#main").removeClass("opacity00");
+				break;
+			case "preBody":
+				$("#class").addClass("opacity00");
+				break;
+			case "class" :
+				$("#class").removeClass("opacity00");
+				break;
+			case "method1":
+				var element = introjs._introItems[introjs._currentStep].animateStep;
+				switch(element) {
+					case "one" :
+						$("#main").addClass("opacity00");
+						break;
+				}
+				break;
+			case "preBody1":
+				$("#preBody1").removeClass("hide");
+				$("#class1").addClass("opacity00");
+				break;
+			case "class1":
+				$("#class1").removeClass("opacity00");
+				$("#private1").addClass("opacity00");
+				break;
+			case "private1":
+				$("#private1").removeClass("opacity00");
+				$("#public").addClass("opacity00");
+				break;
+			case "public":
+				$("#public").removeClass("opacity00");
+				$("#main1").addClass("opacity00");
+				break;
 			
 		}
 	}); 
@@ -428,7 +461,7 @@ function introGuide() {
 				$('.introjs-helperLayer').one('transitionend', function() {
 					$("#li5").removeClass("opacity00");
 						$(".introjs-tooltip").removeClass("hide");
-						var text = "<span class='ct-code-b-yellow'>Protected access</span> members can be used in child class.";
+						var text = "<span class='ct-code-b-yellow'>Protected access</span> members can be accessed in child class.";
 						typing($('.introjs-tooltiptext'), text, function() { 
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
@@ -442,7 +475,7 @@ function introGuide() {
 			$('#preBody').removeClass("opacity00");
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				var text = "Here let us learn about default <span class='ct-code-b-yellow'>access specifier</span></span>.";
+				var text = "Let us learn about default <span class='ct-code-b-yellow'>access specifier</span></span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 						$('.introjs-nextbutton').show();
 				});
@@ -453,10 +486,11 @@ function introGuide() {
 			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$('#preBody').removeClass("opacity00");
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text =  "class <span class='ct-code-b-yellow'>Area</span> which is "+
-							"<span class='ct-code-b-yellow'>global</span> class has " +
-							"<span class='ct-code-b-yellow'>data members</span> and "+
-							"<span class='ct-code-b-yellow'>member functions</span>.";
+				var text =  "Here class <span class='ct-code-b-yellow'>Area</span> is a "+
+							"<span class='ct-code-b-yellow'>global</span> class with one data member " +
+							"<span class='ct-code-b-yellow'>len</span> and a member function "+
+							"<span class='ct-code-b-yellow'>sqr()</span>.";
+				$('.introjs-tooltip').removeClass('hide');
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -493,7 +527,7 @@ function introGuide() {
 			case "one" :
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var text =  "member function <span class='ct-code-b-yellow'>sqr</span> is also " + 
+					var text =  "Here member function <span class='ct-code-b-yellow'>sqr()</span> is also " + 
 							"<span class='ct-code-b-yellow'>private</span> by default, since there "+
 							"is no <span class='ct-code-b-yellow'>access specifier</span> specified.";
 					typing($('.introjs-tooltiptext'), text, function() { 
@@ -503,10 +537,10 @@ function introGuide() {
 				break;
 			case "two" :
 				$('.introjs-helperLayer').one('transitionend', function() {
-					var text = "It shows <b class ='warning-color'>compile time error</b> that  <b class ='ct-code-b-yellow'>sqr</b> "+
-							"is <b class ='ct-code-b-yellow'>private</b> data member. <span class='ct-code-b-yellow'>sqr()</span>"+
+					var text = "<ul><li>It shows <b class ='warning-color'>compile time error</b> that  <b class ='ct-code-b-yellow'>sqr</b> "+
+							"is a <b class ='ct-code-b-yellow'>private</b> data member.</li><li>So <span class='ct-code-b-yellow'>sqr()</span>"+
 							" cannot be accessed outside of the class <span class='ct-code-b-yellow'>Area</span> and this "+
-							"concept is called  <span class='ct-code-b-yellow'>data hiding</span>.";
+							"concept is called  <span class='ct-code-b-yellow'>data hiding</span>.</li></ul>";
 					typing($('.introjs-tooltiptext'), text, function() { 
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
@@ -526,7 +560,7 @@ function introGuide() {
 		case "main" :
 			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "In <span class='ct-code-b-yellow'>main</span> method";
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -535,8 +569,8 @@ function introGuide() {
 		case "object1" :
 			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text =  "declaring <span class='ct-code-b-yellow'>obj1</span> object of "+
-							"class <span class='ct-code-b-yellow'>Area</span>.";
+				var text =  "Here <span class='ct-code-b-yellow'>obj1</span> is an object of a class <span class='ct-code-b-yellow'>Area</span>." + 
+				" Memory is allocated to that object when <span class='ct-code-b-yellow'>obj1</span> is declared to class <span class='ct-code-b-yellow'>Area</span>.";
 				$(".introjs-tooltip").removeClass("hide");
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -571,7 +605,7 @@ function introGuide() {
 							$("#one").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 								$(".introjs-tooltip").removeClass("hide");
 								$("#one, #boxParent").removeClass("animated zoomIn");
-								typing('.introjs-tooltiptext',"memory is allocated for variable <span class='ct-code-b-yellow'>len</span>.", function() {
+								typing('.introjs-tooltiptext',"Memory is allocated for variable <span class='ct-code-b-yellow'>len</span>.", function() {
 									$('.introjs-nextbutton, .introjs-prevbutton').show();
 									$("#variable").removeClass('z-index1000000');
 								});
@@ -585,7 +619,7 @@ function introGuide() {
 		case "funcCall" :
 			$(".introjs-nextbutton, introjs-prevbutton").hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text =  "when the function call of <span class='ct-code-b-yellow'>sqr(20)</span> through "+
+				var text =  "The member function <span class='ct-code-b-yellow'>sqr(20)</span> is called through the object "+
 							"<span class='ct-code-b-yellow'>obj1</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -666,7 +700,7 @@ function introGuide() {
 			$('.introjs-prevbutton,.introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text =  "Here we discuss about <span class='ct-code-b-yellow'>public access</span> and "+
-							"<span class='ct-code-b-yellow'>private access</span>specifier.";
+							"<span class='ct-code-b-yellow'>private access</span> specifier.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -677,8 +711,8 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = 	"Here we are defining class <span class='ct-code-b-yellow'>Area</span> which has "+
-							"member functions and data members as <span class='ct-code-b-yellow'>public</span> "+
+				var text = 	"Here class <span class='ct-code-b-yellow'>Area</span> contains "+
+							"member functions and data members which are specified as <span class='ct-code-b-yellow'>public</span> "+
 							"and <span class='ct-code-b-yellow'>private</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -716,7 +750,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "During the execution of <span class='ct-code-b-yellow'>main()</span> method.";
+				var text = "<span class='ct-code-b-yellow'>main()</span> is the starting point of execution.";
 				typing($('.introjs-tooltiptext'), text, function() {
 					
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -727,7 +761,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-prevbutton, .introjs-nextbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "Here declaring <span class='ct-code-b-yellow'>obj</span> for class <span class='ct-code-b-yellow'>Area</span>.";
+				var text = "Here an object <span class='ct-code-b-yellow'>obj</span> is created to the class <span class='ct-code-b-yellow'>Area</span>.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -748,7 +782,7 @@ function introGuide() {
 								$(".introjs-tooltip").removeClass("hide");
 								typing($('.introjs-tooltiptext'),"Memory is allocated when object <span class='ct-code-b-yellow'>obj</span> "+
 										"is declared for class <span class='ct-code-b-yellow'>Area</span>.",function() {
-									$('.introjs-nextbutton, .introjs-prevbutton').show();
+										$('.introjs-nextbutton, .introjs-prevbutton').show();
 									$("#obj2").removeClass('z-index1000000');
 								});
 							});
@@ -766,9 +800,9 @@ function introGuide() {
 										$("#four").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 											$("#boxParent2,#boxParent3, #three, #four").removeClass("animated zoomIn");
 											$(".introjs-tooltip").removeClass("hide");
-											typing('.introjs-tooltiptext',"here <span class='ct-code-b-yellow'>len</span> and "+
+											typing('.introjs-tooltiptext',"Here <span class='ct-code-b-yellow'>len</span> and "+
 													"<span class='ct-code-b-yellow'>bred</span> are <span class='ct-code-b-yellow'>private"+
-													"</span> members and can be accessed only inside <span class='ct-code-b-yellow'>class</span>.", function() {
+													"</span> members and can be accessed only inside class <span class='ct-code-b-yellow'>Area</span>.", function() {
 												$('.introjs-nextbutton, .introjs-prevbutton').show();
 												$('#variable2').removeClass('z-index1000000');
 											});				
@@ -788,9 +822,9 @@ function introGuide() {
 								$("#five").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 									$(".introjs-tooltip").removeClass("hide");
 									$("#boxParent4, #five").removeClass("animated zoomIn");
-										typing('.introjs-tooltiptext',"here <span class='ct-code-b-yellow'>area</span> "+
+										typing('.introjs-tooltiptext',"Here <span class='ct-code-b-yellow'>area</span> "+
 												"is <span class='ct-code-b-yellow'>public</span> member and can be accessed "+
-												"outside <span class='ct-code-b-yellow'>class</span>", function() {
+												"outside of the class <span class='ct-code-b-yellow'>Area</span>.", function() {
 											$('.introjs-nextbutton, .introjs-prevbutton').show();
 											$('#areaVar').removeClass('z-index1000000');
 										});
@@ -815,7 +849,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "calling the function <span class='ct-code-b-yellow'>rect()</span> through object "+
+				var text = "Calling the function <span class='ct-code-b-yellow'>rect()</span> through object "+
 							"<span class='ct-code-b-yellow'>obj</span>, it can be accessed directly since it "+
 							"is <span class='ct-code-b-yellow'>public</span> member.";
 				typing($('.introjs-tooltiptext'), text, function() { 
@@ -828,10 +862,11 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "Here in function definition of <span class='ct-code-b-yellow'>rect()</span>.";
-				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				//var text = "Here in function definition of <span class='ct-code-b-yellow'>rect()</span>.";
+				//typing($('.introjs-tooltiptext'), text, function() { 
+				//	$('.introjs-nextbutton, .introjs-prevbutton').show();
+				//});
+				nextStep();
 			});
 			break;
 		case "read" :
@@ -852,10 +887,11 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text = "During execution of <span class='ct-code-b-yellow'>read()</span> function.";
-				typing($('.introjs-tooltiptext'), text, function() { 
-					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+		//		var text = "During execution of <span class='ct-code-b-yellow'>read()</span> function.";
+			////	typing($('.introjs-tooltiptext'), text, function() { 
+					//$('.introjs-nextbutton, .introjs-prevbutton').show();
+			//	});
+					nextStep();
 			});
 			break;
 		case "console1" :
@@ -875,7 +911,6 @@ function introGuide() {
 			$('.introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				nextStep();
-				
 			});
 			break;
 		case "input1" :
@@ -967,7 +1002,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
-				var text =  "End of the program";
+				var text =  "End of the program.";
 				typing($('.introjs-tooltiptext'), text, function() { 
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -1048,7 +1083,10 @@ function enterTwoValues(selector) {
 		}
 		if (arr.length == 1 && spaceCount >= 1 && e.keyCode == 32) {
 			e.preventDefault();
-		} 
+		}
+		/*if ($("#inputChar").val().search(" ") == 1 && e.keyCode == 32) {
+			e.preventDefault();
+		}*/
 		if ($.inArray(e.keyCode, [46, 8, 9, 27, 32, 35, 36, 37, 39]) !== -1) {
 			return;
 		}
@@ -1100,8 +1138,8 @@ function enterTwoValues(selector) {
 
 function storeVal3() {
 	$("#please").hide();
-	$("#please1").append("you entered values of <span class='ct-code-b-yellow'>length</span> and "+
-						"<span class='ct-code-b-yellow'>breadth</span>.");
+	$("#please1").append("The values of <span class='ct-code-b-yellow'>length</span> and "+
+						"<span class='ct-code-b-yellow'>breadth</span> are entered.");
 	$('.user-btn').remove();
 	var splittedText = $('#inputChar').val().split(" ");
 	$('#inputChar').html('');

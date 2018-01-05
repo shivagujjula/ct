@@ -95,6 +95,7 @@ function introGuide() {
 		},{ 
 			element : "#func2",
 			intro : '',
+			tooltipClass : "hide"
 		},{
 			element : "#objVal2",
 			intro : '',
@@ -380,7 +381,7 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text =	"Here we will learn about <b class ='ct-code-b-yellow'>global class</b> and "+
-							"<b class ='ct-code-b-yellow'>global object</b> in this program.";
+							"<b class ='ct-code-b-yellow'>global object</b>.";
 				typing($('.introjs-tooltiptext'), text, function() {
 					$('.introjs-nextbutton').show();
 				});
@@ -403,9 +404,9 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#s1,#borderBox, #animationBox").addClass("opacity00");
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text =	"<b class ='ct-code-b-yellow'>out</b> is a global object of class "+
+				var text =	"Here <b class ='ct-code-b-yellow'>out</b> is a <b class ='ct-code-b-yellow'>global</b> object of class "+
 							"<b class ='ct-code-b-yellow'>Outer</b>, where this object can be used "+
-							"in all the functions to access the members of global class <b class ='ct-code-b-yellow'>Outer</b>.";
+							"in all the functions to access the members of <b class ='ct-code-b-yellow'>global</b> class <b class ='ct-code-b-yellow'>Outer</b>.";
 				$(".introjs-tooltip").removeClass("hide");
 				typing($('.introjs-tooltiptext'), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -423,7 +424,7 @@ function introGuide() {
 						$("#borderBox").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 							$("#s1, #borderBox").removeClass("animated zoomIn");
 							$(".introjs-tooltip").removeClass("hide")
-							var text ="memory is allocated when object <b class ='ct-code-b-yellow'>out</b> is declared.";
+							var text ="Memory is allocated when object <b class ='ct-code-b-yellow'>out</b> is declared.";
 							typing($('.introjs-tooltiptext'), text, function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 								$("#object1").removeClass('z-index1000000');
@@ -440,7 +441,7 @@ function introGuide() {
 							$("#one").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 								$("#one, #boxParent").removeClass("animated zoomIn");
 								$(".introjs-tooltip").removeClass("hide");
-								typing('.introjs-tooltiptext',"memory is allocated for data member "+
+								typing('.introjs-tooltiptext',"Memory is allocated for data member "+
 										"<span class='ct-code-b-yellow'>id</span>.", function() {
 									$('.introjs-nextbutton, .introjs-prevbutton').show();
 									$("#variable").removeClass('z-index1000000');
@@ -514,10 +515,10 @@ function introGuide() {
 		case "objVal1" :
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text =	"<ul><li>Here accessing the member <b class ='ct-code-b-yellow'>id</b> "+
-							"of <b class ='ct-code-b-yellow'>Outer</b> class through global object "+
+							"of <b class ='ct-code-b-yellow'>Outer</b> class through <b class ='ct-code-b-yellow'>global</b> object "+
 							"<b class ='ct-code-b-yellow'>out</b> in <b class ='ct-code-b-yellow'>main()</b> "+
 							"function.</li><li>The integer value <b class ='ct-code-b-yellow'>501</b> is "+
-							"assigned to data member <b class ='ct-code-b-yellow'>id</b> of global object "+
+							"assigned to data member <b class ='ct-code-b-yellow'>id</b> of <b class ='ct-code-b-yellow'>global</b> object "+
 							"<b class ='ct-code-b-yellow'>out</b>.</li></ul>";
 				typing($('.introjs-tooltiptext'), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -610,10 +611,11 @@ function introGuide() {
 			break;
 		case "func2":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text ="Here in <b class ='ct-code-b-yellow'>display()</b> function.";
+				nextStep();
+				/*var text ="Here in <b class ='ct-code-b-yellow'>display()</b> function.";
 				typing($('.introjs-tooltiptext'), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
-				});
+				});*/
 			});
 			break;
 		case "objVal2" :
@@ -641,7 +643,7 @@ function introGuide() {
 			break;
 		case "cout4" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text =	"<b class ='ct-code-b-yellow'>cout</b> statement displays value of "+
+				var text =	"<b class ='ct-code-b-yellow'>cout</b> statement displays the value of "+
 							"<b class ='ct-code-b-yellow'>id</b> i.e <b class ='ct-code-b-yellow'>502</b> on console.";
 				typing($('.introjs-tooltiptext'), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -659,7 +661,7 @@ function introGuide() {
 				$(".introjs-tooltip").removeClass("hide");
 				var text = "Here class <b class = 'ct-code-b-yellow'>Inner</b> is a "+
 					    		"<b class ='ct-code-b-yellow'>local class</b> because class "+
-								"is declared inside of <b class ='ct-code-b-yellow'>main</b> function."; 
+								"is declared inside of <b class ='ct-code-b-yellow'>main()</b> function."; 
 				typing($('.introjs-tooltiptext'), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -669,7 +671,7 @@ function introGuide() {
 			$("#s2, #borderBox1").addClass("opacity00");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$(".introjs-tooltip").removeClass("hide");
-				var text =	"<b class ='ct-code-b-yellow'>inn</b> is a local object of class "+
+				var text =	"Here <b class ='ct-code-b-yellow'>inn</b> is a <b class ='ct-code-b-yellow'>local</b> object of class "+
 								"<b class ='ct-code-b-yellow'>Inner</b> and this <b class ='ct-code-b-yellow'>inn</b> "+
 								"object is used only in <b class ='ct-code-b-yellow'>main()</b> function.";
 				typing($('.introjs-tooltiptext'), text, function() {
@@ -689,7 +691,7 @@ function introGuide() {
 						$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 							$("#borderBox1, #s2").removeClass("animated zoomIn");
 							$(".introjs-tooltip").removeClass("hide");
-							typing($('.introjs-tooltiptext'), "memory is allocated when object " +
+							typing($('.introjs-tooltiptext'), "Memory is allocated when object " +
 									"<b class ='ct-code-b-yellow'>inn</b> is declared.", function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 								$('#object2').removeClass('z-index1000000');
@@ -706,7 +708,7 @@ function introGuide() {
 							$("#three").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 								$("#three, #boxParent2").removeClass("animated zoomIn");
 								$(".introjs-tooltip").removeClass("hide");
-								typing(".introjs-tooltiptext", "memory is allocated for data member "+
+								typing(".introjs-tooltiptext", "Memory is allocated for data member "+
 										"<span class='ct-code-b-yellow'>age</span>.", function() {
 									$('.introjs-nextbutton, .introjs-prevbutton').show();
 								});
@@ -722,7 +724,7 @@ function introGuide() {
 						$("#borderBox2").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 							$("#s3, #borderBox2").removeClass("animated zoomIn");
 							$(".introjs-tooltip").removeClass("hide");
-							typing($('.introjs-tooltiptext'), "memory is allocated when local object "+
+							typing($('.introjs-tooltiptext'), "Memory is allocated when <b class='ct-code-b-yellow'>local</b> object "+
 									"<b class ='ct-code-b-yellow'>out</b> is declared.", function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 								$("#object3").removeClass('z-index1000000');
@@ -739,7 +741,7 @@ function introGuide() {
 							$("#four").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 								$("#four, #boxParent3").removeClass("animated zoomIn");
 								$(".introjs-tooltip").removeClass("hide");
-								typing(".introjs-tooltiptext", "memory is allocated for data member "+
+								typing(".introjs-tooltiptext", "Memory is allocated for data member "+
 									"<span class='ct-code-b-yellow'>id</span>.", function() {
 									$('.introjs-nextbutton, .introjs-prevbutton').show();
 									$("#variable2").removeClass('z-index1000000');
@@ -801,7 +803,7 @@ function introGuide() {
 				$("#s3, #borderBox2").addClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$(".introjs-tooltip").removeClass("hide");
-					var text =	"<b class ='ct-code-b-yellow'>out</b> is a local object for class "+
+					var text =	"Here <b class ='ct-code-b-yellow'>out</b> is a <span class='ct-code-b-yellow'>local</span> object for class "+
 								"<b class ='ct-code-b-yellow'>Outer</b> and this object can be used "+ 
 								"to access members of <b class ='ct-code-b-yellow'>Outer</b> class "+
 								"only in <b class ='ct-code-b-yellow'>main()</b> function.";
@@ -814,7 +816,7 @@ function introGuide() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text =	"Integer value  <b class ='ct-code-b-yellow'>36</b> is assigned to " +
 								"data member <b class ='ct-code-b-yellow'>age</b> of <b class ='ct-code-b-yellow'>"+
-								"Inner</b> class through local object <b class ='ct-code-b-yellow'>inn</b>.";
+								"Inner</b> class through <b class ='ct-code-b-yellow'>local</b> object <b class ='ct-code-b-yellow'>inn</b>.";
 					typing($('.introjs-tooltiptext'), text, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
@@ -831,7 +833,7 @@ function introGuide() {
 			case "objVal4" :
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text =	"Here accessing the member <b class ='ct-code-b-yellow'>id</b> of "+
-								"<b class ='ct-code-b-yellow'>Outer</b> class through local object "+
+								"<b class ='ct-code-b-yellow'>Outer</b> class through <b class='ct-code-b-yellow'>local</b> object "+
 								"<b class ='ct-code-b-yellow'>out</b> in <b class ='ct-code-b-yellow'>"+
 								"main()</b> function.";
 					typing($('.introjs-tooltiptext'), text, function() {
@@ -885,7 +887,7 @@ function introGuide() {
 					$(".introjs-helperLayer").one("transitionend", function() {
 						$("#value3, #value4").hide();
 						var text =	"Here accessing the member <b class ='ct-code-b-yellow'>age</b> of "+
-								"<b class ='ct-code-b-yellow'>Inner</b> class through local object i.e, "+
+								"<b class ='ct-code-b-yellow'>Inner</b> class through <b class ='ct-code-b-yellow'>local</b> object i.e, "+
 								"<b class ='ct-code-b-yellow'>inn</b><br> of <b class ='ct-code-b-yellow'>main()</b> "+
 								"function in <b class ='ct-code-b-yellow'>display()</b> function." +
 								"It gives <b class ='ct-red-color'>error</b>.";
@@ -910,7 +912,7 @@ function introGuide() {
 				break;	
 			case "end1":
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "End of the program";
+					var text = "End of the program.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});

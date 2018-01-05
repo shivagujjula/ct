@@ -146,7 +146,7 @@ function introGuide() {
 			switch(animateStep) {
 			case 'firstStep':
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Now find the time complexity for the <span class='ct-code-b-yellow'>bubble sort</span> function.";
+					var text = "Now find the time complexity for the <span class='ct-code-b-yellow'>insertion sort</span> function.";
 					typing(".introjs-tooltiptext", text, function() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							$(".introjs-tooltip").hide();
@@ -399,8 +399,8 @@ function outerValInc() {
 function preCodeExplanation() {
 	popoverAppendFunction("#preCodeLine1", 1);
 	$("#preCodeLine1").effect('highlight',{color:'#da5805'}, 1000);
-	var text = "<span class='ct-code-b-yellow'>Bubble Sort</span> is the simplest sorting algorithm that works by repeatedly swapping "+
-		"the adjacent elements to place the elements either in ascending or descending order.";
+	var text = "<span class='ct-code-b-yellow'>Insertion sort</span> is based on the idea that one element from the input elements is "+
+	"consumed in each iteration to find its correct position i.e, the position to which it belongs in a sorted array.";
 	typing("#popover1", text, function() {
 		buttonAppendFunction("#popover1", function() {
 			$("#preCodeLine1").popover('hide');
@@ -409,7 +409,7 @@ function preCodeExplanation() {
 			var text = "<ul><li>This <span class='ct-code-b-yellow'>for</span> loop represents number of <span class='ct-code-b-yellow'>passes</span> "+
 				"for sorting.</li>"+
 				"<li>(<span class='ct-code-b-yellow'>n-1</span>) number of <span class='ct-code-b-yellow'>passes</span> are required to sort "+
-				"<span class='ct-code-b-yellow'>n</span> elements in <span class='ct-code-b-yellow'>bubble sort</span>.</li>"+
+				"<span class='ct-code-b-yellow'>n</span> elements in <span class='ct-code-b-yellow'>insertion sort</span>.</li>"+
 				"<li>For example if number of elements are <span class='ct-code-teal'>5</span> then <span class='ct-code-teal'>4</span> "+
 				"<span class='ct-code-b-yellow'>passes</span> are required to sort the elements.</li>"
 			typing("#popover3", text, function() {
@@ -419,7 +419,7 @@ function preCodeExplanation() {
 					$("#preCodeLine4").effect('highlight',{color:'#da5805'}, 1000);
 					var text = "<ul><li>This <span class='ct-code-b-yellow'>for</span> loop represents number of <span class='ct-code-b-yellow'>"+
 					"comparisons</span>.</li>"+
-					"<li>For each pass <span class='ct-code-teal'>n-i-1</span> "+
+					"<li>For each pass <span class='ct-code-teal'>n-1</span> "+
 					"<span class='ct-code-b-yellow'>comparisons</span> are required.</li>"+
 					"<li>For example if <span class='ct-code-b-yellow'>n=5</span>, <span class='ct-code-b-yellow'>i=0</span> :</li>"+
 					"<ul><li>In <span class='ct-code-b-yellow'>pass-1</span> the number of <span class='ct-code-b-yellow'>comparisons</span> are "+
@@ -648,7 +648,7 @@ function appendTds() {
 	for(var i = 0; i < 5; i++) {
 		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>')
 		$('#outerArrow').append('<th><div class="text-center opacity00" id="outerArrow'+ i + '">'
-				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">pos</span></div>'
+				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">i</span></div>'
 				+ '<i class="fa fa-arrow-down" id="outerarrow'+ i + '"></i></div></th>');
 		$('#innerArrow').append('<th><div class="text-center opacity00" id="innerArrow'+ i + '">'
 				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">j</span></div>'

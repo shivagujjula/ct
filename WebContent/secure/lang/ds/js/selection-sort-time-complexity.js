@@ -4,7 +4,7 @@ var selectionSortTimeComplexityFunction = function() {
 	
 }
 
-var outerIdx = 4, innerIdx;
+var outerIdx = 4, innerIdx, count = 1;
 var len = 5, elementAtInnerIdx;
 var arr = [];
 var innerFlag = true, flag = true, buttonflag = false;
@@ -249,24 +249,27 @@ function setTimeoutFunction() {
 }
 
 function selectionSort() {
-//	$('.introjs-duplicate-skipbutton, .introjs-duplicate-nextbutton').remove();
 	$("#outerArrow" + outerIdx).addClass("opacity00");
-	outerIdx = 5 - $('.completed').length;
+	outerIdx = 4 - $('.completed').length;
 	outerCondition();
 }
 
 function outerCondition() {
 	$("#positionArrow" + position).addClass("opacity00");
 	if (outerIdx >= 1) {
-		$("#outerArrow" + outerIdx).removeClass("opacity00");
-		position = outerIdx;
-	    $("#positionArrow" + position).removeClass("opacity00");
-	    if (innerFlag) {
-			innerIdx = outerIdx;
-	    }
-	    innerFlag = true;
-	   console.log("function entered");
-		innerCondition();		
+		
+		var text = "At <span class='ct-code-b-yellow'>pass-" + count +"</span> the elements are sorted as follows."+
+		"<br><span id='buttonAppendSpan'></span>";
+		typing('.introjs-tooltiptext', text, function() {
+			$("#outerArrow" + outerIdx).removeClass("opacity00");
+			position = outerIdx;
+		    $("#positionArrow" + position).removeClass("opacity00");
+		    if (innerFlag) {
+				innerIdx = outerIdx;
+		    }
+		    innerFlag = true;
+			innerCondition();
+		});
 	} else {
 		$("#outerArrow" + outerIdx).addClass("opacity00");
 		$('#sortEle0').parent().css('background', 'orange').addClass("completed");
@@ -297,14 +300,16 @@ function outerCondition() {
 
 function innerCondition() {
 	if(innerIdx == 0) {
-	//	console.log("innerIdx : " + );
 		$("#innerArrow" + (innerIdx + 1)).addClass("opacity00");
     	$('#sortEle' + (outerIdx - 1)).parent().effect("highlight", {color: 'pink'}, 100, function() {
       		fadeInFromEffectWithTimelineMax('#sortEle' + position, '#eleAtInnerIdxVal', function() {
           		fadeInFromEffectWithTimelineMax('#sortEle' + (outerIdx),'#sortEle' + (position),  function() {
 					fadeInFromEffectWithTimelineMax('#eleAtInnerIdxVal','#sortEle' + (outerIdx),  function() {
 						$('#sortEle' + outerIdx).parent().css('background', 'orange').addClass("completed");
-    	          		outerValDec();
+						/*count++;
+						buttonAppendFunction("#buttonAppendSpan", function() {*/
+							outerValDec();
+					//	});
             		});
           		});
         	});
@@ -326,8 +331,8 @@ function innerCondition() {
 		    },300);
 	    }
   } else {
-	$("#innerArrow" + innerIdx).addClass("opacity00");
-    	setTimeout(function() {
+		$("#innerArrow" + innerIdx).addClass("opacity00");
+		setTimeout(function() {
     		innerValDec();
     	},300);
 	}
@@ -346,11 +351,14 @@ function innerValDec() {
 }
 
 function outerValDec() {
-  --outerIdx;
-	toEffectWithTweenMax('#outerArrow' + (outerIdx + 1) , '#outerArrow' + (outerIdx) , function() {
-    	setTimeout(function() {
-			outerCondition();
-    	},300);
+	count++;
+	buttonAppendFunction("#buttonAppendSpan", function() {
+		--outerIdx;
+		toEffectWithTweenMax('#outerArrow' + (outerIdx + 1) , '#outerArrow' + (outerIdx) , function() {
+	    	setTimeout(function() {
+				outerCondition();
+	    	},300);
+		});
 	});
 }
 
@@ -681,10 +689,10 @@ function appendTds() {
 	for(var i = 0; i < 5; i++) {
 		$('#arrayIndices').append('<th class="text-center"><span id="sortIndex'+ i +'">'+ i +'</span></th>');
 		$('#outerArrow').append('<th><div class="text-center opacity00" id="outerArrow'+ i + '">'
-				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">outer</span>Idx</div>'
+				+ '<div id="outerIdxText'+ i +'"><span class="outer-loop-color">i</span></div>'
 				+ '<i class="fa fa-arrow-down" id="outerarrow'+ i + '"></i></div></th>');
 		$('#innerArrow').append('<th><div class="text-center opacity00" id="innerArrow'+ i + '">'
-				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">inner</span>Idx</div>'
+				+ '<div id="innerIdxText'+ i +'"><span class="inner-loop-color">j</span></div>'
 				+ '<i class="fa fa-arrow-down" id="innerarrow'+ i + '"></i></div></th>'); 
 		$('#positionArrow').append('<th><div class="text-center opacity00" id="positionArrow'+ i + '">'
 				+ '<i class="fa fa-arrow-up" id="positionarrow'+ i + '"></i>' 

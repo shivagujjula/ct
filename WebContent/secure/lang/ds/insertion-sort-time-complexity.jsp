@@ -378,12 +378,12 @@ a {
 			</table>
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
-			<pre class="creamPreTab4 opacity00" id="preCode1">
+			<pre class="creamPreTab4 z-index" id="preCode1">
 <span id="preCodeLine1"><span class="color-green">void</span> insertionSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
-	<span id="preCodeLine2"><span class="color-green">int</span> pos, j, temp;</span>
-	<span id="preCodeLine3"><span class="color-maroon">for</span> (pos = <span class="color-deeppink">0</span>; pos < n - <span class="color-deeppink">1</span>; pos++) {</span>
-		temp = a[pos];
-		<span id="preCodeLine4"><span class="color-maroon">for</span> (j = <span class="color-deeppink">pos</span>; j > <span class="color-deeppink">0</span>; j--) {</span>
+	<span id="preCodeLine2"><span class="color-green">int</span> i, j, temp;</span>
+	<span id="preCodeLine3"><span class="color-maroon">for</span> (i = <span class="color-deeppink">1</span>; i < n; i++) {</span>
+		temp = a[i];
+		<span id="preCodeLine4"><span class="color-maroon">for</span> (j = i; j > <span class="color-deeppink">0</span>; j--) {</span>
 			<span id="preCodeLine5"><span class="color-maroon">if</span> (a[j - 1] > temp]) {</span>
 				a[j] = a[j - <span class="color-deeppink">1</span>];
 				a[j - <span class="color-deeppink">1</span>] = temp;

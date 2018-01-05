@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/asp.min.js"></script>  
+<script type="text/javascript" src="/secure/lang/cpp/js-min/asp.min.js"></script>   
 
 <style>
 .warning-color {
@@ -301,18 +301,18 @@ span {
 	</div>
 	<div class="col-xs-12 margin-top-20">
 		<div class="col-xs-4 margin-top-20 ">
-			<div class="col-xs-12">
+			<!-- <div class="col-xs-12"> -->
 			<pre class="creamPreTab4 opacity00" id="preBody">
 <span id="total"><span id="delaration">#include &lt;iostream&gt;</span>
 using namespace std;
-<span id="class"><b class="ct-code-b-green">class</b> <b class="ct-blue-color">Area</b> {
+<span id="class" class="opacity00"><b class="ct-code-b-green">class</b> <b class="ct-blue-color">Area</b> {
 	<span id="private"><span id="variable">int len;</span>
 	<span id="method1">int sqr(int num) {
 		return num * num;		
 	}</span></span>
 };</span>
 
-<span id="main">int main() {
+<span id="main" class="opacity00">int main() {
 	<span id="object1"><b class="ct-blue-color">Area</b> <b class ='warning-color'>obj1</b>;</span>
 	<span id="funcCall"><b class ='warning-color'>obj1</b>.sqr(20);</span>
 	return 0;
@@ -323,16 +323,16 @@ using namespace std;
 <pre class="creamPreTab4 hide" id="preBody1">
 #include &lt;iostream&gt;
 using namespace std;
-<span id="class1"><b class ='ct-code-b-green'>class</b> <b class ='ct-blue-color'>Area</b> {
-  <span id="private1"><b class ='warning-color'>private</b> :
+<span id="class1" class="opacity00"><b class ='ct-code-b-green'>class</b> <b class ='ct-blue-color'>Area</b> {
+  <span id="private1" class="opacity00"><b class ='warning-color'>private</b> :
 	<span id="variable2">int <span  id="var1">len</span>, <span id="bred">bred</span>;</span>
     <span id="read1">void read() {
  		<span id="console1">cout << "Enter length and breadth : "</span>;
 		<span id="console2">cin >> <span id="input1">len >> bred</span>;</span>
 	}</span></span>
-  <span id="public"><b class ='warning-color'>public</b> :
+  <span id="public" class="opacity00"><b class ='warning-color'>public</b> :
 	<span id="areaVar">int area</span>;
-	<span id="multiply2">void rect {
+	<span id="multiply2">void rect() {
 		<span><span id="read">read()</span></span>;	
 		<span id="area">area = len * bred</span>;
 		<span id="console3">cout << "The area of rectangle is : "</span>;
@@ -340,13 +340,13 @@ using namespace std;
 	}</span></span>
 };</span>
 
-<span id="main1">int main() {
+<span id="main1" class="opacity00">int main() {
 	<span id="obj2"><b class="ct-blue-color">Area</b> <b class ='warning-color'>obj</b>;</span>
 	<span id="funcCall2"><b class ='warning-color'>obj</b>.rect();</span>
 	return 0;
 <span id="end1">}</span></span>	
 </pre>
-			</div>
+			<!-- </div> -->
 		</div>
 		<div class="col-xs-4 margin-top-20" >
 			<div class="col-xs-12">

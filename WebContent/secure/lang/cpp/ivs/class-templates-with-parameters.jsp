@@ -128,7 +128,7 @@ y {
 	margin-bottom: 14px;
 	padding: 10px;
 	white-space: nowrap;
-	min-height: 100px;
+	height: 180px;
 }
 .output-console-title-bar {
 	background-color: #8e8989;
@@ -163,7 +163,7 @@ y {
 	z-index:1000000 !important;
 }
 .border {
-	border: 2px solid #fbffc5;
+	border: 1px solid #fbffc5;
 	background : #fffdca;
 	color: #358d2c;
 	border-radius: 3px;
@@ -189,24 +189,34 @@ y {
 </head>
 <body>
 <div class='col-xs-12'>
-	<div class='margin-top text-center col-xs-12'>
+	<div class='text-center col-xs-12'>
 		<h3>
 			<span class='ct-demo-heading label' id="heading">Class Templates with Parameters</span>
 		</h3>
 	</div>
 	<div class="col-xs-12 margin-top">
 		<div class="col-xs-8 col-xs-offset-2" id="informationDiv">
-			<span id="infoText"><ul><li>We can use morethan 1 generic type in a class <span class='ct-green'>template</span>
+			<span id="infoText"><ul><li>A user can use more than one generic type in a <span class='ct-green'>class template</span>
 			 by using <span class='ct-green'>comma operator</span> to seperate the <span class='ct-green'>tempalte</span> list.</li>
-			 <li>The objects are created for class <span class='ct-green'>templates</span> with multiple parameters as<span class="text">
-			 < d1, d2, d3, -------, dn >ob;</span></li><li>The type of arguments is mentioned inside angle brackets
+			 <li>The objects are created for <span class='ct-green'>class templates</span> with multiple parameters as<span class="text">
+			Class_name <d1, d2, d3, -------, dn> object;</span></li><li>The type of arguments is mentioned inside angular brackets
 			  <span class='ct-green'>< ></span> while creating objects.</li>
-			  <div class="red" ><b>Syntax:</b></div>
-	<pre id="syntax" class="col-xs-5 creamPreTab4" >
-<span>template&lt;class T1, class T2, ...&gt;</span>
-<span>class classname {</span>
-      <span>...</span>
-      <span>...</span>
+			  <li><div class="" >The syntax of defining a <span class='ct-green'>class template</span> is :</div></li></ul>
+	<pre id="syntax" class="col-xs-6 creamPreTab4" >
+<span>template &lt;class T1, class T2, ..., class Tn&gt;</span>
+<span>class Class_name {</span>
+	T1 variable 1;
+	T2 variable 2;
+		<span>...</span>
+   Tn variable n;
+   public:
+     T1 function1() {
+     	...
+     }
+     T2 function2() {
+     	...
+     }
+     ....
 <span>};</span></pre>
 			  <a class="introjs-button user-button" id='nextButton'>Next&rarr;</a></ul></span>
 		</div>
@@ -220,23 +230,24 @@ y {
 <div class="display" id="class">class <div class="display green">Sample</div> {
 	<div class="display" id="genericType1"><div class="display" id="t3">T1</div> <div class="display">x</div>;</div>
 	<div class="display" id="genericType2"><div class="display" id="t4">T2</div> <div class="display">y</div>;</div>
-	<div id="method" class="display"><div class="green display">public:</div><div class="display"> Sample(<div class="display">T1 a</div>, <div class="display">T2 b</div>) {</div>
+	<div id="method" class="display"><div class="green display">public:</div>
+	<div class="display">Sample(<div class="display">T1 a</div>, <div class="display">T2 b</div>) {</div>
 	<div class="display position" id="xyValue"><div class="display">x = <div class="display" id="aVal">a</div></div>;
 <div class="display">y = <div class="display" id="bVal">b</div></div>;</div>
 }</div>
-	<div class="display" id="void"><div class="display green">void</div> putdata(){
+	<div class="display" id="void"><div class="display green">void</div> putData(){
 	<div class="display" id="cout1">cout << <div class='display pink' id="textVal1">"Value of x is :"</div> << <div class=" display" id="xOutput">x</div> << endl;</div>
 	<div class="display" id="cout2">cout << <div class='display pink' id="textVal2">"Value of y is :"</div> << <div class=" display" id="yOutput">y</div> << endl;</div>
 }</div>
 };</div>
-<div class="display" id="main">main() {
-	<div class="display" id="ob1">Sample<div class="display" id="int">&lt;<g1 class="display" id="intVal1">int</g1>, <g1 class="display" id="intVal2">int</g1>&gt;</div><div class="display" id="obValue1"> ob1(<div class="display pink" id="ten">10</div>,<div class="display pink" id="twenty"> 20</div>)</div>;</div>
+<div class="display" id="main">int main() {
+	<div class="display" id="ob1">Sample <div class="display" id="int">&lt;<g1 class="display" id="intVal1">int</g1>, <g1 class="display" id="intVal2">int</g1>&gt;</div><div class="display" id="obValue1"> ob1(<div class="display pink" id="ten">10</div>,<div class="display pink" id="twenty"> 20</div>)</div>;</div>
 	<div class="display" id="put1">ob1.putdata();</div>
-	<div class="display" id="ob2">Sample<div class="display" id="float">&lt;<g1 class="display" id="floatVal1">float</g1>, <g1 class="display" id="floatVal2">float</g1>&gt;</div><div class="display" id="obValue2"> ob2(<div class="display pink" id="floatNum1">10.25</div>,<div class="display pink" id="floatNum2"> 20.52</div>)</div>;</div>
+	<div class="display" id="ob2">Sample <div class="display" id="float">&lt;<g1 class="display" id="floatVal1">float</g1>, <g1 class="display" id="floatVal2">float</g1>&gt;</div><div class="display" id="obValue2"> ob2(<div class="display pink" id="floatNum1">10.25</div>,<div class="display pink" id="floatNum2"> 20.52</div>)</div>;</div>
 	<div class="display" id="put2">ob2.putdata();</div>
-	<div class="display" id="ob3">Sample<div class="display" id="intFloat">&lt;<g1 class="display" id="intVal3">int</g1>, <g1  class="display" id="floatVal3">float</g1>&gt;</div><div class="display" id="obValue3"> ob3(<div class="display pink" id="intFloatNum1">70</div>,<div class="display pink" id="intFloatNum2"> 70.52</div>)</div>;</div>
+	<div class="display" id="ob3">Sample <div class="display" id="intFloat">&lt;<g1 class="display" id="intVal3">int</g1>, <g1  class="display" id="floatVal3">float</g1>&gt;</div><div class="display" id="obValue3"> ob3(<div class="display pink" id="intFloatNum1">70</div>,<div class="display pink" id="intFloatNum2"> 70.52</div>)</div>;</div>
 	<div class="display" id="put3">ob3.putdata();</div>
-	<div class="display" id="ob4">Sample<div class="display" id="charFloat">&lt;<g1  class="display" id="floatVal4" >float</g1>, <g1  class="display" id="charVal1">char</g1>&gt;</div><div class="display" id="obValue4"> ob4(<div class="display pink" id="charFloatNum1">13.23</div>,<div class="display pink" id="charFloatNum2"> '<span>c</span>'</div>)</div>;</div>
+	<div class="display" id="ob4">Sample <div class="display" id="charFloat">&lt;<g1  class="display" id="floatVal4" >float</g1>, <g1  class="display" id="charVal1">char</g1>&gt;</div><div class="display" id="obValue4"> ob4(<div class="display pink" id="charFloatNum1">13.23</div>,<div class="display pink" id="charFloatNum2"> '<span>c</span>'</div>)</div>;</div>
 	<div class="display" id="put4">ob4.putdata();</div>
 <span id="mainClose">}</span></div>
 			</pre>

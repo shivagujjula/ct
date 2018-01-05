@@ -153,7 +153,7 @@ div, span {
 .ct-code-teal {
 	color: #54f309;
 	font-weight: bold;
-} 
+}
 
 .ct-color-boolean {
 	color: #4ce8fb;
