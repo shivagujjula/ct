@@ -387,6 +387,7 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'classDerived1':
+				$(".introjs-tooltip").removeAttr("style");
 				$("#classDerived").show();
 				$("#main").addClass("opacity00");
 				$("#derivedClassConstructor, #derivedClassDestructor").addClass("opacity00");
@@ -394,6 +395,7 @@ function introGuide() {
 				break;
 				
 			case 'classDerived2':
+				$(".introjs-tooltip").removeAttr("style");
 				if(introjs._currentStep == 16 || introjs._currentStep == 55) {
 					$(".introjs-tooltip").removeAttr("style");
 					$("#derivedClassDestructor").addClass("opacity00");
@@ -406,11 +408,13 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'classDerived1':
+				$('.introjs-tooltip').css("min-width", "235px");
 				$("#classDerived1").show();
 				$("#main").addClass("opacity00");
 				break;
 				
 			case 'classDerived2':
+				$(".introjs-tooltip").removeAttr("style");
 				 if(introjs._currentStep == 49) {
 					$("#derived1ClassDestructor").addClass("opacity00");
 				}
@@ -565,6 +569,7 @@ function introGuide() {
 				
 			case "derived1ConstrPrint" :
 				 $("#derived1ConstrPrint").text("");
+				 $(".introjs-tooltip").removeAttr("style");
 				break;
 				
 			case "derived1DestrPrint" :
@@ -588,6 +593,7 @@ function introGuide() {
 			break;
 			
 		case 'end':
+			$('.introjs-tooltip').css("min-width", "227px");
 			if(introjs._currentStep == 15) {
 				$("#derivedClassDestructor").addClass("opacity00");
 			}
@@ -880,8 +886,8 @@ function introGuide() {
 					$('.introjs-tooltip').removeClass('hide');
 					var text = 	"The <span class='ct-code-b-yellow'>destructor</span> of the " +
 								"class <span class='ct-code-b-yellow'>Derived</span> will be " +
-								"executed after execution of <span class='ct-code-b-yellow'>destructor</span> of the " +
-								"class <span class='ct-code-b-yellow'>Derived1</span>.";
+								"executed, after execution of <span class='ct-code-b-yellow'>" +
+								"destructor</span> of the class <span class='ct-code-b-yellow'>Derived1</span>.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-prevbutton, .introjs-nextbutton').show();
 					});
@@ -920,14 +926,14 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'classDerived1':
+				$('.introjs-tooltip').css("min-width", "235px");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#classDerived1").removeClass("opacity00");
 					$('.introjs-tooltip').removeClass('hide');
-					var text = 	"Here the class <span class='ct-code-b-yellow'>Derived1</span> is " +
-								"derived from class <span class='ct-code-b-yellow'>Derived</span>. " +
-								"So, it inherits the properties of class " +
-								"<span class='ct-code-b-yellow'>Derived</span> and as well as class " +
-								"<span class='ct-code-b-yellow'>Base</span>.";
+					var text = 	"<ul><li>Here the class <span class='ct-code-b-yellow'>Derived1</span> is " +
+								"derived from class <span class='ct-code-b-yellow'>Derived</span>.</li>" +
+								"<li>So, it inherits the properties of class <span class='ct-code-b-yellow'>" +
+								"Derived</span> and as well as class <span class='ct-code-b-yellow'>Base</span>.</li></ul>";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -1176,7 +1182,7 @@ function introGuide() {
 		case 'end':
 			$('.introjs-tooltip').css("min-width", "230px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = 	"After completion of <span class='ct-code-b-yellow'>main()</span> " +
+				var text = 	"After completion of <span class='ct-code-b-yellow'>main()</span>, " +
 							"the <span class='ct-code-b-yellow'>destructors</span> will be called " +
 							"in the <span class='ct-code-b-yellow'>reverse</span> order of their " +
 							"<span class='ct-code-b-yellow'>constructors</span> i.e, from the " +

@@ -377,21 +377,21 @@ a {
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
 			<pre class="creamPreTab4 z-index" id="preCode1">
-void selectionSort(int a[], int n) {
-	int i, j, large, position;
-	for (i = n - 1; i > 0; i--) {
-		large = a[0];
-		position = 0;
-		for (j = 1; j <= i; j++) {
-			if (a[j] > large) {
-				large = a[j];
-				position = j;
-			}
-		}
-		a[position] = a[i];
-		a[i] = large;
-	}
-}
+<span id="preCodeLine1">void selectionSort(int a[], int n) {</span>
+	<span id="preCodeLine2">int i, j, large, position;</span>
+	<span id="preCodeLine3">for (i = n - 1; i > 0; i--) {</span>
+		<span id="preCodeLine4">large = a[0];</span>
+		<span id="preCodeLine5">position = 0;</span>
+		<span id="preCodeLine6">for (j = 1; j <= i; j++) {</span>
+			<span id="preCodeLine7">if (a[j] > large) {</span>
+				<span id="preCodeLine8">large = a[j];</span>
+				<span id="preCodeLine9">position = j;</span>
+			<span id="preCodeLine10">}</span>
+		<span id="preCodeLine12">}</span>
+		<span id="preCodeLine13">a[position] = a[i];</span>
+		<span id="preCodeLine14">a[i] = large;</span>
+	<span id="preCodeLine15">}</span>
+<span id="preCodeLine16">}</span>
 			</pre>
 		</div>
 		<div class="col-xs-5">

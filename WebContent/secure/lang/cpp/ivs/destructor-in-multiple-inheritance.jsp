@@ -17,7 +17,7 @@
 <script src="/js/jquery-ui-all.js"></script>
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
-<script src="/secure/lang/cpp/js-min/dimi.min.js"></script>
+<script src="/secure/lang/cpp/js-min/dimi.min.js"></script> 
 <title>destructors in multiple inheritance  </title>
 <style>
 .creamPreTab {

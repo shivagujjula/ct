@@ -287,7 +287,7 @@ a {
 					<tr>
 						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;
 							<span class="" id="codeLine1">
-							<span class="color-maroon">for</span> (<span class="color-green">int</span> <span id="initilizationId1">i <span id="equalOperator1">=</span> <span class="color-deeppink">0</span>;</span> 
+							<span class="color-maroon">for</span> (<span id="initilizationId1">i <span id="equalOperator1">=</span> <span class="color-deeppink">0</span>;</span> 
 							<span id="conditionId1">i <span id="lessOperator1"><</span> n - <span class="color-deeppink">1</span>;</span> 
 							<span id="incrementId1">i<span id="incrementOperator1">++</span></span>) {</span>
 						</td>
@@ -301,7 +301,7 @@ a {
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="" id="codeLine2">
-							<span class="color-maroon">for</span> (<span class="color-green">int</span> <span id="initilizationId2">j <span id="equalOperator2">=</span> <span class="color-deeppink">0</span>;</span> 
+							<span class="color-maroon">for</span> (<span id="initilizationId2">j <span id="equalOperator2">=</span> <span class="color-deeppink">0</span>;</span> 
 							<span id="conditionId2">j <span id="lessOperator2"><</span> n - i - <span class="color-deeppink">1</span>;</span> 
 							<span id="incrementId2">j<span id="incrementOperator2">++</span></span>) {</span>
 						</td>

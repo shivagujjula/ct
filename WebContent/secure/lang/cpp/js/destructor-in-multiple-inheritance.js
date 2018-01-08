@@ -423,7 +423,7 @@ function introGuide() {
 			$('.introjs-tooltip').css("min-width", "227px");
 			$("#preTableDiv").removeClass("opacity00");
 			var text = 	"Let us understand how <span class='ct-code-b-yellow'>destructors</span> can " +
-						"be called in <span class='ct-code-b-yellow'>Multiple Inheritance</span>.";
+						"be called in <span class='ct-code-b-yellow'>multiple inheritance</span>.";
 			typing('.introjs-tooltiptext', text, function() {
 				$(".introjs-nextbutton").show();
 			});
@@ -508,7 +508,7 @@ function introGuide() {
 								"derived from class <span class='ct-code-b-yellow'>Base1</span> and " +
 								"class <span class='ct-code-b-yellow'>Base2</span>.</li>" +
 								"<li>It inherits the properties of class <span class='ct-code-b-yellow'>Base1</span> and " +
-								"class <span class='ct-code-b-yellow'>Base2</span>.</li></ul>";
+								"as well as class <span class='ct-code-b-yellow'>Base2</span>.</li></ul>";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -625,7 +625,7 @@ function introGuide() {
 				$("#base1ClassConstructor").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
 				var text = 	"Here the <span class='ct-code-b-yellow'>default constructor</span> of " +
-							"class <span class='ct-code-b-yellow'>Base1</span> which is called after " +
+							"class <span class='ct-code-b-yellow'>Base1</span>, which is called after " +
 							"execution of <span class='ct-code-b-yellow'>default constructor</span> of " +
 							"the class <span class='ct-code-b-yellow'>Base2</span>.";
 				typing(".introjs-tooltiptext", text, function() {
@@ -654,8 +654,8 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#base2ClassConstructor").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
-				var text = 	"Here the <span class='ct-code-b-yellow'>default constructor</span> of " +
-							"the class <span class='ct-code-b-yellow'>Base2</span>, which is " +
+				var text = 	"Here the <span class='ct-code-b-yellow'>default constructor</span> " +
+							"of the class <span class='ct-code-b-yellow'>Base2</span>, which is " +
 							"called first because <span class='ct-code-b-yellow'>Base2</span> is " +
 							"inherited first.";
 				typing(".introjs-tooltiptext", text, function() {
@@ -686,7 +686,7 @@ function introGuide() {
 				$("#derivedClassConstructor").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
 				var text = 	"After execution of <span class='ct-code-b-yellow'>default constructor</span> " +
-							"of class <span class='ct-code-b-yellow'>Base2</span>, <span class='ct-code-b-yellow'>Base1</span>, " +
+							"of class <span class='ct-code-b-yellow'>Base2</span> and <span class='ct-code-b-yellow'>Base1</span>, " +
 							"the <span class='ct-code-b-yellow'>default constructor</span> of " +
 							"class <span class='ct-code-b-yellow'>Derived</span> is called.";
 				typing(".introjs-tooltiptext", text, function() {
@@ -744,7 +744,7 @@ function introGuide() {
 				$("#base2ClassDestructor").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
 				var text = 	"The <span class='ct-code-b-yellow'>destructor</span> of the class " +
-							"<span class='ct-code-b-yellow'>Base2</span> will be executed " +
+							"<span class='ct-code-b-yellow'>Base2</span> will be executed, " +
 							"after execution of <span class='ct-code-b-yellow'>destructor</span> " +
 							"of the class <span class='ct-code-b-yellow'>Base1</span>.";
 				typing(".introjs-tooltiptext", text, function() {
@@ -803,8 +803,8 @@ function introGuide() {
 				var text = 	"<ul><li>After completion of <span class='ct-code-b-yellow'>main()</span> " +
 							"the <span class='ct-code-b-yellow'>destructors</span> will be " +
 							"called in the <span class='ct-code-b-yellow'>reverse</span> order " +
-							"of their <span class='ct-code-b-yellow'>constructors</span></li>" +
-							"<li>first, class <span class='ct-code-b-yellow'>derived</span>, next " +
+							"of their <span class='ct-code-b-yellow'>constructors</span>.</li>" +
+							"<li>First class <span class='ct-code-b-yellow'>derived</span>, next " +
 							"class <span class='ct-code-b-yellow'>Base1</span> and class " +
 							"<span class='ct-code-b-yellow'>Base2</span> " +
 							"<span class='ct-code-b-yellow'>destructors</span> will be executed.</li></ul>";
