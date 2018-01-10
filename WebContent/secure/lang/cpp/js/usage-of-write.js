@@ -1,5 +1,3 @@
-var typingInterval = 50;
-
 var usageOfWriteReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
@@ -78,6 +76,7 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'preline1':
+			$("#consoleId").addClass('opacity00');
 			$("#codeTantra").addClass("opacity00");
 			break;
 		case 'preline2':

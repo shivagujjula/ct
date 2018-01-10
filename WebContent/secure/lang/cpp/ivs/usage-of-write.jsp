@@ -21,7 +21,6 @@
 
 <title>usage of write()</title>
 </head>
-
 <style>
 
 #infoDiv {
@@ -50,17 +49,13 @@
 #line1 {
 	color: maroon;
 }
+.ct-code-b-sgreen-color {
+	color: lime;
+	font-weight: bold;
+}
 .ct-sgreen-color {
 	color: #a59559;
 	font-weight: bold;
-}
-.ct-green-color {
-    color: green;
-    font-weight: bold;
-}
-.ct-orange-color {
-	color: orange;
-	
 }
 .ct-red-color {
 	color: red;
@@ -256,7 +251,6 @@ div, span {
 }
 
 </style>
-
 <body>
 <div class="main-div col-xs-12">
 	<div class="row text-center" id="heading">
@@ -266,7 +260,7 @@ div, span {
 	</div>
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2 infoDiv" id="infoDiv">
 		<ul>
-			<li id="list" class="opacity00">The <span class="ct-code-b-green">write( )</span> function  display a line of text on the standard output device.</li> 
+			<li id="list" class="opacity00">The <span class="ct-code-b-green">write( )</span> function  displays a line of text on the standard output device.</li> 
 		 	<li id="list1" class="opacity00">It is a <span class="ct-code-b-green">member</span> function of the <span class="ct-code-b-green">ostream</span> class.</li> 
 		 	<li id="list2" class="opacity00">The format of  <span class="ct-code-b-green">write( )</span>  is: 
 		 		<span class="syntax opacity00" id="syntax">cout.write(char *line, int size);</span><br>
@@ -279,7 +273,8 @@ div, span {
 	 		 <li id="example" class="opacity00"><span id="line">Let us consider an example :</span><br>
 		 		<pre id="desc" class="opacity00">
 <span class="ct-Maroon-color">cout.write("C++ supports OOPS concepts", 3);</span></pre>  
-			<ul><li  id="example1" class="opacity00">The above write() will display only first 3 characters of message, because size is mentioned as 3.</li></ul> <span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
+			<ul><li  id="example1" class="opacity00">The above <span class="ct-code-b-green">write( )</span> will display only first <span class="ct-Maroon-color">3</span> 
+			characters of message, because <span class="ct-code-b-green">size</span> is mentioned as <span class="ct-Maroon-color">3</span>.</li></ul> <span id='nextButton' class='opacity00'><a class='introjs-button user-btn'>Next &#8594;</a></span>
 		</li>
 	</ul><br>
 	</div>
@@ -303,7 +298,7 @@ div, span {
 				</div>
 		 		<div class="output-console-body" id="consoleBodyDiv">
 					<div id="codeTantra" class="opacity00">CodeTantra</div><br> 
-					<div id="india" class="opacity00"><span class='ct-code-b-gold'>In</span>d<span class='ct-code-b-green'>ia</span></div><br>
+					<div id="india" class="opacity00"><span class='ct-code-b-gold'>In</span>d<span class='ct-code-b-sgreen-color'>ia</span></div><br>
 					<div id="baahubali" class="opacity00"> <span class='ct-sgreen-color'>Baahubali</span> is the pride of telugu film industry</div><br>
 					<div id="code" class="opacity00">Code</div><br> 
 				</div>

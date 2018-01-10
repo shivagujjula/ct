@@ -335,7 +335,7 @@ function outerCondition() {
 			$("#sortEle" + i).parent().css({'background': 'orange'});
 		}
 		text = 'All elements are sorted successfully. <span id="appendButton"></span>';
-		typing('.introjs-tooltiptext', text, function() { 
+		typing('.introjs-tooltiptext', text, function() {
 			buttonAppendFunction("#appendButton", function() {
 				setTimeout(function() {
 					introjs.nextStep();
@@ -475,10 +475,13 @@ function preCodeExplanation() {
 							$("#preCodeLine4").popover('hide');
 							popoverAppendFunction("#preCodeLine5", 5);
 							$("#preCodeLine5").effect('highlight',{color:'#da5805'}, 1000);
-							var text = "<ul><li>Here the <span class='ct-code-b-yellow'>if</span> condition checks the first element is "+
+							/*var text = "<ul><li>Here the <span class='ct-code-b-yellow'>if</span> condition checks the first element is "+
 							"greater than the second element.</li>"+
 							"<li>If it is <span class='ct-color-boolean'>true</span> then <span class='ct-code-b-yellow'>swap</span> the elements "+
-							"i.e. place the elements in ascending order.</li></ul>";
+							"i.e. place the elements in ascending order.</li></ul>";*/
+							var text = "<ul><li>The <span class='ct-code-b-yellow'>if</span> condition checks the required condition "+
+								"if it is <span class='ct-color-boolean'>true</span> then <span class='ct-code-b-yellow'>swap</span> the elements "+
+								"i.e. place the elements in ascending order.</li></ul>";
 							typing("#popover5", text, function() {
 								buttonAppendFunction("#popover5", function() {
 									$("#preCodeLine5").popover('hide');
@@ -536,74 +539,6 @@ function firstStepAnimation() {
 															buttonAppendFunction("#popover1", function() {
 																$("#unitLine1").popover("hide");
 																secondStepAnimation();
-															});
-														});
-													});
-												});
-											});
-										});
-									});
-								});
-							});
-						});
-					});
-				});
-			});
-		});
-	});
-}
-
-function secondStepAnimationBackUp() {
-	/* svgAppend($('#divTable'), 'svg');
-	svgMarkerAppend($('#svg'), 'marker'); */
-	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {
-		popoverAppendFunction("#unitLine2", 2);
-		var text = "<ul><li id='initLine2'><span class='for-loop-li-css'>j = i</span><br/>In the "+
-			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
-			" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
-			"<span class='ct-code-teal'>unit of time</span>.</li></ul>";
-		typing("#popover2", text, function() {
-			$("#initilizationId2").effect('highlight',{color:'#da5805'}, 1000, function() {
-				transferEffectFunction("#initilizationId2", "#secondUnitValue1", function() {
-					buttonAppendFunction("#popover2", function() {
-						$("#plusOp3").removeClass("opacity00");
-						$("#initLine2").after("<li id='conditionLine2'><span class='for-loop-li-css'>j > 0</span><br>In the "+
-								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
-								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
-								"executes <span class='ct-code-teal'>n - i - 1</span> "+
-								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
-								"So takes <span class='ct-code-b-yellow'>(n-i-1)+1</span> "+
-								"<span class='ct-code-teal'>units of time</span>.</li>");
-						typing("#conditionLine2", $("#conditionLine2").html(), function() {
-							$("#conditionId2").effect('highlight',{color:'#da5805'}, 1000, function() {
-								transferEffectFunction("#conditionId2", "#secondUnitValue2", function() {
-									buttonAppendFunction("#popover2", function() {
-										$("#plusOp4").removeClass("opacity00");
-										$("#conditionLine2").after("<li id='incrementLine2'><span class='for-loop-li-css'>j--</span><br>In the "+
-												"<span class='ct-code-b-yellow'>increment</span> part only 1 operator "+
-												"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
-												"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-i-1</span>) number "+
-												"of times. So it takes <span class='ct-code-b-yellow'>n-i-1</span> "+
-												"<span class='ct-code-teal'>units of time</span>.</li>");
-										typing("#incrementLine2", $("#incrementLine2").html(), function() {
-											$("#incrementId2").effect('highlight',{color:'#da5805'}, 1000, function() {
-												transferEffectFunction("#incrementId2", "#secondUnitValue3", function() {
-													buttonAppendFunction("#popover2", function() {
-														$("#incrementLine2").append("<li id='nMultiplyText'>But this inner for loop executes "+
-															"<span class='ct-code-b-yellow'>n</span> times because of "+
-															"the outer for loop. So we have to multiply with <span class='ct-code-b-yellow'>n</span>"+
-															" to the inner for loop of <span class='ct-code-teal'>units of time</span>.</li>");
-														typing("#nMultiplyText", $("#nMultiplyText").html(), function() {
-															$("#codeLine1").effect('highlight',{color:'#da5805'}, 1000, function() {
-																$("#codeLine2").effect('highlight',{color:'#da5805'}, 1000, function() {
-																	transferEffectFunction("#codeLine2", "#unitLineText2", function() {
-																		$("#nMultiplyId1, #nMultiplyId2").removeClass("opacity00");
-																		buttonAppendFunction("#popover2", function() {
-																			$("#unitLine2").popover("hide");
-																			thirdStepAnimation();
-																		});
-																	});
-																});
 															});
 														});
 													});

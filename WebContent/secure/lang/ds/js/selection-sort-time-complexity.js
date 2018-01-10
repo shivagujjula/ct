@@ -36,10 +36,10 @@ function introGuide() {
 			element : '#indexDiv',
 			intro : '',
 			tooltipClass : 'hide',
-		},/* {
+		}, {
 			element : '#preCode1',
 			intro : '',
-		}, */{
+		}, {
 			element : '#arrTable',
 			intro : '',
 			animateStep : 'sortingInAction'
@@ -48,6 +48,16 @@ function introGuide() {
 			intro : '',
 			animateStep : 'firstStep',
 		}, {
+			element : '#finalDivText1',
+			intro : '',
+		}, {
+			element : '#finalDivText2',
+			intro : '',
+		}, {
+			element : '#finalDivText3',
+			intro : '',
+			position : 'left'
+		}/*, {
 			element : '#finalDiv',
 			intro : '',
 		}, {
@@ -64,7 +74,7 @@ function introGuide() {
 			intro : '',
 			animateStep : 'thirdStep',
 			position : 'right',
-		}, {
+		}*/, {
 			element : "#restart",
 			intro : '',
 			position : 'right'
@@ -134,7 +144,7 @@ function introGuide() {
 					}});
 				});
 				break;
-			case 'sortingExample':
+			/*case 'sortingExample':
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "From the above array <span class='ct-code-b-yellow'>a</span> of length is 5. So the total number of comparison will be : "+
 					"<ul><li>1st Phase - 5 time</li><li>2nd Phase - 4 time</li><li>3rd Phase - 3 time</li><li>4th Phase - 2 time</li>"+
@@ -142,7 +152,7 @@ function introGuide() {
 					typing(".introjs-tooltiptext", text, function() {
 						$(".introjs-nextbutton").show();
 					});
-				});
+				});*/
 			}
 			break;
 		case 'divTable':
@@ -151,7 +161,7 @@ function introGuide() {
 			switch(animateStep) {
 			case 'firstStep':
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Now find the time complexity for the <span class='ct-code-b-yellow'>bubble sort</span> function.";
+					var text = "Now find the time complexity for the <span class='ct-code-b-yellow'>selection sort</span> function.";
 					typing(".introjs-tooltiptext", text, function() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							$(".introjs-tooltip").hide();
@@ -160,7 +170,7 @@ function introGuide() {
 					});
 				});
 				break;
-			case 'secondStep':
+			/*case 'secondStep':
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "<span id='tooltipTextId'>We can calculate <span class='ct-code-b-yellow'>time complexity</span> in "+
 					"another scenario.</span>";
@@ -208,12 +218,12 @@ function introGuide() {
 						});
 					});
 				});
-				break;
+				break;*/
 			}
 			break;
-		case 'finalDiv':
+		case 'finalDivText1':
 			$(".introjs-helperLayer").one("transitionend", function() {
-				TweenMax.to($("#finalDiv"), 1, {opacity: 1, onComplete:function() {
+				TweenMax.to($("#finalDiv, #finalDivText1"), 1, {opacity: 1, onComplete:function() {
 					var text = "The most significant term to represent the time complexity of an algorithm.";
 					typing(".introjs-tooltiptext", text, function() {
 						$("#nValue1").effect('highlight',{color:'#da5805'}, 1000, function() {
@@ -227,8 +237,33 @@ function introGuide() {
 				}});
 			});
 			break;
+		case 'finalDivText2':
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				TweenMax.to($("#finalDivText2"), 1, {opacity: 1, onComplete:function() {
+					var text = "In the best case we find the selection point at the top element with one comparsion, " +
+							"so we have <span class='ct-code-teal'>1+1+1+ (n - 1 times) = Ω(n)</span></span>.";
+					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-nextbutton").show();
+					});
+				}});
+			});
+			break;
+		case 'finalDivText3':
+			introjs.refresh();
+			$(".introjs-helperLayer").one("transitionend", function() {
+				TweenMax.to($("#finalDivText3"), 1, {opacity: 1, onComplete:function() {
+					var text = "<ul><li>The total number of comparisons in average case is <span class='ct-code-teal'>n<sup>2</sup> / 2 = " +
+							"Θ(n<sup>2</sup>)</span>.</li>";
+					typing(".introjs-tooltiptext", text, function() {
+						$(".introjs-nextbutton").show();
+					});
+				}});
+			});
+			break;
 		case "restart":
 			$('.introjs-nextbutton').hide();
+			$("#finalDiv").addClass("z-index");
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -246,6 +281,19 @@ function setTimeoutFunction() {
 	setTimeout(function() {
 		introjs.nextStep();
 	}, 800);
+}
+
+function tweenmaxAnimation(selector1, selector2, callBackFunction) {
+	var l3 = $(selector1).offset();
+	var l4 = $(selector2).offset();
+	var topLength = l3.top - l4.top;
+	var leftLength = l3.left - l4.left;
+	$(selector2).removeClass("opacity00");
+	TweenMax.from(selector2, 1, {top: topLength, left: leftLength, onComplete: function() {
+		if (typeof callBackFunction === "function") {
+			callBackFunction();
+		}
+	}});
 }
 
 function selectionSort() {
@@ -274,25 +322,15 @@ function outerCondition() {
 		$("#outerArrow" + outerIdx).addClass("opacity00");
 		$('#sortEle0').parent().css('background', 'orange').addClass("completed");
 		console.log("all elements are sorted");
-		$(".introjs-duplicate-skipbutton").remove();
-		$('.introjs-duplicate-nextbutton').remove();
-		text = 'All elements are sorted successfully.'
-				+ ' <span id="appendButton"></span>';
-		typing('#explanationDiv', text, function() {
-			$('#appendButton').append("<a class='introjs-button introjs-duplicate-nextbutton'>next &#8594;</a>");
-			$('.introjs-duplicate-nextbutton').click(function() {
-				$('.introjs-duplicate-nextbutton').remove();
-				introNextSteps("#printArr", "empty", 'bottom');
-				introcode.nextStep();
-				$('.arrow').remove();
+		text = 'All elements are sorted successfully. <span id="appendButton"></span>';
+		typing('.introjs-tooltiptext', text, function() {
+			buttonAppendFunction("#appendButton", function() {
 				setTimeout(function() {
-					$('.introjs-tooltip').removeClass('hide').css('min-width','200px');
-					var text = "<b class='ct-code-b-yellow'>sorted array</b> to be printed by using this for loop.";
-					typing('.introjs-tooltiptext', text, function() {
-						introNextSteps("#outputDiv", "empty", 'top');
-						$('.introjs-nextbutton').show();
-					});
-				},500);
+					introjs.nextStep();
+					$("#preCodeDiv").hide();
+					$("#divTable").removeClass("hide");
+					introjs.refresh();
+		    	},500);
 			});
 		});
   }
@@ -440,8 +478,9 @@ function fadeInFromEffectWithTimelineMax(selector1, selector2, callBackFunction)
 function preCodeExplanation() {
 	popoverAppendFunction("#preCodeLine1", 1);
 	$("#preCodeLine1").effect('highlight',{color:'#da5805'}, 1000);
-	var text = "<span class='ct-code-b-yellow'>Bubble Sort</span> is the simplest sorting algorithm that works by repeatedly swapping "+
-		"the adjacent elements to place the elements either in ascending or descending order.";
+	var text = "<ul><li><span class='ct-code-b-yellow'>Selection Sort</span> as it works by repeatedly sorting elements.</li><li>It works as follows:<br>" +
+			"first find the smallest in the array and exchange it with the element in the first position, then find the second smallest " +
+			"element and exchange it with the element in the second position, and continue in this way until the entire array is sorted.</li></ul>";
 	typing("#popover1", text, function() {
 		buttonAppendFunction("#popover1", function() {
 			$("#preCodeLine1").popover('hide');
@@ -450,36 +489,34 @@ function preCodeExplanation() {
 			var text = "<ul><li>This <span class='ct-code-b-yellow'>for</span> loop represents number of <span class='ct-code-b-yellow'>passes</span> "+
 				"for sorting.</li>"+
 				"<li>(<span class='ct-code-b-yellow'>n-1</span>) number of <span class='ct-code-b-yellow'>passes</span> are required to sort "+
-				"<span class='ct-code-b-yellow'>n</span> elements in <span class='ct-code-b-yellow'>bubble sort</span>.</li>"+
+				"<span class='ct-code-b-yellow'>n</span> elements in <span class='ct-code-b-yellow'>selection sort</span>.</li>"+
 				"<li>For example if number of elements are <span class='ct-code-teal'>5</span> then <span class='ct-code-teal'>4</span> "+
 				"<span class='ct-code-b-yellow'>passes</span> are required to sort the elements.</li>"
 			typing("#popover3", text, function() {
 				buttonAppendFunction("#popover3", function() {
 					$("#preCodeLine3").popover('hide');
-					popoverAppendFunction("#preCodeLine4", 4);
-					$("#preCodeLine4").effect('highlight',{color:'#da5805'}, 1000);
+					popoverAppendFunction("#preCodeLine6", 6);
+					$("#preCodeLine6").effect('highlight',{color:'#da5805'}, 1000);
 					var text = "<ul><li>This <span class='ct-code-b-yellow'>for</span> loop represents number of <span class='ct-code-b-yellow'>"+
 					"comparisons</span>.</li>"+
-					"<li>For each pass <span class='ct-code-teal'>n-i-1</span> "+
+					"<li>For each position <span class='ct-code-teal'>(n-1)!</span> "+
 					"<span class='ct-code-b-yellow'>comparisons</span> are required.</li>"+
-					"<li>For example if <span class='ct-code-b-yellow'>n=5</span>, <span class='ct-code-b-yellow'>i=0</span> :</li>"+
-					"<ul><li>In <span class='ct-code-b-yellow'>pass-1</span> the number of <span class='ct-code-b-yellow'>comparisons</span> are "+
-					"(<span class='ct-color-boolean'>5-0-1</span>) = <span class='ct-code-teal'>4</span>.</li>"+
-					"<li>In <span class='ct-code-b-yellow'>pass-2</span> the number of <span class='ct-code-b-yellow'>comparisons</span> are "+
-					"(<span class='ct-color-boolean'>5-1-1</span>) = <span class='ct-code-teal'>3</span>.</li>"+
 					"</ul></ul>";
-					typing("#popover4", text, function() {
-						buttonAppendFunction("#popover4", function() {
-							$("#preCodeLine4").popover('hide');
-							popoverAppendFunction("#preCodeLine5", 5);
-							$("#preCodeLine5").effect('highlight',{color:'#da5805'}, 1000);
-							var text = "<ul><li>Here the <span class='ct-code-b-yellow'>if</span> condition checks the first element is "+
+					typing("#popover6", text, function() {
+						buttonAppendFunction("#popover6", function() {
+							$("#preCodeLine6").popover('hide');
+							popoverAppendFunction("#preCodeLine7", 7);
+							$("#preCodeLine7").effect('highlight',{color:'#da5805'}, 1000);
+							/*var text = "<ul><li>Here the <span class='ct-code-b-yellow'>if</span> condition checks the first element is "+
 							"greater than the second element.</li>"+
 							"<li>If it is <span class='ct-color-boolean'>true</span> then <span class='ct-code-b-yellow'>swap</span> the elements "+
+							"i.e. place the elements in ascending order.</li></ul>";*/
+							var text = "<ul><li>The <span class='ct-code-b-yellow'>if</span> condition checks the required condition "+
+							"if it is <span class='ct-color-boolean'>true</span> then <span class='ct-code-b-yellow'>swap</span> the elements "+
 							"i.e. place the elements in ascending order.</li></ul>";
-							typing("#popover5", text, function() {
-								buttonAppendFunction("#popover5", function() {
-									$("#preCodeLine5").popover('hide');
+							typing("#popover7", text, function() {
+								buttonAppendFunction("#popover7", function() {
+									$("#preCodeLine7").popover('hide');
 									setTimeoutFunction();
 								});
 							});
@@ -498,10 +535,10 @@ function firstStepAnimation() {
 		popoverAppendFunction("#unitLine1", 1);
 		var text = "<span id='popover1Text1'>This for loop involves three instructions which are "+
 		"<span class='ct-code-b-yellow'>initialization</span>, "+
-		"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>increment</span> part.</span>";
+		"<span class='ct-code-b-yellow'>condition</span> and <span class='ct-code-b-yellow'>decrement</span> part.</span>";
 		typing("#popover1", text, function() {
 			buttonAppendFunction("#popover1", function() {
-				$("#popover1Text1").after("<span><ul><li id='initLine'><span class='for-loop-li-css'>i = 0</span><br/>In the "+
+				$("#popover1Text1").after("<span><ul><li id='initLine'><span class='for-loop-li-css'>i = n-1</span><br/>In the "+
 						"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
 						" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
 						"<span class='ct-code-teal'>unit of time</span>.</li></ul></span>");
@@ -510,9 +547,9 @@ function firstStepAnimation() {
 						transferEffectFunction("#initilizationId1", "#firstUnitValue1", function() {
 							buttonAppendFunction("#popover1", function() {
 								$("#plusOp1").removeClass("opacity00");
-								$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i < n - 1</span><br>In the "+
+								$("#initLine").after("<li id='conditionLine'><span class='for-loop-li-css'>i > 0</span><br>In the "+
 										"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
-										"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
+										"<span class='ct-code-b-yellow'>></span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
 										"executes <span class='ct-code-teal'>n - 1</span> "+
 										"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
 										"So takes <span class='ct-code-b-yellow'>(n-1)+1</span> "+
@@ -522,9 +559,9 @@ function firstStepAnimation() {
 										transferEffectFunction("#conditionId1", "#firstUnitValue2", function() {
 											buttonAppendFunction("#popover1", function() {
 												$("#plusOp2").removeClass("opacity00");
-												$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i++</span><br>In the "+
-														"<span class='ct-code-b-yellow'>increment</span> part only 1 operator "+
-														"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
+												$("#conditionLine").after("<li id='incrementLine'><span class='for-loop-li-css'>i--</span><br>In the "+
+														"<span class='ct-code-b-yellow'>decrement</span> part only 1 operator "+
+														"<span class='ct-code-b-yellow'>--</span> is used but the same operator is executed "+
 														"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-1</span>) number "+
 														"of times. So it takes <span class='ct-code-b-yellow'>n-1</span> "+
 														"<span class='ct-code-teal'>units of time</span>.</li>");
@@ -556,58 +593,26 @@ function secondStepAnimation() {
 	svgMarkerAppend($('#svg'), 'marker'); */
 	svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine2', '#unitLineText2', '#svg', 'svgLine2', 'marker', function() {
 		popoverAppendFunction("#unitLine2", 2);
-		var text = "<ul><li id='initLine2'><span class='for-loop-li-css'>j = 0</span><br/>In the "+
-			"<span class='ct-code-b-yellow'>initialization</span> only one operator"+
-			" <span class='ct-code-b-yellow'>=</span> is used so it takes <span class='ct-code-b-yellow'>1</span> "+
-			"<span class='ct-code-teal'>unit of time</span>.</li></ul>";
+		var text = "<ul><li>This inner or <span class='ct-code-b-yellow'>comparison</span> for loop depends on outer " +
+		"for loop.</li>" +
+		"<li>For <span class='ct-code-b-yellow'>1<sup>st</sup></span> pass makes <span class='ct-code-teal'>n-1</span> comparisons.</li>"+
+		"<li>For <span class='ct-code-b-yellow'>2<sup>nd</sup></span> pass makes <span class='ct-code-teal'>2</span> comparisons.</li>"+
+		"<li  id='liId1'>Like <span class='ct-code-b-yellow'>(n-1)<sup>th</sup></span> pass makes <span class='ct-code-teal'>1</span> comparison.</li>"+
+		"</ul>";
 		typing("#popover2", text, function() {
-			$("#initilizationId2").effect('highlight',{color:'#da5805'}, 1000, function() {
-				transferEffectFunction("#initilizationId2", "#secondUnitValue1", function() {
+			buttonAppendFunction("#popover2", function() {
+				$("#liId1").after("<li id=liId2>Therefore total summation of <span class='ct-code-teal'>n-1</span> passes : <br>" +
+					"<span class='ct-code-teal'>(n-1) + (n-2) + ....... + 1</span>.</li>");
+				typing("#liId2", $("#liId2").html(), function() {
 					buttonAppendFunction("#popover2", function() {
-						$("#plusOp3").removeClass("opacity00");
-						$("#initLine2").after("<li id='conditionLine2'><span class='for-loop-li-css'>j < n - i - 1</span><br>In the "+
-								"<span class='ct-code-b-yellow'>condition</span> part also only one operator "+
-								"<span class='ct-code-b-yellow'><</span> is used but the <span class='ct-code-b-yellow'>condition</span> part "+
-								"executes <span class='ct-code-teal'>n - i - 1</span> "+
-								"time as <span class='ct-color-boolean'>true</span> and 1 time as <span class='ct-color-boolean'>false</span>. "+
-								"So takes <span class='ct-code-b-yellow'>(n-i-1)+1</span> "+
-								"<span class='ct-code-teal'>units of time</span>.</li>");
-						typing("#conditionLine2", $("#conditionLine2").html(), function() {
-							$("#conditionId2").effect('highlight',{color:'#da5805'}, 1000, function() {
-								transferEffectFunction("#conditionId2", "#secondUnitValue2", function() {
+						$("#liId2").after("<li id=liId3>We can write above summation as : <br>" +
+						"<span class='ct-code-teal'>=<span id='liId3Span'>n(n-1)/2</span></span>.</li>");
+						typing("#liId3", $("#liId3").html(), function() {
+							buttonAppendFunction("#popover2", function() {
+								transferEffectFunction("#liId3Span", "#unitLineText2", function() {
 									buttonAppendFunction("#popover2", function() {
-										$("#plusOp4").removeClass("opacity00");
-										$("#conditionLine2").after("<li id='incrementLine2'><span class='for-loop-li-css'>j++</span><br>In the "+
-												"<span class='ct-code-b-yellow'>increment</span> part only 1 operator "+
-												"<span class='ct-code-b-yellow'>++</span> is used but the same operator is executed "+
-												"<span class='ct-color-boolean'>true</span>(<span class='ct-code-b-yellow'>n-i-1</span>) number "+
-												"of times. So it takes <span class='ct-code-b-yellow'>n-i-1</span> "+
-												"<span class='ct-code-teal'>units of time</span>.</li>");
-										typing("#incrementLine2", $("#incrementLine2").html(), function() {
-											$("#incrementId2").effect('highlight',{color:'#da5805'}, 1000, function() {
-												transferEffectFunction("#incrementId2", "#secondUnitValue3", function() {
-													buttonAppendFunction("#popover2", function() {
-														$("#incrementLine2").append("<li id='nMultiplyText'>But this inner for loop executes "+
-															"<span class='ct-code-b-yellow'>n</span> times because of "+
-															"the outer for loop. So we have to multiply with <span class='ct-code-b-yellow'>n</span>"+
-															" to the inner for loop of <span class='ct-code-teal'>units of time</span>.</li>");
-														typing("#nMultiplyText", $("#nMultiplyText").html(), function() {
-															$("#codeLine1").effect('highlight',{color:'#da5805'}, 1000, function() {
-																$("#codeLine2").effect('highlight',{color:'#da5805'}, 1000, function() {
-																	transferEffectFunction("#codeLine2", "#unitLineText2", function() {
-																		$("#nMultiplyId1, #nMultiplyId2").removeClass("opacity00");
-																		buttonAppendFunction("#popover2", function() {
-																			$("#unitLine2").popover("hide");
-																			thirdStepAnimation();
-																		});
-																	});
-																});
-															});
-														});
-													});
-												});
-											});
-										});
+										$("#unitLine2").popover("hide");
+										thirdStepAnimation();
 									});
 								});
 							});
@@ -618,10 +623,9 @@ function secondStepAnimation() {
 		});
 	});
 }
-
 function thirdStepAnimation() {
 	$("#ifSpan").effect('highlight',{color:'#da5805'}, 2000, function() {
-		svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3span3', '#unitLineText3', '#svg', 'svgLine3', 'marker', function() {
+		svgAnimatingLineSelector1RightSideToSelector2LeftSide('#divTable', '#codeLine3span2', '#unitLineText3', '#svg', 'svgLine3', 'marker', function() {
 			$("#unitLineText3").fadeTo(500, 1);
 			$("#unitLineText3").effect('highlight',{color:'#da5805'}, 1500, function() {
 				popoverAppendFunction("#unitLineText3", 3);

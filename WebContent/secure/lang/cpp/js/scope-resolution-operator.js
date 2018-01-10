@@ -77,6 +77,7 @@ function introGuide() {
 		}, {
 			element : "#funcDef",
 			intro : "",
+			tooltipClass : "hide",
 			position : "right"
 		}, {
 			element : "#localVar1",
@@ -119,7 +120,6 @@ function introGuide() {
 		}]
 	});
 	introjs.onbeforechange(function(targetElement) {
-		console.log("I am in onbeforechange");
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "globalVar":
@@ -146,23 +146,20 @@ function introGuide() {
 			$("#varBox").css("opacity", 0);
 			break;
 		case "localVar1":
-			$("#varBox1").css("opacity", 0);
+			$('#localVal1').addClass("opacity00");
 			break;
 		case "funcDef":
-			$('#boxHeading1').css("opacity", 1);
+			$('#boxHeading1, #varBox1').addClass("opacity00");
 			break;
 		case "mainPf1":
 			$("#consoleId").addClass("opacity00");
 			break;
-		/*case "mainPf2":
-			$('#boxHeading1').css("opacity", 0);
-			break;*/
 		case "consoleId":
 			$("#consoleId").removeClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "runEditor2" :
-				$('#boxHeading1').css("opacity", 0);
+				$('#boxHeading1, #varBox1').addClass("opacity00");
 				break;
 			}
 			break;
@@ -170,7 +167,6 @@ function introGuide() {
 	});
 	
 	introjs.onafterchange(function(targetElement) {
-		console.log("I am in onafterchange");
 		$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 		if (introjs._introItems[introjs._currentStep]["tooltipClass"] == "hide") {
 			introjs._introItems[introjs._currentStep]["animation"] = "repeat";
@@ -249,7 +245,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$('#mainDiv, #boxHeading').removeClass("opacity00"); 
 				$('.introjs-tooltip').removeClass('hide');
-				var text = 	"The <span class='ct-code-b-yellow'>main()</span> where program" +
+				var text = 	"The <span class='ct-code-b-yellow'>main()</span> where program " +
 							"execution starts."
 				typing('.introjs-tooltiptext',text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -276,7 +272,8 @@ function introGuide() {
 								$("#tweenVal1, #gVal").removeClass("blinking-white");
 								$('.introjs-tooltip').removeClass("hide");
 								var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated " +
-											"2 bytes in memory and assigned with value <span class='ct-code-b-yellow'>10</span>.";
+											"<span class='ct-code-b-yellow'>2 bytes</span> in memory and assigned " +
+											"with value <span class='ct-code-b-yellow'>10</span>.";
 								typing(".introjs-tooltiptext", text, function() {
 									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
@@ -298,8 +295,9 @@ function introGuide() {
 						tl.to("#lVal", 1, {opacity: 1, top: 0, left: 0, onComplete: function() {
 							$("#tweenVal2, #lVal").removeClass("blinking-white");
 							$('.introjs-tooltip').removeClass("hide");
-							var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated 2 bytes " +
-										"in memory and assigned with value <span class='ct-code-b-yellow'>20</span>."; 
+							var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated " +
+										"<span class='ct-code-b-yellow'>2 bytes</span> in memory and assigned " +
+										"with value <span class='ct-code-b-yellow'>20</span>."; 
 							typing(".introjs-tooltiptext", text, function() {
 								$(".introjs-nextbutton, .introjs-prevbutton").show();
 							});
@@ -315,15 +313,17 @@ function introGuide() {
 						var l1 = $("#tweenVal3").offset();
 						$("#lVal1").offset({"top": l1.top, "left": l1.left});
 						$("#localVar1").addClass("blinking-white");
-						tl.to("#boxHeading1, #varBox1", 1, {opacity: 1, onComplete: function() {
-							$("#localVar1").removeClass("opacity00, blinking-white");
+						tl.to("localVal1", 1, {opacity: 1, onComplete: function() {
+							$("#localVal1").removeClass("opacity00");
+							$("#localVar1").removeClass("blinking-white");
 							$("#tweenVal3, #lVal1").addClass("blinking-white");
 							$("#lVal1").removeClass("opacity00");
 							tl.to("#lVal1", 1, {opacity: 1, top: 0, left: 0, onComplete: function() {
 								$("#tweenVal3, #lVal1").removeClass("blinking-white");
 								$('.introjs-tooltip').removeClass("hide");
-								var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated 2 bytes " +
-											"in memory and assigned with value <span class='ct-code-b-yellow'>30</span>."; 
+								var text = "The variable <span class='ct-code-b-yellow'>a</span> is allocated " +
+											"<span class='ct-code-b-yellow'>2 bytes</span> in memory and assigned " +
+											"with value <span class='ct-code-b-yellow'>30</span>."; 
 								typing(".introjs-tooltiptext", text, function() {
 									$(".introjs-nextbutton, .introjs-prevbutton").show();
 								});
@@ -353,74 +353,6 @@ function introGuide() {
 				});
 			});
 			break;
-		/*case "locaVarVal":
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "locA":
-			$("#varBox").addClass("z-index9999999");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "globA":
-			$("#globalVal").addClass("z-index9999999");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "locA1":
-			$("#varBox1").addClass("z-index9999999");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "globA1":
-			$("#globalVal").addClass("z-index9999999");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "locaVarVal1":
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "globVarVal":
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;
-		case "globVarVal1":
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This statement is used to print the string in the console.";
-				typing(".introjs-tooltiptext",text, function() {
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
-				});
-			});
-			break;*/
 		case "mainPf2":
 			$("#varBox").removeClass("z-index9999999");
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -459,9 +391,10 @@ function introGuide() {
 		case "funcDef":
 			$("#globalVal").removeClass("z-index9999999");
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('#boxHeading1, #varBox1').removeClass("opacity00");
+				$('.introjs-tooltip').removeClass('hide');
 				var text = "This is another compound statement in <span class='ct-code-b-yellow'>main()</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					$("#boxHeading1").css("opacity", 1).removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
@@ -522,15 +455,6 @@ function introGuide() {
 					}
 				});
 				break;
-			/*case "locAVal" :
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					transferEffect("#locA", "#locAVal", function() {
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 500);
-					});
-				});
-				break;*/
 			case 'runEditor2':
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
@@ -553,15 +477,6 @@ function introGuide() {
 					}
 				});
 				break;
-			/*case "globAVal" :
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					transferEffect("#globA", "#globAVal", function() {
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 500);
-					});
-				});
-				break;*/
 			case "runEditor3" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
@@ -584,15 +499,6 @@ function introGuide() {
 					}
 				});
 				break;
-			/*case "locA1Val" :
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					transferEffect("#locA1", "#locA1Val", function() {
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 500);
-					});
-				});
-				break;*/
 			case 'runEditor4':
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
@@ -615,15 +521,6 @@ function introGuide() {
 					}
 				});
 				break;
-			/*case "globA1Val" :
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					transferEffect("#globA1", "#globA1Val", function() {
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 500);
-					});
-				});
-				break;*/
 			}
 			break;
 		case "restart":
@@ -643,7 +540,7 @@ function introGuide() {
 }
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 1;
+	var typingSpeed = 10;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',

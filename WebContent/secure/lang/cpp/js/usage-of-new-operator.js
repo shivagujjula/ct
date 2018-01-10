@@ -150,6 +150,7 @@ function introGuide() {
 			break;
 		case 'firstExLine4':
 			$("#printText").addClass("visibility-hidden");
+			$("#firstExDiv").removeClass("z-index9999999");
 			break;
 		case 'newBox':	
 			$("#newBox").addClass("opacity00");
@@ -351,7 +352,7 @@ function introGuide() {
 		case 'firstExLine3':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "Here the <span class='ct-code-b-yellow'>pointer</span> variable " +
-						   "<span class='ct-code-b-yellow'>*p</span> assigned a value of " +
+						   "<span class='ct-code-b-yellow'>*p</span> assigned with a value of " +
 						   "<span class='ct-code-b-yellow'>20</span>.";
 				typing('.introjs-tooltiptext', text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();

@@ -426,7 +426,7 @@ function executionFile() {
 			$("#exeBelowText").removeClass("opacity00").addClass("pulse").on('animationend', function() {
 				var newStep = getStep('#insideDiv', '', 'hide', '');
 				introjs.insertOption(introjs._currentStep + 1, newStep);
-				$('#popover5').append('<div class="popover-height"><span class="introjs-button custom-btn" onclick="nextStep()">next &#8594;</span></div>')
+				$('#popover5').append('<div class="popover-height"><span class="introjs-button custom-btn" onclick="nextStep()">Next &#8594;</span></div>')
 			});
 		});
 	}, 1000);

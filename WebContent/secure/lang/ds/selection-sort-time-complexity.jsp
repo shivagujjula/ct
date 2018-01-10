@@ -44,7 +44,7 @@
 }
 
 td {
-	padding: 3px 6px;
+	padding: 1px 6px;
 	border: 2px solid gray;
 	min-width: 65px !important;
 	min-height: 30px !important;
@@ -162,8 +162,14 @@ div, span {
 #finalDiv {
 	border: 1px solid;
 	border-radius: 6px;
-	padding: 4px;
+	padding: 12px;
 	margin-left: 29%;
+	color: darkblue;
+	background: cornsilk;
+}
+
+.text-line {
+	text-decoration: underline;
 }
 
 .color-green {
@@ -269,7 +275,7 @@ a {
 					<tr>
 						<td class="td-code-text" id="tdCodeLine0">
 							<span class="" id="codeLine0">
-							<span class="color-green">void</span> bubbleSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
+							<span class="color-green">void</span> selectionSort(<span class="color-green">int</span> a[], <span class="color-green">int</span> n) {</span>
 						</td>
 						<td class="td-border" id="unitLine0">
 							<span id="unitLineText0" style="padding: 1px 10px;"></span>
@@ -277,7 +283,7 @@ a {
 					</tr>
 					<tr>
 						<td class="td-code-text" id="">&emsp;&emsp;
-							<span class="color-green">int</span> i, j, temp;
+							<span class="color-green">int</span> i, j, large, position;
 						</td>
 						<td class="td-border" id="">
 							<span id="" style="padding: 1px 10px;"></span>
@@ -286,66 +292,70 @@ a {
 					<tr>
 						<td class="td-code-text" id="tdCodeLine1">&emsp;&emsp;
 							<span class="" id="codeLine1">
-							<span class="color-maroon">for</span> (<span class="color-green">int</span> <span id="initilizationId1">i <span id="equalOperator1">=</span> <span class="color-deeppink">0</span>;</span> 
-							<span id="conditionId1">i <span id="lessOperator1"><</span> n - <span class="color-deeppink">1</span>;</span> 
-							<span id="incrementId1">i<span id="incrementOperator1">++</span></span>) {</span>
+							<span class="color-maroon">for</span> (<span id="initilizationId1">i <span id="equalOperator1">=</span> n-<span class="color-deeppink">1</span>;</span> 
+							<span id="conditionId1">i <span id="lessOperator1">></span> <span class="color-deeppink">0</span>;</span> 
+							<span id="incrementId1">i<span id="incrementOperator1">--</span></span>) {</span>
 						</td>
 						<td class="td-border" id="unitLine1">
 							<span id="unitLineText1" style="padding: 1px 10px;">
 							<span class="opacity00" id="firstUnitValue1">1</span> <span id="plusOp1" class="opacity00">+</span> 
 							<span class="opacity00" id="firstUnitValue2">(n - 1) + 1</span>
-							 <span id="plusOp2" class="opacity00">+</span> <span class="opacity00" id="firstUnitValue3">(n - 1)</span></span>
+							<span id="plusOp2" class="opacity00">+</span> <span class="opacity00" id="firstUnitValue3">(n - 1)</span></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+						<span>large = a[0];</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+						<span>position = 0;</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="" id="codeLine2">
-							<span class="color-maroon">for</span> (<span class="color-green">int</span> <span id="initilizationId2">j <span id="equalOperator2">=</span> <span class="color-deeppink">0</span>;</span> 
-							<span id="conditionId2">j <span id="lessOperator2"><</span> n - i - <span class="color-deeppink">1</span>;</span> 
+							<span class="color-maroon">for</span> (<span id="initilizationId2">j <span id="equalOperator2">=</span> <span class="color-deeppink">1</span>;</span> 
+							<span id="conditionId2">j <span id="lessOperator2"><=</span> i;</span> 
 							<span id="incrementId2">j<span id="incrementOperator2">++</span></span>) {</span>
 						</td>
 						<td class="td-border" id="unitLine2">
-								<span id="unitLineText2" style="padding: 1px 10px;">
-								<span id="nMultiplyId1" class="opacity00">n * (</span>
-								<span class="opacity00" id="secondUnitValue1">1</span> <span id="plusOp3" class="opacity00">+</span> 
-								<span class="opacity00" id="secondUnitValue2">(n - i - 1) + 1</span>
-								 <span id="plusOp4" class="opacity00">+</span> <span class="opacity00" id="secondUnitValue3">n - i - 1</span>
-								 <span id="nMultiplyId2" class="opacity00">)</span>
-							 </span>
+								<span id="unitLineText2" style="padding: 1px 10px;" class="opacity00">n ((n - 1) / 2)</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span id="ifSpan">	
-								<span class="" id="codeLine3span1"><span class="color-maroon">if</span> (a[j] > a[j+<span class="color-deeppink">1</span>]) {</span><br>
+								<span class="" id="codeLine3span1"><span class="color-maroon">if</span> (a[j] > large) {</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								<span class="" id="codeLine3span2">temp = a[j];</span><br>
+								<span class="" id="codeLine3span2">large = a[j];</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								<span class="" id="codeLine3span3" style="padding: 0px 34px 0px 0px;">a[j] = a[j+<span class="color-deeppink">1</span>];</span><br>
-								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								<span class="" id="codeLine3span4">a[j+<span class="color-deeppink">1</span>] = temp;</span><br>
+								<span class="" id="codeLine3span3">position = j;</span><br>
 								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								<span class="" id="codeLine3span5">}</span>
 							</span>
 						</td>
 						<td class="td-border" id="unitLine3">
-							<span class="opacity00" id="unitLineText3" style="padding: 2px 12px;">n - i - 1</span>
+							<div class="opacity00" id="unitLineText3" style="padding: 2px 12px; margin-top: -19px;">n - i - 1</div>
 						</td>
 					</tr>
-					<!-- <tr>
-						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-							<span class="" id="codeLine2">}</span>
-						</td>
-						<td class="opacity00 td-border" id="unitLine2">
-							<span id="unitLineText2" style="padding: 2px 42px;">1</span>
-						</td>
-					</tr> -->
 					<tr>
 						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
 							<span class="" id="codeLine4">}</span>
 						</td>
 						<td class="opacity00 td-border" id="unitLine4">
 							<span id="unitLineText4" style="padding: 2px 42px;">1</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>a[position] = a[i];</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="td-code-text">&emsp;&emsp;&emsp;&emsp;&emsp;
+							<span>a[i] = large</span>
 						</td>
 					</tr>
 					<tr>
@@ -369,14 +379,14 @@ a {
 							<span class="opacity00" id="codeLine6"><b>Total = </b></span>
 						</td>
 						<td class="td-border" id="unitLine6">
-							<span id="unitLineText6" class="opacity00" style="padding: 2px 42px;">2<span id="nValue1">n<sup>2</sup></span> + 3n - 2ni - i + 1</span>
+							<span id="unitLineText6" class="opacity00" style="padding: 2px 42px;">2<span id="nValue1">n<sup>2</sup></span> + 5n - 2i - 2</span>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="col-xs-6" id="preCodeDiv">
-			<pre class="creamPreTab4 z-index" id="preCode1">
+			<pre class="creamPreTab4 opacity00" id="preCode1">
 <span id="preCodeLine1">void selectionSort(int a[], int n) {</span>
 	<span id="preCodeLine2">int i, j, large, position;</span>
 	<span id="preCodeLine3">for (i = n - 1; i > 0; i--) {</span>
@@ -396,7 +406,7 @@ a {
 		</div>
 		<div class="col-xs-5">
 			<div class="arrTable margin-top col-xs-12 opacity00" id="arrTable">
-				<div class="col-xs-12 text-center"><div id="eleAtInnerText" class="opacity00">temp</div></div>
+				<div class="col-xs-12 text-center"><div id="eleAtInnerText" class="opacity00">large</div></div>
 				<div class="col-xs-12 text-center eleAtInnerIdxDiv"><span class="box-border eleAtInnerIdx opacity00">
 							<span id="eleAtInnerIdxVal">0</span>
 						</span></div>
@@ -431,8 +441,13 @@ a {
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
-		<div id="finalDiv" class="col-xs-5 col-xs-offset-5 text-center opacity00">
-			<span id="finalDivText" style="font-family: monospace;">The time complexity of bubble sort : BigO(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</span>
+		<div id="finalDiv" class="col-xs-6 col-xs-offset-6 opacity00">
+			<div id="finalDivText1" style="font-family: monospace;" class="opacity00">
+				<span class="text-line">Worst case</span> : The time complexity of selection sort : Big O(<span class="opacity00" id="nValue2">n<sup>2</sup></span>)</div>
+			<div id="finalDivText2" style="font-family: monospace;" class="opacity00">
+				<span class="text-line">Best case</span> : The time complexity of selection sort : Big Ω(n)</div>
+			<div id="finalDivText3" style="font-family: monospace;" class="opacity00">
+				<span class="text-line">Average case</span> : The time complexity of selection sort : Big Θ(n<sup>2</sup>)</div>
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">

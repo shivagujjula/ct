@@ -298,7 +298,7 @@ function introGuide() {
 		case 'firstExLine3':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var typingContent = "Here the <span class='ct-code-b-yellow'>pointer</span> variable " +
-									"<span class='ct-code-b-yellow'>*p</span> is assigned a value of " +
+									"<span class='ct-code-b-yellow'>*p</span> is assigned with a value of " +
 									"<span class='ct-code-b-yellow'>20</span>.";
 				typing('.introjs-tooltiptext', typingContent, typingInterval, 'white', function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();

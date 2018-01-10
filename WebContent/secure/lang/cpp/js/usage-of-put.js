@@ -1,4 +1,3 @@
-var typingInterval = 10;
 var inputVar;
 
 var usageOfPutReady = function() {
@@ -136,7 +135,7 @@ function introGuide() {
 			break;
 		case 'line3':
 			$("#typeChar").addClass("visibility-hidden");
-			$("#consoleId").addClass("opacity00").remove;
+			$("#consoleId").addClass("opacity00");
 			break;
 		case 'line4':
 			$("#inputChar").val("");
@@ -169,6 +168,7 @@ function introGuide() {
 			break;
 		case 'line6':
 			$("#constantChar").text("");
+			$("#consoleId1").addClass("opacity00");
 			break;
 		case 'line7':	
 			$("#asciiChar").text("");

@@ -19,7 +19,7 @@
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/sro.min.js'></script>
 
-<title>Scope resolution Operator</title>
+<title>Scope resolution operator</title>
 </head>
 
 <style>
@@ -306,7 +306,7 @@ div, span {
 <div class="col-xs-12">
 	<div class="row text-center" id="heading">
 		<h3 class='label ct-demo-heading margin-top-2'>
-			<span>Scope resolution Operator</span>
+			<span>Scope resolution operator</span>
 		</h3>
 	</div>
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2 infoDiv" id="infoDiv">
@@ -331,11 +331,11 @@ div, span {
 <span id="mainFunc"><span id="startMain"><span class="ct-blue-color">int</span> main() { </span>
 	<span id="localVar"><span class="ct-blue-color">int</span> a = <span id="tweenVal2">20</span>;</span>
 	<span id="mainPf1">cout << <span id="locaVarVal">"Local variable value = "</span> << <span id="locA">a</span> << endl;</span>
-	<span id="mainPf2">cout << <span id="globVarVal">"Global variable value = "</span> << <span id="globA">::a</span> << endl;</span>
+	<span id="mainPf2">cout << <span id="globVarVal">"Global variable value = "</span> << <span id="globA"><b>::</b>a</span> << endl;</span>
 	<span id="funcDef"><span id="userFunc">{</span>
 		<span id="localVar1"><span class="ct-blue-color">int</span> a = <span id="tweenVal3">30</span>;</span>
 		<span id="mainPf3">cout << <span id="locaVarVal1">"Local variable value = "</span> << <span id="locA1">a</span> << endl;</span>
-		<span id="mainPf4">cout << <span id="globVarVal1">"Global variable value = "</span> << <span id="globA1">::a</span> << endl;</span>
+		<span id="mainPf4">cout << <span id="globVarVal1">"Global variable value = "</span> << <span id="globA1"><b>::</b>a</span> << endl;</span>
 	<span id="endFunc">}</span></span>
 <span id="endMain">}</span></span>
 	</pre>
@@ -367,7 +367,7 @@ div, span {
 							</div>
 						</div>
 						<div id="varBox1" class="box-border col-xs-5 col-xs-offset-1 text-center opacity00">
-							<div id="localVal1" style="margin-left: 2%;">
+							<div id="localVal1" style="margin-left: 2%;" class="opacity00">
 								<div><b style="color: maroon;">a</b></div>
 								<div style="line-height: 50px; height: 50px;" class="box-border">
 									<span id="lVal1" class="opacity00 ct-blue-color"></span>

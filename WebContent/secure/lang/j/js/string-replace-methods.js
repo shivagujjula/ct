@@ -23,6 +23,20 @@ function stringRepalceMethods() {
 		 	}
     });
 	
+	/*$('#sopLine').click(function() { 
+		if ($(".key").text() == "") {
+			charAtEnd('oldChar');
+		} else if ($("#oldChar").text() == "") {
+			charAtEnd('oldChar');
+		} else {
+			charAtEnd('newChar');
+		}
+	});*/
+	
+	$('#textDiv').click(function() { 
+		charAtEnd('editor1');
+	});
+	
 	$("#editor1").keyup(function() {
     	introjs.refresh();
     	$('.input-val1').text($(this).text());

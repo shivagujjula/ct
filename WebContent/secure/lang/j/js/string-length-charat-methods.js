@@ -1,5 +1,4 @@
 
-var content;
 var editorText1;
 function stringSubstringMethods() {
 	$('#restartBtn').click(function() {
@@ -23,23 +22,15 @@ function stringSubstringMethods() {
 		 	}
     });
 	
-	/*$('#sopLineOne').click(function() { 
-		if ($(".key").text() == "") {
-			charAtEnd('oldChar');
-		} else if ($("#oldChar").text() == "") {
-			charAtEnd('oldChar');
-		} else {
-			charAtEnd('newChar');
-		}
-	});*/
+	$('#sopLine').click(function() { 
+		charAtEnd('editor2');
+	});
+	
 	
 	$('#textDiv').click(function() { 
 		charAtEnd('editor1');
 	});
 	
-	$('#sopLine').click(function() { 
-		charAtEnd('editor2');
-	});
 	
 	
 	$("#editor1").keyup(function() {
@@ -56,7 +47,7 @@ function stringSubstringMethods() {
         }
     });
 	
-	$("#oldChar, #newChar, #editor2").keydown(function(e) { // conditions to enter text
+	$("#editor2").keydown(function(e) { // conditions to enter text
 		var max = $(this).attr("maxlength");
 		if(e.which == 13 || e.which == 222 || e.which == 32) {
 			e.preventDefault();
@@ -74,9 +65,6 @@ function stringSubstringMethods() {
 		singleParameterValidation();
 	});
 	
-	$("#oldChar, #newChar").keyup(function(e) {
-		doubleParameterValidation();
-	});
 }
 
 function introJsFunction() {
@@ -87,7 +75,7 @@ function introJsFunction() {
 		showBullets: false,
 		exitOnEsc: false,
 		keyboardNavigation: false,
-		steps : [ {
+		steps : [{
 				element : "#stringCode",
 				intro : "",
 			}, {
@@ -113,18 +101,8 @@ function introJsFunction() {
 				intro : "",
 				animateStep :"firstSop",
 				tooltipClass:"hide",
-			}, {
-				element : "#consoleId",
-				intro : "",
-				animateStep :"exception",
-				tooltipClass:"hide",
-			}, {
-				element : "#consoleId",
-				intro : "",
-				animateStep :"exceptionSecond",
-				tooltipClass:"hide",
-			}, {
-				element : "#sopLineOne",
+			},  {
+				element : "#sopLowerCase",
 				intro : "",
 				tooltipClass:"hide",
 			}, {
@@ -138,13 +116,41 @@ function introJsFunction() {
 				animateStep :"secondSop",
 				tooltipClass:"hide",
 			}, {
+				element : "#sopUpperCase",
+				intro : "",
+				tooltipClass:"hide",
+			}, {
+				element : "#mainAnimationDiv",
+				intro : "",
+				animateStep :"fourthTime",
+				tooltipClass:"hide",
+			}, {
+				element : "#consoleId",
+				intro : "",
+				animateStep :"thirdSop",
+				tooltipClass:"hide",
+			}, {
+				element : "#sopLength",
+				intro : "",
+				tooltipClass:"hide",
+			}, {
+				element : "#mainAnimationDiv",
+				intro : "",
+				animateStep :"fifthTime",
+				tooltipClass:"hide",
+			}, {
+				element : "#consoleId",
+				intro : "",
+				animateStep :"fourthSop",
+				tooltipClass:"hide",
+			}, {
 				element : "#restartBtn",
 				intro : "",
 				tooltipClass:"hide",
-			},  {
+			}, {
 				element : "#consoleId",
 				intro : "",
-				animateStep :"backward",
+				animateStep :"exception",
 				tooltipClass:"hide",
 			}]});
 	
@@ -174,7 +180,7 @@ function introJsFunction() {
 		}
 	});
 	
-	introjs.onafterchange(function(targetElement) {
+	introjs.onafterchange(function(targetElement) { 
 		$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 		
 		var elementId = targetElement.id;
@@ -201,88 +207,62 @@ function introJsFunction() {
 			});
 			break;
 		case "mainAnimationDiv":
-			$('.has-class').removeClass("exception-triggered second-excep-triggered");
+			$('.back-ward-direction').removeClass('back-ward-direction');
+			$('.user-btn').remove();
+			$('.has-class').removeClass("exception-triggered");
 			var animate = introjs._introItems[introjs._currentStep].animateStep;
 			$('.introjs-helperLayer').one('transitionend', function () {
 				switch (animate) {
 				case "firstTime":
 					zoomInEffect('strong:eq(1)', function() {
-						givenTween();
-						var tl = new TimelineLite();
-						tl.from(".box", 0.5, {opacity:0, y:-200, delay:0.5, onComplete : function() {
-							zoomInEffect('strong:eq(0)', function() {
-								$('#totalIndexDiv').removeClass('opacity00');
-								tl.from(".circle", 0.4, {opacity:1, y:-200, delay:0.4, onComplete : function() {
-									setTimeout (function() {
-										if (introjs._direction == "forward") {
-											introjs.nextStep();
-										} else {
-											introjs.previousStep();
-										}
-									}, 500);
-								}});
-							});
-						}});
+						$(".introjs-tooltip").removeClass('hide');
+						var text = "A <y>String</y> is made up of a sequence of characters.<br>These characters are "
+									+"stored in a character array inside a <y>String object</y>.";
+						typing('.introjs-tooltiptext', text, 'white', function() {
+							givenTween();
+							var tl = new TimelineLite();
+							tl.from(".box", 0.5, {opacity:0, y:-200, delay:0.5, onComplete : function() {
+								zoomInEffect('strong:eq(0)', function() {
+									$('#totalIndexDiv').removeClass('opacity00');
+									tl.from(".circle", 0.4, {opacity:1, y:-200, delay:0.4, onComplete : function() {
+										setTimeout (function() {
+											$('.introjs-nextbutton, .introjs-prevbutton').show();
+										}, 500);
+									}});
+								});
+							}});
+						});
 					});
 					break;
 				case "secondTime":
 					$('strong').removeClass('opacity00');
 					var parameter = $("#editor2").text();
-					var text = "substring(<y class='blue'>"+ parameter +"</y>) of text: ";
+					var text = "Character at index <y class='blue'>"+ parameter +"</y> : ";
 					typing('#animationType', text, 'white', function() {
 						var p = $('#editor2').text();
-						var l = $('#editor1').text().length;
+						var l = +p + 1;
 						circleAnimation(p,l,function() {
 							resultTween(p,l);
-							if (l == p) {
-								setTimeout (function() {
-									if ($('#outputDivFinal').hasClass('backward-dir')) {
-										$('.backward-dir').removeClass('backward-dir');
-										introjs.previousStep();
-									} else {
-										introjs.nextStep();
-									}
-								},500);
-							} else {
-								fromEffect("#totalValueDiv .box:eq("+p+")","#resultDiv .box",function() {
-									setTimeout (function() {
-										if ($('#outputDivFinal').hasClass('backward-dir')) {
-											$('.backward-dir').removeClass('backward-dir');
-											introjs.previousStep();
-										} else {
-											introjs.nextStep();
-										}
-									},500);
-								});
-							}
-							
+							fromEffect("#value"+p,"#resultDiv .box", function() {
+								introJsStep();
+							});
 						});
 					});
 					break;
 				case "thirdTime":
-					var text = "substring(<y class='blue'>"+ $("#oldChar").text() +"</y>,<y class='blue'>"+ $("#newChar").text() +"</y>) of the text: ";
+					caseAnimation("lower",true);
+					break;
+				case "fourthTime":
+					caseAnimation("upper",false);
+					break;
+				case "fifthTime":
+					var text ="Length of the text : ";
 					typing('#animationType', text, 'white', function() {
-						var p = $('#oldChar').text();
-						var l = $('#newChar').text();
-						circleAnimation(p,l,function() {
-							resultTween(p,l);
-							if (l == p) {
-								setTimeout (function() {
-									introjs.nextStep();
-								},500);
-							} else {
-								fromEffect("#totalValueDiv .box:eq("+p+")","#resultDiv .box",function() {
-									setTimeout (function() {
-										introjs.nextStep();
-									},500);
-								});
-							}
-							
-						});
+						$('#resultDiv').append("<span id='countLength' class='count-length'></span>");
+						animationEffect(0);
 					});
 					break;
 				}
-				
 			});
 			break;
 		case "sopLine":
@@ -301,12 +281,11 @@ function introJsFunction() {
 					var enteredString = $('#editor1').text();
 					var leng = $('#editor1').text().length;
 					var limit = leng;
-					var text = "Change the index (<y>"+ boundIndex +"</y>) provided to the <y>substring(int index)</y> method such that the index is  "
+					var text = "Change the index (<y>"+ boundIndex +"</y>) provided to the <y>charAt(int index)</y> method such that the index is  "
 						+" between the bounds of the string.The currrent string's (<y>"+ enteredString +"</y>) length is <y>"+ leng +"</y>, "
-						+"  hence a valid index can be any value between <y>0</y> and <y>"+ limit +"</y> (inclusive).";
+						+"  hence a valid index can be any value between <y>0</y> and <y>"+ limit +"</y>(inclusive).";
 				} else {
-					var text = "The <y>substring(int beginIndex)</y> method returns a new string with all "
-						+"the characters starting at the given <y>beginIndex</y> in the original string till the last character.";
+					var text = "The <y>charAt(int index)</y> method returns the character at the given index.";
 				}
 				
 				typing('.introjs-tooltiptext', text, 'white', function() {
@@ -317,94 +296,89 @@ function introJsFunction() {
 			});
 			break;
 			
-		case "sopLineOne":
+		case "sopLowerCase":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
-			$('.exception').addClass('display-none');
-			$('.fade').removeAttr('style');
-			$('.user-btn, .user-btn-back, .user-btn').remove();
 			$('.green-circle').removeClass('green-circle');
-			$('#resultDiv, #animationType, .range').empty();
+			$('#resultDiv, #animationType').empty();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$(".introjs-tooltip").removeClass('hide');
-				if ($("#sopLineOne").hasClass("second-excep-triggered")) {
-					var boundIndex1 = $('#oldChar').text();
-					var boundIndex2 = $('#newChar').text();
-					var enteredString = $('#editor1').text();
-					var leng = $('#editor1').text().length;
-					var limit = leng;
-					var text = "Change the Indices (<y>"+ boundIndex1 +"</y>,<y>"+ boundIndex2 +"</y>) provided to the <y>substring(int beginIndex, "
-						+"int endIndex)</y> method such that the index is  "
-						+" between the bounds of the string.<br>The currrent string's (<y>"+ enteredString +"</y>) length is <y>"+ leng +"</y>, "
-						+"  hence a valid index can be any value between <y>0</y> and <y>"+ limit +"</y> (inclusive).";
-				} else {
-					var text = "The <y>substring(int beginIndex, int endIndex)</y> method returns a new string with all the characters "
-						+"between given <y>beginIndex</y> and <y>endIndex</y> in the original string."
-				}
-				
-				
+				var text = "The <y>toLowerCase()</y> method returns a new string with all the characaters in "
+							+"the current string converted to lower case.";
 				typing('.introjs-tooltiptext', text, 'white', function() {
-					$('#oldChar, #newChar').attr('contenteditable',true);
-					charAtEnd("oldChar");
-					doubleParameterValidation();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 			
 			break;
+			
+		case "sopUpperCase":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.green-circle').removeClass('green-circle');
+			$('#resultDiv, #animationType').empty();
+			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".introjs-tooltip").removeClass('hide');
+				var text = "The <y>toUpperCase()</y> method returns a new string with all the characaters in "
+							+"the current string converted to upper case.";
+				typing('.introjs-tooltiptext', text, 'white', function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+			break;
+		case "sopLength":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.green-circle').removeClass('green-circle');
+			$('#resultDiv, #animationType').empty();
+			$('.introjs-helperLayer').one('transitionend', function () {
+				$(".introjs-tooltip").removeClass('hide');
+				
+				var text = "The <y>length()</y> method returns the length of the String i.e the "
+							+"count of characters present in string reffered by text.";
+				
+				typing('.introjs-tooltiptext', text, 'white', function() {
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
+			});
+			break;
 		case "consoleId":
 			$('.user-btn, .user-btn-back').remove();
+			$('#consoleId').addClass('back-ward-direction');
 			var animate = introjs._introItems[introjs._currentStep].animateStep;
 			$('.introjs-helperLayer').one('transitionend', function () {
 				switch(animate) {
 				case "firstSop":
 					var finalResult = $('#resultDiv .letter').text();
-					var text = "text.substring("+ $('#editor2').text() +") = <y>"+finalResult+"</y> ";
+					var text = "text.charAt("+ $('#editor2').text() +") = <y>"+finalResult+"</y> ";
 					typing('#outputDivFinal', text, 'white', function() {
-						setTimeout (function() {
-							introjs.goToStep(9);
-						}, 1500);
+						introJsStep();
 					});
 					break;
 				case "exception":
+					$('.back-ward-direction').removeClass('back-ward-direction');
 					$('.exception').removeClass('display-none');
-					var range = $("#editor1").text().length - +$('#editor2').text();
+					var range = +$('#editor2').text();
 					exceptionReveal(range,4);
-					break;
-				case "exceptionSecond":
-					$('.exception').removeClass('display-none');
-					var len = $('#editor1').text().length;
-					var begin = +$('#oldChar').text();
-					var end = +$('#newChar').text();
-					var range;
-					if (begin > end) {
-						if (begin >= len && end <= len ) {
-							range = end - begin;
-						} else {
-							range = end;
-						}
-					} else {
-						range = end;
-					}
-					
-					exceptionReveal(range,9);
-					
 					break;
 					
 				case "secondSop":
-					var begin = $('#oldChar').text();
-					var end = $('#newChar').text();
 					var finalResult = $('#resultDiv .letter').text();
-					var text = "text.substring("+ begin +","+ end + ") = <y>"+ finalResult +"</y>";
+					var text = "text.toLowerCase() = <y>"+ finalResult +"</y>";
 					typing('#outputDivFinalResult', text, 'white', function() {
-						setTimeout (function() {
-							introjs.nextStep();
-						}, 1500);
+						introJsStep();
 					});
 					break;
-				case "backward":
-					$("#outputDivFinal").empty().addClass("backward-dir");
-					setTimeout (function() {
-						exceptionFucntion(5);
-					}, 1500);
+				case "thirdSop":
+					var finalResult = $('#resultDiv .letter').text();
+					var text = "text.toUpperCase() = <y>"+ finalResult +"</y>";
+					typing('#consoleUpperCaseSop', text, 'white', function() {
+						introJsStep();
+					});
+					break;
+				case "fourthSop":
+					var finalResult = $('.count-length').text();
+					var text = "text.length() = <y>"+ finalResult +"</y>";
+					typing('#consoleLengthSop', text, 'white', function() {
+						introJsStep();
+					});
 					break;
 				}
 			});
@@ -457,17 +431,17 @@ function zoomInEffect(selector, callBackFunction) {
 	});
 }
 
-function givenTween() {		 //function for given string
+function givenTween() {	 //function for given string
 	content = $('#editor1').text();
 	for(var i = 0; i < content.length; i++) {
 		$("#totalIndexDiv").append("<span><span id='index"+i+"' class='circle temp'><b class='indexLetter'>" + i + "</b></span>&nbsp;</span>");
-		$("#totalValueDiv").append("<span><span class='box green temp'><b class='letter'>" + content.charAt(i) + "</b></span>&nbsp;</span>");						
+		$("#totalValueDiv").append("<span><span id='value"+i+"' class='box green temp'><b class='letter'>" + content.charAt(i) + "</b></span>&nbsp;</span>");						
 	}
 }
 
 function resultTween(p,l) {	  //function for RESULT string
 	for(var i = p; i < l; i++) {
-		$("#resultDiv").append("<span><span class='box green temp1'><b class='letter'>" + content.charAt(i) + "</b></span>&nbsp;</span>");						
+		$("#resultDiv").append("<span><span class='box green temp1 opacity00'><b class='letter'>" + content.charAt(i) + "</b></span>&nbsp;</span>");						
 	}
 }
 
@@ -494,34 +468,79 @@ function exceptionReveal(range, val) {
 	TweenMax.to($(".fade:eq(0)"),0.5,{opacity:1,onComplete: function() {
 		TweenMax.to($(".fade:eq(1)"),0.5,{opacity:1,onComplete: function() {
 			TweenMax.to($(".fade:eq(2)"),0.5,{opacity:1,onComplete: function() {
-				$(".introjs-tooltip").removeClass('hide');
-				var text = "<y>StringIndexOutOfBoundsException</y> indicates that we are trying to access a char "
-					+"with an index which is <y>out</y> of bounds, meaning <y>greater</y> than the index of the <y>last</y> "
-					+"character in the <y>String</y>.";
-				typing('.introjs-tooltiptext', text, 'white', function() {
-					if (val == 4) {
-						$('#sopLine').addClass('exception-triggered has-class');
-					} else {
-						$('#sopLineOne').addClass('second-excep-triggered has-class');
-					}
-					$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn'"
-							+" onClick='introjs.goToStep("+val+")'>Next &#8594;</a>");
-				});
+				TweenMax.to($(".fade:eq(3)"),0.5,{opacity:1,onComplete: function() {
+					$(".introjs-tooltip").removeClass('hide');
+					var text = "<y>StringIndexOutOfBoundsException</y> indicates that we are trying to access a char "
+						+"with an index which is <y>out</y> of bounds, meaning <y>greater</y> than the index of the <y>last</y> "
+						+"character in the <y>String</y>.";
+					typing('.introjs-tooltiptext', text, 'white', function() {
+							$('#sopLine').addClass('exception-triggered has-class');
+						$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn'"
+								+" onClick='introjs.goToStep("+val+")'>Next &#8594;</a>");
+					});
+				}});
 			}});
 		}});
 	}});
 }
 
+function fromEffect(fromId, toId, callBackFunction) {
+	var l1 = $(fromId).offset();
+	var l2 = $(toId).offset();
+	var topLength = l1.top - l2.top;
+	var leftLength = l1.left - l2.left;
+	$(toId).removeClass('opacity00');
+	TweenMax.from($(toId), 1, {top: topLength, left: leftLength, onComplete: function() {
+		callBackFunction();
+	}});
+}
+
+function flipEffect(selector, val,callBackFunction) {
+	TweenMax.to($(selector), 0.5, {rotationX : -90, onComplete: function() {
+		$(selector).text(val);
+		TweenMax.to($(selector), 0.5, {rotationX : 0,onComplete: function(){
+			if (typeof callBackFunction === "function") {
+				callBackFunction();
+			}
+		}});
+		
+	}});
+}
+
+function caseAnimation(val,flag) {
+	var text = "New string "+ val +" case :";
+	typing('#animationType', text, 'white', function() {
+		var p = 0;
+		var l = $('#editor1').text().length;
+		resultTween(p,l);
+		var tl = new TimelineLite();
+		$('#resultDiv .box').removeClass('opacity00');
+		tl.from("#resultDiv .box", 1.0, {opacity:0, y: -50, delay: 0.5, onComplete : function() {
+			for (var i = 0 ; i < l; i++ ) {
+				if (flag) {
+					flipEffect("#resultDiv .box:eq("+i+") b",$('#resultDiv .box:eq('+i+') b').text().toLowerCase());
+				} else {
+					flipEffect("#resultDiv .box:eq("+i+") b",$('#resultDiv .box:eq('+i+') b').text().toUpperCase());
+				}
+				
+			}
+			introJsStep();
+		}});
+	});
+}
+
 function singleParameterValidation() {
 	$('#onlyVal').text($('#editor2').text());
-	if ($('#editor1').text().length >= +$('#editor2').text() &&($('#editor2').text().length ==  1 && Number.isInteger(+$('#editor2').text()))) {
+	if ($('#editor1').text().length > +$('#editor2').text() &&($('#editor2').text().length ==  1 && Number.isInteger(+$('#editor2').text()))) {
 		$('.error, .user-btn').remove();
 		$('.introjs-nextbutton, .introjs-prevbutton').show();
+		
 	} else if ($('#editor2').text().length ==  1 && Number.isInteger(+$('#editor2').text())) {
 		$('.error, .user-btn').remove();
 		$('.introjs-prevbutton').show();
-		$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn' onClick='exceptionFucntion("+7+")'>Next &#8594;</a>");
+		$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn' onClick='exceptionFucntion("+17+")'>Next &#8594;</a>");
 	} 
+	
 	if ($('#editor2').text().length == 0) {
 		$('.error, .user-btn').remove();
 		$('.introjs-tooltiptext').append('<span class="error"><br>Empty value not allowed.</span>');
@@ -535,50 +554,36 @@ function singleParameterValidation() {
 	}
 }
 
-function doubleParameterValidation() {
-	$('#oldCh').text($('#oldChar').text());
-	$('#newCh').text($('#newChar').text());
-	if ($('#editor1').text().length >= $("#oldChar").text() && $('#editor1').text().length >= $("#newChar").text() && $("#oldChar").text() <= $("#newChar").text()) {
-		if ($("#oldChar").text().length ==  1 && $("#newChar").text().length ==  1 && Number.isInteger(+$("#newChar").text()) && Number.isInteger(+$("#oldChar").text())) {
-			$('.error, .user-btn, .user-btn-back').remove();
-			$('.introjs-tooltipbuttons').prepend("<a class='introjs-button user-btn-back' onClick='exceptionFucntion("+13+")'>&#8592; Back</a>");
-			$('.introjs-nextbutton').show();
-		}
-	}
-	
-	if (!($('#editor1').text().length >= $("#oldChar").text() && $('#editor1').text().length >= $("#newChar").text() && $("#oldChar").text() <= $("#newChar").text())) {
-		if ($("#oldChar").text().length ==  1 && $("#newChar").text().length ==  1 && Number.isInteger(+$("#newChar").text()) && Number.isInteger(+$("#oldChar").text())) {
-			$('.error, .user-btn, .user-btn-back').remove();
-			$('.introjs-tooltipbuttons').prepend("<a class='introjs-button user-btn-back' onClick='exceptionFucntion("+13+")'>&#8592; Back</a>");
-			$('.introjs-tooltipbuttons').append("<a class='introjs-button user-btn' onClick='exceptionFucntion("+8+")'>Next &#8594;</a>");
-		}
-	}
-	
-	
-	if ($("#oldChar").text().length == 0 || $("#newChar").text().length == 0 ) {
-		$('.error, .user-btn, .user-btn-back').remove();
-		$('.introjs-tooltiptext').append('<span class="error"><br>Empty value not allowed.</span>');
-		$('.introjs-nextbutton').hide();
-	}
-	
-	if (($("#oldChar").text().length ==  1 && !(Number.isInteger(+$("#oldChar").text()))) || ($("#newChar").text().length ==  1 && !(Number.isInteger(+$("#newChar").text())))) {
-		$('.error, .user-btn, .user-btn-back').remove();
-		$('.introjs-tooltiptext').append('<span class="error"><br>Index value must be number.</span>');
-		$('.introjs-nextbutton').hide();
-	}
+function animationEffect(i) {
+	var string = $("#editor1").text();
+	$("#value" + i).effect( "transfer", { to: $("#index" + i), className: "ui-effects-transfer" }, 500 , function() {
+		$("#countLength").text(i + 1);
+		if (i == (string.length - 1)) {
+			setTimeout(function() {
+				introjs.nextStep();
+			},500);
+		} else {
+			$("#index" + i).effect( "transfer", { to: $("#value" + (i + 1)), className: "ui-effects-transfer" }, 1000 , function() {
+				if ( i < string.length) {
+					animationEffect(++i);
+				}
+			});
+      	}
+	});
 }
 
-function fromEffect(fromId, toId, callBackFunction) {
-	var l1 = $(fromId).offset();
-	var l2 = $(toId).offset();
-	var topLength = l1.top - l2.top;
-	var leftLength = l1.left - l2.left;
-	$(toId).removeClass('opacity00');
-	TweenMax.from($(toId), 1, {top: topLength, left: leftLength, onComplete: function() {
-		if (typeof callBackFunction === "function") {
-			callBackFunction();
+function introJsStep() {
+	setTimeout (function() {
+		if (introjs._direction == "forward") {
+			introjs.nextStep();
+		} else {
+			if ($('#consoleId').hasClass('back-ward-direction')) {
+				$('p:contains("=")').last().empty();
+			}
+			introjs.previousStep();
 		}
-	}});
+	}, 1500);
 }
+
 
 

@@ -431,6 +431,17 @@
 						<td></td>
 						<td>04-01-18</td>
 					</tr>
+					<tr>
+						<td>11</td>
+						<td>String length and charAt method</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('String length and charAt method', '/secure/lang/j/string/string-length-charat-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String length and charAt method (<span style = "color : blue">Replace of 1st demo</span>)</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
+						<td></td>
+						<td>09-01-18</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

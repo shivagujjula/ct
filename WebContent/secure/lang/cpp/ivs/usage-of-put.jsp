@@ -289,7 +289,7 @@ div, span {
 	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-8 col-xs-offset-2 opacity00 finalText" id="finalText">
 			<span>So the <span class='ct-green-color'>put()</span> can either take a single character enclosed 
-		in double quotes to print or a numerical value in which case its corresponding ASCII character will be printed to the console.</span>
+		in single quotes to print or a numerical value in which case its corresponding ASCII character will be printed to the console.</span>
 		</div>
 	</div>
 	<div class="col-xs-1 col-xs-offset-5 margin-top-2" id="restartDiv">

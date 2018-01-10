@@ -384,7 +384,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of put()', 'usage-of-put.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of put()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of put()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -408,7 +408,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of write()', 'usage-of-write.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of write()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of write()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -841,7 +841,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('scope resolution operator', 'scope-resolution-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scope resolution operator</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">scope resolution operator</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -853,7 +853,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of new operator', 'usage-of-new-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of new operator</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of new operator</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -866,7 +866,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of delete operator', 'usage-of-delete-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of delete operator</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of delete operator</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -1680,7 +1680,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Access specifiers', 'access-specifiers.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Access specifiers</span>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Access specifiers</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shanthan / Shanthan</td>
@@ -1747,7 +1747,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('scope of classes and objects', 'scope-of-classes-and-objects.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scope of classes and objects</span>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">scope of classes and objects</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shanthan / Shanthan</td>
@@ -2101,7 +2101,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor in single and multilevel inheritance', 'destructor-in-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in single and multilevel inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Destructor in single and multilevel inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -2113,7 +2113,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor in multiple inheritance', 'destructor-in-multiple-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in multiple inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Destructor in multiple inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -2253,7 +2253,7 @@
 							
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Class templates with parameters', 'class-templates-with-parameters.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Class templates with parameters</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Class templates with parameters</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>

@@ -319,7 +319,7 @@ a {
 							<span id="incrementId2">j<span id="incrementOperator2">--</span></span>) {</span>
 						</td>
 						<td class="td-border" id="unitLine2">
-								<span id="unitLineText2" style="padding: 1px 10px;" class="opacity00">(n(n-1)/2)-n)</span>
+								<span id="unitLineText2" style="padding: 1px 10px;" class="opacity00">n ((n - 1) / 2)) - n</span>
 						</td>
 					</tr>
 					<tr>
