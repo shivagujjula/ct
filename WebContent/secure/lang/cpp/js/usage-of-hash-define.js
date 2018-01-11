@@ -367,7 +367,7 @@ function introjsGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$('.introjs-helperLayer').one('transitionend', function() {
-				var text =  "we are declaring <span class='ct-code-b-yellow'>3</span> float variables "+
+				var text =  "Here we are declaring <span class='ct-code-b-yellow'>3</span> float variables "+
 					"<span class='ct-code-b-yellow'>radius</span>, <span class='ct-code-b-yellow'>area</span>, "+
 					"<span class='ct-code-b-yellow'>circumferences</span>.";
 				$(".introjs-tooltip").removeClass("hide");
@@ -406,7 +406,7 @@ function introjsGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>cout</span> object displays the "+
+				typing(".introjs-tooltiptext", "Here <span class='ct-code-b-yellow'>cout</span> object displays the "+
 						"string <span class='ct-code-b-yellow'>\"Enter the radius : \"</span> on output.", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -418,7 +418,7 @@ function introjsGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 					$("#scanAmpPercentId").effect("highlight",{color: '#008000'}, 1000, function() {
 						$(".introjs-tooltip").removeClass("hide");
-						typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>cin</span> object is used to read the input data "+
+						typing(".introjs-tooltiptext", "Here <span class='ct-code-b-yellow'>cin</span> object is used to read the input data "+
 								"and store it in variable.", function() {
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -430,7 +430,7 @@ function introjsGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
-				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in area.</br>" +
+				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in <span class='ct-code-b-yellow'>area</span>.</br>" +
 						"<span><span class='ct-code-b-yellow'>area</span> = "+
 						"<span id='totalRadius' class='ct-code-b-yellow position-relative display-inline'>3.141 * "+
 						"<span  id='radiusOne' class='ct-code-b-yellow position-relative display-inline'>r</span> * "+
@@ -444,7 +444,7 @@ function introjsGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass("hide");
-				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in circumference.</br>" +
+				typing(".introjs-tooltiptext", "Expression is evaluated and the result is stored in <span class='ct-code-b-yellow'>circumference</span>.</br>" +
 						"<span><span class='ct-code-b-yellow'>circumference</span> = "+
 						"<span id='totalCircumference' class='ct-code-b-yellow position-relative display-inline'>2 * "+
 						"<span  id='circumPiValue' class='ct-code-b-yellow position-relative display-inline'>3.141</span> * "+

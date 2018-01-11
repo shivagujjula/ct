@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +16,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/cpp/js-min/rev.min.js" type="text/javascript"></script> 
+<script src="/secure/lang/cpp/js-min/rev.min.js" type="text/javascript"></script>  
+ 
 
 <style type="text/css">
 .margin-top-10 {

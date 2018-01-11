@@ -97,7 +97,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$("#c1, #c2, #c3, #c4, #c5,#c6").addClass("opacity00");
 			break;
 			case "animation1" :
-				$("#d1, #d2, #d3, #d4").addClass("opacity00");
+				$("#d1, #d2, #d3, #d4").addClass("opacity00").removeAttr('style');
 			break;
 		}
 		break;
@@ -108,7 +108,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case 'line4':
 			$("#c1, #c2, #c3, #c4, #c5,#c6").addClass("opacity00");
 		break;
-		case 'line4':
+		case 'line7':
 			$("#d1, #d2, #d3, #d4").addClass("opacity00");
 		break;
 		}

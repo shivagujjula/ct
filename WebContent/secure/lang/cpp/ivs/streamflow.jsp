@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js-min/strfl.min.js" type="text/javascript"></script>
+<!-- <script src="/secure/lang/cpp/js-min/strfl.min.js" type="text/javascript"></script> -->
+<script src="/secure/lang/cpp/js/streamflow.js" type="text/javascript"></script>
 <title>Stream Flow</title>
 <style>
 .margin-top {
@@ -39,7 +41,7 @@ margin-top :30px;
 	margin-top: 38px;
 }
 #outputDevice {
-	margin-top:7px;
+	margin-top:10px;
 }
 .ct-demo-heading {
 	background: highlight none repeat scroll 0.0;
@@ -217,16 +219,16 @@ color: crimson;
 	</div>
 	<div class="col-xs-12">
 		<div class="col-xs-12" id="animationDiv">
-			<div class="col-xs-9 col-xs-offset-2 margin-top padding00 opacity00"
+			<div class="col-xs-10 col-xs-offset-1 margin-top padding00 opacity00"
 				id="totalDiv">
 				<div class='col-xs-12 margin-top'>
-					<div class='col-xs-2  border-grey text-center' id=streamFlow>
+					<div class='col-xs-2  col-xs-offset-2 border-grey text-center' id=streamFlow>
 					<span id="board" >Keyboard</span>
 						<!-- <span id="c1" >0</span><span id="c2">1</span><span id="c3">0</span><span
 							id="c4">1</span><span id="c5">0</span><span id="c6">1</span> -->
 					</div>
 
-					<div class='col-xs-3 col-xs-offset-2'>
+					<div class='col-xs-2 col-xs-offset-2'>
 						<div class='col-xs-12'>
 							<table class='table text-center opacity00 ' id="dataFlow">
 								<tr>
@@ -242,15 +244,15 @@ color: crimson;
 					</div>
 				</div>
 				<div class='col-xs-12 margin-top1'>
-					<div class='col-xs-2 col-xs-offset-8 border-grey text-center opacity00' id="program">
+					<div class='col-xs-1 col-xs-offset-10 border-grey text-center opacity00' id="program">
 						<span id="program1">program</span>
 						<span id="abc" class="opacity00"></span>
 					</div>
 				</div>
 				<div class="col-xs-12 margin-top2">
-					<div class="col-xs-2  border-grey text-center opacity00" id='outputDevice'>Output Device
+					<div class="col-xs-2 col-xs-offset-2 border-grey text-center opacity00" id='outputDevice'>Output Device
 					</div>
-					<div class="col-xs-3 col-xs-offset-2">
+					<div class="col-xs-2 col-xs-offset-2">
 						<div class="col-xs-12">
 							<table class="text-center table opacity00" id='dataFlow1'>
 								<tr>
@@ -271,27 +273,27 @@ color: crimson;
 					<marker style="fill: gray;" orient="auto" markerHeight="5"
 					markerWidth="5" refY="2.5" refX="5" id="arrow">
 					<path d="M0,0 L5,2.5 L0,5 Z" /></marker>
-					<text id="text1" x="8%" y="9%" style="fill: navy; ">keyboard</text>
-					<text x="42.5%" y="8%" id="text2" style="fill: navy;">Flow of Data</text>
-					<text id="text3" x="63.5%" y="19%" style="fill: navy; display: inline;">&gt;&gt;</text>
-					<text id="text4" x="59%" y="8%" style="fill: navy; display: inline;">Extraction Operator</text>
-					<text id="text5" x="63.5%" y="84%" style="fill: navy; display: inline;">&lt;&lt;</text>
-					<text id="text6" x="59.5%" y="96%" style="fill: navy; display: inline;">Insertion Opertaor</text>
-					<text id="text7" x="63.5%" y="24%" style="fill: navy; display: inline;">cin</text>
-					<text id="text8" x="63%" y="79%" style="fill: navy; display: inline;">cout</text>
-					<line id="line1" class="svg-line lines" style="marker-end: url('#arrow');" y2="20%" x2="37%" y1="20%" x1="18.5%"/>
-					<line id="line2" class="svg-line lines" x1="55%" y1="20%" x2="74%" y2="20%" style="marker-end: url('#arrow');"/>
-					<line id="line3" class="svg-line lines" x1="74%" y1="20%" x2="74%" y2="47%" style="marker-end: url('#arrow'); display: inline;"/>
+					<text id="text1" x="24%" y="9%" style="fill: navy; ">keyboard</text>
+					<text x="57.5%" y="8%" id="text2" style="fill: navy;">Flow of Data</text>
+					<text id="text3" x="79%" y="19%" style="fill: navy; display: inline;">&gt;&gt;</text>
+					<text id="text4" x="74%" y="8%" style="fill: navy; display: inline;">Extraction Operator</text>
+					<text id="text5" x="77.8%" y="84%" style="fill: navy; display: inline;">&lt;&lt;</text>
+					<text id="text6" x="73.5%" y="96%" style="fill: navy; display: inline;">Insertion Opertaor</text>
+					<text id="text7" x="79%" y="24%" style="fill: navy; display: inline;">cin</text>
+					<text id="text8" x="77%" y="79%" style="fill: navy; display: inline;">cout</text>
+					<line id="line1" class="svg-line lines" style="marker-end: url('#arrow');" y2="20%" x2="53%" y1="20%" x1="34.1%"/>
+					<line id="line2" class="svg-line lines" x1="67.4%" y1="20%" x2="85.6%" y2="20%" style="marker-end: url('#arrow');"/>
+					<line id="line3" class="svg-line lines" x1="85.5%" y1="20%" x2="85.5%" y2="47%" style="marker-end: url('#arrow'); display: inline;"/>
 					<!-- <line id="line4" class="svg-line lines" x1="97%" y1="55%" x2="90%" y2="55%" style="marker-end: url(&quot;#arrow&quot;); display: inline;"/> -->
 					<!-- <line id="line5" class="svg-line lines" x1="90%" y1="57%" x2="97%" y2="57%" style=""/> -->
-					<line id="line6" class="svg-line lines" x1="74%" y1="53%" x2="74%" y2="81%" style="marker-end: url('#arrow');"/>
+					<line id="line6" class="svg-line lines" x1="85.5%" y1="52%" x2="85.5%" y2="81%" style="marker-end: url('#arrow');"/>
 					<rect id="rect1" class="rect-css opacity00 " fill="lemonchiffon" height="26" width="80" ry="5" rx="5" y="77%" x="82.5%" style="stroke: gray;"/>
-					<line id="line7" class="svg-line lines" x1="74%" y1="81%" x2="55%" y2="81%" style=" marker-end: url('#arrow');"/>
-					<line id="line8" class="svg-line lines" x1="37.5%" y1="81%" x2="18.5%" y2="81%" style=" marker-end: url('#arrow');"/>
-					<line id="line9" class="svg-line lines" x1="11%" y1="18%" x2="11%" y2="12%" style=" marker-end: url('#arrow');"/>
-					<line id="line10" class="svg-line lines" x1="46%" y1="16%" x2="46%" y2="10%" style=" marker-end: url('#arrow');"/>
-					<line id="line11" class="svg-line lines" x1="64.3%" y1="17%" x2="64.3%" y2="10%" style="marker-end: url('#arrow'); display: inline;"/>
-					<line id="line12" class="svg-line lines" x1="64.3%" y1="85%" x2="64.3%" y2="91%" style="marker-end: url('#arrow'); display: inline;"/>
+					<line id="line7" class="svg-line lines" x1="85.5%" y1="81%" x2="67.3%" y2="81%" style=" marker-end: url('#arrow');"/>
+					<line id="line8" class="svg-line lines" x1="53%" y1="81%" x2="34%" y2="81%" style=" marker-end: url('#arrow');"/>
+					<line id="line9" class="svg-line lines" x1="26%" y1="18%" x2="26%" y2="11%" style=" marker-end: url('#arrow');"/>
+					<line id="line10" class="svg-line lines" x1="60%" y1="16%" x2="60%" y2="10%" style=" marker-end: url('#arrow');"/>
+					<line id="line11" class="svg-line lines" x1="79.5%" y1="17%" x2="79.5%" y2="10%" style="marker-end: url('#arrow'); display: inline;"/>
+					<line id="line12" class="svg-line lines" x1="78.5%" y1="85%" x2="78.5%" y2="91%" style="marker-end: url('#arrow'); display: inline;"/>
 				</svg>
 			</div>
 		</div>

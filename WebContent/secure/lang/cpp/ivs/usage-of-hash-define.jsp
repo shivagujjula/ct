@@ -19,7 +19,6 @@
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
 <script src="/secure/lang/cpp/js-min/uohd.min.js" type="text/javascript"></script> 
 
-
 <title>Usage of #define</title>
 </head>
 <style>
@@ -272,7 +271,7 @@ int <span id="line3"><b>main()</b></span> {
 		<div class="col-xs-6">
 			<div class="">
 				<pre class="creamPreTab4 preJavaBoxCodeDiv1 opacity00" id="preBody1">
-#include&lt;stdio.h&gt;
+#include&lt;iostream&gt;
 <span id="line12"><b>#define</b> CUBE(num) num * num * num</span>
 int <span id="line13"><b>main()</b></span> {
     <span id="line14">int a;</span>

@@ -35,7 +35,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 						element :'#line2',
 						intro :'',
 						position:"bottom",
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -44,7 +43,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 					},{
 						element :'#line3',
 						intro :'',
-						tooltipClass: 'hide'
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -65,7 +63,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						element :'#line5',
 						intro :'',
 						tooltipClass:'hide',
-						tooltipClass: 'hide'
+						
 					},{
 						element :'#addressBox',
 						intro :'',
@@ -82,6 +80,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 					}]
 	});
 	intro.onbeforechange(function(targetElement){
+		
 		var elementId = targetElement.id;
 		switch(elementId) {
 		case "addressBox" :
@@ -122,6 +121,22 @@ var readPrintStringUsingGetsPutsReady = function() {
 	});
 	intro.onafterchange(function(targetElement) {
 		$('.introjs-nextbutton, .introjs-prevbutton').hide();
+		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
+			intro._introItems[intro._currentStep]["animation"] = "repeat";
+		}
+		
+		if (intro._introItems[intro._currentStep]["isCompleted"]) {
+			if (intro._currentStep != 1) {
+				$('.introjs-prevbutton').show();
+			}
+
+			$('.introjs-nextbutton').show();
+			return;
+		}
+		
+		if (intro._introItems[intro._currentStep]["animation"] != "repeat") {
+			intro._introItems[intro._currentStep]["isCompleted"] = true;
+		}
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "preBody" :
@@ -150,7 +165,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case "line3" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing(".introjs-tooltiptext", " <y>cout</y> is used to display the output on monitor.", 10, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>cout</span> is used to " +
+						"display the output on monitor.", 10, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -158,16 +174,28 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case "line4" :
 			$('.introjs-tooltip').removeClass('hide');
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1000);
+				if (intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},1000);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},1000);
+				}
 			});
 			break;
 		case "line5" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				setTimeout(function() {
-					intro.nextStep();
-				},1000);
+				if (intro._direction == 'forward') {
+					setTimeout(function() {
+						intro.nextStep();
+					},1000);
+				} else {
+					setTimeout(function() {
+						intro.previousStep();
+					},1000);
+				}
 			});
 			break;
 		case "line7" :
@@ -220,11 +248,17 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 			case "memory1" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#tableId1").fadeTo(800, 1, function() {
-						setTimeout(function() {
-							intro.nextStep();
-						},1000);
-					});
+						if (intro._direction == 'forward') {
+							$("#tableId1").fadeTo(800, 1, function() {
+								setTimeout(function() {
+									intro.nextStep();
+								},1000);
+							});
+						} else {
+							setTimeout(function() {
+								intro.previousStep();
+							},1000);
+						}
 				});
 				break;
 			case "animation1" :

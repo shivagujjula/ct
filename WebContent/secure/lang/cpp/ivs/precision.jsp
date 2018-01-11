@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js-min/pren.min.js" type="text/javascript"></script>
+<!-- <script src="/secure/lang/cpp/js-min/pren.min.js" type="text/javascript"></script> -->
+<script src="/secure/lang/cpp/js/precision.js" type="text/javascript"></script>
 
 <title>Understanding precision()</title>
 </head>
@@ -244,8 +245,8 @@ y{
 <div class='col-xs-12' style='margin-top: 15px;'>
 		<div class="col-xs-8 col-xs-offset-2 opacity00 "id="informationDiv" style='margin-top:5px;'>
 			<span class="opacity00" id="infotext"><ul><li>The default <span class="color-b-green">precision</span> of the output can be set by the system depending
-				 on the printing of <span class="color-b-green">numbe</span>r, <span class="color-b-green">character</span> or <span class="color-b-green">string</span>.</li>
-				<li><span class="color-b-green">precision</span> is used to sets the <span class="color-b-green">decimal precision </span>to be used to format floating-point values on output operations.</li>
+				 on the printing of <span class="color-b-green">number</span>, <span class="color-b-green">character</span> or <span class="color-b-green">string</span>.</li>
+				<li><span class="color-b-green">precision</span> is used to set the <span class="color-b-green">decimal precision </span>to be used to format floating-point values on output operations.</li>
 				<a class="introjs-button user-button" id="nextButton">Next&#8594;</a></ul>
 			</span>
 		</div>

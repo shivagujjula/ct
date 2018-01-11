@@ -47,7 +47,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('#streamFlow').removeClass('opacity00');
 				$('#streamFlow').focus();
 				typing('.introjs-tooltiptext', "This is a <span class='color-b-yellow'>standard input device </span>where"+
-						" the user can be used to enter the input.", "20", function() {
+						" the user can enter the input.", "20", function() {
 					$('.introjs-nextbutton').show();
 				});
 			});
@@ -60,7 +60,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 					$("#text1").show();
 					$("#board").empty().text("Data");
 					zoomInEffect("#board", function() {
-						var text = "User enters through  <span class='color-b-yellow'>keyboard</span>  the input data";
+						var text = "User enters the input data through the <span class='color-b-yellow'>keyboard</span>.";
 						customPopover("#board", "bottom", text,  function() {
 							$('#customPopover').append('<a class="introjs-button introjs-duplicate-nextbutton'
 									+'" id="NextButton" onclick=step1()>Next &#8594;</a>');
@@ -133,7 +133,7 @@ function step1() {
 			arrowReveal("#line10", function() {
 				$("#text2").show();
 				var text ="<ul><li>It is <span class='color-b-yellow'>istream</span>(input stream) flow of data from keyboard.</li>" +
-						"<li>We will see the data flow from keyboard to <span class='color-b-yellow'>isteam</span>.</li>";
+						"<li>We will see the data flow from keyboard to <span class='color-b-yellow'>istream</span>.</li>";
 				customPopover("#dataFlow", "bottom", text,  function() {
 					$('#customPopover').append('<a class="introjs-button introjs-duplicate-nextbutton'
 							+'" id="NextButton" onclick=step3()>Next &#8594;</a>');
@@ -167,7 +167,7 @@ function step4() {
 		$("#text3").show();
 		arrowReveal("#line11",function () {
 			$("#text4")	.show();
-			var text ="<span class='color-b-yellow'>cin</span> extracts data from <span class='color-b-yellow'>isteam</span>"+
+			var text ="<span class='color-b-yellow'>cin</span> extracts data from <span class='color-b-yellow'>istream</span>"+
 				" and the data will be assigned to corresponding variables.";
 			customPopover("#text7", "right", text,  function() {
 				$('#customPopover').append('<a class="introjs-button introjs-duplicate-nextbutton'
@@ -182,8 +182,8 @@ $(".introjs-duplicate-nextbutton").remove();
 $("#line2").css("marker-end", "url('')");
 arrowReveal("#line3", function() {
 	$("#program").removeClass("opacity00");
-	var text ="<span class='color-b-yellow'>Program</span> recieves the input and processed it and "+
-	"the output <span class='color-b-yellow'>cin</span> be displayed on the monitor through <span class='color-b-yellow'>ostream</span>(output stream).";
+	var text ="<span class='color-b-yellow'>Program</span> receives the input and processes it and "+
+	"the output <span class='color-b-yellow'>cin</span> will be displayed on the monitor through <span class='color-b-yellow'>ostream</span>(output stream).";
 	customPopover("#program", "left", text,  function() {
 		$('#customPopover').append('<a class="introjs-button introjs-duplicate-nextbutton'
 				+'" id="NextButton" onclick=step6()>Next &#8594;</a>');
@@ -240,7 +240,7 @@ function step9() {
 	$("#program1").removeClass('blinking-orange');
 	arrowReveal("#line8", function() {
 		$("#outputDevice").removeClass("opacity00"); 
-		var text ="Output shows on <y>monitor</y>.";
+		var text ="Output is displayed on <y>monitor</y>.";
 		customPopover("#outputDevice", "bottom", text,  function() {
 			$('#customPopover').append('<a class="introjs-button introjs-duplicate-nextbutton'
 					+'" id="NextButton" onclick=step10()>Next &#8594;</a>');

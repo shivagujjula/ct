@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,8 +13,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/cpp/js-min/csic.min.js"></script>
-<title>constants in C</title>
+<script src="/secure/lang/cpp/js-min/csic.min.js"></script> 
+<title>constants in Cpp</title>
 </head>
 <style>
 .introjs-tooltiptext br {

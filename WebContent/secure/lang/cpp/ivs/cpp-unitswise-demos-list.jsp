@@ -142,7 +142,7 @@
 						<td>Sample programs</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Sample program in C++ using cout', 'sample-of-cout.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C++ using cout</span>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Sample program in C++ using cout</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Shanthan</td>
@@ -359,7 +359,7 @@
 						<td>streamflow usage</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of streamflow', 'streamflow.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of streamflow</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of streamflow</span></td>
 						<td>no need</td>
 						<td>Rajashekar</td>
 						<td></td>
@@ -446,7 +446,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of width()', 'width.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of width()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of width()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>
@@ -458,7 +458,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of precision()', 'precision.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of precision()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of precision()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>
@@ -582,7 +582,7 @@
 						<td>Different constants in C++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Constants in C++', 'constants-in-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C++</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Constants in C++</span></td>
 						<td>no need</td>
 						<td>Shiva</td>
 						<td></td>
@@ -594,7 +594,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Explanation of #define', 'usage-of-hash-define.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of #define</span>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">explanation of #define</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Shanthan</td>
@@ -606,7 +606,7 @@
 						<td>Reference Variables</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Reference Variables in C++', 'reference-variables.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Reference Variables in C++</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Reference Variables in C++</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / shanthan</td>
 						<td></td>
@@ -1834,8 +1834,8 @@
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Static data members in constructors', 'static-data-members-in-constructors.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static data members in constructors</span></td>
-						<td>No need</td>
-						<td>Anil</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Anil / Anil</td>
 						<td></td>
 						<td>18-10-17</td>
 					</tr>

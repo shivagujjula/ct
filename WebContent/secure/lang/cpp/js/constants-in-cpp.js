@@ -1,5 +1,5 @@
 var tl = new TimelineLite();
-var typingSpeed = 10;
+var typingSpeed = 1;
 var executeBtnCount = 1;
 
 var constantsInCReady = function() {
@@ -87,7 +87,7 @@ function introjsGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 			case "titleName":
-				var text = "Let us learn about the constants in <span class='ct-code-b-yellow'>C++</span>."; 
+				var text = "Let us learn about the <span class='ct-code-b-yellow'>Constants</span> in <span class='ct-code-b-yellow'>C++</span>."; 
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").removeClass("opacity00");
 				});
@@ -107,6 +107,7 @@ function introjsGuide() {
 			case "constantsBtnsDiv":
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#constantsBtnsDiv").removeClass("opacity00");
+					
 					$("#nextBtn").remove();
 				});
 				break;
@@ -207,6 +208,8 @@ function manualStep1() {
 
 function manualStep2() {
 	$("#nextBtn2").click(function() {
+		 $(".next-btn").eq(0).addClass("opacity00")
+	//	$("#nextBtn2").attr('disabled', true);
 		manualStep3();
 	});
 }
@@ -325,7 +328,7 @@ function popoverStep4() {
 function manualStep9() {
 	$("#manualStep9Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#manualStep9Id").text("info");
-	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. An octal representation of a integer will start with <span class='ct-code-b-yellow'>zero (0)</span>.";
+	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. An octal representation of an integer will start with <span class='ct-code-b-yellow'>zero (0)</span>.";
 	var popBtn = "<span id='popBtn5' class='introjs-button next-btn' onclick='popoverStep5()'>Next &#8594;</span>";
 	popoverText("intExBtn5", popText, popBtn);
 }
@@ -361,7 +364,7 @@ function popoverStep6() {
 function manualStep11() {
 	$("#manualStep11Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#manualStep11Id").text("info");
-	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. <span class='ct-code-b-yellow'>A hexadecimal integer constant</span> starts with <span class='ct-code-b-yellow'>0X</span> or <span class='ct-code-b-yellow'>0x</span>.";
+	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. A <span class='ct-code-b-yellow'>hexadecimal integer constant</span> starts with <span class='ct-code-b-yellow'>0X</span> or <span class='ct-code-b-yellow'>0x</span>.";
 	var popBtn = "<span id='popBtn7' class='introjs-button next-btn' onclick='popoverStep7()'>Next &#8594;</span>";
 	popoverText("intExBtn7", popText, popBtn);
 }
@@ -398,7 +401,7 @@ function popoverStep8() {
 function manualStep13() {
 	$("#manualStep13Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#manualStep13Id").text("info");
-	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. since it is valid <span class='ct-code-b-yellow'>hexadecimal integer constant</span>.";
+	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. Since it is valid <span class='ct-code-b-yellow'>hexadecimal integer constant</span>.";
 	var popBtn = "<span id='popBtn9' class='introjs-button next-btn' onclick='popoverStep9()'>Next &#8594;</span>";
 	popoverText("intExBtn9", popText, popBtn);
 }
@@ -510,7 +513,7 @@ function floatPopoverStep3() {
 function floatStep6() {
 	$("#floatStep6Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#floatStep6Id").text("info");
-	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. because an exponent <span class='ct-code-b-yellow'>e</span> or <span class='ct-code-b-yellow'>E</span> can have a positive or negative integer.";
+	var popText = "This is a <span class='ct-code-b-yellow'>valid constant</span>. Because an exponent <span class='ct-code-b-yellow'>e</span> or <span class='ct-code-b-yellow'>E</span> can have a positive or negative integer.";
 	var popBtn = "<span id='floatPopBtn4' class='introjs-button next-btn' onclick='floatPopoverStep4()'>Next &#8594;</span>";
 	popoverText("floatExBtn4", popText, popBtn);
 }
@@ -529,7 +532,7 @@ function floatPopoverStep4() {
 function floatStep7() {
 	$("#floatStep7Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#floatStep7Id").text("info");
-	var popText = "This is a <span class='ct-code-b-red'>not a valid constant</span>. because Commas, blank spaces are not allowed while using the exponent <span class='ct-code-b-yellow'>e</span>.";
+	var popText = "This is a <span class='ct-code-b-red'>not a valid constant</span>. Because Commas, blank spaces are not allowed while using the exponent <span class='ct-code-b-yellow'>e</span>.";
 	var popBtn = "<span id='floatPopBtn5' class='introjs-button next-btn' onclick='floatPopoverStep5()'>Next &#8594;</span>";
 	popoverText("floatExBtn5", popText, popBtn);
 }
@@ -565,7 +568,7 @@ function charStep2() {
 function charStep3() {
 	$("#charStep3Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#charStep3Id").text("info");
-	var popText = "This is a <span class='ct-code-b-yellow'>valid char constant</span>. because it is a single character should be enclosed in single quotes.";
+	var popText = "This is a <span class='ct-code-b-yellow'>valid char constant</span>. Because it is a single character should be enclosed in single quotes.";
 	var popBtn = "<span id='charPopBtn1' class='introjs-button next-btn' onclick='charPopoverStep1()'>Next &#8594;</span>";
 	popoverText("charExBtn1", popText, popBtn);
 }
@@ -584,7 +587,7 @@ function charPopoverStep1() {
 function charStep4() {
 	$("#charStep4Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#charStep4Id").text("info");
-	var popText = "This is a <span class='ct-code-b-red'>invalid char constant</span>. because a single quotes is required on both sides.";
+	var popText = "This is a <span class='ct-code-b-red'>invalid char constant</span>. Because a single quotes is required on both sides.";
 	var popBtn = "<span id='charPopBtn2' class='introjs-button next-btn' onclick='charPopoverStep2()'>Next &#8594;</span>";
 	popoverText("charExBtn2", popText, popBtn);
 }
@@ -677,7 +680,7 @@ function stringStep2() {
 function stringStep3() {
 	$("#stringStep3Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#stringStep3Id").text("info");
-	var popText = "This is a <span class='ct-code-b-red'>invalid string constant</span>. because a string constant should be enclosed in double quotes not single quotes.";
+	var popText = "This is a <span class='ct-code-b-red'>invalid string constant</span>. Because a string constant should be enclosed in double quotes not single quotes.";
 	var popBtn = "<span id='stringPopBtn1' class='introjs-button next-btn' onclick='stringPopoverStep1()'>Next &#8594;</span>";
 	popoverText1("stringExBtn1", popText, popBtn);
 }
@@ -714,7 +717,7 @@ function stringPopoverStep2() {
 function stringStep5() {
 	$("#stringStep5Id").removeClass("next-btn").addClass("next-btn-info");
 	$("#stringStep5Id").text("info");
-	var popText = "This is <span class='ct-code-b-red'>not a valid string constant</span>. because a string literal is not enclosed within double quotes.";
+	var popText = "This is <span class='ct-code-b-red'>not a valid string constant</span>. Because a string literal is not enclosed within double quotes.";
 	var popBtn = "<span id='stringPopBtn3' class='introjs-button next-btn' onclick='stringPopoverStep3()'>Next &#8594;</span>";
 	popoverText1("stringExBtn3", popText, popBtn);
 }
@@ -858,7 +861,7 @@ function newAnimateBtn() {
 		"top" : l1.top,
 		"left" : l1.left
 	}).removeClass("opacity00");
-	
+	$(".next-btn").eq(1).removeClass("opacity00")
 	TweenLite.to($(".next-btn").eq(1), 1, {top: 0, left: 0, onComplete: function() {
 		$(".next-btn").eq(0).remove();
 		$('.popover').popover('hide');

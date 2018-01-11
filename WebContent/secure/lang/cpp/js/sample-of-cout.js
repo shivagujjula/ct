@@ -118,18 +118,19 @@ var sampleOfCout = function() {
 			});
 			break;
 		case 'using':
-			typing('.introjs-tooltiptext',"<span class ='color-yellow'>using</span> means you are going to use it.", function() {
+			typing('.introjs-tooltiptext',"Here <b class ='color-yellow'>using</b> is a keyword which is going to use"+
+					" the mentioned namespace <b class ='color-yellow'>std</b> in program.", function() {
 				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			});
 			break;
 		case 'namespace':
-			typing('.introjs-tooltiptext',"<span class= 'color-yellow'>namespace</span> is a container for a set of elements "+
+			typing('.introjs-tooltiptext',"<b class= 'color-yellow'>namespace</b> is a container for a set of elements "+
 					"in which each element has a name unique to that set.", function() {
 				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			});
 			break;
 		case 'std':
-			typing('.introjs-tooltiptext',"<span class= 'color-yellow'>std </span>is a namespace where features of the C++ Standard "+
+			typing('.introjs-tooltiptext',"<b class= 'color-yellow'>std </b>is a namespace where features of the C++ Standard "+
 					"Library, such as string or vector are declared.", function() {
 				$('.introjs-nextbutton, .introjs-prevbutton').show();
 			});
@@ -142,7 +143,7 @@ var sampleOfCout = function() {
 		case 'printf1':
 			$('.introjs-helperLayer').one('transitionend',function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext','The statement <y>cout << "Hello World!\\n"</y>; prints <y>Hello World!</y> and a' +
+				typing('.introjs-tooltiptext','The statement <y>cout << "Hello World!\\n"</y> prints <y>Hello World!</y> and a' +
 						' new-line <y>(\'\\n\')</y> character after that.', function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -151,7 +152,7 @@ var sampleOfCout = function() {
 		case 'printf2':
 			$('.introjs-helperLayer').one('transitionend',function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext',"This statement prints <y>I am learning Cpp programming</y> " +
+				typing('.introjs-tooltiptext',"This statement prints <y>\"I am learning Cpp programming\"</y> " +
 						"and a new-line <y>(\'\\n\')</y> character after that.", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -197,7 +198,7 @@ var sampleOfCout = function() {
 						$("#printlnId2").removeClass('animated zoomIn');
 						$('.introjs-tooltip').removeClass('hide');
 						typing('.introjs-tooltiptext',"The String <y>I am learning C++ programming</y> appears on the next line in the console. "+
-								"It is printed in the new line because of \'\\n\'(a new line character) present in the previous line.", function() {
+								"It is printed in the new line because of <b class='color-yellow'>\'\\n\'</b>(a new line character) present in the previous line.", function() {
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
@@ -213,7 +214,7 @@ var sampleOfCout = function() {
 						$("#printlnId3").removeClass('animated zoomIn');
 						$('.introjs-tooltip').removeClass('hide');
 						var text = "<y class='color-yellow'>Bye!</y> appears on the next line in the console.<br>It is printed in the new"+
-									" line because of <span class='color-yellow'>\'\\n\'</span>(a new line character) present in the previous line."
+									" line because of <b class='color-yellow'>\'\\n\'</b>(a new line character) present in the previous line."
 						typing('.introjs-tooltiptext',text, function() {
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});

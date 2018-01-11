@@ -1,7 +1,6 @@
-
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 
 var referenceVariableReadyFun = function() {
 	introGuide();
@@ -163,7 +162,7 @@ function introGuide() {
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#leftDiv1").removeClass("opacity00");
-				var text = "Let us consider an example without reference variables.";
+				var text = "Let us consider an example without <b class='ct-code-b-yellow'>reference variables</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton').show();
 				});
@@ -225,7 +224,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Declared an int variable <b class='ct-code-b-yellow'>num2</b>.";
+				var text = "Here we declared an int variable <b class='ct-code-b-yellow'>num2</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -237,7 +236,7 @@ function introGuide() {
 			$('.introjs-prevbutton').hide();
 			$(".introjs-tooltip").css({"min-width": "250px"});
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>Here declare an int variable <b class='ct-code-b-yellow'>num2</b> and initialize with the value of variable <b class='ct-code-b-yellow'>num1</b>.</li>"
+				var text = "<ul><li>Here declared int variable <b class='ct-code-b-yellow'>num2</b> is initialize with the value of variable <b class='ct-code-b-yellow'>num1</b>.</li>"
 					+ "<li>Here the value <y>10</y> is within two variables <y>num1</y> and <y>num2</y>, so that we can say both contains same value but we can't say two variables have same memory.</li>"
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext ul").append("<li><div id='bToA' class='display-inline-block relative ct-code-b-yellow'>"
@@ -273,7 +272,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The constatnt value 20 is stored in the variable <b class='ct-code-b-yellow'>num2</b> i.e <b class='ct-code-b-yellow'>20</b>"
+				var text = "The constant value <b class='ct-code-b-yellow'>20</b> is stored in the variable <b class='ct-code-b-yellow'>num2</b> i.e <b class='ct-code-b-yellow'>20</b>"
 					+ " is replaced in the place of <y>10</y>.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append(" <div id='bTo20' class='display-inline-block relative ct-code-b-yellow'>"
@@ -355,7 +354,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Here we declared an int variable <b class='ct-code-b-yellow'>a</b> with value <b class='ct-code-b-yellow'>10</b>.";
+				var text = "Here we declared an int variable <b class='ct-code-b-yellow'>num1</b> with value <b class='ct-code-b-yellow'>10</b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -406,7 +405,7 @@ function introGuide() {
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>Here <b class='ct-code-b-yellow'>&num2</b> is a <b class='ct-code-b-yellow'>reference variable</b> to the variable <y>a</y></li>"
+				var text = "<ul><li>Here <b class='ct-code-b-yellow'>&num2</b> is a <b class='ct-code-b-yellow'>reference variable</b> to the variable <y>num1</y></li>"
 				+ "<li>A reference variable provides an <y>alias</y> name to the previously defined variable of the same data type.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext ul").append("<li><div id='bToRefA' class='display-inline-block relative ct-code-b-yellow'>"
