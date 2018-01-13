@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js-min/bistc.min.js"></script>
+<script type="text/javascript" src="/secure/lang/ds/js/merge-sort-time-complexity.js"></script>
 
 <title>Merge sort time complexity</title>
 
@@ -228,62 +228,63 @@ td {
 	<div class="col-xs-12">
 		<div class="col-xs-8 col-xs-offset-2 index-div" id="indexDiv">
 			<ul>
-				<li id="listLine1" class="opacity00"><span class="ct-blue">Binary search</span> can be solved by using <b>iteration process</b> (or) 
-					<b>recursion process</b>.</li>
-				<li id="listLine2" class="opacity00"><span class="ct-blue">Binary search</span> uses <b>divide and conquer</b> technique and it 
-					works on the sorted list either in ascending or descending order.</li>
-				<li id="listLine3" class="opacity00"><span class="ct-blue">Binary search</span> (or) <span class="ct-blue">Half-interval search</span> (or) 
-					<span class="ct-blue">Logarithmic search</span> is a search algorithm that finds the position of a <b>key element</b>
-					 within a sorted array.</li>
-				<li id="listLine4" class="opacity00"><span class="ct-blue">Binary search</span> compares the <b>key element</b> to the 
-					<b>middle element</b> of the array. If they are <b>unequal</b>, the half in which the <b>key element</b>
-					 cannot lie is eliminated and the search continues on the remaining half until it is successful.</li>
+				<li id="listLine1" class="opacity00"><span class="ct-blue">Merge sort</span> is a <b>divide and conquer</b> algorithm based 
+				on the idea of breaking down a list into several sub-lists until each sublist consists of a single element and merging those 
+				sublists in a manner that results into a sorted list.</li>
+				<li id="listLine2" class="opacity00">Divide the unsorted list into <b>n</b> sublists, each containing <b>1</b> element.</li>
+				<li id="listLine3" class="opacity00">Take adjacent pairs of two singleton lists and merge them to form a list of <b>2</b> elements.</li>
+				<li id="listLine4" class="opacity00"><b>n</b> will now convert into <b>n/2</b> lists of size <b>2</b>.
+				<li id="listLine5" class="opacity00">Repeat the process till a single sorted list of obtained.</li>
 			</ul>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-5">
 <pre class="creamPreTab4 opacity00" id="preCode1" style="font-size: 12px;">
-<span id="line1"><span class="color-green">int</span> binarySearchIteration(<span class="color-green">int</span> a[], <span class="color-green">int</span> n, <span class="color-green">int</span> key) {</span>
-	<span class="color-green">int</span> low, high, mid, flag = -<span class="color-deeppink">1</span>;
-	low = <span class="color-deeppink">0</span>, high = n - <span class="color-deeppink">1</span>;
-	<span class="color-maroon">while</span> (flag == -<span class="color-deeppink">1</span> && low <= high) {
-		<span id="line5">mid = (low + high) / <span class="color-deeppink">2</span>;			</span>
-		<span class="color-maroon">if</span> (<span id="line6">a[mid] == key</span>) {
-			<span id="line7">flag = mid;</span>								<span id="timeCtPre1" class="opacity00">//	<span id="timeItrSpan1">T(1)</span></span>
-			<span class="color-maroon" id="line8">break</span>;
-		<span id="line9">} <span class="color-maroon">else if</span> (<span id="lessThanid">key < a[mid]</span>) {</span>
-			high = mid - <span class="color-deeppink">1</span>;						<span id="timeCtPre2" class="opacity00">//	<span id="timeItrSpan2">T(n/2)</span></span>
-		<span id="line10">} <span class="color-maroon">else if</span> (<span id="greaterThanid">key > a[mid]</span>){</span>
-			low = mid + <span class="color-deeppink">1</span>;							<span id="timeCtPre3" class="opacity00">//	<span id="timeItrSpan3">T(n/2)</span></span>
-		}
-	}
-	<span class="color-maroon">return</span> flag;
-}
+<span id="line1">void mergeSortIteration(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> mid, <span class="color-green">int</span> high) {</span>
+	<span id="lineMid"><span class="color-green">int</span> mid = (low + high) / <span class="color-deeppink">2</span>;</span>
+	<span id="line2"><span class="color-green">int</span> i = low, h = low, j = mid + <span class="color-deeppink">1</span>, k, temp[];</span>
+	<span id="line3"><span class="color-maroon">while</span> (h <= mid && j <= high) {</span>
+		<span id="line4"><span class="color-maroon">if</span> (arr[h] <= arr[j]) {</span>
+			<span id="line5">temp[i] = arr[h];</span>
+			<span id="line6">h++;</span>
+		<span id="line7">} else {</span>
+			<span id="line8">temp[i] = arr[j];</span>
+			<span id="line9">j++;</span>
+		<span id="line10">}</span>
+		<span id="line11">i++;</span>
+	<span id="line12">}</span>
+	<span id="line13"><span class="color-maroon">if</span> (h > mid) {</span>
+		<span id="line14"><span class="color-maroon">for</span> (k = j; k <= high; k++) {</span>
+			<span id="line15">temp[i] = arr[k];</span>
+			<span id="line16">i++;</span>
+		<span id="line17">}</span>
+	<span id="line18">} <span class="color-maroon">else</span> {</span>
+		<span id="line19"><span class="color-maroon">for</span> (k = h; k <= mid; k++) {</span>
+			<span id="line20">temp[i] = arr[k];</span>
+			<span id="line21">i++;</span>
+		<span id="line22">}</span>
+	<span id="line23">}</span>
+<span id="line24">}</span>
 </pre>		
 		</div>
-		<div class="col-xs-5 col-xs-offset-1">
+		<div class="col-xs-6 col-xs-offset-0">
+		<div class="col-xs-12">
 <pre class="creamPreTab4 opacity00" id="preCode2">
-<span class="color-green">int</span> binarySearchRecursion(<span class="color-green">int</span> a[], <span class="color-green">int</span> low, <span class="color-green">int</span> high, <span class="color-green">int</span> key){
-	<span class="color-green">int</span> mid;
-	<span class="color-maroon">if</span> (low <= high) {
-		mid = (low + high) / <span class="color-deeppink">2</span>;
-		<span id="recLine4"><span class="color-maroon">if</span> (<span id="recEqualId">a[mid] == key</span>) {</span>
-			<span id="recLine5"><span class="color-maroon">return</span> mid;</span>												<span id="timeC1" class="opacity00">//	<span id="timeRecSpan1">T(1)</span></span>
-		<span id="recLine6">} <span class="color-maroon">else if</span> (<span id="recLessThanId">key < a[mid]</span>) {</span>
-			<span id="recLine7">binarySearchRecursion(a, low, mid - <span class="color-deeppink">1</span>, key);</span>	<span id="timeC2" class="opacity00">//	<span id="timeRecSpan2">T(n/2)</span></span>
-		<span id="recLine8">} <span class="color-maroon">else if</span> (<span id="recGreaterThanlId">key > a[mid]</span>) {</span>
-			<span id="recLine9">binarySearchRecursion(a, mid + <span class="color-deeppink">1</span>, high, key);</span><span id="timeC3" class="opacity00">//	<span id="timeRecSpan3">T(n/2)</span></span>
-		}
-	} <span class="color-maroon">else</span> {
-		<span class="color-maroon">return</span> -<span class="color-deeppink">1</span>;
+<span id="recLine1"><span class="color-green">void</span> mergeSortRecursion(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> high) {</span>
+	<span id="recLine2"><span class="color-green">int</span> mid;</span>
+	<span id="recLine3"><span class="color-maroon">if</span> (low < high) {</span>
+		<span id="recLine4">mid = (low + high) / <span class="color-deeppink">2</span>;</span>
+		<span id="recLine5">mergeSortRecursion(arr, low, mid);</span>
+		<span id="recLine6">mergeSortRecursion(arr, mid + <span class="color-deeppink">1</span>, high);</span>
+		<span id="recLine7">mergeSortRecursion(arr, low, mid, high);</span>
 	}
 }
 </pre>
 		</div>
-	</div>
+	
 	<div class="col-xs-12 margin-top-2">
-		<div class="col-xs-6 col-xs-offset-3 explanation-div opacity00" id="explanationDiv">
+		<div class="explanation-div opacity00" id="explanationDiv" style="padding: 4px 12px;"> <!-- col-xs-6 col-xs-offset-3 --> 
 			<div class="col-xs-offset-">
 				<span>We have : </span>
 					<ul>
@@ -295,11 +296,11 @@ td {
 			<div class="col-xs-offset-4">
 				<span class="opacity00" id="calcLine1" style="background: #bbecc3;">The time complexity formula is : </span>
 				<br>
-				<span id="divCalcLine1" class="opacity00">T(n) = T(n/2) + c</span><br>
+				<span id="divCalcLine1" class="opacity00">T(n) = 2 * T(n/2) + c</span><br>
 				<!-- <span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br> -->
 				<span id="divCalcLine3" class="opacity00"><span class="opacity00">T(n)</span> = 
-					<span id="divCalcLine3Span"><span id="line3Span" class="display">T(n/2)</span> + c</span></span><br>
-				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = <span id="line4Span" class="display">T(n/4)</span> + c + c</span><br>
+					<span id="divCalcLine3Span">2 * <span id="line3Span" class="display">T(n/2)</span> + c</span></span><br>
+				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = 4 * <span id="line4Span" class="display">T(n/4)</span> + 2 * c</span><br>
 				<span id="divCalcLine5" class="opacity00">
 					<span class="opacity00">T(n)</span> = T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">(c + c + c)</span></span><br>
 				<span id="divCalcLine6" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>4</sup>) + (4 * c)</span><br>
@@ -315,6 +316,7 @@ td {
 			</div>
 		</div>
 	</div>
+	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
 		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>
 	</div>
@@ -322,8 +324,8 @@ td {
 </body>
 <script>
 $(document).ready(function() {
-//	binarySearchTimeComplexity();
-	$(".opacity00").removeClass("opacity00");
+	mergeSortTimeComplexity();
+//	$(".opacity00").removeClass("opacity00");
 });
 
 </script>
