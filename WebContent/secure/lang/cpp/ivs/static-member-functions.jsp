@@ -306,12 +306,12 @@ y {
 <div class ="display opacity00" id="int"><div class="red display">int</div> Student:: count;</div>
 <div class ="display opacity00" id="main">main() {
    <div class ="display opacity00" id="object">Student <div id="paraMeter1" class="green display"><b>s1</b></div>, <div id="paraMeter2" class="green display"><b>s2</b></div>;</div>
-   <div class="display opacity00" id="voidGetPut"><div class ="display opacity00" id="data">s1.getdata();</div>
-<span id="put" class="opacity00">s1.putdata();</span></div>
-   <div class ="display opacity00" id="count2">Student::getcount();</div>
-   <div class="display opacity00" id="voidGetPut1"><div class ="display" id="data1">s1.getdata();</div>
-<div class ="display" id="put1">s2.putdata();</div></div>
-   <div class ="display opacity00" id="count3">Student::getcount();</div>
+   <div class="display opacity00" id="voidGetPut"><div class ="display opacity00" id="data">s1.getData();</div>
+<span id="put" class="opacity00">s1.putData();</span></div>
+   <div class ="display opacity00" id="count2">Student::getCount();</div>
+   <div class="display opacity00" id="voidGetPut1"><div class ="display" id="data1">s1.getData();</div>
+<div class ="display" id="put1">s2.putData();</div></div>
+   <div class ="display opacity00" id="count3">Student::getCount();</div>
 <div class ="display" id="mainClose">}</div>
 </div>	</div>	
 			</pre>
@@ -377,15 +377,15 @@ y {
 						<div class="col-x-12 padding00 opacity00" id="countBox" style=" margin-top: 40px;">
 							<span id="countCupValue" class="cupvalue"></span>
 							<i class="fa fa-coffee fa-3x count-cup" style="color: #77c5bc;"></i><br>
-							<span id="countCupVariable" class = "ct-code-b-black" style="padding-left: 5px;">count</span>
+							<span id="countCupVariable" class = "ct-code-b-black" style="margin-left:4px;">count</span>
 						</div>
 					</div>
 					<svg class="svg-css" id="svgId">
 						<marker style="fill: #37999d;" orient="auto" markerHeight="5"
 						markerWidth="5" refY="2.5" refX="5" id="arrow">
 						<path d="M0,0 L5,2.5 L0,5 Z" /></marker>
-						<line id="line1" class="svg-line lines " x1="91.6%" y1="93.1%" x2="91.6%" y2="43%" style="marker-end: url(&quot;#arrow&quot;); display: inline;"></line>
-						<line id="line2" class="svg-line lines" x1="52%" y1="93%" x2="91.5%" y2="93%" style="marker-end: url(&quot;&quot;); display: inline;"></line>
+						<line id="line1" class="svg-line lines " x1="90.6%" y1="93.1%" x2="90.6%" y2="43%" style="marker-end: url(&quot;#arrow&quot;); display: inline;"></line>
+						<line id="line2" class="svg-line lines" x1="52%" y1="93%" x2="90.5%" y2="93%" style="marker-end: url(&quot;&quot;); display: inline;"></line>
 					</svg> 
 					</div>
 				</div>

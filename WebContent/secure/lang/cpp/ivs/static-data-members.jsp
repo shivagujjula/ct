@@ -281,11 +281,11 @@
 <div class ="display opacity00" id="int"><div class="green display">int</div> Student :: count;</div>
 <div class ="display opacity00" id="main">int main() {
   <div class ="display opacity00" id="object">Student <div id="paraMeter1" class="green display">s1</div>, <div id="paraMeter2" class="green display">s2</div>;</div>
-  <div class="display opacity00" id="getData"><div class ="display opacity00" id="data">s1.getdata();</div>
-<div class ="display opacity00" id="data1">s2.getdata();</div></div>
- <div class="display opacity00" id="getCount"><div class ="display opacity00" id="count2">s1.getcount();</div>
-<div class ="display opacity00" id="count3">s2.getcount();</div></div>
- <div class ="display" id='mainClose'>}</div>
+  <div class="display opacity00" id="getData"><div class ="display opacity00" id="data">s1.getData();</div>
+<div class ="display opacity00" id="data1">s2.getData();</div></div>
+  <div class="display opacity00" id="getCount"><div class ="display opacity00" id="count2">s1.getCount();</div>
+<div class ="display opacity00" id="count3">s2.getCount();</div></div>
+<div class ="display" id='mainClose'>}</div>
 </div>
 </div>
 			</pre>

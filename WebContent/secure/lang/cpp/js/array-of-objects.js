@@ -673,8 +673,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 			$('.introjs-helperLayer').one('transitionend',function() {
 				$('.introjs-tooltip').removeClass('hide');
 				typing('.introjs-tooltiptext',"Here a class <y>Employee</y> is created with " +
-						"<br> - two private data members <y>name</y>, <y> age</y>. " +
-						"<br> - two public member functions " +
+						"<br>&ensp;&ensp; - two private data members <y>name</y>, <y> age</y>. " +
+						"<br>&ensp;&ensp; - two public member functions " +
 						"are <y>getData()</y> and <y>putData()</y>.", 10, "",function() {
 					$('#class').fadeTo(300, 1, function() {
 						$("#public").fadeTo(300 , 1,function() {
@@ -756,14 +756,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('.introjs-helperLayer').one('transitionend',function() {
 					$('#countCup').removeClass('opacity00');
 					$("#num1").addClass('z-index1000000');
-					transferEffect1("#num1","#cup_value", function() {
-						$("#cup_value").append('0');
+					$("#cup_value").append('0').addClass("animated zoomIn").one('animationend', function() {
 						$("#cup_value").addClass('z-index10000000');
 						$(".introjs-tooltip").removeClass("hide");
 						$("#num1").removeClass('z-index1000000');
 						typing('.introjs-tooltiptext',"This is the  <span class='ct-code-b-yellow'>initialization</span> section. Here a local " +
 							"variable i is declared and initialized to <span class='ct-code-b-yellow'> 0</span>."+
 								"", 10, "",function() {
+							$("#cup_value").removeClass('animated zoomIn');
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
@@ -780,14 +780,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 					/*$('#countCup1').css({"top": "440px", "left": "350px"});*/
 					$('#countCup1').removeClass('opacity00');
 					$("#num2").addClass('z-index1000000');
-					transferEffect1("#num2","#cup_value1", function() {
-						$("#cup_value1").append('0');
+					$("#cup_value1").append('0').addClass("animated zoomIn").one('animationend', function() {
 						$("#cup_value1").addClass('z-index10000000');
 						$(".introjs-tooltip").removeClass("hide");
 						$("#num2").removeClass('z-index1000000');
 						typing('.introjs-tooltiptext',"This is the  <span class='ct-code-b-yellow'>initialization</span> section. Here a local " +
 							"variable i is declared and initialized to <span class='ct-code-b-yellow'> 0</span>."+
 								"", 10, "",function() {
+							$("#cup_value1").removeClass('animated zoomIn');
 							$('.introjs-nextbutton, .introjs-prevbutton').show();
 						});
 					});
@@ -872,24 +872,22 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('.introjs-helperLayer').one("transitionend", function() {
 					if(intro._direction == 'forward') {
 						$("#animationBox").removeClass("opacity00");
-							$("#managerName").fadeTo(1000, 1, function() {
-								$("#border").fadeTo(1, 1, function() {
-									transferEffect("#createMemory","#table", function() {
-										$("#table").fadeTo(100, 1, function() {
-											transferEffect("#age","#age2", function() {
-												$("#age2").fadeTo(100, 1, function() {
-													$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-														$("#manager2Details").fadeTo(1000, 1, function() {
-															$("#manager3Details").fadeTo(1000, 1, function() {
-																$('#borderLine').removeClass('opacity00');
-																transferEffect('#getVoid', "#voidGet", function() {
-																	$('#voidGet').removeClass('opacity00');
-																	transferEffect('#getVoid1', "#voidPut", function() {
-																		$('#voidPut').removeClass('opacity00');
-																		setTimeout(function() {
-																			intro.nextStep();
-																		}, 1000);
-																	});
+							$("#manager1Details").fadeTo(1000, 1, function() {
+								transferEffect("#createMemory","#table", function() {
+									$("#table").fadeTo(100, 1, function() {
+										transferEffect("#age","#age2", function() {
+											$("#age2").fadeTo(100, 1, function() {
+												$("#borderBox1").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
+													$("#manager2Details").fadeTo(1000, 1, function() {
+														$("#manager3Details").fadeTo(1000, 1, function() {
+															$('#borderLine').removeClass('opacity00');
+															transferEffect('#getVoid', "#voidGet", function() {
+																$('#voidGet').removeClass('opacity00');
+																transferEffect('#getVoid1', "#voidPut", function() {
+																	$('#voidPut').removeClass('opacity00');
+																	setTimeout(function() {
+																		intro.nextStep();
+																	}, 1000);
 																});
 															});
 														});
@@ -903,7 +901,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 					} else {
 						$('#int1').addClass('opacity00');
 						$("#animationBox").addClass('opacity00');
-						$("#managerName ,#border,#table ,#age2").css('opacity', '0');
+						$("#manager1Details,#table ,#age2").css('opacity', '0');
 						$("#borderBox1").addClass('opacity00').removeClass("animated zoomIn");
 						$("#manager2Details, #manager3Details").css('opacity', '0');
 						$('#borderLine').addClass('opacity00');
@@ -1891,6 +1889,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						$('.introjs-tooltip').removeClass('hide');
 						typing(".introjs-tooltiptext", "Please enter <y>employee name</y>", 10, "",function() {
 							textValidation('#inputName2' ,'enterValAction1');
+							$('.introjs-prevbutton').show();
 						});
 					} else {
 						$('.user-btn').remove();
@@ -2620,6 +2619,7 @@ function bounceFromEffectWithTimelineMax(selector1, selector2, callBackFunction)
 
 
 function enterValAction() {
+	$('.introjs-prevbutton').hide();
 	$('.user-btn').remove();
 	$("#inputName1").attr("disabled", "disabled");
 	$("#animationBox").addClass("z-index1000000");
@@ -2649,6 +2649,7 @@ function enterValAction() {
 	}});
 }
 function enterValAction1() {
+	$('.introjs-prevbutton').hide();
 	$('.user-btn').remove();
 	$("#animationBox").addClass("z-index1000000");
 	$(".td-css1").addClass("ct-code-b-green");
@@ -2675,6 +2676,7 @@ function enterValAction1() {
 	}});
 }
 function enterValAction2() {
+	$('.introjs-prevbutton').hide();
 	$('.user-btn').remove();
 	$("#animationBox").addClass("z-index1000000");
 	$(".td-css2").addClass("ct-code-b-green");

@@ -28,10 +28,8 @@
     border-radius: 4px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
     height: 38px;
-    left: 280px;
     padding-bottom: 2px;
     position: absolute;
-    top: 330px;
     transition: all 1.3s ease-out 0s;
     width: 57px;
     z-index: 1000004;
@@ -68,10 +66,8 @@
     border-radius: 4px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
     height: 38px;
-    left: 280px;
     padding-bottom: 2px;
     position: absolute;
-    top: 330px;
     transition: all 1.3s ease-out 0s;
     width: 57px;
     z-index: 1000004;
@@ -133,6 +129,7 @@
 	font-family: monospace;
 	background-color: #e5eecc;
 	font-size: 12px;
+	min-height: 100px;
 }
 .error-text {
 	color: red;
@@ -297,6 +294,12 @@ g {
  #inputNumber, #inputNumber3, #inputNumber6,  #inputNumber9 {
  	color: #fbe847;
  }
+ .value, .value1, .value2{
+	border: 2px solid gray;
+	width: 35px;
+	height: 35px;
+	margin-top: 25px;
+}
 </style>
 </head>
 <body>
@@ -314,7 +317,7 @@ g {
 	</div>
 	<div class="col-xs-12 margin-top ">
 		<div class="col-xs-5  padding">
-			<pre class="creamPretab4 opacity00" id="preBody">
+			<pre class="creamPreTab4 opacity00" id="preBody">
 <span id="declaration"><span class="violet">#include</span> <span class="green">&lt;iostream&gt;</span></span>
 <span class="red">using</span> <span class="green">namespace</span> std;
 <div class ="display opacity00" id="class"><span class='red'>class</span> Employee {
@@ -332,15 +335,15 @@ g {
     <div class ="display" id="cout3">cout << <div id="textEnter1" class="pink display">"Employee age is : "</div> << <span id='age5'>age </span><< endl;</div>
 <span id="close3">}</span></div>
 };	</div>
- <div class ="display opacity00" id="main">main() {
-   <div class ="display opacity00" id="manager">Employee manager[<span class="pink">3</span>];</div>
+ <div class ="display opacity00 position" id="main">main() {
+   <div class ="display opacity00" id="manager">Employee manager[<span class="pink">3</span>];</div>		<span id= "countCup" class="cup-bg opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2x"></i><h5 class="i-position"><span id='cup_i'><b>i</b></span><b>=</b>&nbsp;&nbsp;&nbsp; <h6 id="cup_value"></h6></h5></span></span>
    <div class ="display opacity00" id="int1">int i;</div>
-   <div class ="display opacity00" id="condition"><div class ="display" id='forLoop' >for(<div class ="display" id="iVal">i = <span class="pink position" id="num1">0</span></div>; <span id="iValComparision">i < <div class="pink display">3</div></span>; <span id="iValIncrement">i++</span>) {</div><span id= "countCup" class="cup-bg opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2x"></i><h5 class="i-position"><span id='cup_i'><b>i</b></span><b>=</b>&nbsp;&nbsp;&nbsp; <h6 id="cup_value"></h6></h5></span></span>
+   <div class ="display opacity00" id="condition"><div class ="display" id='forLoop' >for(<div class ="display" id="iVal">i = <span class="pink position" id="num1">0</span></div>; <span id="iValComparision">i < <div class="pink display">3</div></span>; <span id="iValIncrement">i++</span>) {</div>
    <div class ="display" id="cout4">cout << <div id="enterDetails" class="pink display">"Enter the manager-" << i <<" details"</div> << endl;</div>
    <span id="manager1" class="position">manager[i].getdata();</span>
 <div class ="display" id="close1">}</div></div>
    <div class ="display opacity00" id="cout5">cout << <span class="pink" id="enterDetails1">"The managers details are : "</span> << endl;</div>
-   <div class ="display opacity00" id="condition1"><div class ="display" id='forLoop1' >for (<div class ="display" id="iValue">i = <span class="pink" id="num2">0</span>;</div><span id="iValComparision1"> i < <div class="pink display">3</div></span>; <span id='iValIncrement1'>i++</span>) {</div><span id= "countCup1" class="cup-bg opacity00"><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2x"></i><h5 class="i-position"><span id='cup_i1'><b>i</b></span><b>=</b>&nbsp;&nbsp;&nbsp; <h6 id="cup_value1"></h6></h5></span></span>
+   <div class ="display opacity00" id="condition1"><div class ="display" id='forLoop1' >for (<div class ="display" id="iValue">i = <span class="pink" id="num2">0</span>;</div><span id="iValComparision1"> i < <div class="pink display">3</div></span>; <span id='iValIncrement1'>i++</span>) {</div>		<span id= "countCup1" class="cup-bg opacity00" style='right : 120px;'><span class="hide-sm cup"><i class="fa fa-coffee fa-inverse fa-2x"></i><h5 class="i-position"><span id='cup_i1'><b>i</b></span><b>=</b>&nbsp;&nbsp;&nbsp; <h6 id="cup_value1"></h6></h5></span></span>
    <span class ="display" id="manager2">manager[i].putdata();</span>
 <div class ="display" id="close2">}</div></div>
    <div class ="display" id="return" ><span class="red display">return</span><span class="pink display"> 0</span>;</div>
@@ -350,9 +353,9 @@ g {
 		</div>
 		<div class="col-xs-7">
 			<div class="col-xs-12 box-border opacity00" id="animationBox">
-				<div class="col-xs-12" id="manager1Details">
-					<div id="managerName" class="managerBox opacity00">manager[0]</div>
-					<div class="col-xs-12 manager-border opacity00" id="border">
+				<div class="col-xs-12 opacity00" id="manager1Details">
+					<div id="managerName" class="managerBox">manager[0]</div>
+					<div class="col-xs-12 manager-border" id="border">
 						<div class="col-xs-10">
 							<table class='text-center margin-top opacity00' style='table-layout:fixed' id="table">
 								<tr>
@@ -367,7 +370,7 @@ g {
 								<tr>
 								<td> <span class="darkgreen"><b>name</b></span> : </td>
 									<%for (int i = 0; i <= 9; i++ ) { %>
-										<td class ="text-center value" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table1"><span class='td-css position'></span></td>
+										<td class ="text-center value" id="table1"><span class='td-css position'></span></td>
 									<%}%>
 								
 								</tr>
@@ -386,7 +389,7 @@ g {
 					<div id="managerName1" class="managerBox">manager[1]</div>
 					<div class="col-xs-12 manager-border1 ">
 						<div class="col-xs-10">
-							<table class='  text-center margin-top ' style='table-layout:fixed' id="table2">
+							<table class='text-center margin-top' style='table-layout: fixed' id="table2">
 								<tr>
 									<%for (int i = 0; i <= 10; i++ ) { %>
 										<%if (i == 0) { %>
@@ -399,7 +402,7 @@ g {
 								<tr>
 									<td> <span class="darkgreen"><b>name</b></span> :</td>
 										<%for (int i = 0; i <= 9; i++ ) { %>
-											<td class ="text-center value1" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table3"><span class='td-css1 position'></span></td>
+											<td class ="text-center value1" id="table3"><span class='td-css1 position'></span></td>
 										<%}%>
 								</tr>
 							</table>
@@ -431,7 +434,7 @@ g {
 								<tr>
 									<td> <span class="darkgreen"><b>name</b></span> :</td>
 										<%for (int i = 0; i <= 9; i++ ) { %>
-											<td class ="text-center value2" style='border:2px solid gray; padding: 10px; margin-top: 25px;' id="table5"><span class='td-css2 position'></span></td>
+											<td class ="text-center value2" id="table5"><span class='td-css2 position'></span></td>
 										<%}%>
 								</tr>
 							</table>

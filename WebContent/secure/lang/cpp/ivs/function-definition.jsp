@@ -3,24 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/introjs.css">
-	<link rel="stylesheet" href="/css/introjs-ct.css">
-	<link rel="stylesheet" href="/css/animate.css"/>
-	<link rel="stylesheet" href="/css/jquery-ui.css"/>
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	
-	<script src="/js/jquery-latest.js"></script>
-	<script src="/js/bootstrap.js"></script>
-	<script src="/js/gs/TweenMax.min.js"></script>
-	<script src='/js/intro.js'></script>
-	<script src="/js/typewriting.min.js"></script>
-	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/cpp/js-min/fde.min.js"></script>
-	<title>function definition</title>
-<style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/introjs.css">
+<link rel="stylesheet" href="/css/introjs-ct.css">
+<link rel="stylesheet" href="/css/animate.css"/>
+<link rel="stylesheet" href="/css/jquery-ui.css"/>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/gs/TweenMax.min.js"></script>
+<script src='/js/intro.js'></script>
+<script src="/js/typewriting.min.js"></script>
+<script src="/js/jquery-ui-latest.js"></script>
+<script src="/secure/lang/cpp/js-min/fde.min.js"></script>
+<title>function definition</title>
+<style>
 .color-rose {
 	color:#8B008B;
 }

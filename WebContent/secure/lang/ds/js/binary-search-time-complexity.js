@@ -393,16 +393,16 @@ function line4CalculationAnimation() {
 					transferEffectFunction("#divCalcLine1", "#Line4SecondLiSpan", function() {
 						buttonAppendFunction("#popover4", function() {
 							$("#Line4SecondLi").after("<li id='Line4ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
-							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
+							"<span class='ct-code-b-yellow'>n/4</span>.<br>"+
 							"<span class='ct-code-b-yellow opacity00' id='Line4ThirdLiSpan'>T(<span id='numericalId4' class='display'>n</span>) = "+
 							"<span id='value4Main' class='display'>"+
 							"<span id='value4ParentSpan' class='display'>T(<span id='value4SecondParent' class='display'>"+
-								"<span id='value4' class='display'>n</span>/4</span>)</span> + c</span></span></li>");
+								"<span id='value4' class='display'>n</span>/2</span>)</span> + c</span></span></li>");
 							tweenMaxAnimation("#Line4SecondLiSpan", "#Line4ThirdLiSpan", function() {
 								$("#numericalId4").effect( "highlight", {color:"#FFD700"}, 2000);
-								flipEffect("#numericalId4", "n/2", function() {
+								flipEffect("#numericalId4", "n/4", function() {
 									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
-									flipEffect("#value4", "(n/2)", function() {
+									flipEffect("#value4", "(n/4)", function() {
 										buttonAppendFunction("#popover4", function() {
 											$("#value4SecondParent").effect( "highlight", {color:"#FFD700"}, 2000);
 											flipEffect("#value4SecondParent", "n/8", function() {

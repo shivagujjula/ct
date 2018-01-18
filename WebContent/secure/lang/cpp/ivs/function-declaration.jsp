@@ -4,20 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/introjs.css">
-	<link rel="stylesheet" href="/css/introjs-ct.css">
-	<link rel="stylesheet" href="/css/animate.css"/>
-	<link rel="stylesheet" href="/css/jquery-ui.css"/>
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	
-	<script src="/js/jquery-latest.js"></script>
-	<script src="/js/bootstrap.js"></script>
-	<script src="/js/gs/TweenMax.min.js"></script>
-	<script src='/js/intro.js'></script>
-	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/js/typewriting.min.js"></script>
-	<script src="/secure/lang/cpp/js-min/fd.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/introjs.css">
+<link rel="stylesheet" href="/css/introjs-ct.css">
+<link rel="stylesheet" href="/css/animate.css"/>
+<link rel="stylesheet" href="/css/jquery-ui.css"/>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+<script src="/js/jquery-latest.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/gs/TweenMax.min.js"></script>
+<script src='/js/intro.js'></script>
+<script src="/js/jquery-ui-latest.js"></script>
+<script src="/js/typewriting.min.js"></script>
+<script src="/secure/lang/cpp/js-min/fd.min.js"></script>
 <title>Function Declaration</title>
 
 <style>

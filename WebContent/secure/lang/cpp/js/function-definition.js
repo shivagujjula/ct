@@ -96,7 +96,7 @@ var functionDefinitionReady = function() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 			$("#format").removeClass("opacity00");
 		  		typing('.introjs-tooltiptext', "let us consider the syntax of function definition.", function() {  
-		  			intro.nextStep();
+		  			$('.introjs-nextbutton').show();
 				});
 			});
 		break;

@@ -25,7 +25,8 @@ var functionDeclarationReady = function() {
 			tooltipClass: "hide"
 		},{
 			element :'#returnType3',
-			intro :''
+			intro :'',
+			tooltipClass: "hide"
 		},{
 			element :'#functionName3',
 			intro :''
@@ -64,6 +65,8 @@ var functionDeclarationReady = function() {
 		case "semicolon3" :
 			$("#declaration1").addClass("visibility-hidden");
 		break;
+		case "returnType3" :
+		break;	
 		}
 	});
 	intro.onafterchange(function(targetElement) { 
@@ -125,6 +128,7 @@ var functionDeclarationReady = function() {
 			break;
 			case "returnType3" :
 				$(".introjs-helperLayer").one("transitionend", function() {
+					$('.introjs-tooltip').removeClass('hide');
 					typing('.introjs-tooltiptext', "<ul><li><span class='ct-code-b-yellow'>return_type</span> is the data type of the value that is "
 							+ "returned by the function.</li>"
 							+ "<li>For example : If the return type is <span class='ct-code-b-yellow'>void</span>, this function"

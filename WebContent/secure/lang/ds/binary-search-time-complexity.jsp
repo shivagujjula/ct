@@ -18,7 +18,9 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 
-<script type="text/javascript" src="/secure/lang/ds/js-min/bistc.min.js"></script>
+<!-- <script type="text/javascript" src="/secure/lang/ds/js-min/bistc.min.js"></script> -->
+
+<script type="text/javascript" src="/secure/lang/ds/js/binary-search-time-complexity.js"></script>
 
 <title>binary search time complexity</title>
 

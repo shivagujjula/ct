@@ -239,9 +239,54 @@ td {
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
-		<div class="col-xs-5">
+		<div class="col-xs-6 col-xs-offset-0">
+			<div class="col-xs-12">
+<pre class="creamPreTab4 opacity00" id="preCode2">
+<span id="recLine1"><span class="color-green">void</span> splitAndMerge(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> high) {</span>
+	<span id="recLine2"><span class="color-green">int</span> mid;</span>
+	<span id="recLine3"><span class="color-maroon">if</span> (low < high) {</span>
+		<span id="recLine4">mid = (low + high) / <span class="color-deeppink">2</span>;</span>
+		<span id="recLine5">splitAndMerge(arr, low, mid);</span>
+		<span id="recLine6">splitAndMerge(arr, mid + <span class="color-deeppink">1</span>, high);</span>
+		<span id="recLine7">splitAndMerge(arr, low, mid, high);</span>
+	}
+}
+</pre>
+			</div>
+	
+		<div class="col-xs-12 margin-top-2">
+			<div class="explanation-div opacity00" id="explanationDiv" style="padding: 4px 12px;"> <!-- col-xs-6 col-xs-offset-3 --> 
+				<div class="col-xs-offset-">
+					<span>Therefore the total time T(n) is given by</span>
+				</div>
+				<div class="col-xs-offset-4">
+					<span class="opacity00" id="calcLine1" style="background: #bbecc3;">T(n) = T(n/2) + T(n/2) + c(n)</span>
+					<br>
+					<span id="divCalcLine1" class="opacity00">T(n) = 2 * T(n/2) + c(n)</span><br>
+					<!-- <span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br> -->
+					<span id="divCalcLine3" class="opacity00"><span class="opacity00">T(n)</span> = 
+						<span id="divCalcLine3Span">2 * <span id="line3Span" class="display">T(n/2)</span> + c(n)</span></span><br>
+					<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = 4 * <span id="line4Span" class="display">T(n/4)</span> + c(n) + c(n)</span><br>
+					<span id="divCalcLine5" class="opacity00">
+						<span class="opacity00">T(n)</span> = <span id="line5Span1" class="display">8</span> * T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">c(n) + c(n) + c(n)</span></span><br>
+					<span id="divCalcLine6" class="opacity00"><span class="opacity00">T(n)</span> = 2<sup>4</sup> * T(n/2<sup>4</sup>) + 4 * c(n)</span><br>
+					<span id="divCalcLine7" class="opacity00" style="margin-left: 65px;">...</span><br>
+					<span id="divCalcLine8" class="opacity00" style="margin-left: 65px;">...</span><br>
+					<span id="divCalcLine9" class="opacity00"><span class="opacity00">T(n)</span> = 2<sup>k</sup> * T(n/2<sup>k</sup>) + k * c(n)</span><br>
+					<span id="divCalcLine10" class="opacity00"><span class="opacity00">T(n)</span> = <span id="kPowerId1" class="display">2<sup>k</sup></span> * T(n/<span id="kPowerId" class="display">2<sup>k</sup></span>) + k * c(n)</span><br>
+					<span id="divCalcLine11" class="opacity00"><span class="opacity00">T(n)</span> = n * T(<span id="nDivisionId" class="display">n/n</span>) + c(n) * k</span><br>
+					<span id="divCalcLine12" class="opacity00">T(n) = n * <span id="finalIdC" class="display">T(1)</span> + c(n) * <span id="finalIdK" class="display">k</span></span><br>
+					<span id="divCalcLine13" class="opacity00">T(n) = n + c *  <span id="finalIdK2" class="display">n * log<sub>2</sub>n</span></span><br>
+					<span id="divCalcLine14" class="opacity00" style="color: darkblue;">
+						Time Complexity : O(<span class="opacity00" id="resultTimeCt">n*log<sub>2</sub>n</span>)
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-5">
 <pre class="creamPreTab4 opacity00" id="preCode1" style="font-size: 12px;">
-<span id="line1">void mergeSortIteration(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> mid, <span class="color-green">int</span> high) {</span>
+<span id="line1">void mergeSort(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> mid, <span class="color-green">int</span> high) {</span>
 	<span id="lineMid"><span class="color-green">int</span> mid = (low + high) / <span class="color-deeppink">2</span>;</span>
 	<span id="line2"><span class="color-green">int</span> i = low, h = low, j = mid + <span class="color-deeppink">1</span>, k, temp[];</span>
 	<span id="line3"><span class="color-maroon">while</span> (h <= mid && j <= high) {</span>
@@ -268,54 +313,6 @@ td {
 <span id="line24">}</span>
 </pre>		
 		</div>
-		<div class="col-xs-6 col-xs-offset-0">
-		<div class="col-xs-12">
-<pre class="creamPreTab4 opacity00" id="preCode2">
-<span id="recLine1"><span class="color-green">void</span> mergeSortRecursion(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> high) {</span>
-	<span id="recLine2"><span class="color-green">int</span> mid;</span>
-	<span id="recLine3"><span class="color-maroon">if</span> (low < high) {</span>
-		<span id="recLine4">mid = (low + high) / <span class="color-deeppink">2</span>;</span>
-		<span id="recLine5">mergeSortRecursion(arr, low, mid);</span>
-		<span id="recLine6">mergeSortRecursion(arr, mid + <span class="color-deeppink">1</span>, high);</span>
-		<span id="recLine7">mergeSortRecursion(arr, low, mid, high);</span>
-	}
-}
-</pre>
-		</div>
-	
-	<div class="col-xs-12 margin-top-2">
-		<div class="explanation-div opacity00" id="explanationDiv" style="padding: 4px 12px;"> <!-- col-xs-6 col-xs-offset-3 --> 
-			<div class="col-xs-offset-">
-				<span>We have : </span>
-					<ul>
-						<li id="caseList1" class="opacity00">if (a[mid] == key) --> T(1)</li>
-						<li id="caseList2" class="opacity00">if (a[mid] < key) --> T(n/2)</li>
-						<li id="caseList3" class="opacity00">if (a[mid] > key) --> T(n/2)</li>
-					</ul>
-			</div>
-			<div class="col-xs-offset-4">
-				<span class="opacity00" id="calcLine1" style="background: #bbecc3;">The time complexity formula is : </span>
-				<br>
-				<span id="divCalcLine1" class="opacity00">T(n) = 2 * T(n/2) + c</span><br>
-				<!-- <span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br> -->
-				<span id="divCalcLine3" class="opacity00"><span class="opacity00">T(n)</span> = 
-					<span id="divCalcLine3Span">2 * <span id="line3Span" class="display">T(n/2)</span> + c</span></span><br>
-				<span id="divCalcLine4" class="opacity00"><span class="opacity00">T(n)</span> = 4 * <span id="line4Span" class="display">T(n/4)</span> + 2 * c</span><br>
-				<span id="divCalcLine5" class="opacity00">
-					<span class="opacity00">T(n)</span> = T(n/<span id="line5Span" class="display">8</span>) + <span id="line5SpanParent" class="display">(c + c + c)</span></span><br>
-				<span id="divCalcLine6" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>4</sup>) + (4 * c)</span><br>
-				<span id="divCalcLine7" class="opacity00" style="margin-left: 65px;">...</span><br>
-				<span id="divCalcLine8" class="opacity00" style="margin-left: 65px;">...</span><br>
-				<span id="divCalcLine9" class="opacity00"><span class="opacity00">T(n)</span> = T(n/2<sup>k</sup>) + (k * c)</span><br>
-				<span id="divCalcLine10" class="opacity00"><span class="opacity00">T(n)</span> = T(n/<span id="kPowerId" class="display">2<sup>k</sup></span>) + (c * k)</span><br>
-				<span id="divCalcLine11" class="opacity00"><span class="opacity00">T(n)</span> = T(<span id="nDivisionId" class="display">n/n</span>) + (c * k)</span><br>
-				<span id="divCalcLine12" class="opacity00">T(n) = <span id="finalIdC" class="display">T(1)</span> + c * <span id="finalIdK" class="display">k</span></span><br>
-				<span id="divCalcLine13" class="opacity00" style="color: darkblue;">
-					Time Complexity : O(<span class="opacity00" id="resultTimeCt">log<sub>2</sub>n</span>)
-				</span>
-			</div>
-		</div>
-	</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
 		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>

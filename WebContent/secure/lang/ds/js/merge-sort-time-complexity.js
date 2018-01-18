@@ -25,10 +25,10 @@ function introGuide() {
 			intro : '',
 			tooltipClass : 'hide'
 		}, {
-			element : '#preCode1',
+			element : '#preCode2',
 			intro : '',
 		}, {
-			element : '#preCode2',
+			element : '#preCode1',
 			intro : '',
 		}, {
 			element : '#explanationDiv',
@@ -70,18 +70,20 @@ function introGuide() {
 					typing('.introjs-tooltiptext', text, function() {
 						buttonAppendFunction(".introjs-tooltipbuttons", function() {
 							$(".introjs-tooltip").hide();
-							popoverAppendFunction("#line1", 1);
+							popoverLeftSideAppendFunction("#line1", 1);
 							var text = "Let us calculate <span class='ct-code-b-yellow'>time complexity</span> of "+
 							"<span class='ct-code-b-yellow'>mergeSortIteration()</span>.";
 							typing("#popover1", text, function() {
 								buttonAppendFunction("#popover1", function() {
 									$("#line1").popover('hide');
-									popoverAppendFunction("#line5", 5);
-									var text = "<ul><li id='liLine1'>The main principle of <span class='ct-code-b-yellow'>binary search</span> is "+
-										"to <span class='color-highlight'>divide</span> the given list into "+
-										"<span class='ct-code-b-yellow'>two halfs</span>.</li></ul>";
-									typing("#popover5", text, function() {
-										$("#line5").effect('highlight',{color:'#da5805'}, 1500);
+									secondStep();
+									/*popoverAppendFunction("#lineMid", 25);
+									var text = "<ul><li id='liLine1'>The main principle of <span class='ct-code-b-yellow'>merge sort</span> is "+
+										"a <span class='color-highlight'>divide and conquer</span> algorithm that splits an unsorted input list" +
+										" into equal sized list, each half of the list sorts recursively and then merges the resulting sorted list " +
+										"into a single sorted list.</li></ul>";
+									typing("#popover25", text, function() {
+										$("#lineMid").effect('highlight',{color:'#da5805'}, 1500);
 										buttonAppendFunction("#liLine1", function() {
 											$("#liLine1").append("<li id='liLine2'>Compare the <span class='color-highlight'>key</span> element "+
 													"with the <span class='color-highlight'>middle</span> element.</li>");
@@ -111,7 +113,7 @@ function introGuide() {
 												});
 											});
 										});
-									});
+									});*/
 								});
 							});
 						});
@@ -128,27 +130,31 @@ function introGuide() {
 						buttonAppendFunction(".introjs-tooltiptext", function() {
 							$(".introjs-tooltip").hide();
 							popoverAppendFunction("#recLine4", 4);
-							var text = "<span id='recSpanText1'>Find the middle point to divide the array into two halves.</span>";
+							var text = "<span id='recSpanText1'>Given a sequence of <span class='ct-code-b-yellow'>n</span> elements are split " +
+									"into two halves.</span>";
 							typing("#popover4", text, function() {
 								$("#recEqualId").effect('highlight',{color:'#da5805'}, 1500);
 								buttonAppendFunction("#popover4", function() {
 									$("#recLine4").popover('hide');
 									TweenMax.to($("#timeC1"), 1, {opacity: 1, onComplete:function() {
 										popoverAppendFunction("#recLine5", 5);
-										var text = "<span id='recSpanText2'>Call mergeSort for first half.</span>";
+										var text = "<span id='recSpanText2'>The first list is recursively divided into two halves and finally " +
+												"each sublist is individually sorted and stored into the first list.</span>";
 										typing("#popover5", text, function() {
 										//	$("#recEqualId").effect('highlight',{color:'#da5805'}, 1500);
 											buttonAppendFunction("#popover5", function() {
 												$("#recLine5").popover('hide');
 												popoverAppendFunction("#recLine6", 6);
-												var text = "<span id='recSpanText3'>Call mergeSort for second half</span>";
+												var text = "<span id='recSpanText3'>Similarly the second half of the list is recursively " +
+														"divided into sublist is individually sorted and stored into second list.</span>";
 												typing("#popover6", text, function() {
 												//	$("#recLessThanId").effect('highlight',{color:'#da5805'}, 1500);
 													buttonAppendFunction("#popover6", function() {
 														$("#recLine6").popover('hide');
 													//	TweenMax.to($("#timeC2"), 1, {opacity: 1, onComplete:function() {
 															popoverAppendFunction("#recLine7", 7);
-															var text = "<span id='recSpanText4'>Merge the two halves sorted in step 2 and 3</span>";
+															var text = "<span id='recSpanText4'>Finally the two lists are individually sorted " +
+																	"and the resulting sorted sequence is stored in the output of the list.</span>";
 															typing("#popover7", text, function() {
 															//	$("#recGreaterThanlId").effect('highlight',{color:'#da5805'}, 1500);
 																buttonAppendFunction("#popover7", function() {
@@ -175,7 +181,7 @@ function introGuide() {
 			$("#unitSecondLineText8").popover('hide');
 			$(".introjs-helperLayer").one('transitionend', function() {
 				TweenMax.to($("#explanationDiv"), 1, {opacity: 1, onComplete: function() {
-					popoverLeftSideAppendFunction("#caseList1", 1);
+					popoverAppendFunction("#caseList1", 1);
 					/*var text = "<ul><li id='text1'>The <span class='color-highlight'>best case</span> time complexity of "+
 					"<span class='ct-code-b-yellow'>binary search</span> is <span class='ct-code-b-yellow'>T(1)</span>.</li></ul>";
 					typing(".popover-content", text, function() {
@@ -276,38 +282,62 @@ function fadeToAndTransferAction(selector1, selector2, selector3, callBackFuncti
 
 
 function secondStep() {
-	$("#line5").popover('hide');
-	TweenMax.to($("#timeCtPre1"), 1, {opacity: 1, onComplete:function() {
-		popoverAppendFunction("#line9", 9);
-		var text = "<ul><li>If the <span class='color-highlight'>key</span> element is less than <span class='color-highlight'>middle</span> "+
+//	$("#line5").popover('hide');
+//	TweenMax.to($("#timeCtPre1"), 1, {opacity: 1, onComplete:function() {
+		popoverAppendFunction("#line3", 3);
+		var text = "Let <span class='ct-code-b-yellow'>T(n)</span> be the number of comparisions of <span class='color-highlight'>merge sort</span>.";
+		
+		/*var text = "<ul><li>If the <span class='color-highlight'>key</span> element is less than <span class='color-highlight'>middle</span> "+
 		"element then search the <span class='color-highlight'>key</span> element in the <span class='ct-code-b-yellow'>first half</span>.</li> "+
-		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";
-		typing("#popover9", text, function() {
-			$("#lessThanid").effect('highlight',{color:'#da5805'}, 1500);
-			buttonAppendFunction("#popover9", function() {
+		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";*/
+		typing("#popover3", text, function() {
+		//	$("#lessThanid").effect('highlight',{color:'#da5805'}, 1500);
+			buttonAppendFunction("#popover3", function() {
 				thirdStep();
 			});
 		});
-	}});
+//	}});
 }
 
 function thirdStep() {
-	$("#line9").popover('hide');
-	TweenMax.to($("#timeCtPre2"), 1, {opacity: 1, onComplete:function() {
-		popoverAppendFunction("#line10", 10);
-		var text = "<ul><li>If the <span class='color-highlight'>key</span> element is greater than <span class='color-highlight'>middle</span> "+
+	$("#line3").popover('hide');
+//	TweenMax.to($("#timeCtPre2"), 1, {opacity: 1, onComplete:function() {
+		popoverAppendFunction("#line13", 13);
+		var text = "<span class='ct-code-b-yellow'>T(n/2)</span> time is required for the first merge sort call."
+		/*var text = "<ul><li>If the <span class='color-highlight'>key</span> element is greater than <span class='color-highlight'>middle</span> "+
 		"element then search the <span class='color-highlight'>key</span> element in the <span class='ct-code-b-yellow'>second half</span>.</li> "+
-		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";
-		typing("#popover10", text, function() {
-			$("#greaterThanid").effect('highlight',{color:'#da5805'}, 1500);
-			buttonAppendFunction("#popover10", function() {
-				$("#line10").popover('hide');
-				TweenMax.to($("#timeCtPre3"), 1, {opacity: 1, onComplete:function() {
-					introjs.nextStep();
-				}});
+		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";*/
+		typing("#popover13", text, function() {
+		//	$("#greaterThanid").effect('highlight',{color:'#da5805'}, 1500);
+			buttonAppendFunction("#popover13", function() {
+				$("#line13").popover('hide');
+			//	TweenMax.to($("#timeCtPre3"), 1, {opacity: 1, onComplete:function() {
+				fourthStep();	
+			//	}});
 			});
 		});
-	}});
+//	}});
+}
+
+function fourthStep() {
+	$("#line13").popover('hide');
+//	TweenMax.to($("#timeCtPre2"), 1, {opacity: 1, onComplete:function() {
+		popoverAppendFunction("#line18", 18);
+		var text = "<ul><li><span class='ct-code-b-yellow'>T(n/2)</span> comparision time required for the second merge sort call.</li>" +
+				"<li><span class='ct-code-b-yellow'>c(n)</span> time required for merge comparisions.</li></ul>";
+		/*var text = "<ul><li>If the <span class='color-highlight'>key</span> element is greater than <span class='color-highlight'>middle</span> "+
+		"element then search the <span class='color-highlight'>key</span> element in the <span class='ct-code-b-yellow'>second half</span>.</li> "+
+		"<li>In this type of cases the time complexity is <span class='ct-code-b-yellow'>T(n/2)</span>.</li></ul>";*/
+		typing("#popover18", text, function() {
+		//	$("#greaterThanid").effect('highlight',{color:'#da5805'}, 1500);
+			buttonAppendFunction("#popover18", function() {
+				$("#line18").popover('hide');
+			//	TweenMax.to($("#timeCtPre3"), 1, {opacity: 1, onComplete:function() {
+				introjs.nextStep();
+			//	}});
+			});
+		});
+//	}});
 }
 
 function calculationActionFunction() {
@@ -338,7 +368,7 @@ function line3CalculationAnimation() {
 			$("#line3Span").effect('highlight',{color:'#da5805'}, 1500, function() {
 				buttonAppendFunction("#popover3", function() {
 					$("#Line3FirstLi").after("<li id='Line3SecondLi'>Consider <span class='ct-code-b-yellow'>T(n)</span> value<br>"+
-						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>T(n) = 2*T(n/2) + c</span></li>");
+						"<span class='ct-code-b-yellow opacity00' id='Line3SecondLiSpan'>T(n) = 2 * T(n/2) + c(n)</span></li>");
 					$("#divCalcLine1").effect( "highlight", {color:"#FFD700"}, 2000);
 					transferEffectFunction("#divCalcLine1", "#Line3SecondLiSpan", function() {
 						buttonAppendFunction("#popover3", function() {
@@ -347,7 +377,7 @@ function line3CalculationAnimation() {
 							"<span class='ct-code-b-yellow opacity00' id='Line3ThirdLiSpan'>T(<span id='numericalId3' class='display'>n</span>) = "+
 							"<span id='value3Main' class='display'>"+
 							"2 * <span id='value3ParentSpan' class='display'>T(<span id='value3SecondParent' class='display'>"+
-								"<span id='value3' class='display'>n</span>/2</span>)</span> + c</span></span></li>");
+								"<span id='value3' class='display'>n</span>/2</span>)</span> + c(n)</span></span></li>");
 							tweenMaxAnimation("#Line3SecondLiSpan", "#Line3ThirdLiSpan", function() {
 								$("#numericalId3").effect( "highlight", {color:"#FFD700"}, 2000);
 								flipEffect("#numericalId3", "n/2", function() {
@@ -388,21 +418,21 @@ function line4CalculationAnimation() {
 			$("#line4Span").effect('highlight',{color:'#da5805'}, 1500, function() {
 				buttonAppendFunction("#popover4", function() {
 					$("#Line4FirstLi").after("<li id='Line4SecondLi'>Consider <span class='ct-code-b-yellow'>T(n)</span> value<br>"+
-						"<span class='ct-code-b-yellow opacity00' id='Line4SecondLiSpan'>T(n) = T(n/2) + c</span></li>");
+						"<span class='ct-code-b-yellow opacity00' id='Line4SecondLiSpan'>T(n) = 2 * T(n/2) + c(n)</span></li>");
 					$("#divCalcLine1").effect( "highlight", {color:"#FFD700"}, 2000);
 					transferEffectFunction("#divCalcLine1", "#Line4SecondLiSpan", function() {
 						buttonAppendFunction("#popover4", function() {
 							$("#Line4SecondLi").after("<li id='Line4ThirdLi'>Substitute <span class='ct-code-b-yellow'>n</span> with "+
-							"<span class='ct-code-b-yellow'>n/2</span>.<br>"+
+							"<span class='ct-code-b-yellow'>n/4</span>.<br>"+
 							"<span class='ct-code-b-yellow opacity00' id='Line4ThirdLiSpan'>T(<span id='numericalId4' class='display'>n</span>) = "+
 							"<span id='value4Main' class='display'>"+
-							"<span id='value4ParentSpan' class='display'>T(<span id='value4SecondParent' class='display'>"+
-								"<span id='value4' class='display'>n</span>/4</span>)</span> + c</span></span></li>");
+							"2 * <span id='value4ParentSpan' class='display'>T(<span id='value4SecondParent' class='display'>"+
+								"<span id='value4' class='display'>n</span>/2</span>)</span> + c(n)</span></span></li>");
 							tweenMaxAnimation("#Line4SecondLiSpan", "#Line4ThirdLiSpan", function() {
 								$("#numericalId4").effect( "highlight", {color:"#FFD700"}, 2000);
-								flipEffect("#numericalId4", "n/2", function() {
+								flipEffect("#numericalId4", "n/4", function() {
 									$("#value2").effect( "highlight", {color:"#FFD700"}, 2000);
-									flipEffect("#value4", "(n/2)", function() {
+									flipEffect("#value4", "(n/4)", function() {
 										buttonAppendFunction("#popover4", function() {
 											$("#value4SecondParent").effect( "highlight", {color:"#FFD700"}, 2000);
 											flipEffect("#value4SecondParent", "n/8", function() {
@@ -437,25 +467,29 @@ function line5CalculationAnimation() {
 		"<span class='ct-code-b-yellow' id='twoPowerId'>2<sup>3</sup></span>.</li></ul>";
 		typing("#popover5", text, function() {
 			buttonAppendFunction("#popover5", function() {
-				$("#line5Span").effect( "highlight", {color:"#FFD700"}, 2000);
-				flipEffect("#line5Span", "", function() {
-					$("#line5Span").append("2<sup>3</sup>");				
-					buttonAppendFunction("#popover5", function() {
-						$("#Line5FirstLi").after("<li id='Line5SecondLi'><span class='ct-code-b-yellow'>c+c+c</span> can be written as<br>"+
-						"<span class='ct-code-b-yellow' id='Line4SecondLiSpan'>c*c*c</span> i.e. <span  class='ct-code-b-yellow'>3*c</span>.</li>");
-						typing("#Line5SecondLi", $("#Line5SecondLi").html(), function() {
-							buttonAppendFunction("#popover5", function() {
-								$("#line5SpanParent").effect( "highlight", {color:"#FFD700"}, 2000);
-								flipEffect("#line5SpanParent", "(3 * c)", function() {
-									buttonAppendFunction("#popover5", function() {
-										$("#divCalcLine5").popover("hide");
-										line6CalculationAnimation();
+				$("#line5Span1").effect( "highlight", {color:"#FFD700"}, 2000);
+				flipEffect("#line5Span1", "", function() {
+					$("#line5Span1").append("2<sup>3</sup>");
+					$("#line5Span").effect( "highlight", {color:"#FFD700"}, 2000);
+					flipEffect("#line5Span", "", function() {
+						$("#line5Span").append("2<sup>3</sup>");				
+						buttonAppendFunction("#popover5", function() {
+							$("#Line5FirstLi").after("<li id='Line5SecondLi'><span class='ct-code-b-yellow'>c(n)+c(n)+c(n)</span> can be written as<br>"+
+							"<span class='ct-code-b-yellow' id='Line4SecondLiSpan'>c(n)*c(n)*c(n)</span> i.e. <span  class='ct-code-b-yellow'>3*c(n)</span>.</li>");
+							typing("#Line5SecondLi", $("#Line5SecondLi").html(), function() {
+								buttonAppendFunction("#popover5", function() {
+									$("#line5SpanParent").effect( "highlight", {color:"#FFD700"}, 2000);
+									flipEffect("#line5SpanParent", "3 * c(n)", function() {
+										buttonAppendFunction("#popover5", function() {
+											$("#divCalcLine5").popover("hide");
+											line6CalculationAnimation();
+										});
 									});
 								});
 							});
 						});
 					});
-				});
+				});	
 			});
 		});
 	});
@@ -484,13 +518,17 @@ function line6CalculationAnimation() {
 								typing("#popover10", text, function() {
 									buttonAppendFunction("#popover10", function() {
 										$("#calcLine1Span").effect( "highlight", {color:"#FFD700"}, 1000);
-										transferEffectFunction("#calcLine1Span", "#kPowerId", function() {
-											flipEffect("#kPowerId", "n", function() {
-												buttonAppendFunction("#popover10", function() {
-													$("#divCalcLine10").popover("hide");
-													tweenMaxAnimation("#divCalcLine10", "#divCalcLine11", function() {
-														flipEffect("#nDivisionId", "1", function() {
-															line11CalculationAnimation();
+										transferEffectFunction("#calcLine1Span", "#kPowerId1", function() {
+											flipEffect("#kPowerId1", "n", function() {
+												transferEffectFunction("#calcLine1Span", "#kPowerId", function() {
+													flipEffect("#kPowerId", "n", function() {
+														buttonAppendFunction("#popover10", function() {
+															$("#divCalcLine10").popover("hide");
+															tweenMaxAnimation("#divCalcLine10", "#divCalcLine11", function() {
+																flipEffect("#nDivisionId", "1", function() {
+																	line11CalculationAnimation();
+																});
+															});
 														});
 													});
 												});
@@ -533,12 +571,14 @@ function line11CalculationAnimation() {
 											$("#finalIdK").append("log<sub>2</sub>n");
 											buttonAppendFunction("#popover11", function() {
 												$("#divCalcLine11").popover("hide");
-												TweenMax.to($("#divCalcLine13"), 1, {opacity : 1, onComplete: function() {
-													$("#finalIdK").effect( "highlight", {color:"#FFD700"}, 2000);
-													transferEffectFunction("#finalIdK", "#resultTimeCt", function() {
-														setTimeoutFunction();										
-													});
-												}});
+												transferEffectFunction("#divCalcLine12", "#divCalcLine13", function() {
+													TweenMax.to($("#divCalcLine14"), 1, {opacity : 1, onComplete: function() {
+														$("#finalIdK2").effect( "highlight", {color:"#FFD700"}, 2000);
+														transferEffectFunction("#finalIdK2", "#resultTimeCt", function() {
+															setTimeoutFunction();										
+														});
+													}});
+												});
 											});
 										});
 									});

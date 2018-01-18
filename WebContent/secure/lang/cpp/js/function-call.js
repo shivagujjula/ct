@@ -54,7 +54,8 @@ function introGuide() {
 				},{
 			 		element : "#funName",
 					intro : "",
-					position : "right"
+					position : "right",
+					tooltipClass : "hide"
 				},{
 			 		element : "#parameters",
 					intro : "",
@@ -172,6 +173,7 @@ function introGuide() {
 		break;
 		case "funName":
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$('.introjs-tooltip').removeClass('hide');
 				var text = "Name of the function.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-nextbutton").show();

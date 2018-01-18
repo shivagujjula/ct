@@ -558,14 +558,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 			case 'count2' :
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$("#countCupValue").removeClass('z-index10000000');
-					typing('.introjs-tooltiptext',"The <y>getCount()</y> is called by a <y>s1</y>.", 10, "", function() {
+					typing('.introjs-tooltiptext',"The <y>getCount()</y> is called by <y>s1</y>.", 10, "", function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
 				break;
 			case 'count3' :
 				$('.introjs-helperLayer').one("transitionend", function() {
-					typing('.introjs-tooltiptext',"The <y>getCount()</y> is called by a <y>s1</y>.", 10, "", function() {
+					typing('.introjs-tooltiptext',"The <y>getCount()</y> is called by <y>s1</y>.", 10, "", function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
@@ -582,7 +582,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$(".introjs-tooltip").removeClass('hide');
 					var text = 	"Now read the <span class='ct-code-b-yellow'>maths</span> and " +
-								"<span class='ct-code-b-yellow'>physics</span> values of " +
+								"<span class='ct-code-b-yellow'>physics</span> marks of " +
 								"<span class='ct-code-b-yellow'>s1</span> and <span class='ct-code-b-yellow'>s2</span>.";
 					typing(".introjs-tooltiptext", text,10, "", function() {
 						$("#getData").fadeTo(300 , 1, function() {
@@ -718,8 +718,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				}
 			break;
 			case "main" :
-				intro.refresh();
-			
+			intro.refresh();
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 				case "execution" :
@@ -855,6 +854,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 								});*/
 							//});
 							} else {
+								$("#main").css('opacity', '0');
 								count = 0;
 								$("#int").removeClass("z-index1000000");
 								$("#countCupValue").addClass('opacity00');

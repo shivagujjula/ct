@@ -162,7 +162,8 @@ var readPrintStringUsingGetsPutsReady = function() {
 		}, {
 			element : '#method',
 			intro : '',
-			animateStep : 'public2'
+			animateStep : 'public2',
+			tooltipClass: 'hide'
 		}, {
 			element : '#cout',
 			intro : '',
@@ -288,23 +289,22 @@ var readPrintStringUsingGetsPutsReady = function() {
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 			case "output" :
-				$("#outputBody").empty();
-			break;
-			case "output1" :
-				//$("#inputNumber1").addClass("opacity00");
+				$("#outputBody").empty().addClass('opacity00');
 			break;
 			}
-			break;
+		break;
 		case "enterVal" :
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 			case "value" :
 				$('.user-btn').remove();
+				$("#borderBox").removeClass("z-index1000000");
 				$('#inputChar').text("");
 				$('.arrayValue').text("");
 				$("#inputChar").removeAttr("placeholder");
 			break;
 			case "value1":
+				$("#borderBox1").removeClass("z-index1000000");
 				$('#inputChar1').text("");
 				$("#inputChar1").removeAttr("placeholder");
 				$('.arrayValue1').text("");
@@ -363,9 +363,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 			/*case "memory" :
 				$("#countBox").addClass("opacity00");
 			break;*/
-			case "increment1":
+			/*case "increment1":
 				count = 1;
-			break;
+			break;*/
 			case "increment3":
 				count = 2;
 			break;
@@ -387,11 +387,13 @@ var readPrintStringUsingGetsPutsReady = function() {
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 			case "enterValue" :
+				$("#borderBox").removeClass("z-index1000000");
 				$('#inputChar').text("");
 				$('.arrayValue').text("");
 				$("#inputChar").removeAttr("placeholder");
 			break;
 			case 'enterValue1':
+				$("#borderBox1").removeClass("z-index1000000");
 				$("#inputChar1").text("");
 				$("#inputChar1").removeAttr("placeholder");
 				$('.arrayValue1').text("");
@@ -635,7 +637,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			case "raj1":
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one('transitionend',function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -757,30 +758,45 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case "increment1":
 				$('.introjs-helperLayer').one('transitionend',function() {
-					$('#animationBox').removeClass('opacity00');
-					$("#count1").addClass("z-index1000000");
-					transferEffect("#count1","#countCupValue", function() {
-						$("#countCupValue").text(count);
-						$("#count1").removeClass("z-index1000000");
-						$(".introjs-tooltip").removeClass("hide");
-						typing('.introjs-tooltiptext',"The <y>count</y> value is incremented to <y>1</y>.", 10, "", function() {
-							$('.introjs-nextbutton, .introjs-prevbutton').show();
+					if(intro._direction == 'forward') {
+						$('#animationBox').removeClass('opacity00');
+						$("#count1").addClass("z-index1000000");
+						transferEffect("#count1","#countCupValue", function() {
+							$("#countCupValue").text('1');
+							$("#count1").removeClass("z-index1000000");
+							setTimeout(function() {
+								intro.nextStep();
+							},1000);
 						});
-					});
+				
+					} else {
+						count = 1;
+						$("#count1").removeClass("z-index1000000");
+						setTimeout(function() {
+							intro.previousStep();
+						},1000);
+					}
 				});
 				break;
 			case "increment3":
 				$('.introjs-helperLayer').one('transitionend',function() {
-					$('#animationBox').removeClass('opacity00');
-					$("#count1").addClass("z-index1000000");
-					transferEffect("#count1","#countCupValue", function() {
-						$("#countCupValue").text(count);
-						$("#count1").removeClass("z-index1000000")
-						$(".introjs-tooltip").removeClass("hide");
-						typing('.introjs-tooltiptext',"The <y>count</y> value is incremented to <y>2</y>.", 10, "", function() {
-							$('.introjs-nextbutton, .introjs-prevbutton').show();
+					if(intro._direction == 'forward') {
+						$('#animationBox').removeClass('opacity00');
+						$("#count1").addClass("z-index1000000");
+						transferEffect("#count1","#countCupValue", function() {
+							$("#countCupValue").text('2');
+							setTimeout(function() {
+								intro.nextStep();
+							},1000);
 						});
-					});
+					
+					} else {
+						count = 2;
+						$("#count1").removeClass("z-index1000000");
+						setTimeout(function() {
+							intro.previousStep();
+						},1000);
+					}
 				});
 				break;
 			
@@ -797,18 +813,22 @@ var readPrintStringUsingGetsPutsReady = function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
 				});
-				break;
+			break;
 			case "public2":
 				$('.introjs-helperLayer').one('transitionend',function() {
-					typing('.introjs-tooltiptext',"The <y>getData()</y> is used to read the " +
-							"data members <y>maths</y> and <y>physics</y>.", 10, "", function() {
-						$("#inputNumber1").remove();
-						$('.introjs-nextbutton, .introjs-prevbutton').show();
-					});
+					if (intro._direction == "forward") {
+						setTimeout(function() {
+							intro.nextStep();
+						},500)
+					} else {
+						setTimeout(function() {
+							intro.previousStep();
+						},500)
+					}
+					
 				});
-				break;
+			break;
 			case "public3":
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one('transitionend',function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -890,7 +910,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			case "default3":
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one('transitionend',function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -918,14 +937,12 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			case "output1" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
 							intro.nextStep();
 						},500)
 					} else {
-						//$("#inputNumber1").remove();
 						setTimeout(function() {
 							intro.previousStep();
 						},500)
@@ -933,6 +950,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			}
+			break;
 		case 'cout1' :
 			intro.refresh();
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
@@ -984,7 +1002,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			case "outptt1" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one('transitionend', function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -1036,11 +1053,11 @@ var readPrintStringUsingGetsPutsReady = function() {
 						//$('.introjs-nextbutton, .introjs-prevbutton').show();
 						checking('#inputChar');
 						charAtEnd("inputChar");
+						
 					});
 			});
 			break;
 			case "enterData1" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$('#outputBox').removeClass('opacity00');
 					$("#outputBody").append(' <span id ="inputNumber1" class="opacity00">Enter two subject marks  : <span id="outputPrintfLine1"><div  id="inputChar1" contenteditable="true" maxlength="2" class="position input-char"></div></span><br></span>');
@@ -1066,10 +1083,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 					$('#inputChar1').attr({contenteditable: 'true', placeholder: 'Enter 2 values'}).focus();
 					$("#borderBox1").addClass("z-index1000000");
 					$('#inputChar1').removeAttr('disabled').focus();
-					checking('#inputChar1')
-					charAtEnd("inputChar1");
 					$(".introjs-tooltip").removeClass("hide");
 					typing(".introjs-tooltiptext", "Please enter <y>two</y> values with space.", 10, "",function() {
+						checking('#inputChar1')
+						charAtEnd("inputChar1");
 						$('.introjs-prevbutton').show();
 					});
 			});
@@ -1153,6 +1170,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						}, 1000);
 					});
 				} else {
+					$('#countBox').removeClass('z-index10000000');
 					$('#voidGetPut1').css('opacity', '0');
 					$('#data1').css('opacity', '0');
 					$('#put1').css('opacity', '0');
@@ -1184,21 +1202,23 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			case 'dataEntry2' :
-				$('#borderBox1').addClass('z-index1000000');
 				if (intro._direction == "forward") {
+					$('#borderBox1').addClass('z-index1000000');
 					$("#box2").css("zIndex","1000000").effect( "highlight",{color: 'red'}, 200);
 					transferEffect("#box2","#value14", function() {
 						$("#value14").removeClass("opacity00");
 						$("#box3").css("zIndex","1000000").effect( "highlight",{color: '#ffff33'}, 200);
 						transferEffect("#box3","#value15", function() {
 							$("#value15").removeClass("opacity00");
+							$('#borderBox1').removeClass('z-index1000000');
 							setTimeout(function() {
 								intro.nextStep();
 							},500);
 						});
 					});
 				} else {
-					$('#count3').css('opacity', '0');
+					$('#borderBox1').removeClass('z-index1000000');
+					$('#count3').addClass('opacity00');
 					$("#value14").addClass("opacity00");
 					$('#value15').addClass("opacity00");
 					setTimeout(function() {
@@ -1239,6 +1259,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						},500)
 					});
 				} else {
+					$('#countBox').removeClass('z-index10000000');
 					$("#value16").addClass("opacity00");
 					setTimeout(function() {
 						intro.previousStep();
@@ -1260,7 +1281,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 				break;
 			case "value1" :
-				intro._introItems[intro._currentStep]["tooltipClass"] = "hide";
 				$('.introjs-helperLayer').one("transitionend", function() {
 					if (intro._direction == "forward") {
 						setTimeout(function() {
@@ -1377,6 +1397,7 @@ TweenMax.to('#infoText', 1 ,{
 	});
 }
 function checking(selector) {
+	$('.introjs-prevbutton').hide();
 	$('.introjs-nextbutton').keydown(function(e) {
 		if (e.which == 13) {
 			e.preventDefault();
@@ -1428,6 +1449,7 @@ function checking(selector) {
 			}
 		});
 		if (count == 2) {
+			$('.introjs-prevbutton').hide();
 			if (selector == '#inputChar') {
 				$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="storeVal1()">Next&rarr;</a>');
 			} else {
@@ -1461,6 +1483,7 @@ function storeVal1() {
 		TweenMax.to($('.arrayValue').eq(idx), 1, {top: 0, left : 0, onComplete:function() {
 			$(".z-index1000000").removeClass("z-index1000000");
 			$('.scanfValue').removeClass('output-value-circle circle-css');
+			$("#borderBox").removeClass("z-index1000000");
 			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}});
 	});
@@ -1500,6 +1523,7 @@ function storeVal2() {
 		TweenMax.to($('.arrayValue1').eq(idx), 1, {top: 0, left : 0, onComplete:function() {
 			$(".z-index1000000").removeClass("z-index1000000");
 			$('.scanfValue1').removeClass('output-value-circle circle-css');
+			$("#borderBox1").removeClass("z-index1000000");
 			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		}});
 	});
