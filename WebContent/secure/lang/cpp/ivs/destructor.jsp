@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +15,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/destruct.min.js"></script>
-
+<script src="../js-min/destruct.min.js"></script> 
+<!-- <script src="/secure/lang/cpp/js/destructor.js"></script> -->
 <title>destructor</title>
 <style type="text/css">
 
@@ -101,7 +98,10 @@
 .display-inline-block {
 	display: inline-block;
 }
-
+.user-btn1 {
+	background-color: green;
+	margin: 0!important;
+}
 .user-btn {
 	background-color: green;
 	margin: 0!important;
@@ -169,9 +169,9 @@ $(document).ready(function() {
 					<li id="li1" class="opacity00"><a href="https://en.wikipedia.org/wiki/Destructor_(computer_programming)" target="_blank">Destructor</a> functions are the inverse of constructor functions. They are called when objects are destroyed (deallocated).</li>
 					<li id="li2" class="opacity00">Destructors have same name as the class preceded by a tilde<g>(~)</g>.</li>
 					<li id="li3" class="opacity00">If we do not write our own destructor in class, compiler creates a default destructor for us.</li>
-					<li id="li4" class="opacity00">The Destructor of class is automatically called when object goes out of scope.</li>
-					<li id="li5" class="opacity00">There can only one destructor in a class with classname preceded by (~), no parameters and no return type. 
-						&emsp; <span class='user-btn introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span><br>
+					<li id="li4" class="opacity00">The destructor of a class is automatically called when object goes out of scope.</li>
+					<li id="li5" class="opacity00">There can only one destructor in a class with classname preceded by <g>(~)</g>, no parameters and no return type. 
+						&emsp; <span class='user-btn1 introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span><br>
 					</li>
 				</ul>
 			</div>

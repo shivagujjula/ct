@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +17,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/sdmic.min.js"></script>
+<!-- <script src="../js/static-data-members-in-constructors.js"></script>  -->
+ <script src="../js-min/sdmic.min.js"></script> 
 
 <style type="text/css">
 .margin-top-20 {
@@ -118,7 +116,10 @@ pre {
 .relative {
 	position: relative;
 }
-
+.user-btn1 {
+	background-color: green;
+	margin: 0 !important;
+}
 .user-btn {
 	background-color: green;
 	margin: 0 !important;
@@ -206,10 +207,10 @@ $(document).ready(function() {
 		<div id="topDiv">
 			<div id="typingDiv1">
 				<ul>
-					<li id="li1" class="opacity00">A variable which is declared with the static keyword is called as <a href="https://en.wikipedia.org/wiki/Static_variable" target="_blank">static data member</a>.</li>
+					<li id="li1" class="opacity00">A variable which is declared with the keyword <b class='green'>static</b> is called as <a href="https://en.wikipedia.org/wiki/Static_variable" target="_blank">static data member</a>.</li>
 				</ul>
 				<div class="col-xs-12">
-				<span id="nextBtn" class='user-btn introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
+				<span id="nextBtn" class='user-btn1 introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
 			</div>
 			</div>
 		</div>

@@ -1,10 +1,10 @@
-var typingSpeed = 10;
+var typingSpeed = 1;
 var flag1 = false;
 var virtualDestructorFunction = function() {
 	introJsFunction();
 	$("line").hide();
 	$(".introjs-prevbutton").hide();
-	var text = "Here we will learn about the <y>virtual</y> destructor.";
+	var text = "Here we will learn about the <y>virtual destructor</y>.";
 	typing($(".introjs-tooltiptext"), text, function() {
 		$(".introjs-nextbutton").show();
 	});
@@ -25,7 +25,8 @@ function introJsFunction() {
 		},{
 			element : "#pre",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass : "hide"
 		}]
 
 	})
@@ -37,7 +38,10 @@ function introJsFunction() {
 		var animateStep = introjs._introItems[introjs._currentStep].action;
 		switch (elementId) {
 			case "pre":
-				
+				$("#baseClass, #deriveClass, #main").addClass("opacity00");
+				if (introjs._direction == "backward") {
+					introjs._introItems.splice(2)
+				}
 			break;
 			
 			case "baseShow":
@@ -55,7 +59,10 @@ function introJsFunction() {
 			break;	
 			
 			case "deriveDes":
-				
+				introjs._introItems.splice(19);
+				if (introjs._direction == "backward") {
+					introjs._introItems.splice(19);
+				}
 			break;
 			
 			case "baseDes":
@@ -103,9 +110,10 @@ function introJsFunction() {
 				flag1 = false;
 			break;	
 			
-			case "invokeFirst":
-			case "invokeSecond":
 			case "baseCon":
+				$("#outputBox").addClass("opacity00")
+			case "invokeSecond":
+			case "invokeFirst":
 			case "deriveCon":
 				
 			break;	
@@ -117,6 +125,7 @@ function introJsFunction() {
 			case "animate":
 				$("#" + animateStep).addClass("opacity00");
 				$("line").hide();
+				
 			break;
 			
 			case "outputBox":
@@ -136,7 +145,7 @@ function introJsFunction() {
 		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
-			if (introjs._currentStep != 0) {
+			if (introjs._currentStep != 0 && introjs._currentStep != 1) {
 				$('.introjs-prevbutton').show();
 			}
 
@@ -155,9 +164,8 @@ function introJsFunction() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#pre").removeClass("opacity00");
 					var text = "Let us consider a sample program to understand the <y>virtual destructor</y> concept.";
-					
+					$('.introjs-tooltip').removeClass('hide');
 					typing($(".introjs-tooltiptext"), text, function() {
-						
 						introjs.insertOption(introjs._currentStep + 1, insertionIntro("baseClass", "", "right"));
 						introjs.insertOption(introjs._currentStep + 2, insertionIntro("deriveClass", "", "right"));
 						introjs.insertOption(introjs._currentStep + 3, insertionIntro("main", "", "right"));
@@ -182,8 +190,7 @@ function introJsFunction() {
 						introjs.insertOption(introjs._currentStep + 17,insertionIntro("deriveDes", "", "top", "hide"));
 						//introjs.insertOption(introjs._currentStep + 19,insertionIntro("animate", "", "top", "hide", "desderive"));
 						//introjs.insertOption(introjs._currentStep + 18,insertionIntro("baseShow", "", "top", "","print"));//deriveDes
-						$(".introjs-nextbutton, .introjs-prevbutton").show();
-						
+						$(".introjs-nextbutton").show();
 						
 					});
 					
@@ -219,13 +226,11 @@ function introJsFunction() {
 			
 			case "deriveDes":
 				$(".introjs-helperLayer").one("transitionend", function() {
-					
 					introjs.insertOption(introjs._currentStep + 1,insertionIntro("outputBox", "", "top", "hide"));
 					introjs.insertOption(introjs._currentStep + 2,insertionIntro("baseShow", "", "top", "hide","print"));
 					introjs.insertOption(introjs._currentStep + 3,insertionIntro("baseDes", "", "top", "hide"));
 					introjs.insertOption(introjs._currentStep + 4,insertionIntro("outputBox", "", "top", "hide"));
 					introjs.insertOption(introjs._currentStep + 5,insertionIntro("restart", "click to restart.", "right"));
-					
 					setTimeout(function() {
 						introjs.nextStep();
 					}, 900);
@@ -254,7 +259,7 @@ function introJsFunction() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					
 					var text = "<ul><li>The <y>delete</y> operator is used to remove the memory allocated by a "
-								+"<y>new</y> operator.</li><li>When ever an object is no longer used, the destructor"
+								+"<y>new</y> operator.</li><li>Whenever an object is no longer used, the destructor"
 								+" will be called automatically.</li><li>If <y>Base</y> class destructor is <y>virtual</y>"
 								+" then destructor of derived class will be executed when the pointer contains address of "
 								+"<y>Derived</y> object.</li></ul>";
@@ -374,6 +379,7 @@ function introJsFunction() {
 							stepNext();
 						}
 					} else {
+						$("#p, #addr2").addClass("opacity00");
 						stepNext();
 					}
 				});
@@ -473,7 +479,6 @@ function abValues() {
 
 
 function flipEffectWithTweenMax(selector, val, callBackFunction) {
-	console.log("function Entered");
 	$(selector).effect( "highlight",{color: 'green'}, 500, function() {
 		TweenMax.to($(selector), 0.3, {rotationX : -90, onComplete:function() {
 			$(selector).text(val);

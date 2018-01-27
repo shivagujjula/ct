@@ -1,4 +1,3 @@
-var totalCount;
 var id = 1;
 var arr = [];
 var count = 0;

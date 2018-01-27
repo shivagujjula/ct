@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +87,7 @@ pre {
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 	font-size: 13px;
-	height: 287px;
+	height: 280px;
 	padding: 10px;
 	white-space: inherit;
 }
@@ -111,7 +109,10 @@ pre {
 	background-color: green;
 	margin: 0!important;
 }
-
+.user-btn1 {
+	background-color: green;
+	margin: 0!important;
+}
 .z-index {
 	position: relative;
 	z-index: 10000001 !important;
@@ -198,7 +199,7 @@ $(document).ready(function() {
 					</div>
 				</ul>
 				<div class="col-xs-12">
-				<span id="nextBtn" class='user-btn introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
+				<span id="nextBtn" class='user-btn1 introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
 			</div>
 			</div>
 		</div>

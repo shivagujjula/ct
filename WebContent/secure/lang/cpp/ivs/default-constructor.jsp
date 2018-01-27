@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="width=device-width, initial-scale=1 charset=UTF-8">
 <title>default-constructor</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/jquery-ui.css">
@@ -18,8 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/dfc.min.js"></script>
+<script src="../js-min/dfc.min.js"></script> 
 
 <style type="text/css">
 
@@ -182,7 +179,7 @@ $(document).ready(function() {
 			<div id="typingDiv1">
 				<ul>
 					<li id="li1" class="opacity00">
-						A constructor is a special member function which has been only when an  of that class is.
+						A constructor is a special member function to initialize the data members when an object of that class is being created.
 					</li>
 					<li id="li2" class="opacity00">Types of constructors are: 
 						<ul>
@@ -191,7 +188,7 @@ $(document).ready(function() {
 							<li>Copy constructor</li>
 						</ul>
 					</li>
-					<li id="li3" class="opacity00">The format of the default constructor is:<br>
+					<li id="li3" class="opacity00">The format of the <b>default constructor</b> is:<br>
 						 <div class="col-xs-4"><pre class="creampretab1">class <blue>class-name</blue> {<br>  <g>public</g>:<br> &nbsp;&nbsp;&nbsp;class-name() {<br>      -----<br>      -----<br> &nbsp;}<br>};</pre></div>
 					</li>
 					<div class="col-xs-12">

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script type="text/javascript" src="../js-min/udtb.min.js"></script>
+<script type="text/javascript" src="../js-min/udtb.min.js"></script> 
 
 <style type="text/css">
 
@@ -61,6 +58,7 @@
     background-color: #fcf8e3;
     font-family: monospace;
     font-size: 12px;
+    width : 280px;
 } 
     
 .box-border {
@@ -127,7 +125,10 @@
 	background-color: green;
 	margin: 0 !important;
 }
-
+.user-btn1 {
+	background-color: green;
+	margin: 0 !important;
+}
 .z-index {
 	position: relative;
 	z-index: 10000001 !important;
@@ -208,13 +209,13 @@ $(document).ready(function() {
 					 the conversion function should be defined in a class in the form of <b class='monospace lite-blue'>operator function</b>.
 				</li>
 				<li id="li2" class="opacity00">
-					 The format of operator function is:<br>
+					 The format of <b class='monospace lite-blue'>operator function</b> is:<br>
 					 <div class="col-xs-12"><pre class="col-xs-3 creampretab1">operator basic_datatype() {<br>	------<br>	------<br>}</pre><br></div>
 					 
 				</li>
 				<li id="li3" class="opacity00" style="margin-top: -1px;">
 					This operator function should return the basic data type value.
-					&emsp; <span class='user-btn introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span>
+					&emsp; <span class='user-btn1 introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span>
 				</li>
 			</ul>
 		</div>
@@ -231,7 +232,7 @@ $(document).ready(function() {
 			length = 0;
 		}</span>
 		<span id="getdataFun" class="hide"><red>void</red> getdata() {
-			<span id="cout2">cout << <red>"Enter length in centemeters : "</red>;</span>
+			<span id="cout2">cout << <red>"Enter length in centimeters : "</red>;</span>
 			<span id="cin">cin >> length;</span>
 		}</span>
 		<span id="operatorFloat" class="hide">operator float() {
@@ -240,12 +241,12 @@ $(document).ready(function() {
 			<span id="returnX" class="">return x;</span>
 		}</span>
 };</span>
-<red>void</red> main() {
+<red>int</red> main() {
 	<span id="constM" class="hide">Meter m;</span>
 	<span id="callMethod" class="hide">m.getdata();</span>
 	<span id="floatX1" class="hide">float x;</span>
 	<span id="xm" class="hide">x = m;</span></span>
-	<span id="cout1" class="hide">cout << <red>"length in centemeters : "</red> << x;</span>
+	<span id="cout1" class="hide">cout << <red>"length in centimeters : "</red> << x;</span>
 }
 </pre>
 		</div>
@@ -255,7 +256,7 @@ $(document).ready(function() {
 			<div class="text-center"><b>memory</b></div>
 				<div id="mPanel" class="opacity00">
 					<div class="panel panel-primary margin-bottom0">
-		    			<div class="panel-heading text-center padding0"><b id="m">M</b></div>
+		    			<div class="panel-heading text-center padding0"><b id="m">m</b></div>
 		    			<div class="panel-body text-center" style="padding: 5px;">
 		    				<div class="col-xs-offset-3 col-xs-6">
 								<div id="lengthPanel" class="">
@@ -280,7 +281,7 @@ $(document).ready(function() {
 				<span class="title">Output</span>
 			</div>
 			<div class="output-console-body" id="body">
-			<div id="outputText" class="opacity00 display-inline-block">Enter length in centemeters :&nbsp; </div><div class='display-inline-block input-val' contenteditable='true' maxlength='5' id='inputVal' class="padding5" spellcheck="false"></div>
+			<div id="outputText" class="opacity00 display-inline-block">Enter length in centimeters :&nbsp; </div><div class='display-inline-block input-val' contenteditable='true' maxlength='5' id='inputVal' class="padding5" spellcheck="false"></div>
 			</div>
 		</div>
 	</div>

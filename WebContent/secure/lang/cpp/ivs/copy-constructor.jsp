@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/cc.min.js"></script>
+<script src="../js-min/cc.min.js"></script> 
 
 <style type="text/css">
 
@@ -112,6 +109,11 @@ pre {
 	margin: 0!important;
 }
 
+.user-btn1 {
+	background-color: green;
+	margin: 0!important;
+}
+
 .z-index {
 	position: relative;
 	z-index: 10000001 !important;
@@ -186,13 +188,13 @@ $(document).ready(function() {
 			<div id="typingDiv1">
 				<ul>
 					<li id="li1" class="opacity00">A  copy constructor creates an object by initializing it with an object of the same class, which has been created previously.</li>
-					<li id="li2" class="opacity00">The copy constructor is used to − Initialize one object from another of the same type. Copy an object to pass it as an argument to a function.</li>
+					<li id="li2" class="opacity00">The copy constructor is used to  &#8210; Initialize one object from another of the same type. Copy an object to pass it as an argument to a function.</li>
 					<li id="li3" class="opacity00">The format of the <b><g>copy constructor</g></b> is:<br>
 						 <div class="col-xs-4"><pre class="creampretab1">class <blue>class-name</blue> {<br>  <g>public</g>:<br>&nbsp;&nbsp;&nbsp;&nbsp;class-name(argument) {<br>      -----<br>      -----<br>    }<br>};</pre></div>
 					</li>
 				</ul>
 				<div class="col-xs-12">
-				<span id="nextBtn" class='user-btn introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
+				<span id="nextBtn" class='user-btn1 introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
 			</div>
 			</div>
 		</div>
@@ -209,7 +211,7 @@ $(document).ready(function() {
 		<span id="xAndY">a = x;
 		b = y;</span>
 	}</span>
-	<span id="copyConst" class="hide">Sample(Sample &s2) {
+	<span id="copyConst" class="hide">Sample(Sample &s1) {
 		<span id="s1AB">a = <span id="s1A">s1.a</span>;			// <b>Copy Constructor</b>
 		b = <span id="s1B">s1.b</span>;</span>
 	}</span>

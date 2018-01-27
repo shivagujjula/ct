@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -16,9 +16,9 @@ var userDefinedToBasicReadyFun = function() {
 		introjs.refresh();
 		
 		if ($(".empty").length > 0) {
-			$(".introjs-nextbutton").hide();
+			$(".introjs-nextbutton, .introjs-prevbutton").hide();
 		} else {
-			$(".introjs-nextbutton").show();
+			$(".introjs-nextbutton, .introjs-prevbutton").show();
 		}
 		
 		if ($(this).text().indexOf(".") == -1) {
@@ -145,7 +145,7 @@ function introGuide() {
 		switch (elementId) {
 		case "topDiv":
 			$('.introjs-nextbutton').hide();
-			$('.user-btn').removeClass("hide");
+			$('.user-btn1').removeClass("hide");
 			$("#code").addClass("opacity00");
 			$("#li1").fadeTo(500, 1, function () {
 				$("#li2").fadeTo(500, 1, function () {
@@ -157,11 +157,11 @@ function introGuide() {
 		break;
 		case "code":
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Let us consider sample C++ program to convert<br> <y>user-defined</y> to <y>basic</y>.";
+				var text = "Let us consider sample C++ program to convert<br> <y>user-defined</y> to <y>basic</y> type.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -170,6 +170,7 @@ function introGuide() {
 		case "class":
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#constM").addClass("hide");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "This is a class <y>Meter</y> which consists a <b class='monospace'><y>float</y></b> field <b class='monospace'><y>length</y></b>.";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -193,7 +194,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Memory is created for object <y>m</y>, which consists of a integer variable <y>length</y>.";
+				var text = "Memory is created for object <y>m</y>, which consists of an integer variable <y>length</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 				 $("#memoryDiv").removeClass("opacity00").addClass("z-index");
 					$("#mPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
@@ -211,7 +212,7 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Whenever an object is created, the <y>default constructor</y> is called immediately.</li>"
-				+ "<li>Here the field <y>length</y> is initialized with <y>0</y></li></ul>";
+				+ "<li>Here the field <y>length</y> is initialized with <y>0</y>.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -219,7 +220,9 @@ function introGuide() {
 		break;
 		case "lengthPanel":
 			if (introjs._currentStep == 6) {
+				$("#callMethod").addClass("hide");
 				$("#lengthPanel").removeClass("hide");
+				$("#getdataFun").addClass("hide");
 				introjs.refresh();
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
@@ -237,6 +240,7 @@ function introGuide() {
 				});
 			} else if (introjs._currentStep == 13) {
 				introjs.refresh();
+				$("#floatX1").addClass("hide");
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
@@ -293,6 +297,7 @@ function introGuide() {
 		case "cout2":
 			$("#cout2").removeClass("hide");
 			$("#outputText").addClass("opacity00");
+			$("#outputDiv").addClass("opacity00");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
@@ -330,6 +335,8 @@ function introGuide() {
 				introjs.refresh();
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
+				$("#inputVal").empty();
+				$("#lengthPanelVal1").text("0");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "Enter <y><b>length</b></y> value.";
 					typing($(".introjs-tooltiptext"), text, function() {
@@ -341,7 +348,7 @@ function introGuide() {
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#body").append("<div>length in centemeters : " + (($("#inputVal").text()) * 100).toFixed(2) + "</div>");
+					$("#body").append("<div>length in centemeters : <span style='color: #0f0;'>"+ (($("#inputVal").text()) * 100).toFixed(2) + "</span></div>");
 					if (introjs._direction == "forward") {
 						setTimeout(function () {
 							introjs.nextStep();
@@ -357,6 +364,7 @@ function introGuide() {
 		case "cin":
 			$("#cin").removeClass("hide");
 			introjs.refresh();
+			$("#inputVal").empty();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -368,11 +376,12 @@ function introGuide() {
 		break;
 		case "floatX1":
 			$("#floatX1").removeClass("hide");
+			$("#xm").addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Declare a float variable <y>x</y>.";
+				var text = "Here we declare a float variable <y>x</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();	
 				});
@@ -381,14 +390,15 @@ function introGuide() {
 		case "xm":
 			if (introjs._currentStep == 15) {
 				$("#xm").removeClass("hide");
+				$("#operatorFloat").addClass("hide");
 				introjs.refresh();
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
 				$(".introjs-tooltip").css({"min-width": "300px"});
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "<ul><li><y>x</y> is a float variable with value <y>" + $("#inputVal").text() + "</y>"
+					var text = "<ul><li><y>x</y> is a float variable with value <y>" + $("#inputVal").text() + ".</li></y>"
 					+ "<li><y>m</y> is user-defined object of a class <y>Meter</y>, which consist a field <y>length</y>.</li>"
-					+ "<li><b><y>x = m</y></b> means assign the user-defined object <y>m</y> to variable <y>x</y>.</li>"
+					+ "<li><b><y>x = m</y></b> means assigning the user-defined object <y>m</y> to variable <y>x</y>.</li>"
 					+ "<li>The user-defined object assigned to a variable by using <y>operator function</y>.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
@@ -414,7 +424,7 @@ function introGuide() {
 			$('.introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Immediately the <y>operator float()</y> will call.</li>"
-					+ "<li> And declare a float variable <y>x</y>.</li>";
+					+ "<li> Here a float variable <y>x</y> is declared.</li>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="returnX()">Next &#8594;</a>');
 					

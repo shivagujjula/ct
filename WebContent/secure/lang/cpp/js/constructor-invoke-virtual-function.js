@@ -1,4 +1,3 @@
-
 var constructorInvokeVirtualFunction = function() {
 	introJsFunction();
 	$(".introjs-prevbutton").hide();
@@ -23,11 +22,13 @@ function introJsFunction() {
 		},{
 			element : "#pre",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass :"hide"
 		},{
 			element : "#baseClass",
 			intro : "",
-			position : "right"
+			position : "right",
+			tooltipClass :"hide"
 		}]
 	})
 	
@@ -39,7 +40,7 @@ function introJsFunction() {
 		var animateStep = introjs._introItems[introjs._currentStep].action;
 		switch (elementId) {
 			case "pre":
-					
+				$("#baseClass, #deriveClass, #main").addClass("opacity00");
 			break;
 			
 			case "baseClass":	
@@ -94,7 +95,7 @@ function introJsFunction() {
 			break;
 			
 			case "pShowMthd":
-				
+				$("#show1").addClass("opacity00");
 			break;	
 			
 			case "baseShow":
@@ -109,6 +110,8 @@ function introJsFunction() {
 			break;	
 			
 			case "kDisp":
+				$("#outputBox").addClass("opacity00");
+				break;
 			case "hDisp":	
 			
 			break;	
@@ -116,7 +119,8 @@ function introJsFunction() {
 			case "outputBox":
 				
 				if (animateStep == "noVirtual") {
-					$("#outputBox").addClass("opacity00");
+					$("#virtual").addClass("displayNone opacity00");
+				//	$("#outputBox").addClass("opacity00");
 					$(".output-console-body div").remove();
 				} else {
 					
@@ -171,7 +175,7 @@ function introJsFunction() {
 		
 		if (introjs._introItems[introjs._currentStep]["isCompleted"]) {
 			
-			if (introjs._currentStep != 0 && elementId !== "inheritanceFlow") {
+			if (introjs._currentStep != 0 && introjs._currentStep != 1 && elementId !== "inheritanceFlow") {
 				$('.introjs-prevbutton').show();
 			}
 			
@@ -189,9 +193,8 @@ function introJsFunction() {
 		
 			case "pre":	
 				$(".introjs-helperLayer").one("transitionend", function() {
-					
 					$("#pre").removeClass("opacity00");
-					
+					$(".introjs-tooltip").removeClass('hide');
 					var text = "Let us consider a sample program on a <y>virtual</y> function.";
 					
 					typing($(".introjs-tooltiptext"), text, function() {
@@ -206,10 +209,10 @@ function introJsFunction() {
 				$(".introjs-helperLayer").one("transitionend", function() {
 					
 					$("#baseClass").removeClass("opacity00");
-					
+					$(".introjs-tooltip").removeClass('hide');
 					
 					var text = "Let us construct a class named <y>Base</y> which contains:<ul>"
-								+"<li>One <y>private</y> data member.</li><li>One parametarized <y>constructor</y>."
+								+"<li>One <y>private</y> data member.</li><li>One parameterized <y>constructor</y>."
 								+"</li><li>One public member function <y>show()</y>.</li></ul>";
 					
 					
@@ -231,8 +234,8 @@ function introJsFunction() {
 			case "deriveClass":	
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#deriveClass").removeClass("opacity00");
-					var text = "The class Derived is publically inherited from the class Base and which contains:<ul>"
-								+"<li>One <y>private</y> data member.</li><li>One parametarized <y>constructor</y>."
+					var text = "The class <y>Derived</y> is publically inherited from the class <y>Base</y> and which contains:<ul>"
+								+"<li>One <y>private</y> data member.</li><li>One parameterized <y>constructor</y>."
 								+"</li><li>One public member function <y>show()</y>.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-prevbutton, .introjs-nextbutton").show();
@@ -265,7 +268,8 @@ function introJsFunction() {
 			case "invokeFirst":
 				$(".introjs-helperLayer").one("transitionend", function() {
 					var text = "The constructor <y>Derived()</y> is called after the memory allocated to the object <y>obj</y>."
-							+"<ul><li>The <y>derived</y> constructor first calls the <y>Base</y> constructor with an argument value 2.</li></ul>";
+							+"<ul><li>The <y>derived</y> constructor first calls the <y>Base</y> constructor with "+
+								"an argument value <y>2</y>.</li></ul>";
 					
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#superConst").addClass("blinking-orange");
@@ -342,31 +346,31 @@ function introJsFunction() {
 			break;	
 			
 			case "baseShow":
-			
+				$(".introjs-tooltip").addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#virtual").addClass("opacity00 displayNone");
 					/*$("#show1").removeClass("opacity00");*/
-					$(".introjs-tooltip").removeClass("hide");
 					var text;
 					
 					if (animateStep == "withVirtual") {
-						
+						$(".output-console-body").empty();
 						
 						$(".displayNone").removeClass("opacity00 displayNone");
 						
 						setTimeout(function() {
-							$(".output-console-body").empty();
+							
 							text = "Now <y>show()</y> is <y>virtual</y> based on the <y>obj</y> address hold by the pointer variable <y>p</y> of the <y>derived</y>"
 									+" class <y>obj</y> i.e, <y>1264</y>.It execute the <y>show()</y> of the <y>derived</y> class.";
-							
+							$(".introjs-tooltip").removeClass("hide");
 							typing(".introjs-tooltiptext", text, function() {
 								$(".introjs-prevbutton, .introjs-nextbutton").show();
 							});
 							
 						},700);
 					} else {
-							text = "The <y>show()</y> doesn't have a <y>virtual</y> key so it will execute the <y>base</y> class <y>show()</y> "
+							text = "The <y>show()</y> doesn't have a <y>virtual</y> keyword so it will execute the <y>base</y> class <y>show()</y> "
 								+"even though the <y>p</y> variable holds the address of <y>derived</y> class <y>obj</y>.";
+							$(".introjs-tooltip").removeClass("hide");
 							typing(".introjs-tooltiptext", text, function() {
 								$("#show1").removeClass("opacity00");
 								$(".introjs-prevbutton, .introjs-nextbutton").show();
@@ -571,7 +575,7 @@ function insertionIntro(element, msg, position, tooltip, action) {
 
 
 
-var typingSpeed = 10;
+var typingSpeed = 1;
 function typing(selector, text, callBackFunction) {
 	$(selector).typewriting(text, {
 		"typing_interval" : typingSpeed,
@@ -584,4 +588,3 @@ function typing(selector, text, callBackFunction) {
 		}
 	})
 }
-

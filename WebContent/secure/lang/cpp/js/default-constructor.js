@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -79,16 +79,17 @@ function introGuide() {
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		case "topDiv":
-			
-		break;	
 		case "code":
+			if (introjs._direction == "forward") {
+			$("#defaultConst, #displayMethod, #defaultConstByClass, #callMethod1").addClass("hide");
+			}
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#code").removeClass("opacity00");
 			$('.user-btn').addClass("hide");
 		break;
 		case "class":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$("#callDefaultConst").addClass("hide");
 		break;
 		case "callDefaultConst":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
@@ -119,10 +120,6 @@ function introGuide() {
 		case "outputDiv":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
-		case "restart":
-			
-		break;
-		
 		}
 	});
 	
@@ -185,6 +182,7 @@ function introGuide() {
 			if (introjs._currentStep == 4) {
 				$("#memoryDiv").removeClass("opacity00");
 				introjs.refresh();
+				$("#defaultConstByClass").addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#s1Panel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 						$(this).removeClass("animated zoomIn");
@@ -215,10 +213,11 @@ function introGuide() {
 		break;
 		case "defaultConstByClass":
 			$("#defaultConstByClass").removeClass("hide");
+			$("#defaultConst").addClass("hide");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>When a class is defined the compiler automatically defines a <y>default constructor</y> with an empty body.</li>"
-					+ "<li>If the user defined any default constructor then the compiiler default constructor disappear.</li></ul>";
+				var text = "<ul><li>When a class is defined, the compiler automatically defines a <y>default constructor</y> with an empty body.</li>"
+					+ "<li>If the user defines any <y>default constructor</y> then the compiler's default constructor will disappear.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -231,7 +230,7 @@ function introGuide() {
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "<ul><li>Here we are <y>explicitly</y> defined the <y>default constructor</y>.</li>"
-					+ "<li>So, after creating an object immediately the default constructor will call automatically. And <y>initialize</y> variables <y>a</y>, <y>b</y>.</li></ul>";
+					+ "<li>So, after creating an object immediately the default constructor will call automatically and <y>initialize</y> variables <y>a</y>, <y>b</y>.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -239,6 +238,7 @@ function introGuide() {
 		break;
 		case "s1Panel":
 			$("#memoryDiv").removeClass("opacity00");
+			$("#callMethod1").addClass("hide");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#a1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
@@ -258,6 +258,7 @@ function introGuide() {
 		break;
 		case "callMethod1":
 			$("#callMethod1").removeClass("hide");
+			$("#displayMethod").addClass("hide");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if (introjs._direction == "forward") {
@@ -289,7 +290,7 @@ function introGuide() {
 		case "cout":
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The <y>cout</y> display the output on the console.";
+				var text = "The <y>cout</y> displays the output on the console.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});

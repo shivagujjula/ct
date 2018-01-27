@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>virtual base class</title>
@@ -16,7 +17,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/civf.min.js"></script>
+<script type="text/javascript" src="/secure/lang/cpp/js-min/civf.min.js"></script> 
 <style type="text/css">
 
 pre {
@@ -172,7 +173,7 @@ $(document).ready(function() {
 		}</span></span>
 	
 		<span id="baseShow" class="oacity00"><span><span id="virtual" class="displayNone opacity00"><go>virtual</go></span> <g><b>void</b></g> show()</span> {
-			<span id="kDisp">cout << <ink>"This is base class show:"</ink> << k;</span>
+			<span id="kDisp">cout << <ink>"This is base class show:"</ink> << k << endl;</span>
 		}</span>
 <span>};</span></span>
 	
@@ -187,11 +188,11 @@ $(document).ready(function() {
 		<span>}</span></span>
 	</span>
 		<span id="parentShow"><span><g><b>void</b></g> show() </span>{
-			<span id="hDisp">cout <<<ink>"This is derived class show:"</ink><< h;</span>
+			<span id="hDisp">cout <<<ink>"This is derived class show:"</ink><< h << endl;</span>
 		<span>}</span></span>
 <span>};</span></span>		
 	
-	<span id="main" class="opacity00">main() {
+	<span id="main" class="opacity00">int main() {
 		<span id="objCreation">Derived obj(<ink>2</ink>, <ink>3</ink>);</span>
 	<span>}</span>
 	</span>
@@ -240,7 +241,7 @@ $(document).ready(function() {
 										<div class="col-xs-12 padding00 opacity00" id='show1' ">
 											<div class="panel  panel-primary" style="margin-top:15px;">
 												
-												<div class="panel-heading"><b>sum()</b></div>
+												<div class="panel-heading"><b>show()</b></div>
 												<div class="panel-body">
 												
 													<span><b>print</b></span>
@@ -326,8 +327,8 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-<div class="col-xs-12" style="margin-top: 10px;">
-	<div class="col-xs-offset-6 col-xs-4">
+<div class="col-xs-12 text-center" style="margin-top: 10px;">
+	<div class="col-xs-12">
 		<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
 	</div>
 		

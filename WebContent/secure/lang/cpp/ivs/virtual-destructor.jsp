@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>virtual base class</title>
@@ -16,7 +17,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/vd.min.js"></script>
+<script type="text/javascript" src="/secure/lang/cpp/js-min/vd.min.js"></script>  
+
 <style type="text/css">
 
 pre {
@@ -165,22 +167,22 @@ $(document).ready(function() {
 <span id="baseClass" class="opacity00"><span><go>class</go> Base</span> {
 	<span id="invokeSecond"><span><go>public</go>:</span>
 		<span>Base()</span> {
-			<span id="baseCon">cout << <ink>"Base class constructor"</ink>;</span>
+			<span id="baseCon">cout << <ink>"Base class constructor"</ink> << endl;</span>
 		}</span>
 	
 		<span id="baseShow"><span><go>virtual</go> ~Base()</span> {
-			<span id="baseDes">cout << <ink>"Base class destructor"</ink>;</span>
+			<span id="baseDes">cout << <ink>"Base class destructor"</ink> << endl;</span>
 		}</span>
 	<span>};</span></span>
 	
 <span id="deriveClass" class="opacity00"><span><go>class</go> Derived : <go>public</go> Base</span> {
 	<span id="invokeFirst"><span><go>public</go>:
 		<span>Derived() {</span>
-			<span id="deriveCon">cout << <ink>"Derived class constructor"</ink>;</span>
+			<span id="deriveCon">cout << <ink>"Derived class constructor"</ink> << endl;</span>
 		<span>}</span>
 		</span></span>
 	<span id="parentShow" ><span> ~Derived() </span>{
-			<span id="deriveDes">cout <<<ink>"Derived class destructor"</ink>;</span>
+			<span id="deriveDes">cout <<<ink>"Derived class destructor"</ink> << endl;</span>
 		<span>}</span></span>
 <span>};</span></span>		
 	
@@ -244,7 +246,7 @@ $(document).ready(function() {
                			<path d="M0,0 L5,2.5 L0,5 Z"/>
            		</marker>
            		<!-- <line style="marker-end: url(#flow4Marker);" class="svg-line" x1="19%" y1="60.5%" x2="19%" y2="74%" id=""/> -->
-           		<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="30%" y1="23%" x2="1%" y2="23%" id=""></line>
+           		<line style="marker-end: url(#flow4Marker);" class="svg-line" x1="30%" y1="50%" x2="1%" y2="50%" id=""></line>
 			</svg>
 			
 				<div class="col-xs-offset-3 col-xs-4">
@@ -257,7 +259,7 @@ $(document).ready(function() {
 	</div>
 	
 	<div class="col-xs-12 padding00">
-		<div class="col-xs-offset-1 col-xs-11">
+		<div class="col-xs-offset-1 col-xs-10">
 			<div id="outputBox" class="output-console center opacity00">
 				<div class="output-console-title-bar"><span>Output</span></div>
 				<div class="output-console-body">
@@ -270,10 +272,12 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-<div class="col-xs-6 col-xs-offset-6">
-	<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
+</div>
+<div class="col-xs-12 marginTop20">
+	<div class="col-xs-12 text-center">
+		<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
+    </div>
 </div>
 
-</div>
 </body>
 </html>

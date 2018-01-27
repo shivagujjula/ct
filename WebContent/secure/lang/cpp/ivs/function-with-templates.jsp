@@ -211,7 +211,7 @@ k {
 	<div class="col-xs-12 ">
 		<div class="col-xs-10 col-xs-offset-1" id="informationDiv" style=' margin-top: 5px;'>
 			<span id="infoText" class=''><ul><li><g>Templates</g> are used to avoid the duplication of the
-			 code in the prohram whenever we are performing same operation with different data types.</li>
+			 code in the program whenever we are performing same operation with different data types.</li>
 			  <li>The general format for defining a function <g>template</g> is
 			  <span id="class">Template &lt;class T&gt;</span>.</li>
 			  <a class="introjs-button user-button" id="nextButton">Next&rarr;</a></ul></span>

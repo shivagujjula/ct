@@ -1788,7 +1788,7 @@
 						<td>Default constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Default constructor', 'default-constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Default constructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Default constructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1799,7 +1799,7 @@
 						<td>Parameterized constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Parameterized constructor', 'parameterized-constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Parameterized constructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Parameterized constructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1810,7 +1810,7 @@
 						<td>Copy constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Copy constructor', 'copy-constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of copy constructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of copy constructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1821,7 +1821,7 @@
 						<td>Destructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor', 'destructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of destructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of destructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1833,7 +1833,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Static data members in constructors', 'static-data-members-in-constructors.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static data members in constructors</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Static data members in constructors</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1947,7 +1947,7 @@
 						<td>Basic to User-defined</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Basic to User-defined', 'basic-to-userdefined.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Basic to User-defined</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of Basic to User-defined</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1958,7 +1958,7 @@
 						<td>User-defined to basic</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('User-defined to basic', 'userdefined-to-basic.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of User-defined to basic</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of User-defined to basic</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1970,7 +1970,7 @@
 						<td>User-defined to User-defined</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('User-defined to User-defined', 'userdefined-to-userdefined.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of User-defined to User-defined</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of User-defined to User-defined</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -2169,7 +2169,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Constructors and Virtual Functions', 'constructor-invoke-virtual-function.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constructors and Virtual Functions</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Constructors and Virtual Functions</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>
@@ -2181,7 +2181,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Virtual destructor', 'virtual-destructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual destructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Virtual destructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>

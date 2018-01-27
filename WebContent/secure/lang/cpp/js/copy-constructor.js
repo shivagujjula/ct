@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -171,7 +171,7 @@ function introGuide() {
 		introjs.refresh();
 		switch (elementId) {
 		case "topDiv":
-			$('.user-btn').removeClass("hide");
+			$('.user-btn1').removeClass("hide");
 			$("#code").addClass("opacity00");
 			$("#li1").fadeTo(500, 1, function () {
 				$("#li2").fadeTo(500, 1, function () {
@@ -184,7 +184,7 @@ function introGuide() {
 		break;
 		case "code":
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -197,6 +197,7 @@ function introGuide() {
 		case "class":
 			introjs.refresh();
 			$("#constM").addClass("hide");
+			$("#callParameterConst").addClass("hide");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "This is a class <y>Sample</y> which consists two <b><y>int</y></b> fields <b><y>a</y></b>, <b><y>b</y></b>.";
@@ -220,6 +221,7 @@ function introGuide() {
 			if (introjs._currentStep == 4) {
 				$("#memoryDiv").removeClass("opacity00");
 				introjs.refresh();
+				$("#paraConst").addClass("hide");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#s1Panel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
@@ -233,6 +235,7 @@ function introGuide() {
 				});
 			} else if (introjs._currentStep == 13) {
 				introjs.refresh();
+				$("#callMethod2").addClass("hide");
 				$("#a3PanelVal, #b3PanelVal").addClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					$("#s2Panel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
@@ -251,7 +254,8 @@ function introGuide() {
 			$("#a1PanelVal, #b1PanelVal").addClass("opacity00");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is the <y>parameterized constructor</y> definition which receives 2 arguments  <y>x</y> and <y>y</y> to initialize the data members <y>a</y> and <y>b</y>.<br>";
+				var text = "This is the <y>parameterized constructor</y> definition which receives <y>2</y> arguments "+
+						"<y>x</y> and <y>y</y> to initialize the data members <y>a</y> and <y>b</y>.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="abValues()">Next &#8594;</a>');
 				});
@@ -259,6 +263,7 @@ function introGuide() {
 		break;
 		case "s1Panel":
 			$("#memoryDiv").removeClass("opacity00");
+			$("#callMethod1").addClass("hide");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#a1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
@@ -278,6 +283,7 @@ function introGuide() {
 		break;
 		case "callMethod1":
 			$("#callMethod1").removeClass("hide");
+			$("#displayMethod").addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();
@@ -333,7 +339,7 @@ function introGuide() {
 				$("#outputDiv").addClass("opacity00");
 				$("#op1").addClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The <y>cout</y> display the output on the console.";
+					var text = "The <y>cout</y> displays the output on the console.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
@@ -342,7 +348,7 @@ function introGuide() {
 				introjs.refresh();
 				$("#op2").addClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The <y>cout</y> display the output on the console.";
+					var text = "The <y>cout</y> displays the output on the console.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$('.introjs-nextbutton, .introjs-prevbutton').show();
 					});
@@ -355,6 +361,7 @@ function introGuide() {
 				introjs.refresh();
 				$('.introjs-nextbutton').hide();
 				$('.introjs-prevbutton').hide();
+				$("#callCopyConst").addClass("hide");
 				$(".introjs-helperLayer").one("transitionend", function() {
 					//$("#body").append("<div>Given values: 10 20</div>");
 					$("#op1").removeClass("opacity00");
@@ -389,6 +396,7 @@ function introGuide() {
 		break;
 		case "callCopyConst":
 			$("#callCopyConst").removeClass("hide");
+			$("#copyConst").addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton').hide();
 			$('.introjs-prevbutton').hide();

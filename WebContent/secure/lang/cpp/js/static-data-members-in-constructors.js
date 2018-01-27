@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -150,14 +150,42 @@ function introGuide() {
 					position : "right"
 				}
 			]});
-	
+	introjs.onbeforechange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch(elementId) {
+			case "memoryDiv":
+				if (introjs._currentStep == 7) {
+				if (introjs._direction == "backward") {
+					$("#s1Panel").addClass("opacity00");
+					$("#s1, #arrow1").hide();
+						$("#countPanelVal").text("0");
+						
+					}
+				} else if (introjs._currentStep == 11) {
+					if (introjs._direction == "backward") {
+						$("#s2Panel").addClass("opacity00");
+						$("#s2, #arrow2").hide();
+						$("#countPanelVal").text("1");
+					}
+				} else if (introjs._currentStep == 15) {
+					if (introjs._direction == "backward") {
+						$("#s3Panel").addClass("opacity00");
+						$("#s3, #arrow3").hide();
+						$("#countPanelVal").text("2");
+					}
+				}
+			break;
+		}
+		
+	});
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		$("#" + elementId).removeClass("hide");
 		introjs.refresh();
 		switch (elementId) {
 		case "topDiv":
-			$('.user-btn').removeClass("hide");
+			$('.user-btn1').removeClass("hide");
+			$("#defaultConst, #destructor, #explitCall, #object1, #object2, #object3").addClass("hide");
 			$("#code").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#li1").fadeTo(500, 1, function () {
@@ -167,7 +195,7 @@ function introGuide() {
 		break;
 		case "code":
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -183,7 +211,7 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$(".introjs-tooltip").css({"min-width": "250px"});
-				var text = "This is a class <y>Sample</y> which consist of a <y>static int</y> field <y>count</y>.";
+				var text = "This is a class <y>Sample</y> which consists of a <y>static int</y> field <y>count</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -192,9 +220,9 @@ function introGuide() {
 		case "static":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>The type of each static member variable must be defined outside class definition.</li>"
-					+ "<li>This is necessary because the static data members are stored separately rather than a part of an object.</li>"
-					+ "<li>They are also associated with the class itself ratherthan with any object, they are also known as variable.</li>"
+				var text = "<ul><li>The type of each <y>static</y> member variable must be defined outside class definition.</li>"
+					+ "<li>This is necessary because <y>static</y> data members are stored separately rather than a part of an object.</li>"
+					+ "<li>They are also associated with the class itself rather than with any object, they are also known as variable.</li>"
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -205,8 +233,8 @@ function introGuide() {
 			$("#countPanel, #memoryDiv").addClass("opacity00")
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>A static varible is always initialised with <y>0</y> by default.</li>"
-					+ "<li>The user can also initialise a new value to the static variable.</li></ul>";
+				var text = "<ul><li>A <y>static</y> variable is always initialised with <y>0</y> by default.</li>"
+					+ "<li>The user can also initialise a new value to the  <y>static</y> variable.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -218,7 +246,7 @@ function introGuide() {
 			$("#s1Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
+				var text = "<ul><li>Let us create another object for class <y>Sample</y>.</li>"
 					+ "<li>Here <y>s1</y> is an object of the class <y>Sample</y>.</li>"
 					+ "<li>First the memory is allocated for that object.</li>";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -231,7 +259,7 @@ function introGuide() {
 				$("#memoryDiv").removeClass("opacity00");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Seperate memory is createc for static variable <y>count</y> outside of objects.";
+					var text = "Seperate memory is created for <y>static</y> variable <y>count</y> outside of objects.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#countPanel").removeClass("opacity00").addClass("animated zoomIn").one("animationend", function() {
 							$(this).removeClass("animated zoomIn");
@@ -248,7 +276,7 @@ function introGuide() {
 						$("#s1").show();
 						arrowReveal("#arrow1", function() {
 							var text = "<ul><li>Memory is created for object <y>s1</y> but within that there are no data members.</li>"
-								+ "<li><y>count</y> is a static so it has the memory out side of objects therefore <y>s1</y> refers <y>count</y>.</li></ul>";
+								+ "<li>Here <y>count</y> is a <y>static</y>  data member so it has the memory outside of objects therefore <y>s1</y> refers <y>count</y>.</li></ul>";
 							typing($(".introjs-tooltiptext"), text, function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
@@ -263,7 +291,7 @@ function introGuide() {
 						$(this).removeClass("animated zoomIn");
 						$("#s2").show();
 					 	arrowReveal("#arrow2", function() {
-							var text = "Memory is created for object <y>s2</y>, which consists of a integer variable <y>count</y>.";
+							var text = "Memory is created for object <y>s2</y>, which consists of an integer variable <y>count</y>.";
 							typing($(".introjs-tooltiptext"), text, function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
@@ -278,7 +306,7 @@ function introGuide() {
 							$(this).removeClass("animated zoomIn");
 							$("#s3").show();
 							arrowReveal("#arrow3", function() {
-							var text = "Memory is created for object <y>s3</y>, which consists of a integer variable <y>count</y>.";
+							var text = "Memory is created for object <y>s3</y>, which consists of an integer variable <y>count</y>.";
 							typing($(".introjs-tooltiptext"), text, function() {
 								$('.introjs-nextbutton, .introjs-prevbutton').show();
 							});
@@ -292,11 +320,12 @@ function introGuide() {
 				$("#countPanelVal").text("0");
 				$("#defaultConst").removeClass("hide");
 				$("#op1").addClass("hide");
+				$("#outputDiv").addClass("hide")
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-tooltip").css({"min-width": "210px"});
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will call.</li>"
-					+ "<li>And the <y>static variable count</y> will increment.</li></ul>";
+					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will be called.</li>"
+					+ "<li>Now the <y>static</y> variable <y>count</y> is incremented.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="incrementCount1()">Next &#8594;</a>');
 					});
@@ -306,8 +335,8 @@ function introGuide() {
 				$("#countPanelVal").text("1");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will call.</li>"
-					+ "<li>And the <y>static variable count</y> will increment.</li></ul>";
+					var text = "<ul><li>After creating an object for class <y>Sample</y> immediately the default constructor will be called.</li>"
+					+ "<li>Now the <y>static</y> variable <y>count</y> is incremented.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="incrementCount2()">Next &#8594;</a>');
 					});
@@ -317,11 +346,11 @@ function introGuide() {
 				$("#countPanelVal").text("2");
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will call.</li>"
-					+ "<li>And the <y>static variable count</y> will increment.</li></ul>";
+					var text = "<ul><li>After creating an object for <y>Sample</y> immediately the default constructor will be called.</li>"
+					+ "<li>Now the <y>static</y> variable <y>count</y> is incremented.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="incrementCount3()">Next &#8594;</a>');
-					});
+					});count
 				});
 			}
 		break;
@@ -399,6 +428,7 @@ function introGuide() {
 							introjs.nextStep();
 						}, 1000);
 					} else {
+						$("#countPanelVal").text("3");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -415,6 +445,7 @@ function introGuide() {
 							introjs.nextStep();
 						}, 1000);
 					} else {
+						$("#countPanelVal").text("2");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -431,6 +462,8 @@ function introGuide() {
 						}, 1000);
 					} else {
 						setTimeout(function () {
+							$("#countPanel").removeClass("opacity00").removeAttr('style');
+							$("#countPanelVal").text("1");
 							introjs.previousStep();
 						}, 1000);
 					}
@@ -443,7 +476,7 @@ function introGuide() {
 			$("#s2Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
+				var text = "<ul><li>Let us create another object for class <y>Sample</y>.</li>"
 					+ "<li>Here <y>s2</y> is an object of the class <y>Sample</y>.</li>"
 					+ "<li>First the memory is allocated for that object.</li>";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -457,7 +490,7 @@ function introGuide() {
 			$("#s3Panel").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "<ul><li>Let us create an object for class <y>Sample</y>.</li>"
+				var text = "<ul><li>Let us create another object for class <y>Sample</y>.</li>"
 					+ "<li>Here <y>s3</y> is an object of the class <y>Sample</y>.</li>"
 					+ "<li>First the memory is allocated for that object.</li>";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -468,13 +501,14 @@ function introGuide() {
 		case "end":
 			$("#memoryDiv").removeClass("z-index");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
-			$("#s3, #arrow3").show();
-			$("#s3Panel").show().removeClass("opacity00");
 			//TweenMax.to($("#arrow3"), 1, {attr:{x2:"59%", y2:"4%"}});
 			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#s3, #arrow3").show();
+				$("#s3Panel").show().removeClass("opacity00", function() {
 				var text = "At the completion of program execution, <y>destructor</y> will be called in the reverse order of the objects created.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
+				});
 				});
 			});
 		break;
@@ -493,9 +527,10 @@ function introGuide() {
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#memoryDiv").addClass("z-index");
 						
-						$("#s3, #arrow3").hide();
-						$("#s3Panel").addClass("opacity00");
-						
+						setTimeout(function() {
+								$("#s3, #arrow3").hide();
+								$("#s3Panel").addClass("opacity00");
+						}, 1000);
 						//arrowRevealBack("#arrow3", function() {
 							//$("#arrow3").hide();
 							//$("#s3Panel").hide();
@@ -513,9 +548,10 @@ function introGuide() {
 						+	"<li>So first the <y>destructor</y> will remove the <y>s2</y> object.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#memoryDiv").addClass("z-index");
-						$("#s2, #arrow2").hide();
-						$("#s2Panel").addClass("opacity00");
-						
+						setTimeout(function() {
+								$("#s2, #arrow2").hide();
+								$("#s2Panel").addClass("opacity00");
+						}, 1000);
 						//arrowRevealBack("#arrow2", function() {
 							//$("#arrow2").hide();
 							//$("#s2Panel").hide();
@@ -534,8 +570,10 @@ function introGuide() {
 						+	"<li>So first the <y>destructor</y> will remove the <y>s1</y> object.</li></ul>";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$("#memoryDiv").addClass("z-index");
-						$("#s1, #arrow1").hide();
-						$("#s1Panel").addClass("opacity00");
+						setTimeout(function() {
+								$("#s1, #arrow1").hide();
+								$("#s1Panel").addClass("opacity00");
+						}, 1000);
 						
 						//arrowRevealBack("#arrow1", function() {
 							//$("#arrow1").hide();
@@ -599,10 +637,10 @@ function introGuide() {
 			if (introjs._currentStep == 22) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$("#memoryDiv").removeClass("z-index");
-				$("#s2, #arrow2").show();
-				$("#s2Panel").show().removeClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The count value will be decrement.";
+					var text = "The <y>count</y> value is decremented.";
+					$("#s2, #arrow2").show();
+					$("#s2Panel").show().removeClass("opacity00", function() {
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-tooltiptext").append("<ul><li>  <div id='tooltipDegX' class='display-inline-block relative opacity00'>"
 								+ " <y>count = <b><div id='tooltipX' class='display-inline-block relative'>count - 1</div></b></y>"
@@ -625,13 +663,14 @@ function introGuide() {
 						});
 					});
 				});
+				});
 			} else if (introjs._currentStep == 26) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$("#memoryDiv").removeClass("z-index");
-				$("#s1, #arrow1").show();
-				$("#s1Panel").show().removeClass("opacity00");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The count value will be decrement.";
+					$("#s1, #arrow1").show();
+					$("#s1Panel").show().removeClass("opacity00", function() {
+					var text = "The <y>count</y> value is decremented.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-tooltiptext").append("<ul><li>  <div id='tooltipDegX' class='display-inline-block relative opacity00'>"
 								+ " <y>count = <b><div id='tooltipX' class='display-inline-block relative'>count - 1</div></b></y>"
@@ -654,14 +693,15 @@ function introGuide() {
 						});
 					});
 				});
+				});
 			} else if (introjs._currentStep == 30) {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "The count value will be decrement.";
+					var text = "The <y>count</y> value is decremented.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-tooltiptext").append("<ul><li>  <div id='tooltipDegX' class='display-inline-block relative opacity00'>"
 								+ " <y>count = <b><div id='tooltipX' class='display-inline-block relative'>count - 1</div></b></y>"
-								+ "</div></li><li id='text' class='opacity00'>The count value is 0 and the destructor will delete the acount variable from memory.</li></ul>");
+								+ "</div></li><li id='text' class='opacity00'>The <y>count</y> value is <y>0</y> and the destructor will delete the <y>count</y> variable from memory.</li></ul>");
 						var l1 = $("#tooltipDegX").offset();
 						var l2 = $("#count2").offset();
 						var topLength = l2.top - l1.top;

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/btu.min.js"></script>
+<script src="../js-min/btu.min.js"></script> 
 
 <style type="text/css">
 
@@ -122,7 +119,10 @@
 .display-inline-block {
 	display: inline-block;
 }
-
+.user-btn1 {
+	background-color: green;
+	margin: 0 !important;
+}
 .user-btn {
 	background-color: green;
 	margin: 0 !important;
@@ -139,7 +139,9 @@
 .yellow {
 	background-color: yellow;
 }
-
+.green1 {
+	color: #0f0;
+}
 .green {
 	color: green;
 }
@@ -203,8 +205,8 @@ $(document).ready(function() {
 		<div id="topDiv">
 			<ul>
 				<li id="li1" class="opacity00">
-					To convert a basic data type to user-defined type, the conversion function should be defined in a class in the form of constructor,
-					 which is called a conversion constructor.  
+					To convert a <b>basic data type</b> to <b>user-defined type</b>, the conversion function should be defined in a class in the form of constructor,
+					 which is called a <b>conversion constructor</b>.  
 				</li>
 				<li id="li2" class="opacity00">
 					 The format is: <br>
@@ -212,7 +214,7 @@ $(document).ready(function() {
 				</li>
 			</ul>
 			<div class="col-xs-12">
-				<span id="nextBtn" class='user-btn introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
+				<span id="nextBtn" class='user-btn1 introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
 			</div>
 		</div>
 	</div>
@@ -234,10 +236,10 @@ $(document).ready(function() {
 			<span id="cout2" class="">cout << <red>"length in meters = "</red> << length;</span>
 		}</span>
 };</span>
-<red>void</red> main() {
+<red>int</red> main() {
 	<span id="constM" class="hide">Meter m;</span>
 	<span id="floatX" class="hide"><red>float</red> x;</span>
-	<span id="cout1" class="hide">cout << <red>"Enter length in centemeters : "</red>;</span>
+	<span id="cout1" class="hide">cout << <red>"Enter length in centimeters : "</red>;</span>
 	<span id="cin" class="hide">cin >> x;</span>
 	<span id="comments" class="hide"><b>//convert from basic to user-defined</b>
 	<span id="mx" class="hide">m = x;</span></span>
@@ -276,7 +278,7 @@ $(document).ready(function() {
 				<span class="title">Output</span>
 			</div>
 			<div class="output-console-body" id="body">
-				<div id="outputText" class="opacity00 display-inline-block">Enter length in centemeters :&nbsp; </div><div class='display-inline-block input-val' contenteditable='true' maxlength='5' id='inputVal' class="padding5" spellcheck="false"></div>
+				<div id="outputText" class="opacity00 display-inline-block">Enter length in centimeters :&nbsp; </div><div class='display-inline-block input-val' contenteditable='true' maxlength='5' id='inputVal' class="padding5" spellcheck="false"></div>
 			</div>
 		</div>
 	</div>

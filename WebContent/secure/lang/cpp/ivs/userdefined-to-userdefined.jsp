@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +16,8 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/udtud.min.js"></script>
+<!-- <script type="text/javascript" src="/secure/lang/cpp/js/userdefined-to-userdefined.js"></script>  -->
+<script src="../js-min/udtud.min.js"></script> 
 
 <style type="text/css">
 
@@ -111,7 +109,7 @@
 	display: inline-block;
 }
 
-.user-btn {
+.user-btn, .user-btn1 {
 	background-color: green;
 	margin: 0!important;
 }
@@ -218,12 +216,12 @@ $(document).ready(function() {
 					 the conversion function should be defined in base class in the form of <b class='monospace lite-blue'>operator function</b>.  
 				</li>
 				<li id="li2" class="opacity00">
-					 The format of the operator function is: <br>
+					 The format of the <b class='monospace lite-blue'>operator function</b> is: <br>
 					 <div class="col-xs-4"><pre class="creampretab1">operator user-defined-datatype() {<br>	------<br>	------<br>}</pre></div>
 				</li>
 			</ul>
 			<div class="col-xs-12">
-				<span id="nextBtn" class='user-btn introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
+				<span id="nextBtn" class='user-btn1 introjs-button opacity00' onclick='introjs.nextStep()'>Next &#8594;</span>
 			</div>
 		</div>
 	</div>
@@ -252,7 +250,7 @@ $(document).ready(function() {
 			return (<span id="returnVal">deg * 3.14 / 180</span>);
 		}</span>
 };</span>
-<red>void</red> main() {
+<red>int</red> main() {
 	<span id="rd" class="hide">radian r;
 	degree d;</span>
 	<span id="comments" class="hide"><span id="callingParaConst">d = <div class='display-inline-block' contenteditable='true' maxlength='5' id='dVal' class="padding-5" spellcheck="false" placeholder="deg">100.30</div>;</span></span>

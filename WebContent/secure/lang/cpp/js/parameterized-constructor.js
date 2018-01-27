@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -80,7 +80,7 @@ function introGuide() {
 		case "code":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 		break;
 		case "class":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
@@ -122,7 +122,7 @@ function introGuide() {
 		introjs.refresh();
 		switch (elementId) {
 		case "topDiv":
-			$('.user-btn').removeClass("hide");
+			$('.user-btn1').removeClass("hide");
 			$("#code").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#li1").fadeTo(500, 1, function () {
@@ -136,7 +136,7 @@ function introGuide() {
 		break;
 		case "code":
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -148,7 +148,7 @@ function introGuide() {
 		break;
 		case "class":
 			introjs.refresh();
-			$("#constM").addClass("hide");
+			$("#callParameterConst, #constM").addClass("hide");
 			$("#memoryDiv").addClass("opacity00")
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -171,6 +171,7 @@ function introGuide() {
 		break;
 		case "memoryDiv":
 			if (introjs._currentStep == 4) {
+				$("#paraConst").addClass("hide");
 				$("#memoryDiv").removeClass("opacity00");
 				introjs.refresh();
 				$(".introjs-helperLayer").one("transitionend", function() {
@@ -206,7 +207,7 @@ function introGuide() {
 			$("#a1PanelVal, #b1PanelVal").addClass("opacity00");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is the parameterized constructor definition which receives 2 arguments  <y>x</y> and <y>y</y> to initialize the data members <y>a</y> and <y>b</y>.<br>";
+				var text = "This is the <y>parameterized constructor</y> definition which receives <y>2</y> arguments  <y>x</y> and <y>y</y> to initialize the data members <y>a</y> and <y>b</y>.<br>";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" onclick="abValues()">Next &#8594;</a>');
 				});
@@ -214,6 +215,7 @@ function introGuide() {
 		break;
 		case "s1Panel":
 			$("#memoryDiv").removeClass("opacity00");
+			$("#callMethod1").addClass("hide");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#a1PanelVal").removeClass("opacity00").effect( "highlight",{color: 'red'}, 500, function() {
@@ -233,6 +235,7 @@ function introGuide() {
 		break;
 		case "callMethod1":
 			$("#callMethod1").removeClass("hide");
+			$("#displayMethod").addClass("hide");
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				if (introjs._direction == "forward") {
@@ -264,7 +267,7 @@ function introGuide() {
 		case "cout":
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The <y>cout</y> display the output on the console.";
+				var text = "The <y>cout</y> displays the output on the console.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
