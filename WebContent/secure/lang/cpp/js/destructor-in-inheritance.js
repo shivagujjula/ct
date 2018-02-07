@@ -1,5 +1,6 @@
 var tl;
 var iVal = 1;
+var step;
 var destructorsInInheritanceReady = function() {
 	introGuide();
 	$("body").keydown(function(e) {
@@ -147,8 +148,11 @@ function introGuide() {
 			intro : "",
 			animateStep : 'baseDestrPrint',
 			tooltipClass : 'hide' 
+		}, {
+			element : '#finalText',
+			intro : '',
+			tooltipClass: 'hide'
 	/*-------- Multilevel inheritance ------------ */
-	//introjs._currentStep == 26
 		}, {
 			element :"#preTableDiv",
 			intro : "",
@@ -336,6 +340,10 @@ function introGuide() {
 			animateStep : 'baseDestrPrint',
 			tooltipClass : 'hide'
 		}, {
+			element : '#finalText1',
+			intro : '',
+			tooltipClass: 'hide'
+		}, {
 			element :"#restart",
 			intro : "Click to restart.",
 			position : 'right',
@@ -345,6 +353,7 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'preTableDiv':
+			$("#preTableDiv").css("min-height", "468px");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'singleInheritance':
@@ -355,10 +364,9 @@ function introGuide() {
 			
 			case 'multiLevelInheritance':
 				$('.introjs-tooltip').css("min-width", "227px");
-				$("#classDerived, #classDerived1, #derived1Obj").hide();
-				$("#derivedObj, #derived1Obj").hide();
-				$("#classBase, #main").addClass("opacity00");
-				$("#consoleId").addClass("opacity00");
+				$("#classDerived").addClass("opacity00");
+				$("#finalText, #classBase, #main, #consoleId").addClass("opacity00");
+				$("#classDerived1, #derivedObj, #derived1Obj").addClass("opacity00");
 			break;
 		}
 		break;
@@ -374,9 +382,9 @@ function introGuide() {
 				break;
 				
 			case 'classBase2':
-				if(introjs._currentStep == 7 || introjs._currentStep == 36) {
+				if(introjs._currentStep == 7 || introjs._currentStep == 37) {
 					$("#baseClassConstructor").addClass("opacity00");
-				} else if(introjs._currentStep == 22 || introjs._currentStep == 61) {
+				} else if(introjs._currentStep == 22 || introjs._currentStep == 62) {
 					$("#baseClassDestructor").addClass("opacity00");
 				}
 				break;
@@ -396,7 +404,7 @@ function introGuide() {
 				
 			case 'classDerived2':
 				$(".introjs-tooltip").removeAttr("style");
-				if(introjs._currentStep == 16 || introjs._currentStep == 55) {
+				if(introjs._currentStep == 16 || introjs._currentStep == 56) {
 					$(".introjs-tooltip").removeAttr("style");
 					$("#derivedClassDestructor").addClass("opacity00");
 				} 
@@ -415,7 +423,7 @@ function introGuide() {
 				
 			case 'classDerived2':
 				$(".introjs-tooltip").removeAttr("style");
-				 if(introjs._currentStep == 49) {
+				 if(introjs._currentStep == 50) {
 					$("#derived1ClassDestructor").addClass("opacity00");
 				}
 				break;
@@ -424,17 +432,18 @@ function introGuide() {
 			
 			
 		case 'base':
-			if(introjs._currentStep == 41) {
+			/*if(introjs._currentStep == 42) {
 				$("#derivedClassConstructor").addClass("opacity00");
-			}
+			}*/
 			break;
 			
 		case 'main':
 			$("#main").addClass("opacity00");
 			if(introjs._currentStep == 3) {
 				$("#derivedObj").addClass("opacity00");
-			} else if(introjs._currentStep == 30) {
+			} else if(introjs._currentStep == 31) {
 				$("#derived1Obj").addClass("opacity00");
+				$("#derivedObj").hide();
 			}
 			break;
 			
@@ -459,7 +468,8 @@ function introGuide() {
 			break;
 			
 		case 'baseClassConstructorCout':
-			if(introjs._currentStep == 9 || introjs._currentStep == 38 || introjs._currentStep == 76 ) {
+			$("#consoleId").addClass("opacity00");
+			if(introjs._currentStep == 9 || introjs._currentStep == 39) {
 				$("#baseConstrPrint, #derivedConstrPrint, #baseDestrPrint, #derivedDestrPrint").text("");
 			}
 			break;
@@ -469,7 +479,7 @@ function introGuide() {
 			break;
 			
 		case 'derivedClassConstructorCout':
-			if(introjs._currentStep == 13 || introjs._currentStep == 36) {
+			if(introjs._currentStep == 13 || introjs._currentStep == 43) {
 				 $("#derivedConstrPrint").text("");
 				 $("#derivedConstrPrint").addClass("opacity00");
 			} 
@@ -480,7 +490,7 @@ function introGuide() {
 			break;
 			
 		case 'baseClassDestructorCout':
-			if(introjs._currentStep == 24 || introjs._currentStep == 63) {
+			if(introjs._currentStep == 24 || introjs._currentStep == 64) {
 				 $("#baseDestrPrint").text("");
 			} 
 			break;
@@ -496,7 +506,7 @@ function introGuide() {
 			break;
 			
 		case 'derivedClassDestructorCout':
-			if(introjs._currentStep == 18 || introjs._currentStep == 57) {
+			if(introjs._currentStep == 18 || introjs._currentStep == 58) {
 				 $("#derivedDestrPrint").text("");
 				 $("#derivedDestrPrint").addClass("opacity00");
 			} 
@@ -527,7 +537,7 @@ function introGuide() {
 			
 			
 		case 'derived1':
-			if(introjs._currentStep == 44) {
+			if(introjs._currentStep == 55) {
 				//$("#derived1ClassConstructor").addClass("opacity00");
 			}
 			break;
@@ -584,10 +594,19 @@ function introGuide() {
 			case "baseDestrPrint" :
 				$(".introjs-tooltip").removeAttr("style");
 				if(introjs._currentStep == 25) {
+					$("#finalText").addClass("opacity00");
 					$("#derivedObj, #classDerived").show();
 					$("#classBase, #baseClassConstructor, #baseClassDestructor").removeClass("opacity00");
 					$("#main, #derivedClassConstructor, #derivedClassDestructor, #consoleId").removeClass("opacity00");
 				}
+				break;
+				
+				
+			case 'finalText':
+				$("#derivedObj, #classDerived").removeClass("opacity00").show();
+				$("#classBase, #baseClassConstructor, #baseClassDestructor").removeClass("opacity00");
+				$("#main, #derivedClassConstructor, #derivedClassDestructor, #consoleId").removeClass("opacity00");
+				$("#finalText").removeClass("opacity00").addClass("z-index1000000");						
 				break;
 			}
 			break;
@@ -624,8 +643,8 @@ function introGuide() {
 			switch(animateStep) {
 			case 'singleInheritance':
 				$("#preTableDiv").removeClass("opacity00");
-				var text = 	"Let us understand how <span class='ct-code-b-yellow'>destructors</span> can be called " +
-							"in <span class='ct-code-b-yellow'>single inheritance</span>.";
+				var text = 	"Let us understand how <span class='ct-code-b-yellow'>destructors</span> " +
+							"can be called in <span class='ct-code-b-yellow'>single inheritance</span>.";
 				typing('.introjs-tooltiptext', text, function() {
 					$(".introjs-nextbutton").show();
 				});
@@ -633,8 +652,8 @@ function introGuide() {
 			
 			case 'multiLevelInheritance':
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = 	"Let us understand how <span class='ct-code-b-yellow'>destructors</span> can be called " +
-								"in <span class='ct-code-b-yellow'>multiLevel inheritance</span>.";
+					var text = 	"Let us understand how <span class='ct-code-b-yellow'>destructors</span> " +
+								"can be called in <span class='ct-code-b-yellow'>multiLevel inheritance</span>.";
 					typing('.introjs-tooltiptext', text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
@@ -843,8 +862,8 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#baseClassDestructor").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
-				var text = 	"The <span class='ct-code-b-yellow'>destructor</span> of the " +
-							"class <span class='ct-code-b-yellow'>Base</span> will be executed next.";
+				var text = 	"The <span class='ct-code-b-yellow'>destructor</span> of the class " +
+							"<span class='ct-code-b-yellow'>Base</span> will be executed next.";
 				typing(".introjs-tooltiptext", text, function() {
 					$('.introjs-prevbutton, .introjs-nextbutton').show();
 				});
@@ -872,8 +891,8 @@ function introGuide() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#derivedClassDestructor").removeClass("opacity00");
 					$('.introjs-tooltip').removeClass('hide');
-					var text = 	"The <span class='ct-code-b-yellow'>destructor</span> of the " +
-								"class <span class='ct-code-b-yellow'>Derived</span> will be executed first.";
+					var text = 	"The <span class='ct-code-b-yellow'>destructor</span> of the class " +
+								"<span class='ct-code-b-yellow'>Derived</span> will be executed first.";
 					typing(".introjs-tooltiptext", text, function() {
 						$('.introjs-prevbutton, .introjs-nextbutton').show();
 					});
@@ -1179,6 +1198,37 @@ function introGuide() {
 			}
 			break;
 			
+		case 'finalText':
+			$("#derivedObj, #classDerived").removeClass("opacity00").show();
+			$("#classBase, #baseClassConstructor, #baseClassDestructor").removeClass("opacity00");
+			$("#main, #derivedClassConstructor, #derivedClassDestructor, #consoleId").removeClass("opacity00");
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$('.introjs-tooltip').removeClass('hide');
+				introjs.refresh();
+				$("#finalText").removeClass("opacity00").addClass("z-index1000000");
+				var text = 	"This is the summary of how <span class='ct-code-b-yellow'>destructors</span> " +
+							"can be called in <span class='ct-code-b-yellow'>single inheritance</span>.";
+				typing(".introjs-tooltiptext", text, function() {
+					$('.introjs-prevbutton, .introjs-nextbutton').show();
+				});
+			});
+			break;
+			
+		case 'finalText1':
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				if (introjs._direction == "backward") {
+					setTimeout(function () {
+						introjs.previousStep();
+					}, 500);
+				} else {
+					$("#finalText1").removeClass("opacity00").addClass("z-index1000000");						
+					setTimeout(function () {
+						introjs.nextStep();
+					}, 500);
+				}
+			});
+			break;
+			
 		case 'end':
 			$('.introjs-tooltip').css("min-width", "230px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
@@ -1195,6 +1245,7 @@ function introGuide() {
 			break;
 			
 		case "restart":
+			$("#finalText1").removeClass("z-index1000000");
 			$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
@@ -1233,7 +1284,6 @@ function transferEffect(selector1, selector2, callBackFunction) {
 		}
 	});
 } 
-
 
 function typing(selector, text, callBackFunction) {
 	var typingSpeed = 1;

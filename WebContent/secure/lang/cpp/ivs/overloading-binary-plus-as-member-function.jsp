@@ -298,8 +298,8 @@ div, span {
 	</div>
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2  infoDiv" id="infoDiv">
 		<ul>
-		 	<li id="list1" class="opacity00">To overload a binary operator + as <span class="ct-code-b-green">member function</span>,
-		 	binary operator + requires <span class="ct-code-b-green">only one argument</span>.</li>
+		 	<li id="list1" class="opacity00">To overload a binary operator <span class="ct-code-b-green">+</span> as <span class="ct-code-b-green">member function</span>,
+		 	binary operator <span class="ct-code-b-green">+</span> requires <span class="ct-code-b-green">only one argument</span>.</li>
 		 	<li id="list2" class="opacity00"> The format of <span class="ct-code-b-green">operator function + </span> is : <br>
 				 <span class="ct-Maroon-color">Class-Name&emsp;operator +(Class-Name&emsp;object) { <br>
 			 		&emsp;&emsp;// Perform addition on different object values <br>
@@ -424,7 +424,7 @@ div, span {
 					</div>
 				</div>
 				<div class="col-xs-12">
-					<div class="col-xs-9 margin-top-25">
+					<div class="col-xs-9 col-xs-offset-1 margin-top-25">
 						<div id="consoleId" class="center opacity00" style="margin-top: 3%; ">
 							<div class="output-console-title-bar">
 								<span class="title"><b>Console</b></span>

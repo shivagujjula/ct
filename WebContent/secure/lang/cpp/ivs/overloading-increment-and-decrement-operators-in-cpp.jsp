@@ -18,18 +18,17 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <script src='/secure/lang/cpp/js-min/oiadoic.min.js'></script>
-<title>Overloading increment(++) and decrement(--) operators in
-	cpp</title>
+<title>Overloading increment(++) and decrement(--) operators in cpp</title>
 </head>
 <style>
 #infoDiv {
 	background-color: rgb(243, 235, 235);
 	border: 1px solid grey;
 	border-radius: 10px;
-	font-size: 16px;
-	/*font-family: monospace;*/
+	font-size: 13px;
+	font-family: monospace;
 	padding: 9px 14px;
-    min-height: 252px;
+    min-height: 152px;
 }
 .creamPreTab1 {
 	-moz-tab-size: 2;
@@ -279,21 +278,21 @@ div, span {
 				<span>Overloading increment and decrement operators in C++</span>
 			</h3>
 		</div>
-		<div class="col-xs-12">
+		<div class="col-xs-12" style="font-family: monospace;">
 			<div class="col-xs-8 col-sm-offset-2 margin-top-2" id="infoDiv">
 				<ul>
 					<li id="list" class="opacity00">The <span class="ct-lightblue-color">prefix increment</span> and 
 						<span class="ct-lightblue-color">decrement operators </span>
 					 	can be overloaded using operator function as <br>
-					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator++()</span>;<br>
-					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator--()</span>; // prefix
+					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator ++()</span>;<br>
+					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator --()</span>; // prefix
 					</li>
 	
 					<li id="list1" class="opacity00">The <span class="ct-lightblue-color">postfix increment</span> and 
 						<span class="ct-lightblue-color">decrement operators</span>
 						can be overloaded using operator function as <br>
-						&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator++(int)</span>;<br>
-					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator--(int)</span>; // postfix
+						&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator ++(int)</span>;<br>
+					 	&emsp;&emsp;&emsp;&emsp;<span class="ct-Maroon-color">return_type</span> <span class="ct-green-color">operator --(int)</span>; // postfix
 					</li>
 					<li id="list2" class="opacity00">To distinguish between two, the prefix form 
 						of the operator is declared exactly the same way as the other unary operators,
@@ -312,8 +311,7 @@ div, span {
 				<div class="col-xs-6 padding00">
 					<pre class="creamPreTab1 opacity00" id="preTableDiv">
 						<div class="col-xs-6 padding00" id="classDiv">
-	<span id="preDir"><span id="include">#include</span> &lt;<span
-								id="ioStream">iostream</span>&gt;</span>
+	<span id="preDir"><span id="include">#include</span> &lt;<span id="ioStream">iostream</span>&gt;</span>
 	<span id="lib"><span id="using">using</span> <span id="nameSpace">namespace</span> std;</span>
 	<span id="class" class="opacity00">class Sample {
 			<span id="init" class="opacity00">int <span id="intNum">num</span>;</span>
@@ -392,7 +390,7 @@ div, span {
 												</div>
 												<div id="s1AnimationDiv"
 													class="text-center panel-body">
-													<span id="s1Val" class="opacity00 aBox ct-green-color">5</span>
+													<span id="s1Val" class="opacity00 position aBox ct-green-color">5</span>
 												</div>
 											</div>
 										</div>
@@ -519,7 +517,7 @@ div, span {
 						</div>
 					</div>
 					<div class="col-xs-12">
-						<div class="col-xs-6 margin-top-4">
+						<div class="col-xs-6 col-xs-offset-3 margin-top-4">
 							<div id="consoleId" class="center opacity00">
 								<div class="output-console-title-bar">
 									<span class="title"><b>Console</b></span>

@@ -53,8 +53,8 @@
 .margin-top-4 {
 	margin-top: 4%;
 }
-.margin-4 {
-	margin: 4%;
+.margin-top-6 {
+	margin-top: 6%;
 }
 
 .panel-heading {
@@ -99,7 +99,7 @@
 	animation-direction: alternate ;
 	z-index: 10000000 !important;
 	position: relative;
-}NewFile.js
+}
 
 @keyframes blink-border-background-white { 
 	50% {
@@ -141,11 +141,17 @@
 	z-index: 10000010 !important;
 	position: relative;
 }
-/* .value-css {
-	color: blue;
-	font-family: monospace;
-	font-weight : bold;
-} */
+.finalText,  .finalText1{
+	border: 1px solid gray;
+	border-radius: 8px;
+	min-height: 45px;
+	padding: 6px;
+}
+.back-button {
+    background-color: #5bc0de !important;
+	display: inline-block;
+    border-radius: 3px !important;
+}
 
 .position {
 	position: relative;
@@ -228,6 +234,17 @@
 		</div>
 	</div>
 	<div class="col-xs-12">
+		<div class="col-xs-8 col-xs-offset-2 opacity00 margin-top-2 finalText" id="finalText">
+			<span>In <span class='ct-code-b-green'>single inheritance</span>, first the 
+			<span class='ct-code-b-green'>derived class destructor</span> is called and next 
+			the <span class='ct-code-b-green'>base class destructor</span> is invoked.</span>
+		</div>
+		<div class="col-xs-8 col-xs-offset-2 opacity00 margin-top-2 finalText1" id="finalText1">
+			<span>In <span class='ct-code-b-green'>multilevel inheritance</span>, the 
+			<span class='ct-code-b-green'>destructors</span> will be called from bottom 
+			class to top class i.e., from the <span class='ct-code-b-green'>last derived 
+			class</span> to the <span class='ct-code-b-green'>first base class</span>.</span>
+		</div>
 		<div class="col-xs-4 col-xs-offset-6  margin-top-4" id="restartDiv">
 			<a class="btn btn-warning opacity00" id="restart">
 			<i class="fa fa-refresh"></i>&nbsp;Restart</a>

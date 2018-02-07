@@ -62,7 +62,7 @@
 
 #restart {
     margin-top: 13%;
-} 
+}
 
 .margin-top-2 {
 	margin-top: 2%;
@@ -88,7 +88,7 @@
 }
 .ct-orange-color {
 	color: orange;
-	
+
 }
 .ct-red-color {
 	color: red;
@@ -163,19 +163,19 @@ ul.expl {
 }
 
 .input-char {
-	min-width: 200px; 
+	min-width: 200px;
 	border-width: 0px 0 0 0;
 	background-color: #000;
 	color: #0f0;
 }
 .input-char2 {
-	min-width: 45px; 
+	min-width: 45px;
 	border-width: 0px 0 0 0;
 	background-color: #000;
 	color: #0f0;
 }
 .box-Heading {
-	font-weight: bold; 
+	font-weight: bold;
 	color: rgb(47, 79, 79);
 }
 #addressDiv, #addressDiv1 {
@@ -231,7 +231,7 @@ div, span {
 	animation-iteration-count: 1;
 }
 
-@keyframes blink { 
+@keyframes blink {
 50% {
 	background: orange;
 }
@@ -247,7 +247,7 @@ div, span {
 	position: relative;
 }
 
-@keyframes blink-border-background-white { 
+@keyframes blink-border-background-white {
 	50% {
 		border-color: white;
 		background: white;
@@ -263,7 +263,7 @@ div, span {
 	position: relative;
 }
 
-@keyframes blink-border-background-orange { 
+@keyframes blink-border-background-orange {
 	50% {
 		border-color: white;
 		background: orange;
@@ -337,14 +337,16 @@ div, span {
 		<div class="col-xs-8 col-sm-offset-2 margin-top-2" id="infoDiv">
 			<ul>
 			 	<li id="list" class="opacity00">The cascading of the input and output operators refers to the consecutive occurrence of input or output operators in a single statement.<br></li>
-			 	<li id="list1" class="opacity00">In C++, insertion operator (<<) is used to display output on output stream
-			 	 and extraction operator (>>) is used to extract input from input stream.<br></li>
-			
+			 	<li id="list1" class="opacity00">In C++, insertion operator (<span class="ct-Maroon-color"><<</span>) is used to display output on output stream
+			 	 and extraction operator (<span class="ct-Maroon-color">>></span>) is used to extract input from input stream.<br></li>
+
 				 <li id="list2" class="opacity00"><span class="ct-Maroon-color">Points to remember when overloading insertion(<<) and extraction(>>) operators : </span>
 				 	<ul class="expl">
-				 		<li id="list11" class="opacity00">cout is an object of ostream class and cin is an object of istream class.</li>
-				 		<li id="list12" class="opacity00">The operators <span class="ct-code-b-green"><<</span> and 
-				 			<span class="ct-code-b-green">>></span> are overloaded  by using only  
+				 		<li id="list11" class="opacity00"><span class="ct-code-b-green">cout</span> is an object of
+				 		<span class="ct-code-b-green">ostream</span> class and <span class="ct-code-b-green">cin</span> is an
+				 			object of <span class="ct-code-b-green">istream</span> class.</li>
+				 		<li id="list12" class="opacity00">The operators <span class="ct-code-b-green"><<</span> and
+				 			<span class="ct-code-b-green">>></span> are overloaded  by using only
 				 			<span class="ct-code-b-green">friend functions</span>.</li>
 				 		<li id="list13" class="opacity00">For example <span class="ct-code-b-green">cout << ob1</span> is a statement
 				 			when operator function call is like as <span class="ct-code-b-green">operator << (cout, ob1)</span>
@@ -371,26 +373,27 @@ div, span {
 		<span id="public"  class="opacity00">public: <span id="friendFunction" class="opacity00">friend ostream &operator << (ostream &, Student &);</span>
 				  	<span id="friendFunction1" class="opacity00">friend istream &operator >> (istream &, Student &);</span></span>
 };</span>
-<span id="frndFunCout" class="opacity00">ostream &operator << (ostream &output, Student &s) { 
+<span id="frndFunCout" class="opacity00">ostream &operator << (ostream &output, Student &s) {
 		<span id="sN" class="opacity00">output << "student name : " ;</span>
 		<span id="sName1" class="opacity00">output << <span id="name">s.name</span>;</span>
 		<span id="nAM" class="opacity00">output << "no and marks : ";</span>
 		<span id="sNAM1" class="opacity00">output << <span id="num">s.no</span> << <span id="mark">s.marks</span>;</span>
 		<span id="return1" class="opacity00">return output;</span>
 }</span>
-<span id="frndFunCin" class="opacity00">istream &operator >> (istream &input, Student &s) { 
+<span id="frndFunCin" class="opacity00">istream &operator >> (istream &input, Student &s) {
 		<span id="eSN" class="opacity00">cout << "Enter student name : ";</span>
 		<span id="sName" class="opacity00">input >> s.name;</span>
-		<span id="eNAM" class="opacity00">cout << "Enter no and marks :  ";</span> 
+		<span id="eNAM" class="opacity00">cout << "Enter no and marks :  ";</span>
 		<span id="sNAM" class="opacity00">input >> s.no >> s.marks; </span>
 		<span id="return" class="opacity00">return input;</span>
 }</span>
 <span id="main" class="opacity00">main() {
 		<span id="sInit" class="opacity00">Student <span id="s1">s1</span>, <span id="s2">s2</span>;</span>
 		<span id="eSd" class="opacity00">cout << "Enter two students details : " << endl;</span>
-		<span id="sEnter" class="opacity00">cin >> s1 >> s2;</span>
+		<span id="sEnter" class="opacity00"><span id="cin">cin</span> >> s1 <span id="cinS2">>> s2</span>;</span>
 		<span id="tSd" class="opacity00">cout << "The student details are : " << endl;</span>
-		<span id="sOut" class="opacity00">cout << s1 << s2;</span>
+		<span id="sOut" class="opacity00"><span id="cout">cout</span> << s1 <span id="coutS2"><< s2</span>;</span>
+		<span id="retNull" class="opacity00">return 0;</span>
 <span id="end">}</span></span>
 					</pre>
 				</div>
@@ -525,7 +528,7 @@ div, span {
 						</div>
 					</div>
 					<div class="col-xs-12">
-					<div class="col-xs-9">
+					<div class="col-xs-10 col-xs-offset-1">
 						<div id="consoleId" class="center opacity00"
 							style="margin-top: 3%;">
 							<div class="output-console-title-bar">
@@ -577,7 +580,7 @@ div, span {
 					<!--ends-->
 			</div>
 		</div>
-	</div>	
+	</div>
 	<div class="col-xs-3 col-sm-offset-4">
 		<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
 			<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>

@@ -1,4 +1,3 @@
-var typingInterval = 5;
 var iVal = 1;
 var tl;
 var count;
@@ -258,11 +257,11 @@ function introGuide() {
 				$(".introjs-tooltip").removeAttr("style");
 				break;
 			case 'printPreline1':
-				$('#printLineInConsole').addClass('opacity00');
+				//$('#printLineInConsole').addClass('opacity00');
 				$('#s3PutData').addClass("opacity00");
 				break;
 			case 'printPreline2':
-				$('#s3PutData').addClass("opacity00");
+				//$('#s3PutData').addClass("opacity00");
 				break;
 			}
 			break;
@@ -371,11 +370,11 @@ function introGuide() {
 			break;
 			
 		case 's3PutData':
-			//$('#s3PutData').addClass("opacity00");
+			$('#s3PutData').addClass("opacity00");
 			break;
 			
 		case 'print1':
-			
+			$('#printpreLine2').addClass("opacity00");
 			break;
 		}
 	});
@@ -439,7 +438,6 @@ function introGuide() {
 							"functions <span class='ct-code-b-yellow'>getData()</span> and "+
 							"<span class='ct-code-b-yellow'>putData()</span>.";
 				typing(".introjs-tooltiptext", text, function() {
-					//$("#class, #init, #public, #getData, #putData").fadeTo(300, 1);
 					$("#class").fadeTo("slow" , 1, function() {
 						$("#init").fadeTo("slow" , 1, function() {
 							$("#public").fadeTo("slow" , 1,function() {
@@ -561,7 +559,7 @@ function introGuide() {
 				$(".introjs-tooltip").css("min-width", "310px");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$(".introjs-tooltip").removeClass('hide');
-					var text = 	"Now find out the addition of two objects <span class='ct-code-b-yellow'>s1</span> "+
+					var text = 	"Now find out the subtraction of two objects <span class='ct-code-b-yellow'>s1</span> "+
 								"and <span class='ct-code-b-yellow'>s2</span>, store the result in " +
 								"<span class='ct-code-b-yellow'>s3</span>.<br>" +
 								"<span class='ct-code-b-yellow'>s3 = s1 - s2;</span><br>" +
@@ -593,7 +591,7 @@ function introGuide() {
 		case 'friendFunction':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$(".introjs-tooltip").removeClass('hide');
-				var text = "The <span class='ct-code-b-yellow displayBlock'> operator function + </span> "+
+				var text = "The <span class='ct-code-b-yellow displayBlock'> operator function - </span> "+
 						   "is written as <span class='ct-code-b-yellow'>friend function</span> " +
 						   "in class <span class='ct-code-b-yellow'>Sample</span>."; 
 				typing(".introjs-tooltiptext",text, function() {
@@ -618,7 +616,8 @@ function introGuide() {
 			break;
 		case 's3Temp':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "Here, <span class='ct-code-b-yellow'>s3</span> is an object of sample is created.";
+				var text = 	"Here, <span class='ct-code-b-yellow'>s3</span> is an object of " +
+							"<span class='ct-code-b-yellow'>sample</span> is created.";
 				typing(".introjs-tooltiptext",text, function() {
 					$('.introjs-prevbutton, .introjs-nextbutton').show();
 				});
@@ -645,7 +644,7 @@ function introGuide() {
 			break;
 		case 'return':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "It returns the value of s3.";
+				var text = "It returns the value of <span class='ct-code-b-yellow'>s3</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$('.introjs-prevbutton, .introjs-nextbutton').show();
 				});
@@ -675,7 +674,8 @@ function introGuide() {
 			break;
 		case 'print1':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This statement is used to print the string in the console.";
+				var text = 	"This statement is used to display the <span class='ct-code-b-yellow'>complex " +
+							"number</span> in the console.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -699,7 +699,7 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$(".introjs-tooltip").removeClass('hide');
-					typing('.introjs-tooltiptext', "Enter two numbers.", function() {
+					typing('.introjs-tooltiptext', "Enter two numbers seperated each with space.", function() {
 						$("#inputChar").addClass("blinking");
 						checking("#inputChar");
 						charAtEnd("inputChar");
@@ -719,7 +719,7 @@ function introGuide() {
 				$('.introjs-prevbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$(".introjs-tooltip").removeClass('hide');
-					typing('.introjs-tooltiptext', "Enter two numbers.", function() {
+					typing('.introjs-tooltiptext', "Enter two numbers seperated each with space.", function() {
 						$("#outputPrintfLine1").removeClass("opacity00");
 						$("#inputChar1").removeClass("opacity00").attr('contenteditable', true).addClass("blinking").focus();
 						checking("#inputChar1");
@@ -805,8 +805,9 @@ function introGuide() {
 			break;
 		
 		case 'end':
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+			$('.introjs-helperLayer ').one('transitionend', function() { 
+				var text = 	"This is the end of the <span class='ct-code-b-yellow'>main()</span> " +
+							"function where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -850,7 +851,7 @@ function checking(selector) {
 	
 	$(selector).on("keydown", function(e) {
 		$('.introjs-prevbutton').hide();
-		if (arr.length == 2) {
+		if (arr.length == 0 || arr.length == 2) {
 				if (e.keyCode == 32) {
 					e.preventDefault();
 				}
@@ -1034,7 +1035,7 @@ function transferEffect1(selector1, selector2, callBackFunction) {
 } 
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -1067,7 +1068,7 @@ function fadeInBounceEffectWithTimelineMax(selector1, selector2, callBackFunctio
 		$(selector2).text($(selector1).text());
 		TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
 			$(selector2).fadeIn(1000, 0, function() {
-				$(selector2).fadeIn(1000, 1, function() {
+				$(selector2).fadeIn(1000, 1, function() {var typingInterval = 5;
 					$(selector2).css('width', "auto");
 					$("#dummy").remove();
 					if (typeof callBackFunction === "function") {

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +15,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="../js-min/cae.min.js"></script>
+<script src="../js-min/cae.min.js"></script> 
 
 <title>catch-all-exceptions</title>
 <style type="text/css">
@@ -117,7 +114,10 @@
 	background-color: green;
 	margin: 0!important;
 }
-
+.user-btn1 {
+	background-color: green;
+	margin: 0!important;
+}
 .z-index {
 	position: relative;
 	z-index: 10000001 !important;
@@ -181,8 +181,8 @@ $(document).ready(function() {
 				<ul>
 					<li id="li1" class="opacity00">
 						A catch-all handler works just like a normal catch block, except that instead of using a specific type to catch, it uses the ellipses operator
-						 (…) as the type to catch. 
-						 <span class='user-btn introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span><br>
+						 (&hellip;) as the type to catch. 
+						 <span class='user-btn1 introjs-button' onclick='introjs.nextStep()'>Next &#8594;</span><br>
 					</li>
 				</ul>
 			</div>

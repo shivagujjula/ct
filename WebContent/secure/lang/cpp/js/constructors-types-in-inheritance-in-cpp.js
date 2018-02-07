@@ -261,10 +261,21 @@ function introGuide() {
 			}
 			break;
 			 
+			
 		case 'decrementCount':
-			
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "decrementCountS1" :
+				$("#s1Val").text("4");
+				break;
+				
+			case "decrementCountS2" :
+				$("#s2Val").text("10");
+				break;
+			}
 			break;
-			
+				
+				
 		case 'displayCoutCount':
 			if(introjs._currentStep == 17) {
 				$("#decCountValue, #decCountCout, #decCountVal").addClass("opacity00");
@@ -296,7 +307,7 @@ function introGuide() {
 			break;
 			
 		case 'paraConstrCountInCounter':
-			// $("#s2Val").addClass("opacity00");
+			$("#s2Val").addClass("opacity00");
 			break;
 			
 		case 'paraConstrCoutInCounter':
@@ -704,14 +715,14 @@ function introGuide() {
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
 				$(".introjs-tooltiptext").append("<span id='countPara' class='display position ct-code-b-yellow opacity00'>count = " +
-												"<span id = 'valuePara' class='display position'>value</span>;</span>");
+												"<span id = 'valuePara' class='display position '>value</span>;</span>");
 				$('#countPara').removeClass('opacity00');
 					fromEffectWithTweenMax("#paraConstrCountInCounter", "#countPara", function() {
 					/*$("#countPara").append("<br><span id='countPara1' class='display position ct-code-b-yellow opacity00'>count = " +
 											"<span id = 'value1' class='display position'>value</span>;</span>");
-					$('#countPara1').removeClass('opacity00');
-					$('#value1').text( $('#s2Num').text());*/
-					fadeInBounceEffectWithTimelineMax("#s2Num", "#valuePara", function() {
+					$('#countPara1').removeClass('opacity00');*/
+					$('#valuePara').text( $('#s2Num').text());
+						fromEffectWithTweenMax("#s2Num", "#valuePara", function() {
 						 $('#s2Val').removeClass("opacity00");
 						 $('#s2Box').css("z-index", "1000000");
 						 fromEffectWithTweenMax("#valuePara", "#s2Val", function() {
@@ -781,12 +792,12 @@ function introGuide() {
 								$("#s1, #count").removeClass("blinking-orange");
 								$("#addressDiv").removeClass("z-index1000000");
 								$('.introjs-tooltip').removeClass('hide');
-								var text =  "After <span class='ct-code-b-yellow'>memory</span> allocation to " +
-											"an object, <span class='ct-code-b-yellow'>default constructor</span> of " +
-											"to an object, <span class='ct-code-b-yellow'>Counter</span> will be called " +
-											"first and next <span class='ct-code-b-yellow'>default constructor</span> of " +
-											"<span class='ct-code-b-yellow'>derived</span> class <span class='ct-code-b-yellow'>" +
-											"Sample</span> will be called.";
+								var text =  "After <span class='ct-code-b-yellow'>memory</span> allocation to an object, " +
+											"<span class='ct-code-b-yellow'>default constructor</span> of " +
+											"<span class='ct-code-b-yellow'>base</span> class <span class='ct-code-b-yellow'>" +
+											"Counter</span> will be called first and next <span class='ct-code-b-yellow'>default " +
+											"constructor</span> of <span class='ct-code-b-yellow'>derived</span> class " +
+											"<span class='ct-code-b-yellow'>Sample</span> will be called.";
 								typing(".introjs-tooltiptext", text, function() {
 									$('.introjs-prevbutton, .introjs-nextbutton').show();
 								});

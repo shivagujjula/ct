@@ -1,12 +1,11 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
 var catchAllExceptionsReadyFun = function() {
 	introGuide();
-	
 	$("[contenteditable=true]").on("click keydown keyup", function(e) {
 		$(".errMsg").remove();
 		if ($(this).text() == "") {
@@ -111,7 +110,7 @@ introjs.onbeforechange(function(targetElement) {
 		case "code":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 		break;
 		case "try":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
@@ -129,6 +128,7 @@ introjs.onbeforechange(function(targetElement) {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "cin":
+			$("#inputVal").empty();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
 		case "outputDiv":
@@ -170,7 +170,7 @@ introjs.onbeforechange(function(targetElement) {
 		introjs.refresh();
 		switch (elementId) {
 		case "topDiv":
-			$('.user-btn').removeClass("hide");
+			$('.user-btn1').removeClass("hide");
 			introjs.refresh();
 			$("#code").addClass("opacity00");
 			$("#li1").fadeTo(500, 1, function () {
@@ -186,7 +186,7 @@ introjs.onbeforechange(function(targetElement) {
 		break;
 		case "code":
 			$("#code").removeClass("opacity00");
-			$('.user-btn').addClass("hide");
+			$('.user-btn1').addClass("hide");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -239,6 +239,7 @@ introjs.onbeforechange(function(targetElement) {
 		break;
 		case "cout1":
 			$("#cout1").removeClass("hide");
+			$("#outputDiv").addClass("opacity00");
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#outputText").removeClass("opacity00");
@@ -272,9 +273,10 @@ introjs.onbeforechange(function(targetElement) {
 					}
 				});
 			} else if (introjs._currentStep == 8) {
+				$("#inputVal").empty();
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
-					var text = "Enter any number.<br><b>Hint:</b> Give it as <y>1</y> or <y>0</y> or <y>2</y> and check what happen.";
+					var text = "Enter any number.<br><b>Hint:</b> Give it as <y>1</y> or <y>0</y> or <y>2</y> and check what happens.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						charAtEnd("inputVal");
 					});

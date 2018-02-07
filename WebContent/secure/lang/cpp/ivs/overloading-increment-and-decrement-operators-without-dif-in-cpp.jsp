@@ -284,7 +284,7 @@ div, span {
 			<span id="aValue">num = x;</span>
 		}</span>
 		<span id="putData" class="opacity00">void putData() {
-			<span id="printA">cout << <span id="number">num</span>;</span>
+			<span id="printA">cout << <span id="number">num</span> << endl;</span>
 		}</span>					
 		<span id="preInc" class="opacity00">void operator ++() { 
 			<span id="aPreInc">num = num + 1;</span>

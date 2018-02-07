@@ -45,9 +45,7 @@
    border: none;
     
 }
-#introduction {
-	background-color: rgb(243, 235, 235);
-}
+
 #heading {
 	margin-top:10px;
 }
@@ -282,13 +280,14 @@ div, span {
 	<div class="cool-xs-12">
 		<div class="col-xs-8 col-sm-offset-2 margin-top-2" id="infoDiv">
 			<ul>
-			 	<li id="list" class="opacity00">In C++, insertion operator (<<) is used to display output 
-			 		on output stream and extraction operator (>>) is used to extract input from input stream.<br></li>
+			 	<li id="list" class="opacity00">In C++, insertion operator (<span class="ct-Maroon-color"><<</span>) is used to display output 
+			 		on output stream and extraction operator (<span class="ct-Maroon-color">>></span>) is used to extract input from input stream.<br></li>
 				 <li id="list1" class="opacity00"><span class="ct-Maroon-color">Points to remember when 
 				 	overloading insertion(<<) and extraction(>>) operators : </span>
 				 	<ul class="expl">
-				 		<li id="list11" class="opacity00">cout is an object of ostream class and cin is an 
-				 			object of istream class.</li>
+				 		<li id="list11" class="opacity00"><span class="ct-code-b-green">cout</span> is an object of 
+				 		<span class="ct-code-b-green">ostream</span> class and <span class="ct-code-b-green">cin</span> is an 
+				 			object of <span class="ct-code-b-green">istream</span> class.</li>
 				 		<li id="list12" class="opacity00">The operators <span class="ct-code-b-green"><<</span> and 
 				 			<span class="ct-code-b-green">>></span> are overloaded  by using only 
 				 			<span class="ct-code-b-green">friend functions</span>.</li>
@@ -407,7 +406,7 @@ div, span {
 						</div>
 				</div>
 				<div class = "col-xs-12">
-					<div class="col-xs-10 margin-top-25">
+					<div class="col-xs-10 col-xs-offset-1 margin-top-25">
 						<div id="consoleId" class="center opacity00">
 							<div class="output-console-title-bar">
 								<span class="title"><b>Console</b></span>

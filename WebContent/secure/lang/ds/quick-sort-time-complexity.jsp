@@ -77,7 +77,6 @@
 }
 
 .svg-line {
-	display: none;
 	position: relative;
 	stroke: gray;
 	stroke-width: 2; 
@@ -213,6 +212,19 @@ td {
 	font-size: 13px;
 }
 
+.introjs-tooltip {
+	min-width: 280px;
+}
+
+.non-border {
+	border: none;
+	color: green;
+}
+
+.border-padding {
+	padding: 8px;
+}
+
 </style>
 </head>
 <body>
@@ -228,64 +240,125 @@ td {
 	<div class="col-xs-12">
 		<div class="col-xs-8 col-xs-offset-2 index-div" id="indexDiv">
 			<ul>
-				<li>Choose any element in the array. Make it what is called the <b>pivot</b>.</li>
-				<li>Swap the pivot to the last element.</li>
-				<li>Make a two way scan of the remaining elements.</li>
-				<li>Swap elements such that all the elements less than <b>pivot</b> are to the left-end and all the elements greater than <b>pivot</b> 
-					are to the right end.</li>
-				<li>Elements equal to the pivot can go to the either side.</li>
-				<li>Swap the pivot to the appropriate position.</li>
-				<li>Apply the same technique to the left sub-array and the right sub-array.</li>
-				<li>This is done in a recursive manner and the base case is when our array is of size 0 or 1. Arrays of size 0 or 1 are considered 
-					to be sorted. So we do nothing in that case.</li>
+				<li id="listLine1" class="opacity00">Choose any element in the array. Make it what is called the <b>pivot</b>.</li>
+				<li id="listLine2" class="opacity00">Swap the pivot to the last element.</li>
+				<li id="listLine3" class="opacity00">Make a two way scan of the remaining elements.</li>
+				<li id="listLine4" class="opacity00">Swap elements such that all the elements less than <b>pivot</b> are to the left-end and all 
+					the elements greater than <b>pivot</b> are to the right end.</li>
+				<li id="listLine5" class="opacity00">Elements equal to the pivot can go to the either side.</li>
+				<li id="listLine6" class="opacity00">Swap the pivot to the appropriate position.</li>
+				<li id="listLine7" class="opacity00">Apply the same technique to the left sub-array and the right sub-array.</li>
+				<li id="listLine8" class="opacity00">This is done in a recursive manner and the base case is when our array is of size 0 or 1. 
+					Arrays of size 0 or 1 are considered to be sorted. So we do nothing in that case.</li>
 			</ul>
 		</div>
 	</div>
 	<div class="col-xs-12 margin-top-2">
 		<div class="col-xs-6 col-xs-offset-0">
 			<div class="col-xs-12">
-<pre class="creamPreTab4 " id="preCode2">
-void quickSort(int arr[], int low, int high) {
-	int j;
-	if (low < high) {
-		j = partition(arr, low, high);
-		quickSort(arr, low, j - 1);
-		quickSort(arr, j + 1, high);
-	}
-}
-int partition(int arr[], int lb, int ub) {
-	int pivot, down, up, temp;
-	pivot = arr[lb];
-	down = lb;
-	up = ub;
-	while (down < up) {
-		while (arr[down] << pivot && down <= ub) {
-			down++;
-		}
-		while (arr[up] > pivot) {
-			up--;
-		}
-		if (down < up) {
-			temp = arr[up];
-			arr[up] = arr[down];
-			arr[down] = temp;
-		}
-	}
-	arr[lb] = arr[up];
-	arr[up] = pivot;
-	return up;
-}
+<pre class="creamPreTab4 " id="preCode1">
+<span id="codeLine1">void quickSort(int arr[], int low, int high) {</span>
+	<span id="codeLine2">int j;</span>
+	<span id="codeLine3">if (low < high) {</span>								<span id='codeLine3timeC' class="opacity00">//	C</span>
+		<span id="codeLine4">j = partition(arr, low, high);</span>		<span id='codeLine4timeC' class="opacity00">//	A(n)+B</span>
+		<span id='quicksortFunId'><span id="codeLine5">quickSort(arr, low, j - 1);</span>			<span id='codeLine5timeC' class="opacity00">//	T(n/2)</span>
+<span id="codeLine6">quickSort(arr, j + 1, high);</span>			<span id='codeLine6timeC' class="opacity00">//	T(n/2)</span></span>
+	<span id="codeLine7">}</span>
+<span id="codeLine8">}</span>
+<span id="partitionId"><span id="codeLine9">int partition(int arr[], int lb, int ub) {</span>
+	<span id="codeLine10">int pivot, down, up, temp;</span>
+	<span id="codeLine11">pivot = arr[lb];</span>
+	<span id="codeLine12">down = lb;</span>
+	<span id="codeLine13">up = ub;</span>
+	<span id="whileLoopId"><span id="codeLine14">while (down < up) {</span>
+	<span id="codeLine15">while (arr[down] <= pivot && down < ub) {</span>
+		<span id="codeLine16">down++;</span>
+	<span id="codeLine17">}</span>
+	<span id="codeLine18">while (arr[up] > pivot) {</span>
+		<span id="codeLine19">up--;</span>
+	<span id="codeLine20">}</span>
+	<span id="codeLine21">if (down < up) {</span>
+		<span id="codeLine22">temp = arr[up];</span>
+		<span id="codeLine23">arr[up] = arr[down];</span>
+		<span id="codeLine24">arr[down] = temp;</span>
+	<span id="codeLine25">}</span>
+<span id="codeLine26">}</span></span>
+	<span id="codeLine27">arr[lb] = arr[up];</span>
+	<span id="codeLine28">arr[up] = pivot;</span>
+	<span id="codeLine29">return up;</span>
+<span id="codeLine30">}</span></span>
 </pre>
 			</div>
 		</div>
 	
-		<div class="col-xs-5 margin-top-2">
+		<div class="col-xs-6 margin-top-2">
 			<div class="explanation-div opacity00" id="explanationDiv" style="padding: 4px 12px;"> <!-- col-xs-6 col-xs-offset-3 --> 
+				<svg class="svg-css opacity00">
+					<text style="font-size: 10px;" x="240" y="71" fill="blue"><= 4</text>
+					<text style="font-size: 10px;" x="360" y="71" fill="blue">> 4</text>
+					<text fill="red" y="77" x="285" style="font-size: 10px;">Pivot</text>
+					<marker id="arrowEnd" refY="2.5" refX="2" markerHeight="5" markerWidth="5" orient="auto" style="fill: gray;">
+						<path d="M0,0 L5,2.5 L0,5 Z"/>
+					</marker>
+					<line y2="18%" x2="46%" y1="18%" x1="35%" class="svg-line svg-line1"/>
+					<line class="svg-line svg-line1" x1="66%" y1="18%" x2="51%" y2="18%"/>
+				</svg>
+				<div class="col-xs-12">
+					<div class="col-xs-offset-4">
+						<table id="table1" class="opacity00">
+							<tr></tr>
+							<tr>
+								<td class='border-padding'>6</td>
+								<td class='border-padding'>8</td>
+								<td class='border-padding'>3</td>
+								<td class='border-padding'>2</td>
+								<td class='border-padding'>1</td>
+								<td class='border-padding'>7</td>
+								<td class='border-padding'>5</td>
+								<td class='border-padding' id="tdIndex">4</td>
+							</tr>
+							<tr>
+							<%for (int i = 0; i <= 7; i++)  {%>
+								<td class='non-border text-center'><%=i %></td>
+							<%} %>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!-- <div class="col-xs-12"  style="margin-top: 18px;">
+					
+				</div> -->
+				
+				<div class="col-xs-12" style="margin-top: 28px;">
+					<div class="col-xs-offset-4">
+						<table id="table2" class="opacity00">
+							<tr>
+							</tr>
+							<tr>
+								<td class='border-padding' style="background: wheat;">1</td>
+								<td class='border-padding' style="background: wheat;">2</td>
+								<td class='border-padding' style="background: wheat;">3</td>
+								<td class='border-padding' style="background: aqua;">4</td>
+								<td class='border-padding'>8</td>
+								<td class='border-padding'>5</td>
+								<td class='border-padding'>7</td>
+								<td class='border-padding'>6</td>
+							</tr>
+							<tr>
+							<%for (int i = 0; i <= 7; i++)  {%>
+								<td class='non-border text-center'><%=i %></td>
+							<%} %>
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				
 				<div class="col-xs-offset-">
-					<span>Therefore the total time T(n) is given by</span>
+					<span id="spanId" class="opacity00">Therefore the total time T(n) is given by</span>
 				</div>
 				<div class="col-xs-offset-4">
-					<span class="opacity00" id="calcLine1" style="background: #bbecc3;">T(n) = T(n/2) + T(n/2) + c(n)</span>
+					<span class="opacity00" id="calcLine1" style="background: #bbecc3;">T(n) = T(n/2) + T(n/2) + C + A(n) + B</span>
 					<br>
 					<span id="divCalcLine1" class="opacity00">T(n) = 2 * T(n/2) + c(n)</span><br>
 					<!-- <span id="divCalcLine2" class="opacity00">T(n) = T(n/2) + <span id="cValue" class="display">c</span></span><br> -->
@@ -309,35 +382,6 @@ int partition(int arr[], int lb, int ub) {
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-5">
-<pre class="creamPreTab4 opacity00" id="preCode1" style="font-size: 12px;">
-<span id="line1">void mergeSort(<span class="color-green">int</span> arr[], <span class="color-green">int</span> low, <span class="color-green">int</span> mid, <span class="color-green">int</span> high) {</span>
-	<span id="lineMid"><span class="color-green">int</span> mid = (low + high) / <span class="color-deeppink">2</span>;</span>
-	<span id="line2"><span class="color-green">int</span> i = low, h = low, j = mid + <span class="color-deeppink">1</span>, k, temp[];</span>
-	<span id="line3"><span class="color-maroon">while</span> (h <= mid && j <= high) {</span>
-		<span id="line4"><span class="color-maroon">if</span> (arr[h] <= arr[j]) {</span>
-			<span id="line5">temp[i] = arr[h];</span>
-			<span id="line6">h++;</span>
-		<span id="line7">} else {</span>
-			<span id="line8">temp[i] = arr[j];</span>
-			<span id="line9">j++;</span>
-		<span id="line10">}</span>
-		<span id="line11">i++;</span>
-	<span id="line12">}</span>
-	<span id="line13"><span class="color-maroon">if</span> (h > mid) {</span>
-		<span id="line14"><span class="color-maroon">for</span> (k = j; k <= high; k++) {</span>
-			<span id="line15">temp[i] = arr[k];</span>
-			<span id="line16">i++;</span>
-		<span id="line17">}</span>
-	<span id="line18">} <span class="color-maroon">else</span> {</span>
-		<span id="line19"><span class="color-maroon">for</span> (k = h; k <= mid; k++) {</span>
-			<span id="line20">temp[i] = arr[k];</span>
-			<span id="line21">i++;</span>
-		<span id="line22">}</span>
-	<span id="line23">}</span>
-<span id="line24">}</span>
-</pre>		
-		</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
 		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>
 	</div>
@@ -345,7 +389,7 @@ int partition(int arr[], int lb, int ub) {
 </body>
 <script>
 $(document).ready(function() {
-	mergeSortTimeComplexity();
+	quickSortTimeComplexity();
 //	$(".opacity00").removeClass("opacity00");
 });
 

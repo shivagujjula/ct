@@ -1,4 +1,3 @@
-var typingInterval = 1;
 var t1;
 var overloadingIncrementAndDecrementOperatorsWithoutDiffReady = function() {
 	introGuide();
@@ -455,9 +454,9 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#preTableDiv").removeClass("opacity00");
 				typing(".introjs-tooltiptext", "Let us understand how to overload " +
-						"<span class='ct-code-b-yellow'>prefix"+
-						" </span> and <span class='ct-code-b-yellow'>postfix increment</span>" +
-						" and <span class='ct-code-b-yellow'>decrement</span> operators.", function() {
+						"<span class='ct-code-b-yellow'>prefix</span> and " +
+						"<span class='ct-code-b-yellow'>postfix increment</span> " +
+						"and <span class='ct-code-b-yellow'>decrement</span> operators.", function() {
 					$(".introjs-nextbutton").show();
 				});
 			});
@@ -503,7 +502,7 @@ function introGuide() {
 				$(".introjs-tooltip").removeClass('hide');
 				var text = 	"<ul><li>Here <span class='ct-code-b-yellow'>s</span> is an object of class "+
 							"<span class='ct-code-b-yellow'>Sample</span></li>" +
-							"<li>When an object is created, memory allocated for that object.</li>" +
+							"<li>When an object is created, memory is allocated for that object.</li>" +
 							"<li>After memory allocation it will call either a <span class='ct-code-b-yellow'>default constructor</span> "+
 							"when no arguments is passed or <span class='ct-code-b-yellow'>parameterized constructor</span> when " +
 							"different arguments are passed.</li></ul>";						   
@@ -540,7 +539,6 @@ function introGuide() {
 								 });
 							 });
 						 });
-					 //});
 				 });
 			});
 			break;
@@ -563,16 +561,17 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
 				var text = "The member function <span class='ct-code-b-yellow'>putData()</span>"+
-						   " is used to print the data memeber <span class='ct-code-b-yellow'>num</span>.";
+						   " is used to print the data member <span class='ct-code-b-yellow'>num</span>.";
 				typing(".introjs-tooltiptext", text, function() {
 					$("#putData").removeClass("opacity00");
-					$(".introjs-nextbutton, .introjs-prevbutton").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show(); 
 				});
 			});
 			break;
 		case 'printA':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This statement is used to print the string in the console.";
+				var text = "This statement is used to print the value of " +
+							"<span class='ct-code-b-yellow'>num</span> in the console.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -596,7 +595,7 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass("hide");
 				var text = 	"Here the member <span class='ct-code-b-yellow position'>operator ++()</span> function " +
-							"is called by object <span class='ct-code-b-yellow'>s</span>";
+							"is called by object <span class='ct-code-b-yellow'>s</span>.";
 				typing(".introjs-tooltiptext", text, function() {
 					$('#preInc').removeClass('opacity00');
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -750,9 +749,9 @@ function introGuide() {
 			$('.introjs-tooltip').css("width", "300px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass("hide");
-				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s++</span>, "+
+				var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s--</span>, "+
 						   "first assignment operation is done and next decrement operation is done.</li>" +
-						   "<li><span class='ct-code-b-yellow'>s++</span> is executed as " +
+						   "<li><span class='ct-code-b-yellow'>s--</span> is executed as " +
 						   "<span class='ct-code-b-yellow'>s.operator --(int)</span> </li>" +
 						   "<li>Here <span class='ct-code-b-yellow'>int</span> is an additional argument " +
 						   "is used to distinguish between the prefix and postfix increment operators. </li></ul>";
@@ -810,9 +809,7 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "sValue" :
-				//$('.introjs-helperlayer ').one('transitionend', function() {
 					consoleTimeout("#sValue");
-				//});
 				break;
 			case "sPreIncVal" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
@@ -840,8 +837,6 @@ function introGuide() {
 								"<br> s++;</span>";
 						typing('#errorText',text, function() {
 							introjs.refresh();
-							//$(".introjs-tooltip").show();
-							//$("#postInc").show();
 							$('.introjs-tooltip').removeClass("hide");
 							var text = "This error occurs when compiler cannot find the definition " +
 									"for the  <span class='ct-code-b-yellow'>s++</span> that is, " +
@@ -856,25 +851,11 @@ function introGuide() {
 			case "sPostIncVal" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					consoleTimeout("#sPostIncVal");
-					/*$("#sAddress").addClass("z-index1000000");
-					transferEffect("#number", "#sPostIncVal", function() {
-						$("#sAddress").removeClass("z-index1000000");
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 500);
-					});*/
 				});
 				break;
 			case "sPreDecVal" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					consoleTimeout("#sPreDecVal");
-					/*$("#sAddress").addClass("z-index1000000");
-					transferEffect("#number", "#sPreDecVal", function() {
-						$("#sAddress").removeClass("z-index1000000");
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 500);
-					});*/
 				});
 				break;
 			case "errorText1" :
@@ -889,8 +870,6 @@ function introGuide() {
 								" 	postfix <span class='ct-white-color'> ‘--’</span>[-fpermissive]" +
 								"<br> s--;</span>";
 					typing('#errorText1',text, function() {
-						//$("#postDec").show();
-						//$(".introjs-tooltip").show();
 						$('.introjs-tooltip').removeClass("hide");
 						var text = "This error occurs when compiler cannot find the definition " +
 									"for the <span class='ct-code-b-yellow'>s--</span> that is, " +
@@ -905,13 +884,6 @@ function introGuide() {
 			case "sPostDecVal" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					 consoleTimeout("#sPostDecVal");
-					/*$("#sAddress").addClass("z-index1000000");
-					transferEffect("#number", "#sPostDecVal", function() {
-						$("#sAddress").removeClass("z-index1000000");
-						setTimeout(function () {
-							introjs.nextStep();
-						}, 1000);
-					});*/
 				});
 				break;
 			}
@@ -952,7 +924,6 @@ function introGuide() {
 			case "animationDiv" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == 'backward') {
-						
 						setTimeout(function() {
 							introjs.previousStep();
 						}, 1000);
@@ -992,7 +963,8 @@ function introGuide() {
 			
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = 	"This is the end of the <span class='ct-code-b-yellow'>main()</span> " +
+							"function where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});

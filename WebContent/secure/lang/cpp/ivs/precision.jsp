@@ -18,8 +18,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<!-- <script src="/secure/lang/cpp/js-min/pren.min.js" type="text/javascript"></script> -->
-<script src="/secure/lang/cpp/js/precision.js" type="text/javascript"></script>
+<script src="/secure/lang/cpp/js-min/pren.min.js" type="text/javascript"></script>
 
 <title>Understanding precision()</title>
 </head>

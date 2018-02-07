@@ -1,6 +1,6 @@
 var introjs;
 var tl = new TimelineLite();	
-var typingSpeed = 5;
+var typingSpeed = 1;
 var buttonCount = 1;
 var delete_key = 46;
 var backspace_key = 8;
@@ -112,6 +112,7 @@ function introGuide() {
 		introjs.refresh();
 		switch (elementId) {
 		case "topDiv":
+			$("#tryCatch").addClass("hide")
 			$('.user-btn').removeClass("hide");
 			$("#li1").fadeTo(500, 1, function () {
 				$("#li2").fadeTo(500, 1, function () {
@@ -137,7 +138,7 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "The statements which may expected to generate an error is written in <y>try block</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
-					$('.introjs-nextbutton').show();
+					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
 		break;
@@ -145,7 +146,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "The key word <y>throw</y> is used to throw an exception. Also used to list the exceptions that a function throws, but doesn’t handle itself.";
+				var text = "The keyword <y>throw</y> is used to throw an exception. Also used to list the exceptions that a function throws, but doesn&#8217;t handle itself.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -193,7 +194,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Declared two int variables <y>x</y>, <y>y</y> and initialized with <y>10</y>, <y>0</y> respectively.";
+				var text = "Here we declared two int variables <y>x</y>, <y>y</y> and initialized with <y>10</y>, <y>0</y> respectively.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
@@ -235,7 +236,7 @@ function introGuide() {
 		break;
 		case "cout2":
 			$("#cout2").removeClass("hide");
-			$("#op2").addClass("hide");
+			$("#op2, #try2catch").addClass("hide");
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -243,7 +244,7 @@ function introGuide() {
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append("<ul><li><div id='tooltipXY' class='display-inline-block relative opacity00'>"
 					+ "<y><div id='tooltipX' class='display-inline-block relative'>x</div> / <div id='tooltipY' class='display-inline-block relative'>y</div></y></div></li>"
-					+ "<li class='text opacity00'>This will gives an exception. And the program terminated abnormally.</li>");
+					+ "<li class='text opacity00'>This will give an exception. And the program terminated abnormally.</li>");
 					var l1 = $("#tooltipXY").offset();
 					var l2 = $("#x-y").offset();
 					var topLength = l2.top - l1.top;
@@ -281,12 +282,15 @@ function introGuide() {
 					}
 				});
 			} else if (introjs._currentStep == 10) {
+				$("#try2catch").addClass("hide");
+				$("#cout2").removeClass("hide");
 				introjs.refresh();
+				$("#op1, #op2").removeClass("hide")
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					//$("#body").append("<div><red>Floating point exception</red></div>");
 					$("#op2").removeClass("hide opacity00");
-					var text = "<ul><li>The compiler evaluate the result of <y>division by zero</y> and there by terminates the "
+					var text = "<ul><li>The compiler evaluates the result of <y>division by zero</y> and there by terminates the "
 					+ "  execution of the program abnormally.</li>"
 					+ "<li>By using <y>try</y>, <y>catch</y> blocks execute the program normally.</li></ul>"
 					typing($(".introjs-tooltiptext"), text, function() {
@@ -314,7 +318,7 @@ function introGuide() {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					//$("#body").append("<div>Division by 0 error is occured</div>");
-					$("#op4").removeClass("opacity00");;
+					$("#op4").removeClass("opacity00");
 					if (introjs._direction == "forward") {
 						setTimeout(function () {
 							introjs.nextStep();
@@ -330,7 +334,7 @@ function introGuide() {
 				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				$(".introjs-helperLayer").one("transitionend", function() {
 					//$("#body").append("<div>After exception, inside main()</div>");
-					$("#op5").removeClass("opacity00");;
+					$("#op5").removeClass("opacity00");
 					if (introjs._direction == "forward") {
 						setTimeout(function () {
 							introjs.nextStep();
@@ -349,11 +353,11 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "This is <y>try-block</y>.";
+				var text = "This is <y>try block</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$(".introjs-tooltiptext").append("<ul><li><div id='tooltipXY' class='display-inline-block relative opacity00'>"
 							+ "<y><div id='tooltipX1' class='display-inline-block relative'>x</div> / <div id='tooltipY1' class='display-inline-block relative'>y</div></y></div></li>"
-							+ "<li class='text opacity00'>This will throw an exception. And the corresponding catch block will catch the exception.</li>");
+							+ "<li class='text opacity00'>This will throw an exception. And the corresponding <y>catch block</y> will catch the exception.</li>");
 					var l1 = $("#tooltipXY").offset();
 					var l2 = $("#x-y1").offset();
 					var topLength = l2.top - l1.top;
@@ -376,7 +380,7 @@ function introGuide() {
 			introjs.refresh();
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "catch block will catch the exceptions thrown by the try block.";
+				var text = "Here <y>catch block</y> will catch the exceptions thrown by the <y>try block</y>.";
 				typing($(".introjs-tooltiptext"), text, function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});

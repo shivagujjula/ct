@@ -299,8 +299,8 @@ div, span {
 	</div>
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2  infoDiv" id="infoDiv">
 		<ul>
-		 	<li id="list1" class="opacity00">To overload a binary operator + as <span class="ct-code-b-green">friend function</span>,
-		 	binary operator + requires <span class="ct-code-b-green">two arguments</span>.</li>
+		 	<li id="list1" class="opacity00">To overload a binary operator <span class="ct-code-b-green">+</span> as <span class="ct-code-b-green">friend function</span>,
+		 	binary operator <span class="ct-code-b-green">+</span> requires <span class="ct-code-b-green">two arguments</span>.</li>
 		 	<li id="list2" class="opacity00"> The format of <span class="ct-code-b-green">operator function + </span> is : <br>
 				 <span class="ct-Maroon-color">friend&emsp;Class-Name&emsp;operator +(Class-Name&emsp;object1, Class-Name&emsp;object2); <!-- { <br>
 			 		&emsp;&emsp;// Perform addition on different object values <br>
@@ -343,7 +343,7 @@ div, span {
 		<span id="objGetData" class="opacity00"><span id="s1GetData" class="opacity00">s1.getData();</span>
 		<span id="s2GetData" class="opacity00">s2.getData();</span></span>
 		<span id="s3Sum" class="opacity00">s3 = s1 + s2;</span>
-		<span id="printSum" class="opacity00">cout << "addition of complex no's is : " ;</span>
+		<span id="printSum" class="opacity00">cout << "Addition of complex no's is : " ;</span>
 		<span id="s3PutData" class="opacity00">s3.putData();</span>
 <span id="end">}</span></span></pre>
 			</div>
@@ -360,16 +360,12 @@ div, span {
 									<div class="box-border" style="line-height: 25px; height: 50px;">
 										<span id="s1RealVal" class="ct-green-color displayBlock arrayValue text-center"></span>
 									</div>
-									<!-- <div class='opacity00'>2323</div> -->
 								</div>
 								<div id="s1ImagBox" class="col-xs-6  text-center opacity00">
-									<!-- <div id="localVal" class="col-xs-7 col-xs-offset-2"> -->
-										<div><b style="color: maroon;">imag</b></div>
-										<div style="line-height: 25px; height: 50px;" class="box-border">
-											<span id="s1ImagVal" class="ct-green-color arrayValue text-center"></span>
-										</div>
-										<!-- <div class='opacity00'>2323</div> -->
-									<!-- </div> -->
+									<div><b style="color: maroon;">imag</b></div>
+									<div style="line-height: 25px; height: 50px;" class="box-border">
+										<span id="s1ImagVal" class="ct-green-color arrayValue text-center"></span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -383,16 +379,12 @@ div, span {
 									<div class="box-border" style="line-height: 25px; height: 50px;">
 										<span id="s2RealVal" class="arrayValue1 ct-green-color text-center"></span>
 									</div>
-									<!-- <div class='opacity00'>2323</div> -->
 								</div>
 								<div id="s2ImagBox" class="col-xs-6  opacity00 text-center">
-									<!-- <div id="localVal" class="col-xs-7 col-xs-offset-2"> -->
-										<div><b style="color: maroon;">imag</b></div>
-										<div style="line-height: 25px; height: 50px;" class="box-border">
-											<span id="s2ImagVal" class=" arrayValue1 ct-green-color text-center"></span>
-										</div>
-										<!-- <div class='opacity00'>2323</div> -->
-									<!-- </div> -->
+									<div><b style="color: maroon;">imag</b></div>
+									<div style="line-height: 25px; height: 50px;" class="box-border">
+										<span id="s2ImagVal" class=" arrayValue1 ct-green-color text-center"></span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -409,16 +401,12 @@ div, span {
 										<div class="box-border" style="line-height: 25px; height: 50px;">
 											<span id="s3RealVal" class="ct-green-color"></span>
 										</div>
-										<!-- <div class='opacity00'>2323</div> -->
 									</div>
 									<div id="s3ImagBox" class="col-xs-6  text-center opacity00">
-										<!-- <div id="localVal" class="col-xs-7 col-xs-offset-2"> -->
-											<div><b style="color: maroon;">imag</b></div>
-											<div style="line-height: 25px; height: 50px;" class="box-border">
-												<span id="s3ImagVal" class="ct-green-color"></span>
-											</div>
-											<!-- <div class='opacity00'>2323</div> -->
-										<!-- </div> -->
+										<div><b style="color: maroon;">imag</b></div>
+										<div style="line-height: 25px; height: 50px;" class="box-border">
+											<span id="s3ImagVal" class="ct-green-color"></span>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -426,7 +414,7 @@ div, span {
 					</div>
 				</div>
 				<div class="col-xs-12">
-					<div class="col-xs-9 margin-top-25">
+					<div class="col-xs-10 col-xs-offset-1 margin-top-25">
 						<div id="consoleId" class="center opacity00" style="margin-top: 3%; ">
 							<div class="output-console-title-bar">
 								<span class="title"><b>Console</b></span>
@@ -435,7 +423,7 @@ div, span {
 								<span id="typeChar"></span>
 									<div id="hiddenTypingChar" class="opacity00">Enter the  real and imaginary parts : <span id="outputPrintfLine"><div id="inputChar" contenteditable="true"  class="position input-char"></div></span></div>
 									<div id="hiddenTypingChar1" class="opacity00" >Enter the  real and imaginary parts : <span id="outputPrintfLine1" class="opacity00"><div id="inputChar1" contenteditable="true" maxlength="2" class="opacity00 position input-char"></div></span></div>
-								<div id="printLineInConsole" class="opacity00">addition of complex no's is : <span id="printpreLine2" class="opacity00"></span></div><br>
+								<div id="printLineInConsole" class="opacity00">Addition of complex no's is : <span id="printpreLine2" class="opacity00"></span></div><br>
 							</div>
 						</div>
 					</div>

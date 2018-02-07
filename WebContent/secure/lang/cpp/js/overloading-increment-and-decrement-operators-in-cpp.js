@@ -1,4 +1,3 @@
-var typingInterval = 5;
 var arr = [];
 var iVal;
 var overloadingIncrementAndDecrementOperatorsReady = function() {
@@ -76,6 +75,7 @@ function introGuide() {
 		}, {
 			element : '#preInc',
 			intro : "",
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -85,6 +85,7 @@ function introGuide() {
 		}, {
 			element : '#preIncS1',
 			intro : '',
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -108,6 +109,7 @@ function introGuide() {
 		}, {
 			element : '#return',
 			intro : "",
+			position : "right",
 		}, {
 			element : '#s2PreInc',
 			intro : "",
@@ -121,6 +123,7 @@ function introGuide() {
 		}, {
 			element : '#s1PutData',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -136,6 +139,7 @@ function introGuide() {
 		}, {
 			element : '#s2PutData',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -157,6 +161,7 @@ function introGuide() {
 		}, {
 			element : '#postInc',
 			intro : "",
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -166,6 +171,7 @@ function introGuide() {
 		}, {
 			element : '#postIncS1',
 			intro : '',
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -189,6 +195,7 @@ function introGuide() {
 		}, {
 			element : '#return1',
 			intro : "",
+			position : "right",
 		}, {
 			element : '#s3PostInc',
 			intro : "",
@@ -203,6 +210,7 @@ function introGuide() {
 		}, {
 			element : '#s1PutData1',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -218,6 +226,7 @@ function introGuide() {
 		}, {
 			element : '#s3PutData',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -239,6 +248,7 @@ function introGuide() {
 		}, {
 			element : '#preDec',
 			intro : "",
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -248,6 +258,7 @@ function introGuide() {
 		}, {
 			element : '#preDecS1',
 			intro : '',
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -284,6 +295,7 @@ function introGuide() {
 		}, {
 			element : '#s1PutData2',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -299,6 +311,7 @@ function introGuide() {
 		}, {
 			element : '#s4PutData',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -321,6 +334,7 @@ function introGuide() {
 		}, {
 			element : '#postDec',
 			intro : "",
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -330,6 +344,7 @@ function introGuide() {
 		}, {
 			element : '#postDecS1',
 			intro : '',
+			position : "right",
 			tooltipClass : 'hide',
 		}, {
 			element : '#locVarAddress',
@@ -353,6 +368,7 @@ function introGuide() {
 		}, {
 			element : '#return3',
 			intro : "",
+			position : "right",
 		}, {
 			element : '#s5PostDec',
 			intro : "",
@@ -366,6 +382,7 @@ function introGuide() {
 		}, {
 			element : '#s1PutData3',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -381,6 +398,7 @@ function introGuide() {
 		}, {
 			element : '#s5PutData',
 			intro : '',
+			tooltipClass : 'hide',
 		}, {
 			element :"#putData",
 			intro : "",
@@ -409,32 +427,40 @@ function introGuide() {
 		case 'preTableDiv':
 			$("#class").fadeTo("slow" , 0);
 			break;
+			
 		case 'class':
 			$("#class, #init, #Sample, #SamplePara, #putData").fadeTo("slow" , 0);
 			$("#main").addClass("opacity00");
 			break;
+			
 		case 'main':	
 			$("#s1Init").addClass("opacity00");
 			break;
+			
 		case 's1Init':
-			$("#s1Init").addClass("opacity00");
+			$("#s1Init, #addressDiv").addClass("opacity00");
 			break;
+			
 		case 'SamplePara':	
 			$("#s1Val").text("");
 			$("#diffObj").addClass("opacity00");
 			break;
+			
 		case 'diffObj':
 			$("#diffObj, #s2PreInc").addClass("opacity00");
 			break;
+			
 		case 's2PreInc':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'firstStep':
 				$("#s2PreInc, #preInc").addClass("opacity00");
 				$("#sAddress").addClass("opacity00");
+				$("#locVarAddress").addClass("opacity00").hide();
 				break;
-		}
-		break;
+			}
+			break;
+			
 		case 's3PostInc':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
@@ -444,6 +470,7 @@ function introGuide() {
 				break;
 			}
 			break;
+			
 		case 's4PreDec':
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
@@ -462,8 +489,8 @@ function introGuide() {
 				break;
 			}
 			break;
+			
 		case "locVarAddress" :
-			//$("#locVarAddress").removeClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "boxHeading1" :
@@ -485,40 +512,96 @@ function introGuide() {
 				break;
 			}
 			break;
+			
 		case 'preInc':
 		case 'postInc':
 		case 'preDec':
 		case 'postDec':
+			$("#locVarAddress").addClass("opacity00");
 			$("#" + elementId).show();
+			$("#locVarAddress").show();
 			$("#sVal").text("");
 			break;
+			
 		case 'preIncS1':
 			$("#s1Val").text(5);
 			$("#sAddress").addClass("opacity00");
 			break;
-		case 'preDecS1':
+			
+		case 'postIncS1':
 			$("#s1Val").text(6);
 			$("#sAddress").addClass("opacity00");
 			break;
-		case 'postIncS1':
+			
+		case 'preDecS1':
 			$("#s1Val").text(7);
 			$("#sAddress").addClass("opacity00");
 			break;
+			
 		case 'postDecS1':
 			$("#s1Val").text(6);
 			$("#sAddress").addClass("opacity00");
 			break;
+			
+		case 'consoleId':
+			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
+			switch(animateStep) {
+			case "s1Value" :
+				
+				break;
+				
+			case "s2Value" :
+				$("#boxHeading1").show();
+				$("#sAddress, #sBox, #aBoxS,  #sVal").removeClass("opacity00");
+				$("#sVal").text(6);
+				break;
+				
+			case 's1Value1':
+				
+				break;
+				
+			case "s3Value" :
+				$("#boxHeading2").show();
+				$("#sAddress, #sBox, #aBoxS,  #sVal").removeClass("opacity00");
+				$("#sVal").text(6);
+				break;
+				
+			case "s1Value2" :
+				
+				break;
+				
+			case "s4Value" :
+				$("#boxHeading3").show();
+				$("#sAddress, #sBox, #aBoxS,  #sVal").removeClass("opacity00");
+				$("#sVal").text(6);
+				break;
+				
+			case "s1Value3" :
+				
+				break;
+				
+			case "s5Value" :
+				$("#boxHeading4").show();
+				$("#sAddress, #sBox, #aBoxS,  #sVal").removeClass("opacity00");
+				$("#sVal").text(6);
+				break;
+			}
+			break;
 		case "addressDiv" :
-			$("#addressDiv").addClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "s1Address" :
+				
 				break;
+				
 			case "aInS1Box" :
+				
 				break;
+				
 			case "diffObjMemory" :
 				TweenMax.to("#varBox2, #s2Address, #aBox, #s3Address, #aBox1, " +
 						"#s4Address, #aBox2,#s5Address, #aBox3", 1, {opacity: 0});
+				break;
 			}
 			break;
 		case 'aPreInc':
@@ -547,38 +630,42 @@ function introGuide() {
 			$("#sVal").text("");
 			$("#s1Val").text(6);
 			break;
+			
+		case 'printA':
+			if(introjs._currentStep == 22 ) {
+				$("#consoleId").addClass("opacity00");
+			}
+			$("#sAddress").removeClass("opacity00");
+			break;
 		case 's1PutData':
-			$("s1Value").addClass("opacity00");
+			$("#s1PutData, #s1Value").addClass("opacity00");
 			break;
 		case 's1PutData1':
-			$("s1Value1").addClass("opacity00");
+			$("#s1PutData1, #s1Value1").addClass("opacity00");
 			break;
 		case 's1PutData2':
-			$("#s1Value2").addClass("opacity00");
+			$("#s1PutData2, #s1Value2").addClass("opacity00");
 			break;
 		case 's1PutData3':
-			$("#s1Value3").addClass("opacity00");
+			$("#s1PutData3, #s1Value3").addClass("opacity00");
 			break;
 		case "s2PutData" :
-			$("#s2Value").addClass("opacity00");
+			$("#s2PutData, #s2Value").addClass("opacity00");
 			break;
 		case "s3PutData" :
-			$("#s3Value").addClass("opacity00");
+			$("#s3PutData, #s3Value").addClass("opacity00");
 			break;
 		case "s4PutData" :
-			$("#s4Value").addClass("opacity00");
+			$("#s4PutData, #s4Value").addClass("opacity00");
 			break;
 		case "s5PutData" :
-			$("#s5Value").addClass("opacity00");
+			$("#s5PutData, #s5Value").addClass("opacity00");
 			break;
 		case 'return':
 		case 'return1':
 		case 'return2':
 		case 'return3':
-			/*iVal = 2;
-			$("#s" + iVal + "Val").text("");
-			iVal++;*/
-			$("#s1Address").removeAttr("style");
+			//$("#s1Address").removeAttr("style");
 			break;
 		}
 	});
@@ -630,16 +717,15 @@ function introGuide() {
 						"<span class='ct-code-b-yellow'>increment</span> "+
 						"and <span class='ct-code-b-yellow'>decrement</span> operators.", function() {
 					$(".introjs-nextbutton").show();
-					$(".introjs-prevbutton").hide();
 				});
 			});
 			break;
 		case 'class':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				var text = "This is the class  <span class='ct-code-b-yellow'>Sample</span>" +
-							" which consists of a private member <span class='ct-code-b-yellow'>num</span>" +
-							" and different member functions in public section.";
+				var text = "This is the class  <span class='ct-code-b-yellow'>Sample</span> " +
+							"which consists of a private member <span class='ct-code-b-yellow'>num</span> " +
+							"and different member functions in public section.";
 				typing(".introjs-tooltiptext",text, function() {
 					$("#class").fadeTo("slow" , 1, function() {
 						$("#init").fadeTo("slow" , 1, function() {
@@ -671,8 +757,8 @@ function introGuide() {
 				$('.introjs-tooltip').removeClass('hide');
 				$('.introjs-tooltiptext').css("width", "250px");
 				var text = 	"<ul><li>Here <span class='ct-code-b-yellow'>s1</span> is " +
-							"an object of class <span class='ct-code-b-yellow'>Sample</span></li>" +
-							"<li>When an object is created, memory allocated for that object.</li>" +
+							"an object of class <span class='ct-code-b-yellow'>Sample</span>.</li>" +
+							"<li>When an object is created, memory is allocated for that object.</li>" +
 							"<li>After memory allocation it will call either a " +
 							"<span class='ct-code-b-yellow'>default constructor</span> when no arguments " +
 							"is passed or <span class='ct-code-b-yellow'>parameterized constructor</span> " +
@@ -722,9 +808,9 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass("hide");
 				var text = "<ul><li>New objects <span class='ct-code-b-yellow'>s2</span>, <span class='ct-code-b-yellow'>s3</span>, " +
-		 				"<span class='ct-code-b-yellow'>s4</span>, <span class='ct-code-b-yellow'>s5</span> " +
-		 				"are create to the class <span class='ct-code-b-yellow'>Sample</span></li>" +
-		 				"<li>Memory is allocated for each and every object.</li>"; 
+			 				"<span class='ct-code-b-yellow'>s4</span>, <span class='ct-code-b-yellow'>s5</span> " +
+			 				"are created to the class <span class='ct-code-b-yellow'>Sample</span>.</li>" +
+			 				"<li>Memory is allocated for each and every object.</li>"; 
 				typing(".introjs-tooltiptext",text, function() {
 					$("#diffObj").removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -735,18 +821,17 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case 'firstStep':
-			//	$("#s1Address").removeClass("z-index1000000");
 				$("#boxHeading2, #boxHeading3, #boxHeading4").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
 					$('.introjs-tooltiptext').css("width", "250px");
-					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s2 = ++s1</span>,"+
-							   " first <span class='ct-code-b-yellow'>pre increment operation</span> is done and" +
-	 				           " next the <span class='ct-code-b-yellow'>assignment operation</span> is done.</li>" +
-	 				           " <li><span class='ct-code-b-yellow'>s2 = ++s1</span> is executed as<br>" +
-	 				           " <span class='ct-code-b-yellow'>s2 = s1.operator ++();</span></li>";
+					$("#s2PreInc").removeClass("opacity00");
+					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s2 = ++s1</span>, first "+
+							   "<span class='ct-code-b-yellow'>pre-increment operation</span> is done and next " +
+	 				           "the <span class='ct-code-b-yellow'>assignment operation</span> is done.</li>" +
+	 				           "<li><span class='ct-code-b-yellow'>s2 = ++s1</span> is executed as<br>" +
+	 				           "<span class='ct-code-b-yellow'>s2 = s1.operator ++();</span></li>";
 					typing(".introjs-tooltiptext",text, function() {
-						$("#s2PreInc").removeClass("opacity00");
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
@@ -768,19 +853,69 @@ function introGuide() {
 			}
 			break;
 		case 'preInc':
+			$("#sBox, #aBoxS").addClass("opacity00");
+			$('.introjs-tooltiptext').removeAttr("style");
+			$('.introjs-helperLayer').one("transitionend", function() {
+				var text = "The <span class='ct-code-b-yellow'> operator function ++ </span> in "+
+						   "<span class='ct-code-b-yellow'>pre-increment</span> is written as " +
+						   "<span class='ct-code-b-yellow'>member function</span> in class " +
+						   "<span class='ct-code-b-yellow'>Sample</span>."; 
+				$('.introjs-tooltip').removeClass("hide");
+				typing(".introjs-tooltiptext", text, function() {
+					$("#preInc").removeClass("opacity00");
+					$("#preInc").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
+			});
+			break;
 		case 'postInc':
+			$("#sBox, #aBoxS").addClass("opacity00");
+			$('.introjs-helperLayer').one("transitionend", function() {
+				var text = "The <span class='ct-code-b-yellow'> operator function ++ </span> in post-increment " +
+							"is written as <span class='ct-code-b-yellow'>member function</span> in class " +
+							"<span class='ct-code-b-yellow'>Sample</span>.<br><br>" +
+							"<b class='ct-code-b-yellow'>Note:</b> Here <span class='ct-code-b-yellow'>int d</span> " +
+							"is the <span class='ct-code-b-yellow'>dummy argument</span> which is used to distinguish " +
+							"between  <span class='ct-code-b-yellow'>prefix</span> and <span class='ct-code-b-yellow'>" +
+							"postfix increment operators</span>."
+				$('.introjs-tooltip').removeClass("hide");
+				typing(".introjs-tooltiptext", text, function() {
+					$("#postInc").removeClass("opacity00");
+					$("#postInc").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
+			});
+			break;
 		case 'preDec':
+			$("#sBox, #aBoxS").addClass("opacity00");
+			$('.introjs-helperLayer').one("transitionend", function() {
+				var text = "The <span class='ct-code-b-yellow'> operator function -- </span> in "+
+						   "<span class='ct-code-b-yellow'>pre-increment</span> is written as " +
+						   "<span class='ct-code-b-yellow'>member function</span> in class " +
+						   "<span class='ct-code-b-yellow'>Sample</span>."; 
+				$('.introjs-tooltip').removeClass("hide");
+				typing(".introjs-tooltiptext", text, function() {
+					$("#preDec").removeClass("opacity00");
+					$("#preDec").show();
+					$(".introjs-nextbutton, .introjs-prevbutton").show();
+				});
+			});
+			break;
 		case 'postDec':
 			$("#sBox, #aBoxS").addClass("opacity00");
 			$('.introjs-tooltiptext').removeAttr("style");
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "The <span class='ct-code-b-yellow'> operator function ++ </span> "+
-						   "is written as <span class='ct-code-b-yellow'>memeber function</span> " +
-						   "in class <span class='ct-code-b-yellow'>Sample</span>."; 
+				var text = "The <span class='ct-code-b-yellow'> operator function -- </span> in post-increment " +
+							"is written as <span class='ct-code-b-yellow'>member function</span> in class " +
+							"<span class='ct-code-b-yellow'>Sample</span>.<br><br>" +
+							"<b class='ct-code-b-yellow'>Note:</b> Here <span class='ct-code-b-yellow'>int d</span> " +
+							"is the <span class='ct-code-b-yellow'>dummy argument</span> which is used to distinguish " +
+							"between  <span class='ct-code-b-yellow'>prefix</span> and <span class='ct-code-b-yellow'>" +
+							"postfix decrement operators</span>."; 
 				$('.introjs-tooltip').removeClass("hide");
 				typing(".introjs-tooltiptext", text, function() {
-					$("#" + elementId).removeClass("opacity00");
-					$("#" + elementId).show();
+					$("#postDec").removeClass("opacity00");
+					$("#postDec").show();
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
@@ -791,7 +926,8 @@ function introGuide() {
 		case 'postDecS1':
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$('.introjs-tooltip').removeClass("hide");
-				var text = "Here, <span class='ct-code-b-yellow'>s</span> is an object of sample is created.";
+				var text = 	"Here, <span class='ct-code-b-yellow'>s</span> is an object of " +
+							"<span class='ct-code-b-yellow'>Sample</span> is created.";
 				typing(".introjs-tooltiptext", text, function() {
 					//$("#" + elementId).removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -858,7 +994,7 @@ function introGuide() {
 		case 'return2':
 		case 'return3':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "It returns the value of s.";
+				var text = "It returns the value of <span class='ct-code-b-yellow'>s</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$('.introjs-prevbutton, .introjs-nextbutton').show();
 				});
@@ -868,10 +1004,10 @@ function introGuide() {
 		case 's1PutData1':
 		case 's1PutData2':
 		case 's1PutData3':
-			//$("#sVal").text("");
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span>" +
-							" is called by the  object <span class='ct-code-b-yellow'>s1</span>";
+				$('.introjs-tooltip').removeClass("hide");
+				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span> " +
+							"is called by the  object <span class='ct-code-b-yellow'>s1</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$("#" + elementId).removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -903,6 +1039,7 @@ function introGuide() {
 		break;
 		case 's2PutData':
 			$('.introjs-helperLayer').one("transitionend", function() {
+				$('.introjs-tooltip').removeClass("hide");
 				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span>" +
 							" is called by the  object <span class='ct-code-b-yellow'>s2</span>";
 				typing(".introjs-tooltiptext",text, function() {
@@ -920,6 +1057,7 @@ function introGuide() {
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$('.introjs-tooltip').removeClass("hide");
 					$('.introjs-tooltiptext').css("width", "250px");
+					$("#s3PostInc").removeClass("opacity00");
 					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s3 = s1++</span>,"+
 							   " first <span class='ct-code-b-yellow'>assignment operation</span> is done and" +
 					           " next the <span class='ct-code-b-yellow'>post increment operation</span> is done.</li>" +
@@ -929,7 +1067,6 @@ function introGuide() {
 					           " argument to distinguish between <span class='ct-code-b-yellow'>prefix</span>" +
 					           " and <span class='ct-code-b-yellow'>postfix</span> operators.</li>";
 					typing(".introjs-tooltiptext",text, function() {
-						$("#s3PostInc").removeClass("opacity00");
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
@@ -994,8 +1131,9 @@ function introGuide() {
 			break;
 		case 's3PutData':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span>" +
-							" is called by the  object <span class='ct-code-b-yellow'>s3</span>";
+				$('.introjs-tooltip').removeClass("hide");
+				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span> " +
+							"is called by the  object <span class='ct-code-b-yellow'>s3</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$("#s3PutData").removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -1010,13 +1148,13 @@ function introGuide() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
 					$('.introjs-tooltiptext').css("width", "250px");
+					$("#s4PreDec").removeClass("opacity00");
 					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s4 = --s1</span>,"+
 							   " first <span class='ct-code-b-yellow'>pre decrement operation</span> is done and" +
 					           " next the <span class='ct-code-b-yellow'>assignment operation</span> is done.</li>" +
 					           " <li><span class='ct-code-b-yellow'>s4 = --s1</span> is executed as<br>" +
 					           " <span class='ct-code-b-yellow'>s4 = s1.operator --();</span></li>";
 					typing(".introjs-tooltiptext",text, function() {
-						$("#s4PreDec").removeClass("opacity00");
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
@@ -1080,8 +1218,9 @@ function introGuide() {
 			break;
 		case 's4PutData':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span>" +
-							" is called by the  object <span class='ct-code-b-yellow'>s4</span>";
+				$('.introjs-tooltip').removeClass('hide');
+				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span> " +
+							"is called by the  object <span class='ct-code-b-yellow'>s4</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$("#s4PutData").removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -1096,16 +1235,16 @@ function introGuide() {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
 					$('.introjs-tooltiptext').css("width", "250px");
-					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s5 = s1--</span>,"+
-							   " first <span class='ct-code-b-yellow'>assignment operation</span> is done and" +
-					           " next the <span class='ct-code-b-yellow'>post decrement operation</span> is done.</li>" +
-					           " <li><span class='ct-code-b-yellow'>s5 = s1--</span> is executed as<br>" +
-					           " <span class='ct-code-b-yellow'>s5 = s1.operator --(int);</span><br>" +
-					           "Here <span class='ct-code-b-yellow'>int</span> is used as dummy" +
-					           " argument to distinguish between <span class='ct-code-b-yellow'>prefix</span>" +
-					           " and <span class='ct-code-b-yellow'>postfix</span> operators.</li>";
+					$("#s5PostDec").removeClass("opacity00");
+					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s5 = s1--</span>, "+
+							   "first <span class='ct-code-b-yellow'>assignment operation</span> is done and " +
+					           "next the <span class='ct-code-b-yellow'>post decrement operation</span> is done.</li>" +
+					           "<li><span class='ct-code-b-yellow'>s5 = s1--</span> is executed as<br>" +
+					           "<span class='ct-code-b-yellow'>s5 = s1.operator --(int);</span><br>" +
+					           "Here <span class='ct-code-b-yellow'>int</span> is used as dummy " +
+					           "argument to distinguish between <span class='ct-code-b-yellow'>prefix</span> " +
+					           "and <span class='ct-code-b-yellow'>postfix</span> operators.</li>";
 					typing(".introjs-tooltiptext", text, function() {
-						$("#s5PostDec").removeClass("opacity00");
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
 					});
 				});
@@ -1169,8 +1308,9 @@ function introGuide() {
 			break;
 		case 's5PutData':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span>" +
-							" is called by the  object <span class='ct-code-b-yellow'>s5</span>";
+				$('.introjs-tooltip').removeClass("hide");
+				var text = 	"The member function <span class='ct-code-b-yellow'>putData()</span> " +
+							"is called by the  object <span class='ct-code-b-yellow'>s5</span>.";
 				typing(".introjs-tooltiptext",text, function() {
 					$("#s5PutData").removeClass("opacity00");
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
@@ -1178,13 +1318,13 @@ function introGuide() {
 			});
 			break;
 		case 'consoleId':
-			$("#consoleId").removeClass("opacity00");
+			$("#consoleId, #sAddress").removeClass("opacity00");
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "s1Value" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#s1Value").addClass("opacity00");
+						$("#s2PutData, #s1Value").addClass("opacity00");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1221,7 +1361,7 @@ function introGuide() {
 			case 's1Value1':
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#s1Value1").addClass("opacity00");
+						$("#s3PutData, #s1Value1").addClass("opacity00");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1259,7 +1399,7 @@ function introGuide() {
 			case "s1Value2" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#s1Value2").addClass("opacity00");
+						$("#s4PutData, #s1Value2").addClass("opacity00");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1296,7 +1436,7 @@ function introGuide() {
 			case "s1Value3" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#s1Value3").addClass("opacity00");
+						$("#s5PutData, #s1Value3").addClass("opacity00");
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1400,7 +1540,7 @@ function introGuide() {
 			case "s2Address" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#aBox").addClass('opacity00');
+						$("#aBox, #s1PutData").addClass('opacity00');
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1420,7 +1560,7 @@ function introGuide() {
 			case "s3Address" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#aBox1").addClass('opacity00');
+						$("#s1PutData1, #aBox1").addClass('opacity00');
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1442,7 +1582,7 @@ function introGuide() {
 			case "s4Address" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#aBox2").addClass('opacity00');
+						$("#s1PutData2, #aBox2").addClass('opacity00');
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1464,7 +1604,7 @@ function introGuide() {
 			case "s5Address" :
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					if (introjs._direction == "backward") {
-						$("#aBox3").addClass('opacity00');
+						$("#s1PutData3, #aBox3").addClass('opacity00');
 						setTimeout(function () {
 							introjs.previousStep();
 						}, 1000);
@@ -1484,7 +1624,7 @@ function introGuide() {
 			}
 			break;
 		case "locVarAddress" :
-			$("#locVarAddress").removeClass("opacity00");
+			$("#locVarAddress").removeClass("opacity00").show();
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "boxHeading1" :
@@ -1516,7 +1656,7 @@ function introGuide() {
 							introjs.nextStep();
 						}, 500);
 					}
-				});
+				});  
 				break;
 			case "boxHeading3" :
 				$("#locVarAddress").fadeTo(1, 400);
@@ -1531,6 +1671,7 @@ function introGuide() {
 						setTimeout(function () {
 							introjs.nextStep();
 						}, 500);
+						
 					}
 				});
 				break;
@@ -1573,8 +1714,10 @@ function introGuide() {
 							introjs.previousStep();
 						}, 1000);
 					} else {
-						$("#sVal").append($("#s1Val").text()).addClass("opacity00");
-						transferEffect("#s1PreIncVal", "#sVal", function() {
+						$("#s1Val").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 1000);
+						$("#sVal").text($("#s1Val").text()).addClass('opacity00');
+						fromEffectWithTweenMax("#s1Val", "#sVal", function() {
+							$("#s1Val").removeClass("z-index1000000");
 							setTimeout(function () {
 								introjs.nextStep();
 							}, 500);
@@ -1589,8 +1732,10 @@ function introGuide() {
 							introjs.previousStep();
 						}, 1000);
 					} else {
-						$("#sVal").append($("#s1Val").text()).addClass("opacity00");
-						transferEffect("#s1PostIncVal", "#sVal", function() {
+						$("#s1Val").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 1000);
+						$("#sVal").text($("#s1Val").text()).addClass('opacity00');
+						fromEffectWithTweenMax("#s1Val", "#sVal", function() {
+							$("#s1Val").removeClass("z-index1000000");
 							setTimeout(function () {
 								introjs.nextStep();
 							}, 500);
@@ -1605,8 +1750,10 @@ function introGuide() {
 							introjs.previousStep();
 						}, 1000);
 					} else {
-						$("#sVal").append($("#s1Val").text()).addClass("opacity00");
-						transferEffect("#s1PreDecVal", "#sVal", function() {
+						$("#s1Val").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 1000);
+						$("#sVal").text($("#s1Val").text()).addClass('opacity00');
+						fromEffectWithTweenMax("#s1Val", "#sVal", function() {
+							$("#s1Val").removeClass("z-index1000000");
 							setTimeout(function () {
 								introjs.nextStep();
 							}, 500);
@@ -1621,8 +1768,10 @@ function introGuide() {
 							introjs.previousStep();
 						}, 1000);
 					} else {
-						$("#sVal").append($("#s1Val").text()).addClass("opacity00");
-						transferEffect("#s1PostDecVal", "#sVal", function() {
+						$("#s1Val").addClass("z-index1000000").effect( "highlight",{color: '#ffff33'}, 1000);
+						$("#sVal").text($("#s1Val").text()).addClass('opacity00');
+						fromEffectWithTweenMax("#s1Val", "#sVal", function() {
+							$("#s1Val").removeClass("z-index1000000");
 							setTimeout(function () {
 								introjs.nextStep();
 							}, 500);
@@ -1635,7 +1784,8 @@ function introGuide() {
 
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "This is the end of the main() function where the program execution ends.";
+				var text = "This is the end of the <span class='ct-code-b-yellow'>main()</span> " +
+							"function where the program execution ends.";
 				typing(".introjs-tooltiptext",text, function() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
@@ -1673,6 +1823,7 @@ function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
 	var l2 = $(selector2).offset();
 	var topLength = l1.top - l2.top;
 	var leftLength = l1.left - l2.left;
+	$(selector2).removeClass("opacity00");
 	TweenMax.from($(selector2), 1, {top: topLength, left: leftLength, onComplete: function() {
 		if (typeof callBackFunction === "function") {
 			callBackFunction();
@@ -1694,7 +1845,7 @@ function transferEffect(selector1, selector2, callBackFunction) {
 
 
 function typing(selector, text, callBackFunction) {
-	var typingSpeed = 10;
+	var typingSpeed = 1;
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -1710,7 +1861,7 @@ function typing(selector, text, callBackFunction) {
 function fadeInBounceEffectWithTimelineMax(selector1, selector2, callBackFunction) {
 	var timelineMax = new TimelineMax();
 	var val;
-	$(selector1).parent().effect( "highlight",{color: 'blue'}, 500);
+	$(selector1).effect( "highlight",{color: 'yellow'}, 500);
 		var l1 = $(selector1).offset();
 		var l2 = $(selector2).offset();
 		var topLength = l1.top - l2.top;

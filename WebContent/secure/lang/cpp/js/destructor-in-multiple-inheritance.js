@@ -297,6 +297,7 @@ function introGuide() {
 			
 		case 'base2ClassConstructorCout':
 			 $("#base2ConstrPrint").text("");
+			 $("#consoleId").addClass("opacity00");
 			break;
 			
 			

@@ -300,11 +300,11 @@ div, span {
 	</div>
 	<div class="col-xs-8 col-sm-offset-2 margin-top-2  infoDiv" id="infoDiv">
 		<ul>
-		 	<li id="list1" class="opacity00">To overload a binary operator - as <span class="ct-code-b-green">member function</span>,
-		 	binary operator - requires <span class="ct-code-b-green">only one argument</span>.</li>
+		 	<li id="list1" class="opacity00">To overload a binary operator <span class="ct-code-b-green">-</span> as <span class="ct-code-b-green">member function</span>,
+		 	binary operator <span class="ct-code-b-green">-</span> requires <span class="ct-code-b-green">only one argument</span>.</li>
 		 	<li id="list2" class="opacity00"> The format of <span class="ct-code-b-green">operator function - </span> is : <br>
 				 <span class="ct-Maroon-color">Class-Name&emsp;operator -(Class-Name&emsp;object) { <br>
-			 		&emsp;&emsp;// Perform addition on different object values <br>
+			 		&emsp;&emsp;// Perform subtraction on different object values <br>
 		 		}</span>
 		 	</li> 
 		 	<li id="list3" class="opacity00">The format of <span class="ct-code-b-green">operator function</span> call is : <br>
@@ -343,8 +343,8 @@ div, span {
 		<span id="objGetData" class="opacity00"><span id="s1GetData" class="opacity00">s1.getData();</span>
 		<span id="s2GetData" class="opacity00">s2.getData();</span></span>
 		<span id="s3Sub" class="opacity00">s3 = s1 - s2;</span>
-		<span id="printSub" class="opacity00">cout << "\nsubtraction of complex no's is : ";</span>
-		<span id="s3PutData" class="opacity00">s3.putdata();</span>
+		<span id="printSub" class="opacity00">cout << "Subtraction of complex no's is : ";</span>
+		<span id="s3PutData" class="opacity00">s3.putData();</span>
 <span id ="end">}</span></span></pre>
 			</div>
 			<div class="col-xs-6 col-xs-offset-1  margin-top-25">
@@ -426,7 +426,7 @@ div, span {
 					</div>
 				</div>
 				<div class="col-xs-12">
-					<div class="col-xs-9 margin-top-25">
+					<div class="col-xs-10 col-xs-offset-1 margin-top-25">
 						<div id="consoleId" class="center opacity00" style="margin-top: 3%; ">
 							<div class="output-console-title-bar">
 								<span class="title"><b>Console</b></span>
@@ -435,7 +435,7 @@ div, span {
 								<span id="typeChar"></span>
 									<div id="hiddenTypingChar" class="opacity00">Enter the  real and imaginary parts : <span id="outputPrintfLine"><div id="inputChar" contenteditable="true" maxlength="2" class="position input-char"></div></span></div>
 									<div id="hiddenTypingChar1" class="opacity00" >Enter the  real and imaginary parts : <span id="outputPrintfLine1" class="opacity00"><div id="inputChar1" contenteditable="true" maxlength="2" class="opacity00 position input-char"></div></span></div>
-								<div id="printLineInConsole" class="opacity00">subtraction of complex no's is : <span id="printpreLine2" class="opacity00"></span></div><br>
+								<div id="printLineInConsole" class="opacity00">Subtraction of complex no's is : <span id="printpreLine2" class="opacity00"></span></div><br>
 							</div>
 						</div>
 					</div>

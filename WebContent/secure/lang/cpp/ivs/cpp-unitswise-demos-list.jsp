@@ -1875,22 +1875,22 @@
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary plus as member function', 'overloading-binary-plus-as-member-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as member function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary plus as member function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary minus as member function', 'overloading-binary-minus-as-member-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary minus as member function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary minus as member function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary plus as friend function', 'overloading-binary-plus-as-friend-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as friend function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary plus as friend function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary minus as friend function', 'overloading-binary-minus-as-friend-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary minus as friend function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary minus as friend function</span>
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -1905,12 +1905,12 @@
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading Insertion and Extraction Operators', 'overloading-insertion-and-extraction-operators-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading << and >> Operators</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading << and >> Operators</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Cascading of Insertion and Extraction Operators', 'cascading-of-insertion-and-extraction-operators-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Cascading of << and >> Operators</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Cascading of << and >> Operators</span>
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -1923,7 +1923,7 @@
 						<td>Increment and Decrement operators</td>
 						<td><a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading increment and decrement operators without dif', 'overloading-increment-and-decrement-operators-without-dif-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators without dif</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading ++ and -- operators without dif</span>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -1935,7 +1935,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Overloading increment and decrement operators', 'overloading-increment-and-decrement-operators-in-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators</span>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading ++ and -- operators</span>
 								
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -2089,7 +2089,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('onstructors types in inheritance', 'constructors-types-in-inheritance-in-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green;">Constructors types in inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue;">Constructors types in inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>

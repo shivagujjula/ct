@@ -199,7 +199,7 @@
 		}</span></span>
 };</span>
 		
-<span id="main" class="opacity00">int main() {
+<span id="main" class="opacity00"><span class="ct-code-b-blue">int</span> main() {
 	<span id="s1Init" class="opacity00">Sample <span id="s1">s1</span>;</span>
 	<span id="s1Display" class="opacity00">s1.display();</span>
 	<span id="s2Init" class="opacity00">Sample <span id="s2">s2(<span id="s2Num">10</span>)</span>;</span>
@@ -267,7 +267,6 @@
 			<i class="fa fa-refresh"></i>&nbsp;Restart</a>
 		</div>
 	</div>
-	
 </div>
 </body>
 </html>    
