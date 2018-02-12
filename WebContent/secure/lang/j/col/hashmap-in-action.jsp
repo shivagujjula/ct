@@ -18,6 +18,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="../js-min/hmia.min.js"></script>
+<!-- <script type="text/javascript" src="/secure/lang/j/js/hashmap-in-action.js"></script> -->
 
 <style type="text/css">
 
@@ -135,11 +136,11 @@ span, div {
 .reveal-left {
 	position: relative;
 	overflow: hidden;
-	-moz-animation: reveal-left 0.5s ease;
-	-moz-animation-fill-mode: backwards;
+	animation: reveal-left 0.5s ease;
+	animation-fill-mode: backwards;
 }
 
-@-moz-keyframes reveal-left {
+@keyframes reveal-left {
 	0%   {width: 0%;}
 	100% {width: 100%;}
 }

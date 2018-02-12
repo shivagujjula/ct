@@ -142,7 +142,7 @@
 						<td>Sample programs</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Sample program in C++ using cout', 'sample-of-cout.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Sample program in C++ using cout</span>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Sample program in C++ using cout</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Shanthan</td>
@@ -359,7 +359,7 @@
 						<td>streamflow usage</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of streamflow', 'streamflow.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of streamflow</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of streamflow</span></td>
 						<td>no need</td>
 						<td>Rajashekar</td>
 						<td></td>
@@ -384,7 +384,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of put()', 'usage-of-put.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of put()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of put()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -408,7 +408,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of write()', 'usage-of-write.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of write()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of write()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -446,7 +446,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of width()', 'width.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of width()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of width()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>
@@ -458,7 +458,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of precision()', 'precision.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of precision()</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of precision()</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>
@@ -582,7 +582,7 @@
 						<td>Different constants in C++</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Constants in C++', 'constants-in-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Constants in C++</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C++</span></td>
 						<td>no need</td>
 						<td>Shiva</td>
 						<td></td>
@@ -594,7 +594,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Explanation of #define', 'usage-of-hash-define.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">explanation of #define</span>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of #define</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Shanthan</td>
@@ -606,7 +606,7 @@
 						<td>Reference Variables</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Reference Variables in C++', 'reference-variables.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Reference Variables in C++</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Reference Variables in C++</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / shanthan</td>
 						<td></td>
@@ -841,7 +841,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('scope resolution operator', 'scope-resolution-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">scope resolution operator</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scope resolution operator</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -853,7 +853,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of new operator', 'usage-of-new-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of new operator</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of new operator</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -866,7 +866,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Usage of delete operator', 'usage-of-delete-operator.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Usage of delete operator</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of delete operator</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -1680,7 +1680,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Access specifiers', 'access-specifiers.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Access specifiers</span>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Access specifiers</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shanthan / Shanthan</td>
@@ -1747,7 +1747,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('scope of classes and objects', 'scope-of-classes-and-objects.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">scope of classes and objects</span>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">scope of classes and objects</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shanthan / Shanthan</td>
@@ -1788,7 +1788,7 @@
 						<td>Default constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Default constructor', 'default-constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Default constructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Default constructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1799,7 +1799,7 @@
 						<td>Parameterized constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Parameterized constructor', 'parameterized-constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Parameterized constructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Parameterized constructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1810,7 +1810,7 @@
 						<td>Copy constructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Copy constructor', 'copy-constructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of copy constructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of copy constructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1821,7 +1821,7 @@
 						<td>Destructor</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor', 'destructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of destructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of destructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1833,7 +1833,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Static data members in constructors', 'static-data-members-in-constructors.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Static data members in constructors</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static data members in constructors</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1875,22 +1875,22 @@
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary plus as member function', 'overloading-binary-plus-as-member-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary plus as member function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as member function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary minus as member function', 'overloading-binary-minus-as-member-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary minus as member function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary minus as member function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary plus as friend function', 'overloading-binary-plus-as-friend-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary plus as friend function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary plus as friend function</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading binary minus as friend function', 'overloading-binary-minus-as-friend-function.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading binary minus as friend function</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading binary minus as friend function</span>
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -1905,12 +1905,12 @@
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading Insertion and Extraction Operators', 'overloading-insertion-and-extraction-operators-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading << and >> Operators</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading << and >> Operators</span>
 							</div>
 							<div>
 								<a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Cascading of Insertion and Extraction Operators', 'cascading-of-insertion-and-extraction-operators-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Cascading of << and >> Operators</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Cascading of << and >> Operators</span>
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -1923,7 +1923,7 @@
 						<td>Increment and Decrement operators</td>
 						<td><a class='btn btn-xs btn-success'
 									href="javascript:opendialog('Overloading increment and decrement operators without dif', 'overloading-increment-and-decrement-operators-without-dif-in-cpp.jsp', 1, 1)"><i
-										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading ++ and -- operators without dif</span>
+										class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators without dif</span>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -1935,7 +1935,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 								href="javascript:opendialog('Overloading increment and decrement operators', 'overloading-increment-and-decrement-operators-in-cpp.jsp', 1, 1)"><i
-									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Overloading ++ and -- operators</span>
+									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Overloading ++ and -- operators</span>
 								
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
@@ -1947,7 +1947,7 @@
 						<td>Basic to User-defined</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Basic to User-defined', 'basic-to-userdefined.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of Basic to User-defined</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Basic to User-defined</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1958,7 +1958,7 @@
 						<td>User-defined to basic</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('User-defined to basic', 'userdefined-to-basic.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of User-defined to basic</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of User-defined to basic</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -1970,7 +1970,7 @@
 						<td>User-defined to User-defined</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('User-defined to User-defined', 'userdefined-to-userdefined.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Explanation of User-defined to User-defined</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of User-defined to User-defined</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Anil</td>
 						<td></td>
@@ -2089,7 +2089,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('onstructors types in inheritance', 'constructors-types-in-inheritance-in-cpp.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue;">Constructors types in inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green;">Constructors types in inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -2101,7 +2101,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor in single and multilevel inheritance', 'destructor-in-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Destructor in single and multilevel inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in single and multilevel inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -2113,7 +2113,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Destructor in multiple inheritance', 'destructor-in-multiple-inheritance.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Destructor in multiple inheritance</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Destructor in multiple inheritance</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Sathish / Sathish</td>
 						<td></td>
@@ -2169,7 +2169,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Constructors and Virtual Functions', 'constructor-invoke-virtual-function.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Constructors and Virtual Functions</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constructors and Virtual Functions</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>
@@ -2181,7 +2181,7 @@
 						<td>
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Virtual destructor', 'virtual-destructor.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Virtual destructor</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Virtual destructor</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Karthik</td>
 						<td></td>
@@ -2253,7 +2253,7 @@
 							
 							<a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Class templates with parameters', 'class-templates-with-parameters.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : blue">Class templates with parameters</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Class templates with parameters</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Rajashekar / Rajashekar</td>
 						<td></td>
