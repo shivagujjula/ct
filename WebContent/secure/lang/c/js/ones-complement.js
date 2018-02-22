@@ -1,4 +1,3 @@
-
 var intro;
 var typingInterval = 1;
 var zeros1 = '';
@@ -46,10 +45,13 @@ var onesComplementReady = function() {
 		
 	});
 	
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		$('#firstNum').val('');
 		$('#type').val('');
 		location.reload(); 
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
 	});
 introSteps();
 function introSteps() {	
@@ -76,7 +78,7 @@ function introSteps() {
 			position:"right",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "right"
 		}
@@ -200,17 +202,19 @@ function introSteps() {
 					});
 				});
 			break;
-			case "restart":
-				$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			case "button":
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
 				$('#informationDiv').css({"z-index": "0"});
-				$('.introjs-tooltip').css('min-width', '125px');
 				$(".introjs-helperLayer ").one('transitionend', function() {
-					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
-						var text = "Click to restart.";
+					$("#closeBtn, #restartBtn").removeClass("opacity00");
+				//	TweenMax.to("#restartBtn", "#closeBtn", 1, {"opacity" : "1", onComplete:function() {
+						var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+								"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>";
 						typing(".introjs-tooltiptext", text, function() {
 							
 						});
-					}});
+					//}});
 				});
 			break;
 		}

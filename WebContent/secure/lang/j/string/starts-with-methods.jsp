@@ -19,7 +19,7 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TweenLite.min.js"></script>
 <script src="/js/typewriting.min.js"></script>
-<script src="/secure/lang/j/js/starts-with-methods.js"></script>
+<script src="/secure/lang/j/js-min/swm.min.js"></script>
 
 <title>Insert title here</title> 
 

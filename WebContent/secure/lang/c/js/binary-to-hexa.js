@@ -11,6 +11,9 @@ var z, s;
 var temp;
 var binaryToHexaReady = function() {
 	introGuide();
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 	if ($("#binaryValue").val().length == 0) {
 		 $("#convert").attr("disabled", true);
 	}
@@ -334,8 +337,8 @@ function introGuide() {
 			intro : "",
 			tooltipClass: 'hide',
 		},{
-			element : "#restart",
-			intro : "Click to restart.",
+			element : "#button",
+			intro : "",
 			position : 'right',
 		}]
 	});
@@ -843,12 +846,16 @@ function introGuide() {
 				}, 2000);
 			});
 			break;
-		case "restart":
+		case "button":
 			$('.introjs-tooltipbuttons').addClass("hide");
-			$(".introjs-tooltip").css("min-width", "125px");
+			$(".introjs-tooltip").css("min-width","380px");
 			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").fadeTo(1000, 1);
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
+				});
 			});
 			break;
 		}

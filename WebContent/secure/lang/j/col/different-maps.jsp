@@ -17,17 +17,13 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/jquery.scrollTo.js" type="text/javascript"></script>
-<!-- <script src="../js-min/dm.min.js"></script> -->
-<script src="/secure/lang/j/js/different-maps.js"></script>
+<script src="/secure/lang/j/js-min/dm.min.js"></script> 
 
 <style>
-
  #linkedhashmapJar, #treemapJar {
- 
 	overflow-x: hidden;
 	overflow-y: auto;
-
-}
+} 
 
 .glyphicon {
     display: inline-block;
@@ -97,13 +93,12 @@
 	padding: 4px 6px;
 }
 
-.keyDiv, .valDiv {
+.keyDiv,.valDiv {
 	display: inline;
 	border-radius: 8px;
 	padding: 4px 6px;
 	border: 2px solid rgba(255,255,255,.1);
 }
-
 .keyDiv1,.valDiv1 {
 	display: inline;
 	border-radius: 8px;
@@ -200,7 +195,7 @@ span, div {
 	animation-direction: alternate ;
 }
 
-@keyframes blink-border-background-blue {
+@keyframes blink-border-background-blue { 
 	50% {
 		border-color: blue;
 		background: rgba(102, 175, 233, 0.6);

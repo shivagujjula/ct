@@ -261,12 +261,17 @@ var twosComplementReady = function() {
 						var text = "This is the decimal value.";
 						typing(".introjs-tooltiptext", text, function() {
 							$('.introjs-prevbutton').show();
-							$(".introjs-tooltipbuttons").append('<span class="btn btn-warning restartBtn" id="restart">Restart</span>');
-							$("#restart").click(function() {
+							$(".introjs-tooltipbuttons").append('<span class="btn btn-warning restartBtn" id="closeBtn">Close  <i class="fa fa-close"></i></span>' +
+									'<span class="btn btn-restart restartBtn" id="restartBtn">Restart  <i class="fa fa-refresh"></i></span>');
+							$("#restartBtn").click(function() {
 								$('#firstNum').val('');
 								$('#type').val('');
 								location.reload(); 
 							});
+							$('#closeBtn').click(function() {
+								window.parent.$("#javaDocBrowserDiv").dialog("close");
+							});
+
 						});
 				    });
 					break;

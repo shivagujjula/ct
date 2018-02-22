@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/cpp/js-min/asp.min.js"></script>   
+<script type="text/javascript" src="/secure/lang/cpp/js-min/asp.min.js"></script>    
 
 <style>
 .warning-color {
@@ -271,6 +271,9 @@ span {
 	<div class ="text-center margin-top-20">
 		<h3 class="label ct-demo-heading" id="demoTitle">Access specifiers</h3>
 	</div>
+	<div class="col-xs-12 text-center margin-top-20">
+		<span class="btn btn-warning btn-sm hide opacity00" id="restart">Restart</span>
+	</div> 
 	<div class="margin-top-20" >
 		<div class="col-xs-8 col-xs-offset-2 opacity00" id="informationDiv" style="border: 1px solid gray;">
 			<div class="col-xs-12 margin-top-20">
@@ -377,7 +380,7 @@ using namespace std;
 			<div class="col-xs-12 hide box-border"  id="animationBox2">
 				<div class="col-xs-12 margin-top-20">
 					<div id="s2" class="col-xs-4 col-xs-offset-4 opacity00">
-						<b style="color : maroon;  margin-left:25%;">obj1</b>
+						<b style="color : maroon;  margin-left:25%;">obj</b>
 					</div>
 	   			</div>
 				<div class="col-xs-12">
@@ -419,9 +422,7 @@ using namespace std;
 		</div>
 	</div>
 	</div>
-	<div class="col-xs-12 text-center margin-top-20">
-		<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
-	</div> 
+	
 <script>
 	$(document).ready(function() {
 		accessSpecifier();

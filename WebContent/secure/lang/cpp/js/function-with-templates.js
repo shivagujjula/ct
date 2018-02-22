@@ -1,4 +1,4 @@
-var valCount = 1;
+var bannu = 1;
 var readPrintStringUsingGetsPutsReady = function() {
 	$("restartBtn").click(function(){
 		$("#inputChar").val('');
@@ -788,7 +788,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			switch(animateStep) {
 			case 'method41':
 				$('.introjs-helperLayer').one("transitionend", function() {
-					valCount = 1;
+					bannu = 1;
 					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<y>show(num1)</y> is a <y>int</y> type variable so <y>templates</y> calls the " +
 						"data type as <y>int</y>.", function() {
@@ -799,7 +799,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'method42':
 				$('.introjs-helperLayer').one("transitionend", function() {
-					valCount = 2;
+					bannu = 2;
 					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<y>show(num2)</y> is a <y>float</y> type variable so <y>templates</y> calls the " +
 						"data type as <y>float</y>.", function() {	
@@ -810,7 +810,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'method43':
 				$('.introjs-helperLayer').one("transitionend", function() {
-					valCount = 3;
+					bannu = 3;
 					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<y>show(ch)</y> is a <y>char</y> type variable so <y>templates</y> calls the " +
 							"data type as <y>char</y>.", function() {	
@@ -1100,7 +1100,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 		});
 	}
 function flipEffect(value, type, typeVal) {
-	$('.introjs-prevbutton').hide();
 	$('.user-button').remove();
 	$('.introjs-tooltiptext').append("<div class='position opacity00' style='display:inline-block;' id='voidMethod4'>&nbsp;&nbsp;<y>void show " +
 	"(<div class='display' id='t'>T</div> <span id='x' class='display'>x</span>) {" +
@@ -1108,11 +1107,11 @@ function flipEffect(value, type, typeVal) {
 	"}</y></div><div id='one'></div>");
 	$("#voidMethod4").removeClass("opacity00");
 	fromEffectWithTweenMax("#method4", "#voidMethod4", function() {
-		$('.introjs-tooltipbuttons').append('<a class="introjs-button user-button" onclick="methodFlipEffect' + valCount + '('+value+',\''+ type+'\',\''+typeVal+'\')">Next&rarr;</a>');
+		$('.introjs-tooltipbuttons').append('<a class="introjs-button user-button" onclick="methodFlipEffect' + bannu + '('+value+',\''+ type+'\',\''+typeVal+'\')">Next&rarr;</a>');
 	});
 }
 function methodFlipEffect1(value, type, typeVal) {
-	$('.introjs-prevbutton').hide();
+	//bannu++;
 	$('.user-button').remove();
 	intro.refresh();
 	transferEffect("#num" + value, "#"+ type +"1", function() {
@@ -1142,7 +1141,7 @@ function methodFlipEffect1(value, type, typeVal) {
 	});
 }
 function methodFlipEffect2(value, type, typeVal) {
-	$('.introjs-prevbutton').hide();
+	//	bannu++;
 	$('.user-button').remove();
 	intro.refresh();
 	transferEffect("#num" + value, "#"+ type +"1", function() {
@@ -1171,7 +1170,6 @@ function methodFlipEffect2(value, type, typeVal) {
 	});
 }
 function methodFlipEffect3(value, type, typeVal) {
-	$('.introjs-prevbutton').hide();
 	$('.user-button').remove();
 	intro.refresh();
 	transferEffect("#num" + value, "#"+ type +"1", function() {

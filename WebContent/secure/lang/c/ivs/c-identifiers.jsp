@@ -18,7 +18,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/c/js-min/ci.min.js"></script>
+<script src="/secure/lang/c/js-min/ci.min.js"></script> 
+
 <title>c-identifiers</title>
 </head>
 <style>
@@ -267,7 +268,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 text-center"><span type="button" class="btn btn-warning opacity00" id="restartBtn" style="margin-top: 15px;">Restart </span></div>
+	
+	<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-4 col-xs-offset-4">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
 </div>
 <script>
 $(document).ready(function() {

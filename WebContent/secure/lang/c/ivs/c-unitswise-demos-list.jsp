@@ -84,6 +84,34 @@
 					
 					<tr>
 						<td>2</td>
+						<td><span style = "color : red">Generations of Computers</span></td>
+						<td>
+							<a class='btn btn-xs btn-success'
+								href="javascript:opendialog('Generations of Computers', 'generation-of-computers.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Generations of Computers</span>
+						</td>
+						<td>No need</td>
+						<td>Shanthan</td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr>
+						<td>3</td>
+						<td><span style = "color : red">Generations of programming languages</span></td>
+						<td>
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Generation of programming languages',
+								 'generations-of-programming-languages.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> 
+								 &emsp; <span style = "color : red">Generations of programming languages</span>
+						</td>
+						<td>No need</td>
+						<td>Anil</td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr>
+						<td>4</td>
 						<td>C program life cycle</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -97,7 +125,7 @@
 					</tr>
 					
 					<tr>
-						<td>3</td>
+						<td>5</td>
 						<td>Directives</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -111,7 +139,7 @@
 					</tr>
 					
 					<tr>
-						<td>4</td>
+						<td>6</td>
 						<td>Identifiers</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -125,7 +153,7 @@
 					</tr>
 					
 					<tr>
-						<td>5</td>
+						<td>7</td>
 						<td>Coding conventions</td>
 						<td>
 							<a class='btn btn-xs btn-success'
@@ -139,7 +167,7 @@
 					</tr>
 					
 					<tr>
-						<td>6</td>
+						<td>8</td>
 						<td>Sample programs</td>
 						<td>
 							<div>
@@ -163,7 +191,7 @@
 					</tr>
 					
 					<tr>
-						<td>7</td>
+						<td>9</td>
 						<td>Decimal-to-Binary</td>
 						<td>
 							<div>
@@ -180,7 +208,7 @@
 					</tr>
 					
 					<tr>
-						<td>8</td>
+						<td>10</td>
 						<td>Binary-to-Decimal</td>
 						<td>
 							<div>
@@ -197,7 +225,7 @@
 					</tr>
 					
 					<tr>
-						<td>9</td>
+						<td>11</td>
 						<td>Decimal-to-Octal</td>
 						<td>	
 							<div>
@@ -214,7 +242,7 @@
 					</tr>
 					
 					<tr>
-						<td>10</td>
+						<td>12</td>
 						<td>Octal-to-Decimal</td>
 						<td>
 							<div>
@@ -231,7 +259,7 @@
 					</tr>
 					
 					<tr>
-						<td>11</td>
+						<td>13</td>
 						<td>Octal-to-Binary</td>
 						<td>
 							<div>
@@ -248,7 +276,7 @@
 					</tr>
 					
 					<tr>
-						<td>12</td>
+						<td>14</td>
 						<td>Binary-to-Octal</td>
 						<td>
 							<div>
@@ -265,7 +293,7 @@
 					</tr>
 					
 					<tr>
-						<td>13</td>
+						<td>15</td>
 						<td>Decimal-to-Hexadecimal</td>
 						<td>
 							<div>
@@ -282,7 +310,7 @@
 					</tr>
 					
 					<tr>
-						<td>14</td>
+						<td>16</td>
 						<td>Hexadecimal-to-Decimal</td>
 						<td>
 							<div>
@@ -299,7 +327,7 @@
 					</tr>
 					
 					<tr>
-						<td>15</td>
+						<td>17</td>
 						<td>Hexadecimal-to-Binary</td>
 						<td>
 							<div>
@@ -316,7 +344,7 @@
 					</tr>
 					
 					<tr>
-						<td>16</td>
+						<td>18</td>
 						<td>Binary-to-Hexadecimal</td>
 						<td>
 							<div>
@@ -333,7 +361,7 @@
 					</tr>
 					
 					<tr>
-						<td>17</td>
+						<td>19</td>
 						<td>Hexadecimal-to-Octal</td>
 						<td>
 							<div>
@@ -350,7 +378,7 @@
 					</tr>
 					
 					<tr>
-						<td>18</td>
+						<td>20</td>
 						<td>Octal-to-Hexadecimal</td>
 						<td>
 							<div>
@@ -367,7 +395,7 @@
 					</tr>
 					
 					<tr>
-						<td>19</td>
+						<td>21</td>
 						<td><span style = "color : red"> How a C program works (It is Not Required)</span></td>
 						<td>
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('How a C language works', 
@@ -1806,9 +1834,9 @@
 						<td>1</td>
 						<td>Strings</td>
 						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write Strings using gets() & puts()',
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write strings using gets() & puts()',
 								 'read-print-string-using-gets-puts.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-								 <span style = "color : green">Read and Write Strings using gets() & puts() </span>
+								 <span style = "color : green">Read and Write strings using gets() & puts() </span>
 						 </td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh  / Sathish</td>
@@ -1820,9 +1848,9 @@
 						<td>2</td>
 						<td>Strings</td>
 						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write Strings using scanf() and printf()',
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write strings using scanf() and printf()',
 								 'read-print-string-using-scanf-printf.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
-								 <span style = "color : green">Read and Write Strings using scanf() and printf()</span>
+								 <span style = "color : green">Read and Write strings using scanf() and printf()</span>
 						</td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Mahesh / Sathish </td>
@@ -1834,9 +1862,9 @@
 						<td>3</td>
 						<td>Strings</td>
 						<td>
-							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read and Write Strings using getChar() & putChar() ',
+							<a class='btn btn-xs btn-success' href="javascript:opendialog('Read a string using getchar()',
 								 'read-string-using-getchar.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
-								  <span style = "color : green">Read and Write Strings using getChar() & putChar()</span>
+								  <span style = "color : green">Read a string using getchar()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh / Sathish  </td>

@@ -191,7 +191,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			break;
 		case "line8" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "Close the <y>main()</y> tag. ", 10, "",function() {
+				typing(".introjs-tooltiptext", "The program exits the <y>main()</y> function. ", 10, "",function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});

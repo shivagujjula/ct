@@ -12,7 +12,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
-<script src="../js-min/plc.min.js"></script>
+<script src="/secure/lang/j/js-min/plc.min.js"></script>
 
 <style type="text/css">
 

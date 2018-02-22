@@ -19,7 +19,7 @@
    		<script src="/js/gs/TweenMax.min.js"></script>
    		<script src="/js/gs/TweenLite.min.js"></script>
    		<script src="/js/typewriting.min.js"></script>
-   		<script src="../js-min/dia.min.js"></script>
+   		<script src="/secure/lang/j/js-min/dia.min.js"></script>
 <title>Insert title here</title>
 
 <style type="text/css">

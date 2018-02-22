@@ -15,7 +15,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src="/secure/lang/c/js-min/bto.min.js"></script>  
+<script src="/secure/lang/c/js-min/bto.min.js"></script> 
 <title>Binary to Octal</title>
 </head>
 
@@ -122,10 +122,6 @@ div, span, tr, td {
 .squaring {
 	display: inline-block;
 	width: 18px;
-}
-
-#restart {
-	margin-top: 3%;
 }
 
 .ct-green-color {
@@ -350,15 +346,25 @@ div, span, tr, td {
 	<div class="col-xs-6 col-xs-offset-3 margin-top-1 opacity00 text-center" id="finalDiv">
 			<span id="finalResult"></span>
 	</div>
-	<div class="col-xs-5 col-xs-offset-5 " id="restartDiv">
-		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
-	</div>
+	
+	<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+				<span class="col-xs-12">
+					 <span class="col-xs-6 col-xs-offset-3">
+						<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
 </div>
 </body>
 
 <script>
 	$(document).ready(function() {
-		$("#restart").click(function() {
+		$("#restartBtn").click(function() {
 			$("#binaryValue").val("");
 			location.reload();
 		});

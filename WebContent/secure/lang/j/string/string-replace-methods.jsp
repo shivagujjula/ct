@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TweenLite.min.js"></script>
-<script src="/secure/lang/j/js/string-replace-methods.js"></script>
+<script src="/secure/lang/j/js-min/srm.min.js"></script>
 <title>33333</title>
 <style type="text/css">
 .margin-top-20 {

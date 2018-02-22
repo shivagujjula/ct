@@ -6,6 +6,9 @@ var x;
 
 var binaryToDecimalConvetionReady = function()	{
 	intro = introJs();
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -73,7 +76,7 @@ var binaryToDecimalConvetionReady = function()	{
 						position:"right",
 						tooltipClass: "hide",
 					}, {
-						element :'#restartBtn',
+						element :'#button',
 						intro :'',
 						position:"right"
 					 }]
@@ -307,17 +310,17 @@ var binaryToDecimalConvetionReady = function()	{
 					})
 				});
 			break;
-		case "restartBtn":
-			$('.introjs-nextbutton').hide();
-			$('.introjs-tooltip').css('min-width', '130px');
-			$(".introjs-helperLayer").one("transitionend",  function() {
-			$("#restartBtn").removeClass("opacity00");
-			$('.introjs-nextbutton').hide();
-			typing('.introjs-tooltiptext', "Click to restart", function() {
-				});
-				$('.introjs-nextbutton').hide();
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
+					});
 				$('#binarylValue').val("");
-			});
+				});
 			break;
 			}
 		}); 

@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/animate.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
-
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script type="text/javascript" src="/js/jquery-latest.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/clt.min.js"></script>
+<script src="/secure/lang/c/js-min/clt.min.js"></script> 
 <style type="text/css">
 .timeline {
 	list-style: outside none none;
@@ -113,7 +113,9 @@
 .image {
 	width: 100px;
 }
-
+y {
+	color : darkblue;
+}
 .font-weight-bold {
 	font-weight: bold;
 }
@@ -176,7 +178,8 @@ was developed by Martin Richards in 1967.</div>'>1967</span>
 		</ol>
 		<div class='animation-bar'></div>
 		<div class="text-center" style="margin-top: 250px;">
-			<a class="btn btn-warning hide" id="restart">&nbsp;Restart</a>
+			<span class="btn btn-warning hide" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+			<span class="btn btn-restart hide" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
 		</div>
 	</div>
 </body>

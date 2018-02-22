@@ -395,13 +395,35 @@
 					</tr>
 					<tr>
 						<td>6</td>
-						<td>String Methods Demo</td>
+						<td>String length and charAt method</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('String Methods Demo', '../string/string-methods-demo.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String Methods Demo</span></td>
+							href="javascript:opendialog('String length and charAt method', '/secure/lang/j/string/string-length-charat-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String length and charAt method</span></td>
 						<td></td>
 						<td></td>
-						<td>Yes</td>
+						<td>yes</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>String substring method</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('String substring method', '/secure/lang/j/string/string-substring-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String substring method</span></td>
+						<td></td>
+						<td></td>
+						<td>yes</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>String replace</td>
+						<td><a class='btn btn-xs btn-success'
+							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-replace-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String replace method</span></td>
+						<td></td>
+						<td></td>
+						<td>yes</td>
 						<td></td>
 					</tr>
 				</tbody>

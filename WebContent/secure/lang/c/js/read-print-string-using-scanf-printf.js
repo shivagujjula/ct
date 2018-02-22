@@ -151,7 +151,7 @@ var readPrintStringUsingScanfPrintfReady = function() {
 		case "line1" :
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>main()</span> is on operating system call and which is the "+
-						"execution starting point for any <span class='ct-code-b-yellow'>c</span> program.", 1, "", function() {
+						"execution starting point for any <span class='ct-code-b-yellow'>C</span> program.", 1, "", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});

@@ -9,7 +9,12 @@ var hexadecimalDecimalReady = function() {
 	intro = introJs();
 	$('#restartBtn').click(function() {
 		location.reload();
-		});
+	});
+
+	$('#closeBtn').click(function() {
+			window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
+
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -88,7 +93,7 @@ var hexadecimalDecimalReady = function() {
 			position:"right",
 			tooltipClass : 'hide'
 		}, {
-			element :'#restartBtn',
+			element :'#button',
 			intro :'',
 			position:"right"
 		}]
@@ -392,7 +397,9 @@ var hexadecimalDecimalReady = function() {
 				var text = $('#adding').text();
 				text.substring(1, text.length-5);
 				$('.introjs-tooltip').removeClass("hide");
-				typing('.introjs-tooltiptext', "Hence,<br><span class='ct-code-b-yellow'>("+ $("#octalValue").val() + ")<sub>(16)</sub></span>" + "= <span class='ct-code-b-yellow'>" +  $('#adding').html()  + "</span><br> or simply <span class='ct-code-b-yellow'> " + text.substring(1, text.length-5) + "</span>.", function() {
+				typing('.introjs-tooltiptext', "Hence,<br><span class='ct-code-b-yellow'>("+ $("#octalValue").val() + ")<sub>(16)</sub></span>" +
+						"" + "= <span class='ct-code-b-yellow'>" +  $('#adding').html()  + "</span><br> or simply <span class='ct-code-b-yellow'>" +
+						text.substring(text.indexOf("(") + 1, text.lastIndexOf(")")) + ".</span>", function() {
 					 $('#multiplytwonos').effect('highlight',  {color: "#ff9900"}, 1000);
 					t= 0;
 					 addition(function() {
@@ -403,15 +410,19 @@ var hexadecimalDecimalReady = function() {
 			});
 		break;
 	break;
-		case "restartBtn":
-			$('.introjs-nextbutton').hide();
-			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restartBtn").removeClass("opacity00");
-				typing('.introjs-tooltiptext', "Click to restart.", function() {});
-				//$('.introjs-nextbutton, .introjs-prevbutton').show();	
-					//$('#octalValue').val("");
-				});
-		break;
+
+		case "button":
+					$(".introjs-tooltip").css("min-width","380px");
+					$('.introjs-nextbutton, .introjs-prevbutton').hide();
+					$(".introjs-helperLayer").one("transitionend", function() {
+						$("#restartBtn, #closeBtn").removeClass("opacity00");
+						var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+								"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+						typing('.introjs-tooltiptext', text, function() {
+							});
+						});
+					break;
+
 		}
 	});
 

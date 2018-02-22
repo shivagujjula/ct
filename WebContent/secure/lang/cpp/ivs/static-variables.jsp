@@ -15,8 +15,9 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-
 <script src="../js-min/sv.min.js" type="text/javascript"></script>
+
+<script src="../js/static-variables.js"></script>
 
 <title>Static Variables</title>
 <style type="text/css">
@@ -53,21 +54,6 @@
 
 #outputDiv {
 	margin-top: 45px;
-}
-
-.output-console-title-bar {
-	background-color: darkgray;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
-}
-
-.output-console-body {
-	border-bottom-left-radius: 6px;
-	border-bottom-right-radius: 6px;
-	font-size: 13px;
-	height: 80px;
-	padding: 10px;
-	white-space: inherit;
 }
 
 .introjs-tooltip {
@@ -114,27 +100,19 @@
 	color: green;
 }
 
+y {
+	font-weight: bold;
+	color: yellow;
+}
+
+
 g {
 	color: green;
-}
-
-y {
-	color: yellow;
-	font-weight: bold;
-}
-
-blue {
-	color: #0000FF;
-}
-
-red {
-	color: red;
 }
 
 orange {
 	color: #BC7A00;
 }
-
 
 </style>
 </head>
@@ -149,15 +127,15 @@ orange {
 				<pre id="codeAnimation" class="creampretab4 box-border code-div opacity00">
 <orange>#include</orange> <span style="color: #408080;">&lt;iostream&gt;</span>
 <g>using namespace</g> std;
-	<span id="functionDec"><red>void</red> display();</span>
-	<span id="mainFunction"><span id="startMain"><red>int</red> main() {</span>
-		<span id="functionCall1">display();</span>
-		<span id="functionCall2">display();</span>
-		<span id="functionCall3">display();</span>
+	<span id="functionDec">void <span class='ct-green-color'>display()</span>;</span>
+	<span id="mainFunction">int <span id="startMain"><b class='ct-blue-color'>main()</b> {</span>
+		<span id="functionCall1" class='ct-green-color'>display();</span>
+		<span id="functionCall2" class='ct-green-color'>display();</span>
+		<span id="functionCall3" class='ct-green-color'>display();</span>
 	<span id="endMain">}</span></span>
-	<span id="functionDef"><red>void</red> display() {
+	<span id="functionDef">void <b class='ct-blue-color'>display()</b> {
 		<div id="varDec" style="display:inline-block; position:relative;">int i = 1;</div>
-		<span id="printf">cout << <red>"i = "</red> << <span id="iInc">i++</span> << <red>"\n"</red>;</span>
+		<span id="printf">cout << <red>"i = "</red>, << <span id="iInc">i++</span>;</span>
 	<span id="endFunc">}</span></span>
 </pre>
 			</div>
@@ -176,7 +154,7 @@ orange {
 		<div style="margin-top: 40px;" class="col-xs-12">
 			<div id="consoleId" class="padding0 opacity00 col-xs-4 col-xs-offset-4">
 				<div class="output-console-title-bar"><span class="title">Output</span></div>
-				<div style="font-weight: bold;" class="output-console-body">
+				<div style="color: yellow; font-weight: bold;ss" class="output-console-body">
 				</div>
 			</div>
 		</div>

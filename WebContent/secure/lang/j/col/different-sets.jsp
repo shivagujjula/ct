@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<!-- <script src="../js-min/ds.min.js"></script> -->
-<script src="/secure/lang/j/js/different-sets.js"></script>
+<script src="../js-min/ds.min.js"></script>
 <title>different-sets.jsp</title>
 <style type="text/css">
 .row {
@@ -191,7 +190,7 @@ div, span {
 				<h3 class="text-center">
 					<span class="label label-default">HashSet</span>
 				</h3>
-				<div class='value-append-div text-center' id="setHash"></div>
+				<div class='value-append-div text-center'></div>
 				<div class='animation-jar' id='hashSetAnimationJar'></div>
 			</div>
 		</div>
@@ -200,7 +199,7 @@ div, span {
 				<h3 class="text-center">
 					<span class="label label-default">LinkedHashSet</span>
 				</h3>
-				<div class='value-append-div text-center' id="lHashSet"></div>
+				<div class='value-append-div text-center'></div>
 				<div class='animation-jar center' id='linkedHashSetAnimationJar'><div></div></div>
 			
 			</div>
@@ -210,7 +209,7 @@ div, span {
 				<h3 class="text-center">
 					<span class="label label-default">TreeSet</span>
 				</h3>
-				<div class='value-append-div text-center' id="tSet"></div>
+				<div class='value-append-div text-center'></div>
 				<div class='animation-jar center' id='treeSetAnimationJar'><div></div></div>
 			</div>
 		</div>

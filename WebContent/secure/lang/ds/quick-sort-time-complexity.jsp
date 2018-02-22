@@ -496,7 +496,6 @@ td {
 		</div>
 	</div>
 	<div class="button col-xs-12 text-center margin-top-1" id="button">
-		<span class="btn btn-warning closeBtn">Close</span>
 		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restart' style='margin-top:4px'>Restart</button>
 	</div>
 </div>

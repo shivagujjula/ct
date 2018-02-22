@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/c/js-min/spwif.min.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/spwif.min.js" type="text/javascript"></script> 
+
 <title>sample program with printf</title>
 </head>
 <style>
@@ -161,7 +162,18 @@ void <span id="main" class="green">main()</span> {
 			</div>
 		</div>
 	</div>
-	<div><button type="button" class="col-sm-1 col-sm-offset-5 btn btn-warning opacity00 " id="restartBtn" style="margin-top : 15px;">Restart</button></div>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-4 col-xs-offset-4">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

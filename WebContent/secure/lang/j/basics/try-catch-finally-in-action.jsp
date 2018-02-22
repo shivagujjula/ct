@@ -14,8 +14,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="../js-min/tcfia.min.js"></script> -->
-<script src="/secure/lang/j/js/try-catch-finally-in-action.js"></script>
+<script src="/secure/lang/j/js-min/tcfia.min.js"></script>
 <title>try-catch-finally in Action</title>
 
 <style>

@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TweenLite.min.js"></script>
-<script src="/secure/lang/j/js/string-length-charat-methods.js"></script>
+<script src="/secure/lang/j/js-min/slcm.min.js"></script>
 <title>id = 1</title>
 <style type="text/css">
 .margin-top-20 {

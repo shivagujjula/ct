@@ -11,7 +11,7 @@
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
-<script src="../js-min/usat.min.js"></script>
+<script src="/secure/lang/j/js-min/usat.min.js"></script>
 <title>Insert title here</title>
 
 <style>

@@ -320,14 +320,14 @@
 				<tbody class='table-striped'>
 					<tr>
 						<td>1</td>
-						<td>String methods</td>
+						<td>String length and charAt method</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('String methods', '/secure/lang/j/string/string-methods-demo.jsp?id=1', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">String methods</span></td>
+							href="javascript:opendialog('String length and charAt method', '/secure/lang/j/string/string-length-charat-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String length and charAt method</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td>Mahesh</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>09-01-18</td>
 					</tr>
 					
 					<tr>
@@ -389,58 +389,25 @@
 					</tr>
 					<tr>
 						<td>7</td>
-						<td>String methods</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('String substring method', '/secure/lang/j/string/string-methods-demo.jsp?id=2', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">String substring method</span></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td>String methods</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-methods-demo.jsp?id=3', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">String replace method</span></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>9</td>
-						<td>String replace</td>
-						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-replace-methods.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String replace method (<span style = "color : blue">Replace of 8th demo</span>)</span></td>
-						<td><i class="fa fa-check fa-1x"></i></td>
-						<td>Mahesh</td>
-						<td></td>
-						<td>30-12-17</td>
-					</tr>
-					<tr>
-						<td>10</td>
 						<td>String substring method</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('String substring method', '/secure/lang/j/string/string-substring-methods.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String substring method (<span style = "color : blue">Replace of 7th demo</span>)</span></td>
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String substring method</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh</td>
 						<td></td>
 						<td>04-01-18</td>
 					</tr>
 					<tr>
-						<td>11</td>
-						<td>String length and charAt method</td>
+						<td>8</td>
+						<td>String replace</td>
 						<td><a class='btn btn-xs btn-success'
-							href="javascript:opendialog('String length and charAt method', '/secure/lang/j/string/string-length-charat-methods.jsp', 1, 1)"><i
-								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String length and charAt method (<span style = "color : blue">Replace of 1st demo</span>)</span></td>
+							href="javascript:opendialog('String replace method', '/secure/lang/j/string/string-replace-methods.jsp', 1, 1)"><i
+								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">String replace method</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh</td>
 						<td></td>
-						<td>09-01-18</td>
+						<td>30-12-17</td>
 					</tr>
 				</tbody>
 			</table>
@@ -501,7 +468,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td>1</td>
+						<td>2</td>
 						<td>Different maps</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Different maps', '/secure/lang/j/col/different-maps.jsp', 1, 1)"><i
@@ -541,7 +508,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td>1</td>
+						<td>2</td>
 						<td>Different sets</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('Different sets', '/secure/lang/j/col/different-sets.jsp', 1, 1)"><i
@@ -581,7 +548,7 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td>1</td>
+						<td>2</td>
 						<td>ArrayDeque</td>
 						<td><a class='btn btn-xs btn-success'
 							href="javascript:opendialog('ArrayDeque', '/secure/lang/j/col/deque-in-action.jsp', 1, 1)"><i

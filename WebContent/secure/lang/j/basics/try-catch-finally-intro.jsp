@@ -14,8 +14,8 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="../js-min/tcfi.min.js"></script> -->
-<script src="/secure/lang/j/js/try-catch-finally-intro.js"></script>
+<script src="/secure/lang/j/js-min/tcfi.min.js"></script>
+
 <title>Introduction to try, catch and finally keywords</title>
 
 <style>

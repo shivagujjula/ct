@@ -197,7 +197,7 @@ y {
 	<div class="col-xs-12 margin-top">
 		<div class="col-xs-8 col-xs-offset-2" id="informationDiv">
 			<span id="infoText"><ul><li>A user can use more than one generic type in a <span class='ct-green'>class template</span>
-			 by using <span class='ct-green'>comma operator</span> to seperate the <span class='ct-green'>template</span> list.</li>
+			 by using <span class='ct-green'>comma operator</span> to seperate the <span class='ct-green'>tempalte</span> list.</li>
 			 <li>The objects are created for <span class='ct-green'>class templates</span> with multiple parameters as<span class="text">
 			Class_name <d1, d2, d3, -------, dn> object;</span></li><li>The type of arguments is mentioned inside angular brackets
 			  <span class='ct-green'>< ></span> while creating objects.</li>

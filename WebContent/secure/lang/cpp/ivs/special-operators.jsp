@@ -17,7 +17,6 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/spos.min.js"></script>
-
 <title>special-operators</title>
 
 <style>
@@ -29,7 +28,7 @@
 }
 
 .introjs-tooltip {
-	min-width: 400px;
+	min-width: 300px;
 }
 
 .introjs-tooltip-min-width-custom {
@@ -78,12 +77,13 @@
 .output-console-body {
     background-color: black;
     padding-left: 20px;
-    color: #f0f0f0;
+    color: #cead24;
     font-family: monospace;
-    font-size: 10px;
+    font-size: 11px;
     /* white-space: pre; */
     overflow-y: auto;
-    line-height: 1.2;
+    line-height: 0.8;
+    min-height: 162px;
 }
 
 .heading-text-div {
@@ -168,7 +168,7 @@ void main() {
 	<span id='line3'><span>double</span> <span>c</span>;</span>
 	<span id='line4'><span>char</span> <span>d</span>;</span>
 	<span id='line5'><span>a</span> = (<span>f = 5</span>, <span>g = 4</span>, <span>f + g</span>);</span>
-	<span id='line6'>cout("Value of a = " << a << "\n";</span>
+	<span id='line6'>cout << "Value of a = " << a << "\n";</span>
 <span id='sizeOfPrintfLines'>	<span id='line7'>cout << "Size of int = "<< sizeof(a) << "bytes\n";</span>
 	<span id='line8'>cout << "Size of float = " << sizeof(b) << " bytes\n";</span>
 	<span id='line9'>cout << "Size of double = " << sizeof(c) << " bytes\n", );</span>
@@ -177,7 +177,7 @@ void main() {
 }
 </pre>
 		</div>
-		<div class="output-console col-xs-4" id='outputBox'>
+		<div class="output-console col-xs-4 opacity00" id='outputBox' >
 			<div class="output-console-title-bar">
 				<span>Output</span>
 			</div>

@@ -7,9 +7,13 @@ var cLanguageTimelineReady = function() {
 	});
 	$("[data-toggle='popover']").popover({html : true});
 	timeline(".li1", "animation2()");
-	$('#restart').click(function() {
+	$('#restartBtn').click(function() {
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
+
 }
 function timeline(liSelector, nextAnimation) {
 	$(liSelector).removeClass("hide");
@@ -28,12 +32,23 @@ function timeline(liSelector, nextAnimation) {
 							nextBtnAnimation(liSelector, nextAnimation);
 						} else {
 							$(".li5 .popover-content").addClass("bgColor-lightgray");
-							$("#restart").removeClass("hide").popover({
+							$("#restartBtn").removeClass("hide").popover({
+								placement: "right",
+								html: true,
 								trigger : "focus",
-								content: "Click to restart."
+								content: "Click on <y>Restart</y> button to restart the Live Demo."
 							});
-							$("#restart").popover("show");
-							$('#restart').next().css("width", "auto").addClass("animated bounceInDown").one("animationend", function() {
+							$("#closeBtn").removeClass("hide").popover({
+								placement: "left",
+								html: true,
+								trigger : "focus",
+								content: 'Click on <y>Close</y> button to close the Live Demo.'
+							});
+							$("#restartBtn, #closeBtn").popover("show");
+							$('#restartBtn').css("width", "auto").addClass("animated bounceInDown").one("animationend", function() {
+								$(this).removeClass("animated bounceInDown");
+							});
+							$('#closeBtn').css("width", "auto").addClass("animated bounceInDown").one("animationend", function() {
 								$(this).removeClass("animated bounceInDown");
 							});
 						}

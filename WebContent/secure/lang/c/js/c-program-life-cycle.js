@@ -5,9 +5,12 @@ var cProgramLifeCycleReady = function() {
 	svgAppend("#outSideDiv", "svg");
 	svgMarkerAppend("#svg", "arrow");
 	
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload();
-	})
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 }
 function initIntroJS() {
 	introjs = introJs();
@@ -36,7 +39,7 @@ function initIntroJS() {
 					tooltipClass: 'hide',
 					position: 'right'
 				}, {
-					element: '#restart',
+					element: '#button',
 					intro: '',
 					position: 'right'
 				} ]
@@ -144,18 +147,21 @@ function initIntroJS() {
 				}
 				break;
 				
-			case "restart":
+			case "button":
 				($("#popover7").parent()).css({"background-color":"lightgray", "color":"black"});
 				$(".five").addClass("ct-blue-color");
 				$("#insideDiv").addClass("z-index");
-				$('.introjs-nextbutton').hide();
-				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#restart").removeClass("opacity00");
-					var text = "Click to restart";
-					typing('.introjs-tooltiptext', text);
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, function() {
+					});
 				});
 				break;
-
 		}
 	});
 	
@@ -423,7 +429,7 @@ function executionFile() {
 			$("#exeBelowText").removeClass("opacity00").addClass("pulse").on('animationend', function() {
 				var newStep = getStep('#insideDiv', '', 'hide', '');
 				introjs.insertOption(introjs._currentStep + 1, newStep);
-				$('#popover5').append('<div class="popover-height"><span class="introjs-button custom-btn" onclick="nextStep()">next &#8594;</span></div>')
+				$('#popover5').append('<div class="popover-height"><span class="introjs-button custom-btn" onclick="nextStep()">Next &#8594;</span></div>')
 			});
 		});
 	}, 1000);

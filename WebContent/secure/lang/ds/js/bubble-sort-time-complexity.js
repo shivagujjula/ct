@@ -187,7 +187,7 @@ function introGuide() {
 							typing("#liFinalText2", $("#liFinalText2").html(), function() {
 								buttonAppendFunction(".introjs-tooltiptext", function() {
 									$("#liFinalText2").after("<li>i.e. <span class='ct-code-b-yellow opacity00' id='liFinalText2Span'>"+
-										"(<span id='nValue3'>n<sup>2</sup></span>*n)/2</span></li>");
+										"(<span id='nValue3'>n<sup>2</sup></span>+n)/2</span></li>");
 									$("#liFinalText1Span").effect('highlight',{color:'#da5805'}, 1000);
 									transferEffectFunction("#liFinalText1Span", "#liFinalText2Span", function() {
 										$("#liFinalText2Span").effect('highlight',{color:'#da5805'}, 1000);

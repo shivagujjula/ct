@@ -3,13 +3,16 @@ var tl = new TimelineLite();
 var typingSpeed = 1;
 var executeBtnCount = 1;
 var cIdentifiersReady = function() {
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 	$('body').keypress(function(event) {
 		if (event.keyCode == 13) {
 		     event.preventDefault();
 		}
 	});
 	$("#identifierBtn").click(function() {
-		$("#restartBtn").removeClass("opacity00");
+		$("#restartBtn, #closeBtn").removeClass("opacity00");
 		$("#errorTextId").remove();
 		$("#errorTextId1").remove();
 		$("#errorTextId2").remove();
@@ -23,8 +26,8 @@ var cIdentifiersReady = function() {
 			typing("#errorText", text, function() {
 				$("#inputId").val('');
 				$("#inputId").focus();
-				$("#restartBtn").removeClass("opacity00");
-				$("#restartBtn").addClass("zIndex");
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").addClass("zIndex");
 			});
 			console.log("InValid Identifier");
 		} else if (inputVal.substring(0,1) == '_') {
@@ -33,16 +36,16 @@ var cIdentifiersReady = function() {
 			typing("#errorText", text, function() {
 				$("#inputId").val('');
 				$("#inputId").focus();
-				$("#restartBtn").removeClass("opacity00");
-				$("#restartBtn").addClass("zIndex");
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").addClass("zIndex");
 			});
 		} else {
 			var text = "<span id='errorTextId3' class='ct-code-b-green'> " +  inputVal + "  </span>  is a valid identifier."
 			typing("#errorText", text, function() {
 				$("#inputId").val('');
 				$("#inputId").focus();
-				$("#restartBtn").removeClass("opacity00");
-				$("#restartBtn").addClass("zIndex");
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").addClass("zIndex");
 			});
 		}
 	});

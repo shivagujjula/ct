@@ -6,7 +6,10 @@ var hexadecimalBinaryReady = function() {
 	intro = introJs();
 	$('#restartBtn').click(function() {
 		location.reload();
-		});
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -50,7 +53,7 @@ var hexadecimalBinaryReady = function() {
 			tooltipClass : 'hide'
 		},
 		{
-			element :'#restartBtn',
+			element :'#button',
 			intro :'',
 			tooltipClass: 'hide',
 			position:"right"
@@ -98,7 +101,7 @@ var hexadecimalBinaryReady = function() {
 				$('.box2').addClass('opacity00').removeAttr('style');
 				$("#restartBtn").addClass("opacity00");
 		break;
-		case "restartBtn":
+		case "button":
 			$("#restartBtn").addClass("opacity00");
 		break;
 		}
@@ -251,13 +254,15 @@ var hexadecimalBinaryReady = function() {
 			});
 		break; 
 		
-		case "restartBtn":
+		case "button":
 			$('.introjs-nextbutton').hide();
-			$(".introjs-tooltip").css("min-width", "125px");
+			$(".introjs-tooltip").css("min-width", "380px");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restartBtn").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext', "Click to restart.", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
 					});
 				});
 		break;

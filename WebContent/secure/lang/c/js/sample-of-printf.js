@@ -5,6 +5,11 @@ var readPrintStringUsingGetsPutsReady = function() {
 		location.reload();
 	});
 	intro = introJs();
+
+	$('#closeBtn').click(function() {
+			window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
+
 	$("nextButton").click(function() {
 		$(this).remove();
 		intro.nextStep();
@@ -52,7 +57,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : "#close",
 			intro: '',
 		}, {
-			element : "#restartBtn",
+			element : "#button",
 			intro : "",
 			position : "left"
 		
@@ -192,20 +197,21 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			}
 			break;
-		case "restartBtn" :
-			intro.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-tooltip').css('min-width', '130px');
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('#countBox').removeClass('z-index1000000');
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {
-					$('#restart').click(function() {
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$('#countBox').removeClass('z-index1000000');
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, 10, "",function() {
+					$('#restartBtn').click(function() {
 						location.reload();
 					});
+					});
 				});
-			});
-		break;
+			break;
 		}
 	});
 	intro.start();

@@ -14,7 +14,10 @@ var usageOfHashDefineReady = function() {
 		$("#hiddenTotalEnterChar").val('');
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
+
 	$('body').keypress(function(event) {
 		if (event.keyCode == 13) {
 		     event.preventDefault();
@@ -229,7 +232,7 @@ function introjsGuide() {
 					tooltipClass: "hide",
 					position: "bottom"
 				},{
-					element :'#restartBtn',
+					element :'#button',
 					intro :'',
 					position: "right"
 			}]
@@ -377,7 +380,7 @@ function introjsGuide() {
 		case "line4" :
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$('.introjs-tooltip').removeClass('hide');
-				typing('.introjs-tooltiptext',"we are declaring 3 float variables <y>radius</y>, <y>area</y>,  <y>circumferences<y>. ", function() {
+				typing('.introjs-tooltiptext',"Here we are declaring <span class='ct-code-b-yellow'>3</span> float variables <y>radius</y>, <y>area</y>,  <y>circumferences<y>. ", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});
@@ -885,14 +888,16 @@ function introjsGuide() {
 			
 			break;
 			
-		case "restartBtn" :
+		case "button" :
 			intro.refresh();
 			$('.introjs-nextbutton').hide();
-			$('.introjs-tooltip').css('min-width', '130px');
+			$('.introjs-tooltip').css('min-width', '380px');
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {
-					$('#restart').click(function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+					typing(".introjs-tooltiptext", text,function() {
+					$('#restartBtn').click(function() {
 						location.reload();
 					});
 				});

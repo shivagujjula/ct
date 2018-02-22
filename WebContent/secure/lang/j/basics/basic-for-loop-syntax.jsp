@@ -18,8 +18,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<!-- <script src="/secure/lang/c/js-min/bic.min.js"></script> -->
-<script src="/secure/lang/j/js/basic-for-loop-syntax.js"></script>
+<script src="/secure/lang/j/js-min/bfls.min.js"></script>
 <style type="text/css">
 body {
 	-moz-tab-size: 4;

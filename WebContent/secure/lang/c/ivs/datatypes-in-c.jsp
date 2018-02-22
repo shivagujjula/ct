@@ -188,9 +188,17 @@
 		</div>
 	</div>
 	
-	<div class = 'buttons-div col-xs-12 margin20'>
-		<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
-	</div> 
-
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-4 col-xs-offset-4">
+ 			<span class="col-xs-12">
+ 				<span class="col-xs-8 col-xs-offset-2">
+ 					<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 </body>
 </html>

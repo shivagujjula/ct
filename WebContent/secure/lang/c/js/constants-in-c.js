@@ -34,7 +34,7 @@ var constantsInCReady = function() {
 	});
 	
 	$("body").keypress(function(event) {
-		console.log("am in keypresss................");
+		//console.log("am in keypresss................");
 		if (event.keyCode == 13) {
 		     event.preventDefault();
 		     return false;
@@ -44,6 +44,11 @@ var constantsInCReady = function() {
 	$("#restartBtn").click(function() {
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
+
+
 }
 function introjsGuide() {
 	intro = introJs();
@@ -156,15 +161,18 @@ function introjsGuide() {
 				});
 				break;
 				
-			case "restartBtn" :
-				$('.introjs-nextbutton').hide();
-				$("#restartBtn").removeClass("opacity00");
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {
-						
+			case "button":
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text,1,"", function() {
 					});
 				});
-				break;
+						break;
 		}
 	});
 	
@@ -761,7 +769,7 @@ function stringPopoverStep5() {
 
 function dynamicSteps(action) {
 	if (action == "integer") {
-		console.log("integer --------------------");
+	//	console.log("integer --------------------");
 		var dynamicStep = {
 				"element" : "#integerBox",
 			    "position" : "right",
@@ -779,7 +787,7 @@ function dynamicSteps(action) {
 		intro.insertOption(intro._currentStep + 2, dynamicStep);
 		
 	} else if (action == "float") {
-		console.log("float ----------------------------");
+	//	console.log("float ----------------------------");
 		var dynamicStep = {
 				"element" : "#floatBox",
 			    "position" : "right",
@@ -826,7 +834,7 @@ function dynamicSteps(action) {
 		intro.insertOption(intro._currentStep + 1, dynamicStep);
 		
 		var dynamicStep = {
-				element :'#restartBtn',
+				element :'#button',
 				intro :'',
 				position:"right",
 			}

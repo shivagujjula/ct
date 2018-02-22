@@ -14,7 +14,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/ddt.min.js"></script>
+<script src="/secure/lang/c/js-min/ddt.min.js"></script> 
 
 <title>double data-type</title>
 <style>
@@ -54,7 +54,7 @@
 
 #mainDiv {
 	min-height : 400px;
-	position :absolute;
+	/* //position :absolute; */
 }
 
 .floatsign-div ,.floatnum-div {
@@ -214,9 +214,18 @@ $(document).ready(function() {
 	<div class = 'text-center'>
 		<h1 class = 'label ct-demo-heading first-heading'>double data type</h1>	
 	</div>
-	<div class = 'buttons-div'>
-		<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
-	</div> 
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-4 col-xs-offset-4">
+ 			<span class="col-xs-12">
+ 				<span class="col-xs-8 col-xs-offset-2">
+ 					<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 		<div class = 'col-xs-offset-2 col-xs-8 main-div padding10' id = 'mainDiv' style="font-family: monospace;">
 			<span id = 'typing1' class = 'padding10'></span>
 			<div class = 'box-div col-xs-12 ' id = 'boxDiv'>

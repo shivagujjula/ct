@@ -14,7 +14,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/ho.min.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/ho.min.js" type="text/javascript"></script> 
 
 <title>hexadecimal to octal</title>
 </head>
@@ -569,11 +569,18 @@ div, span, tr, td {
 			</div>
 		</div>
 	</div>
-</div>
 
-
-<div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:8px'>Restart</button>
+<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-4 col-xs-offset-4">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
 </div>
 </body>
 <script>

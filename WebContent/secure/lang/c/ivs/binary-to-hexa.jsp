@@ -13,10 +13,14 @@
 <script src="/js/typewriting.min.js"></script>
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-<script src="/secure/lang/c/js-min/bth.min.js"></script>
+<script src="/secure/lang/c/js-min/bth.min.js"></script> 
 <title>Binary to hexaDecimal</title>
 
 <style>
+
+.margin-top-20 {
+	margin-top:20px
+}
 .binaryBox, .supBox, .squareDivBox {
 	background-color: #afeeee;
     border-radius: 2px;
@@ -384,15 +388,24 @@ div, span, tr, td {
 	<div class="col-xs-6 col-xs-offset-3 text-center margin-top-1 visibility-hidden" id="finalDiv">
 		<span id="finalResult"></span>
 	</div>
-	<div class="col-xs-5 col-xs-offset-5" id="restartDiv">
-		<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-4 col-xs-offset-4">
+ 			<span class="col-xs-12">
+ 				<span class="col-xs-8 col-xs-offset-2">
+ 					<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </div>
 </body>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#restart").click(function(){
+		$("#restartBtn").click(function(){
 			$("#binaryValue").val("");
 			location.reload();
 		});

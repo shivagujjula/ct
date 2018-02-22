@@ -18,7 +18,6 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="../js-min/hmia.min.js"></script>
-<!-- <script type="text/javascript" src="/secure/lang/j/js/hashmap-in-action.js"></script> -->
 
 <style type="text/css">
 

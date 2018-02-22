@@ -227,7 +227,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case 'mainClose' :
 			$('.introjs-helperLayer').one("transitionend", function() {
 				$("#countCupValue").removeClass('z-index10000000');
-				typing('.introjs-tooltiptext',"close the <y>main</y> tag", 10, "", function() {
+				typing('.introjs-tooltiptext',"The program exits the <y>main</y> function.", 10, "", function() {
 					$('.introjs-nextbutton, .introjs-prevbutton').show();
 				});
 			});

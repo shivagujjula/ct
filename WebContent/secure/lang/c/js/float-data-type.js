@@ -1,4 +1,3 @@
-
 var cell = 32;
 	var dataStep;
 	var rightVal, leftVal;
@@ -80,7 +79,7 @@ var floatDataType = function() {
 						position : 'right'
 					},
 					{
-						element : '#restartBtn',
+						element : '#button',
 						intro : '',
 						position : 'right',
 						tooltipClass: 'hidden'
@@ -435,13 +434,18 @@ if (divisionStep == 16) {
 				$("#divisionBtn").show();
 				$("#restartBtn").click(function() {
 					location.reload(true);
-				})	
+				});	
+
+				$('#closeBtn').click(function() {
+					window.parent.$("#javaDocBrowserDiv").dialog("close");
+				});
+
 	});
 }
 
 if (divisionStep == 17) {
 	intro.nextStep();
-	$("#restartBtn").removeClass("visibility-hidden");
+	$("#restartBtn, #closeBtn").removeClass("visibility-hidden");
 }
 
 }
@@ -642,7 +646,7 @@ function nextClick(dataStep) {
 			TweenMax.fromTo('#radix', 1, {y:-90},{y:0,opacity:1,onComplete: function() {
 				TweenMax.fromTo('#exponent',1,{y:-90},{delay:1, y:0, opacity:1, onComplete: function() {
 					typing('.introjs-tooltiptext','The <span class="ct-code-b-yellow">mantissa</span> can be '
-							+'achieved,By moving the decimal point so that only one digit appears before the decimal.',function() {
+							+'achieved by moving the decimal point so that only one digit appears before the decimal.',function() {
 						$(".nextBtn").show();
 					});
 				 var options =  {

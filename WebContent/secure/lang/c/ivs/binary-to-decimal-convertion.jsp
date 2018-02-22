@@ -15,7 +15,7 @@
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
 	<link rel="/css/animate.css"/>
-	<script src="/secure/lang/c/js-min/btdc.min.js"></script>
+	<script src="/secure/lang/c/js-min/btdc.min.js"></script> 
 	<title>Binary to Decimal</title>
 </head>
 
@@ -305,9 +305,19 @@ div, span {
 				<span id="get"   class=" col-xs-4 color-lightrose">Result<b>:</b></span><span  class ='col-xs-8'><span id="adding"></span></span>
 			</div>
 			
-			<div class="button  col-xs-12 text-center" id="button">
-				<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top: 30px'>Restart</button>
+			<div class="margin-top-20 col-xs-12 text-center">
+				<span class="margin-top-20 col-xs-8 col-xs-offset-2">
+					<span class="col-xs-12">
+						 <span class="col-xs-8 col-xs-offset-2">
+							<span class="col-xs-12" id="button">
+								<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+								<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+							</span>
+						</span>
+					</span>
+				</span>
 			</div>
+
 		</div>
 	</div>
 	</body>

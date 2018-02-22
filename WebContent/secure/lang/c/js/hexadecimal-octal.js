@@ -11,6 +11,9 @@ var hexadecimalOctalReady = function() {
 	$('#restartBtn').click(function() {
 		location.reload();
 		});
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -107,7 +110,7 @@ var hexadecimalOctalReady = function() {
 			tooltipClass : 'hide'
 		},
 		{
-			element :'#restartBtn',
+			element :'#button',
 			intro :'',
 			position:"right"
 		}]
@@ -823,13 +826,15 @@ var hexadecimalOctalReady = function() {
 			});
 		break;
 		
-		case "restartBtn":
-			$('.introjs-nextbutton').hide();
-			$('.introjs-tooltip').css('min-width', '125px');
+		case "button":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".introjs-tooltip").css("min-width","380px");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restartBtn").removeClass("opacity00");
-				typing('.introjs-tooltiptext', "Click to restart.", function() {
-				});
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
+					});
 					$('.introjs-nextbutton').hide();
 					$('#octalValue').val("");
 				});

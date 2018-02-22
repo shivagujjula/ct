@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/c/js-min/i.min.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/i.min.js"></script> 
 <style type="text/css">
 
 .margin-top-56 {
@@ -169,7 +169,7 @@
 					<!-- <b id="example" class="color-red opacity00">Example:</b><br/> -->
 					<ol>
 						 <li id="olLi1" class="opacity00">
-						 	#include&lt;<b>stdio.h</b>&gt;<br/>
+						 	#include &lt;<b>stdio.h</b>&gt;<br/>
 						 </li>
 						 <li id="olLi2" class="opacity00">
 						 	#include "<b>c\XYZ\Ritchie\abc.c</b>"
@@ -183,15 +183,15 @@
 	<div class="col-xs-12">
 		<div class="col-xs-offset-1 col-xs-5 margin-top-56">
 			<div id="code1" class="opacity00">
-			<pre class="creampretab"><span id="totalPro"><span class="opacity00" id="include1">#include&lt;stdio.h&gt;</span>
+			<pre class="creampretab"><span id="totalPro"><span class="opacity00" id="include1">#include &lt;stdio.h&gt;</span>
 <span id="main"><span class="colorPink">void</span> main () {
   <span id="printf1">printf("<span id="ct" class="colorGreen">CodeTantra</span>");</span>
 }</span></span>
 </pre>
 			</div>
 			<div id="code2" class="margin-top-40 opacity00">
-			<pre class="creampretab"><span id="totalPro2"><span id="include2"><span id="include21" class="opacity00">#include&lt;stdio.h&gt;</span>
-<span id="include22" class="opacity00">#include&lt;math.h&gt;</span></span>
+			<pre class="creampretab"><span id="totalPro2"><span id="include2"><span id="include21" class="opacity00">#include &lt;stdio.h&gt;</span>
+<span id="include22" class="opacity00">#include &lt;math.h&gt;</span></span>
 <span class="colorPink">void</span> main() {
   <span id="printf2">printf("<span id="sqrt" class="colorGreen">Square root of %f is %f\n</span>", 4.0, sqrt(4.0));</span>
 }</span>
@@ -207,8 +207,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 text-center margin-top-20">
-		<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
-	</div>
+	
+	<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-6 col-xs-offset-3">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
 </body>
 </html>

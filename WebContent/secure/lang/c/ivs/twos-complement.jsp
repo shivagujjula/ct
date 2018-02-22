@@ -20,7 +20,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/jquery.scrollTo.js"></script>
-<script src="/secure/lang/c/js-min/tc.min.js"></script>
+<script src="/secure/lang/c/js-min/tc.min.js"></script> 
 <title>Two's complement</title>
 <style>
 .input-text {

@@ -17,6 +17,7 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script  src="/secure/lang/c/js-min/fdty.min.js" type="text/javascript"></script>
+
 <title>DataTypes</title>
 <style type="text/css">
 #rightDecimalExp {
@@ -193,9 +194,9 @@ tr > td {
 	margin-left:2px;
 }
 .span-final {
+    /* padding: 0 1px; */
 	border: 1px solid black;
     margin-left: 2px;
-    padding: 0 1px;
     position: relative;
 }
 
@@ -424,9 +425,19 @@ ul {
   			</div>
   			
 	</div>
-	<div class="col-xs-6 col-xs-offset-6">
-		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-	</div>
+	<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-4 col-xs-offset-4">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
+	
 <script type="text/javascript">
 	
 	$('window').ready(function() {

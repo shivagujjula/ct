@@ -11,7 +11,9 @@ var charDataTypeReady = function() {
 	$('#restartBtn').click(function() {
 		location.reload();
 	});
-
+	$('#closeBtn').click(function() {
+		window.parent.$("#javaDocBrowserDiv").dialog("close");
+	});
 	introJsFunction();
 	
 	$("#chValue").on("keydown", function(e) {
@@ -87,8 +89,9 @@ function introJsFunction() {
 			position : "top"
 		},
 		{
-			element : "#restartBtn",
-			intro : "Click to restart",
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
 			position : "right"
 		}
 		]});
@@ -185,10 +188,11 @@ function introJsFunction() {
 				});
 			});
 			break;
-		case "restartBtn":
-			$('.introjs-tooltip').css('min-width', '125px');
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restartBtn").removeClass('visibility-hidden');
+				$("#restartBtn, #closeBtn").removeClass('visibility-hidden');
 			});
 			break;
 		}

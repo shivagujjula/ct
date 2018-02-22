@@ -1,5 +1,5 @@
 var introjs;
-var typingSpeed = 10;
+var typingSpeed = 1;
 var arr = [];
 var spaceCount;
 
@@ -382,6 +382,9 @@ function introGuide() {
 			case "public":
 				$("#public").removeClass("opacity00");
 				$("#main1").addClass("opacity00");
+				break;
+			case "restart":
+				$('#restart').removeClass("hide");
 				break;
 			
 		}

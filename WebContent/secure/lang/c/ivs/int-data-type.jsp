@@ -16,7 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/idt.min.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/idt.min.js" type="text/javascript"></script> 
 
 <title>int data type</title>
 
@@ -69,10 +69,6 @@
 	text-align: center;
 }
 
-.introjs-tooltip {
-	max-width : 160px!important;
-	min-width :150px !important;
-}
 
 .introjs-tooltip-max-width-custom {
 	min-width: 110px;
@@ -95,10 +91,20 @@
 	<div class='text-center'>
 		<h1 class='label ct-demo-heading'>int data type in C language</h1>
 	</div>
-	<div class='buttons-div'>
-		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-	</div> 
-	<div class='col-xs-offset-2 col-xs-8 heading-text-div' id='typingbox'>
+	
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-4 col-xs-offset-4">
+ 			<span class="col-xs-12">
+ 				<span class="col-xs-8 col-xs-offset-2">
+ 					<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
+	<div class='col-xs-offset-2 col-xs-8 heading-text-div margin-top-20' id='typingbox'>
 		<ul>
 			<li class='opacity00'><span class='ct-code-b-green'>int</span> data type is a numeric data type which occupies <b>2</b> bytes (16 bits) in the memory.</li>
 			<li class='opacity00'><span class='ct-code-b-green'>int</span> data type has four different qualifiers.</li>
