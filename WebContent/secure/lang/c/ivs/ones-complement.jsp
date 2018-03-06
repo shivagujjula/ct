@@ -194,7 +194,7 @@ table {
 		<div class="col-xs-12 padding0 margin-top20" id="onesComplementValue"></div>
 	</div>
 	<div class="margin-top-20 col-xs-12 text-center">
-		<span class="col-xs-4 col-xs-offset-4">
+		<span class="col-xs-6 col-xs-offset-3">
 	 		<span class="col-xs-12">
 	 			<span class="col-xs-8 col-xs-offset-2">
 	 				<span class="col-xs-12" id="button">

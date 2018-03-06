@@ -93,7 +93,7 @@
 	</div>
 	
 	<div class="buttons-div col-xs-12">
-		<span class="col-xs-4 col-xs-offset-4">
+		<span class="col-xs-6 col-xs-offset-3">
  			<span class="col-xs-12">
  				<span class="col-xs-8 col-xs-offset-2">
  					<span class="col-xs-12" id="button">

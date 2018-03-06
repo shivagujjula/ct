@@ -12,7 +12,7 @@ var charDataTypeReady = function() {
 		location.reload();
 	});
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	introJsFunction();
 	
