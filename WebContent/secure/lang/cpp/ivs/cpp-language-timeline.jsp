@@ -107,6 +107,10 @@
 .customPopover > ul {
 	padding-left: 10px;
 }
+.ct-code-b-yellow {
+ color: #d4517e;
+ /* font-weight: bold; */
+}
 </style>
 
 <script type="text/javascript">
@@ -121,7 +125,18 @@ $(document).ready(function() {
 			<span id= "title" class="label ct-demo-heading">Evolution of C++ Programming Language</span>
 		</h3>
 	</div>
-	
+<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
 		<div id='totalDiv'> 
 			<div class='developer-div'>
 				<!-- <img src="../images/Kristen-Nygaard-SBLP-1997-head.png" id='img1' class="" >
@@ -191,10 +206,6 @@ $(document).ready(function() {
 				<line id="line8" class="line-css " x1="37%" x2="62%" y1="66%" y2="66%"></line>
 				<line id="line9" class="line-css " y2="66%" y1="66%" x2="89%" x1="64%"></line>
 		</svg>
-	</div>
-	
-	<div class="button col-xs-12 text-center " id="button">
-		<span  class="btn btn-warning glyphicon glyphicon-refresh" id='restartBtn' style='margin-top: 4px; opacity: 0;'>Restart</span>
 	</div>
 </body>
 </html>

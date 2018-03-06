@@ -18,8 +18,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js-min/pren.min.js" type="text/javascript"></script>
-
+<script src="/secure/lang/cpp/js-min/pren.min.js" type="text/javascript"></script> 
 <title>Understanding precision()</title>
 </head>
 <style>
@@ -332,8 +331,17 @@ y{
 			</div>
 		</div>
 	</div>
-	<div class="button col-xs-12 text-center margin-top-1" id="button">
-			<button class="btn btn-warning glyphicon glyphicon-refresh opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </div>
 <script>

@@ -21,7 +21,9 @@ function introGuide() {
 		$("#inputChar").val("");
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introjs.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
@@ -122,8 +124,8 @@ function introGuide() {
 			intro : '',
 			tooltipClass: 'hide'
 		}, {
-			element :"#restart",
-			intro : "Click to restart.",
+			element :"#button",
+			intro : "",
 			position : 'right',
 		}]
 	});
@@ -211,7 +213,7 @@ function introGuide() {
 					});
 				});
 			});
-			break;
+		break;
 		case 'preTableDiv':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				$("#preTableDiv").removeClass("opacity00");
@@ -230,7 +232,7 @@ function introGuide() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
-			break;
+		break;
 		
 		case 'line2':
 			$('.introjs-helperLayer ').one('transitionend', function() {
@@ -240,7 +242,7 @@ function introGuide() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
-			break;
+		break;
 		case 'line3':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				var text = "<span class='ct-code-b-yellow'>cout</span> is used to display the message " +
@@ -249,7 +251,7 @@ function introGuide() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
-			break;
+		break;
 		case 'line4':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var text = "This line retrives reads a character from the console and stores " +
@@ -262,7 +264,7 @@ function introGuide() {
 				});
 				
 			});
-			break;
+		break;
 			
 		case 'line5':
 			$('.introjs-helperLayer ').one('transitionend', function() {
@@ -273,7 +275,7 @@ function introGuide() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
-			break;
+		break;
 		case 'end':
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				var text = 	"This is the end of the <span class='ct-code-b-yellow'>main()</span> function " +
@@ -282,7 +284,7 @@ function introGuide() {
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
-			break;
+		break;
 		case 'memoryBox':
 			$('.introjs-helperLayer').one('transitionend', function() {
 				var animateStep = introjs._introItems[introjs._currentStep].animateStep;
@@ -302,7 +304,7 @@ function introGuide() {
 							});
 						});
 					});
-					break;
+				break;
 				case 'secondStep':
 					$("#inputChar").attr("disabled", "disabled");
 					$('.introjs-helperLayer').one('transitionend', function() {
@@ -319,7 +321,7 @@ function introGuide() {
 						}
 					});
 				
-					break;
+				break;
 				}
 			});
 			break;
@@ -344,7 +346,7 @@ function introGuide() {
 						}});
 					}
 				});
-				break;
+			break;
 			case 'firstStep':
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#consoleId").removeClass("opacity00");
@@ -357,7 +359,7 @@ function introGuide() {
 						checking("#inputChar");
 					});
 				});
-				break;
+			break;
 			case 'secondStep':
 				$("#inputChar").attr("disabled", "disabled");
 				$('.introjs-helperLayer ').one('transitionend', function() {
@@ -489,14 +491,26 @@ function introGuide() {
 				}, 500);
 			});
 			break;
-		case "restart":
-			$(".introjs-tooltip").css("min-width", "-moz-max-content");
-			$(".introjs-tooltip").css("min-width", "max-content");
-			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				console.log('haiiiii');
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+					$('#closeBtn').click(function() {
+						window.parent.$("#javaDocBrowserDiv").dialog("close");
+					});
+
+				});
 			});
-			break;
+		break;
 		}
 	});
 	introjs.start();

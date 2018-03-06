@@ -253,7 +253,9 @@ img {
 	padding: 2px 4px;
 	border-radius: 3px;
 }
-
+/* .ct-code-b-yellow {
+	color: #d4517e;
+} */
 </style>
 </head>
 <body>
@@ -413,8 +415,17 @@ img {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 margin-top-20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
 		</div>
 	</div>
 <script>

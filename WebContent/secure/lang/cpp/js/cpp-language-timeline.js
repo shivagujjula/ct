@@ -39,6 +39,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 	$('#restartBtn').click(function() {
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 }
 
 function year1972() {
@@ -86,7 +89,13 @@ function restart() {
 		placement: "right",
 		html: true,
 		trigger: 'focus',
-		content: 'Click to restart.'
+		content: 'Click on <span class="ct-code-b-yellow">Restart</span> button to restart the Live Demo.'
+	}).popover('show').next().addClass("animated bounceInDown");
+	$("#closeBtn").css("opacity", "1").popover({
+		placement: "left",
+		html: true,
+		trigger: 'focus',
+		content: 'Click on <span class="ct-code-b-yellow">Close</span> button to close the Live Demo.'
 	}).popover('show').next().addClass("animated bounceInDown");
 }
 function nextBtnAnimation(selector, nextAnimation) {

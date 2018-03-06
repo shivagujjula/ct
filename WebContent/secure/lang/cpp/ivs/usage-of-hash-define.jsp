@@ -18,7 +18,6 @@
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
 <script src="/secure/lang/cpp/js-min/uohd.min.js" type="text/javascript"></script> 
-
 <title>Usage of #define</title>
 </head>
 <style>
@@ -312,8 +311,17 @@ int <span id="line13"><b>main()</b></span> {
 			</div>
 		</div>
 	</div>
-	<div>
-		<button type="button" class="col-sm-1 col-sm-offset-6 btn btn-warning opacity00" id="restartBtn" style="margin-top: 10px;">Restart</button>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 <script type="text/javascript">
 $(document).ready(function() {

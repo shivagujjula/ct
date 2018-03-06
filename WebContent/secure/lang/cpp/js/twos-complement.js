@@ -36,10 +36,13 @@ var twosComplementReady = function() {
 		}
 	});
 	
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		$('#firstNum').val('');
 		$('#type').val('');
 		location.reload(); 
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
 	});
 	introSteps();
 	function introSteps() {	
@@ -89,6 +92,10 @@ var twosComplementReady = function() {
 				position : "top",
 				animateStep: "display2",
 				tooltipClass: "hide"
+			},{
+				element :'#button',
+				intro :'',
+				position:"right"
 			}
 		]});
 		
@@ -133,7 +140,7 @@ var twosComplementReady = function() {
 					}
 					break;
 				case "secondAnimationDiv2":
-					$("#display,#restart").remove();
+					$("#display").remove();
 					$("#secondAddOne,#result,#secondOnesComplementValue").empty();
 					break;
 				}
@@ -146,7 +153,7 @@ var twosComplementReady = function() {
 					$("#minus").remove();
 					break;
 				case "display2":
-					$("#display,#restart").remove();
+					$("#display").remove();
 					break;
 				}
 			}
@@ -211,7 +218,6 @@ var twosComplementReady = function() {
 				});
 				break;
 			case "animationDiv2" : 
-				$("#restart").hide();
 				$('.introjs-nextbutton').hide();
 				$(".introjs-helperLayer ").one('transitionend', function() {
 					var animateStep = intro._introItems[intro._currentStep].animateStep;
@@ -260,18 +266,33 @@ var twosComplementReady = function() {
 						$(".introjs-tooltip").removeClass("hide")
 						var text = "This is the decimal value.";
 						typing(".introjs-tooltiptext", text, function() {
-							$('.introjs-prevbutton').show();
-							$(".introjs-tooltipbuttons").append('<span class="btn btn-warning restartBtn" id="restart">Restart</span>');
-							$("#restart").click(function() {
-								$('#firstNum').val('');
-								$('#type').val('');
-								location.reload(); 
-							});
+							$('.introjs-prevbutton, .introjs-nextbutton').show();
+							
 						});
 				    });
 					break;
 				}
 				break;
+			case "button" :
+				$('.introjs-nextbutton').hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+					typing('.introjs-tooltiptext', text, function() {
+						$("#restartBtn").click(function() {
+							$('#firstNum').val('');
+							$('#type').val('');
+							location.reload(); 
+						});
+						$('#closeBtn').click(function() {
+							window.parent.$("#javaDocBrowserDiv").dialog("close");
+						});
+
+					});
+				});
+			break;
+
 			}
 		});
 		intro.start();

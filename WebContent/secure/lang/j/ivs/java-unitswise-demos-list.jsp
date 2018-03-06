@@ -300,6 +300,22 @@
 						<td></td>
 						<td></td>
 					</tr>
+					<tr>
+						<td>2</td>
+						<td>Merge sort</td>
+						<td>
+							<div>
+								<a class='btn btn-xs btn-success' href="javascript:opendialog('Merge sort',
+									 '/secure/lang/ds/merge-sort.jsp?lang=java', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
+									<span style = "color : green">Merge sort</span>
+							</div>
+							<div>(Available in C, Java and C++ from <b>secure/lang/ds</b>)</div>
+						</td>
+						<td>No need</td>
+						<td>Anil</td>
+						<td></td>
+						<td></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

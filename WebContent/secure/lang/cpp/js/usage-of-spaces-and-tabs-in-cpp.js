@@ -10,7 +10,9 @@ var usageOfSpacesAndTabsInCReady = function() {
 	$('#restartBtn').click(function() {
 		location.reload();
 	});
-
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introJsFunction();
 }
 
@@ -168,9 +170,10 @@ function introJsFunction() {
 			intro : "The method block ends with a <span class='ct-code-b-yellow'>closing brace</span> <span class='ct-code-b-yellow'>}</span>."
 		},
 		{
-			element : "#restartBtn",
-			intro : "Click to restart.",
-			tooltipClass: "introjs-tooltip-min-width-custom",
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			/*tooltipClass: "introjs-tooltip-min-width-custom",*/
 			position : "right"
 		}
 		]});
@@ -182,9 +185,9 @@ function introJsFunction() {
 		case "code":
 			$('.introjs-nextbutton').show();
 			break;
-		case "restartBtn":
+		case "button":
 			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restartBtn").removeClass('visibility-hidden');
+				$("#restartBtn, #closeBtn").removeClass('opacity00');
 			});
 			break;
 		default:

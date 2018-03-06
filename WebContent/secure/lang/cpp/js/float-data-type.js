@@ -634,13 +634,20 @@ if (divisionStep == 16) {
 				});
 				$("#restartBtn").click(function() {
 					location.reload(true);
-				})	
+				});
+				$('#closeBtn').click(function() {
+					window.parent.$('.ui-dialog-titlebar-close').click();
+				});
 	});
 }
 
 if (divisionStep == 17) {
 	intro.nextStep();
-	$("#restartBtn").removeClass("visibility-hidden");
+	$("#restartBtn, #closeBtn").removeClass("opacity00");
+	typing('.introjs-tooltiptext', "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+			"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>", function() {
+		
+	});
 }
 
 }
@@ -938,7 +945,7 @@ function nextClick(dataStep) {
 	if(dataStep == 13) {
 		if (intro._direction == "forward") {
 			var options =  {
-					element : '#restartBtn',
+					element : '#button',
 					intro : '',
 					position : 'right',
 					tooltipClass: 'hidden'

@@ -6,6 +6,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 		$("#hiddenTotalEnterChar").val('');*/
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	intro = introJs();
 	$('#nextButton').click(function() {
 		$(this).remove();
@@ -32,7 +35,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			position : "left",
 			tooltipClass : "hide"
 		}, {
-			element :'#restartBtn',
+			element :'#button',
 			intro :'',
 			position:"right"
 		} ]
@@ -69,16 +72,26 @@ var readPrintStringUsingGetsPutsReady = function() {
 				});
 			});
 			break;
-		case "restartBtn":
-			intro.refresh();
+		case "button" :
 			$('.introjs-nextbutton').hide();
-			$("#restartBtn").removeClass("opacity00");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				typing('.introjs-tooltiptext', "Click to <span class='color-b-yellow'>restart</span>.", "20", function() {
-					
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				console.log('haiiiii');
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text,10, "", function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+					$('#closeBtn').click(function() {
+						window.parent.$("#javaDocBrowserDiv").dialog("close");
+					});
+
 				});
 			});
-			break;
+		break;
 		}
 	});
 	intro.start();

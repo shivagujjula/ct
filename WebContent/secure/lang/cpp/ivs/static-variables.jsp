@@ -17,7 +17,6 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="../js-min/sv.min.js" type="text/javascript"></script>
 
-<script src="../js/static-variables.js"></script>
 
 <title>Static Variables</title>
 <style type="text/css">

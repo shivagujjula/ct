@@ -15,7 +15,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/secure/lang/cpp/js-min/ddt.min.js"></script>
-
 <title>double data-type</title>
 <style>
 
@@ -195,6 +194,9 @@
 	margin-bottom: 5px;
 	text-align: center;
 }
+.margin-top {
+	margin-top: 10px;
+}
 </style>
 </head>
 <body>
@@ -209,10 +211,7 @@ $(document).ready(function() {
 	<div class = 'text-center'>
 		<h1 class = 'label ct-demo-heading first-heading'>double data type</h1>	
 	</div>
-	<div class = 'buttons-div'>
-		<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
-	</div> 
-		<div class = 'col-xs-offset-2 col-xs-8 main-div padding10' id = 'mainDiv'>
+		<div class = 'col-xs-offset-2 col-xs-8 main-div padding10 margin-top' id = 'mainDiv'>
 			<span id = 'typing1' class = 'padding10'></span>
 			<div class = 'box-div col-xs-12 ' id = 'boxDiv'>
 				<div class = "border-box opacity00 padding2" id = "box0"></div>
@@ -233,6 +232,18 @@ $(document).ready(function() {
 					</div>
 			</div>
 		</div>
+		<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 </div> 
 
 </body>

@@ -17,7 +17,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/secure/lang/cpp/js-min/sidt.min.js" type="text/javascript"></script>
-
 <title>short int data type</title>
 
 <style>
@@ -33,7 +32,9 @@
 	border-radius: 8px;
 	font-size : 14px !important;
 }
-
+.margin-top {
+	margin-top: 10px;
+}
 .margin-padding {
 	margin-top: 10px ;
 	margin-bottom: 10px;
@@ -69,14 +70,14 @@
 	text-align: center;
 }
 
-.introjs-tooltip {
+/* .introjs-tooltip {
 	max-width : 160px!important;
 	min-width :150px !important;
 }
 
 .introjs-tooltip-max-width-custom {
 	min-width: 110px;
-}
+} */
 
 .introjs-duplicate-nextbutton {
 	background-color: green;
@@ -99,10 +100,7 @@
 	<div class='text-center'>
 		<h1 class='label ct-demo-heading'>short int data type in C++ language</h1>
 	</div>
-	<div class='buttons-div'>
-		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-	</div> 
-	<div class='col-xs-offset-2 col-xs-8 heading-text-div' id='typingbox'>
+	<div class='col-xs-offset-2 col-xs-8 heading-text-div margin-top' id='typingbox'>
 		<ul>
 			<li class='opacity00'><span class='ct-code-b-green'>short int</span> data type occupies <b>2</b> bytes (16 bits) in the memory but uses only <b>1</b> byte (8 bits) to store the value.</li>
 			<li class='opacity00'><span class='ct-code-b-green'>short int</span> data type has two different qualifiers.</li>
@@ -203,6 +201,18 @@
 		<div class='unsigned-short-int-text-div opacity00'>The <b>8</b> bits (i.e from 0 to 7 bits) are used to store the value of given number.</div>
 		<div class='unsigned-short-int-text-div opacity00'>The range of the given number for a <span class='ct-code-b-green'>unsigned short int</span> data type is from <b>0</b> to <b>+2<sup>7</sup> - 1</b> i.e. <b>0</b> to <b>+255</b>.</div>
 		<div class='unsigned-short-int-text-div opacity00'>The <b>2<sup>8</sup></b> is because we use <b>8</b> bits to store the value of the given number. The maximum positive number is <b>+2<sup>8</sup> - 1</b> because we also have to represent <b>zero</b> (0) which is neither positive (+) nor negative (-).</div>
+	</div>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </div>
 
