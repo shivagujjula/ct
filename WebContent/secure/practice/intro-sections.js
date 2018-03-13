@@ -34,16 +34,16 @@ function launchHelp() {
 			position : "right" 
 		}, {
 			element : "#statusEnabled",
-			intro : "Click to enable the course status.",
+			intro : "Click <span class='ct-code-b-yellow'>yes</span> to enable the course status.",
 			position : "right" 
 		}, {
 			element : "#addBtn",
-			intro : "Clicking on the <span class='ct-code-b-yellow'>add</span> button " +
-					"will add topic details to your course.",
+			intro : "Click on <span class='ct-code-b-yellow'>add</span> button " +
+			"will add your details.",
 			position : "left" 
 		}, {
 			element : "#resetBtn",
-			intro : "Clicking on the <span class='ct-code-b-yellow'>reset</span> button will reset your details.",
+			intro : "Click on <span class='ct-code-b-yellow'>reset</span> button will reset your details.",
 			position : "right" 
 		}, {
 			element : "#menuBarHelp",

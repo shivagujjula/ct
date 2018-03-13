@@ -27,6 +27,12 @@ var statementsInCReady = function() {
 		$('#compoundDiv').addClass('disabled',true);
 		$('#controlDiv').addClass('disabled',true);
 	});
+	 $("#restartBtn").click(function(){
+		 location.reload();
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 }
 
 var simple;
@@ -103,6 +109,7 @@ function introGuide() {
 					$('#compoundDiv').removeClass('disabled',true);
 					$('#controlDiv').removeClass('disabled',true);
 				});
+				
 			}
 		});
 		break;
@@ -323,8 +330,11 @@ function introGuide() {
 				setTimeout(function() {
 					introcode.nextStep();
 				},2000);
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").addClass("position");
 			}
 		});
+		break;
 		break;
 		}
 	});		
@@ -380,7 +390,7 @@ function dynamicSteps3() {
 	introcode.insertOption(introcode._currentStep + 2, dynamicStep);
 	var dynamicStep = {
 		"element" : "#comstate",
-	    "position" : "right",
+	    "position" : "bottom",
 	    "intro" : "",
 	    "tooltipClass" : "hide",
 	}
@@ -396,7 +406,7 @@ function animate4() {
 function dynamicSteps(action) {
 	var dynamicStep = {
 	    "element" : '#simDiv',
-	    "position" : "right",
+	    "position" : "bottom",
 	    "intro" : "",
 	    "tooltipClass" : "hide",
 	    action :action,
@@ -405,7 +415,7 @@ function dynamicSteps(action) {
 	        
 	var dynamicStep = {
 		"element" : "#textDiv",
-	    "position" : "right",
+	    "position" : "bottom",
 	    "intro" : "",
 	    "tooltipClass" : "hide",
 	    action :action,
@@ -414,7 +424,7 @@ function dynamicSteps(action) {
 	
 	var dynamicStep = {
 		"element" : "#simpletextDiv",
-	    "position" : "right",
+	    "position" : "bottom",
 	    "intro" : "",
 	    "tooltipClass" : "hide",
 	    action :action,
@@ -423,7 +433,7 @@ function dynamicSteps(action) {
 		
 	var dynamicStep = {
 	    "element" : "#statetypeDiv",
-	    "position" : "right",
+	    "position" : "bottom",
 	    "tooltipClass" : "hide",
 	}
     $('.introjs-nextbutton').hide();

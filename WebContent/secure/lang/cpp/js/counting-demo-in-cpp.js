@@ -189,7 +189,7 @@ var countingDemoInCReady = function() {
 		}
 	});
 	
-	$('#restart').click(function() {
+	$('#restartBtn').click(function() {
 		$(this).addClass("opacity00");
 		introjsNextBtnCount = 0;
 		subName = "mathsMarks";
@@ -206,6 +206,9 @@ var countingDemoInCReady = function() {
 		$("#outputDiv").addClass("opacity00");
 		animationDiv();
 		introjs.goToStep(2);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
 	});
 }
 function introJsGuide() {
@@ -230,9 +233,8 @@ function introJsGuide() {
 			element : '#outputDiv',
 			tooltipClass : 'hide'
 		}, {
-			element: "#restart",
+			element: "#button",
 			intro : "",
-			tooltipClass: "introjs-tooltip-min-width-custom",
 			position: "right"
 		}]
 	});
@@ -309,7 +311,7 @@ function introJsGuide() {
 		case "animationDivArea":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$('.introjs-helperLayer').one("transitionend", function() {
-				$('.introjs-tooltip').css("min-width", "500px");
+				$('.introjs-tooltip').css("min-width", "297px");
 				var text = "Let us compare <b class='ct-code-b-yellow'>external_maths_marks</b> "+
 				"with <b class='ct-code-b-yellow'>external_pass_mark</b> and then <b class='ct-code-b-yellow'>total_maths_marks</b> "+
 				"with <b class='ct-code-b-yellow'>total_pass_mark</b>."
@@ -354,17 +356,19 @@ function introJsGuide() {
 			});
 		break;
 			
-		case "restart":
-			$('.introjs-tooltipbuttons').hide();
-			$('.introjs-tooltiptext').css("min-width", "100px");
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restart").fadeTo(1000, 1, function() {
-					$(this).css("opacity", "");
-				});
-				$("#restart").removeClass("opacity00");
-				var text = "Click to restart."
-				typing(".introjs-tooltiptext", text, function() {
-					
+		case "button" :
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+
 				});
 			});
 		break;

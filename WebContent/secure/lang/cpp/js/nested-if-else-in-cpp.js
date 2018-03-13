@@ -9,6 +9,9 @@ var consoleCount = 1;
 
 var nestedIfElseInCReady = function() {
 	introjs = introJs();
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introjs.setOptions({
 		steps : [{
 			element : "#nestedIf",
@@ -396,17 +399,21 @@ var nestedIfElseInCReady = function() {
 			});
 			break;
 		
-		case "restart":
-			$(".introjs-nextbutton").hide();
-			$('.introjs-tooltip').css({'min-width' : '125px'});
-			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restart").removeClass("opacity00");
-				$('.introjs-tooltiptext').append('Click to restart.');
-				$("#restart").click(function() {
-					location.reload();
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
 				});
 			});
-			break;
+		break;
 		}
 	});
 	
@@ -511,7 +518,7 @@ function ifSteps() {
 	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
 	
 	var dynamicStep = {
-			"element" : "#restart",
+			"element" : "#button",
 			"intro" : "",
 			"position" : "right",
 			"tooltipClass": ""
@@ -568,7 +575,7 @@ function elseSteps() {
 	introjs.insertOption(introjs._currentStep + ++step, dynamicStep);
 	
 	var dynamicStep = {
-			"element" : "#restart",
+			"element" : "#button",
 			"intro" : "",
 			"position" : "right",
 			"tooltipClass" : ""

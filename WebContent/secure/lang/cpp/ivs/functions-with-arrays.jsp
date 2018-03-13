@@ -16,8 +16,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 
-<!-- <script src="../js-min/fwa.min.js" type="text/javascript"></script> -->
-<script src="../js/functions-with-arrays.js" type="text/javascript"></script>
+<script src="../js-min/fwa.min.js" type="text/javascript"></script>
 <title>Functions with Arrays</title>
 <style type="text/css">
 
@@ -280,7 +279,18 @@ orange {
 			</div>
 		</div>
 	</div>
-<div class="col-xs-12 text-center"><span id="restart" class="btn btn-warning opacity00">Restart</span></div>
+<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 	
 	<script type="text/javascript">
 	

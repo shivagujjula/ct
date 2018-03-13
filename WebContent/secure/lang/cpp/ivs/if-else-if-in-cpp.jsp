@@ -95,7 +95,7 @@
 
 .introjs-tooltip {
 	max-width: 500px !important;
-	min-width: 315px !important;
+	/* min-width: 315px !important; */
 }
 
 .errorText {
@@ -117,9 +117,9 @@
 	font-weight: bold;
 }
 
-.introjs-tooltip-min-width-custom {
+/* .introjs-tooltip-min-width-custom {
 	min-width: 110px !important;
-}
+} */
 
 pre {
 	width: auto !important;
@@ -194,11 +194,18 @@ using namespace std;
 			</div>
 		</div>
 	</div>
-	<div class="button col-xs-12 text-center " id="button">
-		<button class="btn btn-warning glyphicon glyphicon-refresh opacity00"
-			type="button" id='restartBtn' style='margin-top: 4px'>Restart</button>
-	</div>
-
+<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
 <script>
 
 	$(document).ready(function() {

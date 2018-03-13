@@ -18,10 +18,12 @@ var numberCheckingEvenOrOddReady = function() {
 			e.preventDefault();
 		}
 	});
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introjs.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
@@ -63,7 +65,7 @@ var numberCheckingEvenOrOddReady = function() {
 				$("#evenNumberExample, #resultStep2, #equalZero2, #multiplyNumber2, #openBrace2, #evenNumber, #closedBrace2, #quotient2, #calculation2, #reminder2Span, #firstNumberEven, #secondNumberEven").removeAttr("style").addClass("opacity00");
 				$("#reminder2Span").empty().removeAttr("style").append(remainderSpan2);
 				$("#borderTop2").addClass("opacity00");
-				$("#calculation2").text("2 x 34");
+				$("#calculation2").text("2 x 39");
 			}
 			break;
 			case 'evenNumberExample':
@@ -74,7 +76,7 @@ var numberCheckingEvenOrOddReady = function() {
 				$("#evenNumberExample, #resultStep2, #equalZero2, #multiplyNumber2, #openBrace2, #evenNumber, #closedBrace2, #quotient2, #calculation2, #reminder2Span, #firstNumberEven, #secondNumberEven").removeAttr("style").addClass("opacity00");
 				$("#reminder2Span").empty().removeAttr("style").append(remainderSpan2);
 				$("#borderTop2").addClass("opacity00");
-				$("#calculation2").text("2 x 34");
+				$("#calculation2").text("2 x 39");
 			}
 			break;
 		}
@@ -144,6 +146,20 @@ var numberCheckingEvenOrOddReady = function() {
 				totalDivFirstStep();
 			});
 			break;
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+				});
+			});
+		break;
 		}
 	});
 	introjs.start();
@@ -303,15 +319,15 @@ function recursionFunction() {
 	$("#ifCondition").removeClass("blinking");
 	
 	$("#variablesId").addClass("blinking");
-	var text = "Now you can change the number and verify the condition by click on the <b>next</b> button otherwise click to <b>restart</b>.";
+	var text = "Now you can change the number and verify the condition by click on the <b>next</b> button otherwise click to <b>skip</b>.";
 	typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 		$(".introjs-prevbutton").hide();
 		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn-restart' id='restart'><i class='fa fa-refresh'></i>&nbsp;Restart</a>");
+		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn-skip' id='skip'><i class='fa fa-refresh'></i>&nbsp;Skip</a>");
 		
 		$(".user-btn").click(function() {
 			$(".user-btn").remove();
-			$(".user-btn-restart").remove();
+			$(".user-btn-skip").remove();
 			var text = "You can edit the number.<br>";
 			typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 				$("#integerNumber").attr({contenteditable: 'true'});
@@ -324,10 +340,12 @@ function recursionFunction() {
 				});
 			});
 		});
-		$(".user-btn-restart").click(function() {
-			$(".user-btn-restart").remove();
-			$(".user-btn").remove();
-			location.reload();
+		$("#skip").click(function() {
+			$("#skip").remove();
+			/*$(".user-btn").remove();*/
+			$('.introjs-tooltip').hide();
+			$('#restartBtn, #closeBtn').removeClass('opacity00');
+			$('#restartBtn, #closeBtn').addClass('z-index1000000');
 		});
 	});
 }

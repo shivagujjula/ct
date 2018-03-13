@@ -242,11 +242,6 @@ $(document).ready(function() {
 	<span id="callWrite" class="opacity00">obj.printAge();</span>
 }</span>
 </pre>
-<div class="col-xs-12" style="margin-top:5px;">
-	<div class="col-xs-offset-2 col-xs-10">
-		<button type="button" class="btn btn-warning opacity00" id="restart">Restart</button>
-	</div>
-</div>
 </div>
 	<div id='animate' class="col-xs-6 border1px padding00 opacity00">
 		<div class="col-xs-12 padding00"> <!-- style="height: 650px;" -->
@@ -339,6 +334,18 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </div>
 </body>

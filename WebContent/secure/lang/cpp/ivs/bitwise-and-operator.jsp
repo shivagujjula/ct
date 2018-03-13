@@ -112,9 +112,6 @@ $(document).ready(function() {
 	<h2 class="text-center">
 		<span class="label label-default ct-demo-heading">Bitwise AND operator</span>
 	</h2>
-	<div class="margin-top20 text-center">
-		<span class="btn btn-warning opacity00" id="restart">Restart</span>
-	</div>
 	<div id="informationDiv"
 		class="col-xs-offset-2 col-xs-8 border margin-top20">
 		<ul>
@@ -184,5 +181,17 @@ $(document).ready(function() {
 		<div class="col-xs-8" id ="animationProcessDiv"></div>
 	</div>
 	<div class="col-xs-offset-5 col-xs-4 opacity00" id="display" style="display: block;"></div>
+	<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
 </body>
 </html>

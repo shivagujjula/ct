@@ -173,7 +173,7 @@
 			<span>Destructors in inheritance</span>
 		</h3>
 	</div>
-	<div class = "col-xs-12 margin-top-4" id = "codeDiv">
+	<div class = "col-xs-12" id = "codeDiv">
 		<div class="col-xs-6 padding00">
 			<pre class="creamPreTab opacity00" id="preTableDiv">
 <span id="preDir"><span id="include">#include</span> &lt;<span id="ioStream" class="ct-code-b-blue">iostream</span>&gt;</span>
@@ -245,10 +245,18 @@
 			class to top class i.e., from the <span class='ct-code-b-green'>last derived 
 			class</span> to the <span class='ct-code-b-green'>first base class</span>.</span>
 		</div>
-		<div class="col-xs-4 col-xs-offset-6  margin-top-4" id="restartDiv">
-			<a class="btn btn-warning opacity00" id="restart">
-			<i class="fa fa-refresh"></i>&nbsp;Restart</a>
-		</div>
+	</div>
+	<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </div>
 

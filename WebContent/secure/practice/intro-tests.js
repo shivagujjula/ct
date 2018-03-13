@@ -8,16 +8,16 @@ function launchHelp() {
 	}
 	
 	//switch-animate
-	$(".switch-animate").eq(0).attr("id", "RandomiseQuestions");
-	$(".switch-animate").eq(1).attr("id", "EnableNegativeMarks");
-	$(".switch-animate").eq(2).attr("id", "showHints");
-	$(".switch-animate").eq(3).attr("id", "showFeedback");
-	$(".switch-animate").eq(4).attr("id", "showHintsOnExceptions");
-	$(".switch-animate").eq(5).attr("id", "emailResults");
-	$(".switch-animate").eq(6).attr("id", "isScheduledTest");
-	$(".switch-animate").eq(7).attr("id", "requiresJavaApplet");
-	$(".switch-animate").eq(8).attr("id", "showExecutionResults");
-	$(".switch-animate").eq(9).attr("id", "isEnabled");
+	$(".switch-animate").eq(2).attr("id", "RandomiseQuestions");
+	$(".switch-animate").eq(3).attr("id", "EnableNegativeMarks");
+	$(".switch-animate").eq(4).attr("id", "showHints");
+	$(".switch-animate").eq(5).attr("id", "showFeedback");
+	$(".switch-animate").eq(6).attr("id", "showHintsOnExceptions");
+	$(".switch-animate").eq(7).attr("id", "emailResults");
+	$(".switch-animate").eq(8).attr("id", "isScheduledTest");
+	$(".switch-animate").eq(9).attr("id", "requiresJavaApplet");
+	$(".switch-animate").eq(10).attr("id", "showExecutionResults");
+	$(".switch-animate").eq(11).attr("id", "isEnabled");
 	
 	introjs = introJs();
 	introjs.setOptions({
@@ -70,8 +70,8 @@ function launchHelp() {
 			intro : '',
 			position : "right"
 		}, {
-			element : "#description",
-			intro : "Enter here description for the topic.",
+			element : "#generalInstructions",
+			intro : "Enter the general instructions for the test.",
 			position : "right" 
 		}, {
 			element : '#isScheduledTest',
@@ -87,16 +87,16 @@ function launchHelp() {
 			position : "right"
 		}, {
 			element : '#isEnabled',
-			intro : '',
+			intro : "Click <span class='ct-code-b-yellow'>Yes</span> to enable the status.",
 			position : "right"
 		}, {
 			element : "#addBtn",
-			intro : "Clicking on the <span class='ct-code-b-yellow'>add</span> button " +
-					"will add topic details to your course.",
+			intro : "Click on <span class='ct-code-b-yellow'>add</span> button " +
+			"will add your details.",
 			position : "left" 
 		}, {
 			element : "#resetBtn",
-			intro : "Clicking on the <span class='ct-code-b-yellow'>reset</span> button will reset your details.",
+			intro : "Click on <span class='ct-code-b-yellow'>reset</span> button will reset your details.",
 			position : "right" 
 		}, {
 			element : "#menuBarHelp",

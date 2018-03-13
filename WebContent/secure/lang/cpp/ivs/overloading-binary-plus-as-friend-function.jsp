@@ -430,11 +430,19 @@ div, span {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-3 col-sm-offset-4">
-			<div class="col-sm-5 col-sm-offset-4 margin-top-4" id="restartDiv">
-				<a class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
-			</div>
-		</div>
+		<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
+
 	</div>
 </div>
 </body>

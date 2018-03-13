@@ -120,7 +120,6 @@ y {
 }
 
 .introjs-tooltip {
-	min-width: 320px;
 }
 
 .displayNone {
@@ -265,8 +264,17 @@ $(document).ready(function() {
 	</div>
 </div>
 </div>
-		<div class="col-xs-12 text-center margin-top-20">
-			<div><button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button></div>
-		</div>
+		<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 </body>
 </html>

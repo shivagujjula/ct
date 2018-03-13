@@ -9,11 +9,13 @@ var overloadingBinaryPlusAsMemberFunctionReady = function() {
 			e.preventDefault();
 		}
 	});
-	$("#restart").click(function(){
+	$("#restartBtn").click(function(){
 		$("#inputChar, #inputChar1").val("");
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 }
 
 function introGuide() {
@@ -186,8 +188,8 @@ function introGuide() {
 			intro : '',
 			position : "right"
 		}, {
-			element :"#restart",
-			intro : "Click to restart.",
+			element :"#button",
+			intro : "",
 			position : 'right',
 		}]
 	});
@@ -309,7 +311,6 @@ function introGuide() {
 			case "s3Sum1" :
 				$(".introjs-tooltip").removeAttr("style");
 				$("#s3Sum").css("opacity", 0);
-				$('.introjs-tooltip').css({'min-width' : '310px'});	
 				$("#memberFunction").css("opacity", 0);	
 				$('#memberFunction').hide();
 				break;
@@ -331,13 +332,11 @@ function introGuide() {
 			break;
 			
 		case 's3Real':
-			$('.introjs-tooltip').css({'min-width' : '280px'});	
 			 $("#s3RealVal, #s3ImagVal").text("");
 			 $(".introjs-tooltip").removeAttr("style");
 			break;
 			
 		case 's3Imag':
-			$('.introjs-tooltip').css({'min-width' : '280px'});	
 			 $("#s3ImagVal").text("");
 			 $(".introjs-tooltip").removeAttr("style");
 			break;
@@ -542,7 +541,6 @@ function introGuide() {
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
 			case "s3Sum1" :
-				$(".introjs-tooltip").css("min-width", "310px");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$(".introjs-tooltip").removeClass('hide');
 					var text = "Now find out the addition of two objects <span class='ct-code-b-yellow'>s1</span> "+
@@ -598,7 +596,6 @@ function introGuide() {
 			});
 			break;
 		case 's3Real':
-			$(".introjs-tooltip").css("min-width", "280px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				 $(".introjs-tooltip").removeClass('hide');
 				 $("#s3Real").effect( "highlight",{color: 'red'}, 800,function() {
@@ -607,7 +604,6 @@ function introGuide() {
 			});
 			break;
 		case 's3Imag':
-			$(".introjs-tooltip").css("min-width", "280px");
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				 $(".introjs-tooltip").removeClass('hide');
 				 $("#s3Imag").effect( "highlight",{color: 'red'}, 800,function() {
@@ -782,16 +778,22 @@ function introGuide() {
 			});
 			break;
 		
-		case "restart":
-			$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
-			$(".introjs-tooltip").css("min-width", "-moz-max-content");
-			$(".introjs-tooltip").css("min-width", "max-content");
-			$('.introjs-tooltipbuttons').addClass("hide");
-			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+
+				});
 			});
-			break;
+		break;
 		}
 	});
 	

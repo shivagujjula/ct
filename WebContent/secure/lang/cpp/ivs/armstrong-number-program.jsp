@@ -16,8 +16,8 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/cpp/js-min/anp.min.js"></script> 
-
+<!-- <script src="/secure/lang/cpp/js-min/anp.min.js"></script> --> 
+<script src="/secure/lang/cpp/js/armstrong-number-program.js"></script>
 
 <title>Armstrong number</title>
 
@@ -189,7 +189,7 @@ div,span {
 				<h1 class="label ct-demo-heading text-center">Armstrong Number in Action</h1>
 			</div>
 			<div class='buttons-div'>
-				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
+				<!-- <button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button> -->
 			</div>
 			<div class="col-xs-12">
 				<div id="armstrongDefinition" class="col-xs-6 col-xs-offset-3" style="font-family: monospace;">
@@ -249,6 +249,19 @@ div,span {
 				</div>
 			</div>
 		</div>
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
+		
 	</div>
 
 <script type="text/javascript">

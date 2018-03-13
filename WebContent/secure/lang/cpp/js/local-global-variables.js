@@ -11,6 +11,10 @@ var localGlobalVariablesReady = function() {
 
 function introGuide() {
 	introjs = introJs();
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
+
 	introjs.setOptions({
 		showStepNumbers: false,
 		keyboardNavigation: false,
@@ -113,9 +117,8 @@ function introGuide() {
 			intro : "",
 			position : "right"
 		}, {
-			element : "#restart",
-			intro : "Click to restart.",
-			tooltipClass : "introjs-tooltip-min-width",
+			element : "#button",
+			intro : "",
 			position : "right"
 		} ]
 	});
@@ -513,14 +516,23 @@ function introGuide() {
 			});
 			break;
 			
-		case "restart":
-			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restart").removeClass("opacity00");
-				$("#restart").click(function() {
-					location.reload();
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				console.log('haiiiii');
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+
 				});
 			});
-			break;
+		break;
 		}
 	});
 	introjs.start();

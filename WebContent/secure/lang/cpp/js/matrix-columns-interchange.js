@@ -6,6 +6,9 @@ var size = ["0", "1", "2", "3"];
 
 function introFunction() {
 	introcode = introJs();
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introcode.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
@@ -213,7 +216,7 @@ function introFunction() {
 							for (var i = 0; i <= 8; i++) {
 								$("#aoutVal" + i).text($("#sortEle" + i).text());
 							}
-							introNextSteps("#restartBtn", "restartBtn", 'bottom');
+							introNextSteps("#button", "", 'right');
 							transferEffect("#values", "#afterValue", function() {
 								scrollToBottom(valIndex);
 								setTimeout(function() {
@@ -260,13 +263,19 @@ function introFunction() {
 					});
 				break;
 				
-				case "restartBtn":
-					$("#restartBtn").removeClass('opacity00');
-					$('.introjs-tooltip').removeClass('hide').css('min-width','200px');
-					text = 'Click to restart.';
-					typing('.introjs-tooltiptext', text, function() {
-						$('#restartBtn').click(function() {
-							location.reload();
+				case "button" :
+					$('.introjs-nextbutton').hide();
+					$('.introjs-helperLayer ').one('transitionend', function() {
+						$("#restartBtn, #closeBtn").removeClass("opacity00");
+						console.log('haiiiii');
+						var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+								"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+						typing('.introjs-tooltiptext', text, function() {
+							$('#restartBtn').click(function() {
+								location.reload();
+								
+							});
+
 						});
 					});
 				break;

@@ -3,9 +3,13 @@ var typingSpeed = 5;
 var text1 = "Click on any button to see the different examples on Implicit type conversion.";
 
 var implicitTypeConversionReady = function() {
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload();
-	})
+	});
+	
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	var typingId;
 	var typingContent;
 	var typingInterval;
@@ -43,7 +47,7 @@ var implicitTypeConversionReady = function() {
 			intro : "",
 			position : "right"
 		}, {
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "left"
 		}
@@ -106,17 +110,22 @@ var implicitTypeConversionReady = function() {
 				});
 				break;
 				
-			case "restart":
+			case "button" :
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
-					$('#restart').removeClass("opacity00");
-					var text = "Click to restart.";
-					typing(".introjs-tooltiptext", text, function() {
-						console.log("I am in restart");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, function() {
+						$('#restartBtn').click(function() {
+							location.reload();
+							
+						});
+
 					});
 				});
-				break;
-				
+			break;
 				
 			case "mainAssignmentAnimationDiv":
 				$('div[class="popover-content"]').addClass('color-grey');

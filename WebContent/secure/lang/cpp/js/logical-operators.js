@@ -55,11 +55,10 @@ var logicalOperatorsReady = function() {
 						element : "#animationDiv",
 						intro : "",
 						position : "right"
-					},
-					{
-						element : "#restart",
-						intro : "Click to restart.",
-						position : "right",
+					},{
+						element :'#button',
+						intro :'',
+						position:"right"
 						
 					}
 				]
@@ -94,10 +93,24 @@ var logicalOperatorsReady = function() {
 			});
 		break;
 		
-		case "restart":
-			$(".introjs-nextbutton").hide();
-			$("#informationDiv").removeClass("zIndex")
-				$("#restart").text("Restart").removeClass("visibility-hidden");
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+					$('#closeBtn').click(function() {
+						window.parent.$("#javaDocBrowserDiv").dialog("close");
+					});
+
+				});
+			});
 		break;
 		
 		}
@@ -124,7 +137,10 @@ var logicalOperatorsReady = function() {
 	var isVisible = false;
 	$("#restart").click(function() {
 		location.reload(true);
-	})
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 }
 
 function nextClick() {

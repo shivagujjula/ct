@@ -4,7 +4,15 @@ var tl = new TimelineLite();
 var sopLineCount = 1;
 
 var postIncrementOperatorReady = function() {
+	
 	introcode = introJs();
+	 $("#restartBtn").click(function(){
+		 console.log('restartBtn')
+		 location.reload();
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introcode.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
@@ -74,9 +82,8 @@ var postIncrementOperatorReady = function() {
 						intro :'',
 						tooltipClass : "hide"
 					},{
-						element : "#restartBtn",
-						intro : "Click to restart.",
-						tooltipClass: "introjs-tooltip-min-width-custom",
+						element : "#button",
+						intro : "",
 						position : "right"
 					}]
 	});
@@ -189,7 +196,7 @@ var postIncrementOperatorReady = function() {
 									' variable <span class="ct-code-b-yellow">y</span>. '+
 									'And then the value of <span class="ct-code-b-yellow">x</span> will be incremented'+
 									' by <span class="ct-code-b-yellow">one</span>.' ;
-							typing('.introjs-tooltiptext', text, typingInterval, 'white', function(){
+							typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
 								xValueAssignedToVariabley();
 							});
 						});
@@ -398,9 +405,24 @@ var postIncrementOperatorReady = function() {
 					});
 				});
 			break;
-			case "restartBtn":
-				$('.introjs-helperLayer').one('transitionend', function () {
-					$("#restartBtn").removeClass('visibility-hidden');
+			case "button" :
+				$('.introjs-nextbutton').hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+						$('#restartBtn').click(function() {
+							console.log('restartbutton');
+							location.reload();
+							
+						});
+						$('#closeBtn').click(function() {
+							window.parent.$("#javaDocBrowserDiv").dialog("close");
+						});
+
+					});
 				});
 			break;
 		}
@@ -411,9 +433,6 @@ var postIncrementOperatorReady = function() {
 	$('.introjs-nextbutton').hide(); 
 	changeValue();
 	
-	$('#restartBtn').click(function() {
-		location.reload();
-	});
 }
 
 function postIncrementOperatorAnimation() {

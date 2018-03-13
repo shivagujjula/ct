@@ -271,10 +271,19 @@ span {
 	<div class ="text-center margin-top-20">
 		<h3 class="label ct-demo-heading" id="demoTitle">Access specifiers</h3>
 	</div>
-	<div class="col-xs-12 text-center margin-top-20">
-		<span class="btn btn-warning btn-sm hide opacity00" id="restart">Restart</span>
-	</div> 
-	<div class="margin-top-20" >
+	<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button" style=''>
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
+		<div class="margin-top-20" >
 		<div class="col-xs-8 col-xs-offset-2 opacity00" id="informationDiv" style="border: 1px solid gray;">
 			<div class="col-xs-12 margin-top-20">
 				<ul>

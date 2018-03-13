@@ -238,8 +238,8 @@ var aoReady = function() {
 					$(".introjs-nextbutton").hide();
 					$("#firstNum").val("");
 					$("#secondNum").val("")
-					$("#restart").removeClass("opacity00");
-					$("#restart").addClass("zIndex9999999");
+					$("#restartBtn ,#closeBtn").removeClass("opacity00");
+					$("#restartBtn ,#closeBtn").addClass("zIndex9999999");
 					arithmeticRepeatMethod();
 				})
 			});
@@ -287,9 +287,12 @@ var aoReady = function() {
 		}
 	});
 					
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload(true);
-	})
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	
 	$('.dropdown').on( 'click', '.dropdown-menu li a', function() { 
 		$('.dropdown-menu').css({'min-width':$(".dropdown").width()})
@@ -398,8 +401,8 @@ function nextClick() {
 							$(".introjs-nextbutton").hide();
 							$("#firstNum").val("");
 							$("#secondNum").val("")
-							$("#restart").removeClass("opacity00");
-							$("#restart").addClass("zIndex9999999");
+							$("#restartBtn ,#closeBtn").removeClass("opacity00");
+							$("#restartBtn ,#closeBtn").addClass("zIndex9999999");
 							arithmeticRepeatMethod();
 						})
 					
@@ -416,8 +419,8 @@ function frequentStepText() {
 			$(".introjs-nextbutton").hide();
 			$("#firstNum").val("");
 			$("#secondNum").val("")
-			$("#restart").removeClass("opacity00");
-			$("#restart").addClass("zIndex9999999");
+			$("#restartBtn ,#closeBtn").removeClass("opacity00");
+					$("#restartBtn ,#closeBtn").addClass("zIndex9999999");
 			arithmeticRepeatMethod();
 	//})
 	}
@@ -447,8 +450,8 @@ function handlingExceptionAnimation() {
 												$(".introjs-nextbutton").hide();
 												$("#firstNum").val("");
 												$("#secondNum").val("")
-												$("#restart").removeClass("opacity00");
-												$("#restart").addClass("zIndex9999999");
+												$("#restartBtn ,#closeBtn").removeClass("opacity00");
+												$("#restartBtn ,#closeBtn").addClass("zIndex9999999");
 												arithmeticRepeatMethod();
 											})
 										}, 800);

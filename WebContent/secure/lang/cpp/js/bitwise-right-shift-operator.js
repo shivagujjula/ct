@@ -86,6 +86,9 @@ var bitwiseRightShiftOperatorReady = function() {
 };
 function introSteps() {
 	intro = introJs();
+$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	intro.setOptions({
 		showStepNumbers: false,
 		exitOnOverlayClick: false,
@@ -118,7 +121,7 @@ function introSteps() {
 			position : "left",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "right"
 		}
@@ -429,15 +432,20 @@ function introSteps() {
 				});
 			});
 		break;
-		case "restart":
+		case "button" :
 			$('.introjs-nextbutton').hide();
-			$('#informationDiv').css({"z-index": "0"});
-			$(".introjs-helperLayer ").one('transitionend', function() {
-				TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
-					var text = "Click to restart.";
-					typing(".introjs-tooltiptext", text, function() {
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
 					});
-				}});
+
+				});
 			});
 		break;
 	}

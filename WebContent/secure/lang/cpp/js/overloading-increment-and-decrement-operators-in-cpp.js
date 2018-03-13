@@ -7,10 +7,14 @@ var overloadingIncrementAndDecrementOperatorsReady = function() {
 			e.preventDefault();
 		}
 	});
-	$("#restart").click(function(){
+	$("#restartBtn").click(function(){
 		$("#enterName, #printLineInConsole1, #printLineInConsole2").val("");
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
+
 	
 }
 
@@ -416,8 +420,8 @@ function introGuide() {
 			intro : '',
 			position : "right"
 		}, {
-			element :"#restart",
-			intro : "Click to restart.",
+			element :"#button",
+			intro : "",
 			position : 'right',
 		}]
 	});
@@ -755,7 +759,7 @@ function introGuide() {
 			$('.introjs-helperLayer ').one('transitionend', function() {
 				$("#s1Address").removeClass("opacity00");
 				$('.introjs-tooltip').removeClass('hide');
-				$('.introjs-tooltiptext').css("width", "250px");
+				
 				var text = 	"<ul><li>Here <span class='ct-code-b-yellow'>s1</span> is " +
 							"an object of class <span class='ct-code-b-yellow'>Sample</span>.</li>" +
 							"<li>When an object is created, memory is allocated for that object.</li>" +
@@ -824,7 +828,7 @@ function introGuide() {
 				$("#boxHeading2, #boxHeading3, #boxHeading4").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
-					$('.introjs-tooltiptext').css("width", "250px");
+					
 					$("#s2PreInc").removeClass("opacity00");
 					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s2 = ++s1</span>, first "+
 							   "<span class='ct-code-b-yellow'>pre-increment operation</span> is done and next " +
@@ -1056,7 +1060,7 @@ function introGuide() {
 				$("#boxHeading1, #boxHeading2, #boxHeading4").hide();
 				$('.introjs-helperLayer').one("transitionend", function() {
 					$('.introjs-tooltip').removeClass("hide");
-					$('.introjs-tooltiptext').css("width", "250px");
+					
 					$("#s3PostInc").removeClass("opacity00");
 					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s3 = s1++</span>,"+
 							   " first <span class='ct-code-b-yellow'>assignment operation</span> is done and" +
@@ -1147,7 +1151,7 @@ function introGuide() {
 				$("#boxHeading1, #boxHeading2, #boxHeading3").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
-					$('.introjs-tooltiptext').css("width", "250px");
+					
 					$("#s4PreDec").removeClass("opacity00");
 					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s4 = --s1</span>,"+
 							   " first <span class='ct-code-b-yellow'>pre decrement operation</span> is done and" +
@@ -1234,7 +1238,7 @@ function introGuide() {
 				$("#boxHeading2, #boxHeading3, #boxHeading4").hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$('.introjs-tooltip').removeClass("hide");
-					$('.introjs-tooltiptext').css("width", "250px");
+					
 					$("#s5PostDec").removeClass("opacity00");
 					var text = "<ul><li>In the statement <span class='ct-code-b-yellow'>s5 = s1--</span>, "+
 							   "first <span class='ct-code-b-yellow'>assignment operation</span> is done and " +
@@ -1791,16 +1795,22 @@ function introGuide() {
 				});
 			});
 			break;
-		case "restart":
-			$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
-			$(".introjs-tooltip").css("min-width", "-moz-max-content");
-			$(".introjs-tooltip").css("min-width", "max-content");
-			$('.introjs-tooltipbuttons').addClass("hide");
-			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+
+				});
 			});
-			break;
+		break;
 		}
 	});
 	

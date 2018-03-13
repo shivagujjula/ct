@@ -75,9 +75,9 @@ var doubleDataTypeReady = function() {
 		});
 		break;
 		case "button" :
-			$('.introjs-nextbutton').hide();
+			$('.introjs-nextbutton, .nextBtn2').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").removeClass("visibility-hidden");
 				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
 						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
 									
@@ -87,8 +87,8 @@ var doubleDataTypeReady = function() {
 						
 					});
 					$('#closeBtn').click(function() {
-						window.parent.$('.ui-dialog-titlebar-close').click();
-					});
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 
 				});
 			});

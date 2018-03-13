@@ -15,7 +15,6 @@
 <script src='/js/intro.js'></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src='/secure/lang/cpp/js-min/nceoo.min.js'></script>
-
 <title>if else In Action</title>
 <style type="text/css">
 
@@ -182,10 +181,13 @@ td {
 	background-color: #fffae6;
 }
 
-.user-btn-restart {
-	background-color: #e99211;
+.user-btn-skip {
+	background-color: orange;
 }
-
+.z-index1000000 {
+	position:relative;
+	z-index:1000000 !important;
+}
 </style>
 
 </head>
@@ -262,11 +264,11 @@ td {
 												<td><span class="opacity00" id="openBrace2">)</span></td>
 												<td><span class="opacity00" id="evenNumber"><span id="evenNumberId">78</span></span></td>
 												<td><span class="opacity00" id="closedBrace2">(</span></td>
-												<td><span class="opacity00" id="quotient2">34</span></td>
+												<td><span class="opacity00" id="quotient2">39</span></td>
 											</tr>
 										</table>
 										<div class="col-xs-12 text-center">
-											<span class="opacity00 display-inline" id="calculation2">2 x 34</span>
+											<span class="opacity00 display-inline" id="calculation2">2 x 39</span>
 										</div>
 										<div class="col-xs-12 text-center">
 											<div class="col-xs-4 col-xs-offset-4 opacity00" id="borderTop2" style="border-top: 2px solid;"></div>
@@ -341,6 +343,18 @@ td {
 		</div>
 	</div>
 </div>
+<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
 </div>
 </body>
 <script type="text/javascript">

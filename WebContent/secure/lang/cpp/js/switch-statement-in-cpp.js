@@ -51,8 +51,19 @@ var switchStatementInCReady = function() {
 		}
 	});
 	
-	$('.restartTutorialBtn').click(function() {
+	$('#restartBtn').click(function() {
 		location.reload();
+		
+	}); 
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
+	$(".skip").click(function() {
+		$(".skip").remove();
+		/*$(".user-btn").remove();*/
+		$('.introjs-tooltip').hide();
+		$('#restartBtn, #closeBtn').removeClass('opacity00');
+		$('#restartBtn, #closeBtn').addClass('z-index1000000');
 	});
 	
 	$("#initialization").click(function() {
@@ -287,7 +298,7 @@ function introJsGuide() {
 	$('.introjs-bullets').hide();
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button initializeBtn hidden'>Next &#8594;</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button tryNewValBtn hidden' style='margin-left:20px; margin-right:20px;'>Try with a different value</a>");
-	$(".introjs-tooltipbuttons").append("<a class='introjs-button restartTutorialBtn hidden'>Restart</a>");
+	$(".introjs-tooltipbuttons").append("<a class='introjs-button skip hidden'>Skip</a>");
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -305,7 +316,7 @@ function introJsGuide() {
 			
 		case "initialization":
 			$('.introjs-prevbutton').hide();
-			$(".restartTutorialBtn").addClass("hidden");
+			$(".skip").addClass("hidden");
 			$("#initializationValue").attr("contenteditable", true);
 			$('.introjs-helperLayer').one('transitionend', function () {
 				charAtEnd("initializationValue");
@@ -400,7 +411,7 @@ function introJsGuide() {
 				
 				typing(".introjs-tooltiptext", text, function() {
 					$(".tryNewValBtn").removeClass("hidden");
-					$(".restartTutorialBtn").removeClass("hidden");
+					$(".skip").removeClass("hidden");
 					$(".introjs-nextbutton").addClass("hidden");
 				});
 			});

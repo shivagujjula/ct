@@ -40,6 +40,9 @@ var diffIfElseAndSwitchStatementInCReady = function() {
 
 function introGuide() {
 	introcode = introJs();
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	introcode.setOptions({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
@@ -137,6 +140,11 @@ function introGuide() {
 			position : 'right',
 			tooltipClass: "hide",
 			key : "line1"
+		},
+		{
+			element : '#button',
+			intro : '',
+			position : 'right',
 		}
 		]
 	});
@@ -754,19 +762,23 @@ function introGuide() {
 				});
 			});
 		break;
-		case "restartBtn":
+		case "button" :
 			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restartBtn").removeClass('visibility-hidden');
-				$('.introjs-tooltip').css('min-width', '125px').removeClass('hide');
-				$('.introjs-tooltiptext').append('Click to restart.')
-				$("#restartBtn").click(function() {
-					location.reload();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
 				});
 			});
 		break;
 		case "scloseBrace1":
-			introcode.insertOption(introcode._currentStep + 1, insertionIntro("restartBtn", "", "left", "hide"));
+			introcode.insertOption(introcode._currentStep + 1, insertionIntro("button", "", "left", "hide"));
 			stepNext();
 		break;
 		}

@@ -7,6 +7,9 @@ var ifElseIfInCReady = function() {
 	$("#restartBtn").click(function() {
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -113,9 +116,8 @@ var ifElseIfInCReady = function() {
 			tooltipClass:'hide'
 			
 		},{
-			element :'#restartBtn',
+			element :'#button',
 			intro :'',
-			tooltipClass: "introjs-tooltip-min-width-custom",
 			position:"right"
 		}]
 	});
@@ -385,15 +387,20 @@ var ifElseIfInCReady = function() {
 				});
 			});
 		break;
-		case "restartBtn":
-			//$(".userBackBtn").remove();
-			$('.introjs-prevbutton,.introjs-nextbutton').hide();
-			$("#charInput").attr("disabled", false);
-			$(".introjs-helperLayer").one("transitionend", function() {
-				typing('.introjs-tooltiptext', "Click to restart.", function() {
-					$("#restartBtn").removeClass("opacity00");
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
 					});
 				});
+			});
 		break;
 		}
 	});

@@ -138,8 +138,8 @@ var relationalOperatorsReady = function() {
 					$(".introjs-nextbutton").hide();
 					$("#firstNum").val("");
 					$("#secondNum").val("")
-					$("#restart").removeClass("opacity00");
-					$("#restart").addClass("zIndex9999999");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").addClass("zIndex9999999");
 					$("#submit").attr('disabled','disabled');
 				})
 			});
@@ -182,10 +182,13 @@ var relationalOperatorsReady = function() {
 		}
 	});
 					
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload(true);
-	})	
-	
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
+
 	$('.dropdown').on( 'click', '.dropdown-menu li a', function() { 
 		$('.dropdown-menu').css({'min-width':$(".dropdown").width()})
 	   var target = $(this).html();

@@ -88,9 +88,18 @@ pre {
  }</pre>
 		</div>
 	</div>
-<div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:4px'>Restart</button>
-</div>
+<div class="margin-top-20 col-xs-12 text-center">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button" style=''>
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 
 </body>
 <script>

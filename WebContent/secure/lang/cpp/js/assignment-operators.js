@@ -90,7 +90,7 @@ var assignmentOperatorsReady = function() {
 						position: "top"
 					},
 					{
-						element: "#animationDiv",
+						element: "#button",
 						intro: "",
 						position: "right"
 					}
@@ -123,14 +123,19 @@ var assignmentOperatorsReady = function() {
 			});
 			break;
 		
-		case "animationDiv":
-			$(".introjs-nextbutton").addClass("visibility-hidden");
-			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "You can check all the operators by selecting <span class='ct-code-b-yellow'>assignment</span> again.<br/>"
-							+" <div class='text-center'>(or)</div> Click to <span class='ct-code-b-yellow'>restart</span> the session.";
-				typing(".introjs-tooltiptext", text, function() {
-					$("#restart").removeClass("opacity00");
-					$("#restart").addClass("zIndex");
+		case "button" :
+			$('.introjs-nextbutton').hide();
+			$('.introjs-helperLayer ').one('transitionend', function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
+						location.reload();
+						
+					});
+					
 				});
 			});
 		break;
@@ -163,10 +168,13 @@ var assignmentOperatorsReady = function() {
 			
 		});
 	
-		$("#restart").click(function() {
+		$("#restartBtn").click(function() {
 			location.reload(true);
-		})
-		
+		});
+		$('#closeBtn').click(function() {
+			window.parent.$('.ui-dialog-titlebar-close').click();
+		});
+
 		
 	$("#submit").click(function() {
 		

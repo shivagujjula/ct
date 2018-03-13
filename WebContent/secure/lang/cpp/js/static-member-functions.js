@@ -12,6 +12,9 @@ var readPrintStringUsingGetsPutsReady = function() {
 		$(this).remove();
 		intro.nextStep();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
 	intro.setOptions ({
 		showBullets : false,
 		exitOnOverlayClick : false,
@@ -256,7 +259,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			element : '#mainClose',
 			intro : '',
 		}, {
-			element : "#restartBtn",
+			element : "#button",
 			intro : "",
 			position : "left"
 		}]
@@ -473,7 +476,6 @@ var readPrintStringUsingGetsPutsReady = function() {
 		break;*/
 		case 'count' :
 			$('.introjs-helperLayer').one('transitionend',function() {
-				$('.introjs-tooltip').css("width", "430px");
 				typing('.introjs-tooltiptext',"<ul><li>The type of each <span class='ct-code-b-yellow'>static member</span> variable must be defined outside class defination.</li>" +
 						"<li>This is necessary because the <span class='ct-code-b-yellow'>static data members</span> are stored separately rather than a part of an object.</li>" +
 						"<li>They are also associated with the class itself rather than with any object, they are also known as <span class='ct-code-b-yellow'>variable</span>.</li>" +
@@ -1023,7 +1025,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			case "enterData" :
 				$('.introjs-helperLayer').one("transitionend", function() {
 					if(intro._direction == 'forward') {
-						$('#outputBox').removeClass('opacity00');
+						$('#outputBody').removeClass('opacity00');
 						$("#outputBody").append(' <span id ="inputNumber" class="opacity00">Enter two subject marks  : <span id="outputPrintfLine"><div  id="inputChar" contenteditable="true" maxlength="2" class="position input-char"></div></span></span><br>');
 						transferEffect("#textEnter","#inputNumber",function() {
 							$('#inputNumber').removeClass('opacity00');
@@ -1363,16 +1365,20 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			}
 			break; 
-		case "restartBtn" :
-			intro.refresh();
+		case "button" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('#countBox').removeClass('z-index1000000');
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 10, "",function() {
-					$('#restart').click(function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				console.log('haiiiii');
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text,10,"", function() {
+					$('#restartBtn').click(function() {
 						location.reload();
+						
 					});
+
 				});
 			});
 		break;

@@ -116,7 +116,7 @@ color: red;
 		</div>
 	</div>
 	<div class='col-xs-12' style='margin-top : 30px'>
-		<div class="col-xs-4 col-xs-offset-2">
+		<div class="col-xs-5">
 			<pre class="creamPreTab4 opacity00"  id="preBody">
 <div class="display" id="declaration">#include &lt;<span class='color-blue '>iostream</span>&gt;</div>
 <span id="using" class='color-red'>using</span><span class = "green" id="namespace"> namespace</span><span id="std"> std;</span>

@@ -13,7 +13,6 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/secure/lang/cpp/js-min/swsic.min.js"></script>
-
 <style type="text/css">
 
 .allowNumbers {
@@ -83,7 +82,7 @@ body {
 	background-color: green !important;
 }
 
-.restartTutorialBtn {
+.skip {
 	background-color: orange;
 }
 
@@ -121,7 +120,10 @@ body {
 .introjs-tooltip-min-width-custom {
 	min-width: 110px;
 }
-
+.z-index1000000 {
+	position:relative;
+	z-index:1000000 !important;
+}
 </style>
 
 </head>
@@ -168,13 +170,25 @@ int main() {
 			<div class="output-console-body"><span id="output"></span>
 			</div>
 		</div>
-
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
+</div>
 <script type="text/javascript">
 	$(document).ready(function() {
 		switchStatementInCReady();
 	});
 </script>		
 
-</div>
+
 </body>
 </html>
