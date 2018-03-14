@@ -268,7 +268,7 @@ $(document).ready(function() {
 						</span>
 					</span>
 				</span>
-			</span
+			</span>
 </div>
 </div>
 </body>

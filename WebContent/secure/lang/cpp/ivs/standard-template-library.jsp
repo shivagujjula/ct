@@ -189,7 +189,7 @@ g {
 						</span>
 					</span>
 				</span>
-			</span
+			</span>
 </div>
 	</div>
 <script>
