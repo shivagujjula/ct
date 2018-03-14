@@ -9,8 +9,11 @@ var numberCheckingEvenOrOddReady = function() {
 		}
 	});
 	
-	$("#restart").click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	
 	introjs.setOptions({
@@ -36,7 +39,7 @@ var numberCheckingEvenOrOddReady = function() {
 			element : '#totalDiv',
 			intro : '',
 			tooltipClass: "hide"
-		}]
+		},]
 	});
 	
 	
@@ -79,10 +82,6 @@ var numberCheckingEvenOrOddReady = function() {
 				$("#reminder2Span").empty().removeAttr("style").append('<span class="opacity00" id="firstNumberEven">78</span> - <span class="opacity00" id="secondNumberEven">78</span>');
 				$("#borderTop2").addClass("opacity00");
 				$("#calculation2").text("2 x 34");
-				
-				
-				
-				
 				
 				$("#totalDiv, #ifLine, #print1, #elseLine, #reminder3Span, #print2, #calculation3, #multiplyNumber4, #openBrace3, #inputNumber, #closedBrace3, #quotient3, #executionDiv, #closeCurlyBrace, #remainderExecution").removeAttr("style").addClass("opacity00");;
 				$("#conditionDiv, #borderTop3").addClass("opacity00");
@@ -201,7 +200,6 @@ var numberCheckingEvenOrOddReady = function() {
 				});
 			});
 		break;
-			
 		}
 	});
 	introjs.start();
@@ -330,13 +328,14 @@ function recursionFunction() {
 	$("#ifCondition").removeClass("blinking");
 	
 	$("#variablesId").addClass("blinking");
-	var text = "Now you can change the number and verify the condition by click on the <b>next</b> button otherwise click to <b>restart</b>.";
+	var text = "Now you can change the number and verify the condition by click on the <b>Next</b> button or <br>click on <b>Skip</b> to restart or close.";
 	typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
+		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn-restart' id='skip'>Skip&nbsp;&nbsp;</a>");
 		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn'>Next &#8594;</a>");
-		$(".introjs-tooltipbuttons").append("<a class='introjs-button user-btn-restart' id='restart'><i class='fa fa-refresh'></i>&nbsp;Restart</a>");
 		//$("#integerNumber").attr({contenteditable: 'true'});
 		$(".user-btn").click(function() {
 			$(".user-btn").remove();
+			$("#skip").remove();
 			$(".user-btn-restart").remove();
 			var text = "You can edit the number.<br>";
 			typing('.introjs-tooltiptext', text, typingInterval, 'white', function() {
@@ -351,9 +350,11 @@ function recursionFunction() {
 				});
 			});
 		});
-		$(".user-btn-restart").click(function() {
-			$(".user-btn-restart").remove();
-			location.reload();
+		$("#skip").click(function() {
+			$("#skip").remove();
+			$(".introjs-tooltip").hide();
+			$("#restartBtn, #closeBtn").removeClass("opacity00");
+			$("#restartBtn, #closeBtn").addClass("z-index9999999")
 		});
 	});
 }
@@ -373,8 +374,8 @@ function typing(typingId, text, typingInterval, cursorColor, typingCallbackFunct
 }
 
 function tweenmaxValueAnimation(selector1, selector2, callBackFunction) {  
-	console.log(selector1);
-	console.log(selector2);
+	//console.log(selector1);
+	//console.log(selector2);
 	var l3 = $(selector1).offset();
 	var l4 = $(selector2).offset();
 	var topLength = l3.top - l4.top;

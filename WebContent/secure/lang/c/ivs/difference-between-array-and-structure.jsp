@@ -17,7 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js-min/dbaas.min.js"></script>
+ <script src="/secure/lang/c/js-min/dbaas.min.js"></script> 
 <title>Difference between array and structure</title>
 <style>
 
@@ -112,8 +112,17 @@ $(document).ready(function() {
 		<span class="label label-default ct-demo-heading" id="heading">Difference
 			between Arrays and Structures</span>
 	</h2>
-	<div class="margin-top20 text-center">
-		<span class="btn btn-warning opacity00" id="restart"><i class='fa fa-refresh'></i> Restart</span>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 	<div class="col-xs-offset-1 col-xs-10 margin-top20" id="mainDiv">
 		<div class="col-xs-5 div-border opacity00" id="array">

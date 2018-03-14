@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
-<script src="/secure/lang/c/js-min/asio.min.js"></script>
+<script src="/secure/lang/c/js-min/asio.min.js"></script> 
 
 <title>assignment-operators</title>
 <style type="text/css">
@@ -231,9 +229,6 @@ y {
 		<h2 class="text-center">
 			<span class="label label-default ct-demo-heading">Assignment Operators</span>
 		</h2>
-		<!-- <div class="margin-top20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
-		</div> -->
 		<div id="informationDiv" class="col-xs-offset-2 col-xs-8 border margin-top20 background-color"></div>
 		<div class="col-xs-12">
 			 <div id="animationDiv" class="col-xs-offset-3 col-xs-6 border margin-top20">
@@ -302,8 +297,13 @@ y {
 				</div>
 			</div>	
 		</div>
-		 <div class="col-xs-12 margin-top20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-8 col-xs-offset-2">
+				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
 		</div>
 	</div>
 	

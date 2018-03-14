@@ -9,9 +9,13 @@ var structureOfCReady = function() {
 		}
 	});
 
-	$("#restart").click(function(){
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+
 }
 
 function introGuide() {
@@ -100,7 +104,7 @@ function introGuide() {
 				position : "right",
 				tooltipClass:"hide"
 			},{
-			 	element : "#restart",
+			 	element : "#button",
 				intro : "",
 				position : "right"
 			}
@@ -315,7 +319,7 @@ function introGuide() {
 					$("#define").removeClass("animated zoomIn")
 					$(".introjs-tooltip").removeClass("hide");
 					var text = "<b class ='ct-code-b-yellow'>#define VALUE 10</b><br>"
-						+ " The symbolic constatnt VALUE is defined with constatnt value 10."
+						+ " The symbolic constatnt VALUE is defined with constatnt value <b class ='ct-code-b-yellow'>10</b>."
 						+ " So <b class ='ct-code-b-yellow'>VALUE</b> is replaced with <b class ='ct-code-b-yellow'>10</b> before compilation process.";
 					typing($(".introjs-tooltiptext"), text, function() {
 						$(".introjs-nextbutton,.introjs-prevbutton").show();
@@ -478,21 +482,23 @@ function introGuide() {
 				});
 			});
 		break;
-		case "restart":
+		case "button":
 			introjs.refresh();
 			$(".background-color-yellow").removeClass("background-color-yellow");
 			$("#subPro").css({"background-color": "black"}).removeClass("zIndex");
 			$(".color-black").removeClass("color-black");
 			$(".user-btn").remove();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			$('#restart').removeClass("opacity00");
-			$(".introjs-tooltip").css({"min-width": "115px"});
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-tooltip").css("min-width","380px");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to restart.";
-				typing($(".introjs-tooltiptext"), text)
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+				});
 			});
-		break;
+			break;
 		}
 	});
 	

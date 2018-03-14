@@ -1,10 +1,12 @@
 var ifElseInCReady = function() {
 	introJsGuide();
 	
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$(".allowNumbers").keydown(function(e) { // conditions to enter text
 		var max = $(this).attr("maxlength");
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
@@ -73,7 +75,7 @@ var typingSpeed = 1;
 								introjs.insertOption(introjs._currentStep + 1,insertionIntro("ifStmt", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 2,insertionIntro("outputDiv", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 3,insertionIntro("mainEnd", "", "top", "hide"));
-								introjs.insertOption(introjs._currentStep + 4,insertionIntro("restart", "Click to restart", "right", ""));
+								introjs.insertOption(introjs._currentStep + 4,insertionIntro("button", "", "right", ""));
 							$(".introjs-nextbutton, .introjs-prevbutton").show();
 						});
 					} else {
@@ -81,7 +83,7 @@ var typingSpeed = 1;
 								introjs.insertOption(introjs._currentStep + 1,insertionIntro("elseStmt", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 2,insertionIntro("outputDiv", "", "top", "hide"));
 								introjs.insertOption(introjs._currentStep + 3,insertionIntro("mainEnd", "", "top", "hide"));
-								introjs.insertOption(introjs._currentStep + 4,insertionIntro("restart", "Click to  restart.", "right", ""));
+								introjs.insertOption(introjs._currentStep + 4,insertionIntro("button", "", "right", ""));
 							$(".introjs-nextbutton,.introjs-prevbutton").show();
 						});
 					}
@@ -289,12 +291,16 @@ function introJsGuide() {
 			});
 			break;
 		
-		case "restart":
-			$('.introjs-tooltip').css({'min-width' : '125px'});
-			$('.introjs-tooltipbuttons').addClass("hide");
-			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+				});
 			});
 			break;
 		}

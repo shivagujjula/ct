@@ -1,8 +1,11 @@
 function structuresReady() {
 	intro = introJs();
-	$('#restartBtn').click(function() {
-		location.reload();
-		});
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -94,9 +97,10 @@ function structuresReady() {
 			intro :'',
 			position:"right"
 		},{
-			element :'#restartBtn',
-			intro :'Click to restart.',
-			position:"right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}]
 	});
 	
@@ -132,9 +136,6 @@ function structuresReady() {
 	
 	intro.onafterchange(function(targetElement) { 
 		$('.introjs-nextbutton, .introjs-skipbutton, .introjs-prevbutton').hide();
-		
-		
-		
 		if (intro._introItems[intro._currentStep]["tooltipClass"] == "hide") {
 			intro._introItems[intro._currentStep]["animation"] = "repeat";
 		}
@@ -268,7 +269,7 @@ function structuresReady() {
 		break;
 		case "name" :
 			$(".introjs-helperLayer").one("transitionend", function() {
-		  		typing('.introjs-tooltiptext',"The member <span class='ct-code-b-yellow'>name</span>, is a char array of"
+		  		typing('.introjs-tooltiptext',"The member <span class='ct-code-b-yellow'>name</span>, is a char array of "
 		  				+ "size <span class='ct-code-b-yellow'>20</span> type.", function() {
 		  			$('.introjs-nextbutton, .introjs-prevbutton').show();
 		  		});
@@ -320,12 +321,13 @@ function structuresReady() {
 		  		});
 			});
 		break;
-		case "restartBtn":
-			$('.introjs-tooltip').css({'min-width' : '110px'});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restartBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
-		break;
+			break;
 		}
 	});
 	

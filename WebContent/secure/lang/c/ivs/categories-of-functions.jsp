@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -15,12 +16,16 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/cof.min.js"></script>
+<script src="/secure/lang/c/js-min/cof.min.js"></script> 
 
 <title>Function categories</title>
 
 <style type="text/css">
-
+.z-index9999999 {
+	position : relative;
+	background-color: white;
+	z-index: 9999999 !important;
+}
 .margin-top-20 {
 	margin-top: 20px;
 }
@@ -54,12 +59,12 @@ pre {
 	font-size: 13px;
 }
 
-.btn:hover {
+	.fun-btn :hover {
 	background-color: #4CAF50 !important;
 	color: white;
-}
+} 
 
-.btn:active{
+.fun-btn:active{
 	background-color: #2E8B57 !important;
 	color: white;
 }
@@ -236,7 +241,14 @@ y {
 			</div>
 		</div>
 	</div>
-	
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+ 			<span class="col-xs-12" id="button">
+				<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+				<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+			</span>
+		</span>
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			categoriesOfFunctions();

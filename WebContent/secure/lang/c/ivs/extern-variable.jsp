@@ -8,15 +8,14 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
-<link href="/css/font-awesome.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-latest.js"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/ev.min.js"></script>
+<script src="/secure/lang/c/js-min/ev.min.js"></script>  
 
 <title>Extern Variables</title>
 
@@ -192,8 +191,17 @@ y {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 text-center margin-top-25">
-			<span id="restart" class="btn btn-warning opacity00">Restart</span>
+		<div class="margin-top-20 text-center col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
 		</div>
 	</div>
 	

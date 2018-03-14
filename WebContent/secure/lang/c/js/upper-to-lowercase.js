@@ -5,7 +5,10 @@ var upperToLowerCaseReady = function() {
 	$("#restartBtn").click(function() {
 		location.reload();
 	});
-	
+
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("#inputChar").keyup(function() {
 		if ($("#inputChar").val().length < 1) {
 			$('.introjs-nextbutton').hide();
@@ -96,9 +99,10 @@ var upperToLowerCaseReady = function() {
 					position:"left",
 					tooltipClass:"hide"
 				},{
-					element :'#restartBtn',
-					intro :'',
-					position:"left"
+					element : "#button",
+					intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+					position : 'right',
 			}]
 	});
 	
@@ -205,7 +209,7 @@ var upperToLowerCaseReady = function() {
 		case "line4" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, uesd to display anything in double quotes on the output screen.", 1, "",function() {
+				typing(".introjs-tooltiptext", "<span class='ct-code-b-yellow'>printf()</span> is library function, used to display anything in double quotes on the output screen.", 1, "",function() {
 					$('.introjs-nextbutton,.introjs-prevbutton').show();
 				});
 			});
@@ -360,7 +364,6 @@ var upperToLowerCaseReady = function() {
 		case "consoleId" :
 			$('.introjs-nextbutton,.introjs-prevbutton').hide();
 			if(intro._currentStep == 6) {
-				setTimeout(function() {
 					if (intro._direction == "forward") {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#typeChar").removeClass("visibility-hidden")
@@ -374,10 +377,7 @@ var upperToLowerCaseReady = function() {
 					} else {
 						intro.previousStep()
 					}
-				}, 500);
 			} else if(intro._currentStep == 11) {
-				setTimeout(function() {
-		
 				if (intro._direction == "forward") {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#enterHiddenToltal").removeClass("opacity00");
@@ -392,7 +392,6 @@ var upperToLowerCaseReady = function() {
 					} else {
 						intro.previousStep()
 					}
-				}, 500);
 			} 
 			break;
 			
@@ -407,16 +406,13 @@ var upperToLowerCaseReady = function() {
 			});
 		break;
 			
-		case "restartBtn" :
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$(".introjs-tooltip").css({"min-width": "115px"});
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
-					
-				});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
-			break;
+			break;	
 		}
 	});
 	intro.start();
@@ -435,7 +431,9 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		"cursor_color": cursorColor
 	}, function() {
 		$(typingId).removeClass('typingCursor');
-		typingCallbackFunction();
-		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		if (typeof typingCallbackFunction === "function") {
+			typingCallbackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
 	});
 }

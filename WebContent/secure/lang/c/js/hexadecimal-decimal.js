@@ -12,7 +12,7 @@ var hexadecimalDecimalReady = function() {
 	});
 
 	$('#closeBtn').click(function() {
-			window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 
 	$("body").keypress(function(e) {

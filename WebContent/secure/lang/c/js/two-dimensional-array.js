@@ -14,8 +14,11 @@ var typingSpeed = 1;
 var twoDimensionalArrayReady = function() {
 	$('#secondInput').val("");
 	$('#typingDiv ul li').addClass('opacity00');
-	$("#restart").click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	 
 	var typingId;
@@ -105,13 +108,14 @@ var twoDimensionalArrayReady = function() {
 			intro : "",
 			tooltipClass : "hide"
 		}, {
-			element : "#restart",
-			intro : "",
-			position : "left"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'left',
 		}]});
 	
 	intro.onbeforechange(function(targetElement) {
-	console.log("step : " + intro._currentStep);	
+	//console.log("step : " + intro._currentStep);	
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case 'part4':
@@ -316,14 +320,12 @@ var twoDimensionalArrayReady = function() {
 				});
 				break;
 				
-			case "restart":
+			case "button":
 				$('.zIndex').removeClass('zIndex');
-				$("#restart").removeClass('opacity00');
-				$('.introjs-tooltip').css('min-width', '125px');
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "Click to restart.";
-	 				typing(".introjs-tooltiptext", text, function() {
-	 				});
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
 				});
 				break;
 			

@@ -746,19 +746,25 @@ function introGuide() {
 				});
 			});
 		break;
-		case "restartBtn":
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restartBtn").removeClass('visibility-hidden');
-				$('.introjs-tooltip').css('min-width', '125px').removeClass('hide');
-				$('.introjs-tooltiptext').append('Click to restart.')
-				$("#restartBtn").click(function() {
-					location.reload();
+	case "button":
+				$(".introjs-tooltip").css("min-width","380px").removeClass('hide');;
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass('visibility-hidden');
+					$("#restartBtn").click(function() {
+						location.reload(true);
+					});
+					$('#closeBtn').click(function() {
+						window.parent.$(".ui-dialog-titlebar-close").click();
+					});
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+					typing('.introjs-tooltiptext', text, function() {
+					});
 				});
-			});
-		break;
+				break;
 		case "scloseBrace1":
-			introcode.insertOption(introcode._currentStep + 1, insertionIntro("restartBtn", "", "left", "hide"));
+			introcode.insertOption(introcode._currentStep + 1, insertionIntro("button", "", "left", "hide"));
 			stepNext();
 		break;
 		}

@@ -155,13 +155,18 @@ font-family:monospace;
 				)</h1>
 		</div>
 		
-		<div class='col-xs-12 text-center'>
-			<span id='restart'
-				class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
-				&nbsp;<i class='fa fa-refresh'></i>
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+					<span class="col-xs-12">
+						<span class="col-xs-8 col-xs-offset-2">
+							<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
 			</span>
 		</div>
-
 		<div id="typingDiv"
 			class='margin-top20 col-xs-offset-2 col-xs-8 col-xs-offset-2'>
 			<ul id="htmlCode"><li>There is a function called <b class="ct-blue-color">printf()</b> in the standard input output library (<b class="ct-blue-color">stdio.h</b>) that is used to print text to the console.</li>

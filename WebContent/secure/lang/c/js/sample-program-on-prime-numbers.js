@@ -9,8 +9,11 @@ var pVal = 0;
 
 var sampleProgramOnPrimeNumbersReady = function() {
 	introGuide();
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -249,7 +252,7 @@ function introGuide() {
 						$("#example").append('<div id="primeDiv'+ tValue +'" style="padding-top: 5px;"><span id="number'
 											+ tValue +'" class="opacity00">5</span>&nbsp;</div>');
 						$("#description > ul li:last-child").append('&emsp;&emsp;<a class="introjs-button usr-btn"'
-																+ ' onclick="nextStep()">next &#8594;</a>');
+																+ ' onclick="nextStep()">Next &#8594;</a>');
 					}});
 				}});
 				break;
@@ -599,7 +602,7 @@ function introGuide() {
 											
 											introjs.insertOption(introjs._currentStep + 1, getStep("#truePrint", "", "hide", "right"));
 											introjs.insertOption(introjs._currentStep + 2, getStep("#console", "", "hide", "right", "secondPrint"));
-											introjs.insertOption(introjs._currentStep + 3, getStep("#restart", "Click to restart.", "", "right"));
+											introjs.insertOption(introjs._currentStep + 3, getStep("#button", "", "", "right"));
 										
 										$('.introjs-tooltiptext').append('<div class="outer-text"></div>')	
 										var text =  text1 + " <span class='ct-code-b-yellow'>true</span>." + text2
@@ -616,7 +619,7 @@ function introGuide() {
 										
 											introjs.insertOption(introjs._currentStep + 1, getStep("#falsePrint", "", "hide", "right"));
 											introjs.insertOption(introjs._currentStep + 2, getStep("#console", "", "hide", "right", "secondPrint"));
-											introjs.insertOption(introjs._currentStep + 3, getStep("#restart", "Click to restart.", "", "right"));
+											introjs.insertOption(introjs._currentStep + 3, getStep("#button", "", "", "right"));
 											
 										$('.introjs-tooltiptext').append('<div id="outerText"></div>');
 										var text = text1 + " <b class='red'>false</b>." + text2
@@ -637,12 +640,16 @@ function introGuide() {
 					});
 				});
 				break;
-	
-			case "restart":
-				$('.introjs-tooltip').css("min-width","200px");
-				$(".introjs-tooltip").css({"min-width" : "110px"});
-				$('.introjs-helperLayer').one('transitionend', function() {
-					$("#restart").removeClass("opacity00");
+			case "button":
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, function() {
+					});
 				});
 				break;
 		}

@@ -246,10 +246,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
 						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
 				$('#closeBtn').click(function() {
-					window.parent.$("#javaDocBrowserDiv").dialog("close");
+					window.parent.$(".ui-dialog-titlebar-close").click();
 				});					
 				typing('.introjs-tooltiptext', text,  10, "",function() {
-					$('#restart').click(function() {
+					$('#restartBtn').click(function() {
 						location.reload();
 					});
 				});
@@ -341,8 +341,10 @@ function typing(typingId, typingContent, typingCallbackFunction) {
 		"cursor_color": 'white'
 	}, function() {
 		$(typingId).removeClass('typingCursor');
-		typingCallbackFunction();
-		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		if (typeof typingCallbackFunction === "function") {
+			typingCallbackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
 	})
 }
 function transferEffect(selector1, selector2, callBackFunction) {
@@ -369,7 +371,7 @@ function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
 	});
 }
 function flipEffectWithTweenMax(selector, val, callBackFunction) {
-	console.log("function Entered");
+//	console.log("function Entered");
 	$(selector).effect( "highlight",{color: 'green'}, 500, function() {
 		TweenMax.to($(selector), 0.3, {rotationX : -90, onComplete:function() {
 			$(selector).text(val);

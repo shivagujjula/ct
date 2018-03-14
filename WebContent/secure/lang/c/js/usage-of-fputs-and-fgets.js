@@ -4,8 +4,11 @@ var usageOfFputsAndFgets = function() {
 	introGuide();
 	$(".line").hide();
 	
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	
 	var x = Math.floor((Math.random() * 1024) + 1425);
@@ -150,22 +153,19 @@ function introGuide() {
 					tooltipClass: 'hide',
 					outputStep: 'readFileClose'
 				}, {
-					element: '#restart',
-					intro: 'Click to restart.',
-					position: 'right'
+					element : "#button",
+					intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+					position : 'right',
 				} ]
 	});
 	
 	introjs.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
-		
-			
 		case "writeMode":
 			introjs.refresh();
 			break;
-			
 		case "wFileOpen":
 		case "rFileOpen":
 			if (introjs._currentStep == 8) {
@@ -648,10 +648,11 @@ function introGuide() {
 				});
 				break;
 				
-			case "restart":
-				$('.introjs-tooltip').css({'min-width' : '110px'});
+			case "button":
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#restart").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
 				});
 				break;
 		}

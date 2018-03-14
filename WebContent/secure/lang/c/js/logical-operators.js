@@ -57,11 +57,10 @@ var logicalOperatorsReady = function() {
 						position : "right"
 					},
 					{
-						element : "#restart",
-						intro : "Click to restart.",
+						element : "#button",
+						intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+								"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
 						position : "right",
-						tooltipClass: 'tooltip-min-width'
-						
 					}
 				]
 	})
@@ -95,11 +94,15 @@ var logicalOperatorsReady = function() {
 			});
 		break;
 		
-		case "restart":
-			$(".introjs-nextbutton").hide();
+		case "button":
 			$("#informationDiv").removeClass("zIndex")
-				$("#restart").text("Restart").removeClass("visibility-hidden");
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("visibility-hidden");
+			});
 		break;
+
 		
 		}
 	})
@@ -123,14 +126,17 @@ var logicalOperatorsReady = function() {
 		}) 
 	
 	var isVisible = false;
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload(true);
-	})
+	});
+
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 }
 
 function nextClick() {
 	$(".next-button").click(function() {
-		
 		 if (next == 0) {
 			 $(".next-button").addClass("visibility-hidden");
 			$("table tr:eq(1) td:eq(0)").removeClass("opacity00");

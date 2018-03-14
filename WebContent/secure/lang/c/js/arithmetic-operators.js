@@ -193,16 +193,23 @@ var aoReady = function() {
 			firstAttempt = false;
 			showIt = false;
 			nextShow = true;
+			$(".introjs-tooltip").css("min-width","275px");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				intro.refresh();
 					 var text = "Feel free to try other combinations to learn how <span class='ct-code-b-yellow'>arithmetic operators</span> work."
-					+"<ul><span id='charStep'></span></ul>"; 
+					+"<ul><span id='charStep'></span></ul>";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").hide();
 					$("#firstNum").val("");
-					$("#secondNum").val("")
-					$("#restart").removeClass("opacity00");
-					$("#restart").addClass("zIndex9999999");
+					$("#secondNum").val("");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").addClass("zIndex9999999");
+					$("#restartBtn").click(function() {
+						location.reload(true);
+					})	
+					$('#closeBtn').click(function() {
+						window.parent.$(".ui-dialog-titlebar-close").click();
+					});
 					arithmeticRepeatMethod();
 				})
 			});
@@ -437,7 +444,7 @@ function handlingExceptionAnimation() {
 
 function gettingResult() {
 	if (intro._currentStep == 3) {
-		var text = "After the evaluation we get the result as <span class='ct-code-b-yellow'>"+ $("#result").text()+"</span>";
+		var text = "After the evaluation we get the result as <span class='ct-code-b-yellow'>"+ $("#result").text()+"</span>.";
 		typing(".introjs-tooltiptext", text, function() {
 			 if (next == 2) {
 					$('.introjs-nextbutton').show();

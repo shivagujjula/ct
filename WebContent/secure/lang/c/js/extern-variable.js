@@ -5,8 +5,11 @@ var count = 1;
 function externVariable() {
 	initIntroJS();
 	
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
@@ -254,9 +257,10 @@ function initIntroJS() {
 			element :'#outputDiv',
 			tooltipClass:'hide'
 		}, {
-			element : "#restart",
-			position : "right",
-			intro: "Click to restart.",
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		} ]
 	});
 	
@@ -367,7 +371,7 @@ function initIntroJS() {
 						$('.introjs-nextbutton').show();
 					});
 				} else if(introjs._currentStep == 33) {
-					$('.fa').remove();
+					$('.fa-arrow-right').remove();
 					$("#globalDeclaration1").text('int x;');
 					text = "The variable <span class='ct-code-b-yellow'>x</span> is <y>not</y> declared as <y>local/global</y> variable. So, an "
 							+ " <span class='ct-code-b-yellow'>error</span> is thrown.<br><br> So, declaring an <span class='ct-code-b-yellow'>"
@@ -594,12 +598,13 @@ function initIntroJS() {
 				nextLine()
 			break; 
 			
-			case "restart":
-				$('.introjs-tooltip').css({'min-width' : '120px'});
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#restart").removeClass('opacity00');
-				});
-			break; 
+			case "button":
+					$(".introjs-tooltip").css("min-width","380px");
+					$(".introjs-tooltipbuttons").hide()
+					$(".introjs-helperLayer").one("transitionend", function() {
+						$("#restartBtn, #closeBtn").removeClass("opacity00");
+					});
+					break;
 			}
 		});
 	introjs.start();
@@ -639,7 +644,7 @@ function fromEffectWithTweenMax(selector1, selector2, callBackFunction) {
 }
 
 function arrowAnimation(callBackFunction) {
-	($('.fa').parent()).css({'display' :'inline-block', 'position' : 'relative'})
+	($('.fa-arrow-right').parent()).css({'display' :'inline-block', 'position' : 'relative'})
 	var l1 = $("#globalDeclaration").offset();
 	var l2 = $("#globalDeclaration1").offset();
 	var topLength = l1.top - l2.top;

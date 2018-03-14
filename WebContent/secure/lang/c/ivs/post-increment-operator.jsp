@@ -18,7 +18,6 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-
 <script src="/secure/lang/c/js-min/pio.min.js"></script>
 
 <title>post-increment-operator.jsp</title> 
@@ -149,10 +148,9 @@
 	margin-top: 10px;
 }
 
-.fa {
+.fa-blue {
 	color: #b3e0ff;
 }
-
 .svg-border {
     border: 2px solid gray;
     border-radius: 36%;
@@ -223,8 +221,17 @@
 		 <div class = "text-center">
 			<h1 class = "label ct-demo-heading text-center">Post increment operator</h1>
 		</div> 
-		<div class = 'buttons-div col-xs-12'>
-				<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
+		<div class="buttons-div col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
 		</div> 
 		<div class = "col-xs-10 col-xs-offset-2">
 			<div class = "col-xs-4">
@@ -287,12 +294,12 @@
 				<div class = "col-xs-12 padding0" id = "expressionStatement">
 				<div class="col-xs-12 padding0">
 					<div class="col-xs-3 col-xs-offset-2 padding0 text-center visibility-hidden padding0" id="xCup">
-	  					<i class="fa fa-coffee fa-3x x-cup"></i><span id="xCupValue" class="cupvalue visibility-hidden">8</span><br>
+	  					<i class="fa fa-coffee fa-3x fa-blue fa-blue x-cup"></i><span id="xCupValue" class="cupvalue visibility-hidden">8</span><br>
 						<span id="xCupVariable" class = "ct-code-b-black">x</span>
 	  				</div>
 
 					<div class="col-xs-3 col-xs-offset-1 padding0 text-center visibility-hidden padding0" id="yCup">
-	  					<i class="fa fa-coffee fa-3x y-cup"></i><span id="yCupValue" class="cupvalue visibility-hidden">8</span><br>
+	  					<i class="fa fa-coffee fa-3x fa-blue fa-blue y-cup"></i><span id="yCupValue" class="cupvalue visibility-hidden">8</span><br>
 						<span id="yCupVariable" class = "ct-code-b-black">y</span>
 	  				</div>
 				</div>
@@ -323,9 +330,6 @@
 			</div>	
 		</div>
 	</div>
-		<div class = 'buttons-div col-xs-9'>
-			<button type = "button" class = "btn btn-warning visibility-hidden" id = "restartBtn">Restart</button>
-		</div> 
 	</div>
 	
 	<script type="text/javascript">

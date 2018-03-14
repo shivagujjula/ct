@@ -319,7 +319,7 @@ function introGuide() {
 					var progLanguageText = $(this).find("option:selected").text();
 		            if (progLanguageText == langType ) {						
 						$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').show();
-						$('.errorText').empty();
+						$('.errorText2').empty();
 					} else {
 						$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 						$('.errorText2').html("<br><br>Please select <span class='ct-code-b-yellow'>" + langType +"</span>.");

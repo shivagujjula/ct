@@ -243,9 +243,18 @@ div,span {
 			<div class="text-center">
 				<h1 class="label ct-demo-heading text-center">Usage of fprintf() and fscanf()</h1>
 			</div> 
-			<div class='buttons-div'>
-				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-			</div> 
+			<div class="buttons-div text-center col-xs-12">
+				<span class="col-xs-6 col-xs-offset-3">
+			 		<span class="col-xs-12">
+			 			<span class="col-xs-8 col-xs-offset-2">
+			 				<span class="col-xs-12" id="button">
+								<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+								<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+							</span>
+						</span>
+					</span>
+				</span>
+			</div>
 			<div class="col-xs-12">
 				<div class="col-xs-8 col-xs-offset-2 box-border margin-top" id="fileText" style="font-family: monospace;">
 					<ul><li id="text1" class="opacity00">The <span class="ct-code-b-green">fprintf()</span> function is used to write data into a file.<br/>

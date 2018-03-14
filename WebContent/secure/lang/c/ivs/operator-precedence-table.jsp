@@ -250,5 +250,20 @@ td {
 		</tr>
 	</table>
 </div>
+<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-4 col-xs-offset-4">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>
+				</span>
+			</span>
+		</div>
 </body>
+<script>
+$(document).ready(function() {
+	$('#closeBtn').removeClass("opacity00");
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+});	
+</script>
 </html>

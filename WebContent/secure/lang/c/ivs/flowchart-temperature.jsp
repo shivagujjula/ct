@@ -19,7 +19,7 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/ft.min.js"></script>
+<script src="/secure/lang/c/js-min/ft.min.js"></script> 
 <title>Insert title here</title>
 <style type="text/css">
 
@@ -355,7 +355,18 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 text-center div-margin-top-bottom padding00"><span class="btn btn-warning opacity00 zIndex" id="restart">Restart</span></div>
+		<div class="margin-top-20 text-center col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+					<span class="col-xs-12">
+						<span class="col-xs-8 col-xs-offset-2">
+							<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
 	</div>
 </body>
 </html>

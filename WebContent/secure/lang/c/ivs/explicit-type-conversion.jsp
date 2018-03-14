@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js-min/etc.min.js"></script>
+ 	<script src="/secure/lang/c/js-min/etc.min.js"></script>
 	
 	<title>explicit type conversion</title>
 </head>
@@ -244,6 +244,16 @@
 		</div>
 	</div>
 </div>
-<div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:10px'>Restart</button></div>
-</body>
+<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
+

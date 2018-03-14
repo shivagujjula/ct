@@ -4,6 +4,9 @@ var explicitTypeConversion = function() {
 	$('#restartBtn').click(function() {
 		location.reload(true);
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	intro = introJs();
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
@@ -58,7 +61,7 @@ var explicitTypeConversion = function() {
 					tooltipClass: "hide",
 					position:"bottom"
 				},{
-					element :'#restartBtn',
+					element :'#button',
 					intro :'',
 					position:"right"
 				}]
@@ -97,7 +100,7 @@ var explicitTypeConversion = function() {
 		$(".introjs-helperLayer").one("transitionend", function() {
 			typing('.introjs-tooltiptext', "Enter an <span class='ct-code-b-yellow'>integer</span> values <span "+
 					"class='ct-code-b-yellow'>x</span> and <span class='ct-code-b-yellow'>y</span> and click the "+
-					"<span style='background-color: green; padding: 3px;'>next &#8594;</span> button to see how the"+
+					"<span style='background-color: green; padding: 3px;'>Next &#8594;</span> button to see how the"+
 					" type casting is done.<br>"+
 					"<span class='ct-code-b-yellow'>Note:</span>Enter a value of maximum length 3.", function() {
 					$("#enterAandBvalues").removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
@@ -240,16 +243,19 @@ var explicitTypeConversion = function() {
 				}});
 			});
 		break;
-	case "restartBtn":
-		$('.introjs-nextbutton').hide();
-		$('.introjs-tooltip').css('min-width', '130px');
+	case "button":
+		$(".introjs-tooltip").css("min-width","380px");
+		$(".introjs-tooltipbuttons").hide()
 		$(".introjs-helperLayer").one("transitionend", function() {
-		typing('.introjs-tooltiptext', "Click to restart.", function() {
-			$("#restartBtn").removeClass("opacity00");
-			$('#intaEdit').val("");
-	  		$('#intbEdit').val("");
+			$("#restartBtn, #closeBtn").removeClass("opacity00");
+			var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+								
+			typing('.introjs-tooltiptext', text, function() {
+				$('#intaEdit').val("");
+		  		$('#intbEdit').val("");
 			});
-			});
+		});
 		break;
 		}
 	});

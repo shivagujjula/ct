@@ -18,7 +18,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/jquery-ui-latest.js"></script>
-<script type="text/javascript" src="/secure/lang/c/js-min/swotv.min.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/swotv.min.js"></script> 
 
 <style type="text/css">
 body {
@@ -200,8 +200,17 @@ void <span id='main'>main()</span> {
 	</div>
 
 	<br>
-	<div class="text-center col-xs-12 margin-top20">
-		<a class="btn btn-warning opacity00" id='restart'>Restart</a>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {

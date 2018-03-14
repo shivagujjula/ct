@@ -292,9 +292,19 @@ r {
 <span id="scloseBrace">}</span></pre>
 		</div>
 </div>
-<div class='col-xs-12 buttons-div'>
-	<button type="button" class="btn btn-warning visibility-hidden text-center" id="restartBtn">Restart</button>
-</div> 
+<div class="buttons-div col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
+
 </div>
 <script>
 $(document).ready(function() {

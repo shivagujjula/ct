@@ -70,7 +70,9 @@
 	margin-top: 20px;
 	margin-left: 20px;
 }
-
+.margin-btm-20 {
+	margin-bottom: 20px;
+}
 .popover-content {
 	background-color: lightgray;
 	color: black;
@@ -106,8 +108,17 @@
 	<h2 class="text-center">
 		<span class="label label-default ct-demo-heading" id="heading">How the C language works?</span>
 	</h2>
-	<div class="margin-top20 text-center">
-		<span class="btn btn-warning opacity00" id="restart">Restart</span>
+	<div class="margin-top-20 margin-btm-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 	<br>
 	<div class=" col-xs-offset-1 col-xs-11 main-div" id="mainDiv">

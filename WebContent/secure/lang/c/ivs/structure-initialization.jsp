@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TimelineLite.min.js"></script>
-<script src="/secure/lang/c/js-min/si.min.js"></script>
+<script src="/secure/lang/c/js-min/si.min.js"></script> 
 <title>Structure Initialization</title>
 <style type="text/css">
 .padding0 {
@@ -132,8 +132,17 @@ pre {
 		<span id="heading" class="label label-default ct-demo-heading">Structure Initialization</span>
 	</h2>
 </div>
-<div class="col-xs-12 margin-top10 text-center">
-		<span class="btn btn-warning opacity00" id="restart"><i class="fa fa-refresh"></i> Restart</span>
+<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
 </div>
 <div class="col-xs-12 padding0 margin-top30">
 <div id="parentDiv" class="padding0 col-xs-offset-2 col-xs-9">

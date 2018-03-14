@@ -19,14 +19,13 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
-<script src="/secure/lang/c/js-min/aoda.min.js" type="text/javascript"></script>
+<script src="/secure/lang/c/js-min/aoda.min.js" type="text/javascript"></script> 
 
 <style type="text/css">
 
 .zIndex {
 	position: relative;
 	z-index: 9999999;
-	background: white;
 }
 
 .input-all {
@@ -71,8 +70,7 @@ pre {
 }
 
 #typingDiv {
-	min-height: 40px;
-	font-family: monospace;
+	height: 40px;
 }
 
 .back-color {
@@ -141,9 +139,9 @@ div, span {
 	position: relative;
 }
 
-/* pre > span {
+pre > span {
 	position: static;
-} */
+}
 
 .table-css {
 	text-align: center;
@@ -213,29 +211,40 @@ $(document).ready(function() {
 			<h1 class='label ct-demo-heading' id="heading">One Dimensional Array</h1>
 		</div>
 
-		<div class="col-xs-12">
-			<div id="typingDiv" class='margin-top20 col-xs-offset-2 col-xs-8 col-xs-offset-2'>
-					<ul><li>Array is used to store a collection similar type of data in continues memory location (Address).</li>
-					<li>General format of one dimension array is as follows 
-					<div id="textAnimate" class="text-bold" style="display:inline-block"> 
-					<span id="part1">data_type</span> 
-					<span id="part2">array_name</span>
-					<span id="part3">[<span class="green-color">size</span>]</span>;</div></li></ul>
-			</div>
+		<div class="margin-top-20 text-center col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
+		<div id="typingDiv"
+			class='margin-top20 col-xs-offset-3 col-xs-7 col-xs-offset-2'>
+				<ul><li>Array is used to store a collection similar type of data in continues memory location (Address).</li>
+				<li>General format of one dimension array is as follows 
+				<div id="textAnimate" class="text-bold" style="display:inline-block"> 
+				<span id="part1">data_type</span> 
+				<span id="part2">array_name</span>
+				<span id="part3">[<span class="green-color">size</span>]</span>;</div></li></ul>
 		</div>
 		<div id='mainDiv' class='col-xs-12 padding0'>
-			<div class='col-xs-6'>
+			<div class='col-xs-6 '>
 				<pre class="creampretab4 opacity00" id='codeDiv'>
 #include <span>&lt;stdio.h&gt;</span>
 void main() {
 	<span id='variableDeclaraiton'><span id='array'>int arr[9]</span>, i, n;</span>
-	<span id='getRowColumn'>printf("Enter how many values you want to read : ");</span>
+	<span id='getRowColumn'>printf (" Enter how many values you want to read : ");</span>
 	<span id='scanf'>scanf ("%d", &n);</span>
 	<span id='getInputValues'>for (i = 0; i &lt; n; i++ ) {
-		<span id='matrixValues'>printf("Enter the value of arr[%d] : " , i);</span>
+		<span id='matrixValues'>printf ( " Enter the value of arr[%d] : " , i);</span>
 		scanf ("%d", &a[i]);
 	} </span>
-	<span id='codePrintf'>printf("The array elements are : \n");</span>
+	<span id='codePrintf'>printf (" The array elements are : \n");</span>
 	<span id='printForLoop'>for( i = 0; i &lt; n; i++ ) {
 		printf ("%d ", a[i]);
 	}</span>
@@ -257,28 +266,22 @@ void main() {
 				</div>
 			</div>
 		</div>
-<div class="col-xs-12">
-	<div id='tableDiv'>
-		<div class='col-xs-12' id='arrayBox'>
-			<table class='table-css'>
-				<tbody>
-					<tr>
-					</tr>
-					<tr>
-					</tr>
-					<tr>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+<div class="col-xs-12"><div id='tableDiv'>
+
+<div class='col-xs-12' id='arrayBox'>
+						<table class='table-css'>
+							<tbody>
+								<tr>
+								</tr>
+								<tr>
+								</tr>
+								<tr>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+</div></div>
 	</div>
-</div>
-<div class='col-xs-12 text-center'>
-	<span id='restart'
-		class='btn btn-warning btn-sm opacity00 margin-top20'>Restart
-		&nbsp;<i class='fa fa-refresh'></i>
-	</span>
-</div>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 	intro = introJs();
 
 	$('#closeBtn').click(function() {
-			window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 
 	$("nextButton").click(function() {
@@ -205,7 +205,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$("#restartBtn, #closeBtn").removeClass("opacity00");
 				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
 						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
-				typing('.introjs-tooltiptext', text, 10, "",function() {
+				typing('.introjs-tooltiptext', text, 1, "",function() {
 					$('#restartBtn').click(function() {
 						location.reload();
 					});
@@ -225,8 +225,10 @@ function typing(typingId, typingContent, typingCallbackFunction) {
 		"cursor_color": 'white'
 	}, function() {
 		$(typingId).removeClass('typingCursor');
-		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
-		typingCallbackFunction();
+		if (typeof typingCallbackFunction=== "function") {
+			typingCallbackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
 	})
 }
 function zoomInEffect(id, callBackFunction) {

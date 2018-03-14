@@ -325,10 +325,10 @@ function introGuide() {
 									$(".fa-arrow-up").addClass("opacity00");
 									$("#codetantraFile").removeClass("animated zoomOut").addClass("opacity00");
 									var options = {
-											element : "#restartBtn",
-											intro : "Click to Restart",
-											tooltipClass: "introjs-tooltip-min-width-custom",
-											position : "right"
+											element : "#button",
+											intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+												"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+											position : 'right',
 									}
 									introcode.insertOption(introcode._currentStep + 1, options);
 									introNextStep();
@@ -561,11 +561,15 @@ function introGuide() {
 						});
 					});
 				break;
-				case "restartBtn":
+				case "button":
+					$(".introjs-tooltip").css("min-width","380px");
 					$('.introjs-helperLayer').one('transitionend', function () {
-						$("#restartBtn").removeClass('visibility-hidden');
-						$('#restartBtn').click(function() {
-							location.reload();
+						$("#restartBtn, #closeBtn").removeClass('visibility-hidden');
+						$("#restartBtn").click(function() {
+							location.reload(true);
+						});
+						$('#closeBtn').click(function() {
+							window.parent.$(".ui-dialog-titlebar-close").click();
 						});
 					});
 				break;

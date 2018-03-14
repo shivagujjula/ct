@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/custom-styles.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <script src="/js/jquery-latest.js"></script>
@@ -98,7 +99,7 @@
 	</div>
 	
 	<div class='buttons-div col-xs-12'>
-		<span class="col-xs-4 col-xs-offset-4">
+		<span class="col-xs-6 col-xs-offset-3">
  			<span class="col-xs-12">
  				<span class="col-xs-8 col-xs-offset-2">
  					<span class="col-xs-12" id="button">

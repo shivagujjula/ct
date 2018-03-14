@@ -90,12 +90,14 @@ function introGuide() {
 				$("#listLine" + i).fadeTo(1000, 1, function() {
 				});
 			}
-			$("#listLine6").after('<span class="introjs-button user-btn">Next &#8594;</span>');
-			introjs.refresh();
-			$(".user-btn").click(function() {
-				$(".user-btn").remove();
-				introjs.nextStep();
-			});
+			setTimeout(function() {
+				$("#listLine6").after('<span class="introjs-button user-btn">Next &#8594;</span>');
+				introjs.refresh();
+				$(".user-btn").click(function() {
+					$(".user-btn").remove();
+					introjs.nextStep();
+				});
+			}, 800);
 			break;
 		case 'preCode1':
 			$(".introjs-helperLayer").one("transitionend", function() {	

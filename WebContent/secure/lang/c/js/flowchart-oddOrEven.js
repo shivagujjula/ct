@@ -16,10 +16,13 @@ var flowChartOddOrEvenReady = function() {
 		tl.to($("#description li:eq(1)"), 1, {opacity :1, onComplete: function() {
 		}})
 	}})
-	$("#restart").click(function() {
-		location.reload();
-	})
-	console.log("In the Odd or Even...");
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+//	console.log("In the Odd or Even...");
 }
 
 function introGuide() {
@@ -31,8 +34,9 @@ function introGuide() {
 			position : "right",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
+			position : "left",
 			tooltipClass: "hide"
 		}]
 	});
@@ -66,11 +70,12 @@ function introGuide() {
 								$(".introjs-nextbutton").show();
 							})
 						} else {
-							getIntrojsStep("#restart","Click to restart","left","");
+							getIntrojsStep("#button","Click to restart","left","");
 							var text =  $("#algorithmPoints li:eq("+ (step-1) +")").text(); 
 							$("#algorithmPoints li:eq("+ (step-1) +")").removeClass("opacity00");
 							typing("#algorithmPoints li:eq("+ (step-1) +")", text, function() {
 								$(".introjs-nextbutton").show();
+								console.log("ok")
 							})
 						}
 					});
@@ -94,13 +99,17 @@ function introGuide() {
  			});
 		break;
 				
-		case "restart":
+		case "button":
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restart").removeClass("opacity00");
-				$("#restart").click(function() {
-					location.reload();
-				})
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").addClass("zIndex");
+				$("#restartBtn").click(function() {
+					location.reload(true);
+				});
+				$('#closeBtn').click(function() {
+					window.parent.$(".ui-dialog-titlebar-close").click();
+				});
 			});
 			
 			break;
@@ -133,7 +142,6 @@ function typing(selector, text, callBackFunction) {
  var count = 1;
  
  function svgAnimationLeftToRight(callBackFunction) {
-	 
 	var x1 = $("#step4").offset().left - $("#flowChartBoxChild").offset().left;
 	var y1 = $("#step4").offset().top - $("#flowChartBoxChild").offset().top + $("#step4").height()/2 + 15;
 	var x2 = x1 - $("#step5").width()/2;
@@ -424,7 +432,8 @@ function flowChartSymbolsReveal() {
 		$("#step" + step).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
 			svgAnimationTopToBottomLinkWithTopToBottom(function() {
 				svgAnimationLeftToRightLinkWithTopToBottom(function() {
-					$("#restart").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").addClass("zIndex");
 				});
 			})
 		})

@@ -19,7 +19,6 @@
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/gs/TimelineLite.min.js"></script>
 <script src="/secure/lang/c/js-min/fs.min.js"></script>
-
 <title>Insert title here</title>
 <style type="text/css">
 .padding0 {
@@ -160,19 +159,25 @@ table {
 </script>
 </head>
 <body>
-	<div class="col-xs-12 row padding0">
-		<div class="col-xs-offset-5 col-xs-6 row padding0" >
+	<div class="col-xs-12 text-center padding0">
 			<h3>
 				<span class="label label-default ct-demo-heading" style="font-family: serif;"  id="mainTitle">Flow Chart Symbols</span>
 			</h3>
-		</div>
 	</div>
-	<div class="col-xs-12 row padding0">
-		<div class="col-xs-12 row padding0 text-center margin15" >
-				<span class="btn btn-warning opacity00" id="restart">Restart</span>
-		</div>
+	 <div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+				<span class="col-xs-12">
+					<span class="col-xs-8 col-xs-offset-2">
+						<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
-	<div class = "col-xs-12 row padding0">
+	
+	<div class = "col-xs-12 row margin-top-20">
 		<div class="col-xs-offset-2 col-xs-8 text-center  opacity00" id="flowChart">
 			<table class="table-css">
 			 <thead> 

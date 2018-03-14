@@ -19,9 +19,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-
 <script type="text/javascript" src="/secure/lang/c/js-min/lo.min.js"></script>
-
 <title>Logical-operators</title>
 <style type="text/css">
 .border {
@@ -182,9 +180,19 @@ y {
 		<h2 class="text-center">
 			<span class="label label-default ct-demo-heading">Logical Operators</span>
 		</h2>
-		 <div class="margin-top20 text-center">
-			<span class="btn btn-warning visibility-hidden" id="restart">restart</span>
-		</div> 
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
+		</div>
+		
 		<div id="informationDiv" class="col-xs-offset-2 col-xs-8 border margin-top20 background-color visibility-hidden"></div>
 		<div class="col-xs-12 margin-top20">
 			<div class="col-xs-offset-5 col-xs-3 visibility-hidden" id="inputDiv">

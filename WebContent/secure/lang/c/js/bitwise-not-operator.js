@@ -7,6 +7,10 @@ var count = 0;
 var flipSpeed;
 var tl = new TimelineLite();
 var bitwiseNotOperatorReady = function() {
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+
 	$("[contenteditable=true]").on("keydown keyup", function(e) { // conditions to enter text
 		if ($('#firstNum').val() != "" && $('#shiftNum').val() != "") {
 			//$('.introjs-nextbutton').show();
@@ -62,7 +66,7 @@ introSteps();
 				position:"right",
 				tooltipClass: "hide"
 			},{
-				element : "#restart",
+				element : "#button",
 				intro : "",
 				position : "right"
 			}
@@ -158,17 +162,17 @@ introSteps();
 					});
 				});
 			break;
-			case "restart":
-				$('.introjs-nextbutton').hide();
+			case "button":
 				$('#informationDiv').css({"z-index": "0"});
-				$('.introjs-tooltip').css('min-width', '130px');
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
-						var text = "Click to restart.";
-						typing(".introjs-tooltiptext", text, function() {
-							
-						});
-					}});
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, function() {
+					});
 				});
 				break;
 			}

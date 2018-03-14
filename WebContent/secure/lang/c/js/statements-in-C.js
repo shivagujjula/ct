@@ -57,6 +57,20 @@ function introGuide() {
 		var elementId = targetElement.id;
 		switch (elementId) 
 		{
+		case "simDiv":
+		var action =  introcode._introItems[introcode._currentStep].action;
+		if (action == 'control' || action == 'simple') {
+			$("#restartBtn, #closeBtn").addClass("opacity00").removeClass("position");
+		} else if (action == 'compound') {
+			$("#restartBtn, #closeBtn").addClass("opacity00").removeClass("position");
+		}
+		break;
+		}
+	});
+	introcode.onafterchange(function(targetElement) {
+		var elementId = targetElement.id;
+		switch (elementId) 
+		{
 		case "typingbox":
 		$('.introjs-nextbutton').hide();
 		$('#typingbox').append('<span class = "margin10">A <span class = color-green>statement</span> is an ' 
@@ -81,6 +95,7 @@ function introGuide() {
 					$('#simpleDiv').slideDown('1000',function() {
 						$('#compoundDiv').slideDown('1000',function() {
 							$('#controlDiv').slideDown('1000',function() {
+								$('#simpleDiv,#compoundDiv, #controlDiv').addClass('disabled');
 								$('.introjs-tooltip').removeClass("hide");	
 								typingContent = 'Click on each of the types to know more about them.'; 
 								typing('.introjs-tooltiptext', typingContent,function() {
@@ -103,6 +118,8 @@ function introGuide() {
 					$('#compoundDiv').removeClass('disabled',true);
 					$('#controlDiv').removeClass('disabled',true);
 				});
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn, #closeBtn").addClass("position");
 			}
 		});
 		break;
@@ -111,6 +128,7 @@ function introGuide() {
 				$('#simDiv').addClass('introjs-showElement');  
 				var action =  introcode._introItems[introcode._currentStep].action;
 					if (action == 'simple') {
+						$("#restartBtn, #closeBtn").removeClass("position");
 						typingContent = '<div class = "col-xs-offset-4 col-xs-4" id = "simheading">Simple Statement</div>'
 						typing('#simDiv', typingContent,function() {
 							$('#simDiv').append('<div id = "exampleDiv" class = "col-xs-12"></div>');
@@ -153,6 +171,7 @@ function introGuide() {
 							});
 						});
 					} else if (action == 'compound') {
+						$("#restartBtn, #closeBtn").addClass("opacity00").removeClass("position");
 						typingContent = '<div class = "col-xs-offset-4 col-xs-6" id = "simheading">Compound Statement</div>'
 						typing('#simDiv', typingContent,function() {
 						$('#simDiv').append('<div id = "exampleDiv" class = "col-xs-12 margin10 padding0"></div>');
@@ -184,6 +203,7 @@ function introGuide() {
 						});
 					});
 				} else if (action == 'control') {
+					$("#restartBtn, #closeBtn").addClass("opacity00").removeClass("position");
 					typingContent = '<div class = "col-xs-offset-4 col-xs-4 margin10" id = "simheading">Control Statement</div>'
 					typing('#simDiv', typingContent,function() {
 						$('#simDiv').append('<div id = "exampleDiv" class = "col-xs-12 margin20"></div>');
@@ -328,6 +348,12 @@ function introGuide() {
 		break;
 		}
 	});		
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	})	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	introcode.start();
 	$('.introjs-skipbutton').hide();
 	$('.introjs-prevbutton').hide();

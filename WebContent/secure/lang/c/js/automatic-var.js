@@ -1,8 +1,11 @@
 var automaticVarReady=function() {
 	intro=introJs();
-	$('#restartBtn').click(function() {
-		location.reload();
-		});
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -98,9 +101,10 @@ var automaticVarReady=function() {
 			position:"right",
 			tooltipClass : "hide",
 		}, {
-			element : "#restartBtn",
-			intro : "Click to restart.",
-			position : "right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}]
 	});
 	
@@ -360,13 +364,14 @@ var automaticVarReady=function() {
 			});
 		break; 
 		
-		case "restartBtn":
-			$('.introjs-tooltip').css({'min-width' : '120px'});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
 			$("#printDefinition").addClass("z-index1000000");
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restartBtn").removeClass('visibility-hidden');
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("visibility-hidden");
 			});
-		break;
+			break;
 		}
 	});
 	

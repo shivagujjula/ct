@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/c/js-min/sopf.min.js" type="text/javascript"></script> 
+<script src="/secure/lang/c/js-min/sopf.min.js" type="text/javascript"></script>  
 <title>sample program with printf</title>
 </head>
 <style>
@@ -126,7 +126,7 @@ y {
 		</div>
 	
 	<div class="margin-top-20 col-xs-12 text-center">
-	<span class="col-xs-4 col-xs-offset-4">
+	<span class="col-xs-6 col-xs-offset-3">
  		<span class="col-xs-12">
  			<span class="col-xs-8 col-xs-offset-2">
  				<span class="col-xs-12" id="button">

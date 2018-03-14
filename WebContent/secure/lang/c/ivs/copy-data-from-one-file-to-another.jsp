@@ -16,7 +16,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js-min/cdfofta.min.js"></script>
+<script src="/secure/lang/c/js-min/cdfofta.min.js"></script> 
 <title>Copy data from one file to another</title>
 
 <style>
@@ -269,9 +269,6 @@ ol, ul {
 	<div class='text-center'>
 		<h1 class='label ct-demo-heading'>Copy data from one file to another file</h1>
 	</div>
-	<div class='buttons-div'>
-		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-	</div>
 	<div>
 		<div class='row margin-top'>
 		<div class = "col-xs-5 col-xs-offset-1">
@@ -390,6 +387,18 @@ ol, ul {
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </div>
 </body>

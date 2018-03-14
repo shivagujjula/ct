@@ -20,9 +20,10 @@ var howCLanguageWorksReady = function() {
 			intro : "",
 			tooltipClass : "hide"
 		},{
-			element : "#restart",
-			intro : "",
-			tooltipClass : "hide"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}
 		]});
 	
@@ -67,7 +68,19 @@ var howCLanguageWorksReady = function() {
 				
 			});
 			break;
-			
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn").click(function() {
+					location.reload(true);
+				});
+				$('#closeBtn').click(function() {
+					window.parent.$(".ui-dialog-titlebar-close").click();
+				});
+			});
+			break;
 		}
 	});
 	intro.start();
@@ -612,19 +625,31 @@ function removeAll() {
 	$('#arrowMark9, #arrowMark7, #arrowMark10,#arrowMark14, #arrowMark15, #arrowMark16, #arrowMark18, #line20, #line21').popover('hide');
 	$("#line4, #arrowMark7,#line19,#line20,#line21, #line17, #arrowMark11, #arrowMark14, #line16, #arrowMark9, #arrowMark10, #arrowMark15, #arrowMark17, #arrowMark16").hide();
 	intro.nextStep();
-	$('#popover1').css("z-index","0");
-	TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
-		$('#restart').popover({
+	/*$('#popover1').css("z-index","0");
+	TweenMax.to("#restartBtn", "#closeBtn",  1, {"opacity" : "1", onComplete:function() {
+		$('#restartBtn').removeClass("opacity00").popover({
 			  placement:'right',
 				content: "<div id='popover12'></div>",
 				container: '#svgDiv',
 				html: true,
 			}).popover("show");
-		var text="Click to Restart.";
+		var text="Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.";
 		typing("#popover12", text, function(){
-			$("#restart").click(function(){
+			$("#restartBtn").click(function(){
 				location.reload(); 
 			});
 		});
-	}});
+		$('#closeBtn').removeClass("opacity00").popover({
+			  placement:'left',
+				content: "<div id='popover12'></div>",
+				container: '#svgDiv',
+				html: true,
+			}).popover("show");
+		var text="Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.";
+		typing("#popover12", text, function(){
+			$('#closeBtn').click(function() {
+				window.parent.$(".ui-dialog-titlebar-close").click();
+			});
+		});
+	}});*/
 }

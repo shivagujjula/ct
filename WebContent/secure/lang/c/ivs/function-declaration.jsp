@@ -17,7 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/jquery-ui-latest.js"></script>
 	<script src="/js/typewriting.min.js"></script>
-	<script src="/secure/lang/c/js-min/fd.min.js"></script>
+	<script src="/secure/lang/c/js-min/fd.min.js"></script> 
 	
 <title>Function Declaration</title>
 
@@ -71,8 +71,17 @@
 			<pre id='example3' style='margin-top: 20px'><span id='returnType2'><b class='color-rose'>int </b></span><span id='functionName2'> gettime</span><span id='argument2'> (<b class='color-rose'>void</b>)</span><span id='semicolon2'>;</span></pre>
 		</div>
 	</div>
-	<div class="col-xs-12 text-center" id="button">
-		<button class="btn btn-warning opacity00 margin-top-20" id='restartBtn'>Restart</button>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </body>
 <script>

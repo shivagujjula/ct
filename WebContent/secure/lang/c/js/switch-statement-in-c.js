@@ -15,7 +15,13 @@ var switchStatementInCReady = function() {
 		introjs.nextStep();
 		$("#initializationValue").attr("contenteditable", false);
 	});
-	
+
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$(".allowNumbers").keydown(function(e) { // conditions to enter text
 		var max = $(this).attr("maxlength");
 		if ($.inArray(e.keyCode, [46, 8, 9, 27]) !== -1 || (e.keyCode >= 37 && e.keyCode <= 39)) {
@@ -52,7 +58,10 @@ var switchStatementInCReady = function() {
 	});
 	
 	$('.restartTutorialBtn').click(function() {
-		location.reload();
+	//	location.reload();zz
+		$(".introjs-tooltip").addClass('hide');
+		$("#restartBtn, #closeBtn").removeClass("opacity00");
+		$("#restartBtn, #closeBtn").addClass("z-index9999999");
 	});
 	
 	$("#initialization").click(function() {
@@ -287,7 +296,7 @@ function introJsGuide() {
 	$('.introjs-bullets').hide();
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button initializeBtn hidden'>Next &#8594;</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button tryNewValBtn hidden' style='margin-left:20px; margin-right:20px;'>Try with a different value</a>");
-	$(".introjs-tooltipbuttons").append("<a class='introjs-button restartTutorialBtn hidden'>Restart</a>");
+	$(".introjs-tooltipbuttons").append("<a class='introjs-button restartTutorialBtn hidden'>Skip  &nbsp;&nbsp;</a>");
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
@@ -394,11 +403,11 @@ function introJsGuide() {
 		
 		case "mainEnd":
 			introjs.refresh();
+		//	console.log('ok')
 			$('.introjs-nextbutton').addClass("opacity00");
 			$('.introjs-tooltipbuttons').show();
 			$('.introjs-helperLayer').one('transitionend', function () {
 				var text = "Control comes out of the <b class='ct-code-b-yellow'>switch</b> block and exits the main method.";
-				
 				typing(".introjs-tooltiptext", text, function() {
 					$(".tryNewValBtn").removeClass("hidden");
 					$(".restartTutorialBtn").removeClass("hidden");

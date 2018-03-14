@@ -8,10 +8,7 @@ var count = 0;
 var flag = true;
 
 var oneDimesionalArrayReady = function() {
-
-	
 	$('#typingDiv ul li').addClass('opacity00');
-	
 	var typingId;
 	var typingContent;
 	var typingInterval;
@@ -98,9 +95,11 @@ var oneDimesionalArrayReady = function() {
 			intro : "",
 			tooltipClass : "hide"
 		}, {
-			element : "#restart",
-			intro : "",
-			position : "left"
+
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}]});
 	
 	intro.onbeforechange(function(targetElement) {
@@ -436,18 +435,18 @@ var oneDimesionalArrayReady = function() {
 				});
 				break;
 				
-			case "restart":
+			case "button":
 				$('.zIndex').removeClass('zIndex');
-				$('.introjs-nextbutton').hide();
-				$("#restart").removeClass('opacity00');
-				$('.introjs-tooltip').css('min-width', '130px');
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					var text = "Click to restart.";
-	 				typing(".introjs-tooltiptext", text, function() {
-	 					$("#restart").click(function() {
-							location.reload();
-						});
-	 				});
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn").click(function() {
+ 						location.reload(true);
+ 					});
+ 					$('#closeBtn').click(function() {
+ 						window.parent.$(".ui-dialog-titlebar-close").click();
+ 					});
 				});
 				break;
 				

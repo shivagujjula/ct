@@ -1,5 +1,3 @@
-
-
 var introjs;
 var typingSpeed = 1;
 var tl;
@@ -21,9 +19,12 @@ var flowChartStudentAvgReady = function() {
 		}})
 	}})
 	
-	$("#restart").click(function() {
-		location.reload();
-	})
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 }
 
 var count = 0;
@@ -36,7 +37,7 @@ function introGuide() {
 			position : "right",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "right"
 		}]
@@ -103,7 +104,6 @@ function introGuide() {
 }
 
 function typing(selector, text, callBackFunction) {
-	
 	$(selector).typewriting( text , {
 		"typing_interval": typingSpeed,
 		"cursor_color": 'white',
@@ -164,7 +164,8 @@ function algorithmTextReveal(textStep) {
 	typing($("#stepsToEval > div:eq("+ textStep +") > div:eq(1)"), text, function() {
 		$("#stepsToEval > div:eq("+ textStep +") > div:eq(1)").append("<a class='introjs-button user-btn user-click' onclick='flowChartStep();'>Next &#8594;</a>");
 		if(textStep == 6) {
-			$("#restart").removeClass("opacity00");
+			$("#restartBtn, #closeBtn").removeClass("opacity00");
+			$("#restartBtn, #closeBtn").addClass("zIndex");
 	 	}
 	}) 
 }

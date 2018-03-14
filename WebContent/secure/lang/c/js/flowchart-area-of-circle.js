@@ -20,8 +20,11 @@ var flowchartAreaOfACircleReady = function() {
 		});
 	});
 	
-	$("#restart").click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -37,7 +40,7 @@ function introGuide() {
 			intro : "",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "right"
 		}]
@@ -163,8 +166,8 @@ function arrowAppend() {
 				$("#step" + stepCount).removeClass("animated zoomIn");
 				stepCount++;
 				if(stepCount == 6) {
-					$("#restart").removeClass("opacity00");
-					$("#restart").addClass("zIndex");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").addClass("zIndex");
 				}
 				algorithmText();
 			});

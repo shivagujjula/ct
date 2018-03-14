@@ -57,7 +57,7 @@ function introGuide() {
 			intro : "",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "right"
 		}]
@@ -297,7 +297,7 @@ function introGuide() {
 					typing("#inputVal", text, function() {
 						var text2 = "Enter two numbers. press <br><br>"
 						 + " While you are trying to read numbers using  <span class='ct-code-b-yellow'>scanf()</span> "
-						 + " you can seperate the numbers either by space or by hitting  enter between the numbers. <br><br> "
+						 + " you can separate the numbers either by space or by hitting  enter between the numbers. <br><br> "
 						 + " In this case please provide a  <span class='ct-code-b-yellow'>space</span> to sperate your numbers."
 						typing(".introjs-tooltiptext", text2, function() {
 							$("#num1").addClass("blinking-orange");
@@ -382,19 +382,25 @@ function introGuide() {
 			});
 			break;
 			
-		case "restart":
-			$(".introjs-nextbutton").hide();
-			$('.introjs-tooltip').css({'min-width' : '125px'});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to restart." 
-				typing(".introjs-tooltiptext", text, function() {
-					$("#restart").removeClass("opacity00");
-					$("#restart").click(function() {
-						location.reload();
-					})
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				$("#restartBtn").click(function() {
+					location.reload();
+				});
+				$('#closeBtn').click(function() {
+					window.parent.$(".ui-dialog-titlebar-close").click();
+				});
+
+				typing('.introjs-tooltiptext', text, function() {
 				});
 			});
 			break;
+
 		}
 	});	
 	

@@ -32,9 +32,13 @@ var operatorPrecedenceAssociativityReady = function() {
 			e.preventDefault();
 		}
 	});
-	$("#restart").click(function(){
+	$("#restartBtn").click(function(){
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+
 }
 
 function introGuide() {
@@ -74,7 +78,7 @@ function introGuide() {
 					intro : "",
 					tooltipClass : "hide"
 			   },{
-				 	element : "#restart",
+				 	element : "#button",
 					intro : "",
 					position : "right"
 				}
@@ -191,19 +195,20 @@ function introGuide() {
 				});
 			});
 		break;
-		case "restart":
+		case "button":
 			introjs.refresh();
 			$(".background-color-blue").removeClass("background-color-blue");
 			$(".user-btn").remove();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			$(".introjs-tooltip").css({"min-width": "115px"});
-			$('#restart').removeClass("opacity00");
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to restart.";
-				typing($(".introjs-tooltiptext"), text);
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
+				});
 			});
-		break;
+			break;
 		}
 	});
 	
@@ -274,7 +279,7 @@ function animationEqtnExe3() {
 	TweenMax.from("#eqtnExe3", 1, {top: topLength, left: leftLength});
 	
 	$(".introjs-tooltiptext ul").empty();
-	var text = "The sam rule applies untill all the <span class='ct-code-b-yellow'>parenthesis</span> present in the expression are evaluated.";
+	var text = "The same rule applies until all the <span class='ct-code-b-yellow'>parenthesis</span> present in the expression are evaluated.";
 	typing($(".introjs-tooltiptext"), text, function() {
 		$(".introjs-tooltipbuttons").append('<a class="introjs-button user-btn" style="display: inline-block;" onclick="animationInnerEqtnExe3()">Next &#8594;</a>');
 	});

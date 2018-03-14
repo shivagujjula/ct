@@ -4,8 +4,11 @@ var timelineLite = new TimelineLite();
 
 var functionCallReady = function() {
 	introGuide();
-	 $("#restart").click(function() {
-		 location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -78,9 +81,10 @@ function introGuide() {
 					intro : "",
 					tooltipClass : "hide",
 				},{
-			 		element : "#restart",
-					intro : "Click to restart.",
-					position : "right"
+					element : "#button",
+					intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+					position : 'right',
 				}
 			]});
 	
@@ -282,12 +286,13 @@ function introGuide() {
 				
 			});
 		break;
-		case "restart":
-			$('.introjs-tooltip').css({'min-width' : '120px'});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('#restart').removeClass("opacity00");
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
-		break;
+			break;
 		}
 	});
 	

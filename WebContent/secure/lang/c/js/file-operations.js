@@ -3,11 +3,13 @@ var typingInterval = 1;
 
 var fileOperations = function() {
 	introGuide();
-	
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+
 	x = Math.floor((Math.random() * 1024) + 2565);
 	$(".address").text(x);
 }
@@ -113,10 +115,10 @@ function introGuide() {
 					tooltipClass: 'hide',
 					textFileSteps: 'fileClose3',
 				}, {
-					element: '#restart',
-					intro: 'Click to restart.',
-					tooltipClass: '',
-					position: 'right'
+					element : "#button",
+					intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+					position : 'right',
 				} ]
 	});
 	
@@ -145,7 +147,7 @@ function introGuide() {
 					
 				case "fileWriteMode2":
 					$('#txtFile').addClass('opacity00');
-					$(".address, .fa").addClass("hide");
+					$(".address, .fa-arrow-up").addClass("hide");
 					$(".fp-address").empty();
 					$('#wModeText').val('');
 					break;
@@ -160,7 +162,7 @@ function introGuide() {
 			switch(textFileSteps) {
 				case "fileWriteMode":
 					$('#txtFile').addClass('opacity00');
-					$(".address, .fa").addClass("hide");
+					$(".address, .fa-arrow-up").addClass("hide");
 					$(".fp-address").empty();
 					$('#wModeText').val('');
 					$('#writeClose').removeAttr('style');
@@ -170,7 +172,7 @@ function introGuide() {
 						break;
 					case "fileReadMode":
 						$(".fp-address").text("null");
-						$(".fa, .address").hide();
+						$(".fa-arrow-up, .address").hide();
 						$("#fpDiv, #txtFile").addClass("opacity00");
 						$('#readClose').removeAttr('style');
 						break;
@@ -196,7 +198,7 @@ function introGuide() {
 					break;
 				case "readModeFile":
 					$(".fp-address").text("null");
-					$(".fa, .address").hide();
+					$(".fa-arrow-up, .address").hide();
 					$("#fpDiv, #txtFile").addClass("opacity00");
 					break;
 			}
@@ -358,7 +360,7 @@ function introGuide() {
 					case "fileWriteMode":
 						$(".introjs-helperLayer").one('transitionend', function() {
 							zoomInEffect("#txtFile", function() {
-								$(".address, .fa").removeClass("hide");
+								$(".address, .fa-arrow-up").removeClass("hide");
 								$("#fpDiv").addClass("z-index");
 								$('.address').effect( "transfer", { to: $(".panel-body"), className: "ui-effects-transfer" }, 1000, function() {
 									$(".fp-address").text($(".address").text());
@@ -379,7 +381,7 @@ function introGuide() {
 							$('.introjs-helperLayer').one('transitionend', function() {
 								if (introjs._direction == "forward") {
 									$(".fp-address").text("null");
-									$(".fa, .address").hide();
+									$(".fa-arrow-up, .address").hide();
 									$("#fpDiv").addClass("opacity00");
 									zoomOutEffect("#txtFile", function() {
 										setTimeout(function() {
@@ -388,7 +390,7 @@ function introGuide() {
 									});
 								} else {
 									$(".fp-address").text();
-									$(".fa, .address").show();
+									$(".fa-arrow-up, .address").show();
 									$("#fpDiv, #txtFile").removeClass("opacity00");
 									setTimeout(function() {
 										introjs.previousStep();
@@ -402,7 +404,7 @@ function introGuide() {
 							$('.introjs-helperLayer').one('transitionend', function() {
 								if (introjs._direction == "forward") {
 									$(".fp-address").text("null");
-									$(".fa, .address").hide();
+									$(".fa-arrow-up, .address").hide();
 									$("#fpDiv").addClass("opacity00");
 									zoomOutEffect("#txtFile", function() {
 										setTimeout(function() {
@@ -424,7 +426,7 @@ function introGuide() {
 							$('.introjs-helperLayer').one('transitionend', function() {
 								if (introjs._direction == "forward") {
 									$(".fp-address").text("null");
-									$(".fa, .address").hide();
+									$(".fa-arrow-up, .address").hide();
 									$("#fpDiv").addClass("opacity00");
 									zoomOutEffect("#txtFile", function() {
 										setTimeout(function() {
@@ -591,10 +593,12 @@ function introGuide() {
 				});
 				break;
 				
-			case "restart":
-				$('.introjs-tooltip').css({'min-width' : '110px'});
+			case "button":
+				console.log("....");
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#restart").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
 				});
 				break;
 		}

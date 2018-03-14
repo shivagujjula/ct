@@ -2,12 +2,10 @@ var intro;
 var l;
 var x;
 
-
-
 var binaryToDecimalConvetionReady = function()	{
 	intro = introJs();
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {

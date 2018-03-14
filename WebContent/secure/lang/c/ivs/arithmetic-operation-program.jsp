@@ -16,10 +16,9 @@
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/introjs-ct.css" />
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/introjs-ct.css"/>
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/css/animate.css" />
-
 <script src="/secure/lang/c/js-min/aop.min.js"></script>
 
 <title>Arithmetic Operations</title>
@@ -280,7 +279,19 @@
 		</div>
 	</div>
 </div>
-<div><button type="button" class="col-sm-1 col-sm-offset-6 btn btn-warning opacity00" id="restartBtn" style="margin-top: 30px;">Restart </button></div>
+<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
+
 <script>
 
 $(document).ready(function() {

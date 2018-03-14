@@ -48,8 +48,9 @@ var flowchartSymbolsReady = function() {
 						tooltipClass: 'hide'
 					},
 					{
-						element : "#restart",
-						intro : 'Click to restart.',
+						element : "#button",
+						intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+								"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
 						position : 'right',
 						tooltipClass: 'hide'
 					} 
@@ -157,7 +158,15 @@ var flowchartSymbolsReady = function() {
 						$('.introjs-nextbutton').show();
 					
 			break;
+			case "button":
+				$(".introjs-tooltip").removeClass("hide");
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
 				
+				});
+				break;
 			case 'flowChart' :
 				 
 					intro._introItems[intro._currentStep]["isCompleted"] = false;
@@ -175,15 +184,7 @@ var flowchartSymbolsReady = function() {
 				 
 			break;
 			
-			case 'restart':
-				$("#restart").removeClass("opacity00");
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$(".introjs-tooltip").removeClass("hide");
-					typing(".introjs-tooltiptext", text, function() {
-						$(".introjs-tooltip").css({"min-width": "115px"});
-					})
-				});
-			break;
+				
 			 case ElementId:
 				 				
 				$(".introjs-helperLayer").one("transitionend", function() {
@@ -207,9 +208,12 @@ var flowchartSymbolsReady = function() {
 	$('.introjs-prevbutton').hide();
 	$('.introjs-skipbutton').hide();
 	
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload(true);
-	})
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	 
 }
 

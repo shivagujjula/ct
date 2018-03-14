@@ -8,8 +8,11 @@ var diffBetweenStructureAndUnionReady = function() {
 	        objEvent.preventDefault(); // stops its action
 	    }
 	});
-	$("#restart").click(function() {
-		location.reload(); 
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 		intro = introJs();
 		intro.setOptions ({
@@ -101,10 +104,10 @@ var diffBetweenStructureAndUnionReady = function() {
 				tooltipClass: 'hide',
 				position:"left"
 			},{
-				element : "#restart",
-				intro : "",
-				position:"right",
-				tooltipClass: "restart-tooltip-min-width"
+				element : "#button",
+				intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+				position : 'right',
 			}
 		]});
 			
@@ -397,16 +400,13 @@ var diffBetweenStructureAndUnionReady = function() {
 					});
 				});
 				break;
-			case "restart":
-				$(".introjs-helperLayer ").one('transitionend', function() {
-					TweenMax.to("#restart", 1, {"opacity" : "1", onComplete:function() {
-						var text = "Click to restart.";
-						typing(".introjs-tooltiptext", text, function() {
-						});
-					}});
+			case "button":
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
 				});
-			break;
-			
+				break;
 			}
 		});
 		intro.start();

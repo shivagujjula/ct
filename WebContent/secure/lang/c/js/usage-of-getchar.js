@@ -9,9 +9,12 @@ var usageOfGetcharReady = function() {
 			e.preventDefault();
 		}
 	});
-	$("#restart").click(function(){
+	$("#restartBtn").click(function(){
 		$("#inputChar, #inputChar2").val("");
 		location.reload();
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -85,8 +88,9 @@ function introGuide() {
 			animateStep : 'printPreline2',
 			tooltipClass : 'hide'
 		}, {
-			element :"#restart",
-			intro : "Click to restart.",
+			element :"#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
 			position : 'right',
 		}]
 	});
@@ -227,7 +231,7 @@ function introGuide() {
 			break;
 		case 'line4':
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				var text = "The <span class='ct-code-b-yellow'>ch</span> is initialized with the character that is return by the "+
+				var text = "The <span class='ct-code-b-yellow'>ch</span> is initialized with the character that is returned by the "+
 					"<span class='ct-code-b-yellow'>getchar()</span> function.";
 				typing('.introjs-tooltiptext', text, function() {
 					$(".introjs-tooltip").removeClass("hide");
@@ -274,7 +278,7 @@ function introGuide() {
 								if (introjs._direction=="forward") {
 									$("#line5").effect( "transfer", { to: $("#printLineInConsole"), className: "ui-effects-transfer" }, 1500 , function() {
 										$("#printLineInConsole").removeClass("opacity00");
-										var text = "The given input character is :" + $("#inputChar").val();
+										var text = "The given input character is : " + $("#inputChar").val();
 									typing("#printLineInConsole", text, function() {
 										 setTimeout(function() {
 										introjs.nextStep()
@@ -343,7 +347,7 @@ function introGuide() {
 			break;
 		case 'preline1':
 			$('.introjs-helperLayer').one("transitionend", function() {
-				var text = "In this particular statement you will notice the value return by <span class='ct-code-b-yellow'>getchar()</span> "+
+				var text = "In this particular statement you will notice the value returned by <span class='ct-code-b-yellow'>getchar()</span> "+
 				"is stored as an <span class='ct-code-b-yellow'>int</span>. Which means the character ASCII code will be stored in the "+
 				"<span class='ct-code-b-yellow'>ascii_code</span> variable.";
 				typing(".introjs-tooltiptext", text, function() {
@@ -395,7 +399,7 @@ function introGuide() {
 								if (introjs._direction=="forward") {
 										$("#preline2").effect( "transfer", { to: $("#printpreLine1"), className: "ui-effects-transfer" }, 1500 , function() {
 											$("#printpreLine1").removeClass("opacity00");
-											var text = "The character represented by ascii_code is :" + asciiVal;
+											var text = "The ascii_code read from input is : " + asciiVal;
 											asciiVal = givenInput.charCodeAt(0);
 											typing("#printpreLine1", text, function() {
 												setTimeout(function() {
@@ -432,16 +436,16 @@ function introGuide() {
 				break;
 			}
 			break;
-		case "restart":
-			$(".introjs-skipbutton, .introjs-nextbutton, .introjs-prevbutton").hide();
+
+		case "button":
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
-			$('.introjs-tooltipbuttons').addClass("hide");
-			$('.introjs-helperLayer').one("transitionend", function() {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
-			break;
+			break;	
 		}
 	});
 	

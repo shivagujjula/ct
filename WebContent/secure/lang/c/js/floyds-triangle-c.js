@@ -6,9 +6,12 @@ var typingSpeed = 1;
 	var k = 1;
 
 var floydsTriangleCReady = function() {
-	$("#restart").click(function() {
-		location.reload();
-	})
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	
 	tl = new TimelineLite();
 	$('#rowValue').attr('contenteditable','false');
@@ -99,9 +102,10 @@ var floydsTriangleCReady = function() {
 			tooltipClass : "hide",
 			action : "outputPrintingStart"
 		}, {
-			element : "#restart",
-			intro : "",
-			position : "right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}]});
 	
 	
@@ -205,18 +209,14 @@ var floydsTriangleCReady = function() {
 			});
         	break;
         	
-		case "restart":
+		case "button":
 			$('.user-btn').remove();
-			$('.introjs-tooltip').css("min-width","130px");
-			$(".introjs-nextbutton").hide();
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('#restart').removeClass('opacity00');
-				var text = "Click to restart.";
-	        	typing(".introjs-tooltiptext", text, function() {
-	        	});
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
-        	break;
-        	
+			break; 	
         case "totalForLoop":
 			$('#rowValue').attr('contenteditable','false');
 			$(".introjs-nextbutton, .introjs-prevbutton").hide();

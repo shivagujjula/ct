@@ -31,7 +31,6 @@ var assignmentOperatorsReady = function() {
 		}
 	});
 	
-	
 	var options = [
 	              "<option value = 'none'>--</option>",
 	               "<option value = '='> = </option>",
@@ -41,8 +40,7 @@ var assignmentOperatorsReady = function() {
 	
 	
 	$("#selectAssign").on("change", function() {
-		
-		console.log('in the change function...');
+	//	console.log('in the change function...');
 		var value = $(this).val();
 		if ($("#selectAssign").val() == "0") {
 			console.log(" in the if condition of change.. ");
@@ -127,10 +125,11 @@ var assignmentOperatorsReady = function() {
 			$(".introjs-nextbutton").addClass("visibility-hidden");
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "You can check all the operators by selecting <span class='ct-code-b-yellow'>assignment</span> again.<br/>"
-							+" <div class='text-center'>(or)</div> Click to <span class='ct-code-b-yellow'>restart</span> the session.";
+							+" <div class='text-center'>(or)</div> Click to <span class='ct-code-b-yellow'>Restart</span> the session.<br/>"
+							+"  <div class='text-center'>(or)</div> Click on <span class='ct-code-b-yellow'>Close </span> to close the session.";
 				typing(".introjs-tooltiptext", text, function() {
-					$("#restart").removeClass("opacity00");
-					$("#restart").addClass("zIndex");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").addClass("zIndex");
 				});
 			});
 		break;
@@ -163,15 +162,17 @@ var assignmentOperatorsReady = function() {
 			
 		});
 	
-		$("#restart").click(function() {
+		$("#restartBtn").click(function() {
 			location.reload(true);
 		})
-		
+		$('#closeBtn').click(function() {
+			window.parent.$(".ui-dialog-titlebar-close").click();
+		});
+
 		
 	$("#submit").click(function() {
-		
 		if (execute) {
-			console.log(' in the if condition of submit..');
+		//	console.log(' in the if condition of submit..');
 			intro.nextStep();
 			$(".next-button").hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -190,7 +191,7 @@ var assignmentOperatorsReady = function() {
 							$("#operatorExpY").fadeIn(600, function() {
 								execute = false;
 								switchCondition();
-								var text= "Each variable occupies 2 bytes in the memory, because the given variables are of <span class='ct-code-b-yellow '>int</span> data type.";
+								var text= "Each variable occupies <span class='ct-code-b-yellow'>2</span> bytes in the memory, because the given variables are of <span class='ct-code-b-yellow '>int</span> data type.";
 								typing(".introjs-tooltiptext", text, function() {
 									$(".introjs-nextbutton").hide();
 									$(".next-button").show();
@@ -204,10 +205,10 @@ var assignmentOperatorsReady = function() {
 				//switchCondtion();
 		});
 		} else {
-			console.log('in the else...pp')
+		//	console.log('in the else...pp')
 			$('#operatorExpX, #operatorExpY').empty();
 			switchCondition(function() {
-				console.log(' in the else statment of switch.. ');
+		//		console.log(' in the else statment of switch.. ');
 				$(".next-button").show();
 			});
 		}		
@@ -301,7 +302,6 @@ function switchCondition(callBackFunction) {
 var next = 1;
 	function nextClick() {
 	$(".next-button").click(function() {
-		
 		var selectSub = $("#selectSub option:selected").val();
 		$(".next-button").hide();
 		if (selectSub == "+=") {

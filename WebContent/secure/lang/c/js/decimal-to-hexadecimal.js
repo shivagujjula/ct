@@ -104,7 +104,7 @@ var decimalToHexaDecimalReady = function() {
 		 window.location.search = "?restart=1";
 	});
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 function converter(decimal,base) {

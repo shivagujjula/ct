@@ -117,14 +117,22 @@ var relationalOperatorsReady = function() {
 			});
 		break;
 		case "animationDiv":
-			
+			$(".introjs-tooltip").css("min-width","275px");
 			$('.introjs-nextbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
 				var text = "Feel free to try other combinations to learn how <span class='ct-code-b-yellow'>relational operators</span> work.";
 				typing(".introjs-tooltiptext", text, function() {
 					$(".introjs-nextbutton").hide();
 					$("#firstNum").val("");
-					$("#secondNum").val("")
+					$("#secondNum").val("");
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					$("#restartBtn, #closeBtn").addClass("zIndex9999999");
+					$("#restartBtn").click(function() {
+						location.reload(true);
+					})	
+					$('#closeBtn').click(function() {
+						window.parent.$(".ui-dialog-titlebar-close").click();
+					});
 					$("#restart").removeClass("opacity00");
 					$("#restart").addClass("zIndex9999999");
 					$("#submit").attr('disabled','disabled');
@@ -168,9 +176,6 @@ var relationalOperatorsReady = function() {
 		}
 	});
 					
-	$("#restart").click(function() {
-		location.reload(true);
-	})	
 	
 	$('.dropdown').on( 'click', '.dropdown-menu li a', function() { 
 		$('.dropdown-menu').css({'min-width':$(".dropdown").width()})

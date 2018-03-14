@@ -6,7 +6,9 @@ var readPrintStringUsingScanfPrintfReady = function() {
 		$("#hiddenTotalEnterChar").val('')
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	introjs= introJs();
 	introjs.setOptions({
 		showStepNumbers : false,
@@ -75,9 +77,10 @@ var readPrintStringUsingScanfPrintfReady = function() {
 						intro :'',
 						position:"bottom"
 					},{
-						element :'#restartBtn',
-						intro :'',
-						position:"right"
+						element : "#button",
+						intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+						position : 'right',
 					}]
 	});
 	introjs.onbeforechange(function(targetElement) {
@@ -341,14 +344,13 @@ var readPrintStringUsingScanfPrintfReady = function() {
 			});
 			break;
 			
-		case "restartBtn" :
+		case "button":
 			$(".introjs-tooltip").css("min-width", "-moz-max-content");
 			$(".introjs-tooltip").css("min-width", "max-content");
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 1, "", function() {
-																						
-				});
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
 			break;
 		}

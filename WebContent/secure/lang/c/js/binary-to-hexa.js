@@ -12,7 +12,7 @@ var temp;
 var binaryToHexaReady = function() {
 	introGuide();
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	if ($("#binaryValue").val().length == 0) {
 		 $("#convert").attr("disabled", true);

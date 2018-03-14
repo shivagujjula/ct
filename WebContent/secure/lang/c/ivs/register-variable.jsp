@@ -178,9 +178,18 @@ y {
 			<div class="text-center">
 				<h1 class="label ct-demo-heading text-center">Register variable</h1>
 			</div> 
-			<div class='buttons-div'>
-				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-			</div> 
+			<div class="buttons-div col-xs-12">
+				<span class="col-xs-6 col-xs-offset-3">
+						<span class="col-xs-12">
+							<span class="col-xs-8 col-xs-offset-2">
+								<span class="col-xs-12" id="button">
+								<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+								<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+							</span>
+						</span>
+					</span>
+				</span>
+			</div>
 			<div class="col-xs-12">
 				<div id="printDefinition" class="col-xs-8 col-xs-offset-2 box-border visibility-hidden padding0" 
 					style='margin-bottom:20px; margin-top:10px; font-family: monospace; padding: 8px;'>

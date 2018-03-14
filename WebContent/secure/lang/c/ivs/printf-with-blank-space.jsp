@@ -18,8 +18,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/secure/lang/c/js-min/pwbs.min.js"></script>
-
+<script src="/secure/lang/c/js-min/pwbs.min.js"></script>  
 <title>printf.jsp</title>
 
 <style type="text/css">
@@ -208,9 +207,18 @@ div,span {
 			<div class="text-center">
 				<h1 class="label ct-demo-heading text-center">Additional features of  printf()</h1>
 			</div> 
-			<div class='buttons-div'>
-				<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
-			</div> 
+			<div class="buttons-div col-xs-12">
+				<span class="col-xs-6 col-xs-offset-3">
+			 		<span class="col-xs-12">
+			 			<span class="col-xs-8 col-xs-offset-2">
+			 				<span class="col-xs-12" id="button">
+								<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+								<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+							</span>
+						</span>
+					</span>
+				</span>
+			</div>
 			<div class="col-xs-12">
 				<div id="printfDefinition" class="col-xs-6 col-xs-offset-3 box-border opacity00">
 					Let us learn how to use <span class = "ct-code-b-green">comma</span> and 

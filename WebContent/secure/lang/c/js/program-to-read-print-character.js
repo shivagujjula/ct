@@ -20,7 +20,9 @@ $("#typewritingId").addClass('hidden');
 	$("#restartBtn").click(function() {
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	intro = introJs();
 	intro.setOptions({
 		showStepNumbers : false,
@@ -95,15 +97,15 @@ $("#typewritingId").addClass('hidden');
 						tooltipClass: "hide",
 						position:"bottom"
 					},{
-						element :'#restartBtn',
-						intro :'',
-						position:"left"
+						element : "#button",
+						intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+						position : 'right',
 					}]
 	});
 	intro.onbeforechange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
 		case "line1" :
 			
 			break;
@@ -334,27 +336,27 @@ $("#typewritingId").addClass('hidden');
 		case "consoleId" :
 			$('.introjs-nextbutton').hide();
 			if(intro._currentStep == 6) {
-						setTimeout(function() {
-							if (intro._direction=="forward") {
-								$('.introjs-helperLayer ').one('transitionend', function() {
-									//$("#hiddenTypingChar").removeClass("hidden");
-									typing("#typeChar", "<span id='totalBlinkText'>Enter a Character : <span id='blinkChar'><input id='in' maxlength='0' tabindex='0' value=''/></span></span>", 1, "",function() {
-										//$("#in").focus();
-									setTimeout(function() {	
-									intro.nextStep()
-									}, 500);
-									});
-								});
-							} else {
-								intro.previousStep()
-							}
+				//setTimeout(function() {
+					if (intro._direction=="forward") {
+						$('.introjs-helperLayer ').one('transitionend', function() {
+							//$("#hiddenTypingChar").removeClass("hidden");
+							typing("#typeChar", "<span id='totalBlinkText'>Enter a Character : <span id='blinkChar'><input id='in' maxlength='0' tabindex='0' value=''/></span></span>", 1, "",function() {
+								//$("#in").focus();
+							setTimeout(function() {	
+							intro.nextStep()
+							}, 500);
+							});
+						});
+					} else {
+						setTimeout(function() {	
+							intro.previousStep()
 						}, 500);
-					
-			
+					}
+			//	}, 500);
 			} else if(intro._currentStep == 11) {
 				$('.introjs-helperLayer ').one('transitionend', function() {
 						//$("#putValueId").focus();
-						setTimeout(function() {
+					//	setTimeout(function() {
 							if (intro._direction=="forward") {
 								$("#enterHiddenToltal").removeClass("opacity00");
 								typing("#totalEnterChar", "The entered character is : <span><input id='putValueId' maxlength='0' tabindex='0' value=''/></span> ", 1, "",function() {
@@ -365,7 +367,7 @@ $("#typewritingId").addClass('hidden');
 							} else {
 								intro.previousStep()
 							}
-						}, 500);
+					//	}, 500);
 					});
 				
 			}
@@ -384,15 +386,14 @@ $("#typewritingId").addClass('hidden');
 			});
 			break;
 			
-		case "restartBtn" :
-			$('.introjs-tooltip').css('min-width', '125px');
-			$('.introjs-nextbutton').hide();
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
-				});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
 			break;
+
 		}
 	});
 	intro.start();
@@ -411,8 +412,10 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		"cursor_color": cursorColor
 	}, function() {
 		$(typingId).removeClass('typingCursor');
-		typingCallbackFunction();
-		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		if (typeof typingCallbackFunction === "function") {
+			typingCallbackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
 		
 	});
 }

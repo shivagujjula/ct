@@ -20,8 +20,11 @@ var largestThreeNumbers = function() {
 		});
 	});
 	
-	$("#restart").click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -37,7 +40,7 @@ function introGuide() {
 			intro : "",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
+			element : "#button",
 			intro : "",
 			position : "right"
 		}]
@@ -55,15 +58,14 @@ function introGuide() {
 			
 			break;
 			
-			case "restart":
+			case "button":
 				$('.introjs-nextbutton').hide();
+				$(".introjs-tooltip").css("min-width","380px");
 				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#restart").removeClass("opacity00");
-					var text = "Click to restart.";
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+								"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
 					typing(".introjs-tooltiptext", text, function() {
-						$("#restart").click(function() {
-							location.reload();
-						});
 					});
 				});
 				
@@ -132,7 +134,7 @@ function algorithmText() {
 			num2 = 6;
 			x= 77;
 			y = 41.5;
-			var text = "If A > B is false, then check the condition B > C";
+			var text = "If A > B is false, then check the condition B > C.";
 		} else if(stepCount == 6) {
 			num1 = 7;
 			num2 = 8;
@@ -212,7 +214,7 @@ function flowBox() {
 	}
 	if(stepCount == 10) {
 		$("#step" + (stepCount-1)).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {
-			
+			introjs.nextStep();
 		});
 	} else {
 		$("#step" + stepCount).removeClass("opacity00").addClass("animated zoomIn").one('animationend', function() {

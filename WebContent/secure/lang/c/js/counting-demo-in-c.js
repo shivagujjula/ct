@@ -189,7 +189,7 @@ var countingDemoInCReady = function() {
 		}
 	});
 	
-	$('#restart').click(function() {
+	$('#restartBtn').click(function() {
 		$(this).addClass("opacity00");
 		continueBtnCount = 0;
 		introjsNextBtnCount = 0;
@@ -227,7 +227,11 @@ var countingDemoInCReady = function() {
 		$("#javaCodeDiv").addClass("opacity00");
 		$("#animationDiv .completed").addClass("opacity00");
 		$("#outputDiv").addClass("opacity00");
-		introjs.goToStep(2);
+	//introjs.goToStep(2);
+		location.reload();
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 function introJsGuide() {
@@ -253,9 +257,8 @@ function introJsGuide() {
 			element : '#outputDiv',
 			tooltipClass : 'hide'
 		}, {
-			element: "#restart",
+			element: "#button",
 			intro : "",
-			tooltipClass: "introjs-tooltip-min-width-custom",
 			position: "right"
 		}]
 	});
@@ -354,8 +357,8 @@ function introJsGuide() {
 			});*/
 		break;
 			
-		case "restart":
-			/*$('.introjs-tooltipbuttons').hide();
+		/*case "restart":
+			$('.introjs-tooltipbuttons').hide();
 			$('.introjs-tooltiptext').css("min-width", "100px");
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$("#restart").fadeTo(1000, 1, function() {
@@ -366,8 +369,8 @@ function introJsGuide() {
 				typing(".introjs-tooltiptext", text, function() {
 					
 				});
-			});*/
-		break;
+			});
+		break;*/
 		}
 	});
 	
@@ -469,20 +472,17 @@ function introJsGuide() {
 			});
 		break;
 			
-		case "restart":
-			$('.introjs-tooltipbuttons').hide();
-			$('.introjs-tooltiptext').css("min-width", "100px");
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restart").fadeTo(1000, 1, function() {
-					$(this).css("opacity", "");
-				});
-				$("#restart").removeClass("opacity00");
-				var text = "Click to restart."
-				typing(".introjs-tooltiptext", text, function() {
-					
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
 				});
 			});
-		break;
+			break;
 		}
 	});
 	

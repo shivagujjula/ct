@@ -28,7 +28,6 @@ function introFunction() {
 		$('.introjs-nextbutton').hide();
 		$('.introjs-helperLayer').one('transitionend', function() {
 			switch (elementId) {
-			
 				case "matrixRowInterChange" :
 					$("#bodyContaint").removeClass("opacity00");
 					$('.introjs-tooltip').removeClass('hide');
@@ -213,7 +212,7 @@ function introFunction() {
 							for (var i = 0; i <= 8; i++) {
 								$("#aoutVal" + i).text($("#sortEle" + i).text());
 							}
-							introNextSteps("#restartBtn", "restartBtn", 'bottom');
+							introNextSteps("#button", "restartBtn", 'right');
 							transferEffect("#values", "#afterValue", function() {
 								scrollToBottom(valIndex);
 								setTimeout(function() {
@@ -260,16 +259,23 @@ function introFunction() {
 					});
 				break;
 				
-				case "restartBtn":
-					$("#restartBtn").removeClass('opacity00');
-					$('.introjs-tooltip').removeClass('hide').css('min-width','200px');
-					text = 'Click to restart.';
-					typing('.introjs-tooltiptext', text, function() {
-						$('#restartBtn').click(function() {
-							location.reload();
+				case "button":
+					$('.introjs-tooltip').removeClass('hide').css("min-width","380px");
+					$(".introjs-tooltipbuttons").hide()
+					$(".introjs-helperLayer").one("transitionend", function() {
+						$("#restartBtn, #closeBtn").removeClass("opacity00");
+						var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+						typing('.introjs-tooltiptext', text, function() {
+						$("#restartBtn").click(function() {
+							location.reload(true);
+						});
+						$('#closeBtn').click(function() {
+							window.parent.$(".ui-dialog-titlebar-close").click();
+						});
 						});
 					});
-				break;
+					break;
 			}
 		});
 	});

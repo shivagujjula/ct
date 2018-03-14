@@ -19,7 +19,9 @@ var conditionalOperatorReady = function() {
 	$('#restartBtn').click(function() {
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	introJsFunction();
 	
 	$("[contenteditable=true]").on("keydown", function(e) {
@@ -103,9 +105,9 @@ function introJsFunction() {
 			tooltipClass : "hide"
 		},
 		{
-			element : "#restartBtn",
-			intro : "Click to restart.",
-			tooltipClass: "introjs-tooltip-min-width-custom",
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
 			position : "right"
 		}
 		]});
@@ -154,7 +156,6 @@ function introJsFunction() {
 			if (introjs._currentStep != 0) {
 				$('.introjs-prevbutton').show();
 			}
-
 			$('.introjs-nextbutton').show();
 			return;
 		}
@@ -330,9 +331,11 @@ function introJsFunction() {
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
 			});
 		break;
-		case "restartBtn":
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restartBtn").removeClass('visibility-hidden');
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass('visibility-hidden');
 			});
 		break;
 		}

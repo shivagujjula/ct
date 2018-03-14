@@ -68,9 +68,9 @@ var printfWithPlusReady = function() {
 				tooltipClass : "hide",
 				animateStep: "plusWithZero"
 			},{
-				element : "#restartBtn",
-				intro : "Click to restart.",
-				tooltipClass: "introjs-tooltip-min-width-custom",
+				element : "#button",
+				intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
 				position : "right"
 			}]
 	});
@@ -448,10 +448,14 @@ var printfWithPlusReady = function() {
 					}
 				break;
 				
-				case "restartBtn":
-					$("#printfDefinition").removeClass("z-index1000000");
-					$("#restartBtn").removeClass('visibility-hidden');
-				break;
+				case "button":
+					$(".introjs-tooltip").css("min-width","380px");
+					$(".introjs-tooltipbuttons").hide()
+					$(".introjs-helperLayer").one("transitionend", function() {
+						$("#printfDefinition").removeClass("z-index1000000");
+						$("#restartBtn, #closeBtn").removeClass("visibility-hidden");
+					});
+					break;
 			}
 		});
 	});
@@ -476,9 +480,12 @@ var printfWithPlusReady = function() {
 			}});
 		}});
 	}});
-	
 	$('#restartBtn').click(function() {
 		location.reload();
+	});
+
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 

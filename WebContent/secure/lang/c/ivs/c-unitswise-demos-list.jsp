@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/custom-styles.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-all.js"></script>
@@ -14,6 +14,9 @@
 <style type="text/css">
 .fa-check {
 	color: green;
+}
+.fa-close {
+	color: red;
 }
 </style>
 <script type="text/javascript">
@@ -62,6 +65,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -76,6 +80,7 @@
 								href="javascript:opendialog('History of C Language', 'c-language-timeline.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">History of C Language</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Ajay</td>
 						<td>Sekhar -- success</td>
@@ -90,6 +95,7 @@
 								href="javascript:opendialog('Generations of Computers', 'generation-of-computers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : red">Generations of Computers</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Shanthan</td>
 						<td></td>
@@ -104,6 +110,7 @@
 								 'generations-of-programming-languages.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> 
 								 &emsp; <span style = "color : red">Generations of programming languages</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Anil</td>
 						<td></td>
@@ -118,6 +125,7 @@
 								href="javascript:opendialog('C program life cycle', 'c-program-life-cycle.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C program life cycle</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Mallika</td>
 						<td>Sekhar -- success</td>
@@ -133,6 +141,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of #include</span>	
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil & Mahesh / Raj</td>
 						<td>Sekhar -- suceess</td>
 						<td>21-09-2016</td>
@@ -146,6 +155,7 @@
 								href="javascript:opendialog('C Identifiers', 'c-identifiers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">C Identifiers</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Mahesh</td>
 						<td>Sekhar -- suceess</td>
@@ -160,6 +170,7 @@
 								href="javascript:opendialog('Coding Conventions in a C program', 'usage-of-spaces-and-tabs-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Coding Conventions in a C program</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Pavan</td>
 						<td>Sekhar -- suceess</td>
@@ -185,6 +196,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>28-10-2016</td>
@@ -201,6 +213,7 @@
 							</div>
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Live-Demo / Raj</td>
 						<td>Ramana -- success</td>
@@ -219,6 +232,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>20-08-2016</td>
@@ -235,6 +249,7 @@
 							</div>
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Live-Demo / Raj</td>
 						<td>Ramana -- success</td>
@@ -253,6 +268,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>28-09-2016</td>
@@ -269,6 +285,7 @@
 							</div>
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Raj</td>
 						<td>Sekhar -- success</td>
@@ -287,6 +304,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>20-08-2016</td>
@@ -303,6 +321,7 @@
 							</div>
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Live-Demo / Raj</td>
 						<td>Ramana -- success</td>
@@ -321,6 +340,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Raj</td>
 						<td>Sekhar -- suceess</td>
 						<td>29-09-2016</td>
@@ -338,6 +358,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>28-09-2016</td>
@@ -354,6 +375,7 @@
 							</div>
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div> 
 						 </td>
+						 <td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Raj</td>
 						<td>Sekhar -- success</td>
@@ -372,6 +394,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Raj</td>
 						<td>Sekhar -- suceess</td>
 						<td>01-10-2016</td>
@@ -389,6 +412,7 @@
 							<div>(Available in C, C++, and Java from <b>secure/lang/c/ivs</b>)</div>	
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>30-09-2016</td>
@@ -401,6 +425,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('How a C language works', 
 								'how-c-language-works.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 									 <span style = "color : red">How a C language works (It is Not Required)</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Ramya</td>
 						<td>Sekhar -- success</td>
@@ -417,6 +442,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -431,6 +457,7 @@
 								href="javascript:opendialog('Different Data-types in C', 'datatypes-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Different Data-types in C</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -445,6 +472,7 @@
 								href="javascript:opendialog('int Data-type', 'int-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">int Data-type </span>
 						 </td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -459,6 +487,7 @@
 								href="javascript:opendialog('short int Data-type', 'short-int-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">short int Data-type</span>
 					 	</td>
+					 	<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -473,6 +502,7 @@
 								href="javascript:opendialog('long int Data-type', 'long-int-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">long int Data-type</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -485,6 +515,7 @@
 						<td>	
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('float Data-type', 'float-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> float Data-type</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td>Sekhar -- success</td>
@@ -496,6 +527,7 @@
 						<td>	
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('double Data-type', 'double-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> double Data-type</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Raj </td>
 						<td>Sekhar -- success</td>
@@ -509,6 +541,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('char Data-type', 'char-data-type.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">char Data-type</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -523,6 +556,7 @@
 								href="javascript:opendialog('Constants in C', 'constants-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Constants in C</span>
 					 	</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -538,6 +572,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">explanation of #define</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil & Mahesh / Raj</td>
 						<td>Sekhar -- suceess</td>
 						<td>21-09-2016</td>
@@ -552,6 +587,7 @@
 								  <span style = "color : green">explanation of	one's complement</span>
 					  	</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Raj</td>
 						<td>Sekhar -- success</td>
 						<td>16-08-2016</td>
@@ -564,6 +600,7 @@
 								'twos-complement.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">explanation of two's complement</span>
 							</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Raj</td>
 						<td>Sekhar -- success</td>
@@ -580,6 +617,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -594,6 +632,7 @@
 								href="javascript:opendialog('Statements in C language', 'statements-in-C.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Statements in C language</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- suceess</td>
@@ -608,6 +647,7 @@
 								href="javascript:opendialog('Execution of Arithmetic Operators', 'arithmetic-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Arithmetic Operators</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td>Sekhar -- success</td>
@@ -622,6 +662,7 @@
 								href="javascript:opendialog('Execution of Relational Operators', 'relational-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Relational Operators</span>
 					 	</td>
+					 	<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td>Sekhar -- success</td>
@@ -636,6 +677,7 @@
 								href="javascript:opendialog('Execution of Logical Operators', 'logical-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Logical Operators</span>
 					 	</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td>Sekhar -- success</td>
@@ -676,6 +718,7 @@
 
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna / Anil</td>
 						<td>Sekhar -- success</td>
 						<td>17-08-2016</td>
@@ -689,6 +732,7 @@
 								href="javascript:opendialog('Execution of Assignment Operator', 'assignment-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Assignment Operator</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td>Sekhar -- success</td>
@@ -711,6 +755,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Anil</td>
 						<td>Sekhar -- suceess</td>
 						<td>17-08-2016</td>
@@ -725,6 +770,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise AND
 								 Operator</span>
 					 	</td>
+					 	<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Anil</td>
 						<td>Sekhar -- success</td>
@@ -740,6 +786,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise OR Operator</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Anil</td>
 						<td>Sekhar -- success</td>
 						<td>19-08-2016</td>
@@ -753,6 +800,7 @@
 								'bitwise-xor-operator.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Execution of Bitwise XOR Operator</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Anil</td>
 						<td>Sekhar -- success</td>
@@ -768,6 +816,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Execution of Bitwise LeftShif</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Anil</td>
 						<td>Sekhar -- success</td>
 						<td>23-08-2016</td>
@@ -781,6 +830,7 @@
 								'bitwise-right-shift-operator.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green">Execution of Bitwise RightShift</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Anil</td>
 						<td>Sekhar -- success</td>
@@ -797,6 +847,7 @@
 									complement operator</span> 
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Anil</td>
 						<td>Sekhar -- success</td>
 						<td>27-08-2016</td>
@@ -809,6 +860,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Special Operators', 'special-operators.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Special Operators</span>
 						 </td>
+						 <td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / anil</td>
 						<td>Sekhar -- success</td>
@@ -823,7 +875,8 @@
 								'operator-precedence-table.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Operator Precedence and Associativity Table</span>
 						</td>
-						<td>No need</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil</td>
 						<td>Sekhar -- success</td>
 						<td>29-08-2016</td>
@@ -837,6 +890,7 @@
 								 'operator-precedence-associativity.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green">Operator Precedence and Associativity</span>
 					 	</td>
+					 	<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Anil</td>
 						<td>Sekhar -- success</td>
@@ -851,6 +905,7 @@
 								href="javascript:opendialog('Type Conversion', 'implicit-type-conversion.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;  <span style = "color : green">Implicit Type Conversion</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Durga Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -865,6 +920,7 @@
 								 'explicit-type-conversion.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green">Explanation of Explicit Type Conversion</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Suresh</td>
 						<td>Sekhar -- success</td>
@@ -881,6 +937,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -896,6 +953,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of #include</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Swathi</td>
 						<td>Sekhar -- success</td>
 						<td>01-09-2016</td>
@@ -910,6 +968,7 @@
 								<span style = "color : green">Explanation of #define</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i> </td>
+						<td><i class="fa fa-check fa-1x"></i> </td>
 						<td>Mahesh / Swathi </td>
 						<td>Sekhar -- suceess</td>
 						<td>20-09-2016</td>
@@ -922,6 +981,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of ##', 'usage-of-double-hash.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of ##</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i> </td>
 						<td><i class="fa fa-check fa-1x"></i> </td>
 						<td>Mahesh / Swathi </td>
 						<td>Sekhar -- suceess</td>
@@ -936,6 +996,7 @@
 								 'usage-of-getchar.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green">Usage of getchar()</span>
 					  	</td>
+					  	<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva  / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -950,6 +1011,7 @@
 								 'usage-of-putchar.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								 <span style = "color : green">Usage of putchar()</span>
 					 	</td>
+					 	<td><i class="fa fa-check fa-1x"></i></td>
 					 	<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -972,6 +1034,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna & Mahesh / Swathi </td>
 						<td>Sekhar -- success</td>
 						<td>01-09-2016</td>
@@ -985,6 +1048,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"> Usage of scanf()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Durga Mahesh / Swathi</td>
 						<td>Sekhar -- success</td>
 						<td>02-09-2016</td>
@@ -996,6 +1060,7 @@
 						<td>
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Usage of printf()', 'printf-usage-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Usage of printf()</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Durga Mahesh  / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -1010,6 +1075,7 @@
 								href="javascript:opendialog('Nested printf() statements', 'nested-printf-statements.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Nested printf() statements</span> 
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna  / Swathi </td>
 						<td>Sekhar -- success</td>
@@ -1027,6 +1093,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna & Mahesh / Swathi </td>
 						<td>Sekhar -- success</td>
 						<td>01-09-2016</td>
@@ -1040,6 +1107,7 @@
 								'read-print-string-using-gets-puts.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								<span style = "color : green"> Usage of gets() & puts()</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh  / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -1080,6 +1148,7 @@
 									&nbsp;Live Demo</a> &emsp; <span style = "color : green">scanf() with suppresion of value</span>
 							</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ajay / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -1126,7 +1195,7 @@
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"> printf() with float</span>
 							</div>
 						</td>
-
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna  / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -1176,8 +1245,8 @@
 									<span style = "color : green">Find largest of 3 numbers</span>
 							</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>
-							<div><i class="fa fa-check fa-1x"></i></div>
 							<div>No need</div>
 						</td>
 						<td>Ajay & Karthik / Swathi</td>
@@ -1194,6 +1263,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Basic Structure of C Program</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil  / Swathi</td>
 						<td>Sekhar -- success</td>
 						<td>10-09-2016</td>
@@ -1207,6 +1277,7 @@
 								href="javascript:opendialog('Swap of 2 numbers', 'swap-with-temp-variable.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Swap of 2 numbers</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Manikanta  / Swathi </td>
 						<td>Sekhar -- success</td>
 						<td>27-09-2016</td>
@@ -1219,6 +1290,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Swap of 2 two numbers without temporary',
 								 'swap-without-temp-variable.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green">Swap of 2 two numbers without temporary variable</span></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Manikanta / Swathi</td>
 						<td>Sekhar -- success</td>
@@ -1235,6 +1307,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -1251,6 +1324,7 @@
 									class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green">Counting Problem </span>
 							</div>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Siva & Padmaja </td>
 						<td>Sekhar -- success</td>
@@ -1264,6 +1338,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of if-else', 'if-else-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of if-else </span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja  / Karthik </td>
 						<td>Sekhar -- success</td>
@@ -1279,6 +1354,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Number is even or odd</span> 
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Siva / Karthik </td>
 						<td>Sekhar -- success</td>
 						<td>26-10-2016</td>
@@ -1293,6 +1369,7 @@
 								 <span style = "color : green"> Nested if-else-if</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ajay / Karthik</td>
 						<td>Sekhar -- success</td>
 						<td>26-10-2016</td>
@@ -1305,6 +1382,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Execution of if-else-if', 'if-else-if-in-c.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green">Explanation of if-else-if</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Karthik</td>
 						<td>Sekhar -- success</td>
@@ -1333,6 +1411,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Siva / Karthik </td>
 						<td>Sekhar -- success</td>
 						<td>26-10-2016</td>
@@ -1346,7 +1425,8 @@
 								 'switch-statement-in-c.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green"> Explanation of switch-case</span>
 						</td>
-						<td><i class="fa fa-check"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Karthik </td>
 						<td>Sekhar -- success</td>
 						<td>29-09-2016</td>
@@ -1360,6 +1440,7 @@
 								'usage-of-hash-if-else.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								<span style = "color : green"> Explanation of #if #else</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i> </td>
 						<td>Mahesh / Swathi </td>
 						<td>Sekhar -- suceess</td>
@@ -1375,6 +1456,7 @@
 								<span style = "color : green">Explanation of #if #elif</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh  / Swathi</td>
 						<td>Sekhar -- suceess</td>
 						<td>22-09-2016</td>
@@ -1387,6 +1469,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of #undef', 'usage-of-undef.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green">Explanation of #undef</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh / Swathi</td>
 						<td>Sekhar -- suceess</td>
@@ -1403,6 +1486,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -1417,6 +1501,7 @@
 								 'while-loop-in-c.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green"> Explanation of while loop</span>
 						 </td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Padmaja / Karthik</td>
 						<td>Sekhar -- success</td>
@@ -1439,6 +1524,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna & Durga Mahesh / Karthik </td>
 						<td>Sekhar -- success</td>
 						<td>02-11-2016</td>
@@ -1452,6 +1538,7 @@
 								'do-while-loop-in-c.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Explanation of do-while loop</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Padmaja / Karthik</td>
 						<td>Sekhar -- success</td>
@@ -1466,6 +1553,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Explanation of for loop </span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td>Sekhar -- success</td>
@@ -1524,6 +1612,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil & Durga Mahesh / Karthik </td>
 						<td>Sekhar -- success</td>
 						<td>17-11-2016</td>
@@ -1537,6 +1626,7 @@
 								'pyramid-triangle-star-c.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green"> Program to print pyramind</span>
 						 </td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Durga Mahesh / Karthik </td>
 						<td>Sekhar -- success</td>
@@ -1552,6 +1642,7 @@
 								  <span style = "color : green">Explanation of break statement</span>
 						  </td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Karthik</td>
 						<td>Sekhar -- success</td>
 						<td>29-09-2016</td>
@@ -1566,6 +1657,7 @@
 								<span style = "color : green">Explanation of continue statement</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Karthik </td>
 						<td>Sekhar -- success</td>
 						<td>07-10-2016</td>
@@ -1578,6 +1670,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of goto Statement', 'goto.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of goto statement</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Anil / Karthik</td>
 						<td>Sekhar -- success</td>
@@ -1594,6 +1687,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -1609,6 +1703,7 @@
 								<span style = "color : green"> Accessing One-dimensional arrays</span>
 						</td>
 						<td><i class="fa fa-check"></i></td>
+						<td><i class="fa fa-check"></i></td>
 						<td>Karthik / Shiva</td>
 						<td>Sekhar -- success</td>
 						<td>30-09-2016</td>
@@ -1622,6 +1717,7 @@
 								 'two-dimensional-array.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green"> Accessing Two-dimensional arrays</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Durga Mahesh / Shiva</td>
 						<td>Sekhar -- success</td>
@@ -1636,6 +1732,7 @@
 								 'initialization-of-one-dimensional-arrays.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								   <span style = "color : green">Initialization of 1-D arrays</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Shiva </td>
 						<td>Sekhar -- success</td>
@@ -1650,6 +1747,7 @@
 								 'initialization-of-two-dimensional-arrays.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 							 	 <span style = "color : green">Initialization of 2-D arrays</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Shiva</td>
 						<td>Sekhar -- success</td>
@@ -1664,6 +1762,7 @@
 								'matrix-multiplication.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Multiplication of two Matrices</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td></td>
@@ -1678,6 +1777,7 @@
 								'matrix-rows-interchange.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Interchange two rows in a matrix</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td></td>
@@ -1692,6 +1792,7 @@
 								'matrix-columns-interchange.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green">Interchange two columns in a matrix</span>
 						 </td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Karthik</td>
 						<td></td>
@@ -1824,6 +1925,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -1839,6 +1941,7 @@
 								 <span style = "color : green">Read and Write strings using gets() & puts() </span>
 						 </td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh  / Sathish</td>
 						<td>Sekhar -- success</td>
 						<td>10-09-2016</td>
@@ -1852,6 +1955,7 @@
 								 'read-print-string-using-scanf-printf.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								 <span style = "color : green">Read and Write strings using scanf() and printf()</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Mahesh / Sathish </td>
 						<td>Sekhar -- success</td>
@@ -1867,6 +1971,7 @@
 								  <span style = "color : green">Read a string using getchar()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mahesh / Sathish  </td>
 						<td>Sekhar -- success</td>
 						<td>05-09-2016</td>
@@ -1880,6 +1985,7 @@
 								'length-of-a-string.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green">Program to find length of string</span>
 						 </td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Mallika / Sathish  </td>
 						<td>Sekhar -- success</td>
@@ -1894,6 +2000,7 @@
 								 'initialization-of-character-arrays.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a>
 								  &emsp; <span style = "color : green">Initialization of character array</span>
 					  	</td>
+					  	<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Shiva / Sathish </td>
 						<td>Sekhar -- success</td>
@@ -1909,6 +2016,7 @@
 								<span style = "color : green"> Program to copy one string to another string</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mallika / Sathish </td>
 						<td>Sekhar -- success</td>
 						<td>01-10-2016</td>
@@ -1923,6 +2031,7 @@
 								  <span style = "color : green"> Program to concatenate two strings</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mallika / Sathish </td>
 						<td>Sekhar -- success</td>
 						<td>03-10-2016</td>
@@ -1936,6 +2045,7 @@
 								'string-functions.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								  <span style = "color : green">Different String functions	(all 4 in one demo)</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Sathish </td>
 						<td>Sekhar -- success</td>
@@ -1956,6 +2066,7 @@
 							</div>
 						</td>
 						<td> <span style = "color : red">No demo</span></td>
+						<td> <span style = "color : red">No demo</span></td>
 						<td>Mahesh</td>
 						<td></td>
 						<td>03-10-2016</td>
@@ -1971,6 +2082,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -1984,6 +2096,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Function Definition',
 								 'function-definition.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								 <span style = "color : green">Function Definition</span></td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Suresh / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -1999,6 +2112,7 @@
 								  <span style = "color : green">Function Declaration</span>
 						</td>
 						<td><i class="fa fa-check"></i></td>
+						<td><i class="fa fa-check"></i></td>
 						<td>Suresh / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>02-09-2016</td>
@@ -2011,6 +2125,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Function Call', 'function-call.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green"> Function Call</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Anil / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2026,6 +2141,7 @@
 								  <span style = "color : green">Sample program on functions</span>
 						</td>
 						<td><i class="fa fa-check"></i></td>
+						<td><i class="fa fa-check"></i></td>
 						<td>Anil / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>07-09-2016</td>
@@ -2039,6 +2155,7 @@
 								'different-argument-variables.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green">Formal & actual parameters</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check"></i></td>
 						<td>Ajay / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2054,6 +2171,7 @@
 								  <span style = "color : green">Local & global variables</span>
 						</td>
 						<td><i class="fa fa-check"></i></td>
+						<td><i class="fa fa-check"></i></td>
 						<td>Ajay / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>22-09-2016</td>
@@ -2067,6 +2185,7 @@
 								 'categories-of-functions.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green"> Categories of functions </span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Ajay</td>
 						<td>Sekhar - suceess</td>
@@ -2081,6 +2200,7 @@
 								'sample-progaram-on-functions-sin-cos.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								<span style = "color : green">Find sinx, cosx, tanx using functions </span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Ajay</td>
 						<td>Sekhar -- success</td>
@@ -2095,6 +2215,7 @@
 								'functions-with-arrays.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								 <span style = "color : green"> Functions with arrays</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Ajay</td>
 						<td>Sekhar - suceess</td>
@@ -2111,6 +2232,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -2125,6 +2247,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;  <span style = "color : green">All 4 with	differences</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check"></i></td>
 						<td>Pavan  / Pavan</td>
 						<td>Sekhar -- success</td>
 						<td>25-08-2016</td>
@@ -2137,6 +2260,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Automatic Variables', 'automatic-var.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Automatic Variables</span></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check"></i></td>
 						<td>Padmaja / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>03-10-2016</td>
@@ -2149,6 +2273,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Extern Variables', 'extern-variable.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Extern Variables</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td>No need</td>
 						<td>Padmaja</td>
 						<td></td>
@@ -2162,6 +2287,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Static Variables', 'static-variables.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Static Variables</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ajay / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2175,6 +2301,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Register Variables', 'register-variable.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Register Variables</span>
 						</td>
+						<td><i class="fa fa-check"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Padmaja / Mahesh</td>
 						<td></td>
@@ -2290,6 +2417,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -2305,6 +2433,7 @@
 								  <span style = "color : green">Pointers introduction</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>01-09-2016</td>
@@ -2317,6 +2446,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Pointers declaration', 'pointers-declaration.jsp', 1, 1)">
 								<i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Pointers declaration</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan  / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2331,6 +2461,7 @@
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Call by Value</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan  / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>10-09-2016</td>
@@ -2343,6 +2474,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Call by Address', 'call-by-address.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : green"> Call by Address</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2358,6 +2490,7 @@
 								<span style = "color : green"> why DMA (Dynamic memory Allocation)</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>17-09-2016</td>
@@ -2371,6 +2504,7 @@
 								 'usage-of-malloc-function.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green">Explanation of malloc()</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva  / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2386,6 +2520,7 @@
 								  <span style = "color : green">Explanation of calloc()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>22-09-2016</td>
@@ -2400,6 +2535,7 @@
 								 <span style = "color : green"> Explanation of realloc()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>28-09-2016</td>
@@ -2411,7 +2547,9 @@
 						<td>
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of free()',
 								 'usage-of-free-function.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a>
-								  &emsp; <span style = "color : green">Explanation of free()</span></td>
+								  &emsp; <span style = "color : green">Explanation of free()</span>
+						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2427,6 +2565,7 @@
 								  <span style = "color : green">Pointers with 1-D arrays</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>25-09-2016</td>
@@ -2441,6 +2580,7 @@
 								 <span style = "color : green">Pointers with 2-D arrays</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>28-09-2016</td>
@@ -2453,6 +2593,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Arrays of Pointers', 'array-of-pointers.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Arrays of Pointers</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2468,6 +2609,7 @@
 								 <span style = "color : green">Array of Pointers with 2-D</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>04-10-2016</td>
@@ -2480,6 +2622,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Pointer to an array', 'pointer-to-an-array.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Pointer to an array</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2495,6 +2638,7 @@
 								  <span style = "color : green">Multiple indirection operator</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Shiva / Mahesh</td>
 						<td></td>
 						<td>04-10-2016</td>
@@ -2509,18 +2653,20 @@
 								  <span style = "color : green">Disadvantages in Pointers</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>04-10-2016</td>
 					</tr>
 					
 					<tr>
-						<td>16</td>
+						<td>17</td>
 						<td>Drawbacks of Pointers</td>
 						<td>
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Pointers drawbacks', 'pointers-drawbacks.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;<span style = "color : red"> Pointers drawbacks</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Pavan / Mahesh</td>
 						<td>Sekhar -- success</td>
@@ -2537,6 +2683,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -2552,6 +2699,7 @@
 								<span style = "color : green">Structure Declaration and definition (3 different types in one demo)</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Mahesh</td>
 						<td></td>
 						<td>17-09-2016</td>
@@ -2565,6 +2713,7 @@
 								 'processing-of-structure-with-dot.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								 <span style = "color : green">Processing of a Structure using dot operator</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Mahesh</td>
 						<td>sekhar</td>
@@ -2580,6 +2729,7 @@
 								 <span style = "color : green">Initialization of structure variable</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Karthik / Mahesh</td>
 						<td></td>
 						<td>22-09-2016</td>
@@ -2592,6 +2742,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('array of Structures', 'array-of-structure.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Array of structure</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Ramya</td>
 						<td></td>
@@ -2623,6 +2774,7 @@
 							</div>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Suresh / Mahesh</td>
 						<td></td>
 						<td>22-09-2016</td>
@@ -2636,6 +2788,7 @@
 								'processing-of-structure-with-arrow.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								<span style = "color : green"> Processing a structure using arrow operator</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Mahesh</td>
 						<td></td>
@@ -2651,6 +2804,7 @@
 								<span style = "color : green">Self referential structures</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Mahesh</td>
 						<td></td>
 						<td>27-09-2016</td>
@@ -2663,6 +2817,7 @@
 							<a class='btn btn-xs btn-success' href="javascript:opendialog('Explanation of Unions', 'usage-of-union.jsp', 1, 1)"><i
 								class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; <span style = "color : green">Explanation of Unions</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Mahesh</td>
 						<td></td>
@@ -2678,6 +2833,7 @@
 								<span style = "color : green">Structure vs Union	with example</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Mahesh</td>
 						<td></td>
 						<td>04-10-2016</td>
@@ -2691,6 +2847,7 @@
 								'difference-between-array-and-structure.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green">Difference between Structures and Arrays with example</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Ramya / Mahesh</td>
 						<td></td>
@@ -2707,6 +2864,7 @@
 					<th>#</th>
 					<th class="col-xs-3">Topic</th>
 					<th class="col-xs-5">Details</th>
+					<th class="col-xs-1">Close Button</th>
 					<th class="col-xs-1">Back Button</th>
 					<th class="col-xs-1">Created By</th>
 					<th class="col-xs-1">Reviewed By</th>
@@ -2722,6 +2880,7 @@
 								  <span style = "color : green">Opening and closing a file with different modes</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mallika / Mahesh</td>
 						<td>Sekhar -- success</td>
 						<td>20-09-2016</td>
@@ -2735,6 +2894,7 @@
 								'usage-of-fgetc-and-fputc.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								  <span style = "color : green">Usage of fgetc() and fputc()</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Poorna</td>
 						<td>Sekhar -- success</td>
@@ -2749,6 +2909,7 @@
 								 'usage-of-putw-and-getw.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 								<span style = "color : green"> Usage of fgetw() and fputw()</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Mallika</td>
 						<td>Sekhar -- success</td>
@@ -2764,6 +2925,7 @@
 								 <span style = "color : green"> Usage of fgets() and fputs()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Mallika / Mahesh</td>
 						<td></td>
 						<td>30-09-2016</td>
@@ -2778,6 +2940,7 @@
 								 <span style = "color : green"> Usage of fscanf() and fprintf()</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna / Shanthan </td>
 						<td>Sekhar -- success</td>
 						<td>24-09-2016</td>
@@ -2791,6 +2954,7 @@
 								'usage-of-fread-and-fwrite.jsp', 1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp;
 								<span style = "color : green"> Usage of fread() and fwrite() </span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>No need</td>
 						<td>Poorna</td>
 						<td>Sekhar -- success</td>
@@ -2806,6 +2970,7 @@
 									<span style = "color : red">Random file access	(program with fseek(),ftell() and rewind())</span>
 						</td>
 						<td><span style = "color : red">No demo</span> </td>
+						<td><span style = "color : red">No demo</span> </td>
 						<td>Poorna</td>
 						<td></td>
 						<td>01-10-2016</td>
@@ -2820,6 +2985,7 @@
 								 <span style = "color : red">Command line arguments in C</span>
 						</td>
 						<td><i class="fa fa-check fa-1x"></i></td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna / Mahesh </td>
 						<td>Sekhar -- success</td>
 						<td>04-10-2016</td>
@@ -2833,6 +2999,7 @@
 							 	1, 1)"><i class='fa fa-eye'></i>&nbsp;Live Demo</a> &emsp; 
 							 	<span style = "color : red">Program to copy contents of one file to another file using command line arguments</span>
 						</td>
+						<td><i class="fa fa-check fa-1x"></i></td>
 						<td><i class="fa fa-check fa-1x"></i></td>
 						<td>Poorna / Mahesh </td>
 						<td></td>

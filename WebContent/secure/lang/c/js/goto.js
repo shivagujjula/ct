@@ -33,8 +33,11 @@ var gotoReady = function() {
 			e.preventDefault();
 		}
 	});
-	 $("#restart").click(function(){
-		 location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -442,9 +445,10 @@ $('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 												+ " Since the condition != # evaluates to <span class='ct-code-b-yellow'>false</span>, the control comes out"
 												+ " of the if-condition and also from the main() and terminates the program.";
 											var newStep = {
-													element : "#restart",
-													intro : "",
-													position : "right"
+													element : "#button",
+													intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+															"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+													position : 'right',
 											};
 											introjs.insertOption(introjs._currentStep + ++step, newStep);
 										}
@@ -469,18 +473,13 @@ $('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 				});
 			});
 		break;
-		case "restart":
-			introjs.refresh();
-			$('.introjs-nextbutton').hide();
-			$('.introjs-prevbutton').hide();
-			$('#restart').removeClass("opacity00");
-			$(".introjs-tooltip").css({"min-width": "115px"});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to restart.";
-				typing($(".introjs-tooltiptext"), text, function() {
-				});
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
-		break;
+			break;
 		}
 	});
 	

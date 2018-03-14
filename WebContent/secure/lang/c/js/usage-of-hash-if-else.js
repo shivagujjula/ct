@@ -6,6 +6,12 @@ var usageOfHashIfElseReady = function() {
 	$("#restartBtn").click(function() {
 		location.reload();
 	});
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	
 	$("#inputChar").keyup(function() {
 		if ($("#inputChar").val().length < 1) {
@@ -128,9 +134,10 @@ var usageOfHashIfElseReady = function() {
 					tooltipClass: "hide",
 					position:"bottom"
 				},{
-					element :'#restartBtn',               
-					intro :'',
-					position:"right"
+					element : "#button",
+					intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+					position : 'right',
 				}]
 	});
 	intro.onbeforechange(function(targetElement) {
@@ -474,16 +481,14 @@ var usageOfHashIfElseReady = function() {
 			}
 			break;
 			
-		case "restartBtn" :
-			$('.introjs-nextbutton').hide();
-			$('.introjs-tooltip').css({'min-width':'125px'});
-			$('.introjs-helperLayer ').one('transitionend', function() {
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.", 1, "",function() {
-					
-				});
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
 			break;
+
 		}
 	});
 	
@@ -503,7 +508,9 @@ function typing(typingId, typingContent, typingInterval, cursorColor, typingCall
 		"cursor_color": cursorColor
 	}, function() {
 		$(typingId).removeClass('typingCursor');
-		typingCallbackFunction();
-		intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		if (typeof typingCallbackFunction === "function") {
+			typingCallbackFunction();
+			intro._introItems[intro._currentStep].intro = $(".introjs-tooltiptext").html();
+		}
 	});
 }

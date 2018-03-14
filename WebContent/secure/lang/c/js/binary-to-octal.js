@@ -6,7 +6,7 @@ var temp;
 var binaryToOctalReady = function() {
 	introGuide();
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	if ($("#binaryValue").val().length == 0) {
 		 $("#convert").attr("disabled", true);
@@ -28,7 +28,7 @@ var binaryToOctalReady = function() {
 		var yourInput = $(this).val();
 		re = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi;
 		var isSplChar = re.test(yourInput);
-		if(isSplChar)
+		if (isSplChar)
 		{
 			var no_spl_char = yourInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 			$(this).val(no_spl_char);

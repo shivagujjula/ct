@@ -22,8 +22,11 @@ var flowChartTemperatureReady = function() {
 		}})
 	}})
 	
-	$("#restart").click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -37,16 +40,16 @@ function introGuide() {
 			position : "right",
 			tooltipClass: "hide"
 		},{
-			element : "#restart",
-			intro : "Click to restart.",
-			position : "right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+					"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}]
 	});
 	
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {
-		
 		case "description":
 			$(".introjs-nextbutton").hide();
 				var text = "problem solving steps.";
@@ -92,15 +95,13 @@ function introGuide() {
  			});
 		break;			
 		
-		case "restart":
-			$('.introjs-nextbutton').hide();
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$("#restart").removeClass("opacity00");
-				$("#restart").click(function() {
-					location.reload();
-				})
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				
 			});
-			
 			break;
 		}
 	});
@@ -195,7 +196,8 @@ function flowChartSymbolsReveal() {
 					 ++step;
 				 	//$('.introjs-nextbutton').show();
 				 	if (step == 6) {
-				 		$("#restart").removeClass("opacity00");
+				 		$("#restartBtn, #closeBtn").removeClass("opacity00");
+						$("#restartBtn, #closeBtn").addClass("zIndex");
 				 	}
 				 }) 
 			} else {
@@ -252,7 +254,6 @@ function svgTextAppend(svgId, x, y, val) {
 
 
 function arrowAppend(callBackFunction) {
-	
 	svgAnimatingBottomToTopLine("#flowChartBoxChild", "#step"+(stepCount), "#step"+(stepCount+1), "#svg", "line"+stepCount,"arrow", function() {
 		stepCount++;
 		if (typeof callBackFunction === "function") {

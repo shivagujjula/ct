@@ -242,8 +242,7 @@ y {
 <body>
 <div class="col-sm-12 text-center">
 	<div class="margin-padding-css text-center" >
-		<div class="col-sm-1"></div>
-		<div class="col-sm-offset-3 col-sm-3">
+		<div class="col-sm-offset-4 col-sm-4">
 			<h3><span class="ct-demo-heading label label-default" id="titleName">Usage of scanf() and printf() on Strings</span></h3>
 		</div>
 	</div>
@@ -300,8 +299,17 @@ y {
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 text-center">
-		<span class="btn btn-warning opacity00" id="restartBtn" style="margin-top: 20px;">Restart </span>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 <script>
 	$(document).ready(function() {

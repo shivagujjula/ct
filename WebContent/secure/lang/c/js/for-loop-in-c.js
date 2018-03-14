@@ -161,7 +161,7 @@ var forLoopInCReady = function() {
 				}
 			}, 500);
 		}
-		if($(".restart").hasClass("introjs-showElement")) {
+		if($("#button").hasClass("introjs-showElement")) {
 			$('.cup-bg').css({'opacity': '0'});
 			$(".introjs-tooltipbuttons").addClass("hidden");
 		}
@@ -174,7 +174,7 @@ var forLoopInCReady = function() {
 	
 	$('.doneBtn1').click(function() {
 		$(this).addClass('hide');
-		$('.restart').removeClass("opacity00");
+		$("#restartBtn, #closeBtn").removeClass("opacity00");
 		$('.introjs-tooltipbuttons').hide();
 		for(var k = 1; k <= 5; k++) {
 			introjs.nextStep();
@@ -229,7 +229,7 @@ var forLoopInCReady = function() {
 	});
 	
 	$(".doneBtn").click(function() {
-		$('.restart').removeClass("opacity00");
+		$("#restartBtn, #closeBtn").removeClass("opacity00");
 		for(var i = iValue; i < conditionValue; i++) {
 			$("#output").append("i : " + i + "<br>");
 			if($('#cup_value').text().length == 2) {
@@ -256,8 +256,12 @@ var forLoopInCReady = function() {
 		}
 	});
 	
-	$(".restart").click(function() {
-		location.reload();
+
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -364,10 +368,10 @@ function introJsGuide() {
 			intro : "<span>After <span class = ct-code-b-yellow>update</span>, the control comes back to the <b>condition</b> section.</span><br><span id='condition_Text_2'></span><br><span id='conditionTyping2'></span>",
 			position : 'bottom'
 		},{
-			element : '.restart',
-			intro:'Click to restart.',
-			tooltipClass: "introjs-tooltip-min-width-custom",
-			position :'right'
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right'
         }]
 	});
 

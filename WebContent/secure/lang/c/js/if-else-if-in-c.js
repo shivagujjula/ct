@@ -7,6 +7,9 @@ var ifElseIfInCReady = function() {
 	$('#restartBtn').click(function() {
 		 window.location.search = "?restart=1";
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {
 			 e.preventDefault();
@@ -354,15 +357,18 @@ var ifElseIfInCReady = function() {
 					});
 				});
 			break;
-		case "restartBtn":
+		case "button":
 			$("#charInput").attr("disabled", false);
-			$('.introjs-tooltip').css({'min-width' : '125px'});
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				typing('.introjs-tooltiptext', "Click to restart.", function() {
-					$("#restartBtn").removeClass("opacity00");
-					});
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
 				});
+			});
 		break;
 		}
 	});
@@ -418,7 +424,7 @@ function charcheck() {
 					intro.insertOption(intro._currentStep + 1, insertionIntro("ifConditionForLowerCase", "", "right","hide"));
 					intro.insertOption(intro._currentStep + 2, insertionIntro("printF1", "", "right"));
 					intro.insertOption(intro._currentStep + 3, insertionIntro("consoleId", "", "bottom", "hide", "smallVowel"));
-					intro.insertOption(intro._currentStep + 4, insertionIntro("restartBtn", "", "right", ""));
+					intro.insertOption(intro._currentStep + 4, insertionIntro("button", "", "right", ""));
 		   }
 		   
 	   } else if ( ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' ) {
@@ -427,7 +433,7 @@ function charcheck() {
 					intro.insertOption(intro._currentStep + 1, insertionIntro("ifConditionForUpperCase", "", "right","hide"));
 					intro.insertOption(intro._currentStep + 2, insertionIntro("printF2", "", "right"));
 					intro.insertOption(intro._currentStep + 3, insertionIntro("consoleId", "", "bottom", "hide", "upperVowel"));
-					intro.insertOption(intro._currentStep + 4, insertionIntro("restartBtn", "", "right", ""));
+					intro.insertOption(intro._currentStep + 4, insertionIntro("button", "", "right", ""));
 		   }
 	    	
 	    	
@@ -436,7 +442,7 @@ function charcheck() {
 				intro._introItems[intro._currentStep]["visited"] = "true";
 					intro.insertOption(intro._currentStep + 1, insertionIntro("printF3", "", "right"));
 					intro.insertOption(intro._currentStep + 2, insertionIntro("consoleId", "", "right", "hide", "consonant"));
-					intro.insertOption(intro._currentStep + 3, insertionIntro("restartBtn", "", "right", ""));
+					intro.insertOption(intro._currentStep + 3, insertionIntro("button", "", "right", ""));
 		   }
 	  }
    }
@@ -445,7 +451,7 @@ function charcheck() {
 			intro._introItems[intro._currentStep]["visited"] = "true";
 				intro.insertOption(intro._currentStep + 1, insertionIntro("printF4", "", "right"));
 				intro.insertOption(intro._currentStep + 2, insertionIntro("consoleId", "", "right", "hide", "notALetter"));
-				intro.insertOption(intro._currentStep + 3, insertionIntro("restartBtn", "", "right", ""));
+				intro.insertOption(intro._currentStep + 3, insertionIntro("button", "", "right", ""));
 	   }
 	}
 	$(".introjs-prevbutton, .introjs-nextbutton").show();

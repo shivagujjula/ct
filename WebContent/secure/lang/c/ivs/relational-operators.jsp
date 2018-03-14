@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script type="text/javascript" src="/secure/lang/c/js-min/ro.min.js"></script>
+<script type="text/javascript" src="/secure/lang/c/js-min/ro.min.js"></script> 
 
 <title>relational-operators</title>
 <style type="text/css">
@@ -239,9 +239,14 @@ y {
 				</div>	
 			</div>
 		</div>
-		<!-- <div class="col-xs-12 margin-top20 text-center">
-			<span class="btn btn-warning opacity00" id="restart">Restart</span>
-		</div> -->
+		<div class="margin-top-20 col-xs-12 text-center">
+			<span class="col-xs-6 col-xs-offset-3">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</div>
 	</div>
 </body>
 </html>

@@ -4,7 +4,7 @@ var typingSpeed = 1;
 var executeBtnCount = 1;
 var cIdentifiersReady = function() {
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	$('body').keypress(function(event) {
 		if (event.keyCode == 13) {

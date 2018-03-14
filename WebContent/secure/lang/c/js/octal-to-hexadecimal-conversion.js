@@ -10,7 +10,7 @@ var octalToHexadecimalConversionReady = function() {
 		 window.location.search = "?restart=1";
 	});
 	$('#closeBtn').click(function() {
-		window.parent.$("#javaDocBrowserDiv").dialog("close");
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	$("body").keypress(function(e) {
 		 if (e.which === 13) {

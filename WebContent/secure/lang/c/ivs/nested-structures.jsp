@@ -17,7 +17,7 @@
 	<script src='/js/intro.js'></script>
 	<script src="/js/typewriting.min.js"></script>
 	<script src="/js/jquery-ui-latest.js"></script>
-	<script src="/secure/lang/c/js-min/ns.min.js"></script>
+	<script src="/secure/lang/c/js-min/ns.min.js"></script> 
 	<title>Nested Structures</title>
 
 <style>
@@ -270,8 +270,17 @@ th, td {
 	<pre id='embeddedFormat' class='opacity00'>external_<span class='color-rose'>struct</span>_variable.internal_<span class='color-rose'>struct</span>_variable.member</pre>
 </div>
 </div>
-<div class="button col-xs-12 text-center " id="button">
-	<button class="btn btn-warning opacity00" type="button" id='restartBtn' style='margin-top:4px'><i class="fa fa-refresh"></i> Restart</button>
+<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
 </div>
 </body>
 <script>

@@ -12,8 +12,11 @@ var spaceCheckFlag = true;
 var concatinationOfStrings = function() {
 	introGuide();
 	
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -308,9 +311,9 @@ function introGuide() {
 			//$("#concatString").addClass("opacity00");
 			break;
 			
-		case "restart":
+		/*case "restart":
 			
-			break;
+			break;*/
 		}
 	});
 	
@@ -834,17 +837,22 @@ function introGuide() {
 					var text = "This is the end of the main() function where the program execution ends.";
 					typing(".introjs-tooltiptext",text, function() {
 						$(".introjs-nextbutton, .introjs-prevbutton").show();
-						var newStep = getStep("#restart", '', 'right', '');
+						var newStep = getStep("#button", '', '','right', '');
 						introjs.insertOption(introjs._currentStep + 1, newStep);
 					});
 				});
 				break;
 	
-			case "restart":
-				$('.introjs-tooltip').css({'min-width' : '110px'});
-				$('.introjs-helperLayer ').one('transitionend', function() {
-					$("#restart").removeClass("opacity00");
-					typing(".introjs-tooltiptext", "Click to restart.",function() {});
+			case "button":
+				$(".introjs-tooltip").css("min-width","380px");
+				$(".introjs-tooltipbuttons").hide()
+				$(".introjs-helperLayer").one("transitionend", function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, function() {
+					});
 				});
 				break;
 		}

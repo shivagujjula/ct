@@ -12,8 +12,7 @@
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
-<script type="text/javascript" src="/secure/lang/c/js-min/flic.min.js"></script>
-
+<script type="text/javascript" src="/secure/lang/c/js-min/flic.min.js"></script> 
 <title>for-loop Demo</title>
 
 <style type="text/css">
@@ -262,9 +261,19 @@ span[contenteditable=true] {
 		</div>
 	</div>
 	
-	<div class="text-center col-xs-12">
-		<a class="btn btn-warning restart opacity00" id="restart"><i class="fa fa-refresh"></i>&nbsp;Restart</a>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+				<span class="col-xs-12">
+					<span class="col-xs-8 col-xs-offset-2">
+						<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
+	
 	
 <script type="text/javascript">
 

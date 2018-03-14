@@ -9,6 +9,7 @@
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
@@ -16,7 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js-min/pi.min.js"></script>
+<script src="/secure/lang/c/js-min/pi.min.js"></script> 
 
 <title>Pointers Introduction</title>
 <style>
@@ -152,7 +153,18 @@ div, span {
 
 <div class='col-xs-12'>
 	<div class='text-center heading-css'><h1 class='label ct-demo-heading'>Pointers Introduction</h1></div>
-	<div class='buttons-div'><button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button></div>
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 	<div class="col-xs-12">
 		<div class='col-xs-offset-1 col-xs-10'>
 			<div class='col-xs-12'>

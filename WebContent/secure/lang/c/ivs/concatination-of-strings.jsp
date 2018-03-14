@@ -17,7 +17,7 @@
 <script src="/js/typewriting.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/c/js-min/cos.min.js"></script>
+<script src="/secure/lang/c/js-min/cos.min.js"></script> 
 
 <title>Concatenation of strings</title>
 </head>
@@ -108,7 +108,7 @@ table {
 	color: red;
 }
 
-.fa {
+.fa-x {
 	color: white;
 	position: absolute;
 }
@@ -229,10 +229,10 @@ r {
    <span id="intDec"><g>int</g> <span id="iInit">i</span>, <span id="jInit">j</span>;</span>
    <span id="firstString">printf(<ink>"Enter the first string : "</ink>);</span>
    <span id="scanA">scanf("%s", a);</span>
-   <span id="secondString">printf(<ink>"Enter the second string : "</ink>);</span><span id="cupI" class="cup-css i-left opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-2x sm"></i><span class="i-value"><span id="iSpan"></span></span></span>
+   <span id="secondString">printf(<ink>"Enter the second string : "</ink>);</span><span id="cupI" class="cup-css i-left opacity00"><span class="i-position">i=</span><i class="fa fa-coffee fa-x fa-2x sm"></i><span class="i-value"><span id="iSpan"></span></span></span>
    <span id="scanB">scanf("%s", b);</span>
    <span id="loopA">for (<span id="iInitialization">i = <ink><span class="zero">0</span></ink></span>; <span id="condition1">a[i] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="iIncrement">i++</span>) {</span>
-       <span id="line1">c[i] = a[i];</span></span><span id="cupJ" class="cup-css j-left opacity00"><span class="j-position">j=</span><i class="fa fa-coffee fa-2x sm"></i><span class="j-value"><span id="jSpan"></span></span></span>
+       <span id="line1">c[i] = a[i];</span></span><span id="cupJ" class="cup-css j-left opacity00"><span class="j-position">j=</span><i class="fa fa-coffee fa-x fa-2x sm"></i><span class="j-value"><span id="jSpan"></span></span></span>
    }
    <span id="loopB">for (<span id="jInitialization">j = <ink><span class="j-zero">0</span></ink></span>; <span id="condition2">b[j] <b class='ct-green'>!=</b> <b class='ct-blue-color'>'\0'</b></span>; <span id="jIncrement">j++</span>) {</span>
        <span id="line2">c[i] = b[j];</span>
@@ -295,8 +295,17 @@ r {
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 text-center margin-top-40">
-			<span id="restart" class="opacity00 btn btn-warning">Restart</span>
+		<div class="margin-top-20 text-center col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12">
+		 			<span class="col-xs-8 col-xs-offset-2">
+		 				<span class="col-xs-12" id="button">
+							<span class="btn btn-warning opacity00" id="closeBtn">Close &nbsp;<i class="fa fa-close"></i></span>&nbsp;&nbsp;
+							<span class="btn btn-restart opacity00" id="restartBtn">Restart &nbsp;<i class="fa fa-refresh"></i></span>
+						</span>
+					</span>
+				</span>
+			</span>
 		</div>
 	</div>
 

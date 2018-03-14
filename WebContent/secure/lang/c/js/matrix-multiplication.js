@@ -1,6 +1,3 @@
-/**
- * 
- */
 var execute = 0;
 var intro;
 var i = 0;
@@ -25,9 +22,10 @@ intro.setOptions({
 					position : "right",
 				} ,
 				{
-					element : "#restart", // when dynamic steps added it is coming last step after execution of dynamic step not removing.
-					intro : "Click to restart.",
-					position : "right",
+					element : "#button", // when dynamic steps added it is coming last step after execution of dynamic step not removing.
+					intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+					position : 'right',
 				} 
 			]
 })
@@ -447,9 +445,12 @@ intro.onafterchange(function(targetElement) {
 		});
 	break;
 	
-	case "restart":
-		$(".introjs-nextbutton").hide();
-		$("#restart").removeClass("opacity00");
+	case "button":
+		$(".introjs-tooltip").css("min-width","380px");
+		$(".introjs-tooltipbuttons").hide()
+		$(".introjs-helperLayer").one("transitionend", function() {
+			$("#restartBtn, #closeBtn").removeClass("opacity00");
+		});
 	break;
 	}
 	})
@@ -473,9 +474,12 @@ var text = "In this we learn how the <span class='ct-code-b-yellow'>two dimensio
 		conceptExplanation();
 	})
 	
-	$("#restart").click(function() {
+	$("#restartBtn").click(function() {
 		location.reload(true);
-	})
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 }
 
 function formulaeEvaluation() {
