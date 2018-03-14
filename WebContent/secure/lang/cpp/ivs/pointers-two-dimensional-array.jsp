@@ -9,6 +9,7 @@
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/animate.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>

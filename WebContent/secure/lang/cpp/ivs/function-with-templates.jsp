@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="/css/introjs-ct.css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
-<script src="/secure/lang/cpp/js-min/fwt.min.js"></script>
+<script src="/secure/lang/cpp/js/function-with-templates.js"></script>
+<!-- <script src="/secure/lang/cpp/js-min/fwt.min.js"></script> -->
 <title>Function With Templates</title>
 <style type="text/css">
 #informationDiv {
@@ -161,7 +162,7 @@ k {
 }
 .z-index10000000 {
 	position: relative;
-	background-color: #a38388;
+	background-color: #bd7062;
 	z-index: 10000000 !important;
 }
 .border {
@@ -197,10 +198,22 @@ k {
 @keyframes blink-border-background-orange { 
 	50% {
 		border-color: white;
-		background: #a38388;
+		background: #bd7062;
 	}
 }
-
+.ui-effects-transfer-custom {
+    background-color: white;
+    z-index: 99999999 !important;
+    border-radius: 6px;
+    border: none;
+ }
+ .circle-css {
+	border-radius: 50%;
+	padding: 2px;
+	position: relative;
+	z-index: 1000000;
+	background-color: white;
+}
 </style>
 </head>
 <body>
@@ -211,7 +224,7 @@ k {
 	<div class="col-xs-12 ">
 		<div class="col-xs-10 col-xs-offset-1" id="informationDiv" style=' margin-top: 5px;'>
 			<span id="infoText" class=''><ul><li><g>Templates</g> are used to avoid the duplication of the
-			 code in the prohram whenever we are performing same operation with different data types.</li>
+			 code in the program whenever we are performing same operation with different data types.</li>
 			  <li>The general format for defining a function <g>template</g> is
 			  <span id="class">Template &lt;class T&gt;</span>.</li>
 			  <a class="introjs-button user-button" id="nextButton">Next&rarr;</a></ul></span>
@@ -236,9 +249,9 @@ k {
    <span id="cout4" class="">cout << <span id="enterText4" class="pink">"The value is : "</span> << <span id="animateVal4" class="">x</span> << endl;</span>
 }</span></span>
 <span id="main" class="opacity00"><span class="green">int</span> main() {
-   <div id="int1" class="display opacity00"><span class="green display" id="int">int</span> <div class="display" id ="aVal1">num1 = <span class="pink">10</span></div>;</div>
-   <div id="float1" class="display opacity00"><div class="green display" id="float">float</div> <div class="display" id ="bVal1">num2 = <span class="pink">10.5</span></div>;</div>
-   <div id="char1" class="display opacity00"><div class="green display" id="char">char</div> <div class="display" id ="cVal1">ch = <span class="pink">'R'</span></div>;</div>
+   <div id="int1" class="display opacity00"><span class="green display" id="int">int</span> <div class="display" id ="aVal1">num1 = <span class="pink" id ="aVal11">10</span></div>;</div>
+   <div id="float1" class="display opacity00"><div class="green display" id="float">float</div> <div class="display" id ="bVal1">num2 = <span class="pink" id ="bVal11">10.5</span></div>;</div>
+   <div id="char1" class="display opacity00"><div class="green display" id="char">char</div> <div class="display" id ="cVal1">ch = <span class="pink" id ="cVal11">'R'</span></div>;</div>
    <div id="show1" type="int"  param="a"class="display opacity00">show(<span id="num1">num1</span>);</div>
    <div id="show2" type="float" param="b" class="display opacity00">show(<span id="num2">num2</span>);</div>
    <div id="show3" type="char" param="c" class="display opacity00">show(<span id="num3">ch</span>);</div>
@@ -293,9 +306,18 @@ k {
 			</div>
 		</div>
 	</div>
-	<div class="button col-xs-12 text-center " id="button">
-		<span class="btn btn-success glyphicon glyphicon-refresh opacity00" id='restartBtn' style='margin-top: 4px'>Restart</span>
-	</div>
+	<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button" style=''>
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

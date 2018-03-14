@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
-
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-ui-latest.js"></script>

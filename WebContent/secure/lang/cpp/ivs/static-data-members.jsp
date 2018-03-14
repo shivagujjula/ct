@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/animate.css" />
 <script src="/secure/lang/cpp/js-min/sdm.min.js"></script>
+<!-- <script src="/secure/lang/cpp/js/static-data-members.js"></script> -->
 <title>Static-Data-Members</title>
 <style>
 #informationDiv {
@@ -222,10 +223,10 @@
 	 background-color: #b2be83;
 	 border: 0px;
 	 font-weight: bold;
+	 font-size: 12px;
  }
  .panel-body {
  	padding: 30px;
- 	/* margin-bottom: 20px; */
 	padding-top: 8px;
  }
  .cupvalue {
@@ -365,17 +366,17 @@
 		</div>
 	</div>
 	<div class="margin-top-20 col-xs-12 text-center">
-		<span class="col-xs-6 col-xs-offset-3">
-	 		<span class="col-xs-12">
-	 			<span class="col-xs-8 col-xs-offset-2">
-	 				<span class="col-xs-12" id="button" style=''>
-						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
-						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
-					</span>
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button" style=''>
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
 				</span>
 			</span>
 		</span>
-	</div>
+	</span>
+</div>
 </div>
 <script>
 	$(document).ready(function() {

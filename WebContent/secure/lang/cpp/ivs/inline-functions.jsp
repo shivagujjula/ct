@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -119,7 +117,7 @@ y {
 	color: yellow;
 	font-weight: bold;
 }
-#in, .input-char {
+#input, .input-char {
 	width: 170px;
  /* padding: 8px; */
 	border-width: 0px 0 0 0;
@@ -200,7 +198,15 @@ span {
 .pink {
 	color : deeppink;
 }
-
+.display {
+	display: inline-block;
+}
+.ui-effects-transfer-custom {
+    background-color: orange;
+    z-index: 99999999 !important;
+    border-radius: 6px;
+    border: none;
+ }
 </style>
 <body>
 <div class="col-xs-12">
@@ -247,7 +253,7 @@ span {
 			<div class="col-xs-12 box-border opacity00"  id="animationBox">
 				<div class="col-xs-2 margin-top" id="total1">
 					<div id="one" class="text-center opacity00"><b style="color : maroon;">num</b>
-						<div class="box-border1 text-center opacity00" id="boxParent"><span class="arrayValue text-center position" id="box"></span>
+						<div class="box-border1 text-center opacity00" id="boxParent"><span class="arrayValue text-center opacity00" id="box"></span>
 						</div>
 					</div>
 				</div>
@@ -257,8 +263,8 @@ span {
 					<span>Output</span>
 				</div>
 				<div class="output-console-body " id="body">
-					<span class= "opacity00" id ="inputNumber">Enter a number : <input id='inputChar' disabled='disabled' maxlength='2' class='input-char'/></span><br>
-					<span class= "  opacity00" id ="inputNumber1">The cube of a given number : </span><span id="inputNumber2"></span>
+					<span class= "opacity00" id ="inputNumber">Enter a number : <input id='inputChar' maxlength='2' class='input-char' autofocus/></span><br>
+					<span class= "opacity00" id ="inputNumber1">The cube of a given number : </span><span id="inputNumber2"></span>
 				</div>
 			</div>
 		</div>
@@ -266,17 +272,17 @@ span {
 </div>
 	
 	<div class="margin-top-20 col-xs-12 text-center">
-		<span class="col-xs-6 col-xs-offset-3">
-	 		<span class="col-xs-12">
-	 			<span class="col-xs-8 col-xs-offset-2">
-	 				<span class="col-xs-12" id="button" style=''>
-						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
-						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
-					</span>
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button" style=''>
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
 				</span>
 			</span>
 		</span>
-	</div>
+	</span>
+</div>
 </div>
 <script>
 	$(document).ready(function() {

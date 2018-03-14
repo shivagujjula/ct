@@ -1,7 +1,7 @@
 var introjs;
 var tl;
 var i;
-var count = 1;
+var count = 0;
 		
 var categoriesOfFunctions = function() {
 	introGuide();
@@ -67,6 +67,7 @@ function introGuide() {
 				$("#funcType" + i).addClass("hide opacity00");
 				$(".output-text").remove();
 				$("#funcHeading").empty();
+				count++;
 				var text = "There are four different categories of functions based on their <span class='ct-code-b-yellow'>arguments</span>"
 							+ " and <span class='ct-code-b-yellow'>return types</span>.<br><br> Click on any type of the function to learn more.";
 				if($("#functionBox").hasClass('opacity00')) {
@@ -75,6 +76,15 @@ function introGuide() {
 						$("#functionBox").removeClass("opacity00");
 					}});
 				}
+				if(count > 1) {
+					$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("z-index9999999");
+					$("#restartBtn").click(function() {
+						location.reload(true);
+					});
+					$('#closeBtn').click(function() {
+						window.parent.$(".ui-dialog-titlebar-close").click();
+					});
+				}
 				typing(".introjs-tooltiptext", text, function() {
 					$(".fun-btn").removeClass('disabled');
 				});
@@ -82,6 +92,7 @@ function introGuide() {
 			break;  
 			
 		case "funcType" + i:
+			$("#restartBtn, #closeBtn").addClass("opacity00");
 			$("#funcHeading").removeClass('opacity00');
 			$("#actionBox").removeClass('opacity00');
 			$(".introjs-helperLayer").one("transitionend", function() {

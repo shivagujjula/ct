@@ -219,6 +219,7 @@ y {
 	 background-color: #70b395;
 	 border: 0px;
 	 font-weight: bold;
+	 font-size: 12px;
  }
  .panel-body {
  	padding: 30px;
@@ -399,17 +400,17 @@ y {
 		</div>
 		 
 	<div class="margin-top-20 col-xs-12 text-center">
-		<span class="col-xs-6 col-xs-offset-3">
-	 		<span class="col-xs-12">
-	 			<span class="col-xs-8 col-xs-offset-2">
-	 				<span class="col-xs-12" id="button" style=''>
-						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
-						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
-					</span>
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button" style=''>
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
 				</span>
 			</span>
 		</span>
-	</div>
+	</span>
+</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

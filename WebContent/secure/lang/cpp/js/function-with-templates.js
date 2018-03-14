@@ -1,10 +1,14 @@
-var bannu = 1;
+var valCount = 1;
 var readPrintStringUsingGetsPutsReady = function() {
-	$("restartBtn").click(function(){
+	$("#restartBtn").click(function() {
 		$("#inputChar").val('');
-		$("#hiddenTotalEnterChar").val();
+		$("#hiddentotalEnterChar").val();
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
+
 	intro = introJs();
 	$("nextButton").click(function(){
 		$(this).remove();
@@ -251,7 +255,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			intro :"",
 			animateStep : 'mainClose2',
 		}, {
-			element : "#restartBtn",
+			element : "#button",
 			intro : "",
 			position : "left"
 		}]
@@ -788,7 +792,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 			switch(animateStep) {
 			case 'method41':
 				$('.introjs-helperLayer').one("transitionend", function() {
-					bannu = 1;
+					valCount = 1;
 					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<y>show(num1)</y> is a <y>int</y> type variable so <y>templates</y> calls the " +
 						"data type as <y>int</y>.", function() {
@@ -799,7 +803,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'method42':
 				$('.introjs-helperLayer').one("transitionend", function() {
-					bannu = 2;
+					valCount = 2;
 					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<y>show(num2)</y> is a <y>float</y> type variable so <y>templates</y> calls the " +
 						"data type as <y>float</y>.", function() {	
@@ -810,7 +814,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 				break;
 			case 'method43':
 				$('.introjs-helperLayer').one("transitionend", function() {
-					bannu = 3;
+					valCount = 3;
 					$('.introjs-tooltip').removeClass("hide");
 					typing('.introjs-tooltiptext',"<y>show(ch)</y> is a <y>char</y> type variable so <y>templates</y> calls the " +
 							"data type as <y>char</y>.", function() {	
@@ -950,10 +954,11 @@ var readPrintStringUsingGetsPutsReady = function() {
 			var animateStep = intro._introItems[intro._currentStep].animateStep;
 			switch(animateStep) {
 		case "enterData1" :
+			$('#inputNumber1 + *').after().remove();
 			$('.introjs-helperLayer').one("transitionend", function() {
 				if(intro._direction == 'forward') {
 					$("#outputBody").append('<span id ="inputNumber1" class="opacity00">Integer number is : <span class="border opacity00 position" id="value1">'
-							+ $('#boxValue1').text() +'');
+							+ $('#boxValue1').text() +'<br>');
 					transferEffect("#enterText1","#inputNumber1",function() {
 						$('#inputNumber1').removeClass('opacity00');
 						setTimeout(function() {
@@ -961,14 +966,14 @@ var readPrintStringUsingGetsPutsReady = function() {
 						},1000);
 					});
 				} else {
-					$('#inputNumber1').addClass('opacity00');
+					$('#inputNumber1').remove();
 					$("#outputBox").addClass("hide");
 					setTimeout(function() {
 						intro.previousStep();
 					},1000);
 				}
 			});
-			break;
+		break;
 		case 'dataEntry1' :
 			$("#borderBox1").addClass('z-index1000000');
 			if(intro._direction == 'forward') {
@@ -992,7 +997,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		case 'enterData2':
 			$('.introjs-helperLayer').one("transitionend", function() {
 				if(intro._direction == 'forward') {
-					$("#outputBody").append('<br><span id="inputNumber2" class="opacity00">Float number is : <span class="border opacity00 position" id="value2">'
+					$("#outputBody").append('<span id="inputNumber2" class="opacity00">Float number is : <span class="border opacity00 position" id="value2">'
 							+ $('#boxValue2').text() +'');
 					transferEffect("#enterText2","#inputNumber2",function() {
 						$('#inputNumber2').removeClass('opacity00');
@@ -1001,7 +1006,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						},1000);
 					});
 				} else {
-					$('#inputNumber2').addClass('opacity00');
+					$('#inputNumber2').remove();
 					setTimeout(function() {
 						intro.previousStep();
 					},1000);
@@ -1040,7 +1045,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 						},1000);
 					});
 				} else {
-					$('#inputNumber3').addClass('opacity00');
+					$('#inputNumber3').remove();
 					setTimeout(function() {
 						intro.previousStep();
 					},500);
@@ -1067,17 +1072,20 @@ var readPrintStringUsingGetsPutsReady = function() {
 			}
 			break;
 			}
-			break;
-		case "restartBtn" :
-			intro.refresh();
+		break;
+		case "button" :
 			$('.introjs-nextbutton').hide();
 			$('.introjs-helperLayer ').one('transitionend', function() {
-				$('#animationBox').removeClass('z-index1000000');
-				$("#restartBtn").removeClass("opacity00");
-				typing(".introjs-tooltiptext", "Click to restart.",function() {
-					$('#restart').click(function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+						"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+									
+				typing('.introjs-tooltiptext', text, function() {
+					$('#restartBtn').click(function() {
 						location.reload();
+						
 					});
+
 				});
 			});
 		break;
@@ -1100,6 +1108,7 @@ var readPrintStringUsingGetsPutsReady = function() {
 		});
 	}
 function flipEffect(value, type, typeVal) {
+	$('.introjs-prevbutton').hide();
 	$('.user-button').remove();
 	$('.introjs-tooltiptext').append("<div class='position opacity00' style='display:inline-block;' id='voidMethod4'>&nbsp;&nbsp;<y>void show " +
 	"(<div class='display' id='t'>T</div> <span id='x' class='display'>x</span>) {" +
@@ -1107,17 +1116,18 @@ function flipEffect(value, type, typeVal) {
 	"}</y></div><div id='one'></div>");
 	$("#voidMethod4").removeClass("opacity00");
 	fromEffectWithTweenMax("#method4", "#voidMethod4", function() {
-		$('.introjs-tooltipbuttons').append('<a class="introjs-button user-button" onclick="methodFlipEffect' + bannu + '('+value+',\''+ type+'\',\''+typeVal+'\')">Next&rarr;</a>');
+		$('.introjs-tooltipbuttons').append('<a class="introjs-button user-button" onclick="methodFlipEffect' + valCount + '('+value+',\''+ type+'\',\''+typeVal+'\')">Next&rarr;</a>');
 	});
 }
 function methodFlipEffect1(value, type, typeVal) {
-	//bannu++;
+	$('.introjs-prevbutton').hide();
 	$('.user-button').remove();
 	intro.refresh();
 	transferEffect("#num" + value, "#"+ type +"1", function() {
 		transferEffect("#" + type, "#t", function() {
 			flipEffectWithTweenMax("#t", $("#" + type).text(), function() {
-				transferEffect1("#"+ typeVal +"Val1",  "#x", function(){
+				/*transferEffect1("#"+ typeVal +"Val1",  "#x", function(){*/
+					$("#"+ typeVal +"Val11").effect( "transfer", { to: $("#x"), className: "ui-effects-transfer-custom" }, 1500 , function() {
 					$('#outputBox1').removeClass('hide');
 					$("#outputBody1").append('<span id="inputNumber4" class="opacity00">The value is : <span class="border opacity00 position" id="value4">'
 							+ $('#boxValue4').text()+'');
@@ -1141,13 +1151,13 @@ function methodFlipEffect1(value, type, typeVal) {
 	});
 }
 function methodFlipEffect2(value, type, typeVal) {
-	//	bannu++;
+	$('.introjs-prevbutton').hide();
 	$('.user-button').remove();
 	intro.refresh();
 	transferEffect("#num" + value, "#"+ type +"1", function() {
 		transferEffect("#" + type, "#t", function() {
 			flipEffectWithTweenMax("#t", $("#" + type).text(), function() {
-				transferEffect1("#"+ typeVal +"Val1",  "#x", function(){
+				$("#"+ typeVal +"Val11").effect( "transfer", { to: $("#x"), className: "ui-effects-transfer-custom" }, 1500 , function() {
 					$('#outputBox1').removeClass('hide');
 					$("#outputBody1").append('<br><span id="inputNumber5" class="opacity00">The value is : <span class="border opacity00 position" id="value5">'
 							+ $('#boxValue5').text()+'');
@@ -1170,12 +1180,13 @@ function methodFlipEffect2(value, type, typeVal) {
 	});
 }
 function methodFlipEffect3(value, type, typeVal) {
+	$('.introjs-prevbutton').hide();
 	$('.user-button').remove();
 	intro.refresh();
 	transferEffect("#num" + value, "#"+ type +"1", function() {
 		transferEffect("#" + type, "#t", function() {
 			flipEffectWithTweenMax("#t", $("#" + type).text(), function() {
-				transferEffect1("#"+ typeVal +"Val1",  "#x", function(){
+				$("#"+ typeVal +"Val11").effect( "transfer", { to: $("#x"), className: "ui-effects-transfer-custom" }, 1500 , function() {
 					$('#outputBox1').removeClass('hide');
 					$("#outputBody1").append('<br><span id="inputNumber6" class="opacity00">The value is : <span class="border opacity00 position" id="value6">'
 							+ $('#boxValue6').text()+'');

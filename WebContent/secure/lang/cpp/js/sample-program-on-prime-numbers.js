@@ -603,7 +603,7 @@ function introGuide() {
 											
 											introjs.insertOption(introjs._currentStep + 1, getStep("#truePrint", "", "hide", "right"));
 											introjs.insertOption(introjs._currentStep + 2, getStep("#console", "", "hide", "right", "secondPrint"));
-											introjs.insertOption(introjs._currentStep + 3, getStep("#button", "Click to restart.", "", "right"));
+											introjs.insertOption(introjs._currentStep + 3, getStep("#button", "", "", "right"));
 										
 										$('.introjs-tooltiptext').append('<div class="outer-text"></div>')	
 										var text =  text1 + " <span class='ct-code-b-yellow'>true</span>." + text2
@@ -620,7 +620,7 @@ function introGuide() {
 										
 											introjs.insertOption(introjs._currentStep + 1, getStep("#falsePrint", "", "hide", "right"));
 											introjs.insertOption(introjs._currentStep + 2, getStep("#console", "", "hide", "right", "secondPrint"));
-											introjs.insertOption(introjs._currentStep + 3, getStep("#restart", "Click to restart.", "", "right"));
+											introjs.insertOption(introjs._currentStep + 3, getStep("#button", "Click to restart.", "", "right"));
 											
 										$('.introjs-tooltiptext').append('<div id="outerText"></div>');
 										var text = text1 + " <b class='red'>false</b>." + text2

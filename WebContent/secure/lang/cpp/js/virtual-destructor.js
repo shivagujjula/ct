@@ -12,6 +12,14 @@ var virtualDestructorFunction = function() {
 
 function introJsFunction() {
 	introjs = introJs();
+
+	$('#restartBtn').click(function() {
+			location.reload();
+		});
+		$('#closeBtn').click(function() {
+			window.parent.$('.ui-dialog-titlebar-close').click();
+		});
+
 	introjs.setOptions({
 		showStepNumbers: false,
 		exitOnOverlayClick: false,
@@ -230,7 +238,7 @@ function introJsFunction() {
 					introjs.insertOption(introjs._currentStep + 2,insertionIntro("baseShow", "", "top", "hide","print"));
 					introjs.insertOption(introjs._currentStep + 3,insertionIntro("baseDes", "", "top", "hide"));
 					introjs.insertOption(introjs._currentStep + 4,insertionIntro("outputBox", "", "top", "hide"));
-					introjs.insertOption(introjs._currentStep + 5,insertionIntro("restart", "click to restart.", "right"));
+					introjs.insertOption(introjs._currentStep + 5,insertionIntro("button", "", "right"));
 					setTimeout(function() {
 						introjs.nextStep();
 					}, 900);
@@ -246,14 +254,22 @@ function introJsFunction() {
 				})
 			break;	
 				
-			case "restart":
-				$(".introjs-helperLayer").one("transitionend", function() {
-					$("#restart").removeClass("opacity00");
-					$("#restart").click(function() {
-						location.reload(true);
+			case "button" :
+				$('.introjs-nextbutton').hide();
+				$('.introjs-helperLayer ').one('transitionend', function() {
+					$("#restartBtn, #closeBtn").removeClass("opacity00");
+					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+										
+					typing('.introjs-tooltiptext', text, function() {
+						$('#restartBtn').click(function() {
+							location.reload();
+							
+						});
+
 					});
-				})
-			break;	
+				});
+			break;
 				
 			case "memoryRemove":
 				$(".introjs-helperLayer").one("transitionend", function() {

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/css/introjs.css">
 <link rel="stylesheet" href="/css/introjs-ct.css">
 <link rel="stylesheet" href="/css/animate.css">
-
+<link rel="stylesheet" href="/css/font-awesome-animation.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
@@ -267,8 +267,17 @@ using namespace std;
 	</div>
 </div>
 </div>	
-<div class ="col-xs-12 text-center margin-top-20">
-	<span class="btn btn-warning btn-sm opacity00" id="restart">Restart</span>
+<div class="margin-top-20 col-xs-12 text-center">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button" style=''>
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
 </div>
 <script>
 	$(document).ready(function() {

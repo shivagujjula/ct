@@ -6,15 +6,15 @@ var readPrintStringUsingGetsPutsReady = function() {
 		$('#hiddentotalEnterChar').val();
 		location.reload();
 	});
+	$('#closeBtn').click(function() {
+		window.parent.$('.ui-dialog-titlebar-close').click();
+	});
+
 	intro = introJs();
 	$('#nextButton').click(function() {
 		$(this).remove();
 		intro.nextStep();
 	});
-	$('#closeBtn').click(function() {
-		window.parent.$('.ui-dialog-titlebar-close').click();
-	});
-
 	intro.setOptions ({
 		showStepNumbers : false,
 		exitOnOverlayClick : false,
@@ -1318,11 +1318,10 @@ var readPrintStringUsingGetsPutsReady = function() {
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					$("#restartBtn, #closeBtn").removeClass("opacity00");
-					console.log('haiiiii');
 					var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
 							"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
 										
-					typing('.introjs-tooltiptext', text,10, "", function() {
+					typing('.introjs-tooltiptext', text, function() {
 						$('#restartBtn').click(function() {
 							location.reload();
 							
