@@ -4,11 +4,16 @@
 
 var buttonpressed;
 var qType = "Copy Writing";
-var langType = "No language";
-
+var langType = "No Language";
+var launchHelpFlag = false;
+var testCasesBtnFlag = false;
+var editCloneBtnsFlag = false;
 
 
 function launchHelp() {
+	launchHelpFlag = true;
+	testCasesBtnFlag = true;
+	editCloneBtnsFlag = true;
 	if ($('.introjs-overlay').is(":visible")) {
 		//if already visible...
 		return false;
@@ -36,6 +41,22 @@ function launchHelp() {
 						<div class="radio">
 						  <label><input type="radio" name="quesradio" qtype="Multiple Choice - Multiple Answers">
 						  	Multiple Choice - Multiple Answers</label>
+						</div>
+						<div class="radio">
+						  <label><input type="radio" name="quesradio" qtype="Multiple Choice - Single Answer">
+						  	Multiple Choice - Single Answer</label>
+						</div>
+						<div class="radio">
+						  <label><input type="radio" name="quesradio" qtype="Restore Correct Order">
+						  	Restore Correct Order</label>
+						</div>
+						<div class="radio">
+						  <label><input type="radio" name="quesradio" qtype="Fill in the Blanks">
+						  	Fill in the Blanks</label>
+						</div>
+						<div class="radio">
+						  <label><input type="radio" name="quesradio" qtype="Match the Following">
+						  	Match the Following</label>
 						</div>
 						<div class="radio">
 						  <label><input type="radio" name="quesradio" qtype="Spoken Language">
@@ -74,6 +95,11 @@ function launchHelp() {
 	
 	//switch-animate
 	$(".switch-animate").eq(0).attr("id", "statusEnabled");
+	
+	// table button selectors
+	$("tr td a").eq(0).attr("id", "editBtn");
+	$("tr td a").eq(1).attr("id", "cloneBtn");
+	
 	for (var i = 0; i < $(".checkbox-inline").length; i++) {
 		$(".checkbox-inline").eq(i).attr("id", "checkboxInline" + i);
 	}
@@ -119,20 +145,20 @@ function introGuide() {
 	introjs.setOptions({
 		steps : [{
 			element : "#course",
-			intro : "",
-			position : "bottom",
+			intro : "Select your <span class='ct-code-b-yellow'>course</span> type.",
+			position : "right",
 		}, {
 			element : "#topic",
-			intro : "",
+			intro : "Select your <span class='ct-code-b-yellow'>topic</span>.",
 			position : "right" 
 		}, {
 			element : "#section",
-			intro : "",
+			intro : "Select your <span class='ct-code-b-yellow'>section</span>.",
 			position : "right" 
 		}, {
 			element : "#s2id_courseTag",
 			intro : "",
-			position : "left" 
+			position : "right" 
 		}, {
 			element : "#questionType",
 			intro : "Select your question type.<span class='errorText'></span>",
@@ -143,19 +169,19 @@ function introGuide() {
 			position : "left" 
 		}, {
 			element : "#statusEnabled",
-			intro : "",
+			intro : "Click <span class='ct-code-b-yellow'>Yes</span> to enable the question.",
 			position : "right" 
 		}, {
 			element : "#hintsBtn",
-			intro : "",
+			intro : "You can add <span class='ct-code-b-yellow'>hints</span> to the question.",
 			position : "left"
 		}, {
 			element : "#duration",
-			intro : "",
+			intro : "Duration",
 			position : "left" 
 		}, {
 			element : "#questionIntent",
-			intro : "",
+			intro : "Write your question intent.",
 			position : "right" 
 		}, {
 			element : "#s2id_parentId",
@@ -239,30 +265,77 @@ function introGuide() {
 			intro : "",
 			position : "right" 
 		}*/, {
+			element : "#tableDetails",
+			intro : "",
+			position : "top"
+		}, {
 			element : "#menuBarHelp",
 			intro : "",
 			animateStep : 'exitStep',
 			tooltipClass : "hide"
 		}]
-	});//description
+	});
 	
 	
 	
 	introjs.onafterchange(function(targetElement) {
 		introjs.refresh();
 		$('.introjs-nextbutton').show();
-		$('.introjs-prevbutton').show();
-		
+		$('.introjs-prevbutton').show();		
 		var elementId = targetElement.id;
 		switch (elementId) {
 		case "course":
 			$('.introjs-prevbutton').hide();
+			break;			
+		case "section":
+			$(".introjs-helperLayer").one("transitionend", function() {				
+				introjs._introItems.splice(3, 1);
+				introjs.insertOption(3, getStep("#s2id_courseTag", "Tags.", "left"));
+			});
+			break;
+		case "questionIntent":
+			$(".introjs-helperLayer").one("transitionend", function() {				
+				introjs._introItems.splice(introjs._currentStep + 1, 1);
+				introjs.insertOption(introjs._currentStep + 1, getStep("#s2id_parentId", "Parent", "left"));
+			});
+			break;
+		case "s2id_parentId":
+			$(".introjs-helperLayer").one("transitionend", function() {				
+				introjs._introItems.splice(introjs._currentStep + 1, 1);
+				introjs.insertOption(introjs._currentStep + 1, getStep("#s2id_pending", "", "left"));
+			});
+			break;
+		/*case "progLanguage":
+			$(".introjs-helperLayer").one("transitionend", function() {				
+				introjs._introItems.splice(introjs._currentStep + 1, 1);
+				introjs.insertOption(introjs._currentStep + 1, getStep("#s2id_autogen2", "", "left"));
+			});
+			break;*/
+		case "s2id_autogen2":
+			$(".introjs-helperLayer").one("transitionend", function() {				
+				introjs._introItems.splice(introjs._currentStep + 1, 1);
+				introjs.insertOption(introjs._currentStep + 1, getStep("#s2id_autogen5", "", "left"));
+			});
+			break;
+		case "statusEnabled":
+		case "duration":
+			$(".introjs-helperLayer").one("transitionend", function() {	
+				if ($(".hintsDialogContent").is(':visible')) {
+					setTimeout(function() {
+						closeHintsClicked();
+					}, 500);
+				}
+			});
 			break;
 		case "designView":
 			$(".introjs-helperLayer").one("transitionend", function() {
-				addDynamicSteps();
+				if (launchHelpFlag) {
+					launchHelpFlag = false;
+					addDynamicSteps();					
+				}
 			});
 			break;
+			//
 		case 'course':
 			$(".introjs-tooltip").css("width", "220px");
 			$(".introjs-helperLayer").one("transitionend", function() {
@@ -270,19 +343,27 @@ function introGuide() {
 			break;
 		case 'resetBtn':
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var questionTypeText = $("#questionType :selected").text();
-				var progLanguageText = $("#progLanguage :selected").text();
-				if((questionTypeText == "Copy Writing" || questionTypeText == "Compilation Errors")
-						&& (progLanguageText == "No Language" || progLanguageText == "IoT-Arduino")) {
-					introjs.insertOption(introjs._currentStep + 1, getStep("#generateTestCasesBtn", "Click on <span class='ct-code-b-yellow'>" +
-							"Generate Test Cases</span> button to generate the test cases.", "left"));
-					
-				} else if((questionTypeText == "Copy Writing" || questionTypeText == "Compilation Errors") && progLanguageText != "No Language") {
-					introjs.insertOption(introjs._currentStep + 1, getStep("#generateTestCasesBtn", "Click on <span class='ct-code-b-yellow'>" +
-							"Execute Main File</span> button to execute the main file.", "left"));
+				if (testCasesBtnFlag) {
+					testCasesBtnFlag = false;
+					testCasesBtnSteps();
 				}
 			});
 			break;
+		case "tableDetails":
+			$(".introjs-helperLayer").one("transitionend", function() {
+				if (editCloneBtnsFlag) {
+					editCloneBtnsFlag = false;
+					editCloneBtnsSteps();
+				}
+			});
+			break;
+		/*case "editBtn":
+			$(".introjs-helperLayer").one("transitionend", function() {
+				if ($("#cloneBtn").is(":visible")) {
+					introjs.insertOption(introjs._currentStep + 1, getStep("#cloneBtn", "", "right"));
+				}
+			});
+			break;*/
 		case "menuBarHelp":
 			var animateStep = introjs._introItems[introjs._currentStep].animateStep;
 			switch(animateStep) {
@@ -300,7 +381,6 @@ function introGuide() {
 			$(".introjs-helperLayer").one("transitionend", function() {
 				$("#questionType").change(function () {
 					var questionTypeText = $(this).find("option:selected").text();
-		            console.log("questionTypeText : " + questionTypeText);
 					if (questionTypeText == qType ) {						
 						$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').show();
 						$('.errorText').empty();
@@ -315,9 +395,11 @@ function introGuide() {
 		case 'progLanguage':
 			$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
+				introjs._introItems.splice(introjs._currentStep + 1, 1);
+				introjs.insertOption(introjs._currentStep + 1, getStep("#s2id_autogen2", "", "left"));
 				$("#progLanguage").change(function () {
 					var progLanguageText = $(this).find("option:selected").text();
-		            if (progLanguageText == langType ) {						
+					if (progLanguageText == langType ) {						
 						$('.introjs-nextbutton, .introjs-prevbutton, .introjs-skipbutton').show();
 						$('.errorText2').empty();
 					} else {
@@ -325,11 +407,17 @@ function introGuide() {
 						$('.errorText2').html("<br><br>Please select <span class='ct-code-b-yellow'>" + langType +"</span>.");
 					}
 				});
+				if (langType == "C" || langType == "C++") {
+	            	$('html, body').animate({
+	            		scrollTop: 0
+	            	}, 1000);
+				}
 				
 				$("#progLanguage").change();
 			});
 			break;
 		}
+		introjs._introItems[introjs._currentStep]["isVisited"] = true;
 	});
 
 	introjs.setOption('showStepNumbers', false);
@@ -341,6 +429,28 @@ function introGuide() {
 	$(".introjs-skipbutton").addClass("pull-left");
 	$('.introjs-bullets').hide();
 	
+	
+}
+
+function editCloneBtnsSteps() {
+	if ($("#editBtn").is(":visible")) {
+		introjs.insertOption(introjs._currentStep + 1, getStep("#editBtn", "", "top"));
+		introjs.insertOption(introjs._currentStep + 2, getStep("#cloneBtn", "", "right"));
+	}
+}
+
+function testCasesBtnSteps() {
+	var questionTypeText = $("#questionType :selected").text();
+	var progLanguageText = $("#progLanguage :selected").text();
+	if((questionTypeText == "Copy Writing" || questionTypeText == "Compilation Errors")
+			&& (progLanguageText == "No Language" || progLanguageText == "IoT-Arduino")) {
+		introjs.insertOption(introjs._currentStep + 1, getStep("#generateTestCasesBtn", "Click on <span class='ct-code-b-yellow'>" +
+				"Generate Test Cases</span> button to generate the test cases.", "left"));
+		
+	} else if((questionTypeText == "Copy Writing" || questionTypeText == "Compilation Errors") && progLanguageText != "No Language") {
+		introjs.insertOption(introjs._currentStep + 1, getStep("#generateTestCasesBtn", "Click on <span class='ct-code-b-yellow'>" +
+				"Execute Main File</span> button to execute the main file.", "left"));
+	}
 }
 
 function addDynamicSteps() {
@@ -349,10 +459,9 @@ function addDynamicSteps() {
 	
 	// Code for Copy Writing
 	
-	if(questionTypeText == "Copy Writing" && progLanguageText == "No Language") {
+	if(questionTypeText == "Copy Writing" && progLanguageText == "No Language" && $("#className").is(':visible') == true) {
 		introjs.insertOption(introjs._currentStep + 1, getStep("#className", "Write your " +
-				"<span class='ct-code-b-yellow'>class</span> name.", "right"));
-		
+				"<span class='ct-code-b-yellow'>class</span> name.", "right"));		
 		introjs.insertOption(introjs._currentStep + 2, getStep("#copyWritingEditor", "Write your " +
 				"<span class='ct-code-b-yellow'>code</span> name.", "top"));
 	} else if(questionTypeText == "Copy Writing" && progLanguageText == "IoT-Arduino") {
@@ -362,7 +471,7 @@ function addDynamicSteps() {
 		
 		introjs.insertOption(introjs._currentStep + 3, getStep(".codingEditorClass", "Type here code.", "top"));
 		
-	} else if(questionTypeText == "Copy Writing" && progLanguageText != "No Language") {
+	} else if(questionTypeText == "Copy Writing" && (progLanguageText != "No Language" || $("#className").is(':visible') != true)) {
 		introjs.insertOption(introjs._currentStep + 1, getStep("#mainFileName", "Write main file name.", "top"));
 		
 		introjs.insertOption(introjs._currentStep + 2, getStep(".copyWritingFileName", "Enter file name.", "top"));
@@ -378,14 +487,14 @@ function addDynamicSteps() {
 	
 	// Code for Compilation Erros
 	
-	if(questionTypeText == "Compilation Errors" && progLanguageText == "No Language") {
+	if(questionTypeText == "Compilation Errors" && progLanguageText == "No Language" && $("#className").is(':visible') == true) {
 		introjs.insertOption(introjs._currentStep + 1, getStep("#className", "Write your " +
 				"<span class='ct-code-b-yellow'>class</span> name.", "right"));
 		
 		introjs.insertOption(introjs._currentStep + 2, getStep("#correctContentEditor", "Write your " +
 				"<span class='ct-code-b-yellow'>code</span> name.", "top"));
 				
-		introjs.insertOption(introjs._currentStep + 2, getStep("#compilationErrorEditorContainer", "Compilation editor", "top"));
+		introjs.insertOption(introjs._currentStep + 3, getStep("#compilationErrorEditorContainer", "Compilation editor", "top"));
 				
 	} else if(questionTypeText == "Compilation Errors" && progLanguageText == "IoT-Arduino") {
 		introjs.insertOption(introjs._currentStep + 1, getStep("#correctContentMainFileName", "Write main file name.", "top"));
@@ -396,7 +505,7 @@ function addDynamicSteps() {
 		
 		introjs.insertOption(introjs._currentStep + 4, getStep("#" + $("#compilationErrorTabPanesDiv .codingEditorClass:eq(0)").attr("id"), "Code with compilations.", "top"));
 		
-	} else if(questionTypeText == "Compilation Errors" && progLanguageText != "No Language") {
+	} else if(questionTypeText == "Compilation Errors" && (progLanguageText != "No Language" || $("#className").is(':visible') != true)) {
 		introjs.insertOption(introjs._currentStep + 1, getStep("#correctContentMainFileName", "Write main file name.", "top"));
 		
 		introjs.insertOption(introjs._currentStep + 2, getStep(".correctContentFileName", "Write main file name.", "top"));
@@ -423,6 +532,7 @@ function addDynamicSteps() {
 			introjs.insertOption(introjs._currentStep + 2, getStep("#previewDivId", "Click on <span class='ct-code-b-yellow'>Preview Panel</span>" +
 					" to view the format of multiple choice question.", "top"));
 		}
+		// Code for remaining Q types
 }
 
 function getStep(element, intro, position, tooltipClass) {
