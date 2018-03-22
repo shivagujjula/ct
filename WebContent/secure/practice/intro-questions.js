@@ -18,77 +18,76 @@ function launchHelp() {
 		//if already visible...
 		return false;
 	}
-	var introQTypeModal = `<div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header btn-primary" style="padding: 10px;">
-					<button type="button" style='opacity: 1;' class="close"
-						data-dismiss="modal" aria-label="Close">
-						<span style='color: white' aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="exampleModalLabel">Select what you want to know about</h4>
-				</div>
-				<div class="modal-body col-xs-12" style="background: white;font-family: monospace;">
-					<div class="col-xs-6">
-					<div style="color: #009907;text-decoration: underline;font-size: 13px;">Select a question type</div>
-					<form style="color: #1c249c;">
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Copy Writing" checked>Copy Writing</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Compilation Errors">Compilation Errors</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Multiple Choice - Multiple Answers">
-						  	Multiple Choice - Multiple Answers</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Multiple Choice - Single Answer">
-						  	Multiple Choice - Single Answer</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Restore Correct Order">
-						  	Restore Correct Order</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Fill in the Blanks">
-						  	Fill in the Blanks</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Match the Following">
-						  	Match the Following</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="quesradio" qtype="Spoken Language">
-						  	Spoken Language</label>
-						</div>
-					</form>
-					</div>
-					<div class="col-xs-6">
-						<div style="color: #009907;text-decoration: underline;font-size: 13px;">Select a language type</div>
-						<form style="color: #1c249c;">
-						<div class="radio">
-						  <label><input type="radio" name="langradio" langtype="No Language" checked>No Language</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="langradio" langtype="C">C</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="langradio" langtype="C++">C++</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="langradio" langtype="IoT-Arduino">IoT-Arduino</label>
-						</div>
-					</form>
-					</div>
-				</div>
-
-				<div class="modal-footer">
-					<a class="btn btn-success" data-dismiss="modal" id="startBtn" onclick='introGuide()'>Start</a>
-				</div>
-			</div>
-		</div>
-	</div>`;
+	var introQTypeModal = '<div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog">'+
+		'<div class="modal-dialog modal-lg" role="document">'+
+			'<div class="modal-content">'+
+				'<div class="modal-header btn-primary" style="padding: 10px;">'+
+					'<button type="button" style="opacity: 1;" class="close"'+
+						'data-dismiss="modal" aria-label="Close">'+
+						'<span style="color: white" aria-hidden="true">&times;</span>'+
+					'</button>'+
+					'<h4 class="modal-title" id="exampleModalLabel">Select what you want to know about</h4>'+
+				'</div>'+
+				'<div class="modal-body col-xs-12" style="background: white;font-family: monospace;">'+
+					'<div class="col-xs-6">'+
+					'<div style="color: #009907;text-decoration: underline;font-size: 13px;">Select a question type</div>'+
+					'<form style="color: #1c249c;">'+
+						'<div class="radio">'+
+						 '<label><input type="radio" name="quesradio" qtype="Copy Writing" checked>Copy Writing</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Compilation Errors">Compilation Errors</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Multiple Choice - Multiple Answers">'+
+						  	'Multiple Choice - Multiple Answers</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Multiple Choice - Single Answer">'+
+						  	'Multiple Choice - Single Answer</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Restore Correct Order">'+
+						  	'Restore Correct Order</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Fill in the Blanks">'+
+						  	'Fill in the Blanks</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Match the Following">'+
+						  	'Match the Following</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="quesradio" qtype="Spoken Language">'+
+						  	'Spoken Language</label>'+
+						'</div>'+
+					'</form>'+
+					'</div>'+
+					'<div class="col-xs-6">'+
+						'<div style="color: #009907;text-decoration: underline;font-size: 13px;">Select a language type</div>'+
+						'<form style="color: #1c249c;">'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="langradio" langtype="No Language" checked>No Language</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="langradio" langtype="C">C</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="langradio" langtype="C++">C++</label>'+
+						'</div>'+
+						'<div class="radio">'+
+						  '<label><input type="radio" name="langradio" langtype="IoT-Arduino">IoT-Arduino</label>'+
+						'</div>'+
+					'</form>'+
+					'</div>'+
+				'</div>'+
+				'<div class="modal-footer">'+
+					'<a class="btn btn-success" data-dismiss="modal" id="startBtn" onclick="introGuide()">Start</a>'+
+				'</div>'+
+			'</div>'+
+		'</div>'+
+	'</div>';
 
 	$("body").append(introQTypeModal);
 	qTypeModalFun();
