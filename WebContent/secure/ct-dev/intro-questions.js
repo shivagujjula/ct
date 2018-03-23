@@ -9,7 +9,6 @@ var launchHelpFlag = false;
 var testCasesBtnFlag = false;
 var editCloneBtnsFlag = false;
 
-
 function launchHelp() {
 	launchHelpFlag = true;
 	testCasesBtnFlag = true;
