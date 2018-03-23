@@ -13,7 +13,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/sia.min.js"></script>
+<script src="../js-min/sia.min.js"></script> 
 
 <title>Set.jsp</title>
 
@@ -232,7 +232,14 @@ pre > span {
 	<div class='text-center'>
 		<h1 class='label ct-demo-heading'>Set Demo</h1>
 	</div>
-	
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+			<span class="col-xs-12" id="button">
+				<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+				<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+			</span>
+		</span>  
+	</div>
 	<div class='boxes-div'>
 		
 		<div class='col-xs-3 padding-col0 box-margin'>

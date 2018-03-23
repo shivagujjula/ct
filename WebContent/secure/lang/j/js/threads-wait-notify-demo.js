@@ -94,12 +94,12 @@ var threadsWaitNotifyDemoReady = function() {
 	$_bs("#startMainMethodButton").attr('data-content', 
 			(id == 1)? 'Click to start the demo with a single thread.' : 'Click to start the demo with multiple threads.');
 	$_bs("#startMainMethodButton").popover('show');
-	$_bs("#resetMainMethodButton").attr('data-content', 'Click to restart the demo.');
+	//$_bs("#resetMainMethodButton").attr('data-content', 'Click to restart the demo.');
 	
 	$("#startMainMethodButton").click(function() {
 		$_bs(this).popover('hide');
 		$(this).addClass('hidden');
-		$("#resetMainMethodButton").removeClass('hidden');
+		$("#resetMainMethodButton, #closeBtn").addClass('hidden');
 		$('#numOfObjects').empty();
 		for (var next = 1; next <= (sliderValue * 2); next++) {
 			if (next < (sliderValue + 1)) {
@@ -143,11 +143,12 @@ var threadsWaitNotifyDemoReady = function() {
 			e.preventDefault();
 		}
 	});
-	
 	$("#resetMainMethodButton").click(function() {
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("#executeButton").click(function() {
 		if ($(this).hasClass('disabled')) {
 			return;
@@ -639,6 +640,9 @@ var threadsWaitNotifyDemoReady = function() {
 			}
 			$_bs("#mainMethodCloseBrace").popover('show');
 			$_bs("#resetMainMethodButton").popover('show');
+			setTimeout(function() {
+				$("#resetMainMethodButton, #closeBtn").removeClass('hidden').removeClass("opacity00");
+			}, 3000);
 		}
 	}
 	

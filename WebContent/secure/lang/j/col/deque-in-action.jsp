@@ -12,14 +12,13 @@
 		<link rel="stylesheet" href="/css/font-awesome.min.css">
   		<script src="/js/bootstrap.min.js"></script>
   		  
-  		       
    		<script src="/js/intro.js"></script>
    		<link rel="stylesheet" href="/css/introjs.css">
    		<link rel="stylesheet" href="/css/introjs-ct.css">
    		<script src="/js/gs/TweenMax.min.js"></script>
    		<script src="/js/gs/TweenLite.min.js"></script>
    		<script src="/js/typewriting.min.js"></script>
-   		<script src="/secure/lang/j/js-min/dia.min.js"></script>
+		 <script src="/secure/lang/j/js-min/dia.min.js"></script> 
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -99,14 +98,6 @@
 
 .padding-col0 {
 	padding: 0;
-}
-
-.titles {
-	background-color: highlight;
-    border-radius: 19px;
-    padding: 3px 8px;
-    position: relative;
-    z-index: 1000000;
 }
 
 .method-code {
@@ -306,14 +297,17 @@ pre > span {
 	font-family: monospace;
 	color: #ed138e;
 }
+.buttons-div {
+	  margin-bottom: 10px;
+      margin-top: 20px;
+      text-align: center;
+}
 
 </style>
 </head>
 <body>
 
 <script type="text/javascript">
-
-	
 	$(document).ready(function() {
 		dequeInActionReady();
 	});
@@ -321,7 +315,19 @@ pre > span {
 	
 	
 </script>
-	<h3 class="headings" ><span class="label label-default titles">Deque in Action</span></h3>
+	<h3 class="headings" ><span class="label label-default ct-demo-heading">Deque in Action</span></h3>
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>  
+	</div>
 	<div class="margin-top" id="executionDiv">
 			<div class="col-xs-4 box-border methods-div method-code margin-left">
 				

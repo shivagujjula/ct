@@ -216,6 +216,15 @@ function checkAllThreadsEnded() {
 			$("#startAllThreadsButton").addClass("reset").addClass("btn-warning");
 			$("#startAllThreadsButton").text("Reset Main Thread");
 			sliderValueAtEnd = sliderValue;
+			setTimeout(function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn").click(function() {
+					location.reload(true);
+				});
+				$('#closeBtn').click(function() {
+					window.parent.$(".ui-dialog-titlebar-close").click();
+				});
+			}, 300);
 		}
 	}
 }

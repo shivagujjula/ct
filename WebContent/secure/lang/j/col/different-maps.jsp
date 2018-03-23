@@ -17,14 +17,17 @@
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/jquery.scrollTo.js" type="text/javascript"></script>
-<script src="/secure/lang/j/js-min/dm.min.js"></script> 
+<script src="/secure/lang/j/js-min/dm.min.js"></script>  
 
 <style>
  #linkedhashmapJar, #treemapJar {
 	overflow-x: hidden;
 	overflow-y: auto;
 } 
-
+#skipButton {
+    /* margin-right: 15px !important; */
+    background-color: orange !important;
+}
 .glyphicon {
     display: inline-block;
     font-family: "Glyphicons Halflings";
@@ -205,6 +208,9 @@ span, div {
 .margin-top-5px {
 	margin-top: 5px;
 }
+.zIndex {
+	z-index: 9999999;
+}
 </style>
 </head>
 <body>
@@ -284,7 +290,14 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
-
+		<div class="margin-top-20 text-center col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>  
+		</div>
 	</div>
 </body>
 </html>

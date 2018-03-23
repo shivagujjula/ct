@@ -2,9 +2,7 @@ var value;
 var caseNumber;
 var tempVal;
 var typingSpeed = 1;
-
 var map = {1 : "One", 2 : "Two", 3 : "Three", 4 : "Four", 56 : "Five or Six"};
-
 var switchStatementInCReady = function() {
 	introJsGuide();
 	$('.initializeBtn').click(function() {
@@ -42,7 +40,6 @@ var switchStatementInCReady = function() {
 			charAtEnd("initializationValue");
 			$(".initializeBtn").addClass("opacity00");
 		}
-		
 	});
 	
 	$("body").keydown(function(e){
@@ -50,9 +47,17 @@ var switchStatementInCReady = function() {
 			e.preventDefault();
 		}
 	});
-	
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
+
 	$('.restartTutorialBtn').click(function() {
-		location.reload();
+		//location.reload();
+		$(".introjs-tooltip").hide();
+		$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("z-index9999999");
 	});
 	
 	$("#initialization").click(function() {
@@ -65,7 +70,7 @@ var switchStatementInCReady = function() {
 		$(".restartTutorialBtn").addClass("hidden");
 		$(".tr").addClass("hidden");
 		introjs.nextStep();
-	})
+	});
 }
 
 function charAtEnd(elementId) {
@@ -287,7 +292,7 @@ function introJsGuide() {
 	$('.introjs-bullets').hide();
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button initializeBtn hidden'>Next &#8594;</a>");
 	$(".introjs-tooltipbuttons").append("<a class='introjs-button tryNewValBtn hidden' style='margin-left:20px; margin-right:20px;'>Try with a different value</a>");
-	$(".introjs-tooltipbuttons").append("<a class='introjs-button restartTutorialBtn hidden'>Restart</a>");
+	$(".introjs-tooltipbuttons").append("<a class='introjs-button restartTutorialBtn hidden'>Skip &nbsp;&nbsp; </a>");
 	introjs.onafterchange(function(targetElement) {
 		var elementId = targetElement.id;
 		switch (elementId) {

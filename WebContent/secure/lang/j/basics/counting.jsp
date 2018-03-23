@@ -17,7 +17,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
- <script src="/secure/lang/j/js-min/counting.min.js"></script>
+<script src="/secure/lang/j/js-min/counting.min.js"></script> 
 
 <style type="text/css">
 body {
@@ -167,7 +167,7 @@ pre {
 			<div class='opacity00 passCountDiv'><b class='ct-code-b-red'>int</b> passCount = 0;</div>
 		</div>
 		
-		<div id='animationDivArea' class='opacity00'>
+		<div id='animationDivArea' class='opacity00' style='left: 38%; width: 60%;'>
 
 			<div style="display: inline-block; width: 50%;">
 				<div class='opacity00 mathsIf'>
@@ -184,7 +184,7 @@ pre {
 				</div><br/>
 			</div>
 
-			<div style="display: inline-block; position: absolute; margin-left: 10%;">
+			<div style="display: inline-block;/*  position: absolute; */ margin-left: 10%;">
 				<div>
 					<div class='maths-ifblk-condition-in-animation opacity00'>
 						<span class='subMark display-inline-block'>subjectMark</span> <span>
@@ -259,9 +259,17 @@ pre {
 	<div class="output-console-body"><span id="output"></span></div>
 	</div>
 	<br>
-	<div class="text-center col-xs-12">
-		<a class="btn btn-warning opacity00" id='restart'><i
-			class="fa fa-refresh"></i>&nbsp;Restart</a>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 	
 	<script type="text/javascript">

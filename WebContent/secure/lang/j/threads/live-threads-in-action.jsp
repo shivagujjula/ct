@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/jquery-ui.css"	rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/introjs.css">
+<link rel="stylesheet" href="/css/introjs-ct.css">
 <!-- jQuery Version 1.10.2 -->
 <script src="/js/jquery-latest.js"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -264,6 +267,14 @@ p {
 
 			</div>
 
+		</div>
+		<div class="margin-top-20 text-center col-xs-12">
+			<span class="col-xs-6 col-xs-offset-3">
+		 		<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
 		</div>
 	</div>
 </body>

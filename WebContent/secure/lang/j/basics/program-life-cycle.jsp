@@ -12,7 +12,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
-<script src="/secure/lang/j/js-min/plc.min.js"></script>
+<script src="/secure/lang/j/js-min/plc.min.js"></script> 
 
 <style type="text/css">
 
@@ -226,12 +226,32 @@ span {
 .opacity00 {
 	opacity: 0;
 }
-
+.ct-code-b-yellow {
+	color : yellow;
+}
 .no-gutter > [class*='col-'] {
 	padding-right : 0;
 	padding-left : 0;
 }
-
+.btn-restart {
+	background-color: hsl(285, 100%, 30%) !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#bf00ff", endColorstr="#720099");
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#bf00ff), to(#720099));
+    background-image: -moz-linear-gradient(top, #bf00ff, #720099);
+    background-image: -ms-linear-gradient(top, #bf00ff, #720099);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bf00ff), color-stop(100%, #720099));
+    background-image: -webkit-linear-gradient(top, #bf00ff, #720099);
+    background-image: -o-linear-gradient(top, #bf00ff, #720099);
+    background-image: linear-gradient(#bf00ff, #720099);
+    border-color: #720099 #720099 hsl(285, 100%, 25%);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+    -webkit-font-smoothing: antialiased;
+}
+.margin-top-20 {
+	margin-top : 20px;
+}
 </style>
 <script type="text/javascript">
 
@@ -353,8 +373,17 @@ span {
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 text-center restartDiv no-gutter">
-		<a class="btn btn-warning restart opacity00">Restart</a>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 </body>
 </html>

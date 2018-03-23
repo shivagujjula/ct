@@ -27,13 +27,6 @@
 	width : 46px;
 	background-color:green !important;
 }
-ct-demo-heading {
-	background: highlight none repeat scroll 0.0;
-	border-radius: 10px;
-	font-size: 18px;
-	position: relative;
-	z-index: 9999999;
-}
 
 input:focus::-moz-placeholder {
 	color: transparent;
@@ -151,10 +144,10 @@ input:focus::-moz-placeholder {
 	/* margin: 0 auto !important; */
 	margin: 7px auto 0 !important;
 }
-
+/* 
 #restartBtn {
 	margin-left: 36%;
-}
+} */
 
 .ct-code-b-green {
 	font-family: monospace;
@@ -244,10 +237,19 @@ ol, ul {
 						<span id="hexaDecimalValueDiv" class="font-size-18 col-sm-12" style="min-height: 30px"></span>
 					</div>
 				</div>
-				<div class="row" style="margin-top: 3%; margin-left: 14.5%">
-					<button class="btn btn-warning hidden" type="button" id='restartBtn'>Restart</button>
-				</div>
 			</div>
+			<div class="margin-top-20 col-xs-12 text-center">
+				<span class="col-xs-8 col-xs-offset-2">
+						<span class="col-xs-12">
+							<span class="col-xs-6 col-xs-offset-3">
+								<span class="col-xs-12" id="button">
+								<span class="btn btn-warning hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+								<span class="btn btn-restart hidden" id="restartBtn" >Restart <i class="fa fa-refresh"></i></span>
+							</span>
+						</span>
+					</span>
+				</span>
+			</div>	
 		</div>
 	</div>
 	<script>

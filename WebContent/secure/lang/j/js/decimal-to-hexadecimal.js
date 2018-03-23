@@ -100,8 +100,11 @@ var decimalToHexaDecimalReady = function() {
 		}
 	});
 	
-	$('#restartBtn').click(function(){
-		 window.location.search = "?restart=1";
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 function converter(decimal,base) {
@@ -230,9 +233,10 @@ function introGuide() {
 				    	element: '#hexaDecimalValueDiv',
 				    	tooltipClass: 'hide'
 				    }, {
-				    	element: '#restartBtn',
-				    	intro: 'Click to restart.',
-				    	position: 'right',
+				    	element : "#button",
+				    	intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				    		"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+				    	position : 'right',
 				    }]
 	});
 	introguide.onbeforechange(function(targetElement) {
@@ -370,7 +374,7 @@ function introGuide() {
 				
 		if (elementId == "hexaDecimalValueDiv") {
 			hexaDecimalValueAnimation();
-			$('#restartBtn').removeClass('hidden').addClass('opacity00');
+			$('#restartBtn, #closeBtn').removeClass('hidden').addClass('opacity00');
 		}
 		if (elementId === "infoDiv") {
 			$("#infoDiv").html('<ul><li id="list1" class="opacity00">The numbering system which uses <span class="ct-code-b-green">base-16</span> ' + ""
@@ -434,9 +438,11 @@ function introGuide() {
 				typing($('#outputText'), typingContent, typingCallbackFunction);
 			});
 		}
-		if (elementId == "restartBtn") {
-			 $('#restartBtn').fadeTo(1300,1.0);
-			$(".introjs-tooltipbuttons").hide();
+		if (elementId == "button") {
+			 $(".introjs-tooltip").css("min-width","380px");
+			 $('#restartBtn, #closeBtn').removeClass("opacity00");
+			 $('#restartBtn, #closeBtn').fadeTo(1300,1.0);
+			 $(".introjs-tooltipbuttons").hide();
 		}
 	});
 	

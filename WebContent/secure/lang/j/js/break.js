@@ -425,20 +425,23 @@ function introJsGuide() {
 			$('.introjs-helperLayer').one('transitionend', function () {
 				$(".introjs-tooltip").removeClass("hide");
 				var text = "The control comes out of the <b class='ct-code-b-yellow'>for-loop</b> and the program terminates.";
-				
 				typing(".introjs-tooltiptext", text, function() {
 					if (introjs._direction == "forward") {
-						introjs.insertOption(introjs._currentStep + 1, getStep("#restart", "Click to restart", "right", "introjs-tooltip-min-width-custom"));
+						introjs.insertOption(introjs._currentStep + 1, getStep("#button", "", "right", ""));
 					}
 					$(".introjs-nextbutton, .introjs-prevbutton").show();
 				});
 			});
 			break;
-		case "restart":
-			$('.introjs-tooltipbuttons').hide();
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restart").fadeTo(1000, 1);
-				$("#restart").removeClass("opacity00");
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				var text = "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>"
+				typing('.introjs-tooltiptext', text, function() {
+				});
 			});
 			break;
 		}

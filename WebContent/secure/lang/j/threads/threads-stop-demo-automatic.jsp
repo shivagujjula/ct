@@ -7,6 +7,7 @@
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script>var $_bs = jQuery.noConflict(true);</script>
@@ -15,7 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/tsda.min.js"></script>
+<script src="../js-min/tsda.min.js"></script> 
 <title>Stop Threads Demo</title>
 
 <style>
@@ -223,25 +224,27 @@ p {
 <body>
 
 	<div class='row'>
-			<div>
-				<div class='col-sm-3' id='sliderDiv'>
-					<p>
-						<label>Number of Threads:</label> <input type="text"
-							id="numOfThreads" name="numOfThreads" readonly
-							style="border: 0; font-weight: bold;">
-					</p>
-					<div id="slider-range-max"></div>
-				</div>
+		<div>
+			<div class='col-sm-3' id='sliderDiv'>
+				<p>
+					<label>Number of Threads:</label> <input type="text"
+						id="numOfThreads" name="numOfThreads" readonly
+						style="border: 0; font-weight: bold;">
+				</p>
+				<div id="slider-range-max"></div>
+			</div>
 
-				<div class='button-div-css'>
-					<button type="button" class="btn btn-primary btn-sm"
-						id='startMainMethodButton'>Start</button>
-			
-					<button type="button" class="btn btn-warning btn-sm hidden"
-						id='resetMainMethodButton'>Reset</button>
-				</div>
+			<div class='button-div-css'>
+				<button type="button" class="btn btn-primary btn-sm"
+					id='startMainMethodButton'>Start</button>
+		
+				<!-- <span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span> -->
+				<span class="btn btn-warning opacity00 hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+				<span type="button" class="opacity00 btn btn-restart hidden"
+					id='resetMainMethodButton'>Restart <i class="fa fa-refresh"></i></span>
 			</div>
 		</div>
+	</div>
 	
 	<div class='col-sm-12'>
 		<div class='row'>

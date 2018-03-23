@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
@@ -242,8 +243,9 @@ p {
 					<button type="button" class="btn btn-primary btn-sm"
 						id='startMainMethodButton'>Start</button>
 			
-					<button type="button" class="btn btn-warning btn-sm hidden"
-						id='resetMainMethodButton'>Reset</button>
+					<span class="btn btn-warning opacity00 hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span type="button" class="opacity00 btn btn-restart hidden"
+					id='resetMainMethodButton'>Restart <i class="fa fa-refresh"></i></span>
 				</div>
 				
 			</div>
@@ -480,12 +482,12 @@ $(document).ready(function() {
 	$_bs("#startMainMethodButton").attr('data-content', 
 			(id == 1)? 'Click to start the demo with a single thread.' : 'Click to start the demo with multiple threads.');
 	$_bs("#startMainMethodButton").popover('show');
-	$_bs("#resetMainMethodButton").attr('data-content', 'Click to restart the demo.');
+//	$_bs("#resetMainMethodButton").attr('data-content', 'Click to restart the demo.');
 	
 	$("#startMainMethodButton").click(function() {
 		$_bs(this).popover('hide');
 		$(this).addClass('hidden');
-		$("#resetMainMethodButton").removeClass('hidden');
+		$("#resetMainMethodButton, #closeBtn").addClass('hidden');
 		$('#numOfObjects').empty();
 		for (var next = 1; next <= (sliderValue * 2); next++) {
 			if (next < (sliderValue + 1)) {
@@ -545,7 +547,9 @@ $(document).ready(function() {
 	$("#resetMainMethodButton").click(function() {
 		location.reload();
 	});
-	
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("#executeButton").click(function() {
 		if ($(this).hasClass('disabled')) {
 			return;
@@ -989,6 +993,9 @@ function checkAllThreadsEnded() {
 		}
 		$_bs("#mainMethodCloseBrace").popover('show');
 		$_bs("#resetMainMethodButton").popover('show');
+		setTimeout(function() {
+			$("#resetMainMethodButton, #closeBtn").removeClass('hidden').removeClass("opacity00");
+		}, 300);
 	}
 }
 

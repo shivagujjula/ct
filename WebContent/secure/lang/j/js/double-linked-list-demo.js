@@ -1,5 +1,3 @@
-
-
 var setInterval;
 var lineIndex;
 var l = console.log.bind(console);
@@ -10,6 +8,9 @@ var removeClickedFirstTime = true;
 var removeElementClickedFirstTime = true;
 var exceptionThrown = false;
 var str = "";
+var countAddIndex = 0;
+var countRemoveIndex = 0;
+var countRemoveElement = 0;
 
 var doubleLinkedListDemoReady = function() {
 
@@ -39,7 +40,12 @@ var doubleLinkedListDemoReady = function() {
 			e.preventDefault();
 		}
 	});
-	
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$(document).keydown(function(objEvent) {
 		if (objEvent.keyCode == 9) {  //tab pressed
 			objEvent.preventDefault(); // stops its action
@@ -102,12 +108,16 @@ var doubleLinkedListDemoReady = function() {
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					typing(".introjs-tooltiptext", "These are some of the methods in a linked list.", 10, "",function() {
-				
+						if(countAddIndex >= 1 && countRemoveIndex >= 1 && countRemoveElement >= 0) {
+							console.log("ok");
+							$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("z-index10000000");
+						}
 					});
 				});
 				break;
 				
 			case 'totalAddId':
+				$("#restartBtn, #closeBtn").addClass("opacity00")
 				$('.introjs-nextbutton').hide();
 				$('.introjs-helperLayer ').one('transitionend', function() {
 					typing(".introjs-tooltiptext", "Here we are using <span class='ct-code-b-yellow'>add()</span> to insert elements into the <span class='ct-code-b-yellow'>LinkedList</span>. enter the element and click <span class='duplicate-btn-sm-success'>Go</span> button.", 10, "",function() {
@@ -118,6 +128,7 @@ var doubleLinkedListDemoReady = function() {
 				
 			case 'hiddenInsertElementLine':
 				$('.introjs-nextbutton').hide();
+				$("#restartBtn, #closeBtn").addClass("opacity00");
 				$('.introjs-helperLayer ').one('transitionend', function() {
 				var text = $("#insertElement" + lineIndex).addClass('z-index10000000').removeClass("visibility-hidden").html();
 				if($("#add_e").hasClass("click-check")) {
@@ -295,6 +306,7 @@ var doubleLinkedListDemoReady = function() {
 				} else {
 					dynamicSteps(false, false);
 				}
+				countAddIndex++;
 				scrollToBottom('javaCode', false);
 			}
 			
@@ -332,6 +344,7 @@ var doubleLinkedListDemoReady = function() {
 						dynamicSteps(false, true);
 						scrollToBottom('javaCode', false);
 					}
+					countRemoveIndex++;
 				}
 			}
 		});
@@ -357,6 +370,7 @@ var doubleLinkedListDemoReady = function() {
 				$("#randomCode").append('\n\t\t<span class="visibility-hidden" id="sopCode' + lineIndex + '">System.out.println("removeStatus for <span class="ct-pink-color">' + $('#removeByElementMethod').text() + '</span> : " + removeStatus);</span>');
 				codeLineNum += 2;
 				dynamicSteps(true, true);
+				countRemoveElement++;
 				scrollToBottom('javaCode', true);
 		});
 		
@@ -599,7 +613,7 @@ function linkedListAddElementWithIndex() {
 				arrowAppend(elementIndex++ , elementValue);
 			} else {
 				var text = "This is live demo where the elements is inserted into a node in linked list.";
-				boxAppend(elementIndex++ , elementValue, text);
+				boxAppend(elementIndex++, elementValue, text);
 			}
 		} else if (index == 0 && elementIndex != 0) {
 				$("#indexId" + index).removeClass('linkedList-circle blinking');

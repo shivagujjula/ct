@@ -1,5 +1,3 @@
-
-
 var givenText;
 	var tl;
 	var count1;
@@ -14,6 +12,12 @@ var givenText;
 	
 	function introJsTest(stepNo){
 		introjs = introJs();
+		$("#restartBtn").click(function() {
+			location.reload(true);
+		});
+		$('#closeBtn').click(function() {
+			window.parent.$(".ui-dialog-titlebar-close").click();
+		});
 		introjs.setOptions({
 			showStepNumbers: false,
 			exitOnOverlayClick: false,
@@ -113,6 +117,7 @@ var givenText;
 			    break;
 				
 				case "innerCodeDiv":
+					 $("#restartBtn, #closeBtn").removeClass("zIndex");
 					$("#offerBtn").addClass("disabled");
 					$("#pollBtn").addClass("disabled");
 					$("#peekBtn").addClass("disabled");
@@ -348,9 +353,16 @@ var givenText;
 									+ " button.<br><b>Note:</b> To call the <span class = 'ct-code-b-yellow'>offer()</span>"
 									+ " method, enter some text and click on its <span class='go-button-duplicate'>Go</span> button.");
 						} else {
+							if(introjs._currentStep >= 24) {
+								$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+							}
 							$("#offerMethod").attr("contenteditable", true);
 							$("#pollBtn").removeClass("disabled");
 							$("#peekBtn").removeClass("disabled");
+							typingForMethods(".introjs-tooltiptext", 
+									"Now again you can call any method by clicking on the respective <span class='go-button-duplicate'>Go</span>"
+									+ " button.<br><b>Note:</b> To call the <span class = 'ct-code-b-yellow'>offer()</span>"
+									+ " method, enter some text and click on its <span class='go-button-duplicate'>Go</span> button.");
 						}
 					});
 					

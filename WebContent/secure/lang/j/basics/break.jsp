@@ -162,14 +162,26 @@ r {
 		</div>
 	</div>
 </div>
-<div class="text-center col-xs-12">
-	<a class="btn btn-warning opacity00" id="restart">Restart</a>
+<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
 </div>
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#restart').click(function() {
-		location.reload();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 	breakInCReady();
 });

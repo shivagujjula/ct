@@ -1,4 +1,3 @@
-
 	var givenText;
 	var tl;
 	var count1;
@@ -14,6 +13,13 @@
 	
 	function introJsTest(stepNo){
 		introjs = introJs();
+		$("#restartBtn").click(function() {
+			location.reload(true);
+		});
+		$('#closeBtn').click(function() {
+			window.parent.$(".ui-dialog-titlebar-close").click();
+		});
+
 		introjs.setOptions({
 			showStepNumbers: false,
 			exitOnOverlayClick: false,
@@ -113,6 +119,7 @@
 			    break;
 				
 				case "innerCodeDiv":
+					$("#restartBtn, #closeBtn").removeClass("zIndex");
 					$("#offerFirstBtn").addClass("disabled");
 					$("#offerLastBtn").addClass("disabled");
 					$("#pollBtn").addClass("disabled");
@@ -386,16 +393,25 @@
 					$(".inner-code").removeClass("inner-code");
 					$('.introjs-nextbutton').hide();
 					$('.introjs-helperLayer ').one('transitionend', function() {
+						
 						if(introjs._currentStep == 9) {
 							typingForMethods(".introjs-tooltiptext", 
 									"Now you can call any method by clicking on the respective <span class='go-button-duplicate'>Go</span>"
 									+ " button.<br><b>Note:</b> To call the <span class = 'ct-code-b-yellow'>offerFirst()</span> or <span class = 'ct-code-b-yellow'>offerLast()</span>"
 									+ " methods, enter some text and click on its <span class='go-button-duplicate'>Go</span> button.");
 						} else {
+							if(introjs._currentStep >= 24) {
+								console.log("oks");
+								$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+							}
 							$("#offerFirstMethod").attr("contenteditable", true);
 				        	$("#offerLastMethod").attr("contenteditable", true);
 				        	$("#pollBtn").removeClass("disabled");
 							$("#peekBtn").removeClass("disabled");
+							typingForMethods(".introjs-tooltiptext", 
+									"Now again you can call any method by clicking on the respective <span class='go-button-duplicate'>Go</span>"
+									+ " button.<br><b>Note:</b> To call the <span class = 'ct-code-b-yellow'>offerFirst()</span> or <span class = 'ct-code-b-yellow'>offerLast()</span>"
+									+ " methods, enter some text and click on its <span class='go-button-duplicate'>Go</span> button.");
 						}
 						
 					});
@@ -759,7 +775,7 @@ function typingSop(id, content) {
 }
 
 function typingStatus(id, content) {
-    $(id).typewriting( content , {
+    $(id).typewriting(content , {
           "typing_interval": 5,
           "cursor_color": 'white'
      }, function() {	    

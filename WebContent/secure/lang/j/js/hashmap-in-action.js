@@ -1,4 +1,3 @@
-
 var countBox = 0;
 var key;
 var value;
@@ -6,10 +5,12 @@ var introjs;
 var typingSpeed = 4;
 var valueArr = [];
 var recursionCount = 0;
+var countGetClicked = 0;
+var countRemoveClicked = 0;
+var countPutClicked = 0;
 var declaringObjValue = true;
 
 var hashMapInActionReady = function() {
-
 	$("[contenteditable=true]").on("click keydown", function(e) {
 		$(".length-error-text").remove();
 		$(".go-btn").addClass("disabled").addClass('opacity20');
@@ -25,7 +26,7 @@ var hashMapInActionReady = function() {
 			e.preventDefault();
 		}
 		if (e.keyCode == 13) {
-			console.log("space or enter clicked");
+	//		console.log("space or enter clicked");
 			e.preventDefault();
 		}
 	});
@@ -38,6 +39,7 @@ var hashMapInActionReady = function() {
 		$("#putKey, #putVal").removeAttr("id");
 		key = ($("#putMethod .key").text() == "") ? "empty key": ($("#putMethod .key").text().trim().length == 0) ? $("#putMethod .key").text().length + " space(s)": $("#putMethod .key").html().split(' ').join('&nbsp;');
 		value = ($("#putMethod .value").text() == "") ? "empty value" : ($("#putMethod .value").text().trim().length == 0) ? $("#putMethod .value").text().length + " space(s)" : $("#putMethod .value").html().split(' ').join('&nbsp;');
+		countPutClicked++;
 		
 		$("#randomCode").append("\n\t\t<span class='opacity00 code-line'>oldValue = aMap.put(\"<span id='putKey' class='key'>" 
 								+ ((key == "empty key") ? "" : (key.substring(2) == "space(s)") ? repeatspaces(key) : key) 
@@ -58,7 +60,7 @@ var hashMapInActionReady = function() {
 		$(this).addClass("disabled");
 		key = ($("#getMethod .key").text() == "") ? "empty key" : ($("#getMethod .key").text().trim().length == 0) ? $("#getMethod .key").text().length + " space(s)" : $("#getMethod .key").html().split(' ').join('&nbsp;');
 		$("#getKey").removeAttr("id");
-		
+		countGetClicked++;
 		if (declaringObjValue) {
 			declaringObjValue = false;
 			$("#randomCode").append("\n\t\t<span class='opacity00 zIndex code-line'>String value = aMap.get(\"<span id='getKey' class='key'>" 
@@ -82,7 +84,7 @@ var hashMapInActionReady = function() {
 		$(this).addClass("disabled");
 		key = ($("#removeMethod .key").text() == "") ? "empty key" : ($("#removeMethod .key").text().trim().length == 0) ? $("#removeMethod .key").text().length + " space(s)" : $("#removeMethod .key").html().split(' ').join('&nbsp;');
 		$("#removeKey").removeAttr("id");
-		
+		countRemoveClicked++;
 		if (declaringObjValue) {
 			declaringObjValue = false;
 			$("#randomCode").append("\n\t\t<span class='opacity00 zIndex code-line'>Object value = aMap.remove(\"<span id='removeKey' class='key'>" 
@@ -392,6 +394,12 @@ function emptyTheVals() {
 
 function introGuide() {
 	introjs = introJs();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	introjs.setOptions({
 		steps : [{
 			element : "#javaCode",
@@ -544,6 +552,10 @@ function introGuide() {
 					typing(".introjs-tooltiptext", text, function() {
 						$(".introjs-nextbutton").addClass("opacity00");
 					});
+				} else {
+					if (countGetClicked >= 1 && countRemoveClicked >= 1 && countPutClicked >= 1) { 
+						$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+					}
 				}
 			});
 			break;
@@ -625,6 +637,7 @@ function introGuide() {
 			});
 			break;
 		case "innerCodeLineDiv" :
+			$("#restartBtn, #closeBtn").removeClass("zIndex");
 			$(".code-line").addClass("zIndex");
 			$(".introjs-nextbutton").addClass("opacity00");
 			$("[contenteditable=true]").attr("contenteditable", "false");

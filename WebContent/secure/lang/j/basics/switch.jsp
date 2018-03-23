@@ -12,7 +12,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/j/js-min/switch.min.js"></script>
+<script src="/secure/lang/j/js-min/switch.min.js"></script> 
 
 <style type="text/css">
 
@@ -149,7 +149,11 @@ r {
 	
 }
 
-
+.z-index9999999 {
+    position: relative;
+    background-color: white;
+    z-index: 9999999 !important;
+}
 
 </style>
 
@@ -197,7 +201,14 @@ r {
 			<div class="output-console-body"><span id="output"></span>
 			</div>
 		</div>
-
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+ 			<span class="col-xs-12" id="button">
+				<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+				<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+			</span>
+		</span>
+	</div>
 <script type="text/javascript">
 	$(document).ready(function() {
 		switchStatementInCReady();

@@ -7,8 +7,14 @@ var backspace_key = 8;
 var commandLineArgumentsInActionReady = function() {
 	introGuide();
 
-	$('#restart').click(function() {
+	/*$('#closeBtn').click(function() {
 		location.reload();
+	});*/
+	$("#restartBtn").click(function() {
+			location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -89,9 +95,10 @@ function introGuide() {
 			element : "#mainMethodCloseBrace",
 			tooltipClass : "hide"
 		},{
-			element : "#restartBtn",
-			intro : "Click to Restart",
-			position : "right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}
 		]});
 	
@@ -165,7 +172,7 @@ function introGuide() {
 		case "mainMethodCloseBrace":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 		break;
-		case "restartBtn":
+		case "button":
 			
 		break;
 		
@@ -200,7 +207,7 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#startBtn").click(function() {
 				$(this).addClass('hidden');
-				$('#restartBtn').addClass('visibility-hidden').removeClass('hidden');
+				$('#closeBtn, #restartBtn').addClass('visibility-hidden').removeClass('hidden');
 				introjs.nextStep();
 			});
 			
@@ -314,8 +321,8 @@ function introGuide() {
 		break;
 		case "sopArgsLength":
 			introjs.refresh();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var text = "<ul><li>This statement prints the length of the array referenced by <span class='ct-code-b-yellow'>args</span>.</li>"
 						+ "<li><span class='ct-code-b-yellow'>args.length</span> will return the size of the array.</li></ul>";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -370,9 +377,9 @@ function introGuide() {
 			}
 		break;
 		case "sopAgrsOf0":
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			introjs.refresh();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var text = "<ul><li>In Java arrays elements are stored from <span class='ct-code-b-yellow'>zero</span> index. It means that the first element is "
 						+ " accessed with index <span class='ct-code-b-yellow'>0</span>, second with index <span class='ct-code-b-yellow'>1</span> and so on.</li>"
 							+ "<li>The above statement accesses the element present at index <span class='ct-code-b-yellow'>0</span> in the String array referenced "
@@ -384,8 +391,8 @@ function introGuide() {
 		break;
 		case "sopAgrsOf1":
 			introjs.refresh();
+			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$(".introjs-helperLayer").one("transitionend", function() {
-				$('.introjs-nextbutton, .introjs-prevbutton').hide();
 				var text = "The above statement accesses the element present at index <span class='ct-code-b-yellow'>1</span> in the String array referenced by "
 						+ " <span class='ct-code-b-yellow'>args</span>.";
 				typing($(".introjs-tooltiptext"), text, function() {
@@ -404,14 +411,14 @@ function introGuide() {
 				});
 			});
 		break;
-		case "restartBtn":
+		case "button":
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
-			$(".introjs-tooltip").css({"min-width": "115px"});
-			$('#restartBtn').removeClass("opacity00").css({"opacity":1});
+			$(".introjs-tooltip").css("min-width","380px");
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to restart.";
+				$('#restartBtn, #closeBtn').removeClass("visibility-hidden").css({"opacity":1});
+				/*var text = "Click to restart.";
 				typing($(".introjs-tooltiptext"), text, function() {
-				});
+				});*/
 			});
 		break;
 		}
@@ -514,7 +521,7 @@ function animateArrayIndexWith(index) {
 								if (introjs._currentStep == 18) {
 									setTimeout(function() {
 									introjs.nextStep();
-									$('#restartBtn').removeClass('visibility-hidden');
+									//$('#restartBtn').removeClass('visibility-hidden');
 								}, 2600);
 								} else {
 									$('.introjs-nextbutton').show();

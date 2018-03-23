@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/j/js-min/sjpwp.min.js"></script>
+<script src="/secure/lang/j/js-min/sjpwp.min.js"></script> 
 <title>println method</title>
 </head>
 <style>
@@ -71,19 +71,29 @@ a:focus, a:hover {
 </style>
 <body>
 <script>
-		
 	$(document).ready(function() {
 		simpleJavaProgramWithPrintlnReady();
 	});
 	
 </script>
-	<div class="row text-center" id="buttonDiv">
+	<div class="row text-center" id="buttonDiv" style="margin-top:20px;">
 		<button type="button" class="btn btn-success btn-sm" id="startBtn">Start</button>
-		<button type="button" class="btn btn-warning btn-sm hide"
-			id="reStartBtn">Restart</button>
-	</div>
+		<!-- <button type="button" class="btn btn-warning btn-sm hide"
+			id="reStartBtn">Restart</button> -->
+</div>
+<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning hide" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart hide" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
 	<div class="col-sm-12">
-		
 		<div class="col-xs-offset-1 col-sm-5">
 			<pre class="creamPreTab4" id="preBody">
 public class <span id="line1"><b>Example</b></span> {
@@ -91,7 +101,7 @@ public class <span id="line1"><b>Example</b></span> {
 		<span id="line3">System.out.<b>println</b>("Hello");</span>
 		<span id="line4">System.out.<b>println</b>("I am learning Java.");</span>
 		<span id="line5">System.out.<b>println</b>("Bye!");</span>
-		<span id="line6">}</span>
+	<span id="line6">}</span>
 <span id="line7">}</span>
 </pre>
 		</div>

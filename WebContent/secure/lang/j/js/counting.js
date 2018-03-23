@@ -1,4 +1,3 @@
-
 var introjs;
 	var typingSpeed = 30;
 	var continueBtnCount = 0;
@@ -94,7 +93,6 @@ var countingReady = function() {
 		} else if (introjsNextBtnCount == 6) {
 			var text = $(".mathsIf").removeClass("opacity00").html();
 			typing(".mathsIf", text, function() {
-				
 				subName = "mathsMarks";
 			  	ifBlkId = ".mathsIf";
 			  	subMarks = $("#mathsMarks").text();
@@ -104,7 +102,7 @@ var countingReady = function() {
 		}
 	});
 	
-	$('#restart').click(function() {
+	$('#restartBtn').click(function() {
 		$(this).addClass("opacity00");
 		continueBtnCount = 0;
 		introjsNextBtnCount = 0;
@@ -136,7 +134,11 @@ var countingReady = function() {
 		$("#javaCodeDiv").addClass("opacity00");
 		$("#animationDiv .completed").addClass("opacity00");
 		$("#outputDiv").addClass("opacity00");
-		introjs.goToStep(2);
+		//introjs.goToStep(2);
+		location.reload();
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -162,16 +164,17 @@ function introJsGuide() {
 			element : '#outputDiv',
 			tooltipClass : 'hide'
 		}, {
-			element: "#restart",
-			intro : "Click to restart.",
-			position: "right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}]
 	});
 	
 	introjs.onafterchange(function(targetElement) {
 		switch (targetElement.id) {
 		case "expTypingArea":
-			console.log("**********************");
+		//	console.log("**********************");
 			var text = "<li class='opacity00'>Counting is a very common requirement while solving programming problems.</li>" 
 						+ "<li class='opacity00'>Let us learn how to count using an example." 
 						+ " In this example let us consider marks scored by a student in 3 subjects.</li>"
@@ -254,15 +257,11 @@ function introJsGuide() {
 			});
 			break;
 			
-		case "restart":
-			$('.introjs-tooltipbuttons').hide();
-			$('.introjs-tooltiptext').css("min-width", "150px");
-			$('.introjs-helperLayer').one('transitionend', function () {
-				$("#restart").fadeTo(1000, 1, function() {
-					$(this).css("opacity", "");
-				});
-				$("#restart").removeClass("opacity00");
-				
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
+			$(".introjs-helperLayer").one("transitionend", function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
 			});
 			break;
 		}
@@ -394,7 +393,6 @@ function flipIfCondition() {
 }
 
 function flipPassCount() {
-	
 	$(".introjsNextBtn1").hide();
 	var l = $(ifBlkId + " > span").eq(1).offset();
 	$("." + animationIfBlkName + "-ifblk-body-in-animation").removeClass("opacity00").addClass("position-relative").offset({"top" : l.top, "left" : l.left});

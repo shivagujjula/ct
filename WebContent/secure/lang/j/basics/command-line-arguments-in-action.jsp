@@ -18,8 +18,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
 <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
-
-<script src="/secure/lang/j/js-min/claia.min.js" type="text/javascript"></script>
+<script src="/secure/lang/j/js-min/claia.min.js" type="text/javascript"></script> 
 <title>CMD</title>
 <style>
 .box-main {
@@ -27,13 +26,6 @@
 	padding: 10px;
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
-    border-radius: 10px;
-    font-size: 18px;
-    position: relative;
-    z-index: 1000000;
-}
 
 .buttons-div {
 	margin-top: 20px;
@@ -144,7 +136,19 @@ $(document).ready(function() {
 	</div>
 	<div class='buttons-div'>
 		<button type="button" class="btn btn-success" id="startBtn">Start</button>
-		<button type="button" class="opacity00 btn btn-warning hidden" id="restartBtn">Restart</button>
+		<!-- <button type="button" class="opacity00 btn btn-warning hidden" id="restartBtn">Restart</button> -->
+	</div>
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 	<div>
 		<div class='row'>

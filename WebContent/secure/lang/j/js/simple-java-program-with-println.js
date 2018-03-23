@@ -7,8 +7,14 @@ var backspace_key = 8;
 var simpleJavaProgramWithPrintlnReady = function() {
 	introGuide();
 
-	$('#reStartBtn').click(function() {
+	/*$('#reStartBtn').click(function() {
 		location.reload();
+	});*/
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
 	});
 }
 
@@ -65,9 +71,10 @@ function introGuide() {
 			intro : "",
 			position : "bottom"
 		},{
-			element : "#reStartBtn",
-			intro : "Click to Restart",
-			position : "right"
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		}
 		]});
 	
@@ -159,7 +166,7 @@ function introGuide() {
 			$('.introjs-nextbutton, .introjs-prevbutton').hide();
 			$("#startBtn").click(function() {
 				$(this).addClass('hidden');
-				$('#restartBtn').addClass('visibility-hidden').removeClass('hidden');
+				$('#restartBtn, #closeBtn').addClass('visibility-hidden').removeClass('hide');
 				introjs.nextStep();
 			});
 			
@@ -271,16 +278,13 @@ function introGuide() {
 				});
 			});
 		break;
-		case "reStartBtn":
-			$('.introjs-nextbutton, .introjs-prevbutton').hide();
-			$(".introjs-tooltip").css({"min-width": "115px"});
-			$('#reStartBtn').removeClass("hide");
+		case "button":
+			$(".introjs-tooltip").css("min-width","380px");
+			$(".introjs-tooltipbuttons").hide()
 			$(".introjs-helperLayer").one("transitionend", function() {
-				var text = "Click to restart.";
-				typing($(".introjs-tooltiptext"), text, function() {
-				});
+				$("#restartBtn, #closeBtn").removeClass("visibility-hidden");
 			});
-		break;
+			break;
 		}
 	});
 	

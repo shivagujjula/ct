@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src='/js/intro.js'></script>
 <script type="text/javascript" src='/js/jquery-ui-latest.js'></script>
-<script src="/secure/lang/j/js-min/dto.min.js"></script>
+<script src="/secure/lang/j/js-min/dto.min.js"></script> 
 
 <style>
 .user-btn1 {
@@ -28,14 +28,6 @@
 	width : 46px;
 	border-radius: 3px !important;
 	background-color: #5bc0de !important;
-}
-.ct-demo-heading {
-	background: highlight none repeat scroll 0.0;
-	border-radius: 10px;
-	font-size: 18px;
-	position: relative;
-	z-index: 9999999;
-	margin-left: 38%;
 }
 
 input:focus::-moz-placeholder {
@@ -153,9 +145,9 @@ input:focus::-moz-placeholder {
 	margin: 7px auto 0 !important;
 }
 
-#restartBtn {
+/* #restartBtn {
 	margin-left: 36%;
-}
+} */
 
 .ct-code-b-green {
 	font-family: monospace;
@@ -212,7 +204,7 @@ ol, ul {
 <body>
 	
 	<div class="main-div">
-		<div class="row">
+		<div class="row text-center" >
 			<h3 class='label ct-demo-heading margin-top-1'>
 				<span>Convert Decimal to Octal<sub>(<span id="radix">8</span>)</sub></span>
 			</h3>
@@ -244,9 +236,18 @@ ol, ul {
 						<span id="octalValueDiv" class="font-size-18 col-xs-12" style="min-height: 30px"></span>
 					</div>
 				</div>
-				<div class="row" style="margin-top: 3%; margin-left: 14.5%">
-					<button class="btn btn-warning hidden" type="button" id='restartBtn'>Restart</button>
-				</div>
+			</div>
+			<div class="margin-top-20 text-center col-xs-12">
+				<span class="col-xs-6 col-xs-offset-3">
+			 		<span class="col-xs-12">
+			 			<span class="col-xs-8 col-xs-offset-2">
+			 				<span class="col-xs-12" id="button">
+								<span class="btn btn-warning hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+								<span class="btn btn-restart hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+							</span>
+						</span>
+					</span>
+				</span>
 			</div>
 		</div>
 	</div>

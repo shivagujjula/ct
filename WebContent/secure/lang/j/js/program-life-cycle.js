@@ -39,9 +39,11 @@
 		          	   position :'top'
 		          },
 		          {
-		          	   element : '.restart',
-		          	   intro:'Click to restart',
-		          	   position :'right'
+	          		element : "#button",
+	          		intro : "<ul><li>Click on <b class='ct-code-b-yellow'>Close</b> button to close the Live Demo.</li>" +
+	          			"<li>Click on <b class='ct-code-b-yellow'>Restart</b> button to restart the Live Demo.</li></ul>",
+	          		position : 'right',
+
 		          },
 			 	]
 			 });
@@ -78,10 +80,12 @@
 			$('.dotJavaFile').fadeTo(5000,1,function() {
 				$('.arrow1 i').removeClass('faa-passing')
 				$('#dotJavaFileAboveText').text('Saved to file').removeClass('loading');
-				$('#dotJavaFileBelowText').text('Hello.java').addClass('pulse').on('animationend',function() {
+				$('#dotJavaFileBelowText').text('Hello.java').addClass('pulse');/*.on('animationend',function() {*/
+					setTimeout(function() {
 					$('.introjs-nextbutton').click();
 					$('.compileBtn').removeClass('disabled');
-				});
+					}, 3000);
+				/*});*/
 			});
 		}
 		
@@ -99,10 +103,12 @@
 					$('.dotClassFile').fadeTo(3000,1,function() {
 						$('.arrow2 i').removeClass('faa-passing')
 						$('#dotClassFileAboveText').text('Generated').removeClass('loading');
-						$('#dotClassFileBelowText').text('Hello.class').addClass('pulse').on('animationend',function() {
-							$('.exeBtn').removeClass('disabled');
+						$('#dotClassFileBelowText').text('Hello.class').addClass('pulse')/*.on('animationend',function() {*/
+						setTimeout(function() {
+						$('.exeBtn').removeClass('disabled');
 							$('.introjs-nextbutton').click();
-						});
+						}, 3000);
+						/*});*/
 					});
 					
 				},2500);
@@ -117,8 +123,9 @@
 				$('.introjs-tooltipReferenceLayer').css({'display':'none'})
 		 		$('#outputEditor').text('Hola Amigos!!');
 				setTimeout(function() {
-					$('.restart').show().fadeTo(500, 1);
 					$('.introjs-nextbutton').click();
+					$(".introjs-tooltip").css("min-width","380px");
+					$("#restartBtn, #closeBtn").show().removeClass("opacity00");
 				}, 1000);
 			});
 		}
@@ -160,7 +167,10 @@ var programLifeCycleReady = function() {
 		});
 	});
 	
-	$('.restart').click(function() {
-		location.reload();
-	})
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 }

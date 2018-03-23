@@ -8,7 +8,7 @@ var value;
 var typing_interval = 10;
 var y = 1;
 var recursionCount = 0;
-
+var countClick = 0;
 var differentSetsReady = function() {
 
 	intro = introJs();
@@ -67,6 +67,12 @@ var differentSetsReady = function() {
 						var text = "Enter the <b class ='ct-code-b-yellow'>element</b> to be inserted.";
 						typing(".introjs-tooltiptext", text);
 					}
+					if (countClick >= 3) {
+						 $("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+	        			/*$(".introjs-tooltiptext").append("<span id='txt2'><br>Click on <b class ='ct-code-b-yellow'>Skip </b> to <b class ='ct-code-b-yellow'>restart</b> or " +
+	        					"<b class ='ct-code-b-yellow'>close</b> the Live Demo.</span");
+	            		$(".introjs-tooltipbuttons").append('<a class="introjs-button" id="skipButton" onclick="skipEffect()">Skip</a>');*/
+	            	}
 					charAtEnd("addByElementMethodValue");
 				});
 				break;
@@ -142,7 +148,12 @@ var differentSetsReady = function() {
 		$('.introjs-prevbutton').hide();
 		$('.introjs-skipbutton').hide();
 		$('.introjs-bullets').hide();
-		
+		 $("#restartBtn").click(function() {
+				location.reload(true);
+			});
+			$('#closeBtn').click(function() {
+				window.parent.$(".ui-dialog-titlebar-close").click();
+			});
 	$('.introjs-nextbutton').keydown(function(e) {
 		if (e.which == 13) {
 			e.preventDefault();
@@ -185,12 +196,13 @@ var differentSetsReady = function() {
 			$(".introjs-tooltiptext").append("<div class='error-msg'>Please enter a string value.</div>");
 			return;
 		}
-		
+		countClick++;
 		$('.value-append-div').append('<span id="valueSpan' + countValueBox + '"class="value-append-box"><span id="value' + countValueBox 
 										+ '" class="visibility-hidden ct-pink-color">'
 										+ $('#addByElementMethodValue').text() + '</span></span>');
 		$("[contenteditable=true]").attr("contenteditable", "false");
 		intro.nextStep();
+		$("#restartBtn, #closeBtn").addClass("opacity00").removeClass("zIndex");
 	});
 }
 
@@ -199,7 +211,11 @@ function changeElementId() {
 		$(this).attr('id','valueSpan' + index);
 	});
 }
-
+/*function skipEffect() {
+	 $("#skipButton").remove();
+	 $("#txt2").remove();
+	  $("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+}*/
 function checkElementForHashSet() {
 	var noDuplicate = true;
 	for (var index = 0; index < countValueBox; index++) {

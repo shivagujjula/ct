@@ -3,6 +3,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +16,7 @@
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/twnd.min.js"></script>
+<script src="../js-min/twnd.min.js"></script> 
 
 <title>Wait Notify Threads Demo</title>
 
@@ -248,8 +250,10 @@ p {
 					<button type="button" class="btn btn-primary btn-sm"
 						id='startMainMethodButton'>Start</button>
 			
-					<button type="button" class="btn btn-warning btn-sm hidden"
-						id='resetMainMethodButton'>Reset</button>
+				<!-- <span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span> -->
+				<span class="btn btn-warning opacity00 hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+				<span type="button" class="opacity00 btn btn-restart hidden"
+					id='resetMainMethodButton'>Restart <i class="fa fa-refresh"></i></span>
 				</div>
 				
 			</div>

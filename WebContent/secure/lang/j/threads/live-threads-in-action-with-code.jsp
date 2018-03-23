@@ -8,10 +8,13 @@
 <script src="/js/bootstrap.js"></script>
 <script>var $_bs = jQuery.noConflict(true);</script>
 <link href="/css/tablesorter/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/introjs.css">
+<link rel="stylesheet" href="/css/introjs-ct.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="../js-min/ltiawc.min.js"></script>
+<script src="../js-min/ltiawc.min.js"></script> 
 <title>Live Threads in Action</title>
 <style>
 
@@ -169,19 +172,13 @@ p {
 </style>
 
 <script>
-
-
-	
 	$(document).ready(function() {
 		liveThreadsInActionWithCodeReady();
 	});
-	
-
 </script>
 
 </head>
 <body>
-
 	<div class='row'>
 			<div>
 				<div class='col-sm-3' id='sliderDiv'>
@@ -200,10 +197,8 @@ p {
 					<button type="button" class="btn btn-warning btn-sm hidden"
 						id='resetMainMethodButton'>Reset</button>
 				</div>
-				
-				
 			</div>
-		</div>
+	</div>
 	
 	<div class='col-sm-12'>
 		<div class='row'>
@@ -298,6 +293,14 @@ public void run() {
 	
 		</div>
 	</div>
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+			<span class="col-xs-12" id="button">
+				<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+				<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+			</span>
+		</span>
+	</div>	
 			
 </body>
 </html>

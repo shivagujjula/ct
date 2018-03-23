@@ -8,13 +8,14 @@
 <link href="/css/tablesorter/jquery-ui.css" rel="stylesheet">
 <link href="/css/introjs.css" rel="stylesheet">
 <link href="/css/introjs-ct.css" rel="stylesheet">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
 <script src="/js/jquery-latest.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/jquery-ui-all.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/intro.js" type="text/javascript"></script>
 <script src="/js/typewriting.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/j/js-min/tcfi.min.js"></script>
+<script src="/secure/lang/j/js-min/tcfi.min.js"></script> 
 
 <title>Introduction to try, catch and finally keywords</title>
 
@@ -31,13 +32,6 @@
 	padding: 10px;
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
-    border-radius: 10px;
-    font-size: 18px;
-    position: relative;
-    z-index: 9999999;
-}
 
 .buttons-div {
 	margin-top: 20px;
@@ -118,9 +112,18 @@ ol, ul {
 	<div class='text-center'>
 		<h1 class='label ct-demo-heading'>Introduction to try, catch and finally keywords</h1>
 	</div>
-	<div class='buttons-div'>
 		<!-- <button type="button" class="btn btn-success" id="startBtn">Start</button> -->
-		<button type="button" class="btn btn-warning visibility-hidden" id="restartBtn">Restart</button>
+	<div class="buttons-div col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning visibility-hidden" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart visibility-hidden" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
 	</div>
 	<div>
 		<div class='row'>

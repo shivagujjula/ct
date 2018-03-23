@@ -1,5 +1,6 @@
+var countClick = 0;
 var differentMapsReady = function() {
-
+	
 	tl = new TimelineLite();
 	intro = introJs();
 	intro.setOptions({
@@ -65,9 +66,16 @@ var differentMapsReady = function() {
         	} else {
         		$('.introjs-helperLayer ').one('transitionend', function() {
         		$(".introjs-tooltiptext").append("Enter the <b class ='ct-code-b-yellow'>key</b> and <b class ='ct-code-b-yellow'>value</b> to be inserted.");
+        		if (countClick >= 3) {
+        			$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+        			/*$(".introjs-tooltiptext").append("<span id='txt2'>or <br>Click on <b class ='ct-code-b-yellow'>Skip </b> to <b class ='ct-code-b-yellow'>restart</b> or " +
+        					"<b class ='ct-code-b-yellow'>close</b> the Live Demo.</span");
+            		$(".introjs-tooltipbuttons").append('<a class="introjs-button" id="skipButton" onclick="skipEffect()">Skip</a>');*/
+            	}
         		charAtEnd("putKey");
         		});
         	}
+        	
         	
         	break;
         case "hashmapdiv":
@@ -93,7 +101,13 @@ var differentMapsReady = function() {
    intro.start();
 	$('.introjs-skipbutton').hide();
     $('.introjs-prevbutton').hide();
-    
+   
+    $("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	$("#putKey, #putVal").on("keyup",function() {
 		if (($("#putKey").text()).length > 0 && ($("#putVal").text()).length > 0) {
 			$("#putBtn").removeClass("disabled");
@@ -129,6 +143,7 @@ var differentMapsReady = function() {
 		if ($(this).hasClass("disabled")) {
 			return;
 		}
+		countClick++;
 		$(".content-area").empty();
 		key = $("#putKey").text();
 		value = $("#putVal").text();
@@ -137,6 +152,7 @@ var differentMapsReady = function() {
 			return;
 		}
 		intro.nextStep();
+		$("#restartBtn, #closeBtn").addClass("opacity00").removeClass("zIndex");
 		$("#putBtn").addClass("disabled");
 	});
 	
@@ -631,6 +647,7 @@ function checkElementPresent() {
 	});
 	if (noDuplicate) {
 		$(".introjs-tooltip").removeClass("hide");
+		$("#skipButton").remove();
 		if($('#hashmapJar .val-box-width').length == 0) {
 			var text = "A <b class ='ct-code-b-yellow'>HashMap</b> does not guarantee any particular order for its entries. "
 					+ "And it does not guarantee that the order will remain the same "
@@ -652,7 +669,11 @@ function pauseBlinkEffect() {
 	$(".blinking-border-background-blue").css("animation-iteration-count", "1");
 	
 }
-	
+/*function skipEffect() {
+	 $("#skipButton").remove();
+	 $("#txt2").remove();
+	  $("#restartBtn, #closeBtn").removeClass("opacity00").addClass("zIndex");
+}*/
 function checkPositionOfValue() {
 	$(".user-btn").remove();
 	var elementOffset = $("#hasharea .val-box-width").offset();

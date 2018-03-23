@@ -13,10 +13,10 @@
 <script src="/js/gs/TweenMax.min.js" type="text/javascript"></script>
 <script src="/js/gs/TweenLite.min.js" type="text/javascript"></script>
 <script src="/js/gs/TimelineLite.min.js" type="text/javascript"></script>
-<script src="../js-min/dlld.min.js"></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 <link href="/css/introjs.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/introjs-ct.css" />
+<script src="../js-min/dlld.min.js"></script> 
 <title>Test-Demo</title>
 <style>
 
@@ -350,8 +350,8 @@ pre > span {
 <body>
 	<div class="col-xs-12">
 		<div class="margin-padding-css text-center" >
-				<div class="col-sm-1 emptyDiv"></div>
-   					<div class="col-sm-offset-3 col-sm-3">
+				<div class="emptyDiv"></div>
+   					<div class="col-sm-offset-4 col-sm-4">
    						<h3><span class="ct-demo-heading label label-default">LinkedList In Action</span></h3>
 					</div>
 			</div>
@@ -408,7 +408,18 @@ pre > span {
 	</div>
 	<div id='hiddenInsertElementLine'></div>
 	<div id='hiddenSopCodeLine'></div>
-		
+	<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>  
+</div>	
 <script>
 
 var intro = introJs();

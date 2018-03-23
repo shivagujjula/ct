@@ -279,6 +279,15 @@ var liveThreadsInActionWithCodeReady = function() {
 				$_bs("#mainMethodCloseBrace").attr("data-content", 'Main method and child threads have completed execution');
 			}
 			$_bs("#mainMethodCloseBrace").popover('show');
+			setTimeout(function() {
+				$("#restartBtn, #closeBtn").removeClass("opacity00");
+				$("#restartBtn").click(function() {
+					location.reload(true);
+				});
+				$('#closeBtn').click(function() {
+					window.parent.$(".ui-dialog-titlebar-close").click();
+				});
+			}, 300);
 		}
 	}
 	

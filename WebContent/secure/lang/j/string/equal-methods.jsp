@@ -19,7 +19,7 @@
    		<script src="/js/gs/TweenMax.min.js"></script>
    		<script src="/js/gs/TweenLite.min.js"></script>
    		<script src="/js/typewriting.min.js"></script>
-   		<script src="/secure/lang/j/js-min/em.min.js"></script>
+	 	<script src="/secure/lang/j/js-min/em.min.js"></script> 
 
 <title>Insert title here</title>
 
@@ -32,13 +32,6 @@
 
 <style type="text/css">
 
-.titles {
-	background-color: highlight;
-    border-radius: 19px;
-    padding: 3px 8px;
-    position: relative;
-    z-index: 1000000;
-}
 .headings {
 	text-align: center !important;
 } 
@@ -191,15 +184,27 @@ $(document).ready(function() {
 <%
 	if ("1".equals(demoType)) {
 %>
-	<h3 class="headings" ><span class="label label-default titles">Equals Method in Action</span></h3>
+	<h3 class="headings" ><span class="label label-default ct-demo-heading">Equals Method in Action</span></h3>
 <%
 	} if ("2".equals(demoType)) {
 %>
-	<h3 class="headings" ><span class="label label-default titles">EqualsIgnoreCase Method in Action</span></h3>
+	<h3 class="headings" ><span class="label label-default ct-demo-heading">EqualsIgnoreCase Method in Action</span></h3>
 <%
 	}
 %>
-
+	<!-- <div id = 'restartDiv' class = 'col-xs-offset-5'> <button id ='restart' type="button" class="btn btn-warning">Restart</button> </div> -->
+	<div class="margin-top-20 text-center col-xs-12">
+		<span class="col-xs-6 col-xs-offset-3">
+	 		<span class="col-xs-12">
+	 			<span class="col-xs-8 col-xs-offset-2">
+	 				<span class="col-xs-12" id="button">
+						<span class="btn btn-warning opacity00" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+						<span class="btn btn-restart opacity00" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+					</span>
+				</span>
+			</span>
+		</span>
+	</div>
 	<div class = 'codeAndAnimation row'>
 		<div class="col-xs-5 code-box">
 				<pre class = "creamPreTab4">public class StringMethodsDemo {
@@ -234,7 +239,7 @@ $(document).ready(function() {
 		
 			</div>
 	</div>
-	<div id = 'restartDiv' class = 'col-xs-offset-5'> <button id ='restart' type="button" class="btn btn-warning">Restart</button> </div>
+
 	</div>
 		
 	<div id = "textBoxes" class="row col-xs-offset-0">	

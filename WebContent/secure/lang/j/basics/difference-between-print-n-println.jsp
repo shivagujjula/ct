@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/js/intro.js"></script>
 <script type="text/javascript" src="/js/typewriting.min.js"></script>
 <script type="text/javascript" src="/js/gs/TweenMax.min.js"></script>
-<script src="/secure/lang/j/js-min/dbpnpln.min.js"></script>
+<script src="/secure/lang/j/js-min/dbpnpln.min.js"></script> 
 <title>println method</title>
 </head>
 <style>
@@ -67,7 +67,9 @@ a:focus, a:hover {
 	padding: 4px;
 	background: white;
 }
-
+.margin-top-20 {
+	margin-top : 20px;
+}
 </style>
 <body>
 <script>
@@ -77,13 +79,23 @@ a:focus, a:hover {
 	});
 	
 </script>
-	<div class="row text-center" id="buttonDiv">
+	<div class="row text-center margin-top-20" id="buttonDiv">
 		<button type="button" class="btn btn-success btn-sm" id="startBtn">Start</button>
-		<button type="button" class="btn btn-warning btn-sm hide"
-			id="reStartBtn">Restart</button>
+	<!-- 	<button type="button" class="btn btn-warning btn-sm hide" id="reStartBtn">Restart</button> -->
 	</div>
+<div class="margin-top-20 text-center col-xs-12">
+	<span class="col-xs-6 col-xs-offset-3">
+ 		<span class="col-xs-12">
+ 			<span class="col-xs-8 col-xs-offset-2">
+ 				<span class="col-xs-12" id="button">
+					<span class="btn btn-warning hide" id="closeBtn">Close <i class="fa fa-close"></i></span>&nbsp;&nbsp;
+					<span class="btn btn-restart hide" id="restartBtn">Restart <i class="fa fa-refresh"></i></span>
+				</span>
+			</span>
+		</span>
+	</span>
+</div>
 	<div class="col-sm-12">
-		
 		<div class="col-xs-offset-1 col-sm-5">
 			<pre class="creamPreTab4" id="preBody">
 public class <span id="line1"><b>Example</b></span> {
@@ -95,7 +107,7 @@ public class <span id="line1"><b>Example</b></span> {
 		<span id="line7">System.out.<b>println</b>("River");</span>
 		<span id="line8">System.out.<b>print</b>("Godavari");</span>
 		<span id="line9">System.out.<b>println</b>("River");</span>
-		<span id="line10">}</span>
+	<span id="line10">}</span>
 <span id="line7">}</span>
 </pre>
 		</div>

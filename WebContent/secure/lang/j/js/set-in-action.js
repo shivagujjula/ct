@@ -5,7 +5,8 @@ var valueArr = [];
 var typing_interval = 10;
 var lineIndex = 0;
 var recursionCount = 0;
-
+var countAddClicked = 0;
+var countRemoveClicked = 0;
 var setInActionReady = function() {
 
 	
@@ -16,6 +17,12 @@ var setInActionReady = function() {
 	var typingCallbackFunction;
 	
 	intro = introJs();
+	$("#restartBtn").click(function() {
+		location.reload(true);
+	});
+	$('#closeBtn').click(function() {
+		window.parent.$(".ui-dialog-titlebar-close").click();
+	});
 	intro.setOptions({
 		showStepNumbers: false,
 		exitOnOverlayClick: false,
@@ -143,6 +150,7 @@ var setInActionReady = function() {
 										'the value.<br/>The value returned by <span class="ct-code-b-yellow">add()</span> method is stored in ' +
 										'a variable called <span class="ct-code-b-yellow">status</span>.';
 					} else {
+						$("#restartBtn, #closeBtn").removeClass("z-index10000000");
 						var action =  intro._introItems[intro._currentStep].action;
 						if (action == 'addElement') {
 							typingContent = 'Here we are adding a String element called "<span class="ct-code-b-yellow">' +
@@ -284,6 +292,9 @@ var setInActionReady = function() {
 					$('[contenteditable="false"]').attr('contenteditable', 'true');
 				}
 				typing(typingId, typingContent, typingInterval, cursorColor, typingCallbackFunction);
+				if (countAddClicked >= 1 && countRemoveClicked >= 1) {
+					$("#restartBtn, #closeBtn").removeClass("opacity00").addClass("z-index10000000");
+				}
 			});
 			break;
 		}
@@ -329,6 +340,7 @@ var setInActionReady = function() {
 		if ($(this).hasClass("disabled")) {
 			return;
 		}
+		countAddClicked++;
 		$(this).addClass('disabled').addClass('opacity40');
 		$('#randomCode').append('\n\t\t<span id="line' + lineIndex + '" class="visibility-hidden">status = namesSet.add("<span id="val' +
 								lineIndex +	'" class="ct-code-pink">' + $('#addByElementMethodValue').text() + '</span>");</span>');
@@ -340,6 +352,7 @@ var setInActionReady = function() {
 								'<span id="sopVal' + lineIndex + '" class="ct-code-pink">' + elementValue +	'</span>: " + status);' +
 								'</span>');
 		dynamicSteps('addElement');
+		$("#restartBtn, #closeBtn").removeClass("z-index10000000");
 		scrollToBottom('javaCode');
 	});
 	
@@ -347,6 +360,7 @@ var setInActionReady = function() {
 		if ($(this).hasClass("disabled")) {
 			return;
 		}
+		countRemoveClicked++;
 		$(this).addClass('disabled').addClass('opacity40');
 		$('#randomCode').append('\n\t\t<span id="line' + lineIndex + '" class="visibility-hidden">status = namesSet.remove("<span id="val' +
 								lineIndex +	'" class="ct-code-pink">' + $('#removeByElementMethodValue').text() + '</span>");</span>');
@@ -358,6 +372,7 @@ var setInActionReady = function() {
 								'for <span id="sopVal' + lineIndex + '" class="ct-code-pink">' +
 								elementValue + '</span>: " + status);</span>');
 		dynamicSteps('removeElement');
+		$("#restartBtn, #closeBtn").removeClass("z-index10000000");
 		scrollToBottom('javaCode');
 	});
 	

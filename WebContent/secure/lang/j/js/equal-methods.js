@@ -89,9 +89,10 @@
 	  		tooltipClass: "hide"
 	  	});
 		stepsArr.push({
-			element: '#restart', 
-			intro: "Click to restart.",
-			position: 'right',
+			element : "#button",
+			intro : "<ul><li>Click on <span class='ct-code-b-yellow'>Close</span> button to close the Live Demo.</li>" +
+				"<li>Click on <span class='ct-code-b-yellow'>Restart</span> button to restart the Live Demo.</li></ul>",
+			position : 'right',
 		});
 		
 		introjs.setOptions({
@@ -117,7 +118,7 @@
 				e.preventDefault();
 			}	
 			if ($(this).text().length > max) {
-				if(e.which == 8 || e.which == 46){
+				if(e.which == 8 || e.which == 46) {
 		   			return true;	
 				}
     			e.preventDefault();
@@ -146,9 +147,6 @@
 	        	$('.errorText').text("please enter text");
 	        }
 	    });
-		$("#restart").click(function() {
-			 location.reload();
-		});
 
 		introjs.onbeforechange(function(targetElement) {
 			var element = targetElement.id;
@@ -169,7 +167,7 @@
 				},1000);
 			}
 			
-			if (element == "restart") {
+			if (element == "button") {
 				$('.introjs-prevbutton').hide();
 			}
 			
@@ -456,8 +454,15 @@
 			if(introjs._currentStep == 8) {
 	       		setTimeout(function() {
 		       		$('.introjs-nextbutton').click();
+		       		$(".introjs-tooltip").css("min-width","380px");
 		       		$('.introjs-helperLayer ').one('transitionend', function() {
-						$('#restart').fadeTo(500, 1);
+						$('#restartBtn, #closeBtn').fadeTo(500, 1).removeClass("opacity00");
+						$("#restartBtn").click(function() {
+							location.reload(true);
+						});
+						$('#closeBtn').click(function() {
+							window.parent.$(".ui-dialog-titlebar-close").click();
+						});
 					});
 		       	}, 2800);
 	       	}
