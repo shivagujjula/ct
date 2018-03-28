@@ -143,7 +143,7 @@
 }
 
 .ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
+	background: #f67f34 repeat scroll 0 0;
     border-radius: 10px;
     font-size: 18px;
     position: relative;
@@ -235,7 +235,7 @@ pi {
 </style>
 <body>
 <div class="col-xs-12 text-center">
-	<h3><span class="ct-demo-heading label label-default" id="titleName">Usage of gets() puts() on Strings</span></h3>
+	<h3><span class="ct-demo-heading label" id="titleName">Usage of gets() puts() on Strings</span></h3>
 </div>
 <div class="body-div col-sm-12 padding0">
 <br>

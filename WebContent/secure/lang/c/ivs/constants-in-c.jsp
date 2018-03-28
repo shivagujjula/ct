@@ -35,14 +35,6 @@
 	min-width: -moz-max-content;
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
-    border-radius: 10px;
-    font-size: 18px;
-    position: relative;
-    z-index: 9999999;
-}
-
 .ct-code-b-red {
 	font-family: monospace;/* border: 1px solid gray; */
 	font-weight: bold;

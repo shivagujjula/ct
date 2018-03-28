@@ -75,15 +75,7 @@
 	margin-top: 25px;
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0.0;
-	border-radius: 10px;
-	font-size: 20px;
-	position: relative;
-	z-index: 9999999;
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-	border-radius: 10px;
-}
+
 .row {
 	margin-right : 0px !important;
 }

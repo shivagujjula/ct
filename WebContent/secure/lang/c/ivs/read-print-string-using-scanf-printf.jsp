@@ -135,7 +135,7 @@
 }
 
 .ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
+	background: #f67f34 repeat scroll 0 0;
     border-radius: 10px;
     font-size: 18px;
     position: relative;
@@ -243,7 +243,7 @@ y {
 <div class="col-sm-12 text-center">
 	<div class="margin-padding-css text-center" >
 		<div class="col-sm-offset-4 col-sm-4">
-			<h3><span class="ct-demo-heading label label-default" id="titleName">Usage of scanf() and printf() on Strings</span></h3>
+			<h3><span class="ct-demo-heading label" id="titleName">Usage of scanf() and printf() on Strings</span></h3>
 		</div>
 	</div>
 </div>

@@ -161,7 +161,7 @@ table {
 <body>
 	<div class="col-xs-12 text-center padding0">
 			<h3>
-				<span class="label label-default ct-demo-heading" style="font-family: serif;"  id="mainTitle">Flow Chart Symbols</span>
+				<span class="label ct-demo-heading" style="font-family: serif;"  id="mainTitle">Flow Chart Symbols</span>
 			</h3>
 	</div>
 	 <div class="margin-top-20 text-center col-xs-12">

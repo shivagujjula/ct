@@ -26,16 +26,6 @@
 	margin-top: 20px;
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0.0;
-	border-radius: 10px;
-	font-size: 20px;
-	position: relative;
-	z-index: 9999999;
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-	border-radius: 10px;
-}
-
 .color-rose {
 	color: #8B008B;
 	font-size: bold;

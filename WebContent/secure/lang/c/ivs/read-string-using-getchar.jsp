@@ -136,12 +136,13 @@
 }
 
 .ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
+	background: #f67f34 repeat scroll 0 0;
     border-radius: 10px;
     font-size: 18px;
     position: relative;
     z-index: 9999999;
 }
+
 .padding0 {
 	padding: 0px;
 }
@@ -215,7 +216,7 @@ pre {
 <div class="col-sm-12 text-center">
 	<div class="margin-padding-css text-center" >
 		<div class="col-sm-12">
-			<h3><span class="ct-demo-heading label label-default" id="titleName">getchar() for reading a String</span></h3>
+			<h3><span class="ct-demo-heading label" id="titleName">getchar() for reading a String</span></h3>
 		</div>
 	</div>
 </div>

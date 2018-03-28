@@ -36,15 +36,13 @@
 .introjs-tooltip {
 	min-width: 280px;
 }
-
 .ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
-	border-radius: 10px;
-	font-size: 18px;
-	position: relative;
-	z-index: 9999999;
+    background: #f67f34 none repeat scroll 0 0;
+    border-radius: 10px;
+    font-size: 18px;
+    position: relative;
+    z-index: 9999999;
 }
-
 .ct-code-b-green {
 	font-family: monospace;
 	font-weight: bold;
@@ -176,7 +174,7 @@ y {
 			<div class="col-sm-1"></div>
 			<div class="col-sm-offset-3 col-sm-3">
 				<h3>
-					<span class="ct-demo-heading label label-default" id="titleName">Usage of #define</span>
+					<span class="ct-demo-heading label" id="titleName">Usage of #define</span>
 				</h3>
 			</div>
 		</div>

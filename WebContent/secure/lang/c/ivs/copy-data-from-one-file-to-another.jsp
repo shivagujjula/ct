@@ -47,14 +47,6 @@
 	position: relative;	
 }
 
-.ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
-    border-radius: 10px;
-    font-size: 18px;
-    position: relative;
-    z-index: 1000000;
-}
-
 .buttons-div {
 	margin-top: 20px;
 	text-align: center;

@@ -26,12 +26,12 @@
 	margin-top: 20px;
 }
 .ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
+	background: #f67f34 none repeat scroll 0 0;
     border-radius: 10px;
     font-size: 18px;
     position: relative;
     z-index: 9999999;
-}
+} 
 .creamPreTab4 {
 	tab-size: 4;
 	margin: 2px;

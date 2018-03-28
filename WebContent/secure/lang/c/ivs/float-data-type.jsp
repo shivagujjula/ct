@@ -318,7 +318,7 @@ ul {
 </style>
 </head>
 <body>
-<h3 class="text-center"><span class="label label-warning Z-Index">Floating-Point Binary</span></h3>
+<h3 class="text-center"><span class="label ct-demo-heading Z-Index">Floating-Point Binary</span></h3>
 	<div class = "col-xs-12">
 		<div class = " col-xs-offset-1 col-xs-12 col-xs-10">
 			<div class='margin-top discription-border' style='position:relative;'>

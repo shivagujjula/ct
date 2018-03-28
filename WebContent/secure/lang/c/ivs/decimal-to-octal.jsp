@@ -30,7 +30,7 @@
 	background-color: #5bc0de !important;
 }
 .ct-demo-heading {
-	background: highlight none repeat scroll 0.0;
+	background: #f67f34 none repeat scroll 0.0;
 	border-radius: 10px;
 	font-size: 18px;
 	position: relative;

@@ -46,7 +46,7 @@
 }
 
 .ct-demo-heading {
-	background: highlight none repeat scroll 0 0;
+	background: #f67f34 none repeat scroll 0 0;
     border-radius: 10px;
     font-size: 18px;
     position: relative;
@@ -189,7 +189,7 @@
 	<div class="margin-padding-css text-center" >
 		<div class="col-xs-1"></div>
 		<div class="col-xs-offset-3 col-xs-3">
-			<h3><span class="ct-demo-heading label label-default" id="titleName">Identifiers</span></h3>
+			<h3><span class="ct-demo-heading label" id="titleName">Identifiers</span></h3>
 		</div>
 	</div>
 	
